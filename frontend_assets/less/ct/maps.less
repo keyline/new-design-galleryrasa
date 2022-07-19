@@ -1,0 +1,101 @@
+.googlemapcontainer--withOverlay{
+  position: relative;
+  &:before{
+    content: "";
+    width: 225px;
+    height: 225px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+    background: @motive;
+    background: -moz-radial-gradient(center, circle cover, transparent 0%, transparent 12%, @motive 12%, @motive 100%);
+    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, transparent), color-stop(12%, transparent), color-stop(12%, @motive), color-stop(100%, @motive));
+    background: -webkit-radial-gradient(center, circle cover, transparent 0%, transparent 12%, @motive 12%, @motive 100%);
+    background: -o-radial-gradient(center, circle cover, transparent 0%, transparent 12%, @motive 12%, @motive 100%);
+    background: -ms-radial-gradient(center, circle cover, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 12%, @motive 12%, @motive 100%);
+    background: radial-gradient(circle at center, transparent 0%, transparent 12%, @motive 12%, @motive 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='transparent', endColorstr='@motive', GradientType=1 );
+    .ct-m-transition(0.3s, ease);
+  }
+  .googlemapcontainer-overlay{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 2;
+  }
+  &.no-overlay:before{
+    background: transparent;
+  }
+  &.no-overlay .googlemapcontainer-overlay{
+    .ct-m-opacity(0);
+  }
+}
+
+.googlemapcontainer-icon{
+  width: 230px;
+  height: 230px;
+  background-color: rgba(255,255,255,0.3);
+  font-size: 60px;
+  line-height: 230px;
+  text-align: center;
+  color: #ffffff;
+  .ct-m-borderRadius(50%,50%,50%,50%);
+  margin: auto;
+}
+
+.googlemapcontainer-text, .googlemapcontainer-textNoIcon{
+  color: #ffffff;
+  margin-top: 30px;
+  padding-top: 30px;
+  text-align: center;
+  position: relative;
+  a{
+    color: #ffffff;
+  }
+  &:before{
+    position: absolute;
+    top: 0;
+    width: 30px;
+    left: 50%;
+    margin-left: -15px;
+    height: 1px;
+    display: block;
+    content: "";
+    background-color: #ffffff;
+  }
+}
+
+.googlemapcontainer-textNoIcon{
+  margin-top: 260px;
+}
+
+@media(max-width: @screen-xs-max){
+  .googlemapcontainer--withOverlay {
+    &:before {
+      display: none;
+    }
+    .googlemapcontainer-overlay{
+      position: initial;
+      background-color: @motive;
+    }
+  }
+  .googlemapcontainer-textNoIcon{
+    margin-top: 30px;
+  }
+}
+
+.btn-js-map{
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  z-index: 3;
+  background-color: transparent;
+}

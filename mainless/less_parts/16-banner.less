@@ -1,0 +1,215 @@
+/*==============================
+=            Banner            =
+==============================*/
+.banner{
+	margin-bottom: 120px;
+	.inside{
+		position: relative;
+	    overflow: hidden;
+	    margin-bottom: 0px;
+	    cursor: pointer;
+	    -webkit-transition: all 0.3s ease-in-out;
+	    transition: all 0.3s ease-in-out;
+	    backface-visibility: hidden;
+	    -webkit-backface-visibility: hidden;
+		&:before{
+			position: absolute;
+			top: 0;
+			left: 50%;
+			width: 120%;
+			height: 100px;
+			background: rgba(255, 255, 255, 0.3);
+			content: '';
+			-webkit-transition: all 0.6s linear;
+			transition: all 0.6s linear;
+			z-index: 1;
+			-webkit-transform: scale3d(1.9, 1.4, 1) rotate3d(0, 0, 1, 45deg) translate3d(0, -150%, 0);
+			transform: scale3d(1.9, 1.4, 1) rotate3d(0, 0, 1, 45deg) translate3d(0, -150%, 0);
+			-webkit-backface-visibility: hidden;
+			backface-visibility: hidden;
+		}
+		&:hover{
+			&:before{
+				-webkit-transform: scale3d(1.9, 1.4, 1) rotate3d(0, 0, 1, 45deg) translate3d(0, 200%, 0);
+			    transform: scale3d(1.9, 1.4, 1) rotate3d(0, 0, 1, 45deg) translate3d(0, 200%, 0);
+			    left: -100%;
+			    top: 100%;
+			}
+		}
+	}
+	p{
+		letter-spacing: 2px;
+		text-transform: uppercase;
+		color: rgba(255, 255, 255, 0.8);
+	}
+	h2,
+	h1{
+		color: #fff;
+		line-height: 1.1;
+		font-weight: 600;
+		font-size: 30px;
+	}
+	h1{
+		font-size: 66px; 
+	}
+	img{
+		-webkit-backface-visibility: hidden;
+    	backface-visibility: hidden;
+	}
+	.banner-content{
+		position: absolute;
+	    top: 50%;
+	    -webkit-transform: translate3d(0, -50%, 0);
+	    transform: translate3d(0, -50%, 0);
+	    left: 0;
+	    width: 100%;
+	    -webkit-box-sizing: border-box;
+	    box-sizing: border-box;
+	    padding: 20px 30px;
+	    -webkit-backface-visibility: hidden;
+	    backface-visibility: hidden;
+	}
+	&.banner-type-1{
+		.banner-content{
+			top: auto;
+			bottom: 22px;
+			padding-left: 44px;
+			transform: none;
+		}
+		h2{
+			font-size: 24px;
+		}
+		.inside{
+			&:first-child,
+			&:last-child{
+			    margin-top: 50px;
+			}
+		}
+		.text-right{
+			.banner-content{
+				padding-right: 45px;
+			}
+		}
+	}
+	&.banner-type-2{
+		margin-bottom: 30px;
+		p{
+			color: #834b3c;
+			font-family: @globalfonts;
+		}
+		.banner-content{
+			padding-left: 50px;
+		}
+		h2{
+			color: #252525;
+			font-weight: 900;
+			font-size: 36px;
+			margin-bottom: 25px;
+		}
+		.text{
+		    line-height: 1.5;
+		    color: #666;
+		    letter-spacing: 0;
+		    font-weight: 300;
+		    text-transform: none;
+		    margin-bottom: 25px;
+		}
+		.btn{
+			background-color: #eae9e9;
+			border-color: #eae9e9;
+		}
+		.btn{
+			font-size: 11px;
+			letter-spacing: 1px;
+			&:hover{
+				color: #fff;
+				border-color: @boxed_color;
+				background-color: @boxed_color;
+			}
+		}
+	}
+	&.banner-type-4{
+		.btn{
+			margin-top: 20px;
+			background-color: #fff;
+			border-color: #fff;
+			font-size: 11px;
+			position: absolute;
+		    -webkit-transform: translate3d(0, 40px, 0);
+		    transform: translate3d(0, 40px, 0);
+		    opacity: 0;
+		    font-weight: 400;
+		    left: 30px;
+		    .transition-small();
+		    -webkit-backface-visibility: hidden;
+		    backface-visibility: hidden;
+		    &:hover{
+		    	color: #fff;
+		    	border-color: @active_color_two;
+		    	background-color: @active_color_two;
+		    }
+		}
+		.banner-content{
+			.transition-small();
+			z-index: 9;
+		}
+		.inside{
+			&:after{
+				content: "";
+			    position: absolute;
+			    width: 100%;
+			    display: block;
+			    .transition-small();
+			    background: rgba(0, 0, 0, 0.0);
+			    height: 100%;
+			    top: 0;
+			}
+			&:before{
+				display: none;
+			}
+			&:hover{
+				&:after{
+					background: rgba(0, 0, 0, 0.3);
+				}
+				img{
+					-webkit-transform: scale(1.15);
+					-ms-transform: scale(1.15);
+					transform: scale(1.15);
+				}
+				.btn{
+					opacity: 1;
+				    -webkit-transform: translate3d(0, 5px, 0);
+				    transform: translate3d(0, 5px, 0);
+				    -webkit-backface-visibility: hidden;
+				    backface-visibility: hidden;
+				}
+				.banner-content{
+					visibility: visible;
+				    opacity: 1;
+				    -webkit-transform: translate3d(0, -55%, 0);
+				    transform: translate3d(0, -55%, 0);
+				    -webkit-backface-visibility: hidden;
+				    backface-visibility: hidden;
+				}
+			}
+		}
+		img{
+			.transition-small();
+		}
+	}
+	&.banner-slider{
+		font-family: @montserrat;
+		h2{
+			color: #000;
+			font-size: 60px;
+			font-weight: 700;
+		}
+		p{
+			font-size: 24px;
+			color: #000;
+			letter-spacing: 0;
+			font-weight: 400;
+		}
+	}
+}
+/*=====  End of Banner  ======*/

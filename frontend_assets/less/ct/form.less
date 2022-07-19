@@ -1,0 +1,330 @@
+// placeholder
+.ct-form--darken ::-webkit-input-placeholder {
+  color: #666666 !important;
+}
+.ct-form--darken :-moz-placeholder {
+  color: #666666 !important;
+}
+.ct-form--darken ::-moz-placeholder {
+  color: #666666 !important;
+}
+.ct-form--darken :-ms-input-placeholder {
+  color: #666666 !important;
+}
+
+.ct-formSubscribe ::-webkit-input-placeholder {
+  font-size: 13px !important;
+}
+.ct-formSubscribe :-moz-placeholder {
+  font-size: 13px !important;
+}
+.ct-formSubscribe ::-moz-placeholder {
+  font-size: 13px !important;
+}
+.ct-formSubscribe :-ms-input-placeholder {
+  font-size: 13px !important;
+}
+
+
+.ct-form--greyInp ::-webkit-input-placeholder {
+  color: @placeholderGrey !important;
+}
+.ct-form--greyInp :-moz-placeholder {
+  color: @placeholderGrey !important;
+}
+.ct-form--greyInp ::-moz-placeholder {
+  color: @placeholderGrey !important;
+}
+.ct-form--greyInp :-ms-input-placeholder {
+  color: @placeholderGrey !important;
+}
+
+input,
+textarea{
+  border: 1px solid transparent !important;
+}
+
+input:focus,
+textarea:focus{
+  border: 1px solid @motive !important;
+}
+
+.ct-widget form {
+  .form-control {
+    .border-radius(2px);
+    background-color: @bg-darkform;
+    border-color: @bg-darkform;
+    .box-shadownone();
+  }
+}
+
+.ct-form--darken {
+  input {
+    &.form-control{
+      .border-radius(2px);
+      height: 39px;
+    }
+  }
+  textarea {
+    .border-radius(2px);
+  }
+
+  .form-control {
+    .border-radius(2px);
+    background-color: @bg-darkform;
+    border-color: @bg-darkform;
+    .box-shadownone();
+    .ct-m-opacity(.9);
+    &:focus {
+      .box-shadownone();
+    }
+  }
+}
+
+.ct-form--greyInp {
+  input {
+    &.form-control{
+      .border-radius(2px);
+      height: 45px;
+    }
+  }
+  textarea {
+    .border-radius(2px);
+  }
+
+  .form-control {
+    .border-radius(2px);
+    background-color: @bg-greyform;
+    border-color: @bg-greyform;
+    .box-shadownone();
+    &:focus {
+      .box-shadownone();
+    }
+  }
+}
+.form-group{
+  line-height: 0em;
+}
+
+.ct-form--white {
+  .form-group {
+    input, textarea {
+        background-color: #ffffff;
+        border: solid 2px #ffffff;
+        transition: all 0.4s;
+        box-shadow: none;
+    }
+  }
+}
+.ct-form--bigInput {
+  .form-group {
+    margin-bottom: 20px;
+    input {
+        height: 60px;
+    }
+  }
+  .form-control {
+    padding: 10px 12px;
+  }
+}
+
+.ct-formSubscribe {
+  max-width: 100%;
+  width: 400px;
+  input {
+    &.form-control {
+      .border-radius(2px);
+      line-height: 55px;
+      height: 55px;
+      color: @placeholderGrey;
+    }
+  }
+  textarea {
+    .border-radius(2px);
+    color: @placeholderGrey;
+  }
+  .form-control {
+    .border-radius(2px);
+    background-color: @bg-greyform;
+    border-color: @bg-greyform;
+    .box-shadownone();
+    color: @placeholderGrey;
+    &:focus {
+      .box-shadownone();
+      color: @placeholderGrey;
+    }
+  }
+  .select2-container{
+    width: 100%;
+    max-width: none;
+    height: 55px;
+    margin-bottom: 30px;
+  }
+  .select2-container .select2-choice{
+    height: 55px;
+    line-height: 54px;
+  }
+  .select2-container .select2-choice > .select2-chosen{
+    background-color: #ffffff;
+  }
+}
+
+  .ct-formGroupSelect {
+    max-width: 100%;
+    overflow: hidden;
+    border: solid 2px @motive;
+    position: relative;
+    &:before {
+      content: " ";
+      display: inline-block;
+      position: absolute;
+      top: 50%;
+      right: 12px;
+      width: 0;
+      height: 0;
+      margin-top: -2px;
+      margin-left: 2px;
+      vertical-align: middle;
+      border-top: 4px solid @motive;
+      border-right: 4px solid transparent;
+      border-left: 4px solid transparent;
+    }
+  }
+
+  select.form-control {
+    height: 45px;
+    color: @motive !important;
+    background-color: transparent !important;
+    border: 0 !important;
+    font-size: 13px;
+    .ct-ff-montserat();
+    width: 295px;
+    max-width: 295px;
+    margin-left: -2px;
+
+    option{
+      height: 45px;
+    }
+  }
+
+ .header-search, .ct-widget-search {
+   margin-right: -41px;
+   z-index: 2;
+   display: none;
+   .search-input {
+     height: 40px;
+   }
+  .form-group {
+    margin-right: 20px;
+    margin-bottom: 0;
+  }
+   .btn-search {
+       height: 40px;
+       line-height: 1;
+       border: none;
+       overflow: hidden;
+       width: 20px;
+       max-width: 20px;
+       padding: 0;
+       display: block;
+       border: none !important;
+       background: transparent;
+       outline: 0;
+       .box-shadownone();
+   }
+ }
+
+ .ct-checkbox {
+   input[type="checkbox"] {
+       display:none;
+   }
+   input[type="checkbox"] + label span:before {
+     content: "";
+     display:inline-block;
+     width: 25px;
+     height:25px;
+     vertical-align: text-bottom;
+     background:url("../../../assets/images/checkbox.png") -5px top no-repeat;
+     cursor: pointer;
+    .ct-ff-merriw();
+     margin-right: 5px;
+   }
+   input[type="checkbox"]:checked + label span:before {
+       background: url("../../../assets/images/checkbox.png") -30px top no-repeat;
+   }
+   .radio label, .checkbox label {
+     padding-left: 0;
+   }
+ }
+
+ .ct-transparentInputs{
+   margin-top: 30px;
+   margin-bottom: 140px;
+   .btn-group{
+     display: table;
+     width: 100%;
+     .btn{
+       display: table-cell;
+       width: 1%;
+       float: none;
+       line-height: 1.5;
+       height: 59px;
+       +.btn{
+         border-left: none;
+       }
+     }
+     .btn.active, .btn:focus, .btn:active{
+       background-color: @motive;
+       border-color: @motive;
+       .ct-m-boxShadow(none);
+     }
+   }
+
+ }
+
+ .subscribe-form-center{
+   h4{
+     text-align: center;
+   }
+
+   form{
+     margin: 0 auto;
+   }
+ }
+
+
+@media (min-width: @screen-sm) {
+  .bootstrap-datetimepicker-widget{
+    margin-top: 0 !important;
+  }
+}
+
+@media (max-width: @screen-sm) {
+  .bootstrap-datetimepicker-widget{
+    width: 250px;
+  }
+}
+
+ @media(max-width: @screen-xs){
+   .ct-transparentInputs{
+     margin-top: 0px;
+     margin-bottom: 00px;
+     .btn-group{
+       display: block;
+       .btn{
+         display: block;
+         height: auto;
+         width: 100%;
+         padding: 15px;
+         .ct-m-borderRadius(0,0,0,0);
+         +.btn{
+           border-left: 2px solid @motive;
+           border-top: none;
+         }
+       }
+     }
+   }
+   .btn-group .btn + .btn, .btn-group .btn + .btn-group, .btn-group .btn-group + .btn, .btn-group .btn-group + .btn-group{
+     margin: 0;
+   }
+ }

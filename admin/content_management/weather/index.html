@@ -1,0 +1,102 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>jQuery Yahoo! Weather Demo</title>
+		<script src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
+		<link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.9/css/weather-icons.min.css">
+		
+		<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+		<style>
+        body { background-color:333; }
+        h1 { margin-bottom:30px; font-size:24px;}
+        </style>
+		
+	</head>
+	<body>
+    	
+		<div class="container"></div>
+        <script src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
+       <script type="text/javascript" >
+        
+        (function($, undefined) {
+	'use strict';
+	$.fn.yahooWeather = function(p1) {
+		const fahrenheitToCelsius = (f) => Math.ceil((f-32)/1.8);
+		const kharkivLocation = {
+			coords : {
+				latitude : 33.8688,
+				longitude : 151.2093
+			}
+		}
+		const config = {
+			method : 'GET',
+			mode : 'cors'
+		}
+		const def = {}
+		const location = new Promise(function(res,rej){
+			if (navigator.geolocation) {
+				navigator.geolocation.getCurrentPosition(res, rej);
+			} else rej('Browser doesn\'t support Geolocation');
+		});
+		location
+			.catch(()=> Promise.resolve(kharkivLocation))
+			.then((location)=>{
+				const query = `
+					select * from weather.forecast where woeid in (
+						SELECT woeid FROM geo.places 
+						WHERE text="(${location.coords.latitude},${location.coords.longitude})"
+					)
+				`;  
+				const uri = `https://query.yahooapis.com/v1/public/yql?q=${query}&format=json`;
+				return fetch(uri, config)
+			})
+			.then(res => res.json())
+			.then(res => {
+				const item = res.query.results.channel.item;
+				def.city = res.query.results.channel.location.city;
+				def.country = res.query.results.channel.location.country;
+				def.date = new Date(res.query.created);
+				def.tHigh = fahrenheitToCelsius(item.forecast[0].high);
+				def.tLow = fahrenheitToCelsius(item.forecast[0].low);
+				def.condition = item.condition.code;
+				def.temp = fahrenheitToCelsius(item.condition.temp);
+				def.template = template;
+				this.append(def.template());
+			})
+			.catch((err)=>{console.log(err)});
+		return this;
+
+		function template() {
+			return `
+				<div class="btn btn-default">
+					<i class="wi wi-yahoo-${this.condition}">
+						&nbsp;${this.temp}&deg;C  ${this.city}, ${this.country}
+					</i>
+					<div>
+						${this.date.getDate()}/${this.date.getMonth()}, 
+						${this.date.getHours()}:${
+							(this.date.getMinutes()<10) ? '0' + this.date.getMinutes() : this.date.getMinutes()
+						} 
+					</div>
+					<div>
+						&downarrow;t&deg;=${this.tLow}&deg;C,&nbsp; 		
+						&uparrow;t&deg;=${this.tHigh}&deg;C		
+					</div>
+				</div>
+			`;
+		};
+	}
+})(jQuery)
+        </script>
+		<script type="text/javascript">
+			const main = () => {
+				$('.container').yahooWeather();
+			}
+			$(document).ready(main);
+		</script>
+	</body>
+</html>

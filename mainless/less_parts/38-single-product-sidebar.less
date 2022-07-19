@@ -1,0 +1,119 @@
+/*==============================================
+=            Single Product Sidebar            =
+==============================================*/
+.single-product-sidebar{
+	.product-brands{
+		border: 1px solid #e6e6e6;
+		margin-bottom: 20px;
+		padding: 20px;
+		text-align: center;
+		a{
+			color: @active_color;
+			font-size: 12px;
+			display: block;
+			font-weight: bold;
+		    border-top: 1px solid #e6e6e6;
+		    padding-top: 20px;
+		    margin: 20px 0 0;
+			text-transform: uppercase;
+		}
+	}
+	.slider{
+		padding: 20px;
+	    border: 1px solid #e6e6e6;
+	    margin-bottom: 20px;
+	    h5{
+	    	border-bottom: 1px solid #e6e6e6;
+	    	padding-bottom: 25px;
+	    	margin-bottom: 25px;
+	    }
+	    .item{
+	    	margin: 10px;
+	    }
+	    .product{
+	    	img{
+	    		margin-bottom: 10px;
+	    	}
+	    }
+	    .product-title{
+	    	a{
+	    		font-size: 11px;
+	    		overflow: hidden;
+	    		display: block;
+	    	    text-overflow: ellipsis;
+	    	    white-space: nowrap;
+	    	}
+	    }
+	    .price{
+	    	font-size: 13px;
+	    }
+	    .owl-controls{
+	    	opacity: 1;
+	    	.owl-buttons{
+	    		position: absolute;
+			    top: -74px;
+			    right: 0;
+	    	}
+	    	.owl-prev,
+		    .owl-next{
+		    	width: 28px;
+		    	height: 28px;
+		    	top: 0;
+		    	&:after{
+		    		font-size: 12px;
+		    		padding-top: 8px;
+		    		color: #000;
+		    	}
+		    	&:hover{
+		    		&:after{
+		    			color: @white;
+		    		}
+		    	}
+		    }
+		    .owl-prev{
+		    	left: -62px;
+		    }
+		    .owl-next{
+		    	right: 0;
+		    }
+		    .owl-pagination{
+		    	display: inline-block;
+			    width: 100%;
+			    text-align: center;
+			    .owl-page{
+			    	display: inline-block;
+				    width: 10px;
+				    height: 10px;
+				    background: #e6e6e6;
+				    border-radius: 100%;
+				    -moz-border-radius: 100%;
+				    -webkit-border-radius: 100%;
+				    margin: 0 4px;
+				    &.active{
+				    	background-color: @active_color;
+				    }
+			    }
+		    }
+	    }
+	}
+	.qr-code{
+		padding: 28px 30px 25px 30px;
+		border: 1px solid #e6e6e6;
+	    background: url(../images/qr-code.png) no-repeat;
+	    background-position: right center;
+		h5{
+			font-size: 16px;
+			font-weight: 400;
+			letter-spacing: 0;
+			margin-bottom: 10px;
+		}
+		p{
+			font-size: 12px;
+			line-height: 20px;
+			font-weight: 400;
+		}
+	}
+}
+
+
+/*=====  End of Single Product Sidebar  ======*/

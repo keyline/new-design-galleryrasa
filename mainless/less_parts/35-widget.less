@@ -1,0 +1,249 @@
+/*====================================
+=            Widget Style            =
+====================================*/
+.sidebar{
+	li{
+		a{
+			color: #444;
+		}
+	}
+}
+.widget-title{
+	color: #1e1e1e;
+	font-size: 16px;
+	font-weight: 900;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	padding-bottom: 15px;
+	margin-bottom: 15px;
+    border-bottom: 1px solid #e6e6e6;
+	&.first{
+		background-color: @active_color;
+		color: white;
+	    padding: 25px 10px;
+	    margin-bottom: 10px;
+	    font-weight: bold;
+	    text-align: center;
+	    font-size: 22px;
+		margin-bottom: 0;
+    	border-bottom: none;
+	}
+}
+.widget-product-categories,
+.widget-price-filter,
+.widget-layered-nav,
+.widget-brands{
+	margin-bottom: 60px;
+}
+/**
+ *
+ * Widget Product Categories
+ *
+ */
+.widget-product-categories{
+	a{
+		display: block;
+		font-size: 14px;
+		padding: 15px 0;
+		font-weight: 400;
+	    border-bottom: 1px solid #e6e6e6;
+	    text-transform: uppercase;
+	    &:hover{
+	    	color: @active_color;
+	    }
+	    &:active,
+	    &:focus{
+	    	text-decoration: none;
+	    	color: @active_color;
+	    }
+	}
+	.open{
+		cursor: pointer;
+	    float: right;
+	    text-align: right;
+	    font-size: 0;
+	    height: 25px;
+    	width: 25px;
+		&:before{
+			font-size: 16px;
+		    color: #999;
+		    font-family: 'FontAwesome';
+		    display: inline-block;
+		    content: '\f107';
+		}
+	}
+	.children{
+		display: none;
+		> li{
+			a{
+				padding: 12px 0 12px 14px;
+				color: #8a8a8a;
+				font-weight: 300;
+				font-size: 13px;
+				&:hover{
+	    			color: @active_color;
+	    		}
+			}
+		}
+	}
+}
+/**
+ *
+ * Widget Price Filter
+ *
+ */
+.widget-price-filter{
+	.widget-title{
+		margin-bottom: 20px;
+	}
+	label{
+		font-size: 14px;
+		color: #666;
+		display: inline-block;
+	}
+	input{
+		display: inline-block;
+		border: none;
+		color: #1e1e1e;
+		padding-left: 0;
+		width: 110px;
+    	font-weight: bold;
+		background-color: transparent;
+		&:focus{
+			background-color: transparent;
+			border: none;
+		}
+	}
+	.btn{
+		float: right;
+		font-size: 11px;
+		letter-spacing: 1px;
+		background: #1e1e1e;
+		color: @white;
+		font-weight: 400;
+		.transition-small();
+		&:hover{
+			opacity: 0.8;
+		}
+	}
+}
+#slider-range{
+	position: relative;
+    background:#e6e6e6;
+    height: 2px;
+    margin-bottom: 20px;
+    .ui-slider-range{
+    	top: 0;
+    	height: 100%;   
+ 		position: absolute;
+		z-index: 1;
+		font-size: 26px;
+		display: block;
+		border: 0;
+		background: @active_color;
+    }
+    .ui-slider-handle{
+	    background: @active_color;
+	    font-weight: normal;
+	    color: #454545;
+		top: -3px;
+		position: absolute;
+		margin-left: -1px;
+	    z-index: 2;
+	    width: 8px;
+	    height: 8px;
+	    cursor: default;
+	    -ms-touch-action: none;
+	    touch-action: none;
+	    &:focus{
+	    	outline: none;
+	    }
+    }
+}
+/**
+ *
+ * Widget Layered
+ *
+ */
+.widget-layered-nav,
+.widget-brands{
+	li{
+		position: relative;
+		font-size: 14px;
+		&:first-child{
+			a{
+				padding-top: 0;
+			}
+			span{
+				top: 0;
+			}
+		}
+		&:last-child{
+			a{
+				border-bottom: none;
+			}
+		}
+		a{
+			display: block;
+		    padding: 13px 0;
+		    font-size: 14px;
+		    text-transform: uppercase;
+		    border-bottom: 1px solid #e6e6e6;
+		    &:hover{
+		    	color: @active_color;
+		    }
+		}
+		span{
+		    display: block;
+    		position: absolute;
+    		right: 0;
+    		color: #666;
+    		top: 13px;
+    		cursor: pointer;
+		}
+	}
+}
+/**
+ *
+ * Widget Banner
+ *
+ */
+.banner{
+	position: relative;
+	margin-bottom: 60px;
+}
+.widget-banner{
+	text-align: center;
+	h3{
+	    color: #f3a3a3;
+	    font-size: 14px;
+	    margin-bottom: 10px;
+	    letter-spacing: 2px;
+	}
+	h2{
+    	color: #fff;
+    	margin-bottom: 18px;
+    	font-weight: 500;
+    	font-size: 36px;
+    	font-weight: bold;
+	}
+	p{
+		font-size: 14px;
+		letter-spacing: 0;
+		font-weight: 300;
+		margin-bottom: 20px;
+	    color: rgba(255, 255, 255, 0.6);
+		text-transform: none;
+	}
+	.btn{
+		font-size: 13px;
+		border-color: #fff;
+		background-color: #fff;
+		&:hover{
+			color: #fff;
+			border-color: @active_color;
+			background-color: @active_color;
+		}
+	}
+}
+/*=====  End of Widget Style  ======*/

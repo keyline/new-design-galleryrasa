@@ -1,0 +1,148 @@
+blockquote,
+.ct-bloquote {
+    .ct-ff-merriw();
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+.ct-blockquote--standard {
+    font-style: italic;
+    padding: 0px 20px;
+    color: @motive;
+    border-left: solid 10px @motive;
+}
+
+.ct-blockquote--border {
+    border: solid 2px @motive;
+    padding: 25px 15px 10px;
+}
+
+.ct-blockquote--bgblue {
+    background-color: @motive;
+    color: #fff;
+    border: solid 2px @motive;
+    padding: 25px 30px 21px 20px;
+}
+
+.ct-blockquote--quotetopmotive{
+    &:before {
+        font-size: 38px;
+        line-height: 60px;
+        display: block;
+        left: 50%;
+        margin-left: -40px;
+        position: absolute;
+        width: 90px;
+        margin-top: -60px;
+        text-align: center;
+        font-family: FontAwesome;
+        font-style: normal;
+        font-weight: normal;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        content: "\f10e";
+        background: #fff;
+        color: @motive;
+        border-radius: 50%;
+    }
+}
+
+.ct-blockquote--quotewhite {
+    &:before{
+        font-size: 40px;
+        line-height: 1;
+        float: left;
+        padding: 0 30px 0 5px;
+        width: auto;
+        height: 100%;
+        min-height: 80px;
+        font-family: FontAwesome;
+        font-style: normal;
+        font-weight: normal;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        content: "\f10e";
+        color: #fff;
+    }
+}
+.ct-blockquote--quoteleft {
+    &:before{
+      float: left;
+      padding: 0 30px 0 5px;
+    }
+}
+.ct-blockquote--quoteright {
+    &:before{
+      float: right;
+      padding: 0 5px 0 30px;
+    }
+}
+
+.ct-blockquote--blog {
+  padding: 30px 35px;
+  font-size: 25px;
+  .ct-ff-montserat();
+  word-wrap: break-word;
+  font-style: italic;
+}
+
+.ct-blockquote--withArrow {
+  position: relative;
+  &:before {
+    content: " ";
+    display: inline-block;
+    width: 0;
+    height: 0;
+    margin-left: 2px;
+    vertical-align: middle;
+    border-top: 10px solid @motive;
+    border-right: 10px solid transparent;
+    border-left: 10px solid transparent;
+    position: absolute;
+    bottom: -10px;
+    right: 60px;
+  }
+  footer, small,  .small {
+    position: absolute;
+    bottom: -43px;
+    .cc-ff-josefin();
+    font-size: 18px;
+    color: @author-color;
+    transition: all 0.7s;
+    text-transform: none;
+    right: 0px;
+    padding: 0 60px;
+    text-align: right;
+    font-style: normal;
+  }
+
+  footer:before, small:before, .small:before {
+      display: none;
+  }
+}
+
+.ct-blockquote--img {
+  font-size: 15px;
+  padding: 10px 20px 10px 0;
+  border-left: 0;
+  &:before {
+    content: " ";
+    background:  url("../../images/demo-content/bloquote.png") no-repeat;
+    width: 68px;
+    margin-top: -10px;
+    min-height: 105px;
+  }
+}
+
+
+
+blockquote+blockquote {
+  margin-top: 92px;
+}
+
+@media (max-width: @screen-xs-max){
+  .ct-blockquote--blog{
+    font-size: 16px;
+    line-height: 1.2;
+  }
+}

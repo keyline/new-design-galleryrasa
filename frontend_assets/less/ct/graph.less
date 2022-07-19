@@ -1,0 +1,69 @@
+.ct-graphBox-graph {
+    position: relative;
+  .row canvas {
+     margin: -10px 0 -20px -15px;
+    padding: 10px;
+  }
+}
+
+.ct-graphBox-graphPercentage {
+  position: absolute;
+  display: block;
+  width: 100%;
+  text-align: center;
+  .ct-ff-bg-light();
+  top: 50%;
+  font-size: 36px;
+  margin-top: -15px;
+  font-size: 40px;
+  margin-left: -15px;
+}
+
+.ct-graphBox-title {
+  word-break: break-word;
+  .ct-ff-montserat();
+  margin: 0;
+  padding: 0 0 17px;
+  font-size: 20px;
+  line-height: 1.2;
+}
+
+.ct-graphBox-content {
+  word-break: break-word;
+  p {
+    line-height: 1.8;
+    font-size: 13px;
+  }
+}
+
+.ct-graphBox--default {
+    padding-bottom: 75px;
+}
+
+.ct-graphBox-icon--default {
+  width: @iconbox-default-size;
+  height: @iconbox-default-size;
+  border: solid 1px @iconbox-default-color;
+  .border-radius(50%);
+  margin: 0 auto;
+  i {
+    font-size: @iconbox-default-font;
+    line-height: @iconbox-default-size;
+    margin: 0 auto;
+    display: table;
+    color: @iconbox-default-color;
+  }
+}
+
+.ct-graphBox-content--default {
+  padding-top: 35px;
+  .ct-graphBox-title  {
+    .cc-ff-josefin();
+    font-weight: 700;
+    padding: 0 0 25px;
+  }
+  p {
+    margin-bottom: 10px;
+  }
+}
+

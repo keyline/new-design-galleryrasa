@@ -1,0 +1,39 @@
+/**
+ *
+ * Transition Small
+ *
+ */
+.transition-small(@time: 0.2s){
+	-webkit-transition: @time linear;
+	-moz-transition: @time linear;
+	-ms-transition: @time linear;
+	-o-transition: @time linear;
+	transition: @time linear;
+}
+
+/**
+ *
+ * Align Center
+ *
+ */
+.align-center( @left: 50%, @minus: -50%,){
+	left: @left;
+	-webkit-transform: translateX(@minus);
+	-moz-transform: translateX(@minus);
+	-ms-transform: translateX(@minus);
+	-o-transform: translateX(@minus);
+	transform: translateX(@minus);
+}
+
+/**
+ *
+ * Delivery
+ *
+ */
+.delivery(){
+	height: 2px;
+    background-color: rgba(0,0,0,0.1);
+    display: block;
+    top: 1px;
+    width: 50px;
+}

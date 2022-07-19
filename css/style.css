@@ -1,0 +1,656 @@
+/*======================================================== Common CSS ==========================================*/
+
+@font-face {
+    font-family: ink-free;
+    src: url(../fonts/ink-free-normal.ttf);
+}
+
+body {
+    /*    font-family: ink-free;*/
+    font-family: Arial;
+    font-size: 19px;
+/*    line-height: 29px;*/
+    color: #3b3434;
+    background: #62615c url(../images/gallery-rasa-bg.jpg) no-repeat center top;
+    /*    background-size: cover;*/
+}
+
+.brand h2 {
+    font-family: ink-free;
+}
+
+.arial {
+    font-family: Arial;
+}
+
+a {
+    color: #55163e;
+}
+
+a:visited,
+a:focus,
+a:hover,
+a:active {
+    color: #231f20;
+}
+
+h2 {
+    /*    font-size: 29px;*/
+    font-size: 22px;
+    color: #000000;
+    /*    font-weight: bold;*/
+}
+
+h3 {
+    font-family: Arial, sans-serif;
+    font-size: 24px;
+    color: #55163e;
+    margin-bottom: 20px;
+}
+
+body:not(.home) h3 {
+    color: #d269a8;
+    /*    text-transform: uppercase;*/
+    /*
+    margin-left: auto;
+    margin-right: auto;
+*/
+}
+
+h4 {
+    font-size: 27px;
+    font-family: Arial;
+    color: #000000;
+}
+
+.form-control {
+    background: rgba(255, 255, 255, 0.3);
+    border-width: 1px 0;
+    border-style: solid;
+    border-color: #676866;
+    height: 35px;
+    width: 100%;
+    border-radius: 0;
+    font-family: Arial;
+    letter-spacing: 2px;
+}
+
+footer .btn {
+    color: #d269a8;
+    font-size: 20px;
+    padding: 0 0;
+    text-transform: lowercase;
+}
+
+.btn {
+    max-width: 150px;
+}
+
+.container {
+    position: relative;
+}
+
+.after-footer {
+    background: #000;
+    height: 150px;
+    display: none;
+}
+
+.more-btn,
+.more-btn:visited {
+    color: #55163e;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+main {
+    padding: 40px 0 50px;
+    line-height: 40px;
+}
+
+.pink {
+    color: #de2199;
+}
+
+
+/*======================================================== Placeholder CSS ==========================================*/
+
+.form-control::placeholder {
+    /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #000000;
+    opacity: 1;
+    /* Firefox */
+    font-size: 16px;
+    font-family: Arial;
+    text-transform: capitalize;
+    letter-spacing: 2px;
+    font-weight: normal;
+}
+
+.form-control::-webkit-input-placeholder {
+    color: #000000;
+}
+
+.form-control:-moz-placeholder {
+    color: #000000;
+}
+
+.form-control::-moz-placeholder {
+    color: #000000;
+}
+
+.form-control:-ms-input-placeholder {
+    /* Internet Explorer 10-11 */
+    color: #000000;
+}
+
+.form-control::-ms-input-placeholder {
+    /* Microsoft Edge */
+    color: #000000;
+}
+
+footer .form-control::placeholder {
+    color: #d269a8;
+    text-transform: lowercase;
+    letter-spacing: normal;
+}
+
+footer .form-control::-webkit-input-placeholder {
+    color: #d269a8;
+}
+
+footer .form-control:-moz-placeholder {
+    color: #d269a8;
+}
+
+footer .form-control::-moz-placeholder {
+    color: #d269a8;
+}
+
+footer .form-control:-ms-input-placeholder {
+    color: #d269a8;
+}
+
+footer .form-control::-ms-input-placeholder {
+    color: #d269a8;
+}
+
+.select2-search__field::placeholder {
+    color: #d269a8;
+    font-size: 18px;
+    text-align: center;
+}
+
+.select2-search__field::-webkit-input-placeholder {
+    color: #d269a8;
+    font-size: 18px;
+}
+
+.select2-search__field:-moz-placeholder {
+    color: #d269a8;
+    font-size: 18px;
+}
+
+.select2-search__field::-moz-placeholder {
+    color: #d269a8;
+    font-size: 18px;
+}
+
+.select2-search__field:-ms-input-placeholder {
+    color: #d269a8;
+    font-size: 18px;
+}
+
+.select2-search__field::-ms-input-placeholder {
+    color: #d269a8;
+    font-size: 18px;
+}
+
+
+/*======================================================== Selection color change ==========================================*/
+
+::-moz-selection {
+    /* Code for Firefox */
+    color: #000;
+    background: #ebeeeb;
+}
+
+::selection {
+    color: #000;
+    background: #ebeeeb;
+}
+
+
+/*======================================================== Home CSS ==========================================*/
+
+.brand-auth {
+    padding: 40px 0 0 0;
+    /*    position: relative;*/
+}
+
+.brand {
+    position: absolute;
+    left: 0;
+    right: 0;
+}
+
+.brand img {
+    margin-bottom: 20px;
+    /*    max-width: 340px;*/
+    max-width: 260px;
+}
+
+@media (min-width: 992px) {
+    .auth {
+        position: absolute;
+        right: 15px;
+        top: 40px;
+        font-size: 19px;
+        font-weight: bold;
+    }
+}
+
+.navbar {
+    position: inherit;
+    padding: 0;
+    width: 100%;
+}
+
+body:not(.home) .navbar {
+    background: #6f6764;
+    border-top: 5px solid #6f6764;
+    position: relative;
+}
+
+body:not(.home) .navbar:after {
+    content: " ";
+    border: 1px solid #ffff;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+@media (min-width: 992px) {
+    .navbar-nav li:not(.auth) .nav-link {
+        text-transform: uppercase;
+        font-family: Arial;
+        font-size: 17px;
+        letter-spacing: 3px;
+    }
+    .navbar-nav li.auth .nav-link {
+        display: none;
+    }
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: #fff;
+}
+
+.navbar-light .navbar-nav .nav-link:hover,
+.navbar-light .navbar-nav li.active .nav-link {
+    color: #000;
+}
+
+.home .navbar-light .navbar-nav .nav-link {
+    color: #000;
+    /*    border-bottom: 1px solid #de2199;*/
+}
+
+.home .navbar-light .navbar-nav .nav-link:hover,
+.home .navbar-light .navbar-nav li.active .nav-link {
+    color: #c71787;
+}
+
+.home .loggedin {
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.home .pink {
+    /*
+    font-weight: 600;
+    letter-spacing: 3px;
+*/
+    /*    text-shadow: 0 0 0 rgba(0,0,0,1);*/
+}
+
+.navbar-light .navbar-toggler {
+    position: fixed;
+    top: 40px;
+    right: 15px;
+    z-index: 2;
+}
+
+
+/*======================================================== Footer CSS ==========================================*/
+
+footer {
+    font-family: Arial;
+}
+
+.footer-top {
+    background: #b9bcb6;
+    padding: 50px 0 20px;
+}
+
+.footer-subscribe-form-wrapper {
+    padding-right: 30px;
+    margin-top: 16px;
+}
+
+.footer-nav ul {
+    column-count: 2;
+}
+
+.footer-nav ul li {
+    list-style-type: none;
+    position: relative;
+    padding-left: 22px;
+}
+
+.footer-nav ul li a {
+    position: relative;
+}
+
+.footer-nav ul li a:before {
+    content: "\f04d";
+    font-family: FontAwesome;
+    color: #d269a8;
+    font-size: 10px;
+    position: absolute;
+    left: -22px;
+    top: 4px;
+}
+
+.footer-nav ul li a:visited:before {
+    /*    color: #b9bcb6;*/
+}
+
+.footer-nav ul li a:visited {
+    color: #55163e;
+}
+
+.footer-nav ul li a:visited i.fa {
+    /* display: inline-block !important; */
+    color: #d5e6e0;
+}
+
+.footer-nav ul li a i.fa {
+    /* display: none; */
+    color: #b9bcb6;
+    position: absolute;
+    left: -22px;
+    top: 2px;
+    font-size: 18px;
+}
+
+.social-info ul {
+    padding: 0;
+    margin: 0;
+}
+
+.social-info ul li {
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 30px;
+    border-radius: 5px;
+    list-style-type: none;
+    line-height: 0;
+    margin-right: 3px;
+}
+
+.social-info ul li a {
+    display: block;
+}
+
+.social-info ul li a:hover i.fa:not([class*="instagram"]) {
+    background: none;
+}
+
+.social-info ul li a:hover i[class*="instagram"] {
+    color: #b9bcb6;
+}
+
+.social-info ul li a i.fa {
+    line-height: 18px;
+    background: #ffffff;
+    font-size: 30px;
+}
+
+.social-info ul li a i[class*="youtube"] {
+    color: #d42625;
+    line-height: 3px;
+    font-size: 32px;
+    padding-top: 4px;
+}
+.social-info ul li a i[class*="linkedin"]{
+    color: #0a66c2;
+}
+
+.social-info ul li a i[class*="twitter"] {
+    color: #27a8df;
+}
+
+.social-info ul li a i[class*="facebook"] {
+    color: #3c578e;
+    line-height: 23px;
+    border-radius: 5px;
+}
+
+.social-info ul li a i[class*="instagram"] {
+    color: #fff;
+    background: #d6249f;
+    background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+    line-height: 26px;
+    font-size: 22px;
+    padding: 0 4px 0 3px;
+    border-radius: 5px;
+}
+
+.footer-bottom {
+    background: #58625b url(../images/noise-bg.jpg) repeat left top;
+    padding: 22px;
+    color: #ffffff;
+}
+
+.footer-bottom i.fa {
+    margin-right: 3px;
+}
+
+.footer-bottom i.fa,
+.footer-bottom span {
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 16px;
+    line-height: normal;
+}
+
+
+/*======================================================== Inner CSS ==========================================*/
+
+body:not(.home) main {
+    background: rgba(255, 255, 255, 0.85);
+    border-top: 1px solid #5df3ef;
+}
+
+main input {
+    float: left;
+    margin-right: 30px;
+    max-width: calc(100% - 160px)
+}
+
+main .btn {
+    max-width: 130px;
+    color: #d269a8;
+    /*    background: #000;*/
+    font-size: 18px;
+    padding: 0 15px;
+}
+
+main #contact-form {
+    margin-top: 50px;
+}
+
+#register-form>*:not(.btn):not(.g-recaptcha),
+#contactPage-form>*:not(.btn) {
+    margin-bottom: 30px;
+    max-width: inherit;
+    font-size: 16px;
+    color: #000;
+    padding: 0 20px;
+    height: 35px;
+    margin-right: 0;
+}
+
+#register-form>.g-recaptcha {
+    margin-bottom: 30px;
+}
+
+.form-group.form-check>input {
+    margin-top: 13px;
+}
+
+#login-form>*:not(.btn) {
+    max-width: inherit;
+    margin-bottom: 30px;
+    margin-right: 0;
+}
+
+#login-form .btn {
+    max-width: 250px;
+    margin: 0 15px;
+    width: auto;
+    background: rgba(185, 188, 182, 0.7);
+    color: #55163e;
+    font-size: 17px;
+    line-height: 35px;
+}
+
+#register-form .btn,
+#contactPage-form .btn {
+    background: rgba(185, 188, 182, 0.7);
+    color: #55163e;
+    font-size: 17px;
+}
+
+.form-check-label {
+    line-height: normal;
+    text-align: left;
+}
+
+.contact-h3 {
+    margin-bottom: 13px;
+}
+
+#contact-form>div>div>* {
+    vertical-align: top;
+}
+
+.footer-subscribe-form-wrapper .btn {
+    margin-top: 16px;
+    font-size: 18px;
+}
+
+.brand-wrapper .row>img {
+    /*    max-width: 995px;*/
+    max-width: 760px;
+    margin-left: -25px;
+}
+
+#contactPage-form {
+    text-align: left;
+    margin-top: 5px;
+}
+
+.contact-title {
+    background: rgba(255, 255, 255, 0.3);
+    border-width: 1px 0;
+    border-color: #000;
+    border-style: solid;
+    padding: 4px 0;
+    display: inline-block;
+}
+
+.loggedin ul li {
+    list-style-type: none;
+    padding: 3px 15px;
+    background: #bff3f1;
+    margin: 0 15px;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.mc-l {
+    margin-left: 21%;
+}
+
+.product-expandable tr td,
+.product-expandable tr th {
+    padding: 7px 0.75rem;
+}
+
+.tools-icons .form-control {
+    line-height: 34px;
+    padding: 0;
+}
+
+.table td,
+.table th {
+    padding: 7px .75rem;
+}
+
+#myModal ul li {
+    list-style-type: none;
+    text-align: left;
+}
+
+#myModal ul {
+    margin: 0;
+    padding: 0;
+}
+
+#myModal ul li h4 {
+    font-size: 18px;
+}
+
+#myModal ul li h4 small {
+    display: block;
+    color: #797979;
+}
+
+#myModal ul li:not(:last-child) {
+    margin-bottom: 20px;
+    border-bottom: 1px solid #ccc;
+}
+
+#myModal ul li h4 a {
+    color: #d269a8;
+}
+
+.links a.btn {
+    max-width: 100%;
+}
+
+.memoraModal .form-control {
+    white-space: nowrap;
+}
+
+
+.moreSection{
+    /*max-height: 90px;*/
+    overflow: hidden;
+    transition: 1s;
+    font-size: 19px;
+    line-height: 29px;
+}
+.moreSection.height{
+    max-height: inherit;
+    transition: 1s;
+}
+.home .select2-container{
+    background: rgba(255, 255, 255, 0.3);
+}
+.home .more-btn{
+    text-transform: lowercase;
+}

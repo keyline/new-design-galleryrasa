@@ -1,0 +1,63 @@
+/*======================================
+=            Parallax Style            =
+======================================*/
+.paraxify {
+	background-attachment: fixed;
+	background-position: center 0;
+	background-size: contain;
+	background-repeat: no-repeat;
+}
+.bg-1,
+.bg-2,
+.bg-3,
+.bg-4{
+	padding: 49% 0;
+}
+.bg-2,
+.bg-4{
+	background-position: right center;
+}
+.bg-1,
+.bg-3{
+	background-position: left center;	
+}
+.bg-1{
+	background-image: url(http://placehold.it/970x1060);
+}
+.bg-2{
+	background-image: url(http://placehold.it/970x1060);
+}
+.bg-3{
+	background-image: url(http://placehold.it/970x1060);
+}
+.bg-4{
+	background-image: url(http://placehold.it/970x1060);
+}
+.parallax{
+	position: relative;
+	margin-bottom: 0;
+	display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+	h2{
+		font-size: 60px;
+	}
+	&.last{
+		margin-bottom: 70px;
+	}
+	.inside{
+		padding-left: 150px;
+		&.images{
+			text-align: center;
+			img{
+				margin-bottom: 10px;
+			}
+		}
+	}
+	.col-6{
+		width: 50%;
+		float: left;
+		display: inline-block;
+	}
+}
+/*=====  End of Parallax Style  ======*/

@@ -1,0 +1,139 @@
+/*=========================================
+=            Latest Blog Style            =
+=========================================*/
+.post-grid{
+	.picture{
+		position: relative;
+	}
+	.read-more{
+		background-color: transparent;
+	}
+}
+.latest-blog{
+	margin-bottom: 80px;
+	.blog-details{
+		h2{
+			a{
+				font-weight: bold;
+			}
+		}
+		.meta-post{
+			font-weight: 300;
+		}
+	}
+}
+.picture{
+	&:hover{
+		.blog-mask{
+			&:before{
+				opacity: 0.4;
+			}
+			.read-more{
+				opacity: 1;
+			}
+		}
+	}
+}
+.post-categories{
+	position: absolute;
+	top: 21px;
+	z-index: 9;
+	left: 0;
+	a{
+		font-size: 14px;
+		color: #fff;
+		text-transform: uppercase;
+		font-weight: 500;
+		padding: 7px 15px;
+		letter-spacing: 1px;
+		background-color: @active_color_two;
+	}
+}
+.blog-mask{
+	margin-bottom: 30px;
+	&:before{
+		content: "";
+	    position: absolute;
+	    background-color: @active_color_two;
+	    right: 0;
+	    left: 0;
+	    top: 0;
+	    bottom: 2px;
+	    opacity: 0;
+	    .transition-small();
+	}
+	.read-more{
+		top: 50%;
+		opacity: 0;
+	    position: absolute;
+	    .align-center();
+	    margin-top: -20px;
+	}
+}
+.read-more{
+	font-size: 14px;
+	color: #f7f7f7;
+	font-weight: 700;
+	padding: 9px 24px;
+	letter-spacing: 1px;
+	border: 1px solid #fff;
+	border-radius: 0;
+	.transition-small();
+	text-transform: uppercase;
+	&:hover{
+		color: #222;
+		background-color: #fff;
+	}
+}
+.blog-details{
+	text-align: center;
+	.meta-post{
+		color: #737373;
+		font-size: 16px;
+		font-weight: 400;
+		margin-bottom: 20px;
+	}
+	h2 a{
+		color: #1c1a19;
+		font-weight: 900;
+		letter-spacing: 1px;
+		font-size: 20px;
+		display: block;
+		margin-bottom: 20px;
+		&:hover{
+		    color: #8a8a8a;
+		}
+	}
+	p{
+		font-weight: 300;
+		margin-bottom: 20px;
+	}
+	.post-comments{
+		font-size: 16px;
+		color: @active_color_two;
+		font-weight: 400;
+		i{
+			margin-right: 5px;
+		}
+	}
+}
+.latest-blog-type2{
+	margin-bottom: 80px;
+	.blog-mask{
+		margin-bottom: 15px;
+	}
+	.meta-post{
+		margin-bottom: 10px;
+	}
+	.blog-details{
+		text-align: left;
+		h2{
+			a{
+				font-size: 16px;
+				line-height: 20px;
+				margin-bottom: 10px;
+			}
+		}
+	}
+}
+/*=====  End of Latest Blog Style  ======*/

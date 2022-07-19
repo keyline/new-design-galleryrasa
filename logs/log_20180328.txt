@@ -1,0 +1,6 @@
+[Wed 2018-03-28 05:48:30 PM] [client 103.77.138.56] Finished under Sheet- Books | Row Number : 0 | count of Excel Fields: 49 | Count of Insert: 48 | Status False
+[Wed 2018-03-28 06:34:37 PM] [client 103.77.138.56] Finished under Sheet- Books | Row Number : 0 | count of Excel Fields: 17 | Count of Insert: 16 | Status False
+[Wed 2018-03-28 06:34:39 PM] [client 103.77.138.56] Finished under Sheet- Books | Row Number : 1 | count of Excel Fields: 19 | Count of Insert: 18 | Status False
+[Wed 2018-03-28 06:34:41 PM] [client 103.77.138.56] Finished under Sheet- Books | Row Number : 2 | count of Excel Fields: 15 | Count of Insert: 14 | Status False
+[Wed 2018-03-28 06:34:42 PM] [client 103.77.138.56] Finished under Sheet- Books | Row Number : 3 | count of Excel Fields: 16 | Count of Insert: 15 | Status False
+[Wed 2018-03-28 06:34:43 PM] [client 103.77.138.56] Finished under Sheet- Books | Row Number : 4 | count of Excel Fields: 17 | Count of Insert: 16 | Status False

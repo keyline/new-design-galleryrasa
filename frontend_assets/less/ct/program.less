@@ -1,0 +1,194 @@
+.ct-program-cont {
+    h1, h2, h3, h4, h5, h6 {
+      font-size: 21px;
+      font-weight: 500;
+      .ct-ff-montserat();
+      word-wrap: break-word;
+      margin-top: 0;
+      margin-bottom: 20px;
+      a{
+        color: inherit;
+        &:hover{
+          color: @motive;
+        }
+      }
+    }
+    p {
+      font-size: 14px;
+      margin-bottom: 18px;
+      line-height:1.8;
+      color: @font-grey;
+      word-wrap: break-word;
+    }
+}
+
+
+.ct-program-links {
+  margin-top: -10px;
+  .entry-meta {
+    padding: 5px 0;
+    &:last-child {
+      padding: 0;
+    }
+  }
+  .cat-links {
+    .ct-ff-montserat();
+    font-size: 13px;
+    margin-top: -7px;
+    padding-right: 30px;
+    padding-left: 30px;
+    color: @font-grey;
+    i {
+      padding-right: 5px;
+    }
+    &:first-child {
+      padding-left: 0;
+    }
+    small {
+      font-size: 96%;
+    }
+  }
+  a.cat-links:hover{
+    color: @motive;
+  }
+  .entry-date {
+    text-transform: uppercase;
+    .ct-ff-montserat();
+    font-size: 15px;
+    margin-top: -7px;
+    color: @motive;
+    padding-right: 30px;
+    padding-left: 30px;
+  }
+  .ct-readrevievsLink {
+    margin-right: 25px;
+  }
+  .btn-link {
+    padding-top: 10px;
+  }
+  .by-author {
+    padding: 7px 0 0 30px;
+    img {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.ct-program {
+  padding:  0;
+  .cat-links {
+    .ct-ff-merriw();
+    font-size: 13px;
+    margin-top: -7px;
+    display: block;
+    color: @font-grey;
+    i {
+      padding-right: 5px;
+      color: @font-black;
+      font-size: 15px;
+    }
+  }
+  &:first-child {
+    .ct-program-content {
+      padding-top: 0;
+    }
+    .ct-program-imageContainer {
+      margin-top: 0;
+    }
+  }
+  &:last-child {
+    .ct-program-content {
+      padding-bottom: 0;
+    }
+  }
+  .entry-date {
+    text-transform: uppercase;
+    .ct-ff-montserat();
+    font-size: 15px;
+    margin-top: -7px;
+    display: block;
+    color: @motive;
+  }
+  .entry-meta {
+    &:last-child {
+      padding-top: 20px;
+    }
+  }
+  .entry-level {
+    .ct-ff-montserat();
+    font-size: 28px;
+    color: @font-lightgrey;
+  }
+
+  .ct-program-content {
+      display: table-cell;
+      smin-height: 190px;
+      padding: 30px 0;
+      padding-left: 30px;
+   }
+   .by-author {
+     img {
+       margin-bottom: 0;
+     }
+   }
+}
+
+.ct-program-imageContainer {
+    width: 170px;
+    height: 170px;
+    position: relative;
+    .border-radius(50%);
+    overflow: hidden;
+    margin: 30px 30px 30px 0;
+    display: table-cell;
+    margin-bottom: 21px;
+    transition: all 0.5s;
+    img {
+      width: 170px;
+      height: 170px;
+    }
+    &:hover {
+      .opacity(0.6);
+    }
+    h1, h2, h3, h4, h4, h6 {
+      font-size: 21px;
+    }
+}
+.ct-hourOfCourse {
+    color: black;
+    position: absolute;
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    background: fade(@motive, 70%);
+    z-index: 20;
+    top: 0;
+    left: 0;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 163px;
+    color: white;
+    font-size: 45px;
+    opacity: 0.6;
+   .opacity(1);
+    .cc-ff-josefin();
+}
+.ct-courseHour {
+    font-size: 22px;
+    color: #bcc2c3;
+}
+.ct-contactContent {
+
+}
+
+@media (max-width: @screen-md){
+
+  .ct-program .entry-meta .by-author{
+    margin: 20px 0 !important;
+  }
+}
+
+
+
+
+

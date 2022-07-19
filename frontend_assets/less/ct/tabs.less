@@ -1,0 +1,371 @@
+.nav-tabs.nav-justified > .active > a, .nav-tabs.nav-justified > .active > a:hover, .nav-tabs.nav-justified > .active > a:focus {
+
+    font-size: 13px;
+    border-color: @motive;
+    font-weight: 300;
+    color: #fff;
+    background-color: @motive;
+    .border-radius(0);
+}
+.ct-tabs {
+    max-width: 585px;
+    margin: 0 auto;
+    ul.nav-tabs {
+        max-width: 100%;
+    }
+    .nav-tabs > li > a {
+        border: solid 1px @motive;
+        text-transform: uppercase;
+        color: @motive;
+        .border-radius(0);
+        background-color: transparent;
+        .ct-ff-montserat();
+        font-size: 13px;
+        font-weight: 500;
+        padding: 15px 0;
+
+        &:hover {
+            font-size: 13px;
+            border: solid 1px @motive;
+            background-color: @motive;
+            color: #fff;
+        }
+    }
+    .tab-content {
+        font-size: 14px;
+        line-height: 1.7;
+        padding: 53px 0;
+        border-color: fade(@black, 70%) !important;
+    }
+}
+
+.ct-tabs--border {
+  .nav-tabs.nav-justified > .active > a, .nav-tabs.nav-justified > .active > a:hover, .nav-tabs.nav-justified > .active > a:focus {
+    font-size: 15px;
+    border: solid 2px @motive;
+    border-bottom: 0;
+    font-weight: 300;
+    color: @motive;
+    background-color: transparent;
+    border-bottom: solid 2px transparent;
+  }
+  /*max-width: 575px;
+  margin: 0 auto;
+  ul.nav-tabs {
+      max-width: 100%;
+  }*/
+  .nav-tabs > li > a {
+      border: 0;
+      border-bottom: solid 2px @motive;
+      border-top: solid 2px transparent;
+      border-left: solid 2px transparent;
+      border-right: solid 2px transparent;
+      text-transform: uppercase;
+      color: @motive;
+      .border-radius(0);
+      background-color: transparent;
+      .ct-ff-montserat();
+      font-size: 15px;
+      font-weight: 300;
+      padding: 18px 15px;
+      margin-left: -2px;
+      &:hover,
+      &:focus,
+      &:active {
+          font-size: 15px;
+          border: 0;
+          background-color: transparent;
+          border-left: solid 2px transparent;
+          border-right: solid 2px transparent;
+         border-top: solid 2px transparent;
+          border-bottom: solid 2px @motive;
+          text-decoration: underline;
+          color: @motive;
+      }
+  }
+
+  .nav-tabs > li:first-child a {
+    margin-left: 0;
+  }
+
+  .tab-content {
+      border-color: @motive !important;
+      border: solid 2px @motive;
+      border-top: 0;
+      margin-top: -2px;
+      opacity: 1;
+      padding: 17px 16px;
+      line-height: 1.5;
+      color: fade(@font-black, 60%);
+
+  }
+}
+
+.ct-tabs+.ct-tabs {
+  margin-top: 30px;
+}
+
+.ct-tabs--witharrow, .ct-tabs--withSlider {
+  max-width: 100%;
+
+  .nav-tabs.nav-justified > .active > a, .nav-tabs.nav-justified > .active > a:hover, .nav-tabs.nav-justified > .active > a:focus {
+    font-size: 20px;
+    border: none;
+    font-weight: 300;
+    color: @motive;
+    background: none;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+    &:after {
+      font-size: 18px;
+      display: inline-block;
+      content: '\f107';
+      position: absolute;
+      bottom: -12px;
+      margin-left: -10px;
+      left: 50%;
+
+      font-family: FontAwesome;
+      font-style: normal;
+      font-weight: normal;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+  }
+  .nav-tabs > li > a {
+      border: 0;
+      color: @tabarrow-linkcolor;
+      .border-radius(0);
+      background-color: transparent;
+      .ct-ff-montserat();
+      font-size: 20px;
+      font-weight: 300;
+      position: relative;
+      &:hover,
+      &:focus,
+      &:active {
+          font-size: 20px;
+          border: 0;
+          background-color: transparent;
+          text-decoration: none;
+          color: @motive;
+        &:after {
+          font-size: 18px;
+          display: inline-block;
+          content: '\f107';
+          position: absolute;
+          bottom: -12px;
+          margin-left: -10px;
+          left: 50%;
+
+          font-family: FontAwesome;
+          font-style: normal;
+          font-weight: normal;
+          -webkit-font-smoothing: antialiased;
+          -moz-osx-font-smoothing: grayscale;
+        }
+      }
+  }
+  .tab-content {
+      padding: 44px 0 53px;
+  }
+}
+
+
+.ct-tabs--withSlider {
+  .nav-tabs.nav-justified > .active > a, .nav-tabs.nav-justified > .active > a:hover, .nav-tabs.nav-justified > .active > a:focus{
+    font-size: 15px;
+  }
+  .nav-tabs > li > a{
+    font-size: 15px;
+    &:hover,
+    &:focus,
+    &:active{
+      font-size: 15px;
+    }
+  }
+}
+
+.ct-tabs--courseList {
+  max-width: 100%;
+  .tab-content {
+    opacity: 1;
+    padding-top: 0;
+  }
+  .nav-justified > .active > a,
+  .nav-justified > .active > a:hover,
+  .nav-justified > .active > a:focus {
+    line-height: 55px;
+    font-size: 14px;
+    font-weight: normal;
+    text-transform: uppercase;
+    color: @font-white;
+    .border-radius(2px);
+    background-color: @motive;
+    .ct-ff-montserat();
+    padding: 0;
+    border: solid 2px @motive;
+  }
+    ul.nav-tabs {
+        // max-width: 100%;
+    }
+    .nav-tabs > li {
+      width: 255px;
+      display: inline-block;
+      margin: 0 0 5px;
+      &+li {
+        margin-left: 25px;
+      }
+      > a {
+              line-height: 55px;
+              width: 100%;
+              font-size: 14px;
+              font-weight: normal;
+              text-transform: uppercase;
+              color: @motive;
+              .border-radius(2px);
+              background-color: transparent;
+              .ct-ff-montserat();
+              padding: 0;
+              border: solid 2px @motive;
+
+              //width: 250px;
+              //max-width: 250px;
+              display: inline-block;
+
+              &:after {
+                  display: none;
+              }
+
+              &:hover {
+                  font-size: 14px;
+                  line-height: 55px;
+                  font-weight: normal;
+                  border: solid 2px @motive;
+                  background-color: @motive;
+                  color: #fff;
+              }
+          }
+    }
+}
+
+
+
+@media (min-width: @screen-sm-min) and (max-width: @screen-sm-max) {
+  .ct-tabs--witharrow, .ct-tabs--withSlider {
+    max-width: 100%;
+
+    .nav-tabs.nav-justified > .active > a, .nav-tabs.nav-justified > .active > a:hover, .nav-tabs.nav-justified > .active > a:focus{
+      font-size: 13px;
+    }
+    .nav-tabs > li > a{
+      border: 0;
+      font-size: 13px;
+      &:hover,
+      &:focus,
+      &:active{
+        font-size: 13px;
+      }
+    }
+  }
+}
+
+@media (max-width: @screen-xs-max){
+  .ct-tabs--border {
+
+    .nav-tabs.nav-justified a,
+    .nav-tabs.nav-justified a:hover,
+    .nav-tabs.nav-justified > a:focus{
+      border: solid 2px transparent;
+    }
+    .nav-tabs.nav-justified > .active > a, 
+    .nav-tabs.nav-justified > .active > a:hover, 
+    .nav-tabs.nav-justified > .active > a:focus {
+      font-weight: 300;
+      color: @motive;
+      background-color: transparent;
+      border-top: solid 2px @motive;
+      border-left: solid 2px @motive;
+      border-right: solid 2px @motive;
+      border-bottom: solid 2px @motive;
+    }
+    .nav-tabs > li > a {
+        margin-bottom: -2px;
+        margin-left: 0;
+    }
+    .tab-content {
+        margin-top: 0;
+        border: 0;
+        padding-top: 53px;
+    }
+  }
+}
+
+@media (max-width: 585px){
+  .ct-tabs--courseList{
+    .nav-tabs > li{
+      margin: 0 10px 5px;
+      & + li {
+        margin-left: 10px;
+      }
+    }
+  }
+}
+
+@media (min-width: @screen-md-min) and (max-width: @screen-md-max){
+
+  .ct-tabs--courseList{
+    .nav-tabs > li{
+      margin: 0 10px 5px;
+      & + li {
+        margin-left: 10px;
+      }
+    }
+  }
+
+  .ct-tabs--witharrow .nav-tabs > li > a {
+      font-size: 16px;
+      &:hover,
+      &:focus,
+      &:active {
+        font-size: 16px;
+      }
+  }
+
+  .ct-tabs--witharrow .nav-tabs.nav-justified > .active > a {
+    font-size: 16px;
+    &:hover,
+    &:focus,
+    &:active {
+      font-size: 16px;
+    }
+  }
+
+}
+
+.tab-content {
+  position: relative;
+  .flexslider {
+    .ct-coursesList  {
+      img {
+            width: auto;
+      }
+    }
+  }
+}
+
+.tab-content > .tab-pane {
+  width: 100%;
+  display: block;
+  position: absolute;
+  top: 9999px;
+  left: 9999px;
+}
+
+.tab-content > .active{
+  position: relative;
+  left: 0;
+  top: 0;
+}
+

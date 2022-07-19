@@ -1,0 +1,358 @@
+/*==================================
+=            Bike Style            =
+==================================*/
+.bike-style{
+	.banner.banner-slider{
+		h2{
+			font-size: 36px;
+			color: @white;
+			margin-bottom: 5px;
+			font-weight: 900;
+			font-family: @globalfonts;
+		}
+		p{
+			font-size: 14px;
+			color: rgba(255, 255, 255, 0.8);
+			text-transform: none;
+			font-weight: 300;
+			margin-bottom: 5px;
+		}
+		.btn{
+			background-color: #252525;
+			border-color: #252525;
+			font-size: 13px;
+			font-weight: 500;
+			color: @white;
+		}
+	}
+	.post-categories a,
+	.blog-mask:before,
+	.header menu > li.active a:after,
+	.header menu li a:hover:after,
+	.widget-tags a:hover,
+	.cart-popup-container .buttons .btn,
+	.owl-controls .owl-prev:hover,
+	.owl-controls .owl-next:hover,
+	.cart-popup-container .buttons .btn.view-cart:hover,
+	.filter-wrap .view-switcher li.switcher-active,
+	.filter-wrap .view-switcher li:hover,
+	.pagination li.active, .pagination li:hover,
+	.filter-wrap .filters-btn span:hover,
+	.filter-wrap .filters-btn.active span,
+	.blog-post .wp-picture .blog-mask:before,
+	.blog-post .wp-picture .post-categories,
+	.blog-post .content-article .read-more:before,
+	.header menu li a:after{
+		background-color: @color_bike;
+	}
+	.cart-popup-container .buttons .btn,
+	.cart-popup-container .buttons .btn.view-cart:hover,
+	.pagination li.active, .pagination li:hover,
+	.filter-wrap .filters-btn span:hover,
+	.filter-wrap .filters-btn.active span{
+		border-color: @color_bike;
+	}
+	.blog-details .post-comments,
+	.price ins,
+	.header menu .menu-parent-item li:first-child:hover a,
+	.widget-products .product-list a:hover,
+	.active-color,
+	.cart-popup-container .cart-subtotal .price,
+	.cart-popup-container h4 a:hover,
+	.widget-product-categories a:hover,
+	.widget-layered-nav li a:hover,
+	.widget-brands li a:hover,
+	.blog-post .post-heading ul li:last-child,
+	.blog-post .post-heading ul .eye,
+	.blog-post .content-article .read-more{
+		color: @color_bike;
+	}
+	#layerslider-video{
+		margin-bottom: 0;
+	}
+	.cart-popup-container .buttons .btn.view-cart{
+		background-color: #222;
+		border-color: #222;
+	}
+	.section{
+		display: flex;
+	    -webkit-flex-wrap: nowrap;
+	    -ms-flex-wrap: nowrap;
+	    flex-wrap: nowrap;
+	    margin-bottom: 100px;
+	    margin-top: 70px;
+		h2{
+			font-size: 46px;
+	   		color: #0c0c0c;
+		    font-weight: 900;
+		    margin-bottom: 30px;
+		}
+		.right{
+			display: flex;
+			-webkit-box-align: stretch;
+		    -webkit-align-items: stretch;
+		    -ms-flex-align: stretch;
+		    align-items: stretch;
+		}
+		.text{
+			padding-left: 35px;
+			-webkit-justify-content: center;
+		    -ms-flex-pack: center;
+		    justify-content: center;
+		    display: flex;
+		    -webkit-flex-direction: column;
+		    -ms-flex-direction: column;
+		    flex-direction: column;
+		}
+	}
+	.background{
+		padding: 80px 0;
+		margin-bottom: 0;
+		background-color: #efefef;
+	}
+	.breadcrumbs{
+		padding-top: 150px;
+		background: #2a9ed9;
+		background-size: cover;
+		a,
+		h2{
+			color: @white;
+		}
+	}
+	&.inside{
+		.content-products{
+
+		}
+	}
+}
+.info-bike{
+	background: url(http://placehold.it/1920x1080) no-repeat center;
+	background-size: cover;
+	padding: 80px 0;
+	display: inline-block;
+    width: 100%;
+    clear: both;
+    display: flex;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin-bottom: 60px;
+	.col-4,
+	.col-6{
+		float: left;
+	    display: inline-block;
+	    padding: 0 30px;
+	}
+	.col-4{
+		width: 40%;
+		display: flex;
+	    -webkit-box-align: stretch;
+	    -webkit-align-items: stretch;
+	    -ms-flex-align: stretch;
+	    align-items: stretch;
+	    .text{
+	    	-webkit-justify-content: center;
+		    -ms-flex-pack: center;
+		    justify-content: center;
+		    display: flex;
+		    -webkit-flex-direction: column;
+		    -ms-flex-direction: column;
+		    flex-direction: column;
+	    }
+	}
+	.col-6{
+		width: 60%;
+		text-align: right;
+	}
+	ul{
+		margin-top: 40px;
+		li{
+			display: block;
+	    	clear: both;
+	    	margin-bottom: 20px;
+		}
+	}
+	h4{
+		font-size: 46px;
+	    color: #0c0c0c;
+	    font-weight: 900;
+	    margin-bottom: 20px;
+	}
+	h5{
+		img{
+			float: left;
+			margin: -12px 15px 0 0;
+		}
+	}
+	&.slider{
+		background: transparent;
+		margin-bottom: 0;
+		.col-4{
+			width: 60%;
+		}
+		.col-6{
+			width: 40%;
+		}
+		h3{
+			font-size: 14px;
+			margin-bottom: 15px;
+		    color: #a4a4a4;
+		    font-weight: 700;
+		}
+		h5{
+		    font-size: 30px;
+			color: #1c1c1c;
+			font-weight: 900;
+			margin-bottom: 20px;
+		}
+		.owl-buttons{
+			display: none;
+		}
+		.owl-pagination{
+			.owl-page{
+				display: inline-block;
+			    width: 10px;
+			    height: 10px;
+			    background: #e6e6e6;
+			    border-radius: 100%;
+			    -moz-border-radius: 100%;
+			    -webkit-border-radius: 100%;
+			    margin: 0 4px;
+			    &.active{
+			        background-color: #2a9ed9;
+			    }
+			}
+		}
+	}
+}
+.bike-slider{
+	margin-bottom: 60px;
+	.swiper-slide{
+		opacity: 0.6;
+		.transition-small();
+		&.swiper-slide-next{
+			opacity: 1;
+		}
+	}
+}
+.bike-slider-product{
+	margin-bottom: 80px;
+	.swiper-slide{
+		-webkit-transform: scale(0.7);
+		-moz-transform: scale(0.7);
+		-ms-transform: scale(0.7);
+		-o-transform: scale(0.7);
+		transform: scale(0.7);
+	    .transition-small();
+		&.swiper-slide-next{
+			-webkit-transform: scale(1);
+			-moz-transform: scale(1);
+			-ms-transform: scale(1);
+			-o-transform: scale(1);
+			transform: scale(1);
+			.text{
+			    opacity: 1;
+			}
+		}
+	}
+	.text{
+		text-align: center;
+	    .transition-small();
+	    opacity: 0;
+	}
+	h3{
+		font-size: 30px;
+		color: #1e1e1e;
+		margin-bottom: 15px;
+		font-weight: 900;
+	}
+	.prise{
+		margin: 30px 0;
+	}
+	ins{
+		font-size: 20px;
+		font-weight: 900;
+	    color: #2a9ed9;
+	    text-decoration: none;
+	}
+	.btn{
+		color: @white;
+		background-color: #1e1e1e;
+	}
+}
+.news-gallery{
+	width: 100%;
+	clear: both;
+	display: inline-block;
+	li{
+		width: 260px;
+		position: relative;
+		float: left;
+		display: inline-block;
+		overflow: hidden;
+		margin: 0 25px 25px 0;
+		&.last{
+			margin-right: 0;
+		}
+		&:before{
+			content: "";
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			display: inline-block;
+			z-index: 9;
+			background-color: rgba(0, 0, 0, 0.5);
+			opacity: 0;
+			position: absolute;
+			.transition-small();
+		}
+		&:hover{
+			cursor: pointer;
+			&:before{
+				opacity: 1;
+			}
+			.inside{
+				opacity: 1;
+			}
+			img{
+				-webkit-transform: scale(1.1);
+			    -ms-transform: scale(1.1);
+			    -o-transform: scale(1.1);
+			    transform: scale(1.1);
+			}
+		}
+		img{
+			-webkit-transform: scale(1);
+		    -ms-transform: scale(1);
+		    -o-transform: scale(1);
+		    transform: scale(1);
+			-webkit-backface-visibility: hidden;
+    		backface-visibility: hidden;
+		    .transition-small();
+		}
+		.inside{
+			top: 50%;
+		    left: 0;
+		    position: absolute;
+		    display: block;
+		    text-align: center;
+		    width: 100%;
+		    transform: translateY(-50%);
+		    opacity: 0;
+		    z-index: 9999;
+			.transition-small();
+		    p{
+			    font-size: 18px;
+    			color: #fff;
+    			font-weight: 600;
+		    }
+		}
+		.post-date{
+			font-size: 14px;
+			font-weight: 300;
+		    color: #dbdbdb;
+		}
+	}
+}
+/*=====  End of Bike Style  ======*/

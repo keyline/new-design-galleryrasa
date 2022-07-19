@@ -1,0 +1,184 @@
+/*=======================================
+=            Icon Text Style            =
+=======================================*/
+.icon-text{
+	margin-bottom: 120px;
+	.inside{
+		border-right: 1px solid rgba(0,0,0,0.1);
+		&:last-child{
+			border-right: none;
+		}
+	}
+	h5{
+		margin-bottom: 20px;
+	}
+	&.type-2{
+		h5{
+			font-size: 18px;
+			color: #1e1e1e;
+			font-weight: 900;
+			letter-spacing: 0;
+			margin-bottom: 10px;
+		}
+		p{
+			font-size: 16px;
+			font-weight: 300;
+			color: #9d9d9e;
+			font-family: @globalfonts;
+		}
+		.inside{
+			margin-bottom: 35px;
+			border: none;
+		}
+		figure{
+			color: #ccc;
+		    background-color: #f2f2f2;
+		    font-size: 32px;
+		    display: inline-block;
+		    width: 90px;
+		    height: 90px;
+		    line-height: 85px;
+    		text-align: center;
+    		border-radius: 100%;
+    		margin-bottom: 20px;
+    		.transition-small();
+    		&:hover{
+    			color: @white;
+    			background-color: @active_color;
+    		}
+		}
+	}
+	&.type-3{
+		text-align: center;
+		.inside{
+			border: 1px solid #f0f0f0;
+			padding: 28px;
+		}
+		figure{
+			color: @white;
+		    background-color: @active_color;
+		    font-size: 18px;
+		    display: inline-block;
+		    width: 50px;
+		    height: 50px;
+		    line-height: 50px;
+    		text-align: center;
+    		border-radius: 100%;
+    		margin-bottom: 20px;
+    		.transition-small();
+    		&:hover{
+    			color: #808080;
+    			background-color: #f0f0f0;
+    		}
+		}
+		h3{
+			font-size: 18px;
+			font-weight: 900;
+    		margin-bottom: 10px;
+		}
+		p{
+			font-weight: 300;
+			line-height: 28px;
+			margin-bottom: 0;
+		}
+	}
+	&.type-4{
+		h3{
+			font-size: 18px;
+			margin-bottom: 10px;
+		}
+	}
+	&.type-5{
+		h5{
+			font-weight: bold;
+			margin-bottom: 10px;
+		}
+		.inside{
+			margin-bottom: 50px;
+			border: none;
+		}
+		figure{
+			text-align: center;
+			i{
+				font-size: 44px;
+				color: @active_color;
+			}
+		}
+	}
+	&.type-6{
+		padding: 43px 0;
+		background-color: #f8f8f8;
+		.inside{
+			border-right: 1px solid #e0e0e0;
+		}
+		figure{
+			font-size: 30px;
+			margin-bottom: 15px;
+		}
+		h5{
+			margin-bottom: 5px;
+			font-size: 14px;
+			font-weight: bold;
+		}
+		.btn{
+			font-size: 11px;
+			background-color: #1e1e1e;
+			color: @white;
+			font-weight: 400;
+			padding: 10px 25px;
+			&:hover{
+				opacity: 0.8;
+			}
+		}
+		p{
+			font-size: 13px;
+			text-transform: uppercase;
+			margin-bottom: 18px;
+		}
+		.col-md-4{
+			&:last-child{
+				.inside{
+					border-right: 0;
+				}
+			}
+		}
+	}
+	&.type-7{
+		margin-bottom: 60px;
+		figure,
+		.text{
+			float: left;
+			display: inline-block;
+		}
+		figure{
+			margin-right: 15px;
+		}
+		.text{
+			h3{
+				font-size: 18px;
+				text-transform: capitalize;
+			}
+		}
+		.last{
+			float: right;
+			display: inline-block;
+			h5{
+				font-size: 36px;
+				font-weight: 400;
+				margin-bottom: 0;
+			}
+		}
+		small{
+			color: #1e1e1e;
+		}
+		.inside{
+			width: 100%;
+			display: inline-block;
+			padding: 35px 30px;
+			background: url(http://placehold.it/555x118) no-repeat center;
+			background-size: cover;
+			border: 2px solid #f2f2f2;
+		}
+	}
+}
+/*=====  End of Icon Text Style  ======*/

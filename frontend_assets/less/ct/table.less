@@ -1,0 +1,209 @@
+.table > caption + thead > tr:first-child > th,
+.table > colgroup + thead > tr:first-child > th,
+.table > thead:first-child > tr:first-child > th,
+.table > caption + thead > tr:first-child > td,
+.table > colgroup + thead > tr:first-child > td,
+.table > thead:first-child > tr:first-child > td {
+    border-top: 0;
+}
+
+table.table--blue {
+      & > thead {
+          & > tr {
+              & > th {
+                  background-color: @motive;
+                  color: @white;
+              }
+
+          }
+      }
+}
+
+table.table {
+    border: 1px solid @ct-u-bgGrey;
+    background: @white;
+    & > thead {
+        & > tr {
+            & > th {
+                border-top: 0px;
+                border-bottom: 0px;
+                background-color: @motive;
+                color: @white;
+                text-transform: uppercase;
+                font-size: 13px;
+                padding: 18px 0;
+                .ct-ff-montserat();
+                font-weight: 300;
+              text-align: center;
+                &:first-child {
+                    padding-left: 30px;
+                }
+            }
+            & > td {
+                border-top: 0px;
+                border-bottom: 0px;
+                padding: 13px 0;
+                font-size: 15px;
+                font-weight: 500;
+            }
+        }
+    }
+    & > tbody {
+        & > tr {
+            & > th {
+                border-top: 0px;
+                border-bottom: 0px;
+            }
+            & > td {
+                border-top: 0px;
+                border-bottom: 0px;
+                padding: 8px 0;
+                font-size: 13px;
+                &:first-child {
+                    padding-left: 30px;
+                }
+            }
+            &:first-child {
+                td {
+                    padding-top: 22px;
+                }
+
+            }
+            &:last-child {
+                td {
+                    padding-bottom: 24px;
+                }
+
+            }
+        }
+    }
+    & > tfoot {
+        & > tr {
+            & > th {
+                border-top: 0px;
+                border-bottom: 0px;
+                text-transform: uppercase;
+                font-size: 13px;
+                padding: 14px 0;
+            }
+            & > td {
+                border-top: 0px;
+                border-bottom: 0px;
+                padding: 8px 0;
+                font-size: 13px;
+            }
+        }
+    }
+}
+table.ct-table--withBorder {
+  > thead > tr > th:first-child {
+    padding-left: 20px;
+  }
+  > thead.text-left > tr > th {
+    text-align: left;
+  }
+  > thead.text-center > tr > th {
+    text-align: center;
+  }
+  > thead.text-right > tr > th {
+    text-align: right;
+  }
+  > thead > tr > th {
+    font-weight: 100;
+  }
+  > thead > tr > th, > tbody > tr > th, > tfoot > tr > th, > thead > tr > td, > tbody > tr > td, > tfoot > tr > td{
+    vertical-align: middle;
+  }
+   > tbody {
+     > tr {
+       &:first-child, &:last-child  {
+         td {
+           padding: 20px 0;
+           &:first-child {
+             padding-left: 20px;
+           }
+           &:last-child {
+             padding-right: 15px;
+           }
+         }
+       }
+       &.ct-u-tableBorderTop, &.ct-u-tableBorderBoth{
+         > td {
+           &:first-child{
+             &:before{
+               content: " ";
+               display: block;
+               width: 18px;
+               height: 2px;
+               position: absolute;
+               left: 0px;
+               top: -1px;
+               background-color: @white;
+             }
+           }
+           &:last-child{
+             &:before{
+               content: " ";
+               display: block;
+               width: 18px;
+               height: 2px;
+               position: absolute;
+               right: 0px;
+               top: -1px;
+               background-color: @white;
+             }
+           }
+         }
+         &.ct-u-tableBorderBottom{
+           > td {
+             &:first-child{
+               &:before{
+                 content: " ";
+                 display: block;
+                 width: 28px;
+                 height: 2px;
+                 position: absolute;
+                 left: 0px;
+                 bottom: -1px;
+                 background-color: @white;
+               }
+             }
+             &:last-child{
+               &:before{
+                 content: " ";
+                 display: block;
+                 width: 28px;
+                 height: 2px;
+                 position: absolute;
+                 right: 0px;
+                 bottom: -1px;
+                 background-color: @white;
+               }
+             }
+           }
+         }
+         > td {
+           padding: 20px 0;
+           position: relative;
+           &:first-child {
+             padding-left: 20px;
+           }
+           &:last-child{
+             padding-right: 10px;
+           }
+         }
+       }
+     }
+   }
+  .btn{
+    margin-bottom: 0 !important;
+  }
+}
+
+@media (max-width: @screen-md) {
+  .table{
+    overflow-x: scroll;
+  }
+}
+
+

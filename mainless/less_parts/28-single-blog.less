@@ -1,0 +1,236 @@
+/*=========================================
+=            Single Blog Style            =
+=========================================*/
+body{
+	.single-post-large{
+		background-size: cover;
+	}
+}
+.single-post-large{
+	height: 560px;
+	position: relative;
+	margin-bottom: 40px;
+	background-image: url(http://placehold.it/1500x675);
+	.post-categories{
+		top: 0;
+		z-index: 0;
+		padding: 10px 0;
+		position: relative;
+		margin-bottom: 30px;
+		a{
+			letter-spacing: 0;
+			padding: 10px 15px;
+		}
+	}
+	&.type-2{
+		.inside{
+			padding-left: 20px;
+		}
+	}
+	.inside{
+		position: absolute;
+		width: 100%;
+		bottom: 0;
+		display: inline-block;
+	    padding: 120px 0 60px;
+	    z-index: 2;
+	    margin-bottom: 0;
+	    background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0)), to(rgba(0, 0, 0, 0.5)));
+	    background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.5) 100%);
+	    background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.5) 100%);
+	}
+	.post-heading{
+		h2{
+			font-size: 30px;
+			font-weight: bold;
+			letter-spacing: 2px;
+			color: @white;
+			margin-bottom: 15px;
+		}
+		ul{
+			li{
+				display: inline-block;
+				color: @white;
+				font-weight: 300;
+				margin: 0 2px;
+			}
+			i{
+				margin: 0 5px;
+			}
+			a{
+				color: @white;
+			}
+		}
+	}
+}
+.single-post{
+	.content-article{
+		p{
+			font-family: @globalfonts;
+			margin-bottom: 20px;
+		}
+	}
+	.social-icon{
+		width: 100%;
+		padding: 18px 0;
+		margin-bottom: 	50px;
+		border-top: 1px solid #e6e6e6;
+		border-bottom: 1px solid #e6e6e6;
+		display: inline-block;
+		.first{
+			float: left;
+			padding-top: 13px;
+			width: auto;
+			float: left;
+			font-size: 14px;
+			font-weight: bold;
+			text-transform: uppercase;
+		}
+		li{
+			float: right;
+			border: none;
+			margin: 0 3px;
+			a{
+				color: #8a8a8a;
+				font-size: 16px;
+				&:hover{
+					color: @active_color;
+				}
+			}
+		}
+	}
+	.post-heading{
+		h2{
+			font-size: 26px;
+		    margin-bottom: 10px;
+		    text-transform: uppercase;
+		    font-weight: 900;
+		    letter-spacing: 1px;
+		    -ms-word-wrap: break-word;
+		    word-wrap: break-word;
+		}
+	}
+	.author-info{
+		margin-bottom: 30px;
+		img{
+			margin-right: 40px;
+		    max-width: 100px;
+		}
+		h4{
+			font-size: 21px;
+			text-transform: capitalize;
+			margin-bottom: 15px;
+		}
+		p{
+			margin-bottom: 15px;
+		}
+		.vcard{
+			a{
+				font-size: 14px;
+				color: @active_color;
+			}
+		}
+	}
+	.related-post{
+		font-size: 14px;
+		letter-spacing: 0;
+		font-weight: bold;
+		padding: 30px 0;
+		margin-bottom: 55px;
+		border-top: 1px solid #e6e6e6;
+    	border-bottom: 1px solid #e6e6e6;
+	}
+	.latest-blog{
+		h2{
+			a{
+				font-size: 16px;
+			}
+		}
+		ul{
+			li{
+				&:last-child{
+					float: right;
+				}
+			}
+		}
+		.post-heading{
+			margin-bottom: 15px;
+		}
+		.post-categories{
+			top: 20px;
+		}
+	}
+}
+.comment-respond{
+	margin-bottom: 140px;
+	textarea{
+		height: 200px;
+		margin-bottom: 20px;
+	}
+	.form-group{
+	    width: 33.3%;
+	    float: left;
+	    margin-bottom: 30px;
+		display: inline-block;
+		&.email{
+			padding: 0 15px;
+		}
+	}
+	input{
+		width: 100%;
+	}
+	.submit{
+		width: auto;
+	}
+}
+textarea{
+    width: 100%;
+    background-color: #fafafa;
+    border: 1px solid #fafafa;
+    padding: 10px;
+    line-height: 1.5;
+    -webkit-border-radius: 0;
+    border-radius: 0;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    font-size: 14px;
+    &:focus{
+    	outline: none;
+    	border: 1px solid #c7c7c7;
+    }
+}
+input{
+	height: 36px;
+    line-height: 28px;
+    padding: 0 10px;
+    display: block;
+    font-size: 14px;
+    -webkit-box-shadow: none;
+    -webkit-appearance: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    outline: none;
+    border: 1px solid #fafafa;
+    background-color: #fafafa;
+    -webkit-border-radius: 0;
+    border-radius: 0;
+    color: #1e1e1e;
+     &:focus{
+    	outline: none;
+    	border: 1px solid #c7c7c7;
+    }
+}
+.submit{
+	font-size: 12px;
+	padding: 0 20px;
+	width: auto;
+	font-weight: 300;
+	letter-spacing: 1px;
+	height: 36px;
+	line-height: 28px;
+	color: @white;
+	text-transform: uppercase;
+	background-color: @active_color;
+}
+
+/*=====  End of Single Blog Style  ======*/

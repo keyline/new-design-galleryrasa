@@ -1,0 +1,502 @@
+/*===================================
+=            Sushi Style            =
+===================================*/
+.sushi-style{
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6,
+	.breadcrumbs h2{
+		font-family: @palanquin;
+	}
+	.blog-post .content-article .read-more:before,
+	.blog-post .wp-picture .post-categories,
+	.header menu li a:after,
+	.pagination li.active, .pagination li:hover,
+	.blog-post .wp-picture .blog-mask:before{
+		background-color: @color_sushi;
+	}
+	.pagination li.active, .pagination li:hover{
+		border-color: @color_sushi;
+	}
+	.blog-post .content-article .read-more,
+	.blog-post .post-heading ul li:last-child,
+	.blog-post .post-heading ul .eye,
+	.breadcrumbs .back:hover{
+		color: @color_sushi;
+	}
+	.heading{
+		h4{
+			font-size: 40px;
+			font-weight: 300;
+			margin-bottom: 15px;
+		}
+	}
+	.fixed-header{
+		border-top: none;
+	}
+	.header-type-11 .fixed-header .header .header-logo{
+		margin-top: 6px;
+	}
+	.latest-blog{
+		margin-bottom: 120px;
+	}
+	.product-slider{
+		margin-bottom: 80px;
+		width: 100%;
+		display: inline-block;
+		.left,
+		.menu-sushi{
+			float: left;
+			display: inline-block;
+		}
+		.left{
+			width: 67%;
+		}
+		.menu-sushi{
+			width: 33%;
+			li{
+				margin-bottom: 30px;
+			}
+		}
+		.nav li{
+			margin-right: 30px;
+			&:after{
+				display: none;
+			}
+			a{
+				font-family: @palanquin;
+				font-weight: 300;
+				text-transform: none;
+				color: #000;
+				font-size: 20px;
+			}
+		}
+	}
+	.total{
+		display: block;
+	}
+	.breadcrumbs{
+		background: transparent url(http://placehold.it/1170x350) no-repeat;
+		h2{
+			font-size: 44px;
+		}
+		h2,
+		a{
+			font-weight: 400;
+			color: @white;
+		}
+	}
+	.prefooter{
+		background: url(http://placehold.it/1140x200) no-repeat;
+		background-size: cover;
+		position: relative;
+		padding: 76px 0 76px 65px;
+		img{
+			float: left;
+			display: inline-block;
+			margin-right: 20px;
+			&.last{
+				float: right;
+				margin-top: -190px;
+			}
+		}
+		.text{
+			float: left;
+    		display: inline-block;
+			padding-top: 10px;
+		}
+		.last{
+			display: inline-block;
+			font-size: 40px;
+			color: @white;
+			font-weight: 700;
+			padding-top: 16px;
+			margin-left: 20px;
+		}
+		h4{
+			font-size: 18px;
+			color: @white;
+		}
+		p{
+			font-size: 15px;
+   			color: #faf0e1;
+		}
+	}
+	.shop-sushi{
+		.nav{
+			li{
+				margin: 0 8px;
+				&.active{
+					a:after{
+						display: none;
+					}
+				}
+			}
+		}
+		.menu-sushi{
+			width: 100%;
+			float: none;
+		}
+	}
+	.information{
+		.top{
+			margin-top: 50px;
+		}
+		iframe{
+			height: 310px;
+		}
+		h3{
+			font-size: 32px;
+			padding-top: 40px;
+			text-transform: none;
+			color: #464646;
+		}
+		p{
+			color: #666;
+		}
+		.delivery{
+			margin: 25px 0 15px 0;
+			width: 110px;
+			height: 3px;
+			background-color: @color_sushi;
+		}
+	}
+	&.contacts{
+		.icon{
+			text-align: center;
+			i{
+				font-size: 70px;
+    			color: #d9bd91;
+			}
+			p{
+				text-transform: none;
+			    font-size: 17px;
+			    margin-top: 10px;
+			    color: #4a4a4a;
+			    font-weight: 300;
+			    line-height: 28px;
+			}
+		}
+		address{
+			font-size: 15px;
+		    color: #898989;
+		    font-weight: 300;
+		    text-transform: none;
+		}
+		.form-group{
+			margin-bottom: 20px;
+			width: 100%;
+			display: inline-block;
+			clear: both;
+			p{
+				width: 50%;
+				padding-right: 20px;
+				float: left;
+				display: inline-block;
+			}
+			input{
+				width: 100%;
+				background-color: transparent;
+			    border-color: #e6e6e6;
+			}
+			&.email{
+				p{
+					width: 100%;
+				}
+			}
+		}
+		form{
+			margin-bottom: 50px;
+			textarea{
+				background-color: transparent;
+				border-color: #e6e6e6;
+			}
+			.submit{
+				margin: 30px auto;
+				background-color: #d9bd91;
+				border-color: #d9bd91;
+				&:hover{
+					opacity: 0.8;
+				}
+			}
+		}
+	}
+}
+.steps{
+	margin-top: 40px;
+	margin-bottom: 30px;
+	h6{
+		font-weight: bold;
+		margin-bottom: 10px;
+	}
+	p{
+		font-size: 13px;
+		font-weight: 300;
+	    line-height: 23px;
+	    color: #999;
+	}
+	.inside{
+		border: 1px solid #ededed;
+		padding: 45px;
+	}
+}
+.product-list-sushi{
+	border: 1px solid #ededed;
+	padding: 30px 28px;
+	margin-bottom: 80px;
+	p{
+		text-align: center;
+		font-size: 16px;
+		text-transform: none;
+		display: block;
+	}
+	.first{
+		width: 100%;
+		display: block;
+		h5{
+	    	margin-bottom: 10px;
+		}
+	}
+	li{
+		display: inline-block;
+		position: relative;
+		overflow: hidden;
+		margin: 0 11px;
+		.hover{
+			display: block;
+			left: 0;
+			top: 0;
+			position: absolute;
+			transform: translateY(-100%);
+		   	-webkit-transition: all .5s;
+			-moz-transition: all .5s;
+			-ms-transition: all .5s;
+			-o-transition: all .5s;
+			transition: all .5s;
+			img{
+				transform: perspective(550px) rotateX(90deg) translateY(0.0001%);
+			    transform-origin: bottom;
+			}
+		}
+		.not-hover{
+		    transform: translateY(0);
+		    -webkit-transition: all .5s;
+			-moz-transition: all .5s;
+			-ms-transition: all .5s;
+			-o-transition: all .5s;
+			transition: all .5s;
+			p{
+				text-transform: uppercase;
+			}
+		}
+		img{
+			-webkit-transition-duration: 500ms;
+		    -moz-transition-duration: 500ms;
+		    -ms-transition-duration: 500ms;
+		    transition-duration: 500ms;
+			transform: perspective(550px) rotateX(0deg) translateY(0.0001%);
+    		transform-origin: top;
+		}
+		&:hover{
+			.not-hover{
+				transform: translateY(100%);
+			}
+			img{
+			    transform: perspective(550px) rotateX(-90deg) translateY(0.0001%);
+			}
+			.hover{
+			    transform: translateY(0%);
+		    	 img{
+					transform: perspective(550px) rotateX(0deg) translateY(0.0001%);
+		    	}
+		    }
+		}
+	}
+}
+.shop-sushi{
+	.menu-sushi{
+		width: 100%;
+		float: none;
+	}
+	.nav{
+	    border-bottom: 1px solid #e6e6e6;
+	    padding-bottom: 30px;
+		li{
+			margin-right: 0;
+			padding: 34px 0 29px;
+    		margin: 0 8px;
+    		&.active{
+    			box-shadow: 0 0 25px rgba(0, 0, 0, 0.06);
+				a:after{
+					display: none;
+				}
+			}
+			img{
+				margin: 0 12px;
+			}
+		}
+		span{
+			display: block;
+			text-transform: uppercase;
+			font-weight: 400;
+	    	color: #1a1a1a;
+	    	font-size: 14px;
+		}
+	}
+}
+.menu-sushi{
+	li{
+		width: 100%;
+		display: inline-block;
+		margin-bottom: 40px;
+		img{
+			width: 13%;
+		}
+		h4{
+			font-size: 18px;
+    		color: #121212;
+    		padding-bottom: 5px;
+    		margin-bottom: 5px;
+    		border-bottom: 1px dotted #ccc;
+    		font-family: @opensans;
+    		text-transform: capitalize;
+		}
+		.text{
+		    width: 74%;
+		    padding-right: 20px;
+		    margin-top: 5px;
+		    padding-left: 20px;
+		}
+		.price{
+			width: 13%;
+			margin-top: 5px;
+			color: @color_sushi;
+    		font-size: 18px;
+		}
+		.text,
+		.price,
+		img{
+			float: left;
+			display: inline-block;
+		}
+	}
+	.btn{
+		background-color: @color_sushi;
+		color: @white;
+	    padding: 14px 20px;
+	    margin-top: 25px;
+	}
+}
+.newsletter.bg-sushi{
+	padding: 105px 0;
+	background: url(http://placehold.it/1920x455) no-repeat;
+	background-size: cover;
+	text-align: left;
+	margin-bottom: 80px;
+	h4{
+		color: @color_sushi;
+		font-size: 20px;
+		margin-bottom: 15px;
+	}
+	h2{
+		font-size: 50px;
+		margin-bottom: 10px;
+	}
+	p{
+		margin-bottom: 35px;
+	}
+	form{
+		input[type="email"]{
+			background-color: transparent;
+			border-color: #d1c9bf;
+			&::-webkit-input-placeholder,
+			&::-moz-placeholder,
+			&:-moz-placeholder,
+			&:-ms-input-placeholder{
+				font-weight: 300;
+			}
+		}
+		input[type="submit"]{
+			margin-right: 5px;
+		}
+	}
+}
+.categories-sushi{
+	margin-bottom: 40px;
+	text-align: center;
+	h4{
+		margin-bottom: 10px;
+		a{
+			font-size: 18px;
+		}
+	}
+	.col-md-3{
+		&:nth-child(4n+1){
+			clear: both;
+		}
+	}
+	.inside{
+		padding-bottom: 35px;
+		margin-bottom: 15px;
+		.transition-small();
+		&:hover{
+		    box-shadow: 0px 0px 25px 1px rgba(214,214,214,0.5);
+		}
+	}
+}
+.block-sushi{
+	text-align: center;
+	margin-top: 0;
+	margin-bottom: 50px;
+	h3{
+		text-transform: none;
+		color: #464646;
+		font-size: 36px;
+		font-weight: 300;
+		line-height: 40px;
+		margin-bottom: 30px;
+		b{
+			color: @color_sushi;
+			font-weight: bold;
+		}
+	}
+	p{
+		margin-bottom: 30px;
+	}
+	.btn{
+		font-size: 14px;
+		color: @white;
+		border: none;
+		background-color: @color_sushi;
+		padding: 14px 20px;
+	}
+	.row{
+		display: flex;
+	    -webkit-flex-wrap: nowrap;
+	    -ms-flex-wrap: nowrap;
+	    flex-wrap: nowrap;
+	}
+	.flex-style{
+	    display: flex;
+	    display: -webkit-flex;
+	    display: -ms-flexbox;
+		-webkit-box-align: center;
+	    -webkit-align-items: center;
+	    -ms-flex-align: center;
+	    align-items: center;
+	}
+	.text{
+		-webkit-box-flex: 1;
+	    -webkit-flex-grow: 1;
+	    -ms-flex-positive: 1;
+	    flex-grow: 1;
+	    display: flex;
+	    -webkit-flex-direction: column;
+	    -ms-flex-direction: column;
+	    flex-direction: column;
+	}
+}
+/*=====  End of Sushi Style  ======*/

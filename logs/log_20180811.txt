@@ -1,0 +1,16 @@
+[Sat 2018-08-11 06:06:55 PM] [client 116.206.223.78] Finished under Sheet- Books | Row Number : 0 | count of Excel Fields: 88 | Count of Insert: 88 | Status OK
+[Sat 2018-08-11 06:18:34 PM] [client 202.142.91.254] Finished under Sheet- Books | Row Number : 0 | count of Excel Fields: 70 | Count of Insert: 70 | Status OK
+[Sat 2018-08-11 06:20:01 PM] [client 202.142.91.254] Finished under Sheet- Books | Row Number : 1 | count of Excel Fields: 50 | Count of Insert: 50 | Status OK
+[Sat 2018-08-11 06:23:45 PM] [client 202.142.91.254] Finished under Sheet- Books | Row Number : 0 | count of Excel Fields: 41 | Count of Insert: 41 | Status OK
+[Sat 2018-08-11 06:25:07 PM] [client 202.142.91.254] Finished under Sheet- Books | Row Number : 1 | count of Excel Fields: 41 | Count of Insert: 41 | Status OK
+[Sat 2018-08-11 06:29:06 PM] [client 202.142.91.254] Finished under Sheet- Books | Row Number : 0 | count of Excel Fields: 39 | Count of Insert: 39 | Status OK
+[Sat 2018-08-11 06:31:08 PM] [client 202.142.91.254] Finished under Sheet- Books | Row Number : 0 | count of Excel Fields: 29 | Count of Insert: 29 | Status OK
+[Sat 2018-08-11 06:32:20 PM] [client 202.142.91.254] Finished under Sheet- Books | Row Number : 1 | count of Excel Fields: 40 | Count of Insert: 40 | Status OK
+[Sat 2018-08-11 06:34:41 PM] [client 202.142.91.254] Finished under Sheet- Books | Row Number : 0 | count of Excel Fields: 60 | Count of Insert: 60 | Status OK
+[Sat 2018-08-11 06:36:30 PM] [client 202.142.91.254] Finished under Sheet- Books | Row Number : 0 | count of Excel Fields: 39 | Count of Insert: 39 | Status OK
+[Sat 2018-08-11 06:37:48 PM] [client 202.142.91.254] Finished under Sheet- Books | Row Number : 1 | count of Excel Fields: 43 | Count of Insert: 43 | Status OK
+[Sat 2018-08-11 06:44:09 PM] [client 202.142.91.254] Finished under Sheet- Books | Row Number : 0 | count of Excel Fields: 57 | Count of Insert: 57 | Status OK
+[Sat 2018-08-11 06:46:47 PM] [client 202.142.91.254] Finished under Sheet- Books | Row Number : 0 | count of Excel Fields: 37 | Count of Insert: 37 | Status OK
+[Sat 2018-08-11 06:48:04 PM] [client 202.142.91.254] Finished under Sheet- Books | Row Number : 1 | count of Excel Fields: 33 | Count of Insert: 33 | Status OK
+[Sat 2018-08-11 11:56:07 PM] [client 47.15.41.179] Finished under Sheet- Books | Row Number : 0 | count of Excel Fields: 34 | Count of Insert: 34 | Status OK
+[Sat 2018-08-11 11:57:27 PM] [client 47.15.41.179] Finished under Sheet- Books | Row Number : 1 | count of Excel Fields: 31 | Count of Insert: 31 | Status OK

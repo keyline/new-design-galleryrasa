@@ -1,0 +1,29 @@
+.ct-adress-title {
+    color: #000000;
+    padding-bottom: 15px;
+    margin-top: 0;
+}
+.ct-adress-content {
+    color: @font-greylighten;
+    font-weight: 100;
+}
+.ct-contactContent > div:last-child {
+    border-left: solid 1px @border-sec;
+    margin-left: -1px;
+    padding-left:30px;
+}
+.ct-contactContent > div:first-child {
+    border-right: solid 1px @border-sec;
+    padding-right: 30px;
+}
+
+
+@media (max-width: 768px) {
+    .ct-contactContent > div:first-child {
+        padding-right: 15px;
+    }
+
+    .ct-contactContent .ct-address{
+        margin-top: 20px;
+    }
+}

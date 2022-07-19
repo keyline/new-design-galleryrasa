@@ -1,0 +1,119 @@
+/*================================
+=            Bg Block            =
+================================*/
+.bg-block{
+	width: 100%;
+	margin-bottom: 90px;
+	display: inline-block;
+	> .col-md-6{
+		padding-left: 0;
+	}
+	.text{
+		width: 680px;
+	    border: 8px solid #e5534c;
+	    padding: 70px 170px 60px 70px;
+	    position: absolute;
+	    right: -150px;
+	    z-index: 1;
+	    top: 100px;
+	}
+	h5{
+		color: #b2b2b2;
+		font-size: 15px;
+		font-weight: 400;
+		margin-bottom: 10px;
+		letter-spacing: 2px;
+	}
+	h2{
+		color: #1a1a1a;
+		font-size: 53px;
+		font-weight: 900;
+		margin-bottom: 20px;
+	}
+	p{
+		font-family: @globalfonts;
+		font-weight: 300;
+		margin-bottom: 20px;
+	}
+	img{
+		max-height: 860px;
+	}
+	.price{
+		margin-bottom: 35px;
+		del{
+			font-size: 30px;
+		}
+		ins{
+			font-size: 45px;
+		}
+	}
+	.btn{
+		font-size: 11px;
+		color: #fff;
+		font-weight: 400;
+		border-color: #000;
+		background-color: #000;
+		&:hover{
+			background-color: #f2f2f2;
+			border-color: #f2f2f2;
+			color: #000;
+		}
+		&:last-child{
+			background-color: #f2f2f2;
+			border-color: #f2f2f2;
+			color: #000;
+			.transition-small();
+			margin-left: 10px;
+			&:hover{
+				background-color: #000;
+				border-color: #000;
+				color: #fff;
+			}
+		}
+	}
+	.last{
+		position: absolute;
+   		left: -35px;
+   		top: 25%;
+   		letter-spacing: 2px;
+   		transform: rotate(180deg);
+   		-o-transform: rotate(180deg);
+   		-ms-transform: rotate(180deg);
+   		-moz-transform: rotate(180deg);
+   		-webkit-transform: rotate(180deg);
+   		font-size: 15px;
+   		text-transform: uppercase;
+   		color: @active_color_two;
+   		font-weight: 500;
+		writing-mode: vertical-lr;
+		-webkit-writing-mode: vertical-lr;
+	}
+	&.type-2{
+		.text{
+			right: auto;
+			padding: 70px 70px 60px 80px;
+			left: -150px;
+		}
+		.last{
+			left: auto;
+			right: -35px;
+			transform: rotate(0);
+			-o-transform: rotate(0);
+			-ms-transform: rotate(0);
+			-moz-transform: rotate(0);
+			-webkit-transform: rotate(0);
+		}
+	}
+	.parallax{
+		.price{
+			del{
+				font-size: 25px;
+			}
+			ins{
+				color: #000;
+				font-size: 36px;
+			}
+		}
+	}
+}
+/*=====  End of Bg Block  ======*/

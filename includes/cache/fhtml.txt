@@ -1,0 +1,52 @@
+<h3 class="text-warning" style="margin-top:0"> Top Deals</h3><div class="row">
+  <div class="col-sm-6 col-md-4">
+  <div class="thumbnail featured_item">
+
+       
+      <a href="http://archtechitsols.com/_tampernew/pdetails/7/wooden-tamper"><img alt=""  src="product_images/featured/wooden-coffee-tamper-57mm-4097067103.jpg" ></a>
+      
+      <div class="caption">
+        <h4>Wooden Tamper </h4>
+   
+        <p><span class="badge label-danger item-title">$ 56.00</span> <br /> </p>
+      </div>
+      
+      
+    </div>
+  </div>
+  
+
+  <div class="col-sm-6 col-md-4">
+  <div class="thumbnail featured_item">
+
+       
+      <a href="http://archtechitsols.com/_tampernew/pdetails/6/still-mug"><img alt=""  src="product_images/featured/p-6-4607882830.png" ></a>
+      
+      <div class="caption">
+        <h4>Still Mug </h4>
+   
+        <p><span class="badge label-danger item-title">$ 650.00</span> <br /> </p>
+      </div>
+      
+      
+    </div>
+  </div>
+  
+
+  <div class="col-sm-6 col-md-4">
+  <div class="thumbnail featured_item">
+
+       
+      <a href="http://archtechitsols.com/_tampernew/pdetails/5/bukket"><img alt=""  src="product_images/featured/p-5-9756620838.png" ></a>
+      
+      <div class="caption">
+        <h4>Bukket </h4>
+   
+        <p><span class="badge label-danger item-title">$ 350.00</span> <br /> </p>
+      </div>
+      
+      
+    </div>
+  </div>
+  
+</div>

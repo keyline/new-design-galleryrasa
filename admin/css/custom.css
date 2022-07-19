@@ -1,0 +1,47 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Dec 18, 2017, 6:05:54 PM
+    Author     : KLC8
+*/
+
+.admin-details-box{
+    background: #e4e4e4;
+    padding: 25px 30px 19px 30px;
+    border: 6px solid #fff;
+    margin-bottom: 15px;
+}
+.count-heading{
+    font-weight: 400;
+    font-size: 17px;
+}
+.count-result{
+    font-weight: 100;
+    font-size: 30px;
+}
+.last-uploaded-images{
+    padding: 0;
+    border: 2px solid #fff;
+}
+.datetime-mem-image{
+    font-size: 10px;
+}
+.count-result > small{
+    font-size: 50%;
+}
+.mem_img_edit_list{
+    background: #eaeaea;
+    margin-bottom: 5px;
+    padding: 5px;
+ 
+}
+.mem_img_edit_list>img{
+    float: left;
+    height:100px;
+}
+.category-choice a:active{
+    color: #b1d025;
+}

@@ -1,0 +1,196 @@
+/*=======================================
+=            Prefooter Style            =
+=======================================*/
+.prefooter{
+	margin-bottom: 50px;
+}
+.title-widget{
+	color: #000;
+	font-size: 16px;
+	margin-bottom: 30px;
+	font-weight: bold;
+}
+.widget-products{
+	.title-widget{
+		padding-bottom: 15px;
+		margin-bottom: 15px;
+	    border-bottom: 1px solid #e6e6e6;
+	}
+	.product-list{
+		li{
+			clear: both;
+			display: inline-block;
+   			width: 100%;
+   			padding-bottom: 25px;
+   			margin-bottom: 25px;
+   			border-bottom: 1px solid #f0f0f0;
+   			&:last-child{
+   				border-bottom: none;
+   				padding-bottom: 0;
+   				margin-bottom: 0;
+   			}
+		}
+		.title{
+			padding-top: 10px;
+		}
+		img{
+			float: left;
+			margin-right: 15px;
+			display: block;
+		}
+		a{
+			color: #444;
+			font-size: 14px;
+			font-family: @globalfonts;
+			font-weight: bold;
+			text-transform: uppercase;
+			&:hover{
+				color: @active_color_two;
+			}
+		}
+	}
+	.price{
+		font-family: @opensans;
+		del{
+			font-weight: 500;
+		}
+		ins{
+			font-size: 16px;
+		}
+	}
+}
+.newsletter{
+	text-align: center;
+	padding: 50px 25px;
+	margin-top: 53px;
+	background-size: cover;
+	background: #fafafa url(../images/newsletter-back.png) no-repeat center center;
+	h3{
+		color: #1c1a19;
+		font-size: 22px;
+		margin-bottom: 25px;
+		font-weight: 900;
+	}
+	form{
+		position: relative;
+		margin-bottom: 23px;
+		input[type="email"]{
+			background-color: #fff;
+			border: none;
+			height: 40px;
+			width: 100%;
+			border: 1px solid transparent;
+			padding: 6px 15px 10px 15px;
+			&::-webkit-input-placeholder{
+				color: #999;
+				font-size: 14px;
+				font-weight: 400;
+			}
+			&::-moz-placeholder{
+				color: #999;
+				font-size: 14px;
+				font-weight: 400;
+			}
+			&:-moz-placeholder{
+				color: #999;
+				font-size: 14px;
+				font-weight: 400;
+			}
+			&:-ms-input-placeholder{
+				color: #999;
+				font-size: 14px;
+				font-weight: 400;
+			}
+			&:active,
+			&:focus{
+				outline: none;
+				border: 1px solid #cecece;
+			}
+		}
+		input[type="submit"]{
+			font-size: 0;
+			position: absolute;
+			top: 0;
+			right: 0;
+			width: 30px;
+			height: 40px;
+			border: none;
+			background: transparent url(../images/add.png) no-repeat center;
+			&:active,
+			&:focus{
+				outline: none;
+			}
+		}
+	}
+	p{
+		color: #999;
+		margin-bottom: 23px;
+		&:last-child{
+			font-size: 12px;
+			margin-bottom: 0;
+			line-height: 18px;
+		}
+	}
+	&.type-2{
+		background: #fafafa;
+		padding: 60px 55px;
+		margin-bottom: 40px;
+		margin-top: 5px;
+		h2{
+			color: @active_color_two;
+			font-size: 18px;
+			font-weight: 700;
+			margin-bottom: 10px;
+		}
+		h3{
+			font-size: 32px;
+			color: #333;
+			margin-bottom: 20px;
+		}
+		p{
+			font-weight: 300;
+			font-size: 16px;
+		    line-height: 1.8;
+			font-family: @globalfonts;
+			&.text-right{
+				font-size: 14px;
+			}
+		}
+		form{
+			padding-top: 20px;
+			margin-bottom: 5px;
+		}
+		input[type="email"]{
+		    border: 1px solid rgba(103, 103, 103, 0.19);
+		    appearance: none;
+		   	-webkit-appearance: none;
+		}
+		input[type="email"]::-webkit-input-placeholder{
+			font-weight: 300;
+			color: #cecece;
+		}
+		input[type="email"]::-moz-placeholder{
+			font-weight: 300;
+			color: #cecece;
+		}
+		input[type="submit"]{
+			font-size: 11px;
+			width: 84px;
+			margin-top: 20px;
+			color: #fff;
+			font-weight: 400;
+			text-transform: uppercase;
+			background: @active_color_two;
+			.transition-small();
+			&:hover{
+				opacity: 0.8;
+			}
+		}
+		a{
+			font-weight: bold;
+			text-decoration: underline;
+			color: #000;
+		}
+	}
+}
+/*=====  End of Prefooter Style  ======*/

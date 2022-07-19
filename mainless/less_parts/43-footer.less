@@ -1,0 +1,302 @@
+/*====================================
+=            Footer Style            =
+====================================*/
+footer{
+	background-color: #262626;
+	padding-top: 90px;
+	padding-bottom: 90px;
+	.title-widget{
+		color: #fff;
+	    font-weight: 500;
+		letter-spacing: 2px;
+		border-bottom: 1px solid #383838;
+		padding-bottom: 15px;
+		margin-bottom: 15px;
+	}
+}
+.logo-footer{
+	margin-bottom: 25px;
+}
+address{
+	margin-top: 25px;
+	li{
+		font-size: 14px;
+		color: #999;
+		font-weight: 400;
+		line-height: 24px;
+		a{
+			&:hover{
+				color: @active_color;
+			}
+		}
+	}
+}
+.widget-latest-posts{
+	img{
+		margin-right: 15px;
+	}
+	.blog-details{
+		text-align: left;
+		padding-top: 4px;
+		.post-date{
+			i{
+				margin-right: 5px;
+			}
+		}
+		.meta-post{
+			color: #8c8c8c;
+			font-size: 12px;
+		}
+		h2{
+			text-transform: none;
+			a{
+				color: #fff;
+				font-weight: 400;
+				font-size: 14px;
+				letter-spacing: 0;
+				margin-bottom: 5px;
+				&:hover{
+					color: #8a8a8a;
+				}
+			}
+		}
+		.post-comments{
+			font-size: 12px;
+			color: #999;
+			float: right;
+			i{
+				font-size: 11px;
+			}
+		}
+	}
+	li{
+		padding-top: 15px;
+		border-bottom: 1px solid #333;
+		&:last-child{
+			border-bottom: none;
+		}
+	}
+}
+.widget-links{
+	ul{
+		float: left;
+		width: 50%;
+		&.first{
+			padding-right: 15px;
+		}
+		display: inline-block;
+		a{
+			color: #fff;
+			font-weight: 300;
+			font-size: 15px;
+			&:hover{
+				color: #8a8a8a;
+			}
+		}
+		li{
+			line-height: 30px;
+		}
+	}
+}
+.widget-tags{
+	h3{
+		margin-bottom: 30px;
+	}
+	a{
+		color: #fff;
+		font-size: 12px;
+		display: inline-block;
+		padding: 9px 16px 9px;
+		letter-spacing: 0.5px;
+		font-weight: 300;
+		margin: 0 5px 6px 0;
+		background-color: #2e2e2e;
+		text-transform: uppercase;
+		&:hover{
+			color: #fff;
+			background-color: @active_color_two;
+		}
+	}
+}
+.copyright{
+	padding: 50px 0;
+	background-color: #1f1f1f;
+	p{
+		color: #666;
+		font-weight: 300;
+    	letter-spacing: 0.5px;
+		font-size: 14px;
+		a{
+			color: #fff;
+		}
+	}
+}
+.footer-instagram{
+	position: fixed;
+    bottom: 0;
+    opacity: 0;
+    width: 100%;
+    .owl-carousel{
+    	.item{
+    		margin: 0;
+    	}
+    }
+	img{
+		background-size: cover;
+	}
+	.btn{
+		.align-center();
+		z-index: 9;
+		top: 50%;
+    	margin-top: -20px;
+		position: absolute;
+		font-size: 18px;
+		text-transform: uppercase;
+		font-weight: 900;
+		color: #1c1a19;
+		padding: 16px 26px;
+		border-radius: 0;
+		background-color: #fff;
+		span{
+			color: @active_color_two;
+		}
+	}
+	&.type-2{
+		position: relative;
+		margin-bottom: -2px;
+		h2{
+			font-size: 30px;
+			font-weight: bold;
+			margin-bottom: 45px;
+		}
+	}
+}
+.footer-type-2{
+	background-color: #fff;
+	padding-bottom: 45px;
+	padding-top: 0;
+	.title-widget{
+		color: #1a1a1a;
+		border-color: #e6e6e6;
+	}
+	p,
+	address li{
+		font-weight: 300;
+	}
+	address li{
+		line-height: 28px;
+	}
+	.active-color{
+		color: #222;
+	}
+	+.copyright{
+		border-top: 1px solid #f7f7f7;
+		background-color: #fff;
+		padding: 35px 0;
+		p a{
+			color: #1a1a1a;
+			font-weight: bold;
+		}
+	}
+	.title-widget{
+		margin-bottom: 20px;	
+		padding-bottom: 16px;
+	    border-color: #e6e6e6;
+	}
+	.widget-latest-posts .blog-details h2 a{
+		font-weight: 600;
+	}
+	.widget-links ul a,
+	.widget-latest-posts .blog-details h2 a{
+		color: #1a1a1a;
+	}
+	.widget-latest-posts {
+		li{
+			border-color: rgba(125, 125, 125, 0.2);
+		}
+		.blog-details .meta-post{
+			font-size: 14px;
+		}
+	}
+	.widget-tags{
+		a{
+			color: #1a1a1a;
+			background-color: transparent;
+			border: 1px solid rgba(125, 125, 125, 0.2);
+			&:hover{
+				border-color: #222;
+			}
+		}
+	}
+}
+.footer-type-3{
+	padding: 53px 0;
+	background-color: #292825;
+	border-bottom: 1px solid #4a4a4a;
+	.footer-links-drinks{
+		padding-top: 8px;
+		a{
+			font-size: 18px;
+		    margin: 0 23px;
+		    color: #a5a093;
+		    display: inline-block;
+		    font-family: Georgia,serif;
+		}
+	}
+	.social-icon{
+		text-align: right;
+		li{
+			border: none;
+			a{
+				font-size: 16px;
+				color: #a5a093;
+			}
+		}
+	}
+	+ .copyright{
+		padding: 30px 0;
+		background-color: #292825;
+		p{
+			font-size: 16px;
+			font-family: Georgia,serif;
+		}
+	}
+}
+.footer-type-4{
+	background: #ede6dc url(http://placehold.it/1920x340) no-repeat;
+	background-size: cover;
+	li{
+		color: rgba(102, 102, 103, 0.6);
+   		font-size: 15px;
+   		line-height: 26px;
+   		font-weight: 300;
+   	    font-family: 'Open Sans', sans-serif;
+   	    &.first{
+   	    	h4{
+				font-size: 24px;
+				color: #1e1e1e;
+				margin-bottom: 15px;
+				padding-bottom: 15px;
+				padding-right: 5px;
+				border-bottom: 3px solid @color_sushi;
+				display: inline-block;
+			}
+   	    }
+   	    a{
+   	    	font-weight: 300;
+   	    }
+	}
+	+ .copyright{
+		padding: 31px 0;
+		text-align: center;
+		background-color: #e8e1d7;
+		p{
+			color: rgba(102, 102, 103, 0.6);
+		}
+		b{
+			color: @color_sushi;
+			font-weight: 600;
+		}
+	}
+}
+/*=====  End of Footer Style  ======*/

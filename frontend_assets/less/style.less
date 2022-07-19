@@ -1,0 +1,217 @@
+/*
+1. variables
+2. mixins
+3. datepicker
+4. fonts
+5. sections
+6. animate
+7. utilities
+8. motive
+9. typography
+10. menu
+11. buttons
+12. lists
+13. iconbox
+14. icon
+15. skills
+16. blockquote
+17. pricing
+18. table
+19. cta
+10. tooltip
+21. accordion
+22. tabs
+23. footer
+24. copyright
+25. form
+26. breadcrumbs
+27. flexslider
+28. magnificpopup
+29. slider
+30. testimonial
+31. courselist
+32. coursesgallery
+33. dropdown
+34. sidebarcolumn
+35. badge
+36. choiceviev
+37. graph
+38. team
+39. newsletter
+40. singlecourse
+41. headersection
+42. pagination
+43. mediasections
+44. memberpage
+45. mainparallax
+46. tweet
+47. videowachers
+48. teacherbox
+49. blogcontent
+50. singlearticle
+51. comments
+52. program
+53. contactpage
+54. loginpage
+55. socialicons
+56. videoarchive
+57. portfolio
+58. maps
+59. intro-effects
+*/
+
+
+@import "variables.less";
+
+// z-index // -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+@z-index-1: 1000;
+@z-index-2: 2000;
+@z-index-3: 3000;
+@z-index-4: 4000;
+@z-index-5: 5000;
+@z-index-6: 6000;
+@z-index-7: 7000;
+@z-index-8: 8000;
+@z-index-9: 9000;
+
+@import "ct/mixins.less";
+@import "../fonts/fontawesome/less/font-awesome";
+@import "../fonts/et-line-font/style.css";
+@import "datepicker";
+@import "ct/fonts.less";
+@import "ct/sections.less";
+@import "ct/menu.less";
+@import "animate.less";
+@import "ct/utilities.less";
+@import "ct/motive.less";
+@import "ct/typography.less";
+@import "ct/buttons.less";
+@import "ct/lists.less";
+@import "ct/iconbox.less";
+@import "ct/icon.less";
+@import "ct/skills.less";
+@import "ct/blockquote.less";
+@import "ct/pricing.less";
+@import "ct/table.less";
+@import "ct/cta.less";
+@import "ct/tooltip.less";
+@import "ct/accordion.less";
+@import "ct/tabs.less";
+@import "ct/footer.less";
+@import "ct/copyright.less";
+@import "ct/form.less";
+@import "ct/breadcrumbs.less";
+
+.ct-popup {
+  width: 570px;
+  max-width: 570px;
+  padding: 80px 100px;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  margin-left: -285px;
+  z-index: 20;
+  display: none;
+}
+.ct-popupContainer {
+  width: 100%;
+}
+
+
+// Sliders // -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+@import "flexslider.less";
+@import "magnificpopup.less";
+@import "ct/slider.less";
+
+
+@import "ct/testimonial.less";
+@import "ct/courselist.less";
+@import "ct/coursesgallery.less";
+@import "ct/dropdown.less";
+@import "ct/sidebarcolumn.less";
+@import "ct/badge.less";
+@import "ct/choiceviev.less";
+@import "ct/graph.less";
+@import "ct/team.less";
+@import "ct/newsletter";
+@import "ct/singlecourse.less";
+
+@import "ct/headersection.less";
+@import "ct/pagination.less";
+
+@import "ct/mediasections.less";
+@import "ct/memberpage.less";
+@import "ct/mainparallax.less";
+@import "ct/tweet.less";
+@import "ct/videowachers.less";
+@import "ct/teacherbox.less";
+@import "ct/blogcontent.less";
+@import "ct/singlearticle.less";
+@import "ct/comments.less";
+@import "ct/program.less";
+@import "ct/contactpage.less";
+@import "ct/loginpage.less";
+@import "ct/socialicons.less";
+@import "ct/videoarchive.less";
+@import "ct/portfolio.less";
+@import "ct/maps.less";
+@import "ct/intro-effects.less";
+
+
+
+img{
+  max-width: 100%;
+}
+
+div iframe{
+  width: 100%;
+}
+
+body{
+  background-color: #fff;
+}
+
+// Wrapper and Snap.js // ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+.ct-pageWrapper{
+  z-index: 3;
+  background-color: #ffffff;
+  .ct-m-boxShadow(-5px 2px 2px rgba(0, 0, 0, 0.2));
+  overflow: hidden;
+  position: relative;
+}
+
+// Animations // -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+.cssAnimate .animated{
+  opacity: 0;
+  filter:alpha(opacity=0); /* For IE8 and earlier */
+}
+.cssAnimate .activate{
+  opacity: 1;
+  filter:alpha(opacity=100); /* For IE8 and earlier */
+}
+
+
+.googlemapcontainer {
+  height: 100%;
+  width: 100%;
+  img { max-width: none;}
+}
+
+
+
+@media (max-width: 320px){
+  .partnerSlider{
+    padding-left: 47px;
+  }
+}
+
+// Progress Icon // ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+.progress-icons:before{
+  display: none;
+}
+
+@import "yamm.less";
+@import "wp.less";

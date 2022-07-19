@@ -1,0 +1,29 @@
+.ct-listChoice {
+    margin: 0 30px 0 0;
+    li {
+      margin: 0;
+      padding: 0;
+      display: block;
+      float: left;
+      a {
+        margin: 0;
+        padding: 0 30px;
+        border-radius: 0;
+      }
+      + li {
+        margin-left: -2px;
+      }
+    }
+}
+.ct-btn-listChoice-primary {
+  &:hover,
+  &:focus,
+  &:active {
+      background-color: @motive;
+      border-color: @motive;
+      color: @white;
+      i {
+        color: @white;
+      }
+  }
+}

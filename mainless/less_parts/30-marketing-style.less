@@ -1,0 +1,312 @@
+/*=======================================
+=            Marketing Style            =
+=======================================*/
+.marketing-style{
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6,
+	p{
+		font-family: @roboto;
+	}
+	.header .navbar-right .shopping-cart .bag:before,
+	.header-search .search-btn,
+	.header .navbar-right .shopping-cart .total{
+		color: @white;
+	}
+	.blog-details .post-comments{
+		color: #1cbffa;
+	}
+	.header menu li a:after{
+		background-color: #1cbffa;
+	}
+	.cart-popup-container .buttons .btn{
+		background: @color_marketing;
+		border: none;
+	}
+	.header{
+		menu li{
+			&.active a:after{
+				background: @color_marketing;
+			}
+			a{
+				color: @white;
+			}
+			li{
+				a{
+					color: #222;
+				}
+			}
+		}
+	}
+	.fixed-header{
+		menu li a{
+			color: #1e1e1e;
+		}
+		.navbar-right .shopping-cart .total,
+		.navbar-right .shopping-cart .bag:before{
+			color: #1e1e1e;
+		}
+	}
+	.section{
+		&.step{
+			padding: 85px 0;
+			background-color: #19b2ff;
+		}
+	}
+	.heading{
+		h4{
+			font-size: 42px;
+		    font-weight: 300;
+		    text-transform: capitalize;
+		    margin-bottom: 10px;
+		}
+		p{
+			letter-spacing: 1px;
+		}
+	}
+	.newsletter{
+		width: 100%;
+		clear: both;
+	    padding: 72px 0;
+	    margin-top: 0;
+	    margin-bottom: 80px;
+		background: #19b2ff;
+		display: inline-block;
+		h4{
+			float: left;
+			font-size: 42px;
+    		color: @white;
+    		text-transform: none;
+    		font-weight: 300;
+			display: inline-block;
+		}
+		input[type="email"]{
+			width: 455px;
+		    background-color: rgba(255, 255, 255, 0.2);
+		    height: 50px;
+		    color: @white;
+		    &::-webkit-input-placeholder {color:#fff;font-weight: 300;}
+		}
+		input[type="submit"]{
+			height: 50px;
+			width: 50px;
+			background: rgba(255, 255, 255, 0.15) url(../images/add_plus.png) no-repeat center;
+		}
+		form{
+			float: right;
+			margin-bottom: 0;
+			display: inline-block;
+		}
+	}
+	.latest-blog{
+		.blog-details{
+			border-top: 3px solid #ebebeb;
+    		padding-top: 40px;
+			text-align: left;
+			&:hover{
+				border-color: #1cbffa;
+			}
+			.post-comments{
+				float: right;
+			}
+			p{
+				font-weight: 300;
+			}
+			h2{
+				a{
+					font-weight: 300;
+					text-transform: none;
+				}
+			}
+		}
+	}
+}
+.step{
+	padding: 135px 0;
+	margin-bottom: 80px;
+	background-color: #19b2ff;
+	h3{
+		font-size: 42px;
+		color: @white;
+		font-weight: 300;
+		text-transform: none;
+		margin-bottom: 40px;
+	}
+	.text{
+		float: left;
+		width: 33.3%;
+		border-top: 1px solid #5ec9ff;
+		display: inline-block;
+		h5{
+			color: @white;
+			text-transform: capitalize;
+			font-size: 20px;
+    		font-weight: 300;
+    		margin-bottom: 20px;
+		}
+		p{
+		    color: #bfeaff;
+		}
+	}
+	.circle-icon{
+	    display: block;
+	    width: 35px;
+	    height: 35px;
+	    margin-top: -18px;
+	    margin-bottom: 25px;
+	    color: @white;
+	    font-weight: 300;
+	    border: 1px solid #5ec9ff;
+	    border-radius: 100%;
+	    line-height: 33px;
+	    text-align: center;
+	    background-color: #19b2ff;
+	}
+}
+.services{
+	.inside{
+		position: relative;
+		margin-bottom: 18px;
+		.text{
+			top: 50%;
+		    transform: translateY(-50%);
+			text-align: center;
+		    padding: 0 110px;
+			position: absolute;
+			img{
+				margin-bottom: 25px;
+				transform: translateX(0);
+				.transition-small();
+				&.hover{
+					transform: translateX(93px);
+					position: absolute;
+				    top: 0;
+				    left: 0;
+				}
+			}
+			&:hover{
+				img{
+					transform: translateX(-93px);
+				}
+				.hover{
+					transform: translateX(0);
+				}
+			}
+			>div{
+				overflow: hidden;
+				position: relative;
+				display: inline-block;
+			}
+		}
+		h3{
+			font-size: 26px;
+			margin-bottom: 25px;
+			text-transform: none;
+			font-weight: 300;
+			color: @white;
+		}
+		p{
+			color: #99b5bf;
+		}
+	}
+}
+.pricing{
+	text-align: center;
+	padding: 70px 0 125px 0;
+	background-color: #f8f8f8;
+	h4{
+	    font-size: 20px;
+	    padding-top: 30px;
+	    text-transform: none;
+	}
+	.price{
+		font-size: 90px;
+		font-weight: 300;
+		padding: 18px 0;
+		position: relative;
+		&:before{
+			content: "$";
+		    font-size: 36px;
+		    vertical-align: top;
+		    font-weight: 400;
+		    position: relative;
+		    top: 0;
+		}
+		&:after{
+			content: "/hour";
+		    vertical-align: bottom;
+		    position: relative;
+		    color: #808080;
+		    font-size: 16px;
+		    font-weight: 400;
+		    text-transform: none;
+		}
+	}
+	li{
+		font-weight: 300;
+		line-height: 28px;
+		color: #808080;
+		font-size: 16px;
+	}
+	.inside{
+		background-color: #fff;
+		border-top: 5px solid #fff;
+		.transition-small();
+		&:hover{
+			border-color: #1cbffa;
+		    -webkit-box-shadow: 0 15px 25px 0 rgba(1,1,1,.07);
+		    box-shadow: 0 15px 25px 0 rgba(1,1,1,.07);
+		}
+	}
+	.btn{
+		font-size: 12px;
+		background: -webkit-linear-gradient(#1cbffa, #58e2b1);
+		background: -o-linear-gradient(#1cbffa, #58e2b1);
+		background: linear-gradient(#1cbffa, #58e2b1);
+	    -webkit-background-clip: text;
+	    -webkit-text-fill-color: transparent;
+	    color: #fff;
+	    margin: 20px 0 50px 0;
+	    padding: 9px 17px;
+	    font-weight: 400;
+		background-color: transparent;
+	    border: 2px solid #1cbffa;
+	    -webkit-border-image: -webkit-linear-gradient(left, #1cbffa 0%, #58e2b1 100%);
+	    -o-border-image: -o-linear-gradient(left, #1cbffa 0%, #58e2b1 100%);
+	    border-image: linear-gradient(to right, #1cbffa 0%, #58e2b1 100%);
+	    border-image-slice: 1;
+		&:hover{
+			color: @white;
+		    -webkit-text-fill-color: #fff;
+		    background: -webkit-linear-gradient(#1cbffa, #58e2b1);
+		    background: -o-linear-gradient(#1cbffa, #58e2b1);
+		    background: linear-gradient(#1cbffa, #58e2b1);
+		}
+	}
+}
+.icon{
+	margin: 55px 0;
+	.text{
+		width: 50%;
+		margin-bottom: 40px;
+		padding-right: 40px;
+		float: left;
+		display: inline-block;
+		h5{
+			font-weight: 400;
+			font-size: 24px;
+			text-transform: capitalize;
+			margin: 15px 0px 25px 0px;
+		}
+		img{
+			float: left;
+			margin-right: 10px;
+			display: inline-block;
+		}
+	}
+}
+
+/*=====  End of Marketing Style  ======*/

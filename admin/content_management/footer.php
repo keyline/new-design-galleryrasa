@@ -1,0 +1,1 @@
+<footer class="footer text-center"> 2017 &copy; Tamper Me Powered by KPVE PTY LTD <img src="../../plugins/images/Admin-Graphic.png" style="width: 3%"> </footer>
