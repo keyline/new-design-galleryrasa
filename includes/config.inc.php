@@ -1,9 +1,9 @@
 <?php
      define('gR_Version', '1.3');
-    define('DB_USER', 'galleryr_whyusr');
-    define('DB_PASS', 'CTTzz#-(e5p7');
+    define('DB_USER', 'root');
+    define('DB_PASS', '');
     define('DB_HOST', 'localhost');
-    define('DB_NAME', 'galleryr_blues');
+    define('DB_NAME', 'galleryrasa');
     
     define('ORG_SITE_URL', 'https://galleryrasa.com/');
     define('SITE_URL', 'https://galleryrasa.com/');
@@ -123,7 +123,7 @@
     define('VIEWS_FOLDER', 'views/');
     define('THUMB_IMGS', IMGSRC.'thumbs/');
     define('VA_THUMB_IMGS', IMGSRC.'artwork_thumbs/');
-    define('VA_MEDIUM_URL', IMGSRC.'va-medium/');
+    // define('VA_MEDIUM_URL', IMGSRC.'va-medium/');
     define('EXHIBITION_THUMB_IMGS', IMGSRC.'exhibition_thumbs/');
     define('ARTWORKS_IMGS', IMGSRC.'artwork/');
     define('ARTWORKS_ORG_IMGS', IMGSRC.'Art Work/');

@@ -4,11 +4,11 @@ $pageurl = "";
 
 $servername = "localhost";
 
-$username = "arijit81_demo";
+$username = "root";
 
-$password = "india@123$$";
+$password = "";
 
-$dbname = "arijit81_tampernew";
+$dbname = "galleryrasa";
 
 
 
