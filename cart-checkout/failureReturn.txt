@@ -1,0 +1,60 @@
+PurchaseResult Object
+(
+    [client:PurchaseResult:private] => PayUMoney Object
+        (
+            [merchantId:PayUMoney:private] => IvMQQKX3
+            [secretKey:PayUMoney:private] => lTQUvTTMYI
+            [testMode:PayUMoney:private] => 1
+        )
+
+    [params:PurchaseResult:private] => Array
+        (
+            [mihpayid] => 6557181423
+            [mode] => CC
+            [status] => failure
+            [unmappedstatus] => failed
+            [key] => IvMQQKX3
+            [txnid] => 6cbd17c85fbd5c02065f
+            [amount] => 2000.0
+            [addedon] => 2017-11-24 01:38:56
+            [productinfo] => Poster-ben_mouchak-468948343.jpg-7x10
+            [firstname] => shuvadeep chakraborty
+            [lastname] => 
+            [address1] => 
+            [address2] => 
+            [city] => 
+            [state] => 
+            [country] => 
+            [zipcode] => 
+            [email] => shuvadeep.8719@gmail.com
+            [phone] => 9903985585
+            [udf1] => 
+            [udf2] => 
+            [udf3] => 
+            [udf4] => 
+            [udf5] => 
+            [udf6] => 
+            [udf7] => 
+            [udf8] => 
+            [udf9] => 
+            [udf10] => 
+            [hash] => 930fa0909a1ffa83ff222aea93b13cf8464114e57f6203b8e37c26e9552249d33039554982498195f049ec8d2d2786f7caf6c6d06548730d9238b98e5ed41c0b
+            [field1] => 
+            [field2] => 
+            [field3] => 
+            [field4] => 
+            [field5] => 
+            [field6] => 
+            [field7] => 
+            [field8] => 
+            [field9] => International Cards not allowed on the merchant.
+            [bankcode] => CC
+            [error] => E903
+            [error_Message] => International cards are not accepted
+            [amount_split] => {"PAYU":"2000.0"}
+            [payuMoneyId] => 170530850
+            [discount] => 0.00
+            [net_amount_debit] => 0.00
+        )
+
+)

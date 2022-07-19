@@ -1,0 +1,14 @@
+{
+    "name": "keylines/import-wizard-rasa",
+    "description": "excel data import",
+    "type": "library",
+    "require": {
+        "phpoffice/phpspreadsheet": "^1.6"
+    },
+    "authors": [
+        {
+            "name": "Shuvadeep Chakraborty",
+            "email": "shuvadeep@keylines.net"
+        }
+    ]
+}

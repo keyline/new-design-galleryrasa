@@ -1,0 +1,9 @@
+Thank you <strong>{name}</strong> for your Order.
+<br> You have to pay total amount <strong>Rs. {amount}</strong>
+<br> Payment Method: <strong>{pay_method}</strong>
+<br><br>
+Ordered Products are:-
+<br>
+{ord_prod}
+<br>
+<strong>GALLERYRASA</strong>
