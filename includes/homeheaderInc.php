@@ -15,35 +15,44 @@ if (!isset($_COOKIE["cookieid"])) {
 
 
         <link rel="icon" href="<?php echo SITE_URL ?>images/gallery-favicon.png">
-        <!--  Bootstrap CSS  -->
-        <link rel="stylesheet" href="<?php echo SITE_URL . CSS_FOLDER ?>bootstrap.min.css">
-
-        <!--  Font-awesome CSS  -->
-        <link rel="stylesheet" href="<?php echo SITE_URL . CSS_FOLDER ?>font-awesome.min.css">
-
-        
-        
+        <!--  Bootstrap CSS  -->      
         <link href="<?php echo SITE_URL . CSS_FOLDER ?>select2.css" rel="stylesheet">
-        
-        
-        <link href="<?php echo SITE_URL . CSS_FOLDER ?>owl.theme.default.min.css" rel="stylesheet">
-        <link href="<?php echo SITE_URL . CSS_FOLDER ?>owl.carousel.min.css" rel="stylesheet">
 
-        
+    <!-- Bootstrap CSS -->
+<link rel="stylesheet" href="<?php echo SITE_URL . CSS_FOLDER ?>bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="<?php echo SITE_URL . CSS_FOLDER ?>menumaker.css">
+<link rel="stylesheet" href="<?php echo SITE_URL . CSS_FOLDER ?>jquery.serialtabs.css" />
+<title>Welcome to Gallery Rasa</title>
+<style>
+    :root {
+        --primaryColor: #396B7B;
+        --secondaryColor: #63B7D1;
+        --trirdColor: #757575;
+        --fourthColor: #000;
+        --textColor: #333;
+    }
 
-        <!--  Custom CSS  -->
-<!--        <link rel="stylesheet" href="<?php echo SITE_URL . CSS_FOLDER ?>custom.css">-->
-        
-        <link rel="stylesheet" href="<?php echo SITE_URL . CSS_FOLDER ?>/multiple-select.css">
-<!--
-        <link rel="stylesheet" href="<?php echo SITE_URL . CSS_FOLDER ?>/jquery-ui.css">
-        <link rel="stylesheet" href="<?php echo SITE_URL . CSS_FOLDER ?>/magnific-popup.css">
--->
+</style>
+<link rel="stylesheet" type="text/css" href="<?php echo SITE_URL . CSS_FOLDER ?>style.css">
+<link rel="stylesheet" type="text/css" href="<?php echo SITE_URL . CSS_FOLDER ?>responsive.css">
+<link rel="stylesheet" href="<?php echo SITE_URL . CSS_FOLDER ?>jquery.bs4-scrolling-tabs.css">
+<link rel="stylesheet" href="<?php echo SITE_URL . CSS_FOLDER ?>font">
+<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
 
-        <!--  Custom CSS  -->
-        <link rel="stylesheet" href="<?php echo SITE_URL . CSS_FOLDER ?>style.css">
-        <!--  Responsive CSS  -->
-        <link rel="stylesheet" href="<?php echo SITE_URL . CSS_FOLDER ?>responsive.css">
+<!------------GOOGLE FONT------------>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+<!------------ZMDI ICON------------>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css">
+<link rel="stylesheet" href="<?php echo SITE_URL . CSS_FOLDER ?>font-awesome.css">
+<!------------OWL------------>
+<link rel="stylesheet" href="<?php echo SITE_URL . CSS_FOLDER ?>owl3.css">
+<!--<link rel="stylesheet" href="https://fonts.google.com/icons?selected=Material%20Icons%20Outlined%3Aaccount_circle%3A">-->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<link rel="stylesheet" type="text/css" href="slick/slick.css" />
+<link rel="stylesheet" type="text/css" href="slick/slick-theme.css" />
 
         <script>
             //paste this code under head tag or in a seperate js file.
@@ -73,118 +82,128 @@ if (!isset($_COOKIE["cookieid"])) {
     </head>
     <!-- NAVBAR
     ================================================== -->
+    <!-- <body class="home"> -->
+        <!-- <header class="header"> -->
+        <!--  NEW NAV ENDS   -->
+        <section class="topPanel">
+            <div class="container">
+                <div class="nav-inner">
+                    <div class="heade-img">
+                        <div class="brand">
+                            <a href="<?php echo SITE_URL ?>" class="logo"> <img class="img-fluid" src="<?php echo SITE_URL ?>images/logo.png" alt="" title="Home">
+                                <div class="brand-text">
+                                    <p>Tempered by Knowledge</p>
+                                    <p>Driven by Passion</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="nav-box-part">
+                        <div class="nav-info">
+                            <div id="cssmenu">
+                                <ul class="nav navbar-nav navbar-left" id="nav">
+                                    <li class="nav-item"><a class="nav-link" href="<?php echo SITE_URL ?>">home</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="<?php echo SITE_URL ?>visualarchive-search">VISUAL ARCHIVES</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="<?php echo SITE_URL ?>beforeSearch">BIBLIOGRAPHY</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="<?php echo SITE_URL ?>memorabilia-search">BENGALI FILM ARCHIVES</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="../galleryRasa-html/podcast.php">PODCAST</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="<?php echo SITE_URL ?>exhibition-search">EXHIBITION<span class="material-icons">new_releases</span></a></li>
+                                </ul>
+                            </div>   
+                        </div>
+                        <div class="head-bar">
+                            <div class="drafts-action">
+                                <a href="./cart.php" class="drafts-btn"><span class="material-icons cart-box">shopping_bag</span><span class="badge">2</span></a>
+                            </div>
+                            <div class="contact-action">
+                                <a href="<?php echo SITE_URL ?>login-register" class="contact-btn"><span class="material-icons cart-box">person</span></a>
+                            </div>
+                            <div class="right-nav">
+                                <button class="sidebar-toggle">
+                                    <span class="material-icons">menu</span>
+                                </button>
+                                <!-- sidebar -->
+                                <aside class="sidebar">
+                                    <div class="sidebar-header">
+                                        <button class="close-btn"><i class="zmdi zmdi-close"></i></button>
+                                    </div>
+                                    <div class="nav-boxs">
+                                        <ul class="nav navbar-nav navbar-left " id="nav">
+                                            <li class="nav-item"><a class="nav-link" href="<?php echo SITE_URL ?>page/about-us">About us</a></li>
+                                            <li class="nav-item"><a class="nav-link" href="../galleryRasa-html/vision-statement.php">VISION STATEMENT</a></li>
+                                            <li class="nav-item"><a class="nav-link" href="<?php echo SITE_URL ?>testimonials">TESTIMONIALS</a></li>
+                                            <li class="nav-item"><a class="nav-link" href="#">in the press</a></li>
+                                            <li class="nav-item"><a class="nav-link" href="#">photo book</a></li>
+                                            <li class="nav-item"><a class="nav-link" href="<?php echo SITE_URL ?>contactus"">CONTACT US</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="nav-boxs nav-boxs-mobile">
+                                        <ul class="nav navbar-nav navbar-left " id="nav">
+                                            <li class="nav-item"><a class="nav-link" href="<?php echo SITE_URL ?>">home</a></li>
+                                            <li class="nav-item"><a class="nav-link" href="#">VISUAL ARCHIVES</a></li>
+                                            <li class="nav-item"><a class="nav-link" href="#">BIBLIOGRAPHY</a></li>
+                                            <li class="nav-item"><a class="nav-link" href="#">BENGALI FILM ARCHIVES</a></li>
+                                            <li class="nav-item"><a class="nav-link" href="#">PODCAST</a></li>
+                                            <li class="nav-item"><a class="nav-link" href="<?php echo SITE_URL ?>exhibition-search">EXHIBITION</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="nav-form">
+                                        <h4>Subscribe to our Newsletter</h4>
+                                        <?php
+                                        if (isset($_SESSION['newsletter'])) {
+                                            ?>
+                                            <p>
+                                                <?php echo $_SESSION['newsletter']; ?> 
+                                            </p>
+                                            <?php
+                                            unset($_SESSION['newsletter']);
+                                        }
+                                        ?>
+                                        <!-- <form>
+                                            <div class="form-group">
+                                                <input type="email" class="form-control" placeholder="your name">
+                                            </div>
+                                            <div class="form-group arrow-box">
+                                                <input type="email" class="form-control" placeholder="your e-mail address">
+                                                <a href="#" class="arrow"><i class="zmdi zmdi-arrow-right"></i></a>
+                                            </div>
+                                        </form> -->
+                                        <form id="contact-form" method="post" action="contact_newsletter.php" role="form">
+                                            <div class="form-group">
+                                                <input type="text" name="fullname" class="form-control" id="fullname" placeholder="your name">
+                                            </div>
+                                            <div class="form-group arrow-box">
+                                                <input type="email" name="fullemail" class="form-control" id="fullemail" aria-describedby="emailHelp" placeholder="your e-mail address">
+                                                <a href="#" class="arrow"><i class="zmdi zmdi-arrow-right"></i></a>
+                                            </div>
+                                            <div class="form-group">
+                                                <!--<div class="g-recaptcha" data-sitekey="6LeGYzEbAAAAABEW4etvHZZKGwNs3SaF7FAQcCAK" data-callback="verifyRecaptchaCallback" data-expired-callback="expiredRecaptchaCallback"></div>-->
 
+                                                <div class="g-recaptcha" data-sitekey="6LeGYzEbAAAAABEW4etvHZZKGwNs3SaF7FAQcCAK"></div>
+                                                <!-- <div class="g-recaptcha" id="sape_captcha" data-sitekey="6LcwDKsZAAAAAGh3QyRMNaEANIPKUPvYuoOpQ2JY"></div> -->
 
-
-
-
-
-    <body class="home">
-
-        <header>
-            <div class="brand-wrapper">
-                <div class="container">
-                    <div class="row justify-content-center">
-                        <div class="brand-auth">
-                            <div class="brand text-center">
-                                <a href="<?php echo SITE_URL ?>">
-                                    <img src="<?php echo SITE_URL ?>images/gallery-rasa-logo.png" alt="Gallery Rasa" width="400" height="126" class="img-fluid">
-                                </a>
-                                <h2>tempered by knowledge<br>driven by passion</h2>
+                                                <!-- <button type="submit" class="btn btn-primary form-control" data-recaptcha="true" required data-error="Please complete the Captcha">Submit</button> -->
+                                                <div class="help-block with-errors"></div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="nav-social">
+                                        <h4>Find us on Social Media</h4>
+                                        <ul>
+                                            <li><a href="https://www.facebook.com/galleryrasa" target="_blank"><img class="img-fluid" src="images/facebook-white.png"></a></li>
+                                            <li><a href="https://www.instagram.com/galleryrasa_official" target="_blank"><img class="img-fluid" src="images/insta-white.png"></a></li>
+                                            <li><a href="https://twitter.com/galleryrasaart" target="_blank"><img class="img-fluid" src="images/twe-white.png"></a></li>
+                                            <li><a href="https://www.linkedin.com/in/rakesh-sahni-19369063" target="_blank"><img class="img-fluid" src="images/in-white.png"></a></li>
+                                        </ul>
+                                    </div>
+                                </aside>
                             </div>
                         </div>
-                        <img src="<?php echo SITE_URL ?>images/tree.png" alt="Gallery Rasa" width="1170" height="577" class="img-fluid">
-                            
-
-                                <?php
-                                if (!isset($_SESSION['user-email'])) {
-                                    ?>
-                        <div class="auth"><a href="<?php echo SITE_URL ?>login-register">Login <span class="pink">/</span> Register</a></div>
-                                    <?php
-                                } else {
-                                    ?>
-
-                                <div class="loggedin w-100">
-                                    <ul class="d-sm-flex justify-content-center p-0">
-                                    <?php
-                                    $_SESSION['user-id'];
-                                    $conn = dbconnect();
-                                    $qry_credit_header = "SELECT credit from customer_credit where customer_id = '" . $_SESSION['user-id'] . "'";
-                                    $q_credit_header = $conn->prepare($qry_credit_header);
-                                    $q_credit_header->execute();
-                                    $q_credit_header->setFetchMode(PDO::FETCH_ASSOC);
-                                    $row_credit_header = $q_credit_header->fetch();
-
-                                    if (empty($row_credit_header)) {
-                                        $credit_header = '0';
-                                    } else {
-                                        $credit_header = $row_credit_header['credit'];
-                                    }
-                                    ?>
-
-                                        <li>Welcome <a href="<?php echo SITE_URL ?>/customer-dashboard/customer-dashboard"><?php echo $_SESSION['user-name']; ?>  </a></li>
-<!--                                        <li><a href="<?php echo SITE_URL . '/customer-dashboard/' ?>buy-credit.php">Buy Credit (<?php echo $credit_header; ?>)</a></li>-->
-                                        <li><a href="<?php echo SITE_URL ?>/logout">  Logout</a></li>
-                                    <?php
-                                }
-                                ?> 
-
-
-                                <?php
-                                if ((isset($_SESSION['user-email'])) || (isset($_SESSION["cart_item"]))) {
-                                    if (isset($_SESSION["cart_item"])) {
-                                        $no_items_sess = count($_SESSION["cart_item"]);
-                                        ?>
-                                        <li><a href="<?php echo SITE_URL . '/cart-checkout/cart.php' ?>"><i class="fa fa-shopping-cart" aria-hidden="true"></i>(<?php echo $no_items_sess; ?>)</a></li>
-                                        <?php
-                                    } if (isset($_SESSION['user-email'])) {
-                                        $conn = dbconnect();
-                                        $qry_cart_item = "SELECT count(id) cart_item from cart where customer_id = '" . $_SESSION['user-id'] . "'";
-                                        $q_cart_item = $conn->prepare($qry_cart_item);
-                                        $q_cart_item->execute();
-                                        $q_cart_item->setFetchMode(PDO::FETCH_ASSOC);
-                                        $row_cart_item = $q_cart_item->fetch();
-                                        $no_cart_item = $row_cart_item['cart_item'];
-                                        ?>
-<!--                                        <li><a href="<?php echo SITE_URL . '/cart-checkout/cart.php' ?>"><i class="fa fa-shopping-cart" aria-hidden="true"></i>(<?php echo $no_cart_item; ?>)</a></li>-->
-                                        <?php
-                                    }
-                                }
-                                ?>     
-                                    </ul>
-                            </div>
                     </div>
                 </div>
-                <nav class="navbar navbar-expand-lg navbar-light">
-                    <div class="container">
-                        <div class="row justify-content-around w-100">
-                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#galleryRasaNavbar" aria-controls="galleryRasaNavbar" aria-expanded="false" aria-label="Toggle navigation">
-                                <span class="navbar-toggler-icon"></span>
-                            </button>
-
-                            <div class="collapse navbar-collapse" id="galleryRasaNavbar">
-                                <ul class="navbar-nav w-100 justify-content-around text-center">
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="<?php echo SITE_URL ?>visualarchive-search">visual archives</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="<?php echo SITE_URL ?>beforeSearch">Bibliography</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="<?php echo SITE_URL ?>memorabilia-search">bengali film ARCHIVES</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="<?php echo SITE_URL ?>exhibition-search">exhibition</a>
-                                    </li>
-                                    <li class="nav-item auth">
-                                        <a class="nav-link" href="login-register.html">Login / Register</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </nav>
             </div>
-
-        </header>
+        </section>
+        <!--  NEW NAV ENDS   -->
+    <!-- </header> -->
+    <!-- <div class="menu-overlay"></div> -->
 

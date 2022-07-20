@@ -5,8 +5,8 @@
     define('DB_HOST', 'localhost');
     define('DB_NAME', 'galleryrasa');
     
-    define('ORG_SITE_URL', 'https://galleryrasa.com/');
-    define('SITE_URL', 'https://galleryrasa.com/');
+    define('ORG_SITE_URL', 'http://localhost/galleryrasa/');
+    define('SITE_URL', 'http://localhost/galleryrasa/');
     define('ADMIN_URL', 'https://galleryrasa.com/admin');
     define('APPS_BASE_PATH', $_SERVER['DOCUMENT_ROOT'] . "/");
     
@@ -121,6 +121,7 @@
     define('INC_FOLDER', 'includes/');
     define('INC_LIB', INC_FOLDER.'lib/');
     define('VIEWS_FOLDER', 'views/');
+    define('OWL_FOLDER', 'owl/');
     define('THUMB_IMGS', IMGSRC.'thumbs/');
     define('VA_THUMB_IMGS', IMGSRC.'artwork_thumbs/');
     // define('VA_MEDIUM_URL', IMGSRC.'va-medium/');

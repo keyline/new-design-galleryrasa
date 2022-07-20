@@ -1,0 +1,17 @@
+{
+    "name": "galleryrasa/phpspreadsheet",
+    "description": "reading excel files",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Keylines It",
+            "email": "info@keylines.net"
+        }
+    ],
+    "require": {
+        "phpoffice/phpspreadsheet": "^1.6"
+    },
+	"config": {
+        "vendor-dir": "Class/"
+    }
+}

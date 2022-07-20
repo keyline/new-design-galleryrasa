@@ -1,11 +1,11 @@
 
 <footer>
-    <div class="footer-top">
+    <!-- <div class="footer-top">
         <div class="container">
             <div class="row">
                 <div class="col-lg-4 col-md-5">
                     <h4>subscribe to our newsletter</h4>
-                    <div class="footer-subscribe-form-wrapper">
+                    <div class="footer-subscribe-form-wrapper"> -->
 
 
 
@@ -31,45 +31,45 @@
                         }
                         ?>
 
-                        <form id="contact-form" method="post" action="contact_newsletter.php" role="form">
+                        <!-- <form id="contact-form" method="post" action="contact_newsletter.php" role="form">
                             <div class="form-group">
                                 <input type="text" name="fullname" class="form-control" id="fullname" placeholder="full name">
                             </div>
                             <div class="form-group">
                                 <input type="email" name="fullemail" class="form-control" id="fullemail" aria-describedby="emailHelp" placeholder="email">
                             </div>
-                            <div class="form-group">
+                            <div class="form-group"> -->
                                 <!--<div class="g-recaptcha" data-sitekey="6LeGYzEbAAAAABEW4etvHZZKGwNs3SaF7FAQcCAK" data-callback="verifyRecaptchaCallback" data-expired-callback="expiredRecaptchaCallback"></div>-->
 
                                 <!--<div class="g-recaptcha" data-sitekey="6LeGYzEbAAAAABEW4etvHZZKGwNs3SaF7FAQcCAK"></div>-->
-                                <div class="g-recaptcha" id="sape_captcha" data-sitekey="6LcwDKsZAAAAAGh3QyRMNaEANIPKUPvYuoOpQ2JY"></div>
+                                <!-- <div class="g-recaptcha" id="sape_captcha" data-sitekey="6LcwDKsZAAAAAGh3QyRMNaEANIPKUPvYuoOpQ2JY"></div>
 
                                 <button type="submit" class="btn btn-primary form-control" data-recaptcha="true" required data-error="Please complete the Captcha">Submit</button>
-                                <div class="help-block with-errors"></div>
-                            </div>
+                                <div class="help-block with-errors"></div> -->
+                            <!-- </div>
                         </form>
                     </div>
-                </div>
-                <div class="col-lg-8 col-md-7 mt-4 mt-md-0">
+                </div> -->
+                <!-- <div class="col-lg-8 col-md-7 mt-4 mt-md-0">
                     <div class="row align-items-end">
                         <div class="col-lg-9">
                             <h4 class="mc-l">important links</h4>
                             <div class="footer-nav">
-                                <ul class="m-0 p-0">
+                                <ul class="m-0 p-0"> -->
 
-                                    <li><a href="<?php echo SITE_URL ?>">home</a></li>
+                                    <!-- <li><a href="<?php echo SITE_URL ?>">home</a></li>
                                     <li><a href="<?php echo SITE_URL ?>/page/terms-conditions">terms & conditions</a></li>
-                                    <li><a href="<?php echo SITE_URL ?>/page/privacy-policy">privacy policy</a></li>
+                                    <li><a href="<?php echo SITE_URL ?>/page/privacy-policy">privacy policy</a></li> -->
 <!--                                    <li><a href="<?php echo SITE_URL ?>/page/refund-return-policies">return & refund policy</a></li>-->
 <!--                                    <li><a href="<?php echo SITE_URL ?>/page/how-to-buy">how to buy</a></li>-->
-                                    <li><a href="<?php echo SITE_URL ?>/page/faq">FAQ</a></li>
+                                    <!-- <li><a href="<?php echo SITE_URL ?>/page/faq">FAQ</a></li>
                                     <li><a href="<?php echo SITE_URL ?>/page/about-us">about us</a></li>
                                     <li><a href="<?php echo SITE_URL ?>/page/vision-statement">vision statement</a></li>
-                                    <li><a href="<?php echo SITE_URL ?>testimonials">testimonials</a></li>
+                                    <li><a href="<?php echo SITE_URL ?>testimonials">testimonials</a></li> -->
 <!--                                    <li><a href="<?php echo SITE_URL ?>/page/acknowledgements">acknowledgements</a></li>-->
-                                    <li><a href="<?php echo SITE_URL ?>contactus.php">contact us</a></li>
+                                    <!-- <li><a href="<?php echo SITE_URL ?>contactus.php">contact us</a></li> -->
 
-                                </ul>
+                                <!-- </ul>
                             </div>
                         </div>
                         <div class="col-lg-3">
@@ -104,8 +104,8 @@
                 </div>
             </div>
         </div>
-    </div>
-    <div class="footer-bottom">
+    </div> -->
+    <!-- <div class="footer-bottom">
         <div class="container">
             <div class="row justify-content-center text-center flex-nowrap">
                 <span>&copy; <?php echo date("Y") ?> Gallery Rasa. All Rights Reserved. Powered by Keyline Creative Services</span>
@@ -113,7 +113,105 @@
             </div>
         </div>
     </div>
-</footer>
+</footer> -->
+<!--    FOOTER STARTS-->
+<section class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="copy-part">
+                    <div class="copy-link">
+                        <ul class="mobile-footer">
+                            <li><a href="<?php echo SITE_URL ?>page/about-us">About us</a></li>
+                            <li><a href="../galleryRasa-html/vision-statement.php">VISION STATEMENT</a></li>
+                            <li><a href="<?php echo SITE_URL ?>testimonials">TESTIMONIALS</a></li>
+                            <li><a href="#">in the press</a></li>
+                            <li><a href="#">photo book</a></li>
+                            <li><a href="<?php echo SITE_URL ?>contactus">CONTACT US</a></li>
+                        </ul>
+                        <ul>
+                            <li><a href="<?php echo SITE_URL ?>page/terms-conditions">TERMS & CONDITIONS</a></li>
+                            <li><a href="<?php echo SITE_URL ?>page/faq">FAQ</a></li>
+                            <li><a href="<?php echo SITE_URL ?>page/privacy-policy">PRIVACY POLICY</a></li>
+                        </ul>
+                    </div>
+                    <div class="copy-right">
+                        <div class="copy-social">
+                            <ul>
+                                <li><a href="https://www.facebook.com/galleryrasa" target="_blank"><img class="img-fluid" src="<?php echo SITE_URL ?>images/facebook.png"></a></li>
+                                <li><a href="https://www.instagram.com/galleryrasa_official" target="_blank"><img class="img-fluid" src="<?php echo SITE_URL ?>images/insta.png"></a></li>
+                                <li><a href="https://twitter.com/galleryrasaart" target="_blank"><img class="img-fluid" src="<?php echo SITE_URL ?>images/twe.png"></a></li>
+                                <li><a href="https://www.linkedin.com/in/rakesh-sahni-19369063" target="_blank"><img class="img-fluid" src="<?php echo SITE_URL ?>images/in.png"></a></li>
+                            </ul>
+                        </div>
+                        <div class="copy-text">
+                            <p>© 2022 Gallery Rasa. All Rights Reserved</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!--    Sticky ENDS-->
+
+
+
+<!--      BACK TO TOP ENDS-->
+
+<!--<a href="#top" class="top scrolltop"><i class="zmdi zmdi-chevron-up"></i></a> -->
+
+<!-- Modal -->
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+
+                <!--        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>-->
+                <div class="midal-title"> get exclusive catalogue </div>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <i class="zmdi zmdi-close-circle"></i> </button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-form">
+                    <form>
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Name*">
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-control" placeholder="Email*">
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-control" placeholder="Phone no*">
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control" placeholder="Message" rows="3"></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">Submit</button>
+                    </form>
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+</div>
+
+
+<!-- Optional JavaScript; choose one of the two! -->
+
+<!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="<?php echo SITE_URL . JS_FOLDER ?>bootstrap.bundle.min.js"></script>
+<script type="text/javascript" src="<?php echo SITE_URL . JS_FOLDER ?>menumaker.js"></script>
+<script src="<?php echo SITE_URL . JS_FOLDER ?>jquery.serialtabs.js"></script>
+<script defer type="text/javascript" src="<?php echo SITE_URL . JS_FOLDER ?>script.js"></script>
+<script src="<?php echo SITE_URL . OWL_FOLDER ?>owl-min.js"></script>
+<script src="<?php echo SITE_URL . JS_FOLDER ?>jquery.bs4-scrolling-tabs.js"></script>
+ <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 <section class="after-footer"></section>
 
 
