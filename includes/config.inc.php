@@ -50,7 +50,7 @@
     define('VA_MEDIUM_WIDTH', 500); // in pixels 500
     define('VA_MEDIUM_HEIGHT', 300); // in pixels 300
     
-    define('VA_MEDIUM_URL', 'va-medium'); 
+    // define('VA_MEDIUM_URL', 'va-medium'); 
     
     define('TOP_DEALS_TILE', '<h3 class="text-warning" style="margin-top:0"> Top Deals</h3>'); 
     
@@ -110,8 +110,8 @@
     #folders
     define('CACHE_FILE', 'cache/');
     define('ADMIN_FOLDER', '/admin/');
-    define('CSS_FOLDER', '/css/');
-    define('JS_FOLDER', '/js/');
+    define('CSS_FOLDER', 'css/');
+    define('JS_FOLDER', 'js/');
     define('OLD_CSS_FOLDER', '/admincss/');
     define('OLD_JS_FOLDER', '/adminjs/');
     define('IMGSRC', 'product_images/');
@@ -121,10 +121,10 @@
     define('INC_FOLDER', 'includes/');
     define('INC_LIB', INC_FOLDER.'lib/');
     define('VIEWS_FOLDER', 'views/');
-    define('OWL_FOLDER', 'owl/');
+    define('OWL_FOLDER', '/owl/');
     define('THUMB_IMGS', IMGSRC.'thumbs/');
     define('VA_THUMB_IMGS', IMGSRC.'artwork_thumbs/');
-    // define('VA_MEDIUM_URL', IMGSRC.'va-medium/');
+    define('VA_MEDIUM_URL', IMGSRC.'va-medium/');
     define('EXHIBITION_THUMB_IMGS', IMGSRC.'exhibition_thumbs/');
     define('ARTWORKS_IMGS', IMGSRC.'artwork/');
     define('ARTWORKS_ORG_IMGS', IMGSRC.'Art Work/');

@@ -47,7 +47,7 @@ if (!isset($_COOKIE["cookieid"])) {
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css">
 <link rel="stylesheet" href="<?php echo SITE_URL . CSS_FOLDER ?>font-awesome.css">
 <!------------OWL------------>
-<link rel="stylesheet" href="<?php echo SITE_URL . CSS_FOLDER ?>owl3.css">
+<link rel="stylesheet" href="<?php echo SITE_URL . OWL_FOLDER ?>owl3.css">
 <!--<link rel="stylesheet" href="https://fonts.google.com/icons?selected=Material%20Icons%20Outlined%3Aaccount_circle%3A">-->
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
@@ -82,7 +82,7 @@ if (!isset($_COOKIE["cookieid"])) {
     </head>
     <!-- NAVBAR
     ================================================== -->
-    <!-- <body class="home"> -->
+    <body class="pattern-banner">
         <!-- <header class="header"> -->
         <!--  NEW NAV ENDS   -->
         <section class="topPanel">

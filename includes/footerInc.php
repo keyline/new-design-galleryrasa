@@ -1,5 +1,5 @@
 
-<footer>
+<!-- <footer> -->
     <!-- <div class="footer-top">
         <div class="container">
             <div class="row">
@@ -123,7 +123,7 @@
                     <div class="copy-link">
                         <ul class="mobile-footer">
                             <li><a href="<?php echo SITE_URL ?>page/about-us">About us</a></li>
-                            <li><a href="../galleryRasa-html/vision-statement.php">VISION STATEMENT</a></li>
+                            <li><a href="<?php echo SITE_URL ?>/page/vision-statement">VISION STATEMENT</a></li>
                             <li><a href="<?php echo SITE_URL ?>testimonials">TESTIMONIALS</a></li>
                             <li><a href="#">in the press</a></li>
                             <li><a href="#">photo book</a></li>
@@ -145,7 +145,7 @@
                             </ul>
                         </div>
                         <div class="copy-text">
-                            <p>© 2022 Gallery Rasa. All Rights Reserved</p>
+                            <p>© <?php echo date("Y") ?> Gallery Rasa. All Rights Reserved</p>
                         </div>
                     </div>
                 </div>
@@ -211,7 +211,7 @@
 <script defer type="text/javascript" src="<?php echo SITE_URL . JS_FOLDER ?>script.js"></script>
 <script src="<?php echo SITE_URL . OWL_FOLDER ?>owl-min.js"></script>
 <script src="<?php echo SITE_URL . JS_FOLDER ?>jquery.bs4-scrolling-tabs.js"></script>
- <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 <section class="after-footer"></section>
 
 
@@ -238,7 +238,7 @@
 
 
 
-<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+<!-- <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
 
@@ -250,8 +250,8 @@
 
 
 
-<!--<script src="<?php echo SITE_URL . JS_FOLDER ?>jquery.swipebox.js">
-</script>-->
+<script src="<?php echo SITE_URL . JS_FOLDER ?>jquery.swipebox.js">
+</script>
 
 <script src="<?php echo SITE_URL . JS_FOLDER ?>cart.js">
 </script>
@@ -268,19 +268,18 @@
 <script src="<?php echo SITE_URL . JS_FOLDER ?>jquery.plugin.min.js">
 </script>
 <script src="<?php echo SITE_URL . JS_FOLDER ?>jquery.countdown.min.js">
-</script>
+</script> -->
 
 
 
 
 
 
-<script type="text/javascript" src="<?php echo SITE_URL ?>/mainjs/lib/owl.carousel.min.js"></script>
-<script type="text/javascript" src="<?php echo SITE_URL ?>/mainjs/lib/slideout-min.js"></script>
+<!-- <script type="text/javascript" src="<?php echo SITE_URL ?>/mainjs/lib/owl.carousel.min.js"></script> -->
+<!-- <script type="text/javascript" src="<?php echo SITE_URL ?>/mainjs/lib/slideout-min.js"></script>
 <script type="text/javascript" src="<?php echo SITE_URL ?>/mainjs/lib/greensock.js"></script>
 <script type="text/javascript" src="<?php echo SITE_URL ?>/mainjs/lib/layerslider.transitions.js"></script>
 <script type="text/javascript" src="<?php echo SITE_URL ?>/mainjs/lib/layerslider.kreaturamedia.jquery.js"></script>
-
 <script type="text/javascript" src="<?php echo SITE_URL ?>/mainjs/lib/jquery.infinitescroll.min.js"></script>
 <script type="text/javascript" src="<?php echo SITE_URL ?>/mainjs/lib/jquery.filterizr-min.js"></script>
 <script type="text/javascript" src="<?php echo SITE_URL ?>/mainjs/lib/swiper.min.js"></script>
@@ -291,7 +290,7 @@
 
 
 
-<script type="text/javascript" src="<?php echo SITE_URL ?>/mainjs/lib/jquery-ui-min.js"></script>
+<script type="text/javascript" src="<?php echo SITE_URL ?>/mainjs/lib/jquery-ui-min.js"></script> -->
 
 
 
@@ -302,13 +301,13 @@ $uri = $_SERVER['REQUEST_URI'];
 //echo $uri; // Outputs: URI
 if (strpos($uri, 'visualarchive-details/') == false) {
     ?>
-    <script type="text/javascript" src="<?php echo SITE_URL ?>/mainjs/main.js"></script>
+    <!-- <script type="text/javascript" src="<?php echo SITE_URL ?>/mainjs/main.js"></script> -->
     <?php
 }
 ?>
-<script type="text/javascript" src="<?php echo SITE_URL ?>/mainjs/lib/select2.js"></script>
+<!-- <script type="text/javascript" src="<?php echo SITE_URL ?>/mainjs/lib/select2.js"></script>
 <script type="text/javascript" src="<?php echo SITE_URL ?>/mainjs/lib/multiple-select.js"></script>
-<script type="text/javascript" src="<?php echo SITE_URL ?>/mainjs/magnific-popup/jquery.magnific-popup.min.js"></script>
+<script type="text/javascript" src="<?php echo SITE_URL ?>/mainjs/magnific-popup/jquery.magnific-popup.min.js"></script> -->
 
 
 <script>

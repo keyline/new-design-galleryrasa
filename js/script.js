@@ -201,7 +201,7 @@ $(document).ready(function() {
  
 });
 
-    $("#my-about2").owlCarousel({
+    $("#my-about").owlCarousel({
         loop: true,
         margin: 20,
 		dots: true,

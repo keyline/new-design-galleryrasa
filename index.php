@@ -23,7 +23,7 @@ try {
 
 include(INC_FOLDER . "homeheaderInc.php");
 $home = file_get_contents(VIEWS_FOLDER . 'home1.Inc.php');
-$searchall = file_get_contents(VIEWS_FOLDER . 'searchallInc.php');
+// $searchall = file_get_contents(VIEWS_FOLDER . 'searchallInc.php');
 $search = array('{arcAnim}');
 $replace = array($arc_anim);
 echo $detailsView = $searchall, $home;

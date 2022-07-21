@@ -31,7 +31,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <?php include 'assets/inc/header.php';?>
+    <?php // include 'assets/inc/header.php';?>
     <section class="start-body start-body-desktop">
         <div class="container">
             <div class="row">
@@ -208,7 +208,7 @@
                 </div>
                 <div class="col-lg-5">
                     <div class="right-part">
-                             <div id="my-about2" class="owl-carousel owl-theme owl-loaded owl-drag">
+                             <div id="my-about" class="owl-carousel owl-theme owl-loaded owl-drag">
 						     <div class="item">
                                  <div class="img-box">
                                      <img class="img-fluid" src="images/image4.jpg">
@@ -255,7 +255,7 @@
                                             </form>
                                         </div>
 
-                                              <div class="drop-form">
+                                            <div class="drop-form">
                                                                 <div class="dropdown">
                                                     <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown">
                                                         <p>VISUAL ARCHIVES<span class="material-icons">keyboard_arrow_down</span></p>
@@ -418,7 +418,7 @@
     </section>
 
 
-    <?php include 'assets/inc/footer.php';?>
+    <?php // include 'assets/inc/footer.php';?>
 
     </body>
 

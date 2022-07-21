@@ -15,7 +15,7 @@ if (!isset($_COOKIE["cookieid"])) {
         
         <link rel="icon" href="<?php echo SITE_URL ?>images/gallery-favicon.png">
         <!--  Bootstrap CSS  -->
-        <link rel="stylesheet" href="<?php echo SITE_URL . CSS_FOLDER ?>bootstrap.min.css">
+        <!-- <link rel="stylesheet" href="<?php echo SITE_URL . CSS_FOLDER ?>bootstrap.min.css"> -->
 
         <!--  Font-awesome CSS  -->
         <!-- <link rel="stylesheet" href="<?php echo SITE_URL . CSS_FOLDER ?>font-awesome.min.css">
@@ -82,17 +82,6 @@ if (!isset($_COOKIE["cookieid"])) {
 <link rel="stylesheet" type="text/css" href="slick/slick-theme.css" />
 
 
-
-
-
-
-
-
-
-
-
-
-
         <script>
             //paste this code under head tag or in a seperate js file.
             // Wait for window load
@@ -146,7 +135,7 @@ if (!isset($_COOKIE["cookieid"])) {
                                     <li class="nav-item"><a class="nav-link" href="<?php echo SITE_URL ?>visualarchive-search">VISUAL ARCHIVES</a></li>
                                     <li class="nav-item"><a class="nav-link" href="<?php echo SITE_URL ?>beforeSearch">BIBLIOGRAPHY</a></li>
                                     <li class="nav-item"><a class="nav-link" href="<?php echo SITE_URL ?>memorabilia-search">BENGALI FILM ARCHIVES</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="../galleryRasa-html/podcast.php">PODCAST</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#">PODCAST</a></li>
                                     <li class="nav-item"><a class="nav-link" href="<?php echo SITE_URL ?>exhibition-search">EXHIBITION<span class="material-icons">new_releases</span></a></li>
                                 </ul>
                             </div>   
@@ -172,19 +161,19 @@ if (!isset($_COOKIE["cookieid"])) {
                                             <li class="nav-item"><a class="nav-link" href="<?php echo SITE_URL ?>/page/about-us">About us</a></li>
                                             <li class="nav-item"><a class="nav-link" href="../galleryRasa-html/vision-statement.php">VISION STATEMENT</a></li>
                                             <li class="nav-item"><a class="nav-link" href="<?php echo SITE_URL ?>/testimonials">TESTIMONIALS</a></li>
-                                            <li class="nav-item"><a class="nav-link" href="../galleryRasa-html/in-the-press.php">in the press</a></li>
-                                            <li class="nav-item"><a class="nav-link" href="../galleryRasa-html/photobook.php">photo book</a></li>
+                                            <li class="nav-item"><a class="nav-link" href="#">in the press</a></li>
+                                            <li class="nav-item"><a class="nav-link" href="#">photo book</a></li>
                                             <li class="nav-item"><a class="nav-link" href="<?php echo SITE_URL ?>/testimonials">CONTACT US</a></li>
                                         </ul>
                                     </div>
                                     <div class="nav-boxs nav-boxs-mobile">
                                         <ul class="nav navbar-nav navbar-left " id="nav">
                                             <li class="nav-item"><a class="nav-link" href="<?php echo SITE_URL ?>">home</a></li>
-                                            <li class="nav-item"><a class="nav-link" href="../galleryRasa-html/visual-archives.php">VISUAL ARCHIVES</a></li>
-                                            <li class="nav-item"><a class="nav-link" href="../galleryRasa-html/bibliography.php">BIBLIOGRAPHY</a></li>
-                                            <li class="nav-item"><a class="nav-link" href="../galleryRasa-html/bengali-film-archives.php">BENGALI FILM ARCHIVES</a></li>
-                                            <li class="nav-item"><a class="nav-link" href="../galleryRasa-html/podcast.php">PODCAST</a></li>
-                                            <li class="nav-item"><a class="nav-link" href="../galleryRasa-html/exhibition.php">EXHIBITION</a></li>
+                                            <li class="nav-item"><a class="nav-link" href="<?php echo SITE_URL ?>visualarchive-search">VISUAL ARCHIVES</a></li>
+                                            <li class="nav-item"><a class="nav-link" href="<?php echo SITE_URL ?>beforeSearch">BIBLIOGRAPHY</a></li>
+                                            <li class="nav-item"><a class="nav-link" href="<?php echo SITE_URL ?>memorabilia-search">BENGALI FILM ARCHIVES</a></li>
+                                            <li class="nav-item"><a class="nav-link" href="#">PODCAST</a></li>
+                                            <li class="nav-item"><a class="nav-link" href="<?php echo SITE_URL ?>exhibition-search">EXHIBITION</a></li>
                                         </ul>
                                     </div>
                                     <div class="nav-form">
@@ -199,7 +188,7 @@ if (!isset($_COOKIE["cookieid"])) {
                                             unset($_SESSION['newsletter']);
                                         }
                                         ?>
-<form id="contact-form" method="post" action="contact_newsletter.php" role="form">
+                                        <form id="contact-form" method="post" action="contact_newsletter.php" role="form">
                                             <div class="form-group">
                                                 <input type="text" name="fullname" class="form-control" id="fullname" placeholder="your name">
                                             </div>
