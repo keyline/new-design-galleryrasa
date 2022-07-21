@@ -1,3 +1,5 @@
 *.log
 config.inc.php
 db_config.php
+error_log
+admin/error_log
