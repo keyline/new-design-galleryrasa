@@ -21,7 +21,7 @@ if (!isset($_GET['pagename']) || empty($_GET['pagename'])) {
             
             $html= $row['detail'];
         }
-        if($pName == 'contact-us'){
+        if($pName == 'about-us'){
             $formHtml = '<div class="col-md-6 contact">
 			<form id="contact-form" class="contact-form" method="POST" action="">
                         

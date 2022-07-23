@@ -824,7 +824,7 @@ main .btn.add-to-cart-btn {
     background: none;
 }
 
-.owl-theme.owl-carousel .owl-nav .owl-next,
+/* .owl-theme.owl-carousel .owl-nav .owl-next,
 .owl-theme.owl-carousel .owl-nav .owl-next:hover {
     background: url(../images/owl-arrow-right.png) no-repeat center center;
     background-size: contain;
@@ -834,7 +834,7 @@ main .btn.add-to-cart-btn {
 .owl-theme.owl-carousel .owl-nav .owl-prev:hover {
     background: url(../images/owl-arrow-left.png) no-repeat center center;
     background-size: contain;
-}
+} */
 
 .owl-theme.owl-carousel .owl-nav [class*=owl-] {
     text-indent: -9999px;

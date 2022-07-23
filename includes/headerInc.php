@@ -163,7 +163,7 @@ if (!isset($_COOKIE["cookieid"])) {
                                             <li class="nav-item"><a class="nav-link" href="<?php echo SITE_URL ?>/testimonials">TESTIMONIALS</a></li>
                                             <li class="nav-item"><a class="nav-link" href="#">in the press</a></li>
                                             <li class="nav-item"><a class="nav-link" href="#">photo book</a></li>
-                                            <li class="nav-item"><a class="nav-link" href="<?php echo SITE_URL ?>/testimonials">CONTACT US</a></li>
+                                            <li class="nav-item"><a class="nav-link" href="<?php echo SITE_URL ?>/contactus">CONTACT US</a></li>
                                         </ul>
                                     </div>
                                     <div class="nav-boxs nav-boxs-mobile">

@@ -448,6 +448,32 @@ $(document).ready(function() {
             }
         }
     });
+     $("#testimonial").owlCarousel({
+        loop: false,
+        margin: 20,
+		dots: false,
+		nav: true,
+        autoplay: false,
+        autoplayTimeout: 4000,
+        autoplayHoverPause: true,
+        animateIn: 'fadeIn',
+        animateOut: 'fadeOut',
+       navText: ["<span class='material-icons'>chevron_left</span>", "<span class='material-icons'>navigate_next</span>"],
+        responsive: {
+            0: {
+                items: 1,
+            },
+            600: {
+                items: 1,
+            },
+            750: {
+                items: 1,
+            },
+            1000: {
+                items: 1,
+            }
+        }
+    });
      $("#exhibition-artwork").owlCarousel({
         loop: true,
         margin: 20,

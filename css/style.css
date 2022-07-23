@@ -1210,7 +1210,7 @@ div.select .input{
 .visual-artist .artist-inner .artist-img:after {
     position: absolute;
     content: '';
-    background-image: url(../img/image%203.png);
+    background-image: url(../images/image3.png);
     height: 100%;
     /* left: 0; */
     right: -10px;
@@ -5750,6 +5750,20 @@ span{
 .testimonials{
        padding: 30px 0px 180px;
 }
+.testimonials .testimonial-info{
+    display: flex;
+        padding-bottom: 52px;
+}
+.testimonials .testimonial-info .testimonial-learn .testimonial-action .learn-btn{
+    font-family: 'Roboto Mono';
+    color: var(--primaryColor); 
+    font-size: 16px;
+    font-weight: 700;
+    border-bottom: 1px solid var(--primaryColor); 
+}
+.testimonial-modal .modal-body{
+    padding: 32px 40px 40px;
+}
 .testimonials .testimonials-inner .visual-title{
         color: var(--primaryColor);
     /* font-weight: 500; */
@@ -5761,6 +5775,91 @@ span{
     margin-bottom: 10px;
     letter-spacing: 1px;
     border-bottom: 1px solid #D5D8D9;
+}
+.img-signature{
+    max-width: 180px;
+    height: auto;
+}
+.testimonial-modal .tesimonial-info .testimonial-content{
+    font-family: 'Roboto';
+    font-weight: 400;
+    font-size: 16px;
+    color: var(--textColor);
+    padding-bottom: 36px;
+    text-align: justify;
+}
+.testimonial-modal .tesimonial-info .close-action .close-btn{
+    background-color: var(--textColor);
+font-family: 'Roboto', sans-serif;
+font-weight: 400;
+font-size: 16px;
+word-spacing: 5px;
+text-transform: uppercase;
+height: 76px;
+width: 150px;
+display: flex;
+justify-content: center;
+align-items: center;
+position: initial;
+transition: .5s ease all;
+}
+.testimonial-modal .tesimonial-info .close-action .close-btn:hover{
+color: var(--textColor);
+background-color: #fff;
+}
+.testimonial-modal .tesimonial-info .testimonial-name{
+    color: var(--textColor);
+    /* font-weight: 500; */
+    font-size: 36px;
+    font-family: 'Braveold-Medium';
+    padding-bottom: 38px;
+}
+.testimonials .testimonial-info .testimonial-img img{
+    border-radius: 50%;
+        width: 90px;
+    height: 90px;
+}
+.testimonials .testimonial-info .testimonial-learn .testimonial-name{
+    color: var(--textColor);
+    /* font-weight: 500; */
+    font-size: 36px;
+    font-family: 'Braveold-Medium';
+    padding-bottom: 6px;
+}
+.testimonials .testimonial-info .testimonial-learn {
+    padding-left: 20px;
+}
+.testimonials .owl-carousel .owl-nav button.owl-prev {
+    color: #fff;
+    font-size: 28px;
+    background-color: var(--primaryColor);
+    height: 34px;
+    width: 34px;
+    border-radius: 50%;
+    /* left: -16px; */
+    position: absolute;
+    top: 0;
+    right: 54px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: .5s ease all;
+}
+.testimonials .owl-carousel .owl-nav button.owl-next {
+    color: #fff;
+    font-size: 28px;
+    background-color: var(--primaryColor);
+    height: 34px;
+    width: 34px;
+    border-radius: 50%;
+    /* left: -16px; */
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: .5s ease all;
 }
 .testimonials .testimonials-box .testimonials-content{
     font-family: 'Roboto';
