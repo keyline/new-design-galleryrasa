@@ -5,8 +5,8 @@
     define('DB_HOST', 'localhost');
     define('DB_NAME', 'galleryrasa');
     
-    define('ORG_SITE_URL', 'http://localhost/galleryrasa/');
-    define('SITE_URL', 'http://localhost/galleryrasa/');
+    define('ORG_SITE_URL', 'http://localhost/namrata-galleryrasa/');
+    define('SITE_URL', 'http://localhost/namrata-galleryrasa/');
     define('ADMIN_URL', 'https://galleryrasa.com/admin');
     define('APPS_BASE_PATH', $_SERVER['DOCUMENT_ROOT'] . "/");
     
