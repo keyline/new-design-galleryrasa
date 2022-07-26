@@ -449,7 +449,7 @@ $(document).ready(function() {
         }
     });
      $("#testimonial").owlCarousel({
-        loop: false,
+//        loop: false,
         margin: 20,
 		dots: false,
 		nav: true,
