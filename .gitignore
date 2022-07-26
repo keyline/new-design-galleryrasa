@@ -1,5 +1,5 @@
 *.log
-includes/config.inc.php
-includes/db_config.php
+/includes/config.inc.php
+/includes/db_config.php
 error_log
-admin/error_log
+/admin/error_log
