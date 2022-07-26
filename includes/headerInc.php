@@ -158,8 +158,8 @@ if (!isset($_COOKIE["cookieid"])) {
                                     </div>
                                     <div class="nav-boxs">
                                         <ul class="nav navbar-nav navbar-left " id="nav">
-                                            <li class="nav-item"><a class="nav-link" href="<?php echo SITE_URL ?>/page/about-us">About us</a></li>
-                                            <li class="nav-item"><a class="nav-link" href="../galleryRasa-html/vision-statement.php">VISION STATEMENT</a></li>
+                                            <li class="nav-item"><a class="nav-link" href="<?php echo SITE_URL ?>/about-us">About us</a></li>
+                                            <li class="nav-item"><a class="nav-link" href="<?php echo SITE_URL ?>/page/vision-statement">VISION STATEMENT</a></li>
                                             <li class="nav-item"><a class="nav-link" href="<?php echo SITE_URL ?>/testimonials">TESTIMONIALS</a></li>
                                             <li class="nav-item"><a class="nav-link" href="#">in the press</a></li>
                                             <li class="nav-item"><a class="nav-link" href="#">photo book</a></li>
