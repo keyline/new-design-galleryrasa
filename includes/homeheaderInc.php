@@ -127,6 +127,12 @@ if (!isset($_COOKIE["cookieid"])) {
                                 <aside class="sidebar">
                                     <div class="sidebar-header">
                                         <button class="close-btn"><i class="zmdi zmdi-close"></i></button>
+                                        <!-- <span class="material-symbols">close</span> -->
+                                        <!-- <span class="material-symbols">done</span> -->
+
+
+
+
                                     </div>
                                     <div class="nav-boxs">
                                         <ul class="nav navbar-nav navbar-left " id="nav">

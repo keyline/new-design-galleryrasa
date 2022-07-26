@@ -27,9 +27,7 @@ $home = file_get_contents(VIEWS_FOLDER . 'home1.Inc.php');
 $search = array('{arcAnim}');
 $replace = array($arc_anim);
 // echo $detailsView = $searchall, $home;
-
 echo $detailsView = $home;
-
 //$options = get_subCategory_options($conn);
 //$select_sub = $options['s'];
 //echo str_replace('{subcategory_list}', $select_sub, $home);
