@@ -1,13 +1,13 @@
 <?php
     define('gR_Version', '1.3');
-    define('DB_USER', 'galleryr_whyusr');
-    define('DB_PASS', 'CTTzz#-(e5p7');
+    define('DB_USER', 'root');
+    define('DB_PASS', '');
     define('DB_HOST', 'localhost');
-    define('DB_NAME', 'galleryr_blues');
+    define('DB_NAME', 'galleryrasa');
     
-    define('ORG_SITE_URL', 'https://uat.galleryrasa.com/');
-    define('SITE_URL', 'https://uat.galleryrasa.com/');
-    define('ADMIN_URL', 'https://uat.galleryrasa.com//admin');
+    define('ORG_SITE_URL', 'https://localhost/galleryrasa//');
+    define('SITE_URL', 'https://localhost/galleryrasa//');
+    define('ADMIN_URL', 'https://localhost/galleryrasa///admin');
     define('APPS_BASE_PATH', $_SERVER['DOCUMENT_ROOT'] . "/");
     
     define('CURRENCY_CODE', '$ ');  # US [ $ ], GB [ & pound; ] #Euro [ & euro ];
