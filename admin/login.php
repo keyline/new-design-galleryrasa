@@ -23,8 +23,8 @@ if ($username != null && $pass != null) {
 
     if ($q->rowCount() > 0) {
         $row = $q->fetch();
-        // $pass_hash = crypt($pass, PASSWRD_SALT);
-        $pass_hash = md5($pass);
+        $pass_hash = crypt($pass, PASSWRD_SALT);
+        // $pass_hash = md5($pass);
         if (strcasecmp($pass_hash, $row['pass']) == 0) {
             $_SESSION['valid_admin'] = $row['user'];
             ### Clear Older Basket
