@@ -837,7 +837,7 @@ main .btn.add-to-cart-btn {
 } */
 
 .owl-theme.owl-carousel .owl-nav [class*=owl-] {
-    text-indent: -9999px;
+    text-indent: 0px!important;
     padding: 0;
     width: 32px;
     height: 20px;
