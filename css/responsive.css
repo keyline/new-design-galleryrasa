@@ -47,6 +47,41 @@
 
 /*LARGE PC VERSION*/
 @media screen and (max-width: 1400px) {
+    .topPanel .nav-inner .form-group.arrow-box .arrow {
+        height: 56px;
+    }
+    .sidebar-header {
+        padding: 30px 0px 2px;
+    }
+    .topPanel .nav-inner .form-control {
+        height: 56px;
+    }
+    .nav-boxs {
+        height: 250px;
+        margin-top: 24px;
+    }
+    .topPanel .nav-inner .nav-form {
+        padding-top: 16px;
+    }
+    .topPanel .nav-inner .form-control::placeholder{
+        font-size: 14px;
+    }
+    .topPanel .nav-inner .nav-form h4 {
+        font-size: 18px;
+    }
+    .topPanel .nav-inner .nav-boxs ul .nav-item .nav-link {
+        font-size: 14px;
+        padding: 10px 0px;
+    }
+    .topPanel .nav-inner .nav-social {
+        padding-top: 0px;
+    }
+    .sidebar-header {
+        padding: 24px 0px 2px;
+    }
+    .close-btn {
+        font-size: 20px;
+    }
     .start-body.visual-page.about-us .visual-inner .visual-info {
     width: 42%;
 }
