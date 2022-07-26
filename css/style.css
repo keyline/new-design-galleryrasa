@@ -33,23 +33,23 @@ body{ min-height: 100%; background: #fff;}
 */
 @font-face{
     font-family: 'Braveold-Black';
-    src: url(../font/Braveold-Black.ttf); 
+    src: url(../fonts/Braveold-Black.ttf); 
 }
 @font-face{
     font-family: 'Braveold-Bold';
-    src: url(../font/Braveold-Bold.ttf); 
+    src: url(../fonts/Braveold-Bold.ttf); 
 }
 @font-face{
     font-family: 'Braveold-Light';
-    src: url(../font/Braveold-Light.ttf); 
+    src: url(../fonts/Braveold-Light.ttf); 
 }
 @font-face{
     font-family: 'Braveold-Medium';
-    src: url(../font/Braveold-Medium.ttf); 
+    src: url(../fonts/Braveold-Medium.ttf); 
 }
 @font-face{
     font-family: 'Braveold-Regular';
-    src: url(../font/Braveold-Regular.ttf); 
+    src: url(../fonts/Braveold-Regular.ttf); 
 }
 
 .font-roboto{
@@ -626,6 +626,9 @@ a {
 .brand-text{
     padding-top: 12px;
 }
+.search-barOption select{
+    min-width: auto;
+}
 select {
   #display: none; /*hide original SELECT element:*/
   padding: 15px 5px 15px 15px;
@@ -651,6 +654,9 @@ label.custom-select {
 }
 .start-body.start-body-mobile{
     display: none;
+}
+.start-body.start-body-desktop{
+    padding-bottom: 105px;
 }
 .start-body .custom-select{
     border: none;
@@ -876,7 +882,9 @@ label.custom-select {
 .left-body .left-title{
         color: var(--textColor);
     font-size: 50px;
+/*    font-family: 'Braveold-Bold';*/
     font-family: 'Braveold-Bold';
+    src: url(../font/Braveold-Bold.ttf); 
     letter-spacing: 1px;
     line-height:58px
 }
@@ -5764,6 +5772,9 @@ span{
 .testimonial-modal .modal-body{
     padding: 32px 40px 40px;
 }
+.testimonial-modal .modal-body{
+    
+}
 .testimonials .testimonials-inner .visual-title{
         color: var(--primaryColor);
     /* font-weight: 500; */
@@ -5779,6 +5790,13 @@ span{
 .img-signature{
     max-width: 180px;
     height: auto;
+}
+.testimonial-modal .fade {
+    background-color: #333333db;
+}
+.testimonial-modal .modal-dialog {
+    max-width: 68%;
+    top: 10%;
 }
 .testimonial-modal .tesimonial-info .testimonial-content{
     font-family: 'Roboto';
@@ -6434,6 +6452,6 @@ body {
 }
 
 .brand .logo img{
-    width: 150px;
+    width: 128px;
 }
 

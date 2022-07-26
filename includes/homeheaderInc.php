@@ -37,6 +37,7 @@ if (!isset($_COOKIE["cookieid"])) {
 <link rel="stylesheet" type="text/css" href="<?php echo SITE_URL . CSS_FOLDER ?>responsive.css">
 <link rel="stylesheet" href="<?php echo SITE_URL . CSS_FOLDER ?>jquery.bs4-scrolling-tabs.css">
 <link rel="stylesheet" href="<?php echo SITE_URL . CSS_FOLDER ?>font">
+        <link rel="stylesheet" href="assets/font">
 <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
 
 <!------------GOOGLE FONT------------>
