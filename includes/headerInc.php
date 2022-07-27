@@ -194,7 +194,8 @@ if (!isset($_COOKIE["cookieid"])) {
                                             </div>
                                             <div class="form-group arrow-box">
                                                 <input type="email" name="fullemail" class="form-control" id="fullemail" aria-describedby="emailHelp" placeholder="your e-mail address">
-                                                <a href="#" class="arrow"><i class="zmdi zmdi-arrow-right"></i></a>
+                                                <!-- <a href="#" class="arrow"><i class="zmdi zmdi-arrow-right"></i></a> -->
+                                                <button type="submit" class="arrow"><i class="zmdi zmdi-arrow-right"></i></button>
                                             </div>
                                             <div class="form-group">
                                                 <!--<div class="g-recaptcha" data-sitekey="6LeGYzEbAAAAABEW4etvHZZKGwNs3SaF7FAQcCAK" data-callback="verifyRecaptchaCallback" data-expired-callback="expiredRecaptchaCallback"></div>-->

@@ -131,7 +131,7 @@
                         </ul>
                         <ul>
                             <li><a href="<?php echo SITE_URL ?>page/terms-conditions">TERMS & CONDITIONS</a></li>
-                            <li><a href="<?php echo SITE_URL ?>page/faq">FAQ</a></li>
+                            <li><a href="<?php echo SITE_URL ?>faq">FAQ</a></li>
                             <li><a href="<?php echo SITE_URL ?>page/privacy-policy">PRIVACY POLICY</a></li>
                         </ul>
                     </div>
@@ -1110,6 +1110,7 @@ secret key
 
 <script>
     $(document).ready(function () {
+        // alert();
 
 
 
@@ -1120,7 +1121,7 @@ secret key
             var val = $(this).val();
             var strval = val.toString();
             var last = strval.split(':');
-            //alert(last[2]);
+            // alert(last[2]);
             var serachtype = last[2];
 
             if (serachtype == 'Bibliography') {

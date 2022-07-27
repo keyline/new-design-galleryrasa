@@ -20,8 +20,10 @@ if (!isset($_GET['pagename']) || empty($_GET['pagename'])) {
         while ($row = $q->fetch()){
             
             $html= $row['detail'];
+            // echo $html;
+            // die;
         }
-        if($pName == 'about-us'){
+        if($pName == 'contact-us'){
             $formHtml = '<div class="col-md-6 contact">
 			<form id="contact-form" class="contact-form" method="POST" action="">
                         
