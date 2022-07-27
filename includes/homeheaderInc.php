@@ -107,7 +107,7 @@ if (!isset($_COOKIE["cookieid"])) {
                                     <li class="nav-item"><a class="nav-link" href="<?php echo SITE_URL ?>visualarchive-search">VISUAL ARCHIVES</a></li>
                                     <li class="nav-item"><a class="nav-link" href="<?php echo SITE_URL ?>beforeSearch">BIBLIOGRAPHY</a></li>
                                     <li class="nav-item"><a class="nav-link" href="<?php echo SITE_URL ?>memorabilia-search">BENGALI FILM ARCHIVES</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="../galleryRasa-html/podcast.php">PODCAST</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#">PODCAST</a></li>
                                     <li class="nav-item"><a class="nav-link" href="<?php echo SITE_URL ?>exhibition-search">EXHIBITION<span class="material-icons">new_releases</span></a></li>
                                 </ul>
                             </div>   
@@ -181,7 +181,8 @@ if (!isset($_COOKIE["cookieid"])) {
                                             </div>
                                             <div class="form-group arrow-box">
                                                 <input type="email" name="fullemail" class="form-control" id="fullemail" aria-describedby="emailHelp" placeholder="your e-mail address">
-                                                <a href="#" class="arrow"><i class="zmdi zmdi-arrow-right"></i></a>
+                                                <!-- <a href="#" class="arrow"><i class="zmdi zmdi-arrow-right"></i></a> -->
+                                                <button type="submit" class="arrow"><i class="zmdi zmdi-arrow-right"></i></button>
                                             </div>
                                             <div class="form-group">
                                                 <!--<div class="g-recaptcha" data-sitekey="6LeGYzEbAAAAABEW4etvHZZKGwNs3SaF7FAQcCAK" data-callback="verifyRecaptchaCallback" data-expired-callback="expiredRecaptchaCallback"></div>-->

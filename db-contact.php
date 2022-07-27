@@ -25,6 +25,14 @@ $phone = $_POST['phone'];
 $subject = $_POST['subject'];
 $message = $_POST['message'];
 
+// echo $name;
+// echo $email;
+// echo $phone;
+// echo $subject;
+// echo $message;
+// exit();
+
+
 $data = [
     'secret' => '6LcwDKsZAAAAAMN4pMR6J8vzpakFi-umXdg9vkex',
     'response' => @$_POST['g-recaptcha-response']
@@ -95,6 +103,8 @@ if ($response['success'] === true) {
 
             $qry_mail = "insert into email_log(id,email,email_name,subject,text,date) "
                     . "values('','$to','contact-form','$subject','$message','$reg_date')";
+                    // echo $qry_mail;
+                    // die; 
             $q_mail = $conn->prepare($qry_mail);
             $q_mail->execute();
 
@@ -103,7 +113,7 @@ if ($response['success'] === true) {
 
             $to2 = $email;
 
-            $emailname2 = 'Gallery Rasa <info@galleryrasa.com>';
+            $emailname2 = 'Gallery Rasa <avijit@keylines.net>';
 
             $nameform2 = '';
 

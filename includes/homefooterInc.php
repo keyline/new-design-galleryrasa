@@ -61,7 +61,7 @@
                                     <li><a href="<?php echo SITE_URL ?>/page/privacy-policy">privacy policy</a></li>
 <!--                                    <li><a href="<?php echo SITE_URL ?>/page/refund-return-policies">return & refund policy</a></li>-->
                                     <li><a href="<?php echo SITE_URL ?>/page/how-to-buy">how to buy</a></li>
-                                    <li><a href="<?php echo SITE_URL ?>/page/faq">FAQ</a></li>
+                                    <li><a href="<?php echo SITE_URL ?>/faq">FAQ</a></li>
                                     <li><a href="<?php echo SITE_URL ?>/page/about-us">about us</a></li>
                                     <li><a href="<?php echo SITE_URL ?>/page/vision-statement">vision statement</a></li>
                                     <li><a href="<?php echo SITE_URL ?>/page/testimonials">testimonials</a></li>
