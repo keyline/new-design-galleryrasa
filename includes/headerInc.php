@@ -110,7 +110,7 @@ if (!isset($_COOKIE["cookieid"])) {
     </head>
     <!-- NAVBAR
     ================================================== -->
-
+        <!-- nav bar -->
     <body class="home">
         <header class="header">
         <!--  NEW NAV ENDS   -->
