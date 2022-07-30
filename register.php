@@ -17,6 +17,13 @@ $ulength = 6;
 $pass = GeraHash($ulength);
 $reg_date = date("Y-m-d H:i:s");
 
+// echo $fname;
+// echo $lname;
+// echo $email;
+// echo $phone;
+// echo $visitorType;
+// exit();
+
 
 $data = [
     'secret' => '6LcwDKsZAAAAAMN4pMR6J8vzpakFi-umXdg9vkex',

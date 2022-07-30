@@ -130,9 +130,9 @@
                             <li><a href="<?php echo SITE_URL ?>contactus">CONTACT US</a></li>
                         </ul>
                         <ul>
-                            <li><a href="<?php echo SITE_URL ?>page/terms-conditions">TERMS & CONDITIONS</a></li>
+                            <li><a href="<?php echo SITE_URL ?>terms-conditions">TERMS & CONDITIONS</a></li>
                             <li><a href="<?php echo SITE_URL ?>faq">FAQ</a></li>
-                            <li><a href="<?php echo SITE_URL ?>page/privacy-policy">PRIVACY POLICY</a></li>
+                            <li><a href="<?php echo SITE_URL ?>privacy-policy">PRIVACY POLICY</a></li>
                         </ul>
                     </div>
                     <div class="copy-right">
@@ -305,9 +305,9 @@ if (strpos($uri, 'visualarchive-details/') == false) {
     <?php
 }
 ?>
-<!-- <script type="text/javascript" src="<?php echo SITE_URL ?>/mainjs/lib/select2.js"></script>
+<script type="text/javascript" src="<?php echo SITE_URL ?>/mainjs/lib/select2.js"></script>
 <script type="text/javascript" src="<?php echo SITE_URL ?>/mainjs/lib/multiple-select.js"></script>
-<script type="text/javascript" src="<?php echo SITE_URL ?>/mainjs/magnific-popup/jquery.magnific-popup.min.js"></script> -->
+<script type="text/javascript" src="<?php echo SITE_URL ?>/mainjs/magnific-popup/jquery.magnific-popup.min.js"></script>
 
 
 <script>
