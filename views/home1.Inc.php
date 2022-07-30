@@ -58,11 +58,11 @@
                                             <form method="post" name="search_form" id="search_form_all" role="form" class="search-input">
                                                 <!-- <div class="row justify-content-center flex-nowrap"> -->
                                                     <!-- <div class="col-12"> -->
-                                                        <!-- <select class="program-name2 form-control" id="select-all-attr" name="searchall[]"  data-placeholder="Type for Complete Search"></select>
-                                                        <button class="btn-search" type="submit"><span class="material-icons">search</span></button> -->
-
-                                                        <input class="form-control" type="search" placeholder="Search" name="searchall[]" value="" id="select-all-attr" required>
+                                                        <select class="program-name2 form-control" id="select-all-attr" name="searchall[]"  data-placeholder="Type for Complete Search"></select>
                                                         <button class="btn-search" type="submit"><span class="material-icons">search</span></button>
+
+                                                        <!-- <input class="form-control" type="search" placeholder="Search" name="searchall[]" value="" id="select-all-attr" required> -->
+                                                        <!-- <button class="btn-search" type="submit"><span class="material-icons">search</span></button> -->
                                                         
                                                         <!-- <button type="submit" class="btn btn-primary form-control" value="all-entry-point" name="all-search-entry">GO <i class="fa fa-search" aria-hidden="true"></i></button> -->
                                                     <!-- </div> -->
