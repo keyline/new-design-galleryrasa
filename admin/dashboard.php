@@ -13,6 +13,7 @@ require_once("../" . INCLUDED_FILES . "config.inc.php");
 require_once("../" . INCLUDED_FILES . "dbConn.php");
 require_once("../" . INCLUDED_FILES . "functionsInc.php");
 check_auth_admin();
+
 $conn = dbconnect();
 
 $qry_memcnt = "SELECT count(prodid) count_mem from products_ecomc where category_id = '2'";

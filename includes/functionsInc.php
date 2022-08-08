@@ -86,6 +86,14 @@ function check_auth_admin() {
     }
 }
 
+function clean($string) 
+    {
+       $string = str_replace(' ', '-', $string); // Replaces all spaces with hyphens.
+       $string2 = preg_replace('/[^A-Za-z0-9\-]/', '', $string); // Removes special chars.
+       $string3 = preg_replace('/-+/', '-', $string2);
+       return $string3;
+    }
+
 function create_folder($folder = null) {
     if (!is_null($folder)) {
 

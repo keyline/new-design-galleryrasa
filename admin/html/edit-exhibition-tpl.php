@@ -59,8 +59,23 @@
 
 
                             <div class="form-group">
-                                <label for="tags">Exhibition Date</label>
-                                <input type="date" class="form-control" id="exdate" name="exdate" value="<?php echo $exhibitionarr['exhibition_date'] ?>">
+                                <label for="tags">Start Exhibition Date</label>
+                                <input type="datetime-local" class="form-control" id="start_exdate" name="start_exdate" value="<?php echo $exhibitionarr['from_exhibition_date'] ?>">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="tags">End Exhibition Date</label>
+                                <input type="datetime-local" class="form-control" id="end_exdate" name="end_exdate" value="<?php echo $exhibitionarr['end_exhibition_date'] ?>">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="tags">Exhibition City</label>
+                                <input type="text" class="form-control" id="excity" name="excity" value="<?php echo $exhibitionarr['city'] ?>">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="tags">Full Address</label>
+                                <textarea class="form-control" rows="2" name="exfull_address"><?php echo $exhibitionarr['full_address'] ?></textarea>
                             </div>
 
                             <div class="form-group">
@@ -76,9 +91,9 @@
                                             echo 'Canceled';
                                         }
                                         ?>
-                                    </option>
-                                    <option value="0">Archived</option>
+                                    </option>                                    
                                     <option value="1">Open</option>
+                                    <option value="0">Archived</option>
                                     <option value="2">Canceled</option>
                                 </select>
                             </div>

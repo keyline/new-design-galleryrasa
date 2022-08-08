@@ -17,7 +17,7 @@ check_auth_admin();
 $conn = dbconnect();
 
 $exhibition_thumb_destination = '../' . EXHIBITION_THUMB_IMGS;
-$exhibition_destination = '../../' . 'exhibition' . '/';
+$exhibition_destination = '../' . 'exhibition' . '/';
 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
@@ -90,13 +90,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
 
     if ($fileuploadflag == true) {
-
-
-
-
-
-
-
         try {
             $conn = dbconnect();
             $err = false;
