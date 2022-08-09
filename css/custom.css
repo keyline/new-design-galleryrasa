@@ -134,7 +134,7 @@ h2,
     margin: 5px;
 }
 
-.ui-accordion .ui-accordion-header {
+/* .ui-accordion .ui-accordion-header {
     display: block;
     cursor: pointer;
     position: relative;
@@ -145,6 +145,23 @@ h2,
     background: #d5e6e0;
     border: 1px solid #b9d5c9;
     color: #000;
+} */
+
+.ui-accordion .ui-accordion-header {
+    display: block;
+    cursor: pointer;
+    position: relative;
+    margin: 2px 0 0 0;
+    /* padding: 0.5em 0.5em 0.5em 0.7em; */
+    padding: 15px 0px;
+    font-size: 100%;
+    border-radius: 0px;
+    border-width: 0px 0px 1px!important;
+    background: transparent;
+    /* background: #d5e6e0; */
+    /* border: 1px solid #b9d5c9; */
+    color: #000;
+    /* border:  solid rgba(0,0,0,.125)!important; */
 }
 
 .ui-state-active .ui-icon,

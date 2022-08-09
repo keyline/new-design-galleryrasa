@@ -19,12 +19,13 @@
                                                             <div class="search-barOption">
                                                                 <form method="post" action="search" name="search_form" id="search_form" class="bibliography-search-form">
                                                                         <div class="form-group row">
-                                                                            <div class="col-md-6">
-                                                                                <select class="program-name" name="bibliography[]" multiple="multiple" data-placeholder="Search By Author/Artist/Editor/Topic"></select>
+                                                                            <div class="col-md-11 p-0">
+                                                                                <select class="program-name" name="bibliography[]" multiple="multiple" data-placeholder="Search By Author / Artist / Editor / Topic"></select>
                                                                             </div>                     
-                                                                            <div class="col">
-                                                                                <button type="submit" class="btn btn-default form-control search-bttn" value="entry-point" name="bibliography-search-entry"><span class="glyphicon glyphicon-search"></span> Search
-                                                                                </button>
+                                                                            <div class="col-md-1 p-0">
+                                                                                <!-- <button type="submit" class="btn btn-default form-control search-bttn" value="entry-point" name="bibliography-search-entry"><span class="material-icons"></span> Search
+                                                                                </button> -->
+                                                                                <button type="submit" value="entry-point" name="bibliography-search-entry" class="btn-search" type="submit"><span class="material-icons">search</span></button >
                                                                             </div>
                                                                         </div>
                                                                         <input type="hidden" name="catg" value="bibliography">
@@ -76,18 +77,20 @@
                                 <!-- <div class="SearchResult">{searchList}</div> -->
                                 {searchList}
                             <!-- </div> -->
-                        </div>
-                        <!-- pagination -->
-                        <div class="artist-pagination" id="pagination-section">
-                            <div class="col-lg-12">
-                                <div class="artist-pagination">
-                                    <nav aria-label="Page navigation example">
-                                        <ul id="pagin" class="pagination">
-                                        </ul>
-                                    </nav>
-                                </div>
+                            <div class="artist-pagination" id="pagination-section">
+                                    <div class="col-lg-12">
+                                        <div class="artist-pagination">
+                                            <nav aria-label="Page navigation example">
+                                                <ul id="pagin" class="pagination">
+                                                </ul>
+                                            </nav>
+                                        </div>
+                                    </div>
+                            </div>
                             </div>
                         </div>
+                        <!-- pagination -->
+                        
                     </div>
                 </div>
             </div>

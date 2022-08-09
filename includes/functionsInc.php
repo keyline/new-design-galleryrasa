@@ -964,15 +964,13 @@ function get_html($array, $keys = array(),$usersession, $html = '') {
                 
                 if($usersession==true){
                 
-                $html .= '<div class="bibliography-action">
+                $html .= '</div><div class="bibliography-action">
                 <div class="cite-action">
                     <a href="javascript:void(0);" data-toggle="modal" data-target="#citethis" class="cite-btn"><i data-toggle="tooltip" title="" data-original-title="Cite this" data-placement="left" onclick="javascript:CiteThis(' . $productID . ');">Cite This</i></a></li>
                 </div>
                 <div class="details-action">
                        <a  href="' . SITE_URL . '/details/' . $productID . '" class="details-btn" target="_blank">details</a>
-                   </div>
-                </div>
-                </div>';
+                   </div>';
                 
                 }else{
                     
@@ -982,9 +980,8 @@ function get_html($array, $keys = array(),$usersession, $html = '') {
                        <a href="javascript:void(0);" data-toggle="modal" data-target="#citethis" class="cite-btn"><i data-toggle="tooltip" title="" data-original-title="Cite this" data-placement="left" onclick="javascript:CiteThis(' . $productID . ');">Cite This</i></a></li>
                    </div>
                    <div class="details-action">
-                    <a  href="' . SITE_URL . '/details/' . $productID . '" class="details-btn" target="_blank">details</a>
+                    <a  data-toggle="modal" data-target="#exampleModallogin" class="details-btn" target="_blank">details</a>
                    </div>
-               </div>
                </div>';
                    
                    
@@ -1069,8 +1066,10 @@ function get_html($array, $keys = array(),$usersession, $html = '') {
 
 
                 $html .= '</div>
-				</div>
+				            </div>                                        
                                 </div>
+                                    </div>
+                                        </div>
                                 <hr>
                                 ';
             }
@@ -1320,6 +1319,7 @@ function left_filter_html($someArray = array(), $keys = array(), $count = array(
 
 
             $html .= '<h6 class="accordion-header inactive-header">' . replace_underscore_space($key) . '</h6>
+            
                         <section class="accordion-content">
                         <div id="' . $key . '-header"></div>
                             <ul class="list-unstyled" id="' . $key . '">';

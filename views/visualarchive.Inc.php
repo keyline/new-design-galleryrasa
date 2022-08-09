@@ -18,13 +18,14 @@
                                                             <div class="search-barOption">
                                                                 <form method="post" action="visualarchive-result" name="search_form" id="search_form" class="visualarchive-result">
                                                                     <div class="form-group row">
-                                                                        <div class="col-md-9">
+                                                                        <div class="col-md-11 p-0">
                                                                             <select class="program-name" name="visualarchive[]" multiple="multiple" data-placeholder="Search by Artist"></select>
                                                                         </div>
-                                                                        <div class="col-md-3">
-                                                                            <button type="submit" class="btn btn-default form-control search-bttn" value="entryPoint" name="srchButtonEntryPoint"><span class="glyphicon glyphicon-search"> </span>Search
-                                                                            </button>
-                                                                        </div>
+                                                                        <div class="col-md-1 p-0">
+                                                                                <!-- <button type="submit" class="btn btn-default form-control search-bttn" value="entry-point" name="bibliography-search-entry"><span class="material-icons"></span> Search
+                                                                                </button> -->
+                                                                                <button type="submit" value="entry-point" name="bibliography-search-entry" class="btn-search" type="submit"><span class="material-icons">search</span></button >
+                                                                            </div>
                                                                     </div>
                                                                         <input type="hidden" name="catg" value="Visual Archive">
                                                                         <input type="hidden" name="att[0]" value="va_artist">

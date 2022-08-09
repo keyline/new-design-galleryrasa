@@ -21,19 +21,16 @@
                                                         <div class="top-search">
                                                             <div class="search-barOption">
                                                                 <form method="post" action="memorabilia" name="search_form" id="search_form" role="form">
-                                                                    <!-- <input class="form-control" type="search" placeholder="Search by film / cast / director" name="keyword" value="" id="mySearch" required>
-                                                                    <a href="./bengali-film-archives-search.php" class="btn-search" type="submit"><span class="material-icons">search</span></a> -->
-                                                                    <!-- <div class="row justify-content-center flex-nowrap"> -->
-                                                                        <!-- <div class="col-md-8 col-lg-6 col-sm-9"> -->
-                                                                            <select class="form-control program-name" name="memorabilia[]" multiple="multiple" data-placeholder="Search by Film/Cast/Director"></select>
+                                                                        <div class="col-md-11 p-0">
+                                                                            <select class="form-control program-name" name="memorabilia[]" multiple="multiple" data-placeholder="Search by Film / Cast / Director"></select>
+                                                                        </div>
+                                                                        <div class="col-md-1 p-0">
                                                                                 <button type="submit" class="btn-search" value="entryPoint" name="srchButtonEntryPoint"><span class="material-icons">search</span></button>
+                                                                            </div>
                                                                             <input type="hidden" name="catg" value="Memorabilia">
                                                                             <input type="hidden" name="att[0]" value="film">
                                                                             <input type="hidden" name="att[1]" value="cast">
-                                                                            <input type="hidden" name="att[2]" value="director">
-                                                                            <!-- <input type="hidden"  id="place" data-placeholder="Search by Cast/Film/Director"> -->
-                                                                        <!-- </div> -->
-                                                                    <!-- </div> -->
+                                                                            <input type="hidden" name="att[2]" value="director">                                                                  
                                                                 </form>
                                                             </div>
                                                             <div class="drop-form">                                                    
