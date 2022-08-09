@@ -19,31 +19,21 @@
                                         This repository of images from Gallery Rasa Archives helps form a more holistic idea and gaze into an artist's body of works. Our passionate endevour to document images from rare published sources and celebrate the unsung and established has led to a foundation of credibility upon which this window into Indian art rests.
                                     </div>
                                     <div class="left-body">
-
-
-                                        <div class="hearder-options">
+                                        <div class="hearder-options visual-search">
                                             <div class="user-options">
                                                 <div class="search-wrap">
                                                     <div class="search">
                                                         <div class="top-search">
                                                             <div class="search-barOption">
-                                                                <!-- <form action="product_search.php" class="search-input" method="post">
-                                                                    <input class="form-control" type="search" placeholder="enter artist’s name" name="keyword" value="" id="mySearch" required>
-                                                                    <a href="./visual-archives-search.php" class="btn-search" type="submit"><span class="material-icons">search</span></a>
-                                                                </form> -->
                                                                 <form method="post" action="visualarchive-result" class="search-input"  name="search_form" id="search_form" role="form">
-                                                                        <!-- <div class="row justify-content-center flex-nowrap"> -->
-                                                                            <!-- <div class="col-md-8 col-lg-6 col-sm-9"> -->
-                                                                           <input type="text" class="form-control" name="visualarchive[]" multiple="multiple" placeholder="Enter Artist’s Name">
-                                                                                <!-- <select class="program-name form-control" name="visualarchive[]" multiple="multiple" data-placeholder="Enter Artist’s Name"></select> -->
-                                                                                <!--<button type="submit" class="btn btn-primary form-control">Search</button>-->
-                                                                                <button type="submit" class="btn-search" value="entryPoint" name="srchButtonEntryPoint">
-                                                                                <span class="material-icons">search</span></button> 
-                                                                                <input type="hidden" name="catg" value="Visual Archive">
-                                                                                <input type="hidden" name="att[0]" value="va_artist">
-
-                                                                            <!-- </div> -->
-                                                                        <!-- </div> -->
+                                                                        <div class="col-md-10 col-sm-6 p-0">
+                                                                            <select class="program-name form-control" name="visualarchive[]" multiple="multiple" data-placeholder="Enter Artist’s Name"></select>
+                                                                        </div>
+                                                                        <button type="submit" class="btn-search" value="entryPoint" name="srchButtonEntryPoint">
+                                                                            <span class="material-icons">search</span>
+                                                                        </button>
+                                                                        <input type="hidden" name="catg" value="Visual Archive">
+                                                                        <input type="hidden" name="att[0]" value="va_artist">
                                                                 </form>
                                                             </div>
 

@@ -1,72 +1,137 @@
 <main>
-    <div class="container">
-        <div class="row justify-content-center text-center">
-            <div class="col-md-12">
-                <h3>BENGALI FILM ARCHIVES</h3>
-                <p class="m-0">
-                    A resource of detailed bibliographic information and visual content of Bengali Cinema 
-                </p>
-
-                <form method="post" action="memorabilia" name="search_form" id="search_form" role="form" style="margin-top:10px;">
-                    <div class="row justify-content-center flex-nowrap">
-                        <div class="col-md-8 col-lg-6 col-sm-9">
-<!--                            <input type="text" class="form-control" id="" placeholder="Enter Artist’s Name">-->
-
-                            <select class="form-control program-name" name="memorabilia[]" multiple="multiple" data-placeholder="Search by Film/Cast/Director"></select>
-
-
-                            <!--                            <button type="submit" class="btn btn-primary form-control">Search</button>-->
-
-
-
-
-
-                            <button type="submit" class="btn btn-primary form-control search-bttn" value="entryPoint" name="srchButtonEntryPoint"><span class="glyphicon glyphicon-search" ></span> Search</button>
-
-                            <input type="hidden" name="catg" value="Memorabilia">
-                            <input type="hidden" name="att[0]" value="film">
-                            <input type="hidden" name="att[1]" value="cast">
-                            <input type="hidden" name="att[2]" value="director">
-                            <input type="hidden"  id="place" data-placeholder="Search by Cast/Film/Director">
+    <section class="start-body visual-page rasa-inner bengali-film-archives">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="visual-inner">
+                        <div class="row">
+                            <div class="col-lg-9 flex-height">
+                                <div class="visual-info">
+                                    <div class="visual-title">
+                                        Bengali Film Archives
+                                    </div>
+                                    <div class="visual-content">
+                                        A wealth of ever growing resources which can be refined to achieve effective research on various fields of Indian art, crafts and films by forming an invaluable source of information
+                                    </div>
+                                    <div class="left-body">
+                                        <div class="hearder-options">
+                                            <div class="user-options">
+                                                <div class="search-wrap">
+                                                    <div class="search">
+                                                        <div class="top-search">
+                                                            <div class="search-barOption">
+                                                                <form method="post" action="memorabilia" name="search_form" id="search_form" role="form">
+                                                                    <!-- <input class="form-control" type="search" placeholder="Search by film / cast / director" name="keyword" value="" id="mySearch" required>
+                                                                    <a href="./bengali-film-archives-search.php" class="btn-search" type="submit"><span class="material-icons">search</span></a> -->
+                                                                    <!-- <div class="row justify-content-center flex-nowrap"> -->
+                                                                        <!-- <div class="col-md-8 col-lg-6 col-sm-9"> -->
+                                                                            <select class="form-control program-name" name="memorabilia[]" multiple="multiple" data-placeholder="Search by Film/Cast/Director"></select>
+                                                                                <button type="submit" class="btn-search" value="entryPoint" name="srchButtonEntryPoint"><span class="material-icons">search</span></button>
+                                                                            <input type="hidden" name="catg" value="Memorabilia">
+                                                                            <input type="hidden" name="att[0]" value="film">
+                                                                            <input type="hidden" name="att[1]" value="cast">
+                                                                            <input type="hidden" name="att[2]" value="director">
+                                                                            <!-- <input type="hidden"  id="place" data-placeholder="Search by Cast/Film/Director"> -->
+                                                                        <!-- </div> -->
+                                                                    <!-- </div> -->
+                                                                </form>
+                                                            </div>
+                                                            <div class="drop-form">                                                    
+                                                                <a href="#" class="advanced-btn" id="myBtn" data-toggle="modal" data-target="#myModal">Advanced Search<span class="material-icons">manage_search</span>
+                                                                </a>
+                                                            </div>
+                                                        </div>                                                        
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>                                    
+                                    </div>
+                                </div>
+                            </div>
                         </div>
 
                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="visual-artist">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 p-1">
+                    <div class="artist-inner">
+                        <div id=bengali-film class="owl-carousel owl-theme owl-loaded owl-drag">
 
-                </form>
-                <p class="arial mt-3" style="font-size: 14px;">
-                    <a href="#" id="myBtn" data-toggle="modal" data-target="#myModal">
-                        <strong>Advanced Search</strong>
-                    </a>
-                </p>
-
-
-
-
-
-                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h4 class="modal-title" id="myModalLabel">Search</h4>
-                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <div class="item">
+                                <div class="artist-img">
+                                    <img class="img-fluid" src="images/film-1.jpg">
+                                </div>
                             </div>
-                            <div class="modal-body" style="margin-bottom: 27px;">
-
-                                <form method="POST" action="adv-search-mem.php" id="adv-search-mem">
-                                    <div class="row arial text-left">
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-
-                                                <label>Name</label>
-                                                <input type="text" name="author" class="form-control"/>
-
-                                            </div>
+                            <div class="item">
+                                <div class="artist-img">
+                                   <img class="img-fluid" src="images/film-2.jpg">
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="artist-img">
+                                    <img class="img-fluid" src="images/film-3.jpg">
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="artist-img">
+                                    <img class="img-fluid" src="images/film-4.jpg">
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="artist-img">
+                                    <img class="img-fluid" src="images/film-5.jpg">
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="artist-img">
+                                    <img class="img-fluid" src="images/film-3.jpg">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Modal -->
+    <div class="advance-modal">
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <div class="advanced-search">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="search-title">
+                                Advanced Search
+                            </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="right-part">
+                                            <form method="POST" action="adv-search-mem.php" id="adv-search-mem">
+                                                <div class="form-group">
+                                                    <input type="text" name="author" class="form-control" placeholder="NAME">
+                                                </div>
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control" name="distributor" placeholder="distributor">
+                                                </div>
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control" name="producer" placeholder="producer">
+                                                </div>
                                         </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label>Select In/As</label>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="right-part">
+                                                <div class="form-group">
                                                 <select name="attr" class="form-control" id="select-attributes">
-                                                    <option value="-1">Choose A Role</option>
+                                                    <option value="-1">Select In/As</option>
                                                     <option value="cast">Cast</option>
                                                     <option value="director">Director</option>
                                                     <option value="beditor">Editor</option>
@@ -76,220 +141,23 @@
                                                     <option value="lyrics">Lyrics</option>
                                                     <option value="playback">Playback Singer</option>
                                                 </select>
-
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-
-                                                <label>Distributor</label>
-                                                <input type="text" name="distributor" class="form-control"/>
-
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label>Film</label>
-                                                <input type="text" name="film" class="form-control"/>
-
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-
-                                                <label>Producer</label>
-                                                <input type="hall" name="producer" class="form-control"/>
-
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label>Year</label>
-                                                <input type="text" name="year" class="form-control"/>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <input type="submit" name="adv_submit" class="btn" value="Search"/>
-<!--                                    <div class="modal-footer">
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <div class="col-md-10">
-                                                    <input type="submit" name="adv_submit" class="btn" value="Search"/>
-
                                                 </div>
-                                                <div class="col-md-2">
-                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control" name="film" placeholder="film">
                                                 </div>
-                                            </div>
-
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control" name="year" placeholder="year">
+                                                </div>
+                                                <input type="submit" name="adv_submit" class="search-box" value="Search"/>
+                                                <button type="button" class="cancel-btn" data-dismiss="modal">CANCEL</button>
+                                            </form>
                                         </div>
-
-                                    </div>-->
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
-            </div>
-        </div>
-    </div>
-
-
-    <!--    <div class="container">
-            <div class="owl-carousel owl-theme wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.5s">
-                {carousel_items}
-            </div>
-        </div>-->
-
-
-
-</main>
-
-
-
-
-
-
-<!--<div class="container search-page-background-memoribilia text-center">
-    <div class="col-md-6 col-md-offset-3">
-        <h3 class="ct-h-big text-center text-uppercase search-heading">Film Memorabilia</h3>
-        <p class="search-sub-heading text-center">For researchers and film buffs - Search for detailed bibliographic information and visual content on Bengali Cinema, to start with</p>
-    </div>
-    <div class="col-md-10 col-sm-10 col-md-offset-1 col-sm-offset-1">
-
-        <div class="search-bar">
-            <form method="post" action="memorabilia" name="search_form" id="search_form">
-                <div class="col-md-6 col-md-offset-3">
-                    <div class="form-group">
-                        <div class="col-md-9 col-sm-9 col-xs-12">
-
-                            <select class="program-name" name="memorabilia[]" multiple="multiple" data-placeholder="Search by Film/Cast/Director"></select>
-                        </div>
-
-                        <div class="col-md-3 col-sm-3 col-xs-12 text-center">
-                            <button type="submit" class="btn btn-default search-bttn" value="entryPoint" name="srchButtonEntryPoint"><span class="glyphicon glyphicon-search" ></span> Search</button>
-                        </div>
-                        <input type="hidden" name="catg" value="Memorabilia">
-                        <input type="hidden" name="att[0]" value="film">
-                        <input type="hidden" name="att[1]" value="cast">
-                        <input type="hidden" name="att[2]" value="director">
-                        <input type="hidden"  id="place" data-placeholder="Search by Cast/Film/Director">
-                    </div>
-            </form>
-
-            <p style="" class="adv-search">  Refine your search with <a href="#" id="myBtn" data-toggle="modal" data-target="#myModal">
-                    Advanced Search</a></p>
-        </div>
-    </div>
-
-
-
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title" id="myModalLabel">Search</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                </div>
-                <div class="modal-body" style="margin-bottom: 27px;">
-
-                    <form method="POST" action="adv-search-mem.php" id="adv-search-mem">
-                        <div class="col-md-12">
-                            <div class="col-md-6">
-
-                                <label>Name</label>
-                                <input type="text" name="author" class="form-control"/>
-
-                            </div>
-                            <div class="col-md-6">
-                                <label>Select In/As</label>
-                                <select name="attr" class="form-control" id="select-attributes">
-                                    <option value="-1">Choose A Role</option>
-                                    <option value="cast">Cast</option>
-                                    <option value="director">Director</option>
-                                    <option value="editor">Editor</option>
-                                    <option value="music">Music Director</option>
-                                    <option value="photography">Cinematographer</option>
-                                    <option value="story">Story</option>
-                                    <option value="lyrics">Lyrics</option>
-                                    <option value="playback">Playback Singer</option>
-                                </select>
-
-                            </div>
-                        </div>
-                        <div class="clearfix"></div>
-                        <br>
-                        <div class="col-md-12">
-                            <div class="col-md-6">
-
-                                <label>Distributor</label>
-                                <input type="text" name="distributor" class="form-control"/>
-
-                            </div>
-                            <div class="col-md-6">
-                                <label>Film</label>
-                                <input type="text" name="film" class="form-control"/>
-
-                            </div>
-                        </div>
-                        <div class="clearfix"></div>
-                        <br>
-                        <div class="col-md-12">
-                            <div class="col-md-6">
-
-                                <label>Producer</label>
-                                <input type="hall" name="producer" class="form-control"/>
-
-                            </div>
-
-                            <div class="col-md-6">
-                                <label>Year</label>
-                                <input type="text" name="year" class="form-control"/>
-
-                            </div>
-                        </div>
-
-
-                        <div class="clearfix"></div>
-                        <br>
-
-
-                        <div class="modal-footer">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="col-md-10">
-                                        <input type="submit" name="adv_submit" class="btn" value="Search"/>
-
-                                    </div>
-                                    <div class="col-md-2">
-                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                                     </div>
                                 </div>
-
                             </div>
-
-                        </div>
-
-
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-
-
-</div>
-</div>
-<div class="clearfix"></div>
-<br>
-<br>
-<div class="container">
-    <div class="owl-carousel owl-theme wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.5s">
-        {carousel_items}
-    </div>
-</div>-->
+</main>

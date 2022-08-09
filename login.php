@@ -8,6 +8,8 @@ require_once(INCLUDED_FILES . "functionsInc.php");
 $conn = dbconnect();
 
 $email = $_POST['email'];
+// echo $email;
+// exit(); 
 $pass = $_POST['pass'];
 
 if (isset($_POST['prevurl'])) {

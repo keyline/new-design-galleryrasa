@@ -723,6 +723,8 @@ function get_subCategory_options($conn = null, $hc = array()) {
 function get_subCategory_optionsBib($conn = null, $hc = array()) {
     $conn = dbconnect();
     $qry = "SELECT product_type_name, product_type_id FROM " . PROD_CATEGORY . " WHERE parent=1 ORDER BY sort_order ASC";
+    // echo $qry;
+    // exit(); 
     $q = $conn->prepare($qry);
     $q->execute();
     $q->setFetchMode(PDO::FETCH_ASSOC);
@@ -930,11 +932,13 @@ function get_html($array, $keys = array(),$usersession, $html = '') {
             }
             if ($iterator->getDepth() == 2) {
 
-                $html .= '<div class="row wow fadeInDown" data-wow-duration="1s" data-wow-delay="0.5s"><div class="col-md-9 table-responsive">
-                                    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="table searchcontent">
-                                        <tbody><tr>
-                                            <th style="width: 200px;">' . $main_key . ' </th><td><strong>' . $k . '</strong></td> 
-                                        </tr>';
+                $html .= '<div class="line-content">
+                <div class="bibliography-search-inner">
+                <div class="bibliography-info">
+                <div class="bibliography-content">
+                    <p class="bibliography-fix">' . $main_key . ' </p>
+                    <p>' . $k . '</p>
+                </div>';
             }
 
 //echo "$level$indent$k" . ":-" . $iterator->getDepth(). " :<br>";
@@ -948,10 +952,10 @@ function get_html($array, $keys = array(),$usersession, $html = '') {
 //$path = implode(',', $p);
 //echo "$indent$k : $v <br>";
             if (array_key_exists($k, $keys)) {
-                $html .= '<tr>
-                                                <th>' . replace_underscore_space($k, $main_key) . '</th>
-                                                <td>' . bibliography_replace_dollar($v) . '</td>
-                                                </tr>';
+                $html .= '<div class="bibliography-content">
+                <p class="bibliography-fix">' . replace_underscore_space($k, $main_key) . '</p>
+                <p>' . bibliography_replace_dollar($v) . '</p>
+            </div>';
             }
 
 
@@ -960,26 +964,28 @@ function get_html($array, $keys = array(),$usersession, $html = '') {
                 
                 if($usersession==true){
                 
-                $html .= '</tbody></table></div><div class="col-md-3 links"><div class="tools-icons text-center">
-                                    <ul class="bibliography_links list-unstyled">
-                                        <li><a href="javascript:void(0);" data-toggle="modal" data-target="#citethis" class="btn btn-default form-control"><i data-toggle="tooltip" title="" data-original-title="Cite this" data-placement="left" onclick="javascript:CiteThis(' . $productID . ');">Cite This</i></a></li>
-                                        <li><a href="' . SITE_URL . '/details/' . $productID . '" class="btn btn-default form-control" target="_blank">Details</a></li>
-                                        
-                                        
-                                   </ul>';
+                $html .= '<div class="bibliography-action">
+                <div class="cite-action">
+                    <a href="javascript:void(0);" data-toggle="modal" data-target="#citethis" class="cite-btn"><i data-toggle="tooltip" title="" data-original-title="Cite this" data-placement="left" onclick="javascript:CiteThis(' . $productID . ');">Cite This</i></a></li>
+                </div>
+                <div class="details-action">
+                       <a  href="' . SITE_URL . '/details/' . $productID . '" class="details-btn" target="_blank">details</a>
+                   </div>
+                </div>
+                </div>';
                 
                 }else{
                     
                     
-                   $html .= '</tbody></table></div><div class="col-md-3 links"><div class="tools-icons text-center">
-                                    <ul class="bibliography_links list-unstyled">
-                                        <li><a href="javascript:void(0);" data-toggle="modal" data-target="#citethis" class="btn btn-default form-control"><i data-toggle="tooltip" title="" data-original-title="Cite this" data-placement="left" onclick="javascript:CiteThis(' . $productID . ');">Cite This</i></a></li>
-                                        <li><a data-toggle="modal" data-target="#exampleModallogin" class="btn btn-default form-control">Details</a></li>
-                                        
-                                        
-                                   </ul>'; 
-                   
-                   
+                   $html .= '</div><div class="bibliography-action">
+                   <div class="cite-action">
+                       <a href="javascript:void(0);" data-toggle="modal" data-target="#citethis" class="cite-btn"><i data-toggle="tooltip" title="" data-original-title="Cite this" data-placement="left" onclick="javascript:CiteThis(' . $productID . ');">Cite This</i></a></li>
+                   </div>
+                   <div class="details-action">
+                    <a  href="' . SITE_URL . '/details/' . $productID . '" class="details-btn" target="_blank">details</a>
+                   </div>
+               </div>
+               </div>';
                    
                    
                    $html .= '<div class="modal fade vLogin" id="exampleModallogin" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -1022,10 +1028,7 @@ function get_html($array, $keys = array(),$usersession, $html = '') {
             </div>
             </div>
         </form>
-      </div>
-    </div>
-  </div>
-</div>';
+      </div>';
                    
                    
                     
@@ -1303,8 +1306,7 @@ function left_filter_html($someArray = array(), $keys = array(), $count = array(
     }
 //return $someArray;
 //exit;
-    $html = '<h4 class="search-filters-title" id="search-filters-title">Refine Search</h4>
-<form action="search" class="filter-form" id="filter-form" method="post">                
+    $html = '<form action="search" class="filter-form" id="filter-form" method="post">                
 <div class="search-filters" style="margin-bottom:20px;">
                     <div class="filter-group">';
 //now loop through each filter and value
@@ -1317,7 +1319,7 @@ function left_filter_html($someArray = array(), $keys = array(), $count = array(
 
 
 
-            $html .= '<h4 class="accordion-header inactive-header">' . replace_underscore_space($key) . '</h4>
+            $html .= '<h6 class="accordion-header inactive-header">' . replace_underscore_space($key) . '</h6>
                         <section class="accordion-content">
                         <div id="' . $key . '-header"></div>
                             <ul class="list-unstyled" id="' . $key . '">';
@@ -2163,8 +2165,7 @@ function memorabilia_left_search($array = array(), $keys = array(), $count = arr
     }
 
 
-    $html = '<h4 class="search-filters-title" id="search-filters-title">Refine Search</h4>
-<form action="memorabilia" class="filter-form" id="filter-form" method="post">                <div class="search-filters" style="margin-bottom:20px;">
+    $html = '<form action="memorabilia" class="filter-form" id="filter-form" method="post">                <div class="search-filters" style="margin-bottom:20px;">
                     <div class="filter-group">';
 //now loop through each filter and value
     /**

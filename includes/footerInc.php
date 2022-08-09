@@ -258,10 +258,10 @@
 <script src="<?php echo SITE_URL . JS_FOLDER ?>jquery.swipebox.js">
 </script>
 <script src="<?php echo SITE_URL . JS_FOLDER ?>jquery.validate.js">
-</script>
+</script> -->
 <script src="<?php echo SITE_URL . JS_FOLDER ?>holder.js">
 </script>
-<script src="<?php echo SITE_URL . JS_FOLDER ?>jquery.jscroll.js">
+<!-- <script src="<?php echo SITE_URL . JS_FOLDER ?>jquery.jscroll.js">
 </script>
 <script src="<?php echo SITE_URL . JS_FOLDER ?>forms.js">
 </script>
@@ -276,21 +276,20 @@
 
 
 <!-- <script type="text/javascript" src="<?php echo SITE_URL ?>/mainjs/lib/owl.carousel.min.js"></script> -->
-<!-- <script type="text/javascript" src="<?php echo SITE_URL ?>/mainjs/lib/slideout-min.js"></script>
-<script type="text/javascript" src="<?php echo SITE_URL ?>/mainjs/lib/greensock.js"></script>
-<script type="text/javascript" src="<?php echo SITE_URL ?>/mainjs/lib/layerslider.transitions.js"></script>
-<script type="text/javascript" src="<?php echo SITE_URL ?>/mainjs/lib/layerslider.kreaturamedia.jquery.js"></script>
-<script type="text/javascript" src="<?php echo SITE_URL ?>/mainjs/lib/jquery.infinitescroll.min.js"></script>
-<script type="text/javascript" src="<?php echo SITE_URL ?>/mainjs/lib/jquery.filterizr-min.js"></script>
-<script type="text/javascript" src="<?php echo SITE_URL ?>/mainjs/lib/swiper.min.js"></script>
-<script type="text/javascript" src="<?php echo SITE_URL ?>/mainjs/lib/TimeCircles-min.js"></script>
+<!-- <script type="text/javascript" src="<?php echo SITE_URL ?>/mainjs/lib/slideout-min.js"></script> -->
+<!-- <script type="text/javascript" src="<?php echo SITE_URL ?>/mainjs/lib/greensock.js"></script> -->
+<!-- <script type="text/javascript" src="<?php echo SITE_URL ?>/mainjs/lib/layerslider.transitions.js"></script> -->
+<!-- <script type="text/javascript" src="<?php echo SITE_URL ?>/mainjs/lib/layerslider.kreaturamedia.jquery.js"></script> -->
+<!-- <script type="text/javascript" src="<?php echo SITE_URL ?>/mainjs/lib/jquery.infinitescroll.min.js"></script> -->
+<!-- <script type="text/javascript" src="<?php echo SITE_URL ?>/mainjs/lib/jquery.filterizr-min.js"></script> -->
+<!-- <script type="text/javascript" src="<?php echo SITE_URL ?>/mainjs/lib/swiper.min.js"></script> -->
+<!-- <script type="text/javascript" src="<?php echo SITE_URL ?>/mainjs/lib/TimeCircles-min.js"></script> -->
 
 
 
 
-
-
-<script type="text/javascript" src="<?php echo SITE_URL ?>/mainjs/lib/jquery-ui-min.js"></script> -->
+<!-- for filtaration  -->
+<script type="text/javascript" src="<?php echo SITE_URL ?>/mainjs/lib/jquery-ui-min.js"></script>
 
 
 
@@ -847,7 +846,8 @@ if (strpos($uri, 'visualarchive-details/') == false) {
     }
 
     function CiteThis(headerId) {
-        //alert(headerId);
+        // alert();
+        // alert(headerId);
         $.ajax({
             type: "POST",
             url: "/ajx_response",
@@ -861,7 +861,7 @@ if (strpos($uri, 'visualarchive-details/') == false) {
                 if (msg.Status == "success") {
                     $("#divCitethis").html(msg.Response);
                 } else {
-                    $("#divCitethis").text("Somwthing went wrong! Please try again!");
+                    $("#divCitethis").text("Something went wrong! Please try again!");
                     return false;
                 }
             }

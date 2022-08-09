@@ -33,6 +33,8 @@ if (!isset($_COOKIE["cookieid"])) {
     }
 
 </style>
+<link rel="stylesheet" href="<?php echo SITE_URL . CSS_FOLDER ?>/jquery-ui.css">
+<link rel="stylesheet" href="<?php echo SITE_URL . CSS_FOLDER ?>custom.css">
 <link rel="stylesheet" type="text/css" href="<?php echo SITE_URL . CSS_FOLDER ?>style.css">
 <link rel="stylesheet" type="text/css" href="<?php echo SITE_URL . CSS_FOLDER ?>responsive.css">
 <link rel="stylesheet" href="<?php echo SITE_URL . CSS_FOLDER ?>jquery.bs4-scrolling-tabs.css">
@@ -129,10 +131,6 @@ if (!isset($_COOKIE["cookieid"])) {
                                         <button class="close-btn"><i class="zmdi zmdi-close"></i></button>
                                         <!-- <span class="material-symbols">close</span> -->
                                         <!-- <span class="material-symbols">done</span> -->
-
-
-
-
                                     </div>
                                     <div class="nav-boxs">
                                         <ul class="nav navbar-nav navbar-left " id="nav">

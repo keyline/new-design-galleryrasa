@@ -383,7 +383,7 @@ FROM
                     $imagecount_html = '';
                 } else {
                     $imagecount = $fid['count_fid'];
-                    $imagecount_html = '<div class="d-flex order-2 mt-3"><div class="mem_count_img">' . $imagecount . '&nbsp;Item&nbsp;</div><div class="film-year">' . $year_p . '</div></div>';
+                    $imagecount_html = '<div class="artist-year">' . $year_p . ' <span>|</span> ' . $imagecount . ' '. 'ITEMS' . '</div>';
                 }
                 foreach ($films as $filmName => $film) {
                     if (is_array($film)) {
@@ -399,17 +399,27 @@ FROM
                                             if ($usersession == false) {
 
 
-                                                $baseHTML = '<div class="col-sm-6 col-md-4 product-outerBorder wow flipInX" data-wow-duration="1s" data-wow-delay="0.5s"">
-                       <div class="product-imageBox d-flex flex-column">
-                       %s
-                       <a data-toggle="modal" data-target="#exampleModallogin2"><img class="img-responsive product-image" alt="%s" src="%s"/></a></div>
-                       <div class="col-md-12 product-caption">
-                               <h4><a data-toggle="modal" data-target="#exampleModallogin2">%s </a></h4>
-                       </div></div>' . $modal;
+                                                $baseHTML = '<a data-toggle="modal" data-target="#exampleModallogin2">
+                                                <div class="artist-box">
+                                                    <div class="artist-box-info">
+                                                        <div class="artist-box-body">
+                                                            <div class="artist-img artist-img-bengali">                                                            
+                                                                <img class="img-fluid" alt="%s" src="%s">
+                                                            </div>
+                                                            <div class="artist-sub">
+                                                                <a data-toggle="modal" data-target="#exampleModallogin2" class="artist-sub-btn">
+                                                                    %s
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                        %s
+                                                    </div>
+                                                </div>
+                                            </a>' . $modal;
                                                 $url = SITE_URL . "/memorabilia-details/" . $filmId;
                                                 $productName = $filmName;
                                                 $productImg = (!empty($v[$i]['name'])) ? (SITE_URL . '/' . THUMB_IMGS . $v[$i]['name']) : (SITE_URL . JS_FOLDER . 'holder.js/300x180/auto/text:' . NO_IMAGE);
-                                                $htmlRight .= sprintf($baseHTML, $imagecount_html, $productName, $productImg, $productName);
+                                                $htmlRight .= sprintf($baseHTML, $productName, $productImg, $productName,$imagecount_html);
 //echo $key . "::" . $v[$i]['name'] . "<br>";
                                             } else {
 
@@ -479,17 +489,27 @@ FROM
                                         if ($v[$i]['featured']) {
 
                                             if ($usersession == false) {
-                                                $baseHTML = '<div class="col-sm-6 col-md-4 product-outerBorder wow flipInX" data-wow-duration="1s" data-wow-delay="0.5s"">
-                       <div class="product-imageBox d-flex flex-column">
-                       %s
-                       <a data-toggle="modal" data-target="#exampleModallogin2"><img class="img-responsive product-image" alt="%s" src="%s"/></a></div>
-                       <div class="col-md-12 product-caption">
-                               <h4><a data-toggle="modal" data-target="#exampleModallogin2">%s </a></h4>
-                       </div></div>' . $modal;
+                                                $baseHTML = '<a data-toggle="modal" data-target="#exampleModallogin2">
+                                                <div class="artist-box">
+                                                    <div class="artist-box-info">
+                                                        <div class="artist-box-body">
+                                                            <div class="artist-img artist-img-bengali">                                                            
+                                                                <img class="img-fluid" alt="%s" src="%s">
+                                                            </div>
+                                                            <div class="artist-sub">
+                                                                <a data-toggle="modal" data-target="#exampleModallogin2" class="artist-sub-btn">
+                                                                    %s
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                        %s
+                                                    </div>
+                                                </div>
+                                            </a>' . $modal;
                                                 $url = SITE_URL . "/memorabilia-details/" . $filmId;
                                                 $productName = $filmName;
                                                 $productImg = (!empty($v[$i]['name'])) ? (SITE_URL . '/' . THUMB_IMGS . $v[$i]['name']) : (SITE_URL . JS_FOLDER . 'holder.js/300x180/auto/text:' . NO_IMAGE);
-                                                $htmlRight .= sprintf($baseHTML, $imagecount_html, $productName, $productImg, $productName);
+                                                $htmlRight .= sprintf($baseHTML, $productName, $productImg, $productName,$imagecount_html);
 //echo $key . "::" . $v[$i]['name'] . "<br>";
                                             } else {
 
@@ -514,17 +534,27 @@ FROM
                         if (!array_key_exists('Synopsis', $film) && !array_key_exists('Card', $film) && !array_key_exists('Poster', $film)) {
 
                             if ($usersession == false) {
-                                $baseHTML = '<div class="col-sm-6 col-md-4 product-outerBorder wow flipInX" data-wow-duration="1s" data-wow-delay="0.5s"">
-                                    <div class="product-imageBox d-flex flex-column">
-                                    %s
-                                    <a data-toggle="modal" data-target="#exampleModallogin2"><img class="img-responsive product-image" alt="%s" src="%s"/></a></div>
-                                    <div class="col-md-12 product-caption">
-                                    <h4><a data-toggle="modal" data-target="#exampleModallogin2">%s </a></h4>
-                                    </div></div>'.$modal;
+                                $baseHTML = '<a data-toggle="modal" data-target="#exampleModallogin2">
+                                <div class="artist-box">
+                                    <div class="artist-box-info">
+                                        <div class="artist-box-body">
+                                            <div class="artist-img artist-img-bengali">                                                            
+                                                <img class="img-fluid" alt="%s" src="%s">
+                                            </div>
+                                            <div class="artist-sub">
+                                                <a data-toggle="modal" data-target="#exampleModallogin2" class="artist-sub-btn">
+                                                    %s
+                                                </a>
+                                            </div>
+                                        </div>
+                                        %s
+                                    </div>
+                                </div>
+                            </a>'.$modal;
                                 $url = SITE_URL . "/memorabilia-details/" . $filmId;
                                 $productName = $filmName;
                                 $productImg = (SITE_URL . JS_FOLDER . 'holder.js/300x180/auto/text:' . NO_IMAGE);
-                                $htmlRight .= sprintf($baseHTML, $imagecount_html, $productName, $productImg, $productName);
+                                $htmlRight .= sprintf($baseHTML, $productName, $productImg, $productName,$imagecount_html);
                             } else {
 
                                 $baseHTML = '<div class="col-sm-6 col-md-4 product-outerBorder wow flipInX" data-wow-duration="1s" data-wow-delay="0.5s"">

@@ -153,11 +153,11 @@
 <!--<script src="<?php echo SITE_URL . JS_FOLDER ?>jquery.swipebox.js">
 </script>-->
 
-<script src="<?php echo SITE_URL . JS_FOLDER ?>cart.js">
-</script>
+<!-- <script src="<?php echo SITE_URL . JS_FOLDER ?>cart.js">
+</script> -->
 <!--<script src="<?php echo SITE_URL . JS_FOLDER ?>jquery.swipebox.js">
 </script>-->
-<script src="<?php echo SITE_URL . JS_FOLDER ?>jquery.validate.js">
+<!-- <script src="<?php echo SITE_URL . JS_FOLDER ?>jquery.validate.js">
 </script>
 <script src="<?php echo SITE_URL . JS_FOLDER ?>holder.js">
 </script>
@@ -168,14 +168,14 @@
 <script src="<?php echo SITE_URL . JS_FOLDER ?>jquery.plugin.min.js">
 </script>
 <script src="<?php echo SITE_URL . JS_FOLDER ?>jquery.countdown.min.js">
-</script>
+</script> -->
 
 
 
 
 
 
-<script type="text/javascript" src="<?php echo SITE_URL ?>/mainjs/lib/owl.carousel.min.js"></script>
+<!-- <script type="text/javascript" src="<?php echo SITE_URL ?>/mainjs/lib/owl.carousel.min.js"></script>
 <script type="text/javascript" src="<?php echo SITE_URL ?>/mainjs/lib/slideout-min.js"></script>
 <script type="text/javascript" src="<?php echo SITE_URL ?>/mainjs/lib/greensock.js"></script>
 <script type="text/javascript" src="<?php echo SITE_URL ?>/mainjs/lib/layerslider.transitions.js"></script>
@@ -184,7 +184,7 @@
 <script type="text/javascript" src="<?php echo SITE_URL ?>/mainjs/lib/jquery.infinitescroll.min.js"></script>
 <script type="text/javascript" src="<?php echo SITE_URL ?>/mainjs/lib/jquery.filterizr-min.js"></script>
 <script type="text/javascript" src="<?php echo SITE_URL ?>/mainjs/lib/swiper.min.js"></script>
-<script type="text/javascript" src="<?php echo SITE_URL ?>/mainjs/lib/TimeCircles-min.js"></script>
+<script type="text/javascript" src="<?php echo SITE_URL ?>/mainjs/lib/TimeCircles-min.js"></script> -->
 
 
 
@@ -206,9 +206,9 @@ if (strpos($uri, 'visualarchive-details/') == false) {
     <?php
 }
 ?>
-<script type="text/javascript" src="<?php echo SITE_URL ?>/mainjs/lib/select2.js"></script>
+<!-- <script type="text/javascript" src="<?php echo SITE_URL ?>/mainjs/lib/select2.js"></script>
 <script type="text/javascript" src="<?php echo SITE_URL ?>/mainjs/lib/multiple-select.js"></script>
-<script type="text/javascript" src="<?php echo SITE_URL ?>/mainjs/magnific-popup/jquery.magnific-popup.min.js"></script>
+<script type="text/javascript" src="<?php echo SITE_URL ?>/mainjs/magnific-popup/jquery.magnific-popup.min.js"></script> -->
 
 
 <script>

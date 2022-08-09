@@ -78,8 +78,11 @@ WHERE t.product_id =" . $pid . ")) as tbl2 GROUP BY tbl2.n, tbl2.an ORDER BY tbl
                     if($k == 'Colour/B&W') $color = $v;
                     if(array_key_exists($k, $ommitKey)) continue;
                        
-                                $contentHtml .= "<li><strong>".$k. "</strong> : " . $v ."</li><hr>";
-                    //if($v[$i][]$v[$i]['m_is_print']) 
+                                // $contentHtml .= "<li><strong>".$k. "</strong> : " . $v ."</li><hr>";
+                                $contentHtml .= '<tr>
+                                        <td class="table-border-2">'.$k .'</td>
+                                        <td class="table-border">'.$v .'</td>
+                                    </tr>';
                     
                 }
             }
@@ -90,8 +93,8 @@ WHERE t.product_id =" . $pid . ")) as tbl2 GROUP BY tbl2.n, tbl2.an ORDER BY tbl
         
         foreach ($dataImage as $key => $film){
             foreach ($film as $k => $v){
-//                print '<pre>';
-//                print_r($film);
+            //    print '<pre>';
+            //    print_r($film);
                 
             $imageDetails .= '<h2 class="w-100 mb-4">' . str_replace("Card", "Lobby Card",$k) . '</h2><div class="parent-container ' .$k .'"><div class="row">';
             if(is_array($v)){
@@ -100,8 +103,11 @@ WHERE t.product_id =" . $pid . ")) as tbl2 GROUP BY tbl2.n, tbl2.an ORDER BY tbl
                     $imageDetails .= '<div class="col-md-3 image2Cart image-box-outercol-md-3 image2Cart image-box-outer wow  fadeInDown" data-wow-duration="1s" data-wow-delay="0.5s">'
                             . '<div class="'.$k . "_" .$i. ' image-box-inner"><a class="thumbnail" href="'.SITE_URL . '/' . IMGSRC . strtolower($k) . '/' . $v[$i]['name'].'"><img class="img-responsive image-mem" src="'. SITE_URL . '/' . IMGSRC . 'thumbs/' . $v[$i]['name'] . '"></a>'
                             . '</div>';
-//                    if(($v[$i]['quantity'] > 1) && $v[$i]['print_available']) $imageDetails .= '<div class="button-group"><div class="rasa_add_to_cart_original"><a class="btn btn-sm" href="javascript:;" onclick="addtoCart('. $v[$i]['product_id'] .','.$v[$i]['id']. ');"><span>Buy Original</span></a></div><div class="rasa_add_to_cart_print"><a class="btn btn-sm" href="javascript:;" onclick="addtoCart('. $v[$i]['product_id'] .','.$v[$i]['id']. ');"><span>Buy Print</span></a></div></div>';
+
+
 //                    getting Add To Cart button
+
+
                     if(!empty($v[$i]['imageDetails'])){
                         //echo $v[$i]['id'];
                         //echo $k;

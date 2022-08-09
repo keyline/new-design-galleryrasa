@@ -58,7 +58,7 @@
                                             <form method="post" name="search_form" id="search_form_all" role="form" class="search-input">
                                                 <!-- <div class="row justify-content-center flex-nowrap"> -->
                                                     <!-- <div class="col-12"> -->
-                                                        <select class="program-name2 form-control" id="select-all-attr" name="searchall[]"  data-placeholder="Type for Complete Search"></select>
+                                                        <select class="program-name2 form-control" id="select-all-attr" name="searchall[]"  data-placeholder="Search"></select>
                                                         <button class="btn-search" type="submit"><span class="material-icons">search</span></button>
 
                                                         <!-- <input class="form-control" type="search" placeholder="Search" name="searchall[]" value="" id="select-all-attr" required> -->
@@ -109,6 +109,7 @@
          
                                         </div>
                                         </div>
+                                        
                                    
                                         <div id="search_display">
                                             <div class="search_ajaxdetails">
@@ -210,6 +211,7 @@
                         </div>
                     </div>
                 </div>
+                
                 <div class="col-lg-5">
                     <div class="right-part">
                              <div id="my-about" class="owl-carousel owl-theme owl-loaded owl-drag">
