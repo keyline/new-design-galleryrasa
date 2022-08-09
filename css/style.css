@@ -6550,7 +6550,7 @@ text-align: left;
     background-color: white;
     border: 1px solid transparent;
     height: 76px;
-    background-color: #F7FAFB;!important;
+    background-color: #F7FAFB!important;
     display: flex;
     align-items: center;
     color: var(--textColor);
@@ -6564,3 +6564,39 @@ text-align: left;
     font-family: 'Roboto Mono';
     text-align: left;
 }
+.start-body.visual-page.visual-search-page.bibliography-search .select2-container--default .select2-selection--multiple{
+    background-color: #fff;
+    border: 1px solid #ced4da;
+}
+
+.start-body.visual-page.visual-search-page.bibliography-search .select2-container--default .select2-selection--multiple .select2-selection__rendered{
+    padding: 6px 12px 6px 40px;
+  }
+  .select2-container--default .select2-search--inline .select2-search__field{
+    text-align: left!important;
+  }
+  .start-body.visual-page.rasa-inner.bibliography-page .select2-container--default .select2-selection--multiple .select2-selection__rendered{
+    padding:  6px 12px 6px 28px;
+  }
+  .ui-widget-content{
+    border: 1px solid #909090;
+    background: transparent;
+    color: #333333;
+    border-width: 1px 0px;
+    border-radius: 0!important;
+  }
+  .list-unstyled {
+    margin: 0!important;
+  }
+  .search-filters input{
+    margin-bottom: 0px!important;
+  }
+  .list-unstyled li label{
+    color: var(--textColor);
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: capitalize;
+      font-family: 'Roboto', sans-serif;
+      /* word-spacing: 5px; */
+      padding-left: 12px;
+  }

@@ -628,7 +628,7 @@ p.category_id = 2 AND v.value='" . $v . "' AND f.attribute_name = '" . $k . "' G
 
 
                                             $baseHTML = '<div class="artist-box-doc">
-                                            <a ' . $modalurl . '>
+                                            <a href="#">
                                                 <div class="artist-box">
                                                     <div class="artist-box-info">
                                                         <div class="artist-box-body">
@@ -638,7 +638,7 @@ p.category_id = 2 AND v.value='" . $v . "' AND f.attribute_name = '" . $k . "' G
                                                                 <img class="img-fluid" alt="%s" src="%s">
                                                             </div>
                                                         <div class="artist-sub">
-                                                            <a  ' . $modalurl . '" class="artist-sub-btn">
+                                                            <a  href="%s" class="artist-sub-btn">
                                                             %s
                                                             </a> 
                                                         </div>
@@ -656,7 +656,7 @@ p.category_id = 2 AND v.value='" . $v . "' AND f.attribute_name = '" . $k . "' G
                                             $url = SITE_URL . "visualarchive-details/" . $filmId;
                                             $productName = $filmName;
                                             $productImg = (!empty($v[$i]['name'])) ? (ORG_SITE_URL . '/' . VA_THUMB_IMGS . $v[$i]['name']) : (SITE_URL . JS_FOLDER . 'holder.js/300x180/auto/text:' . NO_IMAGE);
-                                            $htmlRight .= sprintf($baseHTML, $imagecount_html, $video_html, $url, $productName, $productImg, $url, $productName);
+                                            $htmlRight .= sprintf($baseHTML, $imagecount_html, $video_html, $productName, $productImg , $url, $productName);
                                         } else {
 
                                             $modalurl = 'data-toggle="modal" data-target="#exampleModal"';
@@ -714,33 +714,33 @@ p.category_id = 2 AND v.value='" . $v . "' AND f.attribute_name = '" . $k . "' G
 
 
                                             $baseHTML = '<div class="artist-box-doc">
-                                                            <a href="./visual-archives-search-details.php">
-                                                                <div class="artist-box">
-                                                                    <div class="artist-box-info">
-                                                                        <div class="artist-box-body">
-                                                                            <div class="artist-img">
-                                                                                %s
-                                                                                %s
-                                                                                <img class="img-fluid" alt="%s" src="%s">
-                                                                            </div>
-                                                                        <div class="artist-sub">
-                                                                            <a  href="%s" class="artist-sub-btn">
-                                                                            %s
-                                                                            </a> 
-                                                                        </div>
-                                                                        </div>
-                                                                    
-                                                                        <div class="artist-year">
-                                                                            1941
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </a>
-                                                        </div>' . $modal . '';
+                                            <a ' . $modalurl . '>
+                                                <div class="artist-box">
+                                                    <div class="artist-box-info">
+                                                        <div class="artist-box-body">
+                                                            <div class="artist-img">
+                                                                %s
+                                                                %s
+                                                                <img class="img-fluid" alt="%s" src="%s">
+                                                            </div>
+                                                        <div class="artist-sub">
+                                                            <a  ' . $modalurl . '" class="artist-sub-btn">
+                                                            %s
+                                                            </a> 
+                                                        </div>
+                                                        </div>
+                                                    
+                                                        <div class="artist-year">
+                                                            1941
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>' . $modal . '';
                                             $url = SITE_URL . "/visualarchive-details/" . $filmId;
                                             $productName = $filmName;
                                             $productImg = (!empty($v[$i]['name'])) ? (ORG_SITE_URL . '/' . VA_THUMB_IMGS . $v[$i]['name']) : (SITE_URL . JS_FOLDER . 'holder.js/300x180/auto/text:' . NO_IMAGE);
-                                            $htmlRight .= sprintf($baseHTML, $imagecount_html, $video_html, $productName, $productImg , $url, $productName);
+                                            $htmlRight .= sprintf($baseHTML, $imagecount_html, $video_html, $productName, $productImg , $productName);
                                             //$htmlRight .= sprintf($baseHTML, $imagecount_html, $video_html, $url, $productName, $productImg, $productName);
                                             //echo $key . "::" . $v[$i]['name'] . "<br>";
 //                                        }
