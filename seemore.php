@@ -1,5 +1,7 @@
 <?php
 
+use Mpdf\Tag\Pre;
+
 require_once("require.php");
 require_once(INCLUDED_FILES . "config.inc.php");
 require_once(INCLUDED_FILES . "dbConn.php");
@@ -541,9 +543,22 @@ FROM
 
 
     $flag = 0;
-    $html .= '<div class="row"><div class="col-md-10 table-responsive product-expandable">
-                                    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="table searchcontent">
-                                        <tbody>';
+    $html .= '<section class="visual-search-details-page bibliography-search-details-page">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="visual-inner">
+                    <div class="back-action">
+                        <a href="#" class="back-btn"><i class="zmdi zmdi-arrow-left"></i>back</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+                          <div class="col-lg-9">
+                <div class="right-details">
+                    <table class="table table-bordered">
+                        <tbody>';
     /**
      * <tr>
       <th>' . $arrayFlatten['category'] . ' </th><td><strong>' . $arrayFlatten['pname'] . '</strong></td>
@@ -558,12 +573,25 @@ FROM
 
     foreach ($dataImage as $key => $bibloTitle) {
         foreach ($bibloTitle as $k => $v) {
-            $imageDetailsHTML .= '<div class="parent-container ' . $k . '"';
+            $imageDetailsHTML .= '<div class="details-info ' . $k . '">
+                                    <div class="left-details">
+                                        <div class="details-sticky">';
             if (is_array($v)) {
                 for ($i = 0; $i < count($v); $i++) {
-                    $imageDetailsHTML .= '<li><div class="image-particulars-' . $i . '">'
-                            . '<a class="thumbnail" href="' . ORG_SITE_URL . '/' . IMGSRC . 'bibliography/' . $v[$i]['name'] . '"> '
-                            . '<img class="img-fluid" src="' . ORG_SITE_URL . '/product_images/thumbs/' . $v[$i]['name'] . '" alt="bibliography"></a></div></li><br>';
+                    $imageDetailsHTML .= '<div class="details-img-' . $i . '">'
+                            
+                            . '<img class="img-fluid" src="' . ORG_SITE_URL . '/product_images/thumbs/' . $v[$i]['name'] . '" alt="bibliography"></a></div>
+                            <div class="sticky-sec blue">
+                                    <div class="book">
+                                        <a class="book-btn lightbox" href="#dog">
+                                            <span class="material-icons">zoom_out_map</span>
+                                        </a>
+                                        <div class="lightbox-target" id="dog">
+                                            <img class="img-fluid" src="' . ORG_SITE_URL . '/product_images/thumbs/' . $v[$i]['name'] . '" alt="bibliography">
+                                            <a class="lightbox-close" href="#"></a>
+                                        </div>
+                                    </div>
+                                </div>';
                     if (!empty($v[$i]['imageDetails'])) {
                         $cartHtml = get_add_to_cart_button($v[$i]['imageDetails'], $type, true);
                     } else {
@@ -571,10 +599,12 @@ FROM
                     }
                 }
             }
-            $imageDetailsHTML .= '</div>';
+            $imageDetailsHTML .= '</div></div></div>';
         }
     }
 
+    // print_r($arrayFinal);
+    // exit();
 
     foreach ($arrayFinal as $key => $val) {
 
@@ -589,8 +619,8 @@ FROM
                 if (!empty($array_keys)) {
                     //$content = str_replace("â€¦", "'", $val);
                     $html .= '<tr>
-                                                <th width="200">' . implode("/", $array_keys) . ':' . '</th>
-                                                <td>' . implode("/", $vv) . '</td>
+                                                <td class="table-title">' . implode("/", $array_keys) . ':' . '</th>
+                                                <td class="table-border">' . implode("/", $vv) . '</td>
                                             </tr>';
                     $flag++;
                 }
@@ -598,17 +628,19 @@ FROM
             if (!empty($key)) {
                 $key = (strpos($key, 'Reference Type') > -1) ? preg_replace('/\bReference Type\b/', 'Classification', $key) : stripslashes($key);
                 $html .= '<tr>
-                                                                <th width="200">' . stripslashes($key) . ':' . '</th>
-                                                                <td>' . str_replace("â€¦", "'", $val) . '</td>
-                                                            </tr>';
+                                                                <td class="table-title" >' . stripslashes($key) . ':' . '</th>
+                                                                <td class="table-border">' . str_replace("â€¦", "'", $val) . '</td>
+                                                            </tr>
+                                                            </div>';
             }
         }
     }
-    $html .= '</tbody></table>
+    $html .= '</tbody></table></div>
                         
-                                    </div><div class="col-md-2 links"><div class="tools-icons text-center">
-                                    <ul class="list-unstyled">
-                                        <li><a href="javascript:void(0);" data-toggle="modal" data-target="#citethis" class="btn form-control"><i class="btn btn-default" data-toggle="tooltip" title="" data-original-title="Cite this" data-placement="left" onclick="javascript:CiteThis(' . $arrayFlatten['pid'] . ');">Cite This</i></a></li><br>';
+                                    </div><div class="col-lg-3">
+                                    <div class="bibliography-cite">
+                                    <a href="javascript:void(0);" data-toggle="modal" data-target="#citethis" class="btn form-control"><i class="btn btn-default" data-toggle="tooltip" title="" data-original-title="Cite this" data-placement="left" onclick="javascript:CiteThis(' . $arrayFlatten['pid'] . ');">Cite This</i></a>
+                                    </div>';
 //                                        <li><a href="javascript:void(0);" data-toggle="modal" data-target="#pdf-preview"><i class="btn btn-default" data-toggle="tooltip" title="" data-original-title="Preview" data-placement="left" onclick="javascript:PreviewPdf(' . $arrayFlatten['pid'] . ');">Sneak Preview</i></a></li><br>
 
     $html .= $imageDetailsHTML . $cartHtml;

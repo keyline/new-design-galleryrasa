@@ -10,38 +10,14 @@ if (!isset($_COOKIE["cookieid"])) {
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="Content-Type" content="text/html; charset=utf8_unicode_ci" />
         <title><?php echo!isset($title) ? ('Welcome to Gallery Rasa') : ($title) ?></title>
-        
+
+
+
         <link rel="icon" href="<?php echo SITE_URL ?>images/gallery-favicon.png">
-        <!--  Bootstrap CSS  -->
-        <!-- <link rel="stylesheet" href="<?php echo SITE_URL . CSS_FOLDER ?>bootstrap.min.css"> -->
-
-        <!--  Font-awesome CSS  -->
-        <!-- <link rel="stylesheet" href="<?php echo SITE_URL . CSS_FOLDER ?>font-awesome.min.css">
-
-
-
+        <!--  Bootstrap CSS  -->      
         <link href="<?php echo SITE_URL . CSS_FOLDER ?>select2.css" rel="stylesheet">
-
-
-        <link href="<?php echo SITE_URL . CSS_FOLDER ?>owl.theme.default.min.css" rel="stylesheet">
-        <link href="<?php echo SITE_URL . CSS_FOLDER ?>owl.carousel.min.css" rel="stylesheet"> -->
-
-
-        <!--Visual Archive Page Image Zoom Plugin-->
-        <!-- <link rel="stylesheet" href="<?php echo SITE_URL . CSS_FOLDER ?>/visualarchive-details/lightgallery.css">
-        <link rel="stylesheet" href="<?php echo SITE_URL . CSS_FOLDER ?>/visualarchive-details/visualarchive-lighbox.css">
-        
         <link rel="stylesheet" href="<?php echo SITE_URL . CSS_FOLDER ?>/multiple-select.css">
-        <link rel="stylesheet" href="<?php echo SITE_URL . CSS_FOLDER ?>/jquery-ui.css">
-        <link rel="stylesheet" href="<?php echo SITE_URL . CSS_FOLDER ?>/magnific-popup.css"> -->
-        
-        <!--  Custom CSS  -->
-        <!-- <link rel="stylesheet" href="<?php echo SITE_URL . CSS_FOLDER ?>custom.css">
-        <link rel="stylesheet" href="<?php echo SITE_URL . CSS_FOLDER ?>style.css"> -->
-        <!--  Responsive CSS  -->
-        <!-- <link rel="stylesheet" href="<?php echo SITE_URL . CSS_FOLDER ?>responsive.css"> -->
 
     <!-- Bootstrap CSS -->
 <link rel="stylesheet" href="<?php echo SITE_URL . CSS_FOLDER ?>bootstrap.min.css">
@@ -58,10 +34,13 @@ if (!isset($_COOKIE["cookieid"])) {
     }
 
 </style>
+<link rel="stylesheet" href="<?php echo SITE_URL . CSS_FOLDER ?>/jquery-ui.css">
+<link rel="stylesheet" href="<?php echo SITE_URL . CSS_FOLDER ?>custom.css">
 <link rel="stylesheet" type="text/css" href="<?php echo SITE_URL . CSS_FOLDER ?>style.css">
 <link rel="stylesheet" type="text/css" href="<?php echo SITE_URL . CSS_FOLDER ?>responsive.css">
 <link rel="stylesheet" href="<?php echo SITE_URL . CSS_FOLDER ?>jquery.bs4-scrolling-tabs.css">
 <link rel="stylesheet" href="<?php echo SITE_URL . CSS_FOLDER ?>font">
+        <link rel="stylesheet" href="assets/font">
 <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
 
 <!------------GOOGLE FONT------------>
@@ -76,11 +55,8 @@ if (!isset($_COOKIE["cookieid"])) {
 <!--<link rel="stylesheet" href="https://fonts.google.com/icons?selected=Material%20Icons%20Outlined%3Aaccount_circle%3A">-->
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-
-
 <link rel="stylesheet" type="text/css" href="slick/slick.css" />
 <link rel="stylesheet" type="text/css" href="slick/slick-theme.css" />
-
 
         <script>
             //paste this code under head tag or in a seperate js file.
@@ -92,13 +68,13 @@ if (!isset($_COOKIE["cookieid"])) {
             });
         </script>
 
-
         <style>
             @font-face {
                 font-family: ink-free;
                 src: url(../fonts/ink-free-normal.ttf);
             }
         </style>
+
 
         <?php
         if (trim(RECAPTCHA_SITEKEY) != null) {
@@ -110,9 +86,8 @@ if (!isset($_COOKIE["cookieid"])) {
     </head>
     <!-- NAVBAR
     ================================================== -->
-        <!-- nav bar -->
-    <body class="home">
-        <header class="header">
+    <body class="pattern-banner">
+        <!-- <header class="header"> -->
         <!--  NEW NAV ENDS   -->
         <section class="topPanel">
             <div class="container">
@@ -155,6 +130,12 @@ if (!isset($_COOKIE["cookieid"])) {
                                 <aside class="sidebar">
                                     <div class="sidebar-header">
                                         <button class="close-btn"><i class="zmdi zmdi-close"></i></button>
+                                        <!-- <span class="material-symbols">close</span> -->
+                                        <!-- <span class="material-symbols">done</span> -->
+
+
+
+
                                     </div>
                                     <div class="nav-boxs">
                                         <ul class="nav navbar-nav navbar-left " id="nav">
@@ -163,15 +144,15 @@ if (!isset($_COOKIE["cookieid"])) {
                                             <li class="nav-item"><a class="nav-link" href="<?php echo SITE_URL ?>testimonials">TESTIMONIALS</a></li>
                                             <li class="nav-item"><a class="nav-link" href="#">in the press</a></li>
                                             <li class="nav-item"><a class="nav-link" href="#">photo book</a></li>
-                                            <li class="nav-item"><a class="nav-link" href="<?php echo SITE_URL ?>/contactus">CONTACT US</a></li>
+                                            <li class="nav-item"><a class="nav-link" href="<?php echo SITE_URL ?>contactus"">CONTACT US</a></li>
                                         </ul>
                                     </div>
                                     <div class="nav-boxs nav-boxs-mobile">
                                         <ul class="nav navbar-nav navbar-left " id="nav">
                                             <li class="nav-item"><a class="nav-link" href="<?php echo SITE_URL ?>">home</a></li>
-                                            <li class="nav-item"><a class="nav-link" href="<?php echo SITE_URL ?>visualarchive-search">VISUAL ARCHIVES</a></li>
-                                            <li class="nav-item"><a class="nav-link" href="<?php echo SITE_URL ?>beforeSearch">BIBLIOGRAPHY</a></li>
-                                            <li class="nav-item"><a class="nav-link" href="<?php echo SITE_URL ?>memorabilia-search">BENGALI FILM ARCHIVES</a></li>
+                                            <li class="nav-item"><a class="nav-link" href="#">VISUAL ARCHIVES</a></li>
+                                            <li class="nav-item"><a class="nav-link" href="#">BIBLIOGRAPHY</a></li>
+                                            <li class="nav-item"><a class="nav-link" href="#">BENGALI FILM ARCHIVES</a></li>
                                             <li class="nav-item"><a class="nav-link" href="#">PODCAST</a></li>
                                             <li class="nav-item"><a class="nav-link" href="<?php echo SITE_URL ?>exhibition-search">EXHIBITION</a></li>
                                         </ul>
@@ -188,6 +169,15 @@ if (!isset($_COOKIE["cookieid"])) {
                                             unset($_SESSION['newsletter']);
                                         }
                                         ?>
+                                        <!-- <form>
+                                            <div class="form-group">
+                                                <input type="email" class="form-control" placeholder="your name">
+                                            </div>
+                                            <div class="form-group arrow-box">
+                                                <input type="email" class="form-control" placeholder="your e-mail address">
+                                                <a href="#" class="arrow"><i class="zmdi zmdi-arrow-right"></i></a>
+                                            </div>
+                                        </form> -->
                                         <form id="contact-form" method="post" action="contact_newsletter.php" role="form">
                                             <div class="form-group">
                                                 <input type="text" name="fullname" class="form-control" id="fullname" placeholder="your name">
@@ -211,10 +201,10 @@ if (!isset($_COOKIE["cookieid"])) {
                                     <div class="nav-social">
                                         <h4>Find us on Social Media</h4>
                                         <ul>
-                                            <li><a href="https://www.facebook.com/galleryrasa" target="_blank"><img class="img-fluid" src="<?php echo SITE_URL ?>images/facebook-white.png"></a></li>
-                                            <li><a href="https://www.instagram.com/galleryrasa_official" target="_blank"><img class="img-fluid" src="<?php echo SITE_URL ?>images/insta-white.png"></a></li>
-                                            <li><a href="https://twitter.com/galleryrasaart" target="_blank"><img class="img-fluid" src="<?php echo SITE_URL ?>images/twe-white.png"></a></li>
-                                            <li><a href="https://www.linkedin.com/in/rakesh-sahni-19369063" target="_blank"><img class="img-fluid" src="<?php echo SITE_URL ?>images/in-white.png"></a></li>
+                                            <li><a href="https://www.facebook.com/galleryrasa" target="_blank"><img class="img-fluid" src="images/facebook-white.png"></a></li>
+                                            <li><a href="https://www.instagram.com/galleryrasa_official" target="_blank"><img class="img-fluid" src="images/insta-white.png"></a></li>
+                                            <li><a href="https://twitter.com/galleryrasaart" target="_blank"><img class="img-fluid" src="images/twe-white.png"></a></li>
+                                            <li><a href="https://www.linkedin.com/in/rakesh-sahni-19369063" target="_blank"><img class="img-fluid" src="images/in-white.png"></a></li>
                                         </ul>
                                     </div>
                                 </aside>
@@ -225,5 +215,6 @@ if (!isset($_COOKIE["cookieid"])) {
             </div>
         </section>
         <!--  NEW NAV ENDS   -->
-    </header>
-    <div class="menu-overlay"></div>
+    <!-- </header> -->
+    <!-- <div class="menu-overlay"></div> -->
+

@@ -622,166 +622,42 @@ p.category_id = 2 AND v.value='" . $v . "' AND f.attribute_name = '" . $k . "' G
                                 if (is_array($v) && $k == 'image') {
                                     for ($i = 0; $i < count($v); $i++) {
 
-
                                         if (isset($_SESSION['user-id'])) {
 
 
 
 
-                                            $baseHTML = '<div class="col-sm-6 col-md-4 product-outerBorder wow flipInX text-center" data-wow-duration="1s" data-wow-delay="0.5s">
-                       <div class="product-imageBox d-flex flex-column">
-                       %s
-                       %s
-                       <a href="%s" target="_blank" >
-                       
-<img class="img-responsive product-image" alt="%s" src="%s"/></a></div>
-                       
-                        <div class="product-caption">
-                       
-                               <h4><a  href="%s" target="_blank">%s </a></h4>
-                       </div></div>';
+                                            $baseHTML = '<div class="artist-box-doc">
+                                            <a ' . $modalurl . '>
+                                                <div class="artist-box">
+                                                    <div class="artist-box-info">
+                                                        <div class="artist-box-body">
+                                                            <div class="artist-img">
+                                                                %s
+                                                                %s
+                                                                <img class="img-fluid" alt="%s" src="%s">
+                                                            </div>
+                                                        <div class="artist-sub">
+                                                            <a  ' . $modalurl . '" class="artist-sub-btn">
+                                                            %s
+                                                            </a> 
+                                                        </div>
+                                                        </div>
+                                                    
+                                                        <div class="artist-year">
+                                                            1941
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>';
 
 
                                             $url = SITE_URL . "visualarchive-details/" . $filmId;
                                             $productName = $filmName;
                                             $productImg = (!empty($v[$i]['name'])) ? (ORG_SITE_URL . '/' . VA_THUMB_IMGS . $v[$i]['name']) : (SITE_URL . JS_FOLDER . 'holder.js/300x180/auto/text:' . NO_IMAGE);
                                             $htmlRight .= sprintf($baseHTML, $imagecount_html, $video_html, $url, $productName, $productImg, $url, $productName);
-
-
-
-
-
-
-
-
-                                            // credit part is optional                                         
-//                                            $prodcreditrow = get_product_credit($filmId);
-//
-//                                            $prodcredit = $prodcreditrow['credit'];
-//
-//                                            if (empty($prodcreditrow) || $prodcreditrow['credit'] == '0') {
-//
-//
-//
-//
-//
-//                                                $baseHTML = '<div class="col-sm-6 col-md-4 product-outerBorder wow flipInX text-center" data-wow-duration="1s" data-wow-delay="0.5s">
-//                       <div class="product-imageBox d-flex flex-column">
-//                       %s
-//                       %s
-//                       <a href="%s" target="_blank" >
-//                       
-//<img class="img-responsive product-image" alt="%s" src="%s"/></a></div>
-//                       
-//                        <div class="product-caption">
-//                       
-//                               <h4><a  href="%s" target="_blank">%s </a></h4>
-//                       </div></div>';
-//
-//
-//                                                $url = SITE_URL . "/visualarchive-details/" . $filmId;
-//                                                $productName = $filmName;
-//                                                $productImg = (!empty($v[$i]['name'])) ? (ORG_SITE_URL . '/' . VA_THUMB_IMGS . $v[$i]['name']) : (SITE_URL . JS_FOLDER . 'holder.js/300x180/auto/text:' . NO_IMAGE);
-//                                                $htmlRight .= sprintf($baseHTML, $imagecount_html, $video_html, $url, $productName, $productImg, $url, $productName);
-//                                            } else {
-//
-//
-//                                                if ($prodcredit > $custcredit) {
-//
-//                                                    $modalurlchk1 = 'data-toggle="modal" data-target="#creditModal' . $filmId . '"';
-//
-//                                                    $modal1 = '<div class="modal fade" id="creditModal' . $filmId . '" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-//  <div class="modal-dialog" role="document">
-//    <div class="modal-content">
-//      <div class="modal-header">
-//        <h5 class="modal-title" id="exampleModalLabel">Credit of ' . $filmName . '</h5>
-//        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-//          <span aria-hidden="true">&times;</span>
-//        </button>
-//      </div>
-//      <div class="modal-body">
-//        You cannot view the details.<br>
-//        You need ' . $prodcredit . ' credit to view this artwork.<br>
-//        You have only ' . $custcredit . ' credits left.
-//      </div>
-//      <div class="modal-footer">
-//        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-//        
-//      </div>
-//    </div>
-//  </div>
-//</div>';
-//
-//                                                    $baseHTML = '<div class="col-sm-6 col-md-4 product-outerBorder wow flipInX text-center" data-wow-duration="1s" data-wow-delay="0.5s">
-//                       <div class="product-imageBox d-flex flex-column">
-//                       %s
-//                       %s
-//                       <a ' . $modalurlchk1 . '>
-//                       
-//<img class="img-responsive product-image" alt="%s" src="%s"/></a></div>
-//                       
-//                        <div class=" product-caption">
-//                       
-//                               <h4><a ' . $modalurlchk1 . '>%s </a></h4>
-//                       </div></div>' . $modal1 . '';
-//
-//                                                    $url = SITE_URL . "/visualarchive-details/" . $filmId;
-//                                                    $productName = $filmName;
-//                                                    //$productImg = (!empty($v[$i]['name'])) ? (SITE_URL . '/' . THUMB_IMGS . $v[$i]['name']) : (SITE_URL . JS_FOLDER . 'holder.js/300x180/auto/text:' . NO_IMAGE);
-//                                                    $productImg = (!empty($v[$i]['name'])) ? (ORG_SITE_URL . '/' . VA_THUMB_IMGS . $v[$i]['name']) : (SITE_URL . JS_FOLDER . 'holder.js/300x180/auto/text:' . NO_IMAGE);
-//
-//                                                    $htmlRight .= sprintf($baseHTML, $imagecount_html, $video_html, $productName, $productImg, $productName);
-//                                                    //$htmlRight .= sprintf($baseHTML, $imagecount_html, $video_html, $url, $productName, $productImg, $productName);
-//                                                } else {
-//
-//
-//                                                    $produtcustcreditchk = product_in_cust_credit($_SESSION['user-id'], $filmId);
-//                                                    if ($produtcustcreditchk == true) {
-//
-//                                                        $creditetimediffrow = get_credit_timediff($filmId);
-//
-//                                                        $timediffseconds = $creditetimediffrow['timediff'];
-//
-//                                                        $sevendayssecondsdiff = (3600 * 24) * $adminsettingarr['credit_dayspan'];
-//
-//
-//                                                        if ($timediffseconds > $sevendayssecondsdiff) {
-//
-//
-//                                                            $onclickvar = ' onclick="confirmFunction()" ';
-//                                                        } else {
-//                                                            $onclickvar = '';
-//                                                        }
-//                                                    } else {
-//                                                        $onclickvar = ' onclick="confirmFunction()" ';
-//                                                    }
-//
-//
-//
-//                                                    $baseHTML = '<div class="col-sm-6 col-md-4 product-outerBorder wow flipInX text-center" data-wow-duration="1s" data-wow-delay="0.5s">
-//                       <div class="product-imageBox d-flex flex-column">
-//                       %s
-//                       %s
-//                       <a href="%s" target="_blank"   ' . $onclickvar . ' >
-//                       
-//<img class="img-responsive product-image" alt="%s" src="%s"/></a></div>
-//                       
-//                        <div class=" product-caption">
-//                       
-//                               <h4><a  href="%s" target="_blank"  ' . $onclickvar . ' >%s </a></h4>
-//                       </div></div>';
-//
-//
-//                                                    $url = SITE_URL . "/visualarchive-details/" . $filmId;
-//                                                    $productName = $filmName;
-//                                                    $productImg = (!empty($v[$i]['name'])) ? (ORG_SITE_URL . '/' . VA_THUMB_IMGS . $v[$i]['name']) : (SITE_URL . JS_FOLDER . 'holder.js/300x180/auto/text:' . NO_IMAGE);
-//                                                    $htmlRight .= sprintf($baseHTML, $imagecount_html, $video_html, $url, $productName, $productImg, $url, $productName);
-//                                                }
-//                                            }
                                         } else {
-
-//                                        if ($v[$i]['featured']) {
-
 
                                             $modalurl = 'data-toggle="modal" data-target="#exampleModal"';
 
@@ -837,22 +713,34 @@ p.category_id = 2 AND v.value='" . $v . "' AND f.attribute_name = '" . $k . "' G
 
 
 
-                                            $baseHTML = '<div class="col-sm-6 col-md-4 product-outerBorder wow flipInX text-center" data-wow-duration="1s" data-wow-delay="0.5s">
-                       <div class="product-imageBox d-flex flex-column">
-                       %s
-                       %s
-                       <a ' . $modalurl . '>
-                       
-<img class="img-responsive product-image" alt="%s" src="%s"/></a></div>
-                       
-                        <div class=" product-caption">
-                       
-                               <h4><a ' . $modalurl . '>%s </a></h4>
-                       </div></div>' . $modal . '';
+                                            $baseHTML = '<div class="artist-box-doc">
+                                                            <a href="./visual-archives-search-details.php">
+                                                                <div class="artist-box">
+                                                                    <div class="artist-box-info">
+                                                                        <div class="artist-box-body">
+                                                                            <div class="artist-img">
+                                                                                %s
+                                                                                %s
+                                                                                <img class="img-fluid" alt="%s" src="%s">
+                                                                            </div>
+                                                                        <div class="artist-sub">
+                                                                            <a  href="%s" class="artist-sub-btn">
+                                                                            %s
+                                                                            </a> 
+                                                                        </div>
+                                                                        </div>
+                                                                    
+                                                                        <div class="artist-year">
+                                                                            1941
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </a>
+                                                        </div>' . $modal . '';
                                             $url = SITE_URL . "/visualarchive-details/" . $filmId;
                                             $productName = $filmName;
                                             $productImg = (!empty($v[$i]['name'])) ? (ORG_SITE_URL . '/' . VA_THUMB_IMGS . $v[$i]['name']) : (SITE_URL . JS_FOLDER . 'holder.js/300x180/auto/text:' . NO_IMAGE);
-                                            $htmlRight .= sprintf($baseHTML, $imagecount_html, $video_html, $productName, $productImg, $productName);
+                                            $htmlRight .= sprintf($baseHTML, $imagecount_html, $video_html, $productName, $productImg , $url, $productName);
                                             //$htmlRight .= sprintf($baseHTML, $imagecount_html, $video_html, $url, $productName, $productImg, $productName);
                                             //echo $key . "::" . $v[$i]['name'] . "<br>";
 //                                        }
@@ -892,143 +780,6 @@ p.category_id = 2 AND v.value='" . $v . "' AND f.attribute_name = '" . $k . "' G
                                 $productImg = (SITE_URL . JS_FOLDER . 'holder.js/300x180/auto/text:' . NO_IMAGE);
                                 $htmlRight .= sprintf($baseHTML, $imagecount_html, $video_html, $url, $productName, $productImg, $url, $productName);
 
-
-
-
-
-
-
-
-
-
-// Credit part is optional
-//                                $prodcreditrow = get_product_credit($filmId);
-//
-//                                $prodcredit = $prodcreditrow['credit'];
-//
-//                                if (empty($prodcreditrow) || $prodcreditrow['credit'] == '0') {
-//
-//                                    $baseHTML = '<div class="col-sm-6 col-md-4 product-outerBorder wow flipInX text-center" data-wow-duration="1s" data-wow-delay="0.5s">
-//                       <div class="product-imageBox d-flex flex-column">
-//                       %s
-//                       %s
-//                       <a href="%s" target="_blank" >
-//                       
-//<img class="img-responsive product-image" alt="%s" src="%s"/></a></div>
-//                       
-//                        <div class=" product-caption">
-//                       
-//                               <h4><a  href="%s" target="_blank" >%s </a></h4>
-//                       </div></div>';
-//
-//
-//
-//
-//                                    $url = SITE_URL . "/visualarchive-details/" . $filmId;
-//                                    $productName = $filmName;
-//                                    $productImg = (SITE_URL . JS_FOLDER . 'holder.js/300x180/auto/text:' . NO_IMAGE);
-//                                    $htmlRight .= sprintf($baseHTML, $imagecount_html, $video_html, $url, $productName, $productImg, $url, $productName);
-//                                } else {
-//
-//
-//                                    if ($prodcredit > $custcredit) {
-//
-//                                        $modalurlchk1 = 'data-toggle="modal" data-target="#creditModal' . $filmId . '"';
-//
-//                                        $modal1 = '<div class="modal fade" id="creditModal' . $filmId . '" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-//  <div class="modal-dialog" role="document">
-//    <div class="modal-content">
-//      <div class="modal-header">
-//        <h5 class="modal-title" id="exampleModalLabel">Credit of ' . $filmName . '</h5>
-//        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-//          <span aria-hidden="true">&times;</span>
-//        </button>
-//      </div>
-//      <div class="modal-body">
-//        You cannot view the details.<br>
-//        You need ' . $prodcredit . ' credit to view this artwork.<br>
-//        You have only ' . $custcredit . ' credits left.
-//      </div>
-//      <div class="modal-footer">
-//        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-//        
-//      </div>
-//    </div>
-//  </div>
-//</div>';
-//
-//                                        $baseHTML = '<div class="col-sm-6 col-md-4 product-outerBorder wow flipInX text-center" data-wow-duration="1s" data-wow-delay="0.5s">
-//                       <div class="product-imageBox d-flex flex-column">
-//                       %s
-//                       %s
-//                       <a ' . $modalurlchk1 . '>
-//                       
-//<img class="img-responsive product-image" alt="%s" src="%s"/></a></div>
-//                       
-//                        <div class=" product-caption">
-//                       
-//                               <h4><a ' . $modalurlchk1 . '>%s </a></h4>
-//                       </div></div>' . $modal1 . '';
-//
-//                                        $url = SITE_URL . "/visualarchive-details/" . $filmId;
-//                                        $productName = $filmName;
-//                                        $productImg = (SITE_URL . JS_FOLDER . 'holder.js/300x180/auto/text:' . NO_IMAGE);
-//                                        $htmlRight .= sprintf($baseHTML, $imagecount_html, $video_html, $productName, $productImg, $productName);
-//                                        //$htmlRight .= sprintf($baseHTML, $imagecount_html, $video_html, $url, $productName, $productImg, $productName);
-//                                    } else {
-//
-//
-//
-//
-//                                        $produtcustcreditchk = product_in_cust_credit($_SESSION['user-id'], $filmId);
-//                                        if ($produtcustcreditchk == true) {
-//
-//                                            $creditetimediffrow = get_credit_timediff($filmId);
-//
-//                                            $timediffseconds = $creditetimediffrow['timediff'];
-//
-//                                            $sevendayssecondsdiff = (3600 * 24) * $adminsettingarr['credit_dayspan'];
-//
-//
-//                                            if ($timediffseconds > $sevendayssecondsdiff) {
-//
-//
-//                                                $onclickvar = ' onclick="confirmFunction()" ';
-//                                            } else {
-//                                                $onclickvar = '';
-//                                            }
-//                                        } else {
-//                                            $onclickvar = ' onclick="confirmFunction()" ';
-//                                        }
-//
-//
-//
-//
-//
-//
-//
-//                                        $baseHTML = '<div class="col-sm-6 col-md-4 product-outerBorder wow flipInX text-center" data-wow-duration="1s" data-wow-delay="0.5s">
-//                       <div class="product-imageBox d-flex flex-column">
-//                       %s
-//                       %s
-//                       <a href="%s" target="_blank" ' . $onclickvar . '>
-//                       
-//<img class="img-responsive product-image" alt="%s" src="%s"/></a></div>
-//                       
-//                        <div class=" product-caption">
-//                       
-//                               <h4><a  href="%s" target="_blank" ' . $onclickvar . ' >%s </a></h4>
-//                       </div></div>';
-//
-//
-//
-//
-//                                        $url = SITE_URL . "/visualarchive-details/" . $filmId;
-//                                        $productName = $filmName;
-//                                        $productImg = (SITE_URL . JS_FOLDER . 'holder.js/300x180/auto/text:' . NO_IMAGE);
-//                                        $htmlRight .= sprintf($baseHTML, $imagecount_html, $video_html, $url, $productName, $productImg, $url, $productName);
-//                                    }
-//                                }
                             } else {
 
                                 $modalurl = 'data-toggle="modal" data-target="#exampleModal"';
