@@ -875,6 +875,9 @@ label.custom-select {
     width: 78%;
     margin-right: 5px;
 }
+.hearder-options .top-search .search-barOption #search_form{
+    display: flex;
+}
 .hearder-options .top-search{
     margin-bottom: 20px;
 }
@@ -1143,9 +1146,21 @@ div.select .input{
     transition: .5s ease all;
     z-index: 99;
     height: 76px;
+    margin-right: 18px;
 }
 .start-body .visual-inner .hearder-options .btn-search:hover{
     background-color: var(--textColor);
+}
+.select2-container--default .select2-search--inline .select2-search__field{
+    text-align: left;
+    color: var(--textColor);
+    font-weight: 600;
+    font-size: 16px;
+    font-family: 'Roboto Mono', monospace;
+}
+.start-body.visual-page.rasa-inner.bengali-film-archives .select2-container--default .select2-search--inline .select2-search__field{
+    padding-left: 28px;
+    
 }
 .start-body .visual-inner .hearder-options .drop-form{
         background-color: var(--textColor);
@@ -2957,6 +2972,7 @@ border: none;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    width: 100%;
 }
 .btn-light p span{
     font-size: 30px;
@@ -2986,6 +3002,9 @@ border: none;
 }
 .start-body .drop-form .btn-light:not(:disabled):not(.disabled).active, .start-body .drop-form .btn-light:not(:disabled):not(.disabled):active, .start-body .drop-form .show>.btn-light.dropdown-toggle{
     color: #fff;
+}
+.select2-container--default.select2-container--focus .select2-selection--multiple{
+    border: none;
 }
 
 /* ********|| BENGALI FILM ARCHIVES SEARCH PAGE ENDS ||******** */
@@ -6548,7 +6567,7 @@ text-align: left;
 }
 .select2-container--default .select2-selection--multiple {
     background-color: white;
-    border: 1px solid transparent;
+    /* border: 1px solid transparent; */
     height: 76px;
     background-color: #F7FAFB!important;
     display: flex;
