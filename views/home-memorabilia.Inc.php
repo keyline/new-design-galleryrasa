@@ -25,7 +25,7 @@
                                                                     <a href="./bengali-film-archives-search.php" class="btn-search" type="submit"><span class="material-icons">search</span></a> -->
                                                                     <!-- <div class="row justify-content-center flex-nowrap"> -->
                                                                         <!-- <div class="col-md-8 col-lg-6 col-sm-9"> -->
-                                                                            <select class="form-control program-name" name="memorabilia[]" multiple="multiple" data-placeholder="Search by Film/Cast/Director"></select>
+                                                                            <select class="form-control program-name" name="memorabilia[]" multiple="multiple" data-placeholder="Search by Film / Cast / Director"></select>
                                                                                 <button type="submit" class="btn-search" value="entryPoint" name="srchButtonEntryPoint"><span class="material-icons">search</span></button>
                                                                             <input type="hidden" name="catg" value="Memorabilia">
                                                                             <input type="hidden" name="att[0]" value="film">
@@ -148,12 +148,26 @@
                                                 <div class="form-group">
                                                     <input type="text" class="form-control" name="year" placeholder="year">
                                                 </div>
-                                                <input type="submit" name="adv_submit" class="search-box" value="Search"/>
-                                                <button type="button" class="cancel-btn" data-dismiss="modal">CANCEL</button>
+                                                <!-- <input type="submit" name="adv_submit" class="search-box" value="Search"/>
+                                                <button type="button" class="cancel-btn" data-dismiss="modal">CANCEL</button> -->
                                             </form>
                                         </div>
                                     </div>
                                 </div>
+
+
+                                <div class="row">
+                                <div class="col-lg-6">
+                                                    <div class="right-part">
+                                                    <input type="submit" name="adv_submit" class="search-box" value="Search"/>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                                    <div class="right-part">
+                                            <button type="button" class="cancel-btn" data-dismiss="modal">CANCEL</button>
+                                    </div>
+                                </div>
+                            </div>
                             </div>
                     </div>
                 </div>

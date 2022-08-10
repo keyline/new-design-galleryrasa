@@ -26,7 +26,7 @@
                                                                     <a href="./bengali-film-archives-search.php" class="btn-search" type="submit"><span class="material-icons">search</span></a> -->
                                                                     <!-- <div class="row justify-content-center flex-nowrap"> -->
                                                                         <!-- <div class="col-md-8 col-lg-6 col-sm-9"> -->
-                                                                            <select class="form-control program-name" name="memorabilia[]" multiple="multiple" data-placeholder="Search by Film/Cast/Director"></select>
+                                                                            <select class="form-control program-name" name="memorabilia[]" multiple="multiple" data-placeholder="Search by Film / Cast / Director"></select>
                                                                                 <button type="submit" class="btn-search" value="entryPoint" name="srchButtonEntryPoint"><span class="material-icons">search</span></button>
                                                                             <input type="hidden" name="catg" value="Memorabilia">
                                                                             <input type="hidden" name="att[0]" value="film">
