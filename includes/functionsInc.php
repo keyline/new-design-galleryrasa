@@ -4227,6 +4227,26 @@ id = '%s' ";
     }
 }
 
+function singlepodcast($param1) {
+    try {
+        $conn = dbconnect();
+
+
+        $query = "select * from podcast  
+where 
+episode_id = '%s' ";
+        $sql = sprintf($query, $param1);
+        $q = $conn->prepare($sql);
+
+        $q->execute();
+        $q->setFetchMode(PDO::FETCH_ASSOC);
+
+        return $cust_addr = $q->fetch();
+    } catch (PDOException $pe) {
+        echo db_error($pe->getMessage());
+    }
+}
+
 function singleexhibitionartist($param1) {
     try {
         $conn = dbconnect();
