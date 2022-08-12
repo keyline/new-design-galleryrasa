@@ -6,9 +6,9 @@ require_once(INCLUDED_FILES . "dbConn.php");
 require_once(INCLUDED_FILES . "functionsInc.php");
 include(INC_FOLDER . "headerInc.php");
 ?>
-<div class="container">
+<!-- <div class="container">
     <h1 style="text-align: center;">Cart</h1>
-    <?php
+    ?php
     if (isset($_SESSION["cart_item"])) {
         $item_total = 0;
         ?>	
@@ -25,27 +25,27 @@ include(INC_FOLDER . "headerInc.php");
             <th>Update</th>
             </thead>
             <tbody>
-                <?php
+                ?php
                 foreach ($_SESSION["cart_item"] as $item) {
                     ?>
                 <form method="POST" action="update-cart.php">
                     <tr>
-                        <td><?php echo $item["product_name"]; ?></td>
+                        <td>?php echo $item["product_name"]; ?></td>
                         <td>
-                            <?php // echo $item["image_name"]; ?>
-                            <img src="product_images/thumbs/<?php echo $item["image_name"]; ?>" style="width: 100px;">
+                            ?php // echo $item["image_name"]; ?>
+                            <img src="product_images/thumbs/?php echo $item["image_name"]; ?>" style="width: 100px;">
                         </td>
                         <td>
-                            <?php if ($item["type"] == 'Original') {
+                            ?php if ($item["type"] == 'Original') {
                                 ?>
                                 <input type="hidden" name="image" value="<?php echo $item["image_id"]; ?>">
                                 <input type="hidden" name="count" value="<?php echo $item["count"]; ?>">
                                 <input type="text" name="edit_quantity" value="<?php echo $item["quantity"]; ?>" readonly>
-                            <?php } else { ?>
+                            ?php } else { ?>
                                 <input type="hidden" name="image" value="<?php echo $item["image_id"]; ?>">
                                 <input type="hidden" name="count" value="<?php echo $item["count"]; ?>">
                                 <input type="text" name="edit_quantity" value="<?php echo $item["quantity"]; ?>">
-                            <?php } ?>
+                            ?php } ?>
                         </td>
                         <td><?php echo $item["type"]; ?></td>
                         <td><?php echo $item["size"]; ?></td>
@@ -54,7 +54,7 @@ include(INC_FOLDER . "headerInc.php");
                         <td><input type="submit" value="Update Cart" class="btn btn-info"></td>
                     </tr>
                 </form>
-                <?php
+                ?php
                 $item_total += ($item["price"] * $item["quantity"]);
             }
             ?>
@@ -62,14 +62,15 @@ include(INC_FOLDER . "headerInc.php");
         </table>
         <h1>Total Price: Rs. <?php echo $item_total ?></h1>
         <a class="btn btn-success" href="checkout.php">Checkout</a>
-        <?php
+        ?php
     } else {
         ?>
         <h2>Cart is empty</h2>
-        <?php
+        ?php
     }
     ?>
-</div>
+</div> -->
 <?php
+include(VIEWS_FOLDER . "cartinc.php");
 include(INC_FOLDER . "footerInc.php");
 ?>

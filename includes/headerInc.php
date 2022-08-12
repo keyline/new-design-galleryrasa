@@ -117,7 +117,7 @@ if (!isset($_COOKIE["cookieid"])) {
                         </div>
                         <div class="head-bar">
                             <div class="drafts-action">
-                                <a href="./cart.php" class="drafts-btn"><span class="material-icons cart-box">shopping_bag</span><span class="badge">2</span></a>
+                                <a href="<?php echo SITE_URL ?>cart" class="drafts-btn"><span class="material-icons cart-box">shopping_bag</span><span class="badge" id="price"></span></a>
                             </div>
                             <div class="contact-action">
                                 <a href="<?php echo SITE_URL ?>login-register" class="contact-btn"><span class="material-icons cart-box">person</span></a>
@@ -144,7 +144,7 @@ if (!isset($_COOKIE["cookieid"])) {
                                             <li class="nav-item"><a class="nav-link" href="<?php echo SITE_URL ?>testimonials">TESTIMONIALS</a></li>
                                             <li class="nav-item"><a class="nav-link" href="#">in the press</a></li>
                                             <li class="nav-item"><a class="nav-link" href="#">photo book</a></li>
-                                            <li class="nav-item"><a class="nav-link" href="<?php echo SITE_URL ?>contactus"">CONTACT US</a></li>
+                                            <li class="nav-item"><a class="nav-link" href="<?php echo SITE_URL ?>contactus">CONTACT US</a></li>
                                         </ul>
                                     </div>
                                     <div class="nav-boxs nav-boxs-mobile">

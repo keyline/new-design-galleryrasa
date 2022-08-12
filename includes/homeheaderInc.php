@@ -116,7 +116,7 @@ if (!isset($_COOKIE["cookieid"])) {
                         </div>
                         <div class="head-bar">
                             <div class="drafts-action">
-                                <a href="./cart.php" class="drafts-btn"><span class="material-icons cart-box">shopping_bag</span><span class="badge">2</span></a>
+                                <a href="<?php echo SITE_URL ?>cart.php" class="drafts-btn"><span class="material-icons cart-box">shopping_bag</span><span class="badge">2</span></a>
                             </div>
                             <div class="contact-action">
                                 <a href="<?php echo SITE_URL ?>login-register" class="contact-btn"><span class="material-icons cart-box">person</span></a>
