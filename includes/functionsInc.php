@@ -970,6 +970,7 @@ function get_html($array, $keys = array(),$usersession, $html = '') {
                 </div>
                 <div class="details-action">
                        <a  href="' . SITE_URL . '/details/' . $productID . '" class="details-btn" target="_blank">details</a>
+                   </div>
                    </div>';
                 
                 }else{
@@ -1069,8 +1070,8 @@ function get_html($array, $keys = array(),$usersession, $html = '') {
 				            </div>                                        
                                 </div>
                                     </div>
+                                    <hr>
                                         </div>
-                                <hr>
                                 ';
             }
         }
