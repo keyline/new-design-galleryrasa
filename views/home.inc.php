@@ -21,12 +21,15 @@
                                                         <div class="top-search">
                                                             <div class="search-barOption">
                                                                 <form method="post" action="search" name="search_form" id="search_form" role="form" class="bibliography-search-form" class="search-input">
-                                                                    <div class="row justify-content-center flex-md-nowrap flex-wrap">
-                                                                        <div class="col-md-7 col-sm-6 p-0">
+                                                                    <div class="row flex-md-nowrap flex-wrap">
+                                                                        <div class="col-md-8 col-sm-12 pr-0">
+                                                                            <div class="search-new-namrata">
                                                                             <select class="program-name form-control" name="bibliography[]" multiple="multiple"  data-placeholder="Search by Author / Artist / Editor / Topic"></select>
+                                                                            <button type="submit" value="entry-point" name="bibliography-search-entry" class="btn-search" type="submit"><span class="material-icons">search</span></button >        
+                                                                            </div>
                                                                         </div>
-                                                                        <button type="submit" value="entry-point" name="bibliography-search-entry" class="btn-search" type="submit"><span class="material-icons">search</span></button >        
-                                                                        <div class="col-md-3 col-sm-6 pr-0 arial">
+                                                                       
+                                                                        <div class="col-md-4 col-sm-12 arial">
                                                                         <!-- <span class="material-icons">keyboard_arrow_down</span> -->
                                                                             {subcategory_list}
                                                                         </div>
@@ -129,13 +132,28 @@
                                                     </div>
                                                 </div>
                                             </div> -->
+                                            <!-- <div class="form-group">
+                                                <select name="ref_type[]" id="adv-search-extract" multiple="multiple" deta-placeholder="BOOK">
+                                                    {adv-search-options}
+                                                </select>
+                                            </div> -->
                                             <div class="form-group">
-                                                <label>Classification</label>
-                                                <select name="ref_type[]" id="adv-search-extract" multiple="multiple">
+                                                <!-- <label>Classification</label> -->
+                                                <select name="ref_type[]" id="adv-search-extract" multiple="multiple" data-placeholder="Classification">
 <!--                                                <select name="extract_type[]" id="adv-search-extract" multiple="multiple">-->
                                                     {adv-search-options}
                                                 </select>
                                             </div>
+                                            <!-- <div class="form-group">
+                                            <select id="example-multiple-selected" multiple="multiple">
+    <option value="1">Option 1</option>
+    <option value="2" selected="selected">Option 2</option>
+    <option value="3" selected="selected">Option 3</option>
+    <option value="4">Option 4</option>
+    <option value="5">Option 5</option>
+    <option value="6">Option 6</option>
+</select>
+                                            </div> -->
                                             <div class="form-group">
                                                 <input type="text" name="title1_of_parent[1]" class="form-control" placeholder="BOOK">                       
                                             </div>                                            
@@ -181,22 +199,22 @@
                                             <div class="form-group">
                                                 <input type="text" name="descriptive_tags" class="form-control" placeholder="TAGS">
                                             </div>
-                                            <div class="col-lg-8">
+                                            <!-- <div class="col-lg-8">
                                                 <div class="right-part">
                                                 <input type="submit" name="adv_submit" class="search-box" value="Search"/>
                                                 </div>
-                                            </div>
+                                            </div> -->
 
                                         </form>
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
-                                <!-- <div class="col-lg-6">
+                                <div class="col-lg-6">
                                                     <div class="right-part">
                                             <button type="button" name="adv_submit" class="search-box">Search</button>
                                     </div>
-                                </div> -->
+                                </div>
                                 <div class="col-lg-6">
                                                     <div class="right-part">
                                             <button type="button" class="cancel-btn" data-dismiss="modal">CANCEL</button>

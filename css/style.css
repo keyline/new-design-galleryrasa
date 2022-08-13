@@ -630,7 +630,7 @@ a {
     min-width: auto;
 }
 select {
-  #display: none; /*hide original SELECT element:*/
+  display: none; /*hide original SELECT element:*/
   /* padding: 15px 5px 15px 15px; */
   border: none;
   /* font-family: Verdana; */
@@ -662,7 +662,7 @@ label.custom-select {
 .start-body .custom-select{
     border: none;
 }
-.start-body option: hover .form-btn {
+.start-body option:hover .form-btn {
     background-color: var(--primaryColor);
     color: #fff;
 }
@@ -872,12 +872,12 @@ label.custom-select {
     text-transform: uppercase;
 }
 .hearder-options .top-search .search-barOption{
-    width: 78%;
-    margin-right: 5px;
+    width: 80%;
+    /* margin-right: 5px; */
 }
-.hearder-options .top-search .search-barOption #search_form{
+/* .hearder-options .top-search .search-barOption #search_form{
     display: flex;
-}
+} */
 .hearder-options .top-search{
     margin-bottom: 20px;
 }
@@ -2112,10 +2112,12 @@ top: 0;
     width: 660px;
 }
 .start-body.visual-page.bibliography-page .left-body{
-        width: 90%;;
+        width: 96%;;
 }
 .start-body.visual-page.bibliography-page .hearder-options .user-options .top-search .drop-form{
-    width: 22%;
+    width: 20%;
+    /* margin-left: 22px; */
+    margin-left: 18px;
 }
 .start-body.visual-page.bibliography-page .start-body .visual-inner .hearder-options .btn-search{
         width: 98px;
@@ -2500,6 +2502,13 @@ top: 0;
 .artist-search.bibliography-search .bibliography-total-box .bibliography-left-box{
     width: 21%;
     padding-right: 36px;
+    position: relative;
+}
+.artist-search.bibliography-search .bibliography-total-box .bibliography-left-box #btnBack .btn-red.form-control{
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: transparent!important;
 }
 .artist-search.bibliography-search .bibliography-total-box .bibliography-right-box{
     width: 79%;
@@ -5034,7 +5043,7 @@ body
 .start-body.podcast-page.artist-search.get-page .get-info ul li span{
     color: var(--textColor);
 */
-}
+
 .start-body.podcast-page.artist-search.get-page .get-info ul li{
      display: flex;
     align-items: center;
@@ -5944,9 +5953,9 @@ background-color: #fff;
 
 .owl-item .item {
    transform: translate3d(0, 0, 0); /* DO NOT REMEMBER WHERE TU PUT THIS, SEARCH FOR 3D ACCELERATION */
-  // transform: scale(0.9);
+ /* transform: scale(0.9); */
 
-  // transition: all .25s ease-in-out; 
+  transition: all .25s ease-in-out; 
 /*  margin: 50px 0;  OVERWRITE PLUGIN MARGIN */
  }
 
@@ -5969,7 +5978,7 @@ background-color: #fff;
 
 .screenshot_slider .owl-nav {
     text-align: center;
-    // margin: 40px 0;
+     margin: 40px 0;
 }
 
 .screenshot_slider .owl-nav button {
@@ -6525,16 +6534,21 @@ text-align: left;
 
 
 .ms-parent .ms-choice{
-    border-color: transparent;
+    border: none;
     color: #212529;
     font-family: 'Roboto Mono';
     height: 76px!important;
     background-color: #fff;
 }
 .ms-choice > span {
-    top: 20px;
-    left: 16px;
+    top: 15px;
+    /* left: 16px; */
+    text-align: center;
+    font-size: 16px;
+    /* font-weight: 500; */
     text-transform: uppercase;
+    color: #333;
+    font-family: 'Roboto Mono', monospace;
 }
 .ms-choice > div {
     top: 24px;
@@ -6542,14 +6556,17 @@ text-align: left;
 .ms-parent label {
     display: inline-block;
     /* margin-bottom: 0.5rem; */
-    font-size: 16px;
+    font-size: 14px;
     padding: 22px 0px 22px 15px;
     color: var(--textColor);
     font-family: 'Roboto Mono';
     border-bottom: 1px solid #d5d8d9c7;
-    font-weight: 500;
+    /* font-weight: 500!impornant; */
     text-transform: uppercase;
     margin: 0;
+}
+.ms-drop ul > li label{
+    font-weight: 500!important;
 }
 .ms-parent label span{
     padding-left: 10px;
@@ -6566,9 +6583,13 @@ text-align: left;
     text-decoration: underline;
 }
 .select2-container--default .select2-selection--multiple {
-    background-color: white;
+    
     /* border: 1px solid transparent; */
-    height: 76px;
+
+    /* height: 76px; */
+
+    min-height: 76px;
+
     background-color: #F7FAFB!important;
     display: flex;
     align-items: center;
@@ -6584,6 +6605,7 @@ text-align: left;
     text-align: left;
 }
 .start-body.visual-page.visual-search-page.bibliography-search .select2-container--default .select2-selection--multiple{
+
     background-color: #fff;
     border: 1px solid #ced4da;
 }
@@ -6617,5 +6639,189 @@ text-align: left;
       text-transform: capitalize;
       font-family: 'Roboto', sans-serif;
       /* word-spacing: 5px; */
-      padding-left: 12px;
-  }
+      /* padding-left: 12px; */
+    background-color: #fff!important;
+    padding-left: 35px;
+}
+.start-body.visual-page.visual-search-page .select2-container--default .select2-selection--multiple{
+    background-color: #fff!important;
+    padding-left: 35px;
+}
+.search-barOption .btn-default.form-control.search-bttn{
+    background-color: var(--primaryColor)!important;
+    width: 90px;
+    color: #fff!important;
+    font-size: 40px!important;
+    padding: 0!important;
+    margin: 0;
+    width: 84px!important;
+}
+.search-barOption .btn-default.form-control.search-bttn span{
+    font-size: 40px;
+}
+.ui-state-active{
+    background-color: transparent;
+    border: none;
+}
+.ui-widget-content{
+    border: none;
+    background-color: transparent;
+}
+.ui-accordion-header-icon.ui-icon.ui-icon-triangle-1-s{
+    display: none;
+}
+.ui-accordion-header-icon.ui-icon.ui-icon-triangle-1-e{
+    display: none;
+}
+.ui-state-default{
+    border: 1px solid rgba(0,0,0,.125);
+    border-width: 0px 0px 1px;
+    background-color: transparent;
+}
+.ui-state-hover{
+    background-color: transparent;
+}
+
+
+.ui-accordion .ui-accordion-content{
+    border-bottom: 1px solid rgba(0,0,0,.125);
+    padding: 20px 0px 0px;
+}
+.list-unstyled li label{
+    color: var(--textColor);
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-family: 'Roboto', sans-serif;
+    /* word-spacing: 5px; */
+    /* padding-left: 12px; */
+}
+.filterinput{
+    height: 50px;
+    width: 100%;
+}
+
+/* .hearder-options .top-search #search_form{
+    display: flex;
+} */
+
+
+.start-body.visual-page.rasa-inner.bengali-film-archives .hearder-options .btn-search{
+    width: 90px;
+}
+.start-body.visual-page.bibliography-page .hearder-options .top-search .search-barOption{
+    width: 80%;
+}
+.start-body.visual-page.bibliography-page .visual-inner .hearder-options .btn-search{
+    padding: 0px 18px;
+}
+.start-body.visual-page.bibliography-page .select2-container--default .select2-search--inline .select2-search__field{
+    padding-left: 24px;
+}
+.ms-drop{
+    margin-top: 10px;
+    border-radius: 0;
+}
+.start-body.visual-page.rasa-inner.bengali-film-archives .search-barOption form{
+    display: flex;
+}
+.start-body.visual-page.visual-search-page.films-page .search-barOption form{
+    display: flex;
+}
+.start-body.visual-page.visual-search-page.films-page .select2-container--default .select2-selection--multiple{
+    border: 1px solid #ced4da;
+}
+
+.start-body.visual-page.visual-search-page.films-page .visual-inner .hearder-options .btn-search{
+    margin-right: 0;
+}
+.search-new-namrata{
+    display: flex;
+    margin-right: 4px;
+}
+
+.start-body.visual-page.rasa-inner.bibliography-page .visual-inner .hearder-options .btn-search{
+    margin-right: 0!important;
+}
+
+.visual-search-details-page.bibliography-search-details-page .bibliography-cite .form-control{
+    background-color: transparent;
+    
+}
+.visual-search-details-page.bibliography-search-details-page .bibliography-cite .form-control i{
+    color: #fff;
+}
+
+.ms-drop.bottom input{
+    accent-color: var(--primaryColor);
+    /* margin-left: -25px; */
+    width: 19px;
+    height: 19px;
+}
+/* .ms-drop.bottom input:after {
+    position: absolute;
+    content: '';
+    border: 2px solid var(--primaryColor);
+    height: 19px;
+    width: 19px;
+    left: 15px;
+} */
+
+.start-body.visual-page.visual-search-page.bibliography-search .form-group-new-part{
+    display: flex;
+}
+.ms-choice > span.placeholder{
+    
+    color: var(--textColor);
+    text-align: left;
+    padding-left: 18px;
+    font-size: 14px;
+    font-weight: 500;
+
+
+}
+
+
+.ms-drop.bottom ul::-webkit-scrollbar {
+
+  width: 12px;               /* width of the entire scrollbar */
+
+}
+
+
+
+.ms-drop.bottom ul::-webkit-scrollbar-track {
+
+  background: #cdcdcd;
+/*    width: 8px;*/
+
+    border: 3px solid #f3f3f3;
+
+/*    border-radius: 20px; */
+
+    /* color of the tracking area */
+
+}
+
+
+
+.ms-drop.bottom ul::-webkit-scrollbar-thumb {
+
+  background-color: var(--primaryColor);
+
+    /* color of the scroll thumb */
+
+/*  border-radius: 20px;      */
+
+    /* creates padding around scroll thumb */
+
+}
+
+
+
+
+
+
+
+
+

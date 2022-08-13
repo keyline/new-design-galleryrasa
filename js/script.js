@@ -1001,6 +1001,8 @@ trigger.addEventListener("click", toggleModal);
 closeButton.addEventListener("click", toggleModal);
 window.addEventListener("click", windowOnClick);
 
+// select dropdown//
 
+    $('#example-multiple-selected').multiselect();
 
 

@@ -38,15 +38,39 @@
     padding: 30px 12px 180px 0px;
 }
     .start-body.visual-page.bibliography-page .hearder-options .user-options .top-search .drop-form{
-    width: 28%;
+    width: 24%;
 }
     .start-body.visual-page.bibliography-page .hearder-options .top-search .search-barOption {
-    width: 60%;
+    width: 76%;
 }
 }
 
 /*LARGE PC VERSION*/
 @media screen and (max-width: 1400px) {
+    .select2-container--default .select2-selection--multiple {
+        min-height: 68px;
+    }
+    .select2-container--default .select2-selection--multiple .select2-selection__rendered {
+        width: 442px;
+    }
+    .start-body.visual-page.bibliography-page .hearder-options .user-options .top-search .drop-form{
+        margin-left: 0px;
+    }
+    .ms-parent .ms-choice {
+        height: 68px!important;
+    }
+    .start-body.visual-page.rasa-inner.bengali-film-archives .visual-inner .hearder-options .btn-search{
+        margin-right: 0;
+    }
+    .select2-container--default .select2-selection--multiple {
+        height: 68px;
+    }
+    .start-body .visual-inner .hearder-options .btn-search {
+        height: 68px;
+    }
+    .start-body.visual-page.visual-search-page.bibliography-search .select2-container--default .select2-selection--multiple{
+        height: 68px;
+    }
     .topPanel .nav-inner .form-group.arrow-box .arrow {
         height: 56px;
     }
@@ -167,7 +191,7 @@
     padding-left: 7px;
 }
         .start-body.visual-page.bibliography-page .hearder-options .top-search .search-barOption {
-    width: 60%;
+    width: 76%;
 }
     .start-body.visual-page.bibliography-page div.select:after {
         right: 36px;
@@ -868,11 +892,70 @@
        .testimonials.press .press-box .press-inner {
     width: calc(100% / 2);
 }
+.start-body.visual-page.visual-search-page.bibliography-search .search-barOption .btn-default.form-control.search-bttn{
+    width: 72px!important;
+}
     
 }
 
 /*MOBILE VERSION*/
 @media screen and (max-width: 767px) {
+    .search-barOption .btn-default.form-control.search-bttn span {
+    font-size: 30px;
+}
+    .start-body.visual-page.visual-search-page.bibliography-search .hearder-options .top-search {
+        margin-bottom: 12px;
+    }
+    .select2-container--default .select2-search--inline .select2-search__field {
+        font-size: 14px;
+    }
+    .start-body.visual-page.visual-search-page.bibliography-search .select2-container--default .select2-selection--multiple {
+        padding-left: 4px;
+    }
+    .start-body.visual-page.visual-search-page.bibliography-search .select2-container--default .select2-selection--multiple {
+        height: 56px;
+    }
+    .select2-container--default .select2-selection--multiple .select2-selection__rendered {
+        width: 100%;
+    }
+    .select2-container--default .select2-selection--multiple {
+        min-height: 56px;
+    }
+    .ms-choice > span {
+        top: 20px;
+    }
+    .ms-parent .ms-choice {
+        height: 56px!important;
+        margin-top: 15px;
+    }
+    .start-body.visual-page.bibliography-page .hearder-options .user-options .top-search .drop-form {
+        margin-left: 0px;
+    }
+    .search-new-namrata {
+        margin-right: 15px;
+    }
+    .start-body.visual-page.rasa-inner.bengali-film-archives .select2-container--default .select2-search--inline .select2-search__field {
+        padding-left: 4px;
+        font-size: 14px;
+    }
+    .hearder-options .btn-search span {
+        font-size: 30px;
+    }
+    .start-body.visual-page.rasa-inner.bengali-film-archives .hearder-options .btn-search {
+        width: 60px;
+    }
+    .select2-container--default .select2-selection--multiple {
+        height: 56px;
+    }
+    .start-body .visual-inner .hearder-options .btn-search{
+        height: 56px;
+    }
+    .topPanel {
+        padding: 20px 0px 24px;
+    }
+    .brand .logo img {
+        width: 78px;
+    }
         .get-modal .modal-content {
     top: 37%;
 }
@@ -974,7 +1057,8 @@
     padding: 0px;
 }
     .start-body.visual-page.rasa-inner{
-        background-image: url(../img/Rectangle-105.jpg);
+        background-image: url(../images/Rectangle-105.jpg);
+        /* background-image: url(../images/Rectangle105.jpg); */
         padding: 12px 0px;
         margin-bottom: 20px;
     }
