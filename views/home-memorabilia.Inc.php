@@ -5,7 +5,7 @@
                 <div class="col-lg-12">
                     <div class="visual-inner">
                         <div class="row">
-                            <div class="col-lg-9 flex-height">
+                            <div class="col-xl-9 col-lg-12 flex-height">
                                 <div class="visual-info">
                                     <div class="visual-title">
                                         Bengali Film Archives
@@ -22,12 +22,12 @@
                                                             <div class="search-barOption">
 
                                                                 <form method="post" action="memorabilia" name="search_form" id="search_form" role="form">
-                                                                        <div class="col-md-11 p-0">
+                                                                        <!-- <div class="col-md-11 p-0"> -->
                                                                             <select class="form-control program-name" name="memorabilia[]" multiple="multiple" data-placeholder="Search by Film / Cast / Director"></select>
-                                                                        </div>
-                                                                        <div class="col-md-1 p-0">
+                                                                        <!-- </div> -->
+                                                                        <!-- <div class="col-md-1 p-0"> -->
                                                                                 <button type="submit" class="btn-search" value="entryPoint" name="srchButtonEntryPoint"><span class="material-icons">search</span></button>
-                                                                            </div>
+                                                                            <!-- </div> -->
                                                                             <input type="hidden" name="catg" value="Memorabilia">
                                                                             <input type="hidden" name="att[0]" value="film">
                                                                             <input type="hidden" name="att[1]" value="cast">

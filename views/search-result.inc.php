@@ -42,13 +42,14 @@
                                                                         <input type="hidden" name="att[1]" value="artist">
                                                                         <input type="hidden" name="att[2]" value="editor">
                                                                 </form>
-                                                                <div class="drop-form">
-                                                                <a href="#" class="advanced-btn" data-toggle="modal" data-target="#advancedModal">Advanced Search<span class="material-icons">manage_search</span>
-                                                                </a>
-                                                            </div>
+                                                               
                                                             
                                                             
                                                         </div>
+                                                        <div class="drop-form">
+                                                                <a href="#" class="advanced-btn" data-toggle="modal" data-target="#advancedModal">Advanced Search<span class="material-icons">manage_search</span>
+                                                                </a>
+                                                            </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -106,7 +107,7 @@
             </div>
         </div>
     </section>
-    <div class="modal fade" id="citethis" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal fade rasa-new-modal" id="citethis" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
