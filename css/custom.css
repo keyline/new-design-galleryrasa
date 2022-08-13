@@ -773,7 +773,7 @@ h1.filmName {
     float: none;
     margin-bottom: 15px;
     max-width: 100%;
-    margin-right: 10px;
+    /* margin-right: 10px; */
     border: none;
     padding-left: 15px;
 }

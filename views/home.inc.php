@@ -22,17 +22,17 @@
                                                             <div class="search-barOption">
                                                                 <form method="post" action="search" name="search_form" id="search_form" role="form" class="bibliography-search-form" class="search-input">
                                                                     <div class="row flex-md-nowrap flex-wrap">
-                                                                        <div class="col-md-8 col-sm-12 pr-0">
+                                                                        <!-- <div class="col-md-8 col-sm-12 pr-0"> -->
                                                                             <div class="search-new-namrata">
                                                                             <select class="program-name form-control" name="bibliography[]" multiple="multiple"  data-placeholder="Search by Author / Artist / Editor / Topic"></select>
                                                                             <button type="submit" value="entry-point" name="bibliography-search-entry" class="btn-search" type="submit"><span class="material-icons">search</span></button >        
                                                                             </div>
-                                                                        </div>
+                                                                        <!-- </div> -->
                                                                        
-                                                                        <div class="col-md-4 col-sm-12 arial">
+                                                                        <!-- <div class="col-md-4 col-sm-12 arial"> -->
                                                                         <!-- <span class="material-icons">keyboard_arrow_down</span> -->
                                                                             {subcategory_list}
-                                                                        </div>
+                                                                        <!-- </div> -->
                                                                         <input type="hidden" name="catg" value="bibliography">
                                                                         <input type="hidden" name="att[0]" value="author">
                                                                         <input type="hidden" name="att[1]" value="artist">
