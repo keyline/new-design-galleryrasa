@@ -6741,9 +6741,9 @@ text-align: left;
 .start-body.visual-page.bibliography-page .visual-inner .hearder-options .btn-search{
     padding: 0px 18px;
 }
-.start-body.visual-page.bibliography-page .select2-container--default .select2-search--inline .select2-search__field{
+/* .start-body.visual-page.bibliography-page .select2-container--default .select2-search--inline .select2-search__field{
     padding-left: 24px;
-}
+} */
 .ms-drop{
     margin-top: 10px;
     border-radius: 0;
@@ -6846,7 +6846,9 @@ text-align: left;
 .rasa-new-modal{
     color: #333;
 }
-
+.start-body.visual-page.visual-search-page.films-page .select2-container--default .select2-selection--multiple .select2-selection__rendered{
+    padding-left: 40px;
+}
 
 
 
