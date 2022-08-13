@@ -1,5 +1,5 @@
 <main>
-<section class="start-body visual-page visual-search-page">
+<section class="start-body visual-page visual-search-page films-page">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -156,12 +156,25 @@
                                                 <div class="form-group">
                                                     <input type="text" class="form-control" name="year" placeholder="year">
                                                 </div>
-                                                <input type="submit" name="adv_submit" class="search-box" value="Search"/>
-                                                <button type="button" class="cancel-btn" data-dismiss="modal">CANCEL</button>
+                                                <!-- <input type="submit" name="adv_submit" class="search-box" value="Search"/>
+                                                <button type="button" class="cancel-btn" data-dismiss="modal">CANCEL</button> -->
                                             </form>
                                         </div>
                                     </div>
                                 </div>
+
+                                <div class="row">
+                                <div class="col-lg-6">
+                                                    <div class="right-part">
+                                                    <input type="submit" name="adv_submit" class="search-box" value="Search"/>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                                    <div class="right-part">
+                                                    <button type="button" class="cancel-btn" data-dismiss="modal">CANCEL</button>
+                                    </div>
+                                </div>
+                            </div>
                             </div>
                     </div>
                 </div>

@@ -138,13 +138,18 @@ h2,
     display: block;
     cursor: pointer;
     position: relative;
-    margin: 2px 0 0 0;
-    padding: .5em .5em .5em .7em;
+    padding: 15px 0px;
     font-size: 100%;
     border-radius: 0px;
-    background: #d5e6e0;
-    border: 1px solid #b9d5c9;
-    color: #000;
+    color: var(--textColor);
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-family: 'Roboto Mono';
+    /* background: #d5e6e0; */
+    /* border: 1px solid #b9d5c9; */
+    border-bottom: 1px solid rgba(0,0,0,.125);
+    /* border-top: 1px solid rgba(0,0,0,.125); */
 }
 
 .ui-state-active .ui-icon,
@@ -757,6 +762,8 @@ h1.filmName {
     margin-bottom: 15px;
     max-width: 100%;
     margin-right: 10px;
+    border: none;
+    padding-left: 15px;
 }
 
 h4#search-filters-title {
@@ -810,7 +817,7 @@ main .btn.add-to-cart-btn {
     text-align: center;
     font-size: 20px;
     position: absolute;
-    top: 50%;
+    top: 30px;
     left: 50%;
     transform: translate(-50%, -50%);
 }

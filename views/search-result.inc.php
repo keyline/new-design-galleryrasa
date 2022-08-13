@@ -18,25 +18,32 @@
                                                         <div class="top-search">
                                                             <div class="search-barOption">
                                                                 <form method="post" action="search" name="search_form" id="search_form" class="bibliography-search-form">
-                                                                        <div class="form-group row">
-                                                                            <div class="col-md-6">
-                                                                                <select class="program-name" name="bibliography[]" multiple="multiple" data-placeholder="Search By Author/Artist/Editor/Topic"></select>
-                                                                            </div>                     
-                                                                            <div class="col">
-                                                                                <button type="submit" class="btn btn-default form-control search-bttn" value="entry-point" name="bibliography-search-entry"><span class="glyphicon glyphicon-search"></span> Search
+                                                                        <div class="form-group-new-part">
+                                                                                <select class="program-name" name="bibliography[]" multiple="multiple" data-placeholder="Search By Author / Artist / Editor / Topic"></select>
+                                                                        
+                                                                        <button type="submit" class="btn btn-default form-control search-bttn" value="entry-point" name="bibliography-search-entry"><span class="glyphicon glyphicon-search"></span> <span class="material-icons">search</span>
                                                                                 </button>
-                                                                            </div>
+                                                                                </div>
+                                                                        <!-- <div class="form-group row">
+                                                                            <div class="col-md-11 col-sm-11 col-11  p-0">
+                                                                                <select class="program-name" name="bibliography[]" multiple="multiple" data-placeholder="Search By Author / Artist / Editor / Topic"></select>
+                                                                            </div>                     
+                                                                            <div class="col-md-1 col-sm-1 col-1 p-0">
+                                                                                <button type="submit" class="btn btn-default form-control search-bttn" value="entry-point" name="bibliography-search-entry"><span class="glyphicon glyphicon-search"></span> <span class="material-icons">search</span>
+                                                                                </button>
+                                                                            </div> -->
                                                                         </div>
                                                                         <input type="hidden" name="catg" value="bibliography">
                                                                         <input type="hidden" name="att[0]" value="author">
                                                                         <input type="hidden" name="att[1]" value="artist">
                                                                         <input type="hidden" name="att[2]" value="editor">
                                                                 </form>
-                                                            </div>
-                                                            <div class="drop-form">
+                                                                <div class="drop-form">
                                                                 <a href="#" class="advanced-btn" data-toggle="modal" data-target="#advancedModal">Advanced Search<span class="material-icons">manage_search</span>
                                                                 </a>
                                                             </div>
+                                                            </div>
+                                                            
                                                         </div>
                                                     </div>
                                                 </div>
@@ -60,7 +67,7 @@
                             <div class="artist-inner">
                                 <div class="artist-top artist-top-2">
                                     <p class="filters">FILTERS<span class="material-icons">filter_alt</span></p>
-                                    <p class="reset">reset</p>
+                                    <!-- <p class="reset">reset</p> -->
                                 </div>
                             </div>
                             {leftFilter}
@@ -135,7 +142,7 @@
                                                     <input type="text" name="author" class="form-control" placeholder="NAME">
                                                 </div>
                                                 <div class="form-group">
-                                                    <label>Classification</label>
+                                                    <!-- <label>Classification</label> -->
                                                     <select name="ref_type[]" id="adv-search-extract" multiple="multiple">
                                                         {adv-search-options}
                                                     </select>
@@ -185,21 +192,21 @@
                                                 <input type="text" name="descriptive_tags" class="form-control" placeholder="TAGS">
                                             </div>
                                             <!-- <input type="submit" name="adv_submit" class="btn form-control" value="Search"/> -->
-                                            <div class="col-lg-6">
+                                            <!-- <div class="col-lg-6">
                                                 <div class="right-part">
                                                     <input type="submit" name="adv_submit" class="search-box" value="Search"/>
                                                 </div>
-                                            </div>
+                                            </div> -->
                                         </div>
                                     </div>
                                 </form>
                             </div>
                             <div class="row">
-                                <!-- <div class="col-lg-6">
+                                <div class="col-lg-6">
                                                     <div class="right-part">
                                             <button type="button" name="adv_submit" class="search-box">Search</button>
                                     </div>
-                                </div> -->
+                                </div>
                                 <div class="col-lg-6">
                                                     <div class="right-part">
                                             <button type="button" class="cancel-btn" data-dismiss="modal">CANCEL</button>
@@ -300,4 +307,8 @@
     }
 
 
+</script>
+
+<script type="text/javascript">
+    $('#example-multiple-selected').multiselect();
 </script>
