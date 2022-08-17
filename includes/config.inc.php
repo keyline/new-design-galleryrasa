@@ -5,9 +5,9 @@
     define('DB_HOST', 'localhost');
     define('DB_NAME', 'galleryrasa');
     
-    define('ORG_SITE_URL', 'http://localhost/galleryrasa/');
-    define('SITE_URL', 'http://localhost/galleryrasa/');
-    define('ADMIN_URL', 'https://galleryrasa.com/admin');
+    define('ORG_SITE_URL', 'http://localhost/gallary_rassa/');
+    define('SITE_URL', 'http://localhost/gallary_rassa/');
+    define('ADMIN_URL', 'https://gallary_rassa.com/admin');
     define('APPS_BASE_PATH', $_SERVER['DOCUMENT_ROOT'] . "/");
     
     define('CURRENCY_CODE', '$ ');  # US [ $ ], GB [ & pound; ] #Euro [ & euro ];

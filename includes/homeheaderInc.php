@@ -107,7 +107,8 @@ if (!isset($_COOKIE["cookieid"])) {
                                     <li class="nav-item"><a class="nav-link" href="<?php echo SITE_URL ?>visualarchive-search">VISUAL ARCHIVES</a></li>
                                     <li class="nav-item"><a class="nav-link" href="<?php echo SITE_URL ?>beforeSearch">BIBLIOGRAPHY</a></li>
                                     <li class="nav-item"><a class="nav-link" href="<?php echo SITE_URL ?>memorabilia-search">BENGALI FILM ARCHIVES</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="../galleryRasa-html/podcast.php">PODCAST</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="<?php echo SITE_URL ?>podcast">PODCAST</a></li>
+                                    <!-- <li class="nav-item"><a class="nav-link" href="../galleryRasa-html/podcast.php">PODCAST</a></li> -->
                                     <li class="nav-item"><a class="nav-link" href="<?php echo SITE_URL ?>exhibition-search">EXHIBITION<span class="material-icons">new_releases</span></a></li>
                                 </ul>
                             </div>   
