@@ -204,10 +204,12 @@
 <!-- Optional JavaScript; choose one of the two! -->
 
 <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
+<script type="text/javascript" src="<?php echo SITE_URL ?>/mainjs/lib/jquery-3.6.0.min.js"></script>
 <script src="<?php echo SITE_URL . JS_FOLDER ?>bootstrap.bundle.min.js"></script>
 <script type="text/javascript" src="<?php echo SITE_URL . JS_FOLDER ?>menumaker.js"></script>
 <script src="<?php echo SITE_URL . JS_FOLDER ?>jquery.serialtabs.js"></script>
+
 <script defer type="text/javascript" src="<?php echo SITE_URL . JS_FOLDER ?>script.js"></script>
 <script src="<?php echo SITE_URL . OWL_FOLDER ?>owl-min.js"></script>
 <script src="<?php echo SITE_URL . JS_FOLDER ?>jquery.bs4-scrolling-tabs.js"></script>
@@ -289,7 +291,8 @@
 
 
 <!-- for filtaration  -->
-<script type="text/javascript" src="<?php echo SITE_URL ?>/mainjs/lib/jquery-ui-min.js"></script>
+
+<!-- <script type="text/javascript" src="<?php echo SITE_URL ?>/mainjs/lib/jquery-ui-min.js"></script> -->
 
 
 
@@ -309,7 +312,9 @@ if (strpos($uri, 'visualarchive-details/') == false) {
 <script type="text/javascript" src="<?php echo SITE_URL ?>/mainjs/magnific-popup/jquery.magnific-popup.min.js"></script>
 
 
+
 <script>
+    // var $jq132 = jQuery.noConflict(true);
     $(document).ready(function () {
         $('button[data-target="#galleryRasaNavbar"]').click(function () {
             var btnclass = $(this).attr("aria-expanded");

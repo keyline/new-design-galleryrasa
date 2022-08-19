@@ -129,7 +129,7 @@
     <!-- Modal -->
     <div class="advance-modal">
         <div class="modal fade" id="advancedModal" tabindex="-1" aria-labelledby="advancedModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
+        <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-body">
                         <div class="advanced-search">
@@ -143,30 +143,28 @@
                             <div class="row">
                                 <div class="col-lg-6">
                                     <div class="right-part">
-                                        
                                         <form action="adv-search" method="POST" id="adv-search-bibliography">
-                                                <div class="form-group">
-                                                    <input type="text" name="author" class="form-control" placeholder="NAME">
-                                                </div>
-                                                <div class="form-group">
-                                                    <!-- <label>Classification</label> -->
-                                                    <select name="ref_type[]" id="adv-search-extract" multiple="multiple">
-                                                        {adv-search-options}
-                                                    </select>
-                                                </div>
-                                                <div class="form-group">
-                                                    <input type="text" name="title1_of_parent[1]" class="form-control" placeholder="BOOK">                       
-                                                </div>                                            
-                                                <div class="form-group">
-                                                    <input type="text" name="gregorian_year" class="form-control" placeholder="YEAR">
-                                                </div>
-                                                <div class="form-group">
-                                                    <input type="text" name="extract" class="form-control" placeholder="EXTRACT">
-                                                </div>
-                                        </div>
+                                            <div class="form-group">
+                                                <input type="text" name="author" class="form-control" placeholder="NAME">
+                                            </div>
+                                            <div class="form-group">
+                                                <select name="ref_type[]" id="adv-search-extract" multiple="multiple" data-placeholder="Classification">
+                                                    {adv-search-options}
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="text" name="title1_of_parent[1]" class="form-control" placeholder="BOOK">                       
+                                            </div>                                            
+                                            <div class="form-group">
+                                                <input type="text" name="gregorian_year" class="form-control" placeholder="YEAR">
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="text" name="extract" class="form-control" placeholder="EXTRACT">
+                                            </div>
                                     </div>
-                                    <div class="col-lg-6">
-                                        <div class="right-part">
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="right-part">
                                             <div class="form-group">                                             
                                                 <!-- <label>Select In/As</label> -->
                                                 <select name="attr" class="form-control" id="select-attributes-biblio">
@@ -198,25 +196,17 @@
                                             <div class="form-group">
                                                 <input type="text" name="descriptive_tags" class="form-control" placeholder="TAGS">
                                             </div>
-                                            <!-- <input type="submit" name="adv_submit" class="btn form-control" value="Search"/> -->
-                                            <!-- <div class="col-lg-6">
+                                            <div class="col-lg-8">
                                                 <div class="right-part">
-                                                    <input type="submit" name="adv_submit" class="search-box" value="Search"/>
+                                                <input type="submit" name="adv_submit" class="search-box" value="Search"/>
                                                 </div>
-                                            </div> -->
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                            <div class="row">
-                                <div class="col-lg-6">
-                                                    <div class="right-part">
-                                            <button type="button" name="adv_submit" class="search-box">Search</button>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                                    <div class="right-part">
-                                            <button type="button" class="cancel-btn" data-dismiss="modal">CANCEL</button>
+                                            </div>
+                                            <div class="col-lg-8">
+                                                <div class="right-part">
+                                                    <button type="button" class="cancel-btn" data-dismiss="modal">CANCEL</button>
+                                                </div>
+                                            </div>
+                                        </form>
                                     </div>
                                 </div>
                             </div>

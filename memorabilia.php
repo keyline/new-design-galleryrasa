@@ -542,48 +542,48 @@ p.category_id = 2 AND v.value='" . $v . "' AND f.attribute_name = '" . $k . "' G
                 }
 
 
-//                 $modal = '<div class="modal fade vLogin" id="exampleModallogin2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-//   <div class="modal-dialog" role="document">
-//     <div class="modal-content">
-//       <div class="modal-header">
-//         <h5 class="modal-title" id="exampleModalLabel">Login To View Details</h5>
-//         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-//           <span aria-hidden="true">&times;</span>
-//         </button>
-//       </div>
-//       <div class="modal-body memoraModal">
-//         <form method="POST" action="login.php">
-//         <div class="row">
-//             <div class="col-md-3">
-//                 <label>Email <strong>*</strong></label>
-//             </div>
+                $modal = '<div class="modal fade vLogin rasa-new-modal" id="exampleModallogin2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Login To View Details</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body memoraModal">
+        <form method="POST" action="login.php">
+        <div class="row">
+            <div class="col-md-3">
+                <label>Email <strong>*</strong></label>
+            </div>
 
-//             <div class="col-md-9">
-//                 <input type="text" class="form-control" name="email" id="email" required>
-//             </div>
-//             <div class="col-md-3">
-//                 <label>Password <strong>*</strong></label>
-//             </div>
-//             <div class="col-md-9">
-//                 <input type="password" class="form-control" name="pass" id="pass" required>
-//             </div>
-//             <div class="col-md-3"></div>
-//             <div class="col-md-9">
-//                 <input type="submit" class="btn form-control" value="Login">
-//             </div>
-//             <div class="col-md-3"></div>
-//             <div class="col-md-5">
-//                 <a href="forget-password.php" class="btn form-control border-0  text-left  mt-1">Forgot Password</a>
-//             </div>
-//             <div class="col-md-4 d-flex align-items-start justify-content-start mt-1">
-//                 <a href="login-register.php" >Register</a>
-//             </div>
-//             </div>
-//         </form>
-//       </div>
-//     </div>
-//   </div>
-// </div>';
+            <div class="col-md-9">
+                <input type="text" class="form-control" name="email" id="email" required>
+            </div>
+            <div class="col-md-3">
+                <label>Password <strong>*</strong></label>
+            </div>
+            <div class="col-md-9">
+                <input type="password" class="form-control" name="pass" id="pass" required>
+            </div>
+            <div class="col-md-3"></div>
+            <div class="col-md-9">
+                <input type="submit" class="btn form-control" value="Login">
+            </div>
+            <div class="col-md-3"></div>
+            <div class="col-md-5">
+                <a href="forget-password.php" class="btn form-control border-0  text-left  mt-1">Forgot Password</a>
+            </div>
+            <div class="col-md-4 d-flex align-items-start justify-content-start mt-1">
+                <a href="login-register.php" >Register</a>
+            </div>
+            </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>';
 
 
 
@@ -615,6 +615,36 @@ p.category_id = 2 AND v.value='" . $v . "' AND f.attribute_name = '" . $k . "' G
                                                                 <img class="img-fluid" src="%s" alt="%s">
                                                             </div>
                                                             <div class="artist-sub">
+                                                                <a data-toggle="modal" data-target="#exampleModallogin2" class="artist-sub-btn">
+                                                                %s
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                        %s
+                                                    </div>
+                                                </div>
+                                            </a>'.$modal;
+
+
+
+                                            $url = SITE_URL . "/memorabilia-details/" . $filmId;
+                                            $productName = $filmName;
+                                            $productImg = (!empty($v[$i]['name'])) ? (SITE_URL . '/' . THUMB_IMGS . $v[$i]['name']) : (SITE_URL . JS_FOLDER . 'holder.js/300x180/auto/text:' . NO_IMAGE);
+                                                $htmlRight .= sprintf($baseHTML,$video_html,$productImg,$productName, $productName,$imagecount_html);
+                                                //echo $key . "::" . $v[$i]['name'] . "<br>";
+                                            } else {
+
+
+
+                                                $baseHTML = '<a href="%s" target="_blank">
+                                                <div class="artist-box">
+                                                    <div class="artist-box-info">
+                                                            %s
+                                                        <div class="artist-box-body">
+                                                            <div class="artist-img artist-img-bengali">                                                            
+                                                                <img class="img-fluid"  alt="%s" src="%s">
+                                                            </div>
+                                                            <div class="artist-sub">
                                                                 <a href="%s" target="_blank" class="artist-sub-btn">
                                                                     %s
                                                                 </a>
@@ -625,34 +655,10 @@ p.category_id = 2 AND v.value='" . $v . "' AND f.attribute_name = '" . $k . "' G
                                                 </div>
                                             </a>';
 
-
-
-                                            $url = SITE_URL . "/memorabilia-details/" . $filmId;
-                                            $productName = $filmName;
-                                            $productImg = (!empty($v[$i]['name'])) ? (SITE_URL . '/' . THUMB_IMGS . $v[$i]['name']) : (SITE_URL . JS_FOLDER . 'holder.js/300x180/auto/text:' . NO_IMAGE);
-                                                $htmlRight .= sprintf($baseHTML,$video_html,$productImg, $productName,$url, $productName,$imagecount_html);
-                                                //echo $key . "::" . $v[$i]['name'] . "<br>";
-                                            } else {
-
-
-
-                                                $baseHTML = '<div class="col-sm-6 col-md-4 product-outerBorder wow flipInX" data-wow-duration="1s" data-wow-delay="0.5s">
-                       <div class="product-imageBox d-flex flex-column">
-                       %s
-                       %s
-                       <a href="%s" target="_blank">
-                       
-<img class="img-responsive product-image" alt="%s" src="%s"/></a></div>
-                       
-                        <div class="product-caption">
-                       
-                               <h4><a href="%s" target="_blank">%s </a></h4>
-                       </div></div>';
-
                                                 $url = SITE_URL . "/memorabilia-details/" . $filmId;
                                                 $productName = $filmName;
                                                 $productImg = (!empty($v[$i]['name'])) ? (SITE_URL . '/' . THUMB_IMGS . $v[$i]['name']) : (SITE_URL . JS_FOLDER . 'holder.js/300x180/auto/text:' . NO_IMAGE);
-                                                $htmlRight .= sprintf($baseHTML, $imagecount_html, $video_html, $url, $productName, $productImg, $url, $productName);
+                                                $htmlRight .= sprintf($baseHTML,$url, $video_html, $productName, $productImg, $url, $productName , $imagecount_html);
                                                 //echo $key . "::" . $v[$i]['name'] . "<br>";
                                             }
                                         }
@@ -698,6 +704,31 @@ p.category_id = 2 AND v.value='" . $v . "' AND f.attribute_name = '" . $k . "' G
                                                                 <img class="img-fluid"  alt="%s" src="%s">
                                                             </div>
                                                             <div class="artist-sub">
+                                                                <a data-toggle="modal" data-target="#exampleModallogin2" class="artist-sub-btn">
+                                                                    %s
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                        %s
+                                                    </div>
+                                                </div>
+                                            </a>'.$modal;
+                                                $url = SITE_URL . "/memorabilia-details/" . $filmId;
+                                                $productName = $filmName;
+                                                $productImg = (!empty($v[$i]['name'])) ? (SITE_URL . '/' . THUMB_IMGS . $v[$i]['name']) : (SITE_URL . JS_FOLDER . 'holder.js/300x180/auto/text:' . NO_IMAGE);
+                                                $htmlRight .= sprintf($baseHTML, $video_html, $productName, $productImg, $productName,$imagecount_html);
+                                                //echo $key . "::" . $v[$i]['name'] . "<br>";
+                                            } else {
+
+                                                $baseHTML = '<a href="%s" target="_blank">
+                                                <div class="artist-box">
+                                                    <div class="artist-box-info">
+                                                            %s
+                                                        <div class="artist-box-body">
+                                                            <div class="artist-img artist-img-bengali">                                                            
+                                                                <img class="img-fluid"  alt="%s" src="%s">
+                                                            </div>
+                                                            <div class="artist-sub">
                                                                 <a href="%s" target="_blank" class="artist-sub-btn">
                                                                     %s
                                                                 </a>
@@ -710,25 +741,7 @@ p.category_id = 2 AND v.value='" . $v . "' AND f.attribute_name = '" . $k . "' G
                                                 $url = SITE_URL . "/memorabilia-details/" . $filmId;
                                                 $productName = $filmName;
                                                 $productImg = (!empty($v[$i]['name'])) ? (SITE_URL . '/' . THUMB_IMGS . $v[$i]['name']) : (SITE_URL . JS_FOLDER . 'holder.js/300x180/auto/text:' . NO_IMAGE);
-                                                $htmlRight .= sprintf($baseHTML, $video_html, $productName, $productImg,$url, $productName,$imagecount_html);
-                                                //echo $key . "::" . $v[$i]['name'] . "<br>";
-                                            } else {
-
-                                                $baseHTML = '<div class="col-sm-6 col-md-4 product-outerBorder wow flipInX" data-wow-duration="1s" data-wow-delay="0.5s">
-                       <div class="product-imageBox d-flex flex-column">
-                       %s
-                       %s
-                       <a href="%s" target="_blank">
-                       
-<img class="img-responsive product-image" alt="%s" src="%s"/></a></div>
-                      
-    <div class=" product-caption">
-                               <h4><a href="%s" target="_blank">%s </a></h4>
-                       </div></div>';
-                                                $url = SITE_URL . "/memorabilia-details/" . $filmId;
-                                                $productName = $filmName;
-                                                $productImg = (!empty($v[$i]['name'])) ? (SITE_URL . '/' . THUMB_IMGS . $v[$i]['name']) : (SITE_URL . JS_FOLDER . 'holder.js/300x180/auto/text:' . NO_IMAGE);
-                                                $htmlRight .= sprintf($baseHTML, $imagecount_html, $video_html, $url, $productName, $productImg, $url, $productName);
+                                                $htmlRight .= sprintf($baseHTML,$url, $video_html, $productName, $productImg, $url, $productName , $imagecount_html);
                                                 //echo $key . "::" . $v[$i]['name'] . "<br>";
                                             }
                                         }
@@ -761,6 +774,31 @@ p.category_id = 2 AND v.value='" . $v . "' AND f.attribute_name = '" . $k . "' G
                                                                 <img class="img-fluid" src="%s" alt="%s">
                                                             </div>
                                                             <div class="artist-sub">
+                                                                <a data-toggle="modal" data-target="#exampleModallogin2" class="artist-sub-btn">
+                                                                    %s
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                        %s
+                                                    </div>
+                                                </div>
+                                            </a>'.$modal;
+                                                $url = SITE_URL . "/memorabilia-details/" . $filmId;
+                                                $productName = $filmName;
+                                                $productImg = (!empty($v[$i]['name'])) ? (SITE_URL . '/' . THUMB_IMGS . $v[$i]['name']) : (SITE_URL . JS_FOLDER . 'holder.js/300x180/auto/text:' . NO_IMAGE);
+                                                $htmlRight .= sprintf($baseHTML, $video_html, $productImg, $productName, $productName,$imagecount_html );
+                                                //echo $key . "::" . $v[$i]['name'] . "<br>";
+                                            } else {
+
+                                                $baseHTML = '<a href="%s" target="_blank">
+                                                <div class="artist-box">
+                                                    <div class="artist-box-info">
+                                                            %s
+                                                        <div class="artist-box-body">
+                                                            <div class="artist-img artist-img-bengali">                                                            
+                                                                <img class="img-fluid"  src="%s" alt="%s" >
+                                                            </div>
+                                                            <div class="artist-sub">
                                                                 <a href="%s" target="_blank" class="artist-sub-btn">
                                                                     %s
                                                                 </a>
@@ -773,25 +811,7 @@ p.category_id = 2 AND v.value='" . $v . "' AND f.attribute_name = '" . $k . "' G
                                                 $url = SITE_URL . "/memorabilia-details/" . $filmId;
                                                 $productName = $filmName;
                                                 $productImg = (!empty($v[$i]['name'])) ? (SITE_URL . '/' . THUMB_IMGS . $v[$i]['name']) : (SITE_URL . JS_FOLDER . 'holder.js/300x180/auto/text:' . NO_IMAGE);
-                                                $htmlRight .= sprintf($baseHTML, $video_html, $productImg, $productName,$url, $productName,$imagecount_html );
-                                                //echo $key . "::" . $v[$i]['name'] . "<br>";
-                                            } else {
-
-                                                $baseHTML = '<div class="col-sm-6 col-md-4 product-outerBorder wow flipInX" data-wow-duration="1s" data-wow-delay="0.5s">
-                       <div class="product-imageBox d-flex flex-column">
-                       %s
-                       %s
-                       <a href="%s" target="_blank">
-                       
-<img class="img-responsive product-image" alt="%s" src="%s"/></a></div>
-                       
-                       <div class=" product-caption">
-                               <h4><a href="%s" target="_blank">%s </a></h4>
-                       </div></div>';
-                                                $url = SITE_URL . "/memorabilia-details/" . $filmId;
-                                                $productName = $filmName;
-                                                $productImg = (!empty($v[$i]['name'])) ? (SITE_URL . '/' . THUMB_IMGS . $v[$i]['name']) : (SITE_URL . JS_FOLDER . 'holder.js/300x180/auto/text:' . NO_IMAGE);
-                                                $htmlRight .= sprintf($baseHTML, $imagecount_html, $video_html, $url, $productName, $productImg, $url, $productName);
+                                                $htmlRight .= sprintf($baseHTML,$url, $video_html, $productImg, $productName,$url, $productName,$imagecount_html );
                                                 //echo $key . "::" . $v[$i]['name'] . "<br>";
                                             }
                                         }
@@ -816,6 +836,32 @@ p.category_id = 2 AND v.value='" . $v . "' AND f.attribute_name = '" . $k . "' G
                                                 <img class="img-fluid" src="%s" alt="%s">
                                             </div>
                                             <div class="artist-sub">
+                                                <a data-toggle="modal" data-target="#exampleModallogin2" class="artist-sub-btn">
+                                                    %s
+                                                </a>
+                                            </div>
+                                        </div>
+                                        %s
+                                    </div>
+                                </div>
+                            </a>'.$modal;
+                                $url = SITE_URL . "/memorabilia-details/" . $filmId;
+                                $productName = $filmName;
+                                $productImg = (SITE_URL . JS_FOLDER . 'holder.js/300x180/auto/text:' . NO_IMAGE);
+                                $htmlRight .= sprintf($baseHTML, $video_html, $productImg, $productName, $productName,$imagecount_html );
+                                
+                            } else {
+
+
+                                $baseHTML = '<a href="%s" target="_blank">
+                                <div class="artist-box">
+                                    <div class="artist-box-info">
+                                            %s
+                                        <div class="artist-box-body">
+                                            <div class="artist-img artist-img-bengali">                                                            
+                                                <img class="img-fluid"  alt="%s" src="%s">
+                                            </div>
+                                            <div class="artist-sub">
                                                 <a href="%s" target="_blank" class="artist-sub-btn">
                                                     %s
                                                 </a>
@@ -828,26 +874,7 @@ p.category_id = 2 AND v.value='" . $v . "' AND f.attribute_name = '" . $k . "' G
                                 $url = SITE_URL . "/memorabilia-details/" . $filmId;
                                 $productName = $filmName;
                                 $productImg = (SITE_URL . JS_FOLDER . 'holder.js/300x180/auto/text:' . NO_IMAGE);
-                                $htmlRight .= sprintf($baseHTML, $video_html, $productImg, $productName,$url, $productName,$imagecount_html );
-                                
-                            } else {
-
-
-                                $baseHTML = '<div class="col-sm-6 col-md-4 product-outerBorder wow flipInX" data-wow-duration="1s" data-wow-delay="0.5s">
-                                    <div class="product-imageBox d-flex flex-column">
-                                    %s
-                                    %s
-                                    <a href="%s" target="_blank">
-                                    
-<img class="img-responsive product-image" alt="%s" src="%s"/></a></div>
-                                   
-<div class="product-caption">
-                                    <h4><a href="%s" target="_blank">%s </a></h4>
-                                    </div></div>';
-                                $url = SITE_URL . "/memorabilia-details/" . $filmId;
-                                $productName = $filmName;
-                                $productImg = (SITE_URL . JS_FOLDER . 'holder.js/300x180/auto/text:' . NO_IMAGE);
-                                $htmlRight .= sprintf($baseHTML, $imagecount_html, $video_html, $url, $productName, $productImg, $url, $productName);
+                                $htmlRight .= sprintf($baseHTML, $url, $video_html,$productName, $productImg, $url, $productName,$imagecount_html );
                             }
                         }
                     }

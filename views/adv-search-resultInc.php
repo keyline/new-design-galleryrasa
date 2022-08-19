@@ -4,7 +4,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="visual-inner">
-                        <div class="row">
+                    <div class="row">
                             <div class="col-lg-12">
                                 <div class="visual-info">
                                     <div class="visual-title">
@@ -18,26 +18,38 @@
                                                         <div class="top-search">
                                                             <div class="search-barOption">
                                                                 <form method="post" action="search" name="search_form" id="search_form" class="bibliography-search-form">
-                                                                        <div class="form-group row">
-                                                                            <div class="col-md-6">
-                                                                                <select class="program-name" name="bibliography[]" multiple="multiple" data-placeholder="Search By Author/Artist/Editor/Topic"></select>
+
+                                                                        <!-- <div class="form-group row">
+                                                                            <div class="col-md-11 p-0">
+                                                                                <select class="program-name" name="bibliography[]" multiple="multiple" data-placeholder="Search By Author / Artist / Editor / Topic"></select>
                                                                             </div>                     
-                                                                            <div class="col">
-                                                                                <button type="submit" class="btn btn-default form-control search-bttn" value="entry-point" name="bibliography-search-entry"><span class="glyphicon glyphicon-search"></span> Search
-                                                                                </button>
+                                                                            <div class="col-md-1 p-0">
+                                                                                
+                                                                                <button type="submit" value="entry-point" name="bibliography-search-entry" class="btn-search" type="submit"><span class="material-icons">search</span></button >
                                                                             </div>
+                                                                            </div> -->
+
+                                                                        <div class="form-group-new-part">
+                                                                                <select class="program-name" name="bibliography[]" multiple="multiple" data-placeholder="Search By Author / Artist / Editor / Topic"></select>
+                                                                        
+                                                                        <button type="submit" class="btn btn-default form-control search-bttn" value="entry-point" name="bibliography-search-entry"><span class="glyphicon glyphicon-search"></span> <span class="material-icons">search</span>
+                                                                                </button>
+                                                                     
+
                                                                         </div>
                                                                         <input type="hidden" name="catg" value="bibliography">
                                                                         <input type="hidden" name="att[0]" value="author">
                                                                         <input type="hidden" name="att[1]" value="artist">
                                                                         <input type="hidden" name="att[2]" value="editor">
                                                                 </form>
-                                                            </div>
-                                                            <div class="drop-form">
+                                                               
+                                                            
+                                                            
+                                                        </div>
+                                                        <div class="drop-form">
                                                                 <a href="#" class="advanced-btn" data-toggle="modal" data-target="#advancedModal">Advanced Search<span class="material-icons">manage_search</span>
                                                                 </a>
                                                             </div>
-                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -46,6 +58,7 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
                     </div>
                 </div>
             </div>
@@ -63,7 +76,7 @@
                                     <p class="reset">reset</p>
                                 </div>
                             </div>
-                            <!-- {leftFilter} -->
+                            {leftFilter}
                         </div>
                         <div class="bibliography-right-box">
                             <div class="artist-inner">
@@ -77,7 +90,7 @@
                                 {searchList}
                             <!-- </div> -->
                         </div>
-                        <!-- <div class="artist-pagination">
+                        <div class="artist-pagination">
                             <nav aria-label="Page navigation example">
                                 <ul class="pagination">
                                     <li class="page-item"><a class="page-link prev" href="#">Prev</a></li>
@@ -89,7 +102,7 @@
                                     <li class="page-item"><a class="page-link prev" href="#">Next</a></li>
                                 </ul>
                             </nav>
-                        </div> -->
+                        </div>
                         <!-- pagination -->
                         <div class="artist-pagination" id="pagination-section">
                             <div class="col-lg-12">
@@ -106,20 +119,7 @@
             </div>
         </div>
     </section>
-    <!-- <div class="modal fade" id="citethis" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal"><span class="badge" aria-hidden="true">×</span><span class="sr-only ">Close</span></button>
-                    <h3 class="modal-title">Cite This</h3>
-                </div>
-                <div class="modal-body">
-                    <div id="divCitethis" class="col-md-12 col-sm-12 col-xs-12 "></div>
-                    <div class="clearfix"></div>
-                </div>
-            </div>
-        </div>
-    </div> -->
+    
 
     <div class="modal fade" id="citethis" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -143,7 +143,7 @@
     <!-- Modal -->
     <div class="advance-modal">
         <div class="modal fade" id="advancedModal" tabindex="-1" aria-labelledby="advancedModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
+        <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-body">
                         <div class="advanced-search">
@@ -162,22 +162,9 @@
                                                 <input type="text" name="author" class="form-control" placeholder="NAME">
                                             </div>
                                             <div class="form-group">
-                                                <div class="dropdown">
-                                                    <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown">
-                                                        <p>CLASSIFICATION<span class="material-icons">keyboard_arrow_down</span></p>
-                                                    </button>
-                                                    <div class="dropdown-menu radio">
-                                                        <label class="dropdown-item">
-                                                            <!-- <input class="jRadioDropdown" type="radio" value="001" name="alphabet"> -->
-                                                            <i>CLASSIFICATION</i>
-                                                            <select name="ref_type[]" id="adv-search-extract" multiple="multiple">
-                    <!--                                                <select name="extract_type[]" id="adv-search-extract" multiple="multiple">-->
-                                                            {adv-search-options}
-                                                        </select>
-                                                        </label>
-
-                                                    </div>
-                                                </div>
+                                                <select name="ref_type[]" id="adv-search-extract" multiple="multiple" data-placeholder="Classification">
+                                                    {adv-search-options}
+                                                </select>
                                             </div>
                                             <div class="form-group">
                                                 <input type="text" name="title1_of_parent[1]" class="form-control" placeholder="BOOK">                       
@@ -192,9 +179,8 @@
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="right-part">
-                                        <form>
                                             <div class="form-group">                                             
-                                                <label>Select In/As</label>
+                                                <!-- <label>Select In/As</label> -->
                                                 <select name="attr" class="form-control" id="select-attributes-biblio">
                                                     <option value="">Select In/As</option>
                                                     <option value="author">Author</option>
@@ -205,14 +191,14 @@
                                                 </select>
                                             </div>
                                             <div class="form-group">
-                                            <label>Language</label>
+                                            <!-- <label>Language</label> -->
                                                 <select name="language" class="form-control">
                                                     <option value="">Language</option>
                                                     {languagelist}
                                                 </select>                                              
                                             </div>
                                             <div class="form-group">
-                                            <label>Journal</label>
+                                            <!-- <label>Journal</label> -->
                                                 <select name="title1_of_parent[2]" class="form-control">
                                                     <option value="">Journal</option>
                                                     {journallist}
@@ -224,27 +210,17 @@
                                             <div class="form-group">
                                                 <input type="text" name="descriptive_tags" class="form-control" placeholder="TAGS">
                                             </div>
-
-                                            <!-- <input type="submit" name="adv_submit" class="btn form-control" value="Search"/> -->
-                                            <div class="col-lg-6">
-                                                    <div class="right-part">
-                                                    <input type="submit" name="adv_submit" class="search-box" value="Search"/>
+                                            <div class="col-lg-8">
+                                                <div class="right-part">
+                                                <input type="submit" name="adv_submit" class="search-box" value="Search"/>
+                                                </div>
                                             </div>
-                                        </div>
-
+                                            <div class="col-lg-8">
+                                                <div class="right-part">
+                                                    <button type="button" class="cancel-btn" data-dismiss="modal">CANCEL</button>
+                                                </div>
+                                            </div>
                                         </form>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <!-- <div class="col-lg-6">
-                                                    <div class="right-part">
-                                            <button type="button" name="adv_submit" class="search-box">Search</button>
-                                    </div>
-                                </div> -->
-                                <div class="col-lg-6">
-                                                    <div class="right-part">
-                                            <button type="button" class="cancel-btn" data-dismiss="modal">CANCEL</button>
                                     </div>
                                 </div>
                             </div>

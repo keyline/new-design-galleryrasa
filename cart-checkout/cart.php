@@ -4,6 +4,20 @@ require_once("../require.php");
 require_once("../" . INCLUDED_FILES . "config.inc.php");
 require_once("../" . INCLUDED_FILES . "dbConn.php");
 require_once("../" . INCLUDED_FILES . "functionsInc.php");
+if (!isset($_SESSION['user-email'])) {
+    goto_location(SITE_URL . '/login-register');
+    exit;
+}
+$conn = dbconnect();
+if (!$_SESSION['user-id']) {
+    if (!isset($_SESSION["cart_item"])) {
+        goto_location('cart.php');
+    }
+} else {
+    if (!check_cart_exists($_SESSION['user-id'])) {
+        goto_location('cart.php');
+    }
+}
 //check_auth_user();
 $conn = dbconnect();
 include("../" . INC_FOLDER . "headerInc.php");
@@ -18,29 +32,31 @@ $tax = $row_sel['tax'];
 $_SESSION['tax_percentage'] = $tax;
 ?>
 <main>
-<div class="container arial cart">
-    <h1 style="text-align: center;">Cart</h1>
-    <div class="row">
+<section class="visual-search-details-page exhibition-details-page cart-page">
+        <div class="container">
+            
+            <div class="row">
+
+                <div class="col-lg-12">
+                    <div class="right-details">
+                        <div class="cart-top">
+                            <div class="cart-img">
+                                <span class="material-icons">shopping_bag</span>
+                            </div>
+                            <div class="exhibition-search-title">
+                                Your Cart
+                            </div>
+                        </div>
+                        
     <?php
     if (isset($_SESSION["cart_item"])) {
         $total = 0;
-        ?>	
-        <div class="col-12 table-responsive">
-        <table class="table">
-            <thead>
-            <th>Product</th>
-            <th>Item</th>
-            <th>Quantity</th>
-            <th>Image Type</th>
-            <th>Description</th>
-            <th>Price</th>
-            <th>Tax</th>
-            <th>Delete</th>
-            </thead>
-            <tbody>
-                <?php
-                foreach ($_SESSION["cart_item"] as $item) {
+        ?>
+            
+                    <?php
+                            foreach ($_SESSION["cart_item"] as $item) {
                     ?>
+                     
                 <form method="POST" action="<?php echo SITE_URL ?>/cart-checkout/update-cart.php">
                     <tr>
                         <td><?php echo $item["product_name"]; ?></td>
@@ -108,59 +124,6 @@ $_SESSION['tax_percentage'] = $tax;
                     }
                     ?>
                 </h5>
-                <?php
-//                if ($tax > 0) {
-//                    $_SESSION['tax_percentage'] = $tax;
-//                    //$_SESSION['tax_amount'] = $total * ($tax / 100);
-//                    
-                ?>
-                <?php
-//                    if ($conv_rate == '') {
-//                        
-                ?>
-    <!--                        <h1>Tax: <?php // echo $tax . '%';   ?> / Tax Amount: Rs.<?php //echo ($total * ($tax / 100));   ?></h1>
-                <?php //$item_total = $total + ($total * ($tax / 100));  ?>
-                        <h1>Total Amount to Pay: //<?php //echo $item_total;   ?></h1>-->
-                <?php
-//                    } else {
-//                        $tax_amt = ($total * ($tax / 100));
-//                        $tax_amt_usd = $tax_amt / $conv_rate;
-//                        $tax_amt_usd = round($tax_amt_usd, 2);
-//                        $item_total = $total + ($total * ($tax / 100));
-//                        $item_total_usd = $item_total / $conv_rate;
-//                        $item_total_usd = round($item_total_usd, 2);
-//                        
-                ?>
-    <!--                        <h1>Tax: //<?php //echo $tax . '%';   ?> - Tax Amount: INR: <?php //echo $tax_amt;   ?> / USD: <?php echo $tax_amt_usd; ?></h1>
-
-                        <h1>Total Amount to Pay: INR: //<?php //echo $item_total;    ?> / USD: <?php //echo $item_total_usd;    ?></h1>-->
-                <?php
-//                    }
-//                    
-                ?>
-                <?php
-//                } else {
-//                    if ($conv_rate == '') {
-//
-//                        $item_total = $total;
-//                        
-                ?>
-    <!--                        <h1>Total Amount to Pay: //<?php // echo $item_total;    ?></h1>-->
-                <?php
-//                    } else {
-//                        $item_total = $total;
-//                        $item_total_usd = $item_total / $conv_rate;
-//                        $item_total_usd = round($item_total_usd, 2);
-//                        
-                ?>
-
-                <!--                        <h1>Total Amount to Pay: INR: //<?php //echo $item_total;    ?> / USD: <?php //echo $item_total_usd;    ?></h1>-->
-
-                <?php
-//                    }
-//                }
-//                
-                ?>
                 <?php if (isset($_SESSION['user-email'])) { ?>
                     <a class="btn form-control" href="checkout.php">Checkout</a>
                     <?php
@@ -177,32 +140,16 @@ $_SESSION['tax_percentage'] = $tax;
         $total = 0;
         if (check_cart_exists($_SESSION['user-id'])) {
             ?>
-        <div class="col-12 table-responsive">
-            <table class="table">
-                <thead>
-                <th>Product</th>
-                <th>Item</th>
-                <th>Quantity</th>
-                <th>Image Type</th>
-                <th>Description</th>
-                <th>Price</th>
-                <th>Tax</th>
-                <th>Delete</th>
-                </thead>
-                <tbody>
-                    <?php
+         
+         <?php
                     $cust_cart = get_user_cart($_SESSION['user-id']);
                     foreach ($cust_cart as $item) {
                         ?>
-                    <form method="POST" action="<?php echo SITE_URL ?>/cart-checkout/update-cart.php">
 
-                        <tr>
-                            <td><?php
-            $prod_name = get_prod_name($item["product_id"]);
-            echo $prod_name['prodname'];
-                        ?></td>
-                            <td>
-                                <?php
+                        <div class="cart-box">
+                            <div class="cart-left">
+                                <form method="POST" action="<?php echo SITE_URL ?>/cart-checkout/update-cart.php">
+                            <?php
                                 $img_name = get_image_name($item["image_id"]);
                                 if ($item["imagetype"] != 'Bibliography') {
                                     ?>
@@ -212,131 +159,122 @@ $_SESSION['tax_percentage'] = $tax;
                                     echo $img_name["m_image_name"];
                                 }
                                 ?>
-                            </td>
-                            <td>
-                                <?php echo $item["quantity"]; ?>  
-                            </td>
-                            <td><?php echo $item["imagetype"]; ?></td>
-                            <td><?php echo $item["type"]; ?></td>
-                            <td><?php
-                                echo $item["price"] * $item["quantity"];
-                                $tot_pr = $item["price"] * $item["quantity"];
-                                ?></td>
-
-                            <td><?php
-                    if ($item["taxable"] == '1') {
-                        $tot_tax = $tot_pr * ($tax / 100);
-                    } else {
-                        $tot_tax = $tot_pr * (0 / 100);
-                    }
-                    echo $tot_tax;
-                    if ($item["taxable"] == '1') {
-                        echo '(' . $tax . '%)';
-                    } else {
-                        echo '(0%)';
-                    }
-                                ?> </td>
-                            <td><a href="<?php echo SITE_URL ?>/cart-checkout/remove-cart.php?count_id=<?php echo $item["id"]; ?>">X</a></td>
-                        </tr>
+                            </div>
+                            <div class="cart-right">
+                                <div class="cart-name">
+                                    <?php
+                                        $prod_name = get_prod_name($item["product_id"]);
+                                        echo $prod_name['prodname'];
+                                    ?>
+                                </div>
+                                <div class="cart-content">
+                                    <?php echo $item["type"]; ?>
+                                </div>
+                                <div class="cart-bill">
+                                    <?php
+                                    echo $item["price"] * $item["quantity"];
+                                    $tot_pr = $item["price"] * $item["quantity"];
+                                    ?>
+                                    <?php
+                                        if ($item["taxable"] == '1') {
+                                            $tot_tax = $tot_pr * ($tax / 100);
+                                        } else {
+                                            $tot_tax = $tot_pr * (0 / 100);
+                                        }
+                                        echo $tot_tax;
+                                        if ($item["taxable"] == '1') {
+                                            echo '(' . $tax . '%)';
+                                        } else {
+                                            echo '(0%)';
+                                        }
+                                    ?>
+                                </div>
+                                <div class="buy-cart">
+                                    <div class="buy-box">
+                                        <div class="qun-box">
+                                            <div class="quantity buttons_added">
+                                                <input type="button" value="-" class="minus"><input type="number" step="1" min="1" max="" name="quantity" value="1" title="Qty" class="input-text qty text" size="4" pattern="" inputmode=""><input type="button" value="+" class="plus">
+                                            </div>
+                                        </div>
+                                    </div>
+                                   <div class="cart-del">
+                                   <a href="<?php echo SITE_URL ?>/cart-checkout/remove-cart.php?count_id=<?php echo $item["id"]; ?>">Delete</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>    
                     </form>
                     <?php
                     $total += (($item["price"] + $tot_tax) * $item["quantity"]);
                 }
                 ?>
-
-
-                </tbody>
-            </table>
-        </div>
-                <div class="col-md-6">
-
-                </div>
-                <div class="col-md-6 d-flex align-items-center">
-
-                    <h5 class="mr-5 mb-0">
-                        <?php
-                        if ($conv_rate == '') {
-                            ?>
-                            Total Price: Rs. <?php echo $total; ?>
+                <div class="subtotal-inner">
+                        <div class="subtotal-info">
+                            <div class="subtotal-left">
+                                Subtotal
+                            </div>
+                            <div class="subtotal-right">
                             <?php
-                        } else {
-                            $total_usd = $total / $conv_rate;
-                            $total_usd = round($total_usd, 2);
-                            ?>
-                            Total Price: INR: <?php echo $total; ?> / USD: <?php echo $total_usd; ?>
-                            <?php
-                        }
-                        ?>
-                    </h5>
-
-
-                    <?php
-//                    if ($tax > 0) {
-//                        $_SESSION['tax_percentage'] = $tax;
-//                        $_SESSION['tax_amount'] = $total * ($tax / 100);
-//                        
-                    ?>
-
-
-                    <?php
-//                        if ($conv_rate == '') {
-//                            
-                    ?>
-        <!--                            <h1>Tax: <?php // echo $tax . '%';  ?> / Tax Amount: Rs.<?php //echo ($total * ($tax / 100));  ?></h1>
-                    <?php // $item_total = $total + ($total * ($tax / 100)); ?>
-                                    <h1>Total Amount to Pay: //<?php //echo $item_total;  ?></h1>-->
-                    <?php
-//                        } else {
-//                            $tax_amt = ($total * ($tax / 100));
-//                            $tax_amt_usd = $tax_amt / $conv_rate;
-//                            $tax_amt_usd = round($tax_amt_usd, 2);
-//                            $item_total = $total + ($total * ($tax / 100));
-//                            $item_total_usd = $item_total / $conv_rate;
-//                            $item_total_usd = round($item_total_usd, 2);
-//                            
-                    ?>
-        <!--                            <h1>Tax: <?php //echo $tax . '%';  ?> - Tax Amount: INR: <?php //echo $tax_amt;  ?> / USD: <?php //echo $tax_amt_usd;  ?></h1>
-
-                                    <h1>Total Amount to Pay: INR: <?php //echo $item_total; ?> / USD: <?php //echo $item_total_usd; ?></h1>-->
-                    <?php
-//                        }
-//                        
-                    ?>
-
-
-                    <?php
-//                    } else {
-//                        if ($conv_rate == '') {
-//
-//                            $item_total = $total;
-//                            
-                    ?>
-        <!--                            <h1>Total Amount to Pay: <?php //echo $item_total; ?></h1>-->
-                    <?php
-//                        } else {
-//                            $item_total = $total;
-//                            $item_total_usd = $item_total / $conv_rate;
-//                            $item_total_usd = round($item_total_usd, 2);
-//                            
-                    ?>
-
-        <!--                            <h1>Total Amount to Pay: INR: <?php //echo $item_total; ?> / USD: <?php //echo $item_total_usd; ?></h1>-->
-
-                    <?php
-//                        }
-//                    }
-                    ?>
-                    <?php $_SESSION['tot_price'] = $total; ?>
-                    <?php if (isset($_SESSION['user-email'])) { ?>
-                        <a class="btn form-control" href="checkout.php">Checkout</a>
-                        <?php
-                    } else {
-                        ?>
-                        <a class="btn form-control" href="<?php echo SITE_URL ?>/login-register.php">Checkout</a>
-                <?php
-            }
-            ?>
-                </div>
+                                if ($conv_rate == '') {
+                                    ?>
+                                    Total Price: Rs. <?php echo $total; ?>
+                                    <?php
+                                } else {
+                                    $total_usd = $total / $conv_rate;
+                                    $total_usd = round($total_usd, 2);
+                                    ?>
+                                    <?php
+                                }
+                                ?>
+                                <h4> ₹ <?php echo $total; ?> / USD: <?php echo $total_usd; ?></h4>
+                            </div>
+                        </div>
+                        <div class="subtotal-info">
+                            <div class="subtotal-left">
+                                Shipping & Delivery
+                            </div>
+                            <div class="subtotal-right">
+                                <h4> ₹ 77 / $ 1.00</h4>
+                            </div>
+                        </div>
+                        <div class="subtotal-info">
+                            <div class="subtotal-left">
+                               Shipping Address
+                            </div>
+                            <div class="subtotal-right">
+                                <p>28 Peenya Industrial Estate, D J Rd, Vile Parle West (west),<br> Mumbai, Maharashtra - 400016</p>
+                                <h5>Change Address</h5>
+                            </div>
+                        </div>
+                        <div class="subtotal-info">
+                            <div class="subtotal-left">
+                                Select Payment Method
+                            </div>
+                            <div class="subtotal-right redio-info">
+                                <div class="redio-box">
+                                <form method="POST" action="order.php">
+                                <?php
+                                $get_arr = get_gateways();
+                                foreach ($get_arr as $get_item) {
+                                    ?>
+                                    <label for="<?php echo $get_item['name']; ?>">
+                                        <?php echo $get_item['name']; ?>: 
+                                    </label>
+                                    <!-- <div class="col-md-8"> -->
+                                        <input type="radio" name="gateway" id="gateway" value="<?php echo $get_item['id']; ?>" required>
+                                    <!-- </div> -->
+                                    <div class="clearfix"></div>
+                                    <?php
+                                }
+                                ?>
+                                <div class="payment-action">
+                                    <input type="submit" class="payment-btn" name="submit_order" value="proceed to payment" >
+                                </div>
+                                </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
             <?php
         } else {
             ?>  

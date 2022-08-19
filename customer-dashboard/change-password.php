@@ -11,10 +11,9 @@ if (!isset($_SESSION['user-email'])) {
 $conn = dbconnect();
 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
-    $fname = $_POST['fname'];
-    $lname = $_POST['lname'];
-    $phone = $_POST['phone'];
-    
+    // echo $_POST['password'];
+    // echo $_POST['email'];
+    // exit();
     $email = $_POST['email'];
     $password = $_POST['password'];
     $re_password = $_POST['re_password'];
@@ -23,15 +22,17 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         $_SESSION['error-pass'] = 'Re Entered Wrong Password';
         goto_location('customer-dashboard');
     } else {
-        $qry1 = "update customer_login set password = '$password',fname = '$fname',lname = '$lname',phone = '$phone' "
+        $qry1 = "update customer_login set password = '$password' "
                 . "where email = '$email'";
+                // echo  $qry1;
+                // exit();
         $q1 = $conn->prepare($qry1);
         $q1->execute();
-        $_SESSION['succ-pass'] = 'Your Information is Changed. Please Login Again';
+        $_SESSION['succ-pass'] = 'Your password is Changed. Please Login Again';
         unset($_SESSION['user-email']);
         unset($_SESSION['user-id']);
         unset($_SESSION['user-name']);
         unset($_SESSION['user-email']);
-        goto_location('edit-profile');
+        goto_location('customer-dashboard');
     }
 }

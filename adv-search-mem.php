@@ -323,7 +323,7 @@ FROM
         }
 
 
-        $modal = '<div class="modal vLogin fade" id="exampleModallogin2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        $modal = '<div class="modal vLogin fade rasa-new-modal" id="exampleModallogin2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                       <div class="modal-dialog" role="document">
                         <div class="modal-content">
                           <div class="modal-header">
@@ -423,17 +423,27 @@ FROM
 //echo $key . "::" . $v[$i]['name'] . "<br>";
                                             } else {
 
-                                                $baseHTML = '<div class="col-sm-6 col-md-4 product-outerBorder wow flipInX" data-wow-duration="1s" data-wow-delay="0.5s"">
-                       <div class="product-imageBox d-flex flex-column">
-                       %s
-                       <a href="%s" target="_blank"><img class="img-responsive product-image" alt="%s" src="%s"/></a></div>
-                       <div class="col-md-12 product-caption">
-                               <h4><a href="%s" target="_blank">%s </a></h4>
-                       </div></div>';
+                                                $baseHTML = '<a href="%s" target="_blank">
+                                                <div class="artist-box">
+                                                    <div class="artist-box-info">
+                                                        <div class="artist-box-body">
+                                                            <div class="artist-img artist-img-bengali">                                                            
+                                                                <img class="img-fluid" alt="%s" src="%s">
+                                                            </div>
+                                                            <div class="artist-sub">
+                                                                <a href="%s" target="_blank" class="artist-sub-btn">
+                                                                    %s
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                        %s
+                                                    </div>
+                                                </div>
+                                            </a>';
                                                 $url = SITE_URL . "/memorabilia-details/" . $filmId;
                                                 $productName = $filmName;
                                                 $productImg = (!empty($v[$i]['name'])) ? (SITE_URL . '/' . THUMB_IMGS . $v[$i]['name']) : (SITE_URL . JS_FOLDER . 'holder.js/300x180/auto/text:' . NO_IMAGE);
-                                                $htmlRight .= sprintf($baseHTML, $imagecount_html, $url, $productName, $productImg, $url, $productName);
+                                                $htmlRight .= sprintf($baseHTML,$url, $productName, $productImg, $url,  $productName,$imagecount_html);
 //echo $key . "::" . $v[$i]['name'] . "<br>";
                                             }
                                         }
@@ -449,31 +459,51 @@ FROM
                                         if ($v[$i]['featured']) {
 
                                             if ($usersession == false) {
-                                                $baseHTML = '<div class="col-sm-6 col-md-4 product-outerBorder wow flipInX" data-wow-duration="1s" data-wow-delay="0.5s"">
-                       <div class="product-imageBox d-flex flex-column">
-                       %s
-                       <a data-toggle="modal" data-target="#exampleModallogin2"><img class="img-responsive product-image" alt="%s" src="%s"/></a></div>
-                       <div class="col-md-12 product-caption">
-                               <h4><a data-toggle="modal" data-target="#exampleModallogin2">%s </a></h4>
-                       </div></div>' . $modal;
+                                                $baseHTML = '<a data-toggle="modal" data-target="#exampleModallogin2">
+                                                <div class="artist-box">
+                                                    <div class="artist-box-info">
+                                                        <div class="artist-box-body">
+                                                            <div class="artist-img artist-img-bengali">                                                            
+                                                                <img class="img-fluid" alt="%s" src="%s">
+                                                            </div>
+                                                            <div class="artist-sub">
+                                                                <a data-toggle="modal" data-target="#exampleModallogin2" class="artist-sub-btn">
+                                                                    %s
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                        %s
+                                                    </div>
+                                                </div>
+                                            </a>' . $modal;
                                                 $url = SITE_URL . "/memorabilia-details/" . $filmId;
                                                 $productName = $filmName;
                                                 $productImg = (!empty($v[$i]['name'])) ? (SITE_URL . '/' . THUMB_IMGS . $v[$i]['name']) : (SITE_URL . JS_FOLDER . 'holder.js/300x180/auto/text:' . NO_IMAGE);
-                                                $htmlRight .= sprintf($baseHTML, $imagecount_html, $productName, $productImg, $productName);
+                                                $htmlRight .= sprintf($baseHTML, $productName, $productImg, $productName,$imagecount_html);
 //echo $key . "::" . $v[$i]['name'] . "<br>";
                                             } else {
 
-                                                $baseHTML = '<div class="col-sm-6 col-md-4 product-outerBorder wow flipInX" data-wow-duration="1s" data-wow-delay="0.5s"">
-                       <div class="product-imageBox d-flex flex-column">
-                       %s
-                       <a href="%s" target="_blank"><img class="img-responsive product-image" alt="%s" src="%s"/></a></div>
-                       <div class="col-md-12 product-caption">
-                               <h4><a href="%s" target="_blank">%s </a></h4>
-                       </div></div>';
+                                                $baseHTML = '<a href="%s" target="_blank">
+                                                <div class="artist-box">
+                                                    <div class="artist-box-info">
+                                                        <div class="artist-box-body">
+                                                            <div class="artist-img artist-img-bengali">                                                            
+                                                                <img class="img-fluid" alt="%s" src="%s">
+                                                            </div>
+                                                            <div class="artist-sub">
+                                                                <a href="%s" target="_blank" class="artist-sub-btn">
+                                                                    %s
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                        %s
+                                                    </div>
+                                                </div>
+                                            </a>';
                                                 $url = SITE_URL . "/memorabilia-details/" . $filmId;
                                                 $productName = $filmName;
                                                 $productImg = (!empty($v[$i]['name'])) ? (SITE_URL . '/' . THUMB_IMGS . $v[$i]['name']) : (SITE_URL . JS_FOLDER . 'holder.js/300x180/auto/text:' . NO_IMAGE);
-                                                $htmlRight .= sprintf($baseHTML, $imagecount_html, $url, $productName, $productImg, $url, $productName);
+                                                $htmlRight .= sprintf($baseHTML,$url, $productName, $productImg, $url,  $productName,$imagecount_html);
 //echo $key . "::" . $v[$i]['name'] . "<br>";
                                             }
                                         }
@@ -513,17 +543,27 @@ FROM
 //echo $key . "::" . $v[$i]['name'] . "<br>";
                                             } else {
 
-                                                $baseHTML = '<div class="col-sm-6 col-md-4 product-outerBorder wow flipInX" data-wow-duration="1s" data-wow-delay="0.5s"">
-                       <div class="product-imageBox d-flex flex-column">
-                       %s
-                       <a href="%s" target="_blank"><img class="img-responsive product-image" alt="%s" src="%s"/></a></div>
-                       <div class="col-md-12 product-caption">
-                               <h4><a href="%s" target="_blank">%s </a></h4>
-                       </div></div>';
+                                                $baseHTML = '<a href="%s" target="_blank">
+                                                <div class="artist-box">
+                                                    <div class="artist-box-info">
+                                                        <div class="artist-box-body">
+                                                            <div class="artist-img artist-img-bengali">                                                            
+                                                                <img class="img-fluid" alt="%s" src="%s">
+                                                            </div>
+                                                            <div class="artist-sub">
+                                                                <a href="%s" target="_blank" class="artist-sub-btn">
+                                                                    %s
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                        %s
+                                                    </div>
+                                                </div>
+                                            </a>';
                                                 $url = SITE_URL . "/memorabilia-details/" . $filmId;
                                                 $productName = $filmName;
                                                 $productImg = (!empty($v[$i]['name'])) ? (SITE_URL . '/' . THUMB_IMGS . $v[$i]['name']) : (SITE_URL . JS_FOLDER . 'holder.js/300x180/auto/text:' . NO_IMAGE);
-                                                $htmlRight .= sprintf($baseHTML, $imagecount_html, $url, $productName, $productImg, $url, $productName);
+                                                $htmlRight .= sprintf($baseHTML,$url, $productName, $productImg, $url,  $productName,$imagecount_html);
 //echo $key . "::" . $v[$i]['name'] . "<br>";
                                             }
                                         }
@@ -557,17 +597,27 @@ FROM
                                 $htmlRight .= sprintf($baseHTML, $productName, $productImg, $productName,$imagecount_html);
                             } else {
 
-                                $baseHTML = '<div class="col-sm-6 col-md-4 product-outerBorder wow flipInX" data-wow-duration="1s" data-wow-delay="0.5s"">
-                                    <div class="product-imageBox d-flex flex-column">
-                                    %s
-                                    <a href="%s" target="_blank"><img class="img-responsive product-image" alt="%s" src="%s"/></a></div>
-                                    <div class="col-md-12 product-caption">
-                                    <h4><a href="%s" target="_blank">%s </a></h4>
-                                    </div></div>';
+                                $baseHTML = '<a href="%s" target="_blank">
+                                <div class="artist-box">
+                                    <div class="artist-box-info">
+                                        <div class="artist-box-body">
+                                            <div class="artist-img artist-img-bengali">                                                            
+                                                <img class="img-fluid" alt="%s" src="%s">
+                                            </div>
+                                            <div class="artist-sub">
+                                                <a href="%s" target="_blank" class="artist-sub-btn">
+                                                    %s
+                                                </a>
+                                            </div>
+                                        </div>
+                                        %s
+                                    </div>
+                                </div>
+                            </a>';
                                 $url = SITE_URL . "/memorabilia-details/" . $filmId;
                                 $productName = $filmName;
                                 $productImg = (SITE_URL . JS_FOLDER . 'holder.js/300x180/auto/text:' . NO_IMAGE);
-                                $htmlRight .= sprintf($baseHTML, $imagecount_html, $url, $productName, $productImg, $url, $productName);
+                                $htmlRight .= sprintf($baseHTML,$url, $productName, $productImg, $url,  $productName,$imagecount_html);
                             }
                         }
                     }

@@ -4607,7 +4607,7 @@ body
 
 .visual-search-details-page.exhibition-details-page.cart-page .subtotal-inner input[type="radio"]
 {
-  appearance: none;
+  /* appearance: none; */
 }
 
 .visual-search-details-page.exhibition-details-page.cart-page .subtotal-inner input[type="radio"] + label
@@ -6849,9 +6849,48 @@ text-align: left;
 .start-body.visual-page.visual-search-page.films-page .select2-container--default .select2-selection--multiple .select2-selection__rendered{
     padding-left: 40px;
 }
-
-
-
-
-
-
+/* payment-page starts */
+.artist-search.bibliography-search.bengali-film-search.faq.payment .payment-inner h3{
+    color: var(--textColor);
+    font-size: 50px;
+    font-family: 'Braveold-Bold';
+    letter-spacing: 1px;
+    line-height: 58px;
+    padding-bottom: 40px;
+}
+.artist-search.bibliography-search.bengali-film-search.faq.payment .payment-inner p{
+    font-weight: 500;
+    color: var(--textColor);
+    font-size: 16px;
+    /* line-height: 1.4; */
+    font-family: 'Roboto';
+    line-height: 24px;
+    margin-bottom: 0;
+}
+.artist-search.bibliography-search.bengali-film-search.faq.payment .payment-inner h4{
+    font-weight: 600;
+    color: var(--textColor);
+    font-size: 20px;
+    /* line-height: 1.4; */
+    font-family: 'Roboto';
+    line-height: 24px;
+    padding-top: 20px;
+}
+.artist-search.bibliography-search.bengali-film-search.faq.payment .payment-inner ul{
+    list-style: disc;
+    padding-left: 18px;
+}
+.artist-search.bibliography-search.bengali-film-search.faq.payment .payment-inner ul li{
+    font-weight: 500;
+    color: var(--textColor);
+    font-size: 16px;
+    /* line-height: 1.4; */
+    font-family: 'Roboto';
+    line-height: 24px;
+}
+.artist-search.bibliography-search.bengali-film-search.faq.payment .payment-inner .payment-info{
+    background-color: #e4e4e4;
+    padding: 30px;
+    margin-top: 40px;
+}
+/* payment-page ends */

@@ -51,12 +51,10 @@ if (!isset($_COOKIE["cookieid"])) {
 <link rel="stylesheet" href="<?php echo SITE_URL . CSS_FOLDER ?>font-awesome.css">
 <!------------OWL------------>
 <link rel="stylesheet" href="<?php echo SITE_URL . OWL_FOLDER ?>owl3.css">
-<!--<link rel="stylesheet" href="https://fonts.google.com/icons?selected=Material%20Icons%20Outlined%3Aaccount_circle%3A">-->
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 <link rel="stylesheet" type="text/css" href="slick/slick.css" />
 <link rel="stylesheet" type="text/css" href="slick/slick-theme.css" />
-
         <script>
             //paste this code under head tag or in a seperate js file.
             // Wait for window load
@@ -114,13 +112,28 @@ if (!isset($_COOKIE["cookieid"])) {
                                 </ul>
                             </div>   
                         </div>
-                        <div class="head-bar">
+                        
+                            <div class="head-bar">
+                                
                             <div class="drafts-action">
-                                <a href="./cart.php" class="drafts-btn"><span class="material-icons cart-box">shopping_bag</span><span class="badge">2</span></a>
+                                <a href="<?php echo SITE_URL ?>cart-checkout/cart.php" class="drafts-btn"><span class="material-icons cart-box">shopping_bag</span><span class="badge">2</span></a>
                             </div>
-                            <div class="contact-action">
-                                <a href="<?php echo SITE_URL ?>login-register" class="contact-btn"><span class="material-icons cart-box">person</span></a>
-                            </div>
+
+                            <?php
+                                if (!isset($_SESSION['user-email'])) {
+                            ?>
+                                <div class="contact-action">
+                                    <a href="<?php echo SITE_URL ?>login-register" class="contact-btn"><span class="material-icons cart-box">person</span></a>
+                                </div>
+                            <?php
+                            } else {
+                                ?>
+                                <div class="contact-action">
+                                    <a href="<?php echo SITE_URL ?>/customer-dashboard/customer-dashboard" class="contact-btn"><span class="material-icons cart-box">person</span></a>
+                                </div>
+                            <?php }
+                            ?>
+                            
                             <div class="right-nav">
                                 <button class="sidebar-toggle">
                                     <span class="material-icons">menu</span>
@@ -129,8 +142,6 @@ if (!isset($_COOKIE["cookieid"])) {
                                 <aside class="sidebar">
                                     <div class="sidebar-header">
                                         <button class="close-btn"><i class="zmdi zmdi-close"></i></button>
-                                        <!-- <span class="material-symbols">close</span> -->
-                                        <!-- <span class="material-symbols">done</span> -->
                                     </div>
                                     <div class="nav-boxs">
                                         <ul class="nav navbar-nav navbar-left " id="nav">
@@ -163,32 +174,17 @@ if (!isset($_COOKIE["cookieid"])) {
                                             <?php
                                             unset($_SESSION['newsletter']);
                                         }
-                                        ?>
-                                        <!-- <form>
-                                            <div class="form-group">
-                                                <input type="email" class="form-control" placeholder="your name">
-                                            </div>
-                                            <div class="form-group arrow-box">
-                                                <input type="email" class="form-control" placeholder="your e-mail address">
-                                                <a href="#" class="arrow"><i class="zmdi zmdi-arrow-right"></i></a>
-                                            </div>
-                                        </form> -->
+                                        ?>                                        
                                         <form id="contact-form" method="post" action="contact_newsletter.php" role="form">
                                             <div class="form-group">
                                                 <input type="text" name="fullname" class="form-control" id="fullname" placeholder="your name">
                                             </div>
                                             <div class="form-group arrow-box">
                                                 <input type="email" name="fullemail" class="form-control" id="fullemail" aria-describedby="emailHelp" placeholder="your e-mail address">
-                                                <!-- <a href="#" class="arrow"><i class="zmdi zmdi-arrow-right"></i></a> -->
                                                 <button type="submit" class="arrow"><i class="zmdi zmdi-arrow-right"></i></button>
                                             </div>
                                             <div class="form-group">
-                                                <!--<div class="g-recaptcha" data-sitekey="6LeGYzEbAAAAABEW4etvHZZKGwNs3SaF7FAQcCAK" data-callback="verifyRecaptchaCallback" data-expired-callback="expiredRecaptchaCallback"></div>-->
-
                                                 <div class="g-recaptcha" data-sitekey="6LeGYzEbAAAAABEW4etvHZZKGwNs3SaF7FAQcCAK"></div>
-                                                <!-- <div class="g-recaptcha" id="sape_captcha" data-sitekey="6LcwDKsZAAAAAGh3QyRMNaEANIPKUPvYuoOpQ2JY"></div> -->
-
-                                                <!-- <button type="submit" class="btn btn-primary form-control" data-recaptcha="true" required data-error="Please complete the Captcha">Submit</button> -->
                                                 <div class="help-block with-errors"></div>
                                             </div>
                                         </form>
