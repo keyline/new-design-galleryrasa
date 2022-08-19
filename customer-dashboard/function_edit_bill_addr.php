@@ -21,5 +21,5 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         $q1 = $conn->prepare($qry1);
         $q1->execute();
         $_SESSION['succ-addr'] = 'Your Address is Updated.';
-        goto_location('cust-address');
+        goto_location('customer-dashboard');
 }

@@ -122,38 +122,11 @@
                                             <div class="form-group">
                                                 <input type="text" name="author" class="form-control" placeholder="NAME">
                                             </div>
-                                            <!-- <div class="form-group">
-                                                <div class="dropdown">
-                                                    <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown">
-                                                        <p>CLASSIFICATION<span class="material-icons">keyboard_arrow_down</span></p>
-                                                    </button>
-                                                    <div class="dropdown-menu radio">
-                                                        {adv-search-options}
-                                                    </div>
-                                                </div>
-                                            </div> -->
-                                            <!-- <div class="form-group">
-                                                <select name="ref_type[]" id="adv-search-extract" multiple="multiple" deta-placeholder="BOOK">
-                                                    {adv-search-options}
-                                                </select>
-                                            </div> -->
                                             <div class="form-group">
-                                                <!-- <label>Classification</label> -->
                                                 <select name="ref_type[]" id="adv-search-extract" multiple="multiple" data-placeholder="Classification">
-<!--                                                <select name="extract_type[]" id="adv-search-extract" multiple="multiple">-->
                                                     {adv-search-options}
                                                 </select>
                                             </div>
-                                            <!-- <div class="form-group">
-                                            <select id="example-multiple-selected" multiple="multiple">
-    <option value="1">Option 1</option>
-    <option value="2" selected="selected">Option 2</option>
-    <option value="3" selected="selected">Option 3</option>
-    <option value="4">Option 4</option>
-    <option value="5">Option 5</option>
-    <option value="6">Option 6</option>
-</select>
-                                            </div> -->
                                             <div class="form-group">
                                                 <input type="text" name="title1_of_parent[1]" class="form-control" placeholder="BOOK">                       
                                             </div>                                            
@@ -167,7 +140,6 @@
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="right-part">
-                                        <form>
                                             <div class="form-group">                                             
                                                 <!-- <label>Select In/As</label> -->
                                                 <select name="attr" class="form-control" id="select-attributes-biblio">
@@ -199,25 +171,17 @@
                                             <div class="form-group">
                                                 <input type="text" name="descriptive_tags" class="form-control" placeholder="TAGS">
                                             </div>
-                                            <!-- <div class="col-lg-8">
+                                            <div class="col-lg-8">
                                                 <div class="right-part">
                                                 <input type="submit" name="adv_submit" class="search-box" value="Search"/>
                                                 </div>
-                                            </div> -->
-
+                                            </div>
+                                            <div class="col-lg-8">
+                                                <div class="right-part">
+                                                    <button type="button" class="cancel-btn" data-dismiss="modal">CANCEL</button>
+                                                </div>
+                                            </div>
                                         </form>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-lg-6">
-                                                    <div class="right-part">
-                                            <button type="button" name="adv_submit" class="search-box">Search</button>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                                    <div class="right-part">
-                                            <button type="button" class="cancel-btn" data-dismiss="modal">CANCEL</button>
                                     </div>
                                 </div>
                             </div>

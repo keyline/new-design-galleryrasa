@@ -117,11 +117,22 @@ if (!isset($_COOKIE["cookieid"])) {
                         </div>
                         <div class="head-bar">
                             <div class="drafts-action">
-                                <a href="./cart.php" class="drafts-btn"><span class="material-icons cart-box">shopping_bag</span><span class="badge">2</span></a>
+                                <a href="<?php echo SITE_URL ?>cart-checkout/cart.php" class="drafts-btn"><span class="material-icons cart-box">shopping_bag</span><span class="badge">2</span></a>
                             </div>
-                            <div class="contact-action">
-                                <a href="<?php echo SITE_URL ?>login-register" class="contact-btn"><span class="material-icons cart-box">person</span></a>
-                            </div>
+                            <?php
+                                if (!isset($_SESSION['user-email'])) {
+                            ?>
+                                <div class="contact-action">
+                                    <a href="<?php echo SITE_URL ?>login-register" class="contact-btn"><span class="material-icons cart-box">person</span></a>
+                                </div>
+                            <?php
+                            } else {
+                                ?>                              
+                                <div class="contact-action">
+                                    <a href="<?php echo SITE_URL ?>/customer-dashboard/customer-dashboard" class="contact-btn"><span class="material-icons cart-box">person</span></a>
+                                </div>
+                            <?php }
+                            ?>
                             <div class="right-nav">
                                 <button class="sidebar-toggle">
                                     <span class="material-icons">menu</span>

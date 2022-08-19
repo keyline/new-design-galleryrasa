@@ -357,10 +357,10 @@ WHERE t.product_id =" . $pid . ")) as tbl2 GROUP BY tbl2.n, tbl2.an ORDER BY tbl
                 $arr5val = [];
                 $arr5index = 0;
 
-                //print_r($value);
-//            if (array_key_exists("Place Of Publication", $value)) {
-//               echo 'hello'; 
-//            }
+                // print_r($value);
+        //    if (array_key_exists("Place Of Publication", $value)) {
+        //       echo 'hello'; 
+        //    }
                 foreach ($value as $k => $v) {
 
 
@@ -688,7 +688,11 @@ WHERE t.product_id =" . $pid . ")) as tbl2 GROUP BY tbl2.n, tbl2.an ORDER BY tbl
         $arr3count = count($arr3);
 
         for ($j = 0; $j < $arr3count; $j++) {
-            $contentHtml .= "<li><strong>" . $arr3[$j] . "</strong><span>" . $arr3val[$j] . "</span></li>";
+            // $contentHtml .= "<li><strong>" . $arr3[$j] . "</strong><span>" . $arr3val[$j] . "</span></li>";
+            $contentHtml .= '<tr>
+                                <td>  '. $arr3[$j] . '</td>
+                                <td class="table-border"> ' . $arr3val[$j] .  '</td>
+                            </tr>';
         }
 
 
@@ -702,7 +706,7 @@ WHERE t.product_id =" . $pid . ")) as tbl2 GROUP BY tbl2.n, tbl2.an ORDER BY tbl
 //                print '<pre>';
 //                print_r($film);
 //                $imageDetails .= '<div class="clearfix"></div><h2>' . str_replace("Picture", "Picture", $k) . '</h2><div class="parent-container ' . $k . '">';
-                    $imageDetails .= '<div class="parent-container ' . $k . '">';
+                    $imageDetails .= '<div class="details-img box target ' . $k . '">';
                     if (is_array($v)) {
                         for ($i = 0; $i < count($v); $i++) {
 
@@ -726,41 +730,24 @@ WHERE t.product_id =" . $pid . ")) as tbl2 GROUP BY tbl2.n, tbl2.an ORDER BY tbl
 
 
 
-                            $imageDetails .= '<div class="light-box-gallery-wrapper panzoom-parent wow fadeInDown" id="lightgallery_test1" data-wow-duration="1s" data-wow-delay="0.5s">'
-                                    . '<div class="' . $k . "_" . $i . ' image-box-inner thumb-img-wrapper panzoom" id="panzoom-element" data-src="' . '../artworkimage?img=' . urlencode($orgnameexcptextnd) . '&ext=' . $ext . '">'
-                                    //. '<a class="thumbnail visual-archive-main-image" href="' . SITE_URL . '/' . ARTWORKS_ORG_IMGS . $v[$i]['name'] . '">'
-                                    . '<img id="zoom_05" data-zoom-image="' . '../artworkimage?img=' . urlencode($orgnameexcptextnd) . '&ext=' . $ext . '" width="411" class="img-responsive image-visual-archive zoom-img" src="' . '../artworkimage?img=' . urlencode($orgnameexcptextnd) . '&ext=' . $ext . '">'
-                                    //. '</a>'
-                                    . '</div>
-                                ';
-
-
-//                        $imageDetails .= '<div class="light-box-gallery-wrapper panzoom-parent wow fadeInDown" id="lightgallery_test1" data-wow-duration="1s" data-wow-delay="0.5s">'
-//                                . '<div class="' . $k . "_" . $i . ' image-box-inner thumb-img-wrapper panzoom" id="panzoom-element" data-src="' . '../artworkimage/' . urlencode($orgnameexcptextnd) . '/' . $ext . '">'
-//                                //. '<a class="thumbnail visual-archive-main-image" href="' . SITE_URL . '/' . ARTWORKS_ORG_IMGS . $v[$i]['name'] . '">'
-//                                . '<img id="zoom_05" data-zoom-image="' . '../artworkimage/' . urlencode($orgnameexcptextnd) . '/' . $ext . '" width="411" class="img-responsive image-visual-archive zoom-img" src="' . '../artworkimage/' . urlencode($orgnameexcptextnd) . '/' . $ext . '">'
-//                                //. '</a>'
-//                                . '</div>
-//                                ';
-//                        if (!empty($v[$i]['imageDetails'])) {
-//                            $imageDetails .= '<a class="btn btn-sm btn-info add-to-cart-btn" href="../product-details.php?image_id=' . $v[$i]['id'] . '&image_type=' . $k . '">View Details</a>';                        
-//                        }
+                            // $imageDetails .= '<div class="light-box-gallery-wrapper panzoom-parent wow fadeInDown" id="lightgallery_test1" data-wow-duration="1s" data-wow-delay="0.5s">'
+                            //         . '<div class="' . $k . "_" . $i . ' image-box-inner thumb-img-wrapper panzoom" id="panzoom-element" data-src="' . '../artworkimage?img=' . urlencode($orgnameexcptextnd) . '&ext=' . $ext . '">'
+                            //         //. '<a class="thumbnail visual-archive-main-image" href="' . SITE_URL . '/' . ARTWORKS_ORG_IMGS . $v[$i]['name'] . '">'
+                            //         . '<img id="zoom_05" data-zoom-image="' . '../artworkimage?img=' . urlencode($orgnameexcptextnd) . '&ext=' . $ext . '" width="411" class="img-responsive image-visual-archive zoom-img" src="' . '../artworkimage?img=' . urlencode($orgnameexcptextnd) . '&ext=' . $ext . '">'
+                            //         //. '</a>'
+                            //         . '</div>
+                            //     ';
+                            
+                            $imageDetails .= '<img class="img-fluid" src="' . '../artworkimage?img=' . urlencode($orgnameexcptextnd) . '&ext=' . $ext . '">'
+                            //. '</a>'
+                            . '</div>';
 
 
 
-
-                            $imageDetails .= '</div> 
-                                    <button id="popup"><i class="fa fa-expand" aria-hidden="true"></i> Enlarge</button>
-                                    <div class="buttons">
-                                        <button id="zoom-in"><i class="fa fa-search-plus" aria-hidden="true"></i> Zoom In</button>
-                                        <button id="zoom-out"><i class="fa fa-search-minus" aria-hidden="true"></i> Zoom Out</button>
-                                        <button id="reset"><i class="fa fa-repeat" aria-hidden="true"></i> Reset</button>
-                                       <input type="range" min="0.1" max="4" value="1" step="0.1" class="slider" id="myRange_test1">
-                                        <p id="range_value"></p>
-                                    </div>';
+                            // $imageDetails .= '</div>';
                         }
                     }
-                    $imageDetails .= '</div>';
+                    // $imageDetails .= '</div>';
                 }
             }
         }

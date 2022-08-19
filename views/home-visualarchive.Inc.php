@@ -36,112 +36,15 @@
                                                                         <input type="hidden" name="att[0]" value="va_artist">
                                                                 </form>
                                                             </div>
-
                                                             <div class="drop-form">
                                                                 <a href="#" class="advanced-btn" data-toggle="modal" id="myBtn" data-target="#myModal">Advanced Search<span class="material-icons">manage_search</span>
                                                                 </a>
-                                                                <!-- <p class="arial mt-3" style="font-size: 14px;">
-                                                                    <a href="#" id="myBtn" data-toggle="modal" data-target="#myModal">
-                                                                    <strong>Advanced Search</strong>
-                                                                    </a>
-                                                                </p> -->
-                                                            </div>
-                                                           
-                                                        </div>
-
-                                                        <div id="search_display">
-                                                            <div class="search_ajaxdetails">
-                                                                <div class="is-ajax-search-posts">
-
-                                                                    <div class="is-items-search-post is-product">
-                                                                        <div class="is-search-sections">
-
-                                                                            <div class="right-section">
-                                                                                <div class="meta">
-                                                                                    <div class="search_price">
-                                                                                        Satyajit Bose (CAST)
-                                                                                    </div>
-                                                                                    <div class="is-title">
-                                                                                        <a href="#/">Memorabilia</a>
-                                                                                    </div>
-                                                                                </div>
-
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="is-items-search-post is-product">
-                                                                        <div class="is-search-sections">
-
-                                                                            <div class="right-section">
-                                                                                <div class="meta">
-                                                                                    <div class="search_price">
-                                                                                        Satyajit Mukhopadhyay (AUTHOR)
-                                                                                    </div>
-                                                                                    <div class="is-title">
-                                                                                        <a href="#/">bibliography</a>
-                                                                                    </div>
-                                                                                </div>
-
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="is-items-search-post is-product">
-                                                                        <div class="is-search-sections">
-
-                                                                            <div class="right-section">
-                                                                                <div class="meta">
-                                                                                    <div class="search_price">
-                                                                                        Satyajit Mukhopadhyay (ARTIST)
-                                                                                    </div>
-                                                                                    <div class="is-title">
-                                                                                        <a href="#/">bibliography</a>
-                                                                                    </div>
-                                                                                </div>
-
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="is-items-search-post is-product">
-                                                                        <div class="is-search-sections">
-
-                                                                            <div class="right-section">
-                                                                                <div class="meta">
-                                                                                    <div class="search_price">
-                                                                                        Satyajit Ray (EDITOR)
-                                                                                    </div>
-                                                                                    <div class="is-title">
-                                                                                        <a href="#/">bibliography</a>
-                                                                                    </div>
-                                                                                </div>
-
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="is-items-search-post is-product">
-                                                                        <div class="is-search-sections">
-
-                                                                            <div class="right-section">
-                                                                                <div class="meta">
-                                                                                    <div class="search_price">
-                                                                                        Satyajit Chaudhury (AUTHOR)
-                                                                                    </div>
-                                                                                    <div class="is-title">
-                                                                                        <a href="#/">bibliography</a>
-                                                                                    </div>
-                                                                                </div>
-
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-
-                                                                </div>
-                                                            </div>
+                                                            </div>                                                         
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-
                                     </div>
                                 </div>
                             </div>
@@ -218,33 +121,27 @@
                                 <div class="col-lg-6">
                                     <div class="right-part">
                                         <form action="adv-search-va" id="adv-search-bibliography">
-                                            <div class="form-group">
-                                                <input type="email" class="form-control" id="artistform2" name="visualarchive2[]" placeholder="NAME">
+                                        <div class="form-group">
+                                                <select class="program-name form-control" name="visualarchive1[]" multiple="multiple" data-placeholder="Enter Artist’s Name"></select>
+                                                <input type="hidden" name="catg" value="Visual Archive">
+                                                <input type="hidden" name="att[0]" value="va_artist">
                                             </div>
                                             <input type="hidden" name="catg" value="Visual Archive">
                                             <input type="hidden" name="att[0]" value="va_artist">
                                             <div class="form-group">
+                                                
                                                 <div class="dropdown">
-                                                    <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown">
+                                                <?php echo $select_py; ?>
+                                                    <!-- <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown">
                                                         <p>year of publication<span class="material-icons">keyboard_arrow_down</span></p>
-                                                    </button>
-                                                    <div class="dropdown-menu radio">
-
+                                                    </button> -->
+                                                    
+                                                    <!-- <div class="dropdown-menu radio">
                                                         <label class="dropdown-item">
                                                             <input class="jRadioDropdown" type="radio" value="001" name="alphabet" id="publicationyeardiv">
-                                                            <i><?php echo $select_py; ?></i>
+                                                            <i> </i>
                                                         </label>
-
-                                                        <!-- <label class="dropdown-item">
-                                                            <input class="jRadioDropdown" type="radio" value="002" name="alphabet">
-                                                            <i>year of publication 2</i>
-                                                        </label>
-
-                                                        <label class="dropdown-item">
-                                                            <input class="jRadioDropdown" type="radio" value="003" name="alphabet">
-                                                            <i>year of publication 3</i>
-                                                        </label> -->
-                                                    </div>
+                                                    </div> -->
                                                 </div>
                                             </div>
                                             <div class="form-group">
@@ -258,41 +155,22 @@
                                                             <input class="jRadioDropdown" type="radio" value="001" name="fromartworkyr" id="fromtoart1">
                                                             <i><?php echo $artworkoptions ?></i>
                                                         </label>
-
-                                                        <!-- <label class="dropdown-item">
-                                                            <input class="jRadioDropdown" type="radio" value="002" name="alphabet">
-                                                            <i>from year 2</i>
-                                                        </label>
-
-                                                        <label class="dropdown-item">
-                                                            <input class="jRadioDropdown" type="radio" value="003" name="alphabet">
-                                                            <i>from year 3</i>
-                                                        </label> -->
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <div class="dropdown">
-                                                    <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown">
+                                                <?php echo $select_med ?>
+                                                    <!-- <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown">
                                                         <p>medium<span class="material-icons">keyboard_arrow_down</span></p>
                                                     </button>
                                                     <div class="dropdown-menu radio">
 
                                                         <label class="dropdown-item">
                                                             <input class="jRadioDropdown" id="mediumdiv" type="radio" value="001" name="alphabet">
-                                                            <i><?php echo $select_med ?></i>
+                                                            <i></i>
                                                         </label>
-
-                                                        <!-- <label class="dropdown-item">
-                                                            <input class="jRadioDropdown" type="radio" value="002" name="alphabet">
-                                                            <i>medium 2</i>
-                                                        </label>
-
-                                                        <label class="dropdown-item">
-                                                            <input class="jRadioDropdown" type="radio" value="003" name="alphabet">
-                                                            <i>medium 3</i>
-                                                        </label> -->
-                                                    </div>
+                                                    </div> -->
                                                 </div>
                                             </div>
                                     </div>
@@ -301,50 +179,31 @@
                                     <div class="right-part">  
                                             <div class="form-group">
                                                 <div class="dropdown">
-                                                    <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown">
+                                                <?php echo $select_sub2; ?>
+                                                    <!-- <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown">
                                                         <p>CLASSIFICATION<span class="material-icons">keyboard_arrow_down</span></p>
                                                     </button>
                                                     <div class="dropdown-menu radio">
                                                         <label class="dropdown-item">
                                                             <input class="jRadioDropdown" type="radio" value="001" name="alphabet">
-                                                            <i><?php echo $select_sub2; ?></i>
+                                                            <i> </i>
                                                         </label>
-                                                        <!-- <label class="dropdown-item">
-                                                            <input class="jRadioDropdown" type="radio" value="002" name="alphabet">
-                                                            <i>CLASSIFICATION 2</i>
-                                                        </label>
-                                                        <label class="dropdown-item">
-                                                            <input class="jRadioDropdown" type="radio" value="003" name="alphabet">
-                                                            <i>CLASSIFICATION 3</i>
-                                                        </label> -->
-                                                    </div>
+                                                    </div> -->
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <div class="dropdown">
-                                                    <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown">
+                                                <div class="dropdown" placeholder="abc">
+                                                <?php echo $select_ay ?>
+                                                    <!-- <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown">
                                                         <p>year of artwork<span class="material-icons">keyboard_arrow_down</span></p>
                                                     </button>
                                                     <div class="dropdown-menu radio">
 
                                                         <label class="dropdown-item">
                                                             <input class="jRadioDropdown" type="radio" value="001" name="alphabet">
-                                                            <i><?php echo $select_ay ?></i>
+                                                            <i></i>
                                                         </label>
-
-                                                        <!-- <label class="dropdown-item">
-                                                            <input class="jRadioDropdown" type="radio" value="002" name="alphabet">
-                                                            <i>year of artwork 2</i>
-                                                        </label>
-
-                                                        <label class="dropdown-item">
-                                                            <input class="jRadioDropdown" type="radio" value="003" name="alphabet">
-                                                            <i>year of artwork 3</i>
-                                                        </label> -->
-
-
-
-                                                    </div>
+                                                    </div> -->
                                                 </div>
                                             </div>
                                             <div class="form-group">
@@ -364,12 +223,13 @@
                                             <div class="form-group">
                                                 <input type="email" class="form-control" name="descriptive_tag[]" multiple="multiple" placeholder="descriptive tags" id="adv-search-bibliography">
                                             </div>
-<!--                                            <button type="button" class="cancel-btn" data-dismiss="modal">CANCEL</button>-->
+                                            <input type="submit" name="adv_submit" class="search-box" value="Search"/>
+                                            <button type="button" class="cancel-btn" data-dismiss="modal">CANCEL</button>
                                         </form>
                                     </div>
                                 </div>
                             </div>
-                            <div class="row">
+                            <!-- <div class="row">
                                 <div class="col-lg-6">
                                                     <div class="right-part">
                                             <button type="button" class="search-box">Search</button>
@@ -380,16 +240,10 @@
                                             <button type="button" class="cancel-btn" data-dismiss="modal">CANCEL</button>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
 
                         </div>
                     </div>
-                    <!--
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        
-      </div>
--->
                 </div>
             </div>
         </div>
