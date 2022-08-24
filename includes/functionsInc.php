@@ -86,6 +86,14 @@ function check_auth_admin() {
     }
 }
 
+function clean($string) 
+    {
+       $string = str_replace(' ', '-', $string); // Replaces all spaces with hyphens.
+       $string2 = preg_replace('/[^A-Za-z0-9\-]/', '', $string); // Removes special chars.
+       $string3 = preg_replace('/-+/', '-', $string2);
+       return $string3;
+    }
+
 function create_folder($folder = null) {
     if (!is_null($folder)) {
 
@@ -4207,6 +4215,26 @@ function singleexhibition($param1) {
         $query = "select * from exhibition  
 where 
 id = '%s' ";
+        $sql = sprintf($query, $param1);
+        $q = $conn->prepare($sql);
+
+        $q->execute();
+        $q->setFetchMode(PDO::FETCH_ASSOC);
+
+        return $cust_addr = $q->fetch();
+    } catch (PDOException $pe) {
+        echo db_error($pe->getMessage());
+    }
+}
+
+function singlepodcast($param1) {
+    try {
+        $conn = dbconnect();
+
+
+        $query = "select * from podcast  
+where 
+episode_id = '%s' ";
         $sql = sprintf($query, $param1);
         $q = $conn->prepare($sql);
 

@@ -34,7 +34,10 @@
                                 <th>Name of Exhibition</th>
                                 <th>Description</th>
                                 <th>Photo</th>
-                                <th>Date</th>
+                                <th>Start Date</th>
+                                <th>End Date</th>
+                                <th>City</th>
+                                <th>Address</th>
                                 <th>Status</th>
                                 <th>Edit</th>
                             </tr>
@@ -55,15 +58,22 @@
                                             //echo SITE_URL . '/' . EXHIBITION_THUMB_IMGS . $v['photo'];
                                             if ($v['photo'] != '') { ?>
 
-                                                <img src="<?php echo SITE_URL . '/' . EXHIBITION_THUMB_IMGS . $v['photo']; ?>">
+                                                <img src="<?php echo SITE_URL . '/' . EXHIBITION_THUMB_IMGS . $v['photo']; ?>" width="100" height="100">
                                                 <?php
                                             }
                                             ?>
                                         </td>
 
                                         <td><?php
-                                            echo $v['exhibition_date'] != '0000-00-00' ? $v['exhibition_date'] : '';
+                                            echo $v['from_exhibition_date'] != '0000-00-00' ? $v['from_exhibition_date'] : '';
                                             ?></td>
+
+                                        <td><?php
+                                            echo $v['end_exhibition_date'] != '0000-00-00' ? $v['end_exhibition_date'] : '';
+                                            ?></td>
+
+                                        <td><?php echo $v['city']; ?></td>
+                                        <td><?php echo $v['full_address']; ?></td>
 
                                         <td><?php
                                             if ($v['status'] == '0') {

@@ -30,7 +30,8 @@ if ($username != null && $pass != null) {
             //$qry="DELETE FROM " . SHOPPING_BASKET_TBL . " WHERE TO_DAYS(NOW()) - TO_DAYS(dateadded) >= 31";
             //$q     = $conn->query($qry);
               ######
-            goto_location('dashboard');
+             // return header("Location:dashboard");
+              goto_location('dashboard');
             exit;
         } else {
             $tpl = file_get_contents("../" . VIEWS_FOLDER . "admin-login.inc.php");

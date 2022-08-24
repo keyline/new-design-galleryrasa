@@ -17,7 +17,7 @@ check_auth_admin();
 $conn = dbconnect();
 
 $exhibition_thumb_destination = '../' . EXHIBITION_THUMB_IMGS;
-$exhibition_destination = '../../' . 'exhibition' . '/';
+$exhibition_destination = '../' . 'exhibition' . '/';
 
 $exibition_id = $_GET['exibition_id'];
 
