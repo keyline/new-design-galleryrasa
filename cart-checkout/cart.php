@@ -193,7 +193,7 @@ $_SESSION['tax_percentage'] = $tax;
                                     <div class="buy-box">
                                         <div class="qun-box">
                                             <div class="quantity buttons_added">
-                                                <input type="button" value="-" class="minus"><input type="number" step="1" min="1" max="" name="quantity" value="1" title="Qty" class="input-text qty text" size="4" pattern="" inputmode=""><input type="button" value="+" class="plus">
+                                                <input type="button" value="-" class="minus"><input type="number" step="1" min="1" max="" name="quantity" value="<?php echo $item["quantity"]; ?>" title="Qty" class="input-text qty text" size="4" pattern="" inputmode=""><input type="button" value="+" class="plus">
                                             </div>
                                         </div>
                                     </div>

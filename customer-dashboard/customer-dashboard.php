@@ -11,6 +11,7 @@ if (!isset($_SESSION['user-email'])) {
 $conn = dbconnect();
 include("../" . INC_FOLDER . "headerInc.php");
 $cust_id = $_SESSION['user-id'];
+
 ?>
 <main>
 <div>
@@ -117,18 +118,20 @@ $cust_id = $_SESSION['user-id'];
                                         <div class="form-row">
                                             <div class="form-group col-md-6">
                                                 <label>First Name</label>
-                                                <input type="text" name="fname" class="form-control"  value="<?php echo $row_user['fname']; ?>" >
+                                                <input type="text" name="fname" id="fname" class="form-control"  value="<?php echo $row_user['fname']; ?>" required >
                                             </div>
                                             <div class="form-group col-md-6">
                                                 <label>Last Name</label>
-                                                <input type="text" class="form-control" name="lname" value="<?php echo $row_user['lname']; ?>">
+                                                <input type="text" class="form-control" name="lname" id="lname" value="<?php echo $row_user['lname']; ?>" required >
                                             </div>
                                             <div class="form-group col-md-6">
                                                 <label>E-mail Address</label>
                                                 <input type="email" class="form-control" name="email" value="<?php echo $_SESSION['user-email']; ?>" readonly>
                                             </div>
                                         </div>
-                                        <button type="submit" class="submit-btn">update profile</button>
+                                        <span id="err_message" class="text-danger"></span>
+                                        <span id="succ_message" class="text-primary"></span>
+                                        <input type="submit" id="processdata" class="submit-btn" value="update profile">
                                     </form>
                                 </div>
                             </div>
@@ -148,7 +151,7 @@ $cust_id = $_SESSION['user-id'];
                                         <div class="form-row">
                                             <div class="form-group col-md-6">
                                                 <label>Enter Password</label>
-                                                <input type="password" name="password" id="password" class="form-control" value="<?php echo $row_user['password']; ?>" required >
+                                                <input type="password" name="password" id="password" class="form-control" value="<?php echo $row_user['password']; ?>" >
                                             </div>
                                         </div>
                                         <div class="form-row">
@@ -157,23 +160,35 @@ $cust_id = $_SESSION['user-id'];
                                                 <input type="password" name="re_password" id="re_password" class="form-control" value="<?php echo $row_user['password']; ?>" required>
                                             </div>
                                         </div>
-                                        <button type="submit" class="submit-btn">update password</button>
+                                        <button type="submit" class="submit-btn" id="processdata" >update password</button>
                                     </form>
                                 </div>
                             </div>
                             <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+                            <?php
+                                // echo  $_SESSION['user-id'];
+                                // exit();
+                                        $sql_user = "select * from order_products where customer_id = '" . $_SESSION['user-id'] . "' ORDER BY `order_products`.`id` DESC";
+                                        // echo $sql_user;
+                                        $q_user = $conn->prepare($sql_user);
+                                        $q_user->execute();
+                                        $q_user->setFetchMode(PDO::FETCH_ASSOC);
+                                        $row_user = $q_user->fetchAll();
+                                        // print_r($row_user);
+                                        ?>
                                 <div class="history">Order History<img class="img-fluid" src="<?php echo SITE_URL ?>images/refresh.png"></div>
                                 <div class="dashboard-acco">
                                     <div class="accordion" id="accordionExample">
+                                    <?php foreach($row_user as $row){ ?>                                              
                                         <div class="card">
                                             <div class="card-header" id="headingFour">
                                                 <h2 class="mb-0">
-                                                    <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                                    <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseFour<?php echo  $row['id']; ?>" aria-expanded="false" aria-controls="collapseFour">
                                                         <div class="dashboard-cart">
                                                             <div class="dashboard-order">
                                                                 <div class="order-inner">
-                                                                    <p>ORDER #123456</p><span>|</span>
-                                                                    <p>26th May 2022</p>
+                                                                    <p><?php echo  $row['order_id']; ?></p><span>|</span>
+                                                                    <p><?php echo  $row['added_on']; ?><br></p>
                                                                 </div>
                                                                 <div class="order-action green">
                                                                     DELIVERED
@@ -186,13 +201,13 @@ $cust_id = $_SESSION['user-id'];
                                                                     <div class="cart-right">
                                                                         <div class="cart-right-box">
                                                                             <div class="cart-name">
-                                                                                Akash Patal
+                                                                            <?php echo  $row['product_name']; ?><br>
                                                                             </div>
                                                                             <div class="cart-content">
-                                                                                PDF of Song Synopsis Book, 6 pages + covers
+                                                                            <?php echo  $row['details']; ?>
                                                                             </div>
                                                                         </div>
-                                                                        <div class="cart-count">₹ 100 / $ 1.33</div>
+                                                                        <div class="cart-count">₹ <?php echo  $row['price']; ?></div>
                                                                     </div>
                                                                 </div>
                                                                 <p>+ 3 Items</p>
@@ -202,7 +217,7 @@ $cust_id = $_SESSION['user-id'];
                                                     </button>
                                                 </h2>
                                             </div>
-                                            <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
+                                            <div id="collapseFour<?php echo  $row['id']; ?>" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
                                                 <div class="card-body">
                                                     <div class="order-border">
                                                         <div class="order-info">
@@ -259,6 +274,7 @@ $cust_id = $_SESSION['user-id'];
                                                 </div>
                                             </div>
                                         </div>
+                                        <?php } ?>
                                     </div>
                                 </div>
                             </div>
@@ -266,48 +282,57 @@ $cust_id = $_SESSION['user-id'];
                                 <div class="row">
                                     <div class="col-xl-6">
                                     <div class="get-form">
-                                    <?php
-                                        $bill_addr = get_user_bill_addr($cust_id);
-                                    ?>
+                                        <?php
+                                            $bill_addr = get_user_bill_addr($cust_id);
+                                        ?>
                                         <form method="POST" action="function_edit_bill_addr.php">
+                                            <input type="hidden" name="demodata" value="pills-addresses"  >
                                         <input type="hidden" name="addr_id" id="addr_id_<?php echo $bill_addr['id']; ?>" value="<?php echo $bill_addr['id']; ?>">
                                         <div class="history">Billing Address<span class="material-icons">receipt</span></div>
                                         <div class="form-row">
                                                 <div class="form-group col-md-12 p-1">
                                                     <label>Name</label>
-                                                    <input type="text" class="form-control" value="<?php echo $bill_addr['name']; ?>" readonly >
+                                                    <input type="text" name="name" id="name" class="form-control" value="<?php echo $bill_addr['name']; ?>">
+                                                    <span class="text-danger" id="name-error"></span>
                                                 </div>
                                                 <div class="form-group col-md-12 p-1">
                                                     <label>Phone</label>
-                                                    <input type="tel" class="form-control" value="<?php echo $bill_addr['phone']; ?>" readonly >
+                                                    <input type="tel" class="form-control" id="phone" name="phone" value="<?php echo $bill_addr['phone']; ?>" >
+                                                    <span class="text-danger" id="phone-error"></span>
                                                 </div>
                                                 <div class="form-group col-md-12 p-1">
                                                     <label>Address</label>
                                                     <input type="text" name="street_address" class="form-control" id="street_address" class="form-control" value="<?php echo $bill_addr['street_address']; ?>">
+                                                    <span class="text-danger" id="address-error"></span>
                                                 </div>
                                                 <div class="form-group col-md-12 p-1">
                                                     <label>City</label>
                                                     <input type="text" name="city" id="city" class="form-control" value="<?php echo $bill_addr['city']; ?>">
+                                                    <span class="text-danger" id="city-error"></span>
                                                 </div>
                                                 <div class="form-group col-md-12 p-1">
                                                     <label>State</label>
                                                     <input type="text" class="form-control" name="state" id="state" value="<?php echo $bill_addr['state']; ?>">
+                                                    <span class="text-danger" id="state-error"></span>
                                                 </div>
                                                 <div class="form-group col-md-12 p-1">
                                                     <label>Country</label>
                                                     <input type="text" class="form-control" name="country" id="country" value="<?php echo $bill_addr['country']; ?>">
+                                                    <span class="text-danger" id="country-error"></span>
                                                 </div>
                                                 <div class="form-group col-md-12 p-1">
                                                     <label>Zip Code</label>
                                                     <input type="text" class="form-control"  name="zip" id="zip" value="<?php echo $bill_addr['zip']; ?>">
+                                                    <span class="text-danger" id="zip-error"></span>
                                                 </div>
                                                 <div class="form-group col-md-12 p-1">
                                                     <label>Landmark</label>
                                                     <input type="text" class="form-control" name="landmark" id="landmark" value="<?php echo $bill_addr['landmark']; ?>">
+                                                    <span class="text-danger" id="landmark-error"></span>
                                                 </div>
                                             </div>
-                                            <button type="submit" class="submit-btn">update address</button>
-                                        </form>
+                                            
+                                       
                                     </div>
                                     </div>
                                     <div class="col-xl-6">
@@ -315,45 +340,55 @@ $cust_id = $_SESSION['user-id'];
                                         <div class="shipping-box">
                                             <div class="history">Shipping Address<span class="material-icons">local_shipping</span></div>
                                              <div class="form-check form-check-inline ">
-                                                <input class="form-check-input greencheck" type="checkbox" id="inlineCheckbox2" value="option2">
+                                                <input class="form-check-input greencheck" type="checkbox" id="check-address" value="option2">
                                                 <label class="form-check-label" for="inlineCheckbox1">Same as Billing Address</label>
                                             </div>
                                         </div>
-                                        <form>
                                             <div class="form-row">
                                                 <div class="form-group col-md-12 p-1">
                                                     <label>Name</label>
-                                                    <input type="text" class="form-control">
+                                                    <input type="text" id="shipping_name" name="shipping_name" class="form-control" value="<?php echo $bill_addr['shipping_name']; ?>" >
+                                                    <span class="text-danger" id="shipping_name-error"></span>
                                                 </div>
                                                 <div class="form-group col-md-12 p-1">
                                                     <label>Phone</label>
-                                                    <input type="tel" class="form-control" >
+                                                    <input type="tel" id="shipping_phone" name="shipping_phone" class="form-control" value="<?php echo $bill_addr['shipping_phone']; ?>" >
+                                                    <span class="text-danger" id="shipping_phone-error"></span>
                                                 </div>
                                                 <div class="form-group col-md-12 p-1">
-                                                    <label>Phone</label>
-                                                    <input type="tel" class="form-control" >
+                                                    <label>Address</label>
+                                                    <input name="shipping_address" id="shipping_address" value="<?php echo $bill_addr['shipping_address']; ?>" type="text" class="form-control" >
+                                                    <span class="text-danger" id="shipping_address-error"></span>
                                                 </div>
                                                 <div class="form-group col-md-12 p-1">
                                                     <label>City</label>
-                                                    <input type="text" class="form-control" >
+                                                    <input type="text" name="shipping_city" id="shipping_city" class="form-control" value="<?php echo $bill_addr['shipping_city']; ?>" >
+                                                    <span class="text-danger" id="shipping_city-error"></span>
                                                 </div>
                                                 <div class="form-group col-md-12 p-1">
                                                     <label>State</label>
-                                                    <input type="text" class="form-control">
+                                                    <input type="text" name="shipping_state" id="shipping_state" value="<?php echo $bill_addr['shipping_state']; ?>" class="form-control">
+                                                    <span class="text-danger" id="shipping_state-error"></span>
                                                 </div>
                                                 <div class="form-group col-md-12 p-1">
                                                     <label>Country</label>
-                                                    <input type="text" class="form-control" >
+                                                    <input type="text" class="form-control" name="shipping_country" id="shipping_country" value="<?php echo $bill_addr['shipping_country']; ?>" >
+                                                    <span class="text-danger" id="shipping_country-error"></span>
                                                 </div>
                                                 <div class="form-group col-md-12 p-1">
                                                     <label>Zip Code</label>
-                                                    <input type="text" class="form-control">
+                                                    <input type="text"  class="form-control" name="shipping_zip" id="shipping_zip" value="<?php echo $bill_addr['shipping_zip']; ?>">
+                                                    <span class="text-danger" id="shipping_zip-error"></span>
                                                 </div>
                                                 <div class="form-group col-md-12 p-1">
                                                     <label>Landmark</label>
-                                                    <input type="text" class="form-control" >
+                                                    <input type="text" class="form-control" name="shipping_landmark" id="shipping_landmark" value="<?php echo $bill_addr['shipping_landmark']; ?>" >
+                                                    <span class="text-danger" id="shipping_landmark-error"></span>
                                                 </div>
                                             </div>
+                                            <span id="error_message" class="text-danger"></span>
+                                            <span id="success_message" class="text-primary"></span>
+                                            <button type="submit" class="submit-btn" id="submitdata" >update address</button>
                                         </form>
                                     </div>
                                 </div>
@@ -377,4 +412,192 @@ $cust_id = $_SESSION['user-id'];
 <?php
 include("../" . INC_FOLDER . "footerInc.php");
 ?>
-
+<script type="text/javascript">
+    $(document).ready(function(){
+        // alert();
+        // var add= $('#street_address').val();
+        // alert(add);
+        $('#check-address').click(function(){
+            // alert();
+            // var add= $('#phone').val();
+            // alert(add);
+            if($('#check-address').is(":checked")){
+                // alert();
+                $('#shipping_name').val($('#name').val());
+                $('#shipping_phone').val($('#phone').val());
+                $('#shipping_address').val($('#street_address').val());
+                $('#shipping_city').val($('#city').val());
+                $('#shipping_state').val($('#state').val());
+                $('#shipping_country').val($('#country').val());
+                $('#shipping_zip').val($('#zip').val());
+                $('#shipping_landmark').val($('#landmark').val());
+            }else{
+                $('#shipping_name').val("");
+                $('#shipping_phone').val("");
+                $('#shipping_address').val("");
+                $('#shipping_city').val("");
+                $('#shipping_state').val("");
+                $('#shipping_country').val("");
+                $('#shipping_zip').val("");
+                $('#shipping_landmark').val("");
+            }
+        })
+    })
+</script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        // alert();
+        $('#submitdata').click(function(event){
+            // alert();
+            event.preventDefault();
+            var form = document.getElementById('form')
+            var addr_id=$('#addr_id_<?php echo $bill_addr['id']; ?>').val();
+            var name=$('#name').val();
+            var phone=$('#phone').val();
+            var street_address=$('#street_address').val();
+            var city=$('#city').val();
+            var state=$('#state').val();
+            var country=$('#country').val();
+            var zip=$('#zip').val();
+            var landmark=$('#landmark').val();
+            var shipping_name=$('#shipping_name').val();
+            var shipping_phone=$('#shipping_phone').val();
+            var shipping_address=$('#shipping_address').val();
+            var shipping_city=$('#shipping_city').val();
+            var shipping_state=$('#shipping_state').val();
+            var shipping_country=$('#shipping_country').val();
+            var shipping_zip=$('#shipping_zip').val();
+            var shipping_landmark=$('#shipping_landmark').val();
+            if(name=='' || phone==''||street_address==''||city=='' || state == '' || zip == '' || country=='' || landmark =='' || shipping_name =='' || shipping_phone =='' || shipping_address ==''|| shipping_city ==''|| shipping_state ==''|| shipping_country ==''|| shipping_zip =='' || shipping_landmark ==''){
+                $('#error_message').html("<strong>All fields are required*</strong>");
+            }
+            else {
+                // alert();
+                var name_regex = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
+                var name_validation = name_regex.test(name);
+                var shipping_name_validation = name_regex.test(shipping_name);
+                // alert(name_validation);
+                var phone_regex = /(7|8|9)\d{9}/;
+                var phone_validation = phone_regex.test(phone);
+                var shipping_phone_validation = phone_regex.test(shipping_phone);
+                // alert(phone_validation);    
+                if(name_validation == false && shipping_name_validation == false ) {            
+                    if(phone_validation && shipping_phone_validation ){
+                        $('#error_message').html('');
+                    jQuery.ajax({
+                        url:"function_edit_bill_addr.php",
+                        method:"POST",
+                        data:{addr_id:addr_id,name:name,phone:phone,street_address:street_address,city:city,state:state,zip:zip,landmark:landmark,country:country,shipping_name:shipping_name,shipping_phone:shipping_phone,shipping_address:shipping_address,shipping_city:shipping_city,shipping_state:shipping_state,shipping_country:shipping_country,shipping_zip:shipping_zip,shipping_landmark:shipping_landmark},
+                        success:function(rply){
+                            //console.log(rply);
+                            //alert(rply.response.message);
+                            if(!rply.status){
+                                    if(rply.response['inputId'] == 'name'){
+                                        $('#name-error').html(rply.response.message);
+                                    }
+                                    if(rply.response['inputId'] == 'phone'){
+                                        $('#phone-error').html(rply.response.message);
+                                    }
+                                    if(rply.response['inputId'] == 'city'){
+                                        $('#city-error').html(rply.response.message);
+                                    }
+                                    if(rply.response['inputId'] == 'address'){
+                                        $('#address-error').html(rply.response.message);
+                                    }
+                                    if(rply.response['inputId'] == 'state'){
+                                        $('#state-error').html(rply.response.message);
+                                    }
+                                    if(rply.response['inputId'] == 'country'){
+                                        $('#country-error').html(rply.response.message);
+                                    }
+                                    if(rply.response['inputId'] == 'zip'){
+                                        $('#zip-error').html(rply.response.message);
+                                    }
+                                    if(rply.response['inputId'] == 'landmark'){
+                                        $('#landmark-error').html(rply.response.message);
+                                    }
+                                    if(rply.response['inputId'] == 'shipping_name'){
+                                        $('#shipping_name-error').html(rply.response.message);
+                                    }
+                                    if(rply.response['inputId'] == 'shipping_phone'){
+                                        $('#shipping_phone-error').html(rply.response.message);
+                                    }
+                                    if(rply.response['inputId'] == 'shipping_address'){
+                                        $('#shipping_address-error').html(rply.response.message);
+                                    }
+                                    if(rply.response['inputId'] == 'shipping_city'){
+                                        $('#shipping_city-error').html(rply.response.message);
+                                    }
+                                    if(rply.response['inputId'] == 'shipping_state'){
+                                        $('#shipping_state-error').html(rply.response.message);
+                                    }
+                                    if(rply.response['inputId'] == 'shipping_country'){
+                                        $('#shipping_country-error').html(rply.response.message);
+                                    }
+                                    if(rply.response['inputId'] == 'shipping_zip'){
+                                        $('#shipping_zip-error').html(rply.response.message);
+                                    }
+                                    if(rply.response['inputId'] == 'shipping_landmark'){
+                                        $('#shipping_landmark-error').html(rply.response.message);
+                                    }
+                                    if(rply.response['inputId'] == 'special_name'){
+                                        $('#name-error').html(rply.response.message);
+                                    }
+                                    if(rply.response['inputId'] == 'shipping_name'){
+                                        $('#shipping_name-error').html(rply.response.message);
+                                    }
+                                } 
+                            $('#success_message').html("<strong>Successfully data saved</strong>").fadeOut(5000);
+                            }
+                        });
+                    }else {
+                         $('#error_message').html("<strong>Please Enter Valid Phone Number*</strong>");
+                    }          
+                } else {
+                    $('#error_message').html("<strong>Please Enter a Valid Name*</strong>");
+                }                
+            }    
+        });
+    });
+</script>
+<!-- <script type="text/javascript">
+    $(document).ready(function(){
+        // alert();
+        $('#processdata').click(function(event){
+            // alert();
+            event.preventDefault();
+            // var form = document.getElementById('form')
+            var fname=$('#fname').val();
+            var phone=$('#lname').val();
+            // alert(fname);
+            if(fname=='' || lanme==''){
+                $('#err_message').html("<strong>All fields are required*</strong>");
+            }
+            else {
+                var fname_regex = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
+                var fname_validation = fname_regex.test(fname);
+                alert(fname_validation);
+                if(fname_validation == false ) {
+                        $('#err_message').html('');
+                    jQuery.ajax({
+                        url:"change-profile.php",
+                        method:"POST",
+                        data:{fname:fname,lname:lname},
+                        success:function(rply){
+                            //console.log(rply);
+                            //alert(rply.response.message);
+                            if(!rply.status){
+                                    if(rply.response['inputId'] == 'name'){
+                                        $('#name-error').html(rply.response.message);
+                                    }                                    
+                                } 
+                            $('#success_message').html("<strong>Successfully data saved</strong>").fadeOut(5000);
+                            }
+                        });          
+                } else {
+                    $('#error_message').html("<strong>Please Enter a Valid Name*</strong>");
+                }                
+            }    
+        });
+    });
+</script> -->

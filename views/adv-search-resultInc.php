@@ -89,31 +89,18 @@
                                 <!-- <div class="SearchResult">{searchList}</div> -->
                                 {searchList}
                             <!-- </div> -->
-                        </div>
-                        <div class="artist-pagination">
-                            <nav aria-label="Page navigation example">
-                                <ul class="pagination">
-                                    <li class="page-item"><a class="page-link prev" href="#">Prev</a></li>
-                                    <li class="page-item"><a class="page-link active" href="#">1</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">4</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">5</a></li>
-                                    <li class="page-item"><a class="page-link prev" href="#">Next</a></li>
-                                </ul>
-                            </nav>
-                        </div>
-                        <!-- pagination -->
-                        <div class="artist-pagination" id="pagination-section">
-                            <div class="col-lg-12">
-                                <div class="artist-pagination">
-                                    <nav aria-label="Page navigation example">
-                                        <ul id="pagin" class="pagination">
-                                        </ul>
-                                    </nav>
+                            <div class="artist-pagination" id="pagination-section">
+                                <div class="col-lg-12">
+                                    <div class="artist-pagination">
+                                        <nav aria-label="Page navigation example">
+                                            <ul id="pagin" class="pagination">
+                                            </ul>
+                                        </nav>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+                        <!-- pagination -->
                     </div>
                 </div>
             </div>
@@ -121,7 +108,7 @@
     </section>
     
 
-    <div class="modal fade" id="citethis" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade rasa-new-modal" id="citethis" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -230,5 +217,94 @@
             </div>
         </div>
     </div>
-
 </main>
+<script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+<script>
+    $( document ).ready(function() {
+    // alert();
+    $('.pagination').empty();
+    var contentCount = $(".line-content").length;
+    // alert(contentCount);
+    ajaxPagination(contentCount);
+})
+</script>
+
+<script type="text/javascript">
+    function ajaxPagination(contentCount){
+        //Pagination
+        pageSize = 9;
+        incremSlide = 10;
+        startPage = 0;
+        numberPage = 0;
+        // alert(contentCount);
+        var pageCount =  contentCount / pageSize;
+        var totalSlidepPage = Math.floor(pageCount / incremSlide);
+            
+        for(var i = 0 ; i<pageCount;i++){
+            $("#pagin").append('<li class="page-item"><a class="page-link" href="javascript:void(0);">'+(i+1)+'</a></li> ');
+            if(i>pageSize){
+                $("#pagin li").eq(i).hide();
+            }
+        }
+        //var prevIcon = '<a class="page-link" href="#" aria-label="Previous"><i class="zmdi zmdi-chevron-left"></i></a>';
+        var prevIcon = '<i class="page-link prev"></i>';
+        var prev = $("<li/>").addClass("prev page-item").html(prevIcon).click(function(){
+            startPage-=10;
+            incremSlide-=10;
+            numberPage--;
+            slide();
+        });
+        prev.hide();
+        //var nextIcon = '<a class="page-link" href="#" aria-label="Next"><i class="zmdi zmdi-chevron-right"></i></a>';
+        var nextIcon = '<i class="page-link prev"></i>';
+        var next = $("<li/>").addClass("next page-item").html(nextIcon).click(function(){
+            startPage+=10;
+            incremSlide+=10;
+            numberPage++;
+            slide();
+        });
+        next.hide();
+
+        $("#pagin").prepend(prev).append(next);
+
+        $("#pagin li").first().find("a").addClass("active");
+
+        slide = function(sens){
+            $("#pagin li").hide();
+            
+            for(t=startPage;t<incremSlide;t++){
+                $("#pagin li").eq(t+1).show();
+            }
+            if(startPage == 0){
+                next.show();
+                prev.hide();
+            }else if(numberPage == totalSlidepPage ){
+                next.hide();
+                prev.show();
+            }else{
+                next.show();
+                prev.show();
+            }
+        }
+        showPage = function(page) {
+                $(".line-content").hide();
+                $(".line-content").each(function(n) {
+                    if (n >= pageSize * (page - 1) && n < pageSize * page)
+                        $(this).show();
+                });        
+        }
+        showPage(1);
+        $("#pagin li a").eq(0).addClass("active");
+        $("#pagin li a").click(function() {
+                $("#pagin li a").removeClass("active");
+                $(this).addClass("active");
+                showPage(parseInt($(this).text()));
+        });
+    }
+
+
+</script>
+
+<script type="text/javascript">
+    $('#example-multiple-selected').multiselect();
+</script>

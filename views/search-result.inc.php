@@ -98,13 +98,11 @@
                                         </div>
                                     </div>
                             </div>
-                            </div>
                         </div>
-                        <!-- pagination -->
-                        
+                        </div>
+                        <!-- pagination -->                       
                     </div>
                 </div>
-            </div>
         </div>
     </section>
     <div class="modal fade rasa-new-modal" id="citethis" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
