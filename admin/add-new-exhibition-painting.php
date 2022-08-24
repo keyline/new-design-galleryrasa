@@ -16,7 +16,7 @@ check_auth_admin();
 $conn = dbconnect();
 
 $exhibition_thumb_destination = '../' . EXHIBITION_THUMB_IMGS;
-$exhibition_destination = '../../' . 'exhibition' . '/';
+$exhibition_destination = '../' . 'exhibition' . '/';
 
 $artistid = $_GET['artistid'];
 
@@ -31,6 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $artistid = $_POST['artistid'];
     //$exhibition = $_POST['exhibition'];
     $paintingname = $_POST['paintingname'];
+    $dimension = $_POST['dimension'];
     $desc = $_POST['desc'];
     $medium = $_POST['medium'];
     $paintingyear = $_POST['paintingyear'];
@@ -115,15 +116,15 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
 
             $query1 = "insert into exhibition_paintings(artist_id,"
-                    . "name,image,description,medium,year,fulldate,price,"
+                    . "name,image,dimension,description,medium,year,fulldate,price,"
                     . "currently_available_at,status,created_at,updated_at"
                     . ") "
                     . "values(:artist_id,"
-                    . ":name,:image,:description,:medium,:year,:fulldate,:price,"
+                    . ":name,:image,:dimension,:description,:medium,:year,:fulldate,:price,"
                     . ":currently_available_at,:status,:created_at,:updated_at)";
             $bind1 = array(':artist_id' => $artistid,
                 ':name' => $paintingname,
-                ':image' => $newImageName, ':description' => $desc,
+                ':image' => $newImageName, ':dimension' => $dimension, ':description' => $desc,
                 ':medium' => $medium, ':year' => $paintingyear, ':fulldate' => $paintingdate,
                 ':price' => $price, ':currently_available_at' => $available_at,
                 ':status' => $status, ':created_at' => $datetime,

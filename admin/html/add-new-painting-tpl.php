@@ -2,13 +2,13 @@
 
     <div class="panel panel-default">
         <div class="panel-heading">
-            <h3 class="panel-title">Add New Painting of <?php echo $artistarr['artist_name'] ?></h3>
+            <h3 class="panel-title">Add New Artwork of <?php echo $artistarr['artist_name'] ?></h3>
         </div>
         <div class="panel-body">
             <div role="tabpanel">
 
                 <br>
-                <a class="btn btn-info" href="exhibition-paintings.php?artist_id=<?php echo $artistid; ?>">Back to Painting List</a>
+                <a class="btn btn-info" href="exhibition-paintings.php?artist_id=<?php echo $artistid; ?>">Back to Artwork List</a>
                 <br>
 
                 <?php
@@ -41,7 +41,7 @@
                                 <label for="pname">Exhibition </label>
                                 <select class="form-control" name="exhibition">
                                     <option value="">Select Exhibition</option>
-                                    <?php
+                                    ?php
                                     foreach ($exhibitionarr as $k1 => $v1) {
                                         if ($v1['status'] == '0') {
                                             $status = 'Archived';
@@ -51,8 +51,8 @@
                                             $status = 'Canceled';
                                         }
                                         ?>
-                                        <option value="<?php echo $v1['id'] ?>"><?php echo $v1['exhibition_name'] . '(' . $status . ')' ?></option>
-                                        <?php
+                                        <option value="?php echo $v1['id'] ?>">?php echo $v1['exhibition_name'] . '(' . $status . ')' ?></option>
+                                        ?php
                                     }
                                     ?>
                                 </select>
@@ -80,7 +80,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="tags">Painting Name</label>
+                                <label for="tags">Artwork Name</label>
                                 <input type="text" class="form-control" name="paintingname">
                             </div>
 
@@ -97,13 +97,18 @@
                             </div>
 
                             <div class="form-group">
+                                <label for="tags">Dimension</label>
+                                <input type="text" class="form-control" name="dimension">
+                            </div>
+
+                            <div class="form-group">
                                 <label for="pname">Medium </label>
                                 <select class="form-control" name="medium">
                                     <option value="">Select Medium</option>
                                     <?php
                                     foreach ($mediumarr as $k2 => $v2) {
                                         ?>
-                                        <option value="<?php echo $v2['id'] ?>"><?php echo $v2['name']; ?></option>
+                                        <option value="<?php echo $v2['id'] ?>"><?php echo $v2['medium_name']; ?></option>
                                         <?php
                                     }
                                     ?>

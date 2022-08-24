@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 } else {
     try {
 
-        $sql = "SELECT exhibition_paintings.*,exhibition_medium.name medium_name "
+        $sql = "SELECT exhibition_paintings.*,exhibition_medium.medium_name medium_name "
                 . "FROM exhibition_paintings,exhibition_medium "
                 . "where "
                 . ""
@@ -35,6 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                 'artist_id' => $row['artist_id'],
                 'name' => $row['name'],
                 'image' => $row['image'],
+                'dimension' => $row['dimension'],
                 'description' => $row['description'],
                 'medium' => $row['medium'],
                 'year' => $row['year'],

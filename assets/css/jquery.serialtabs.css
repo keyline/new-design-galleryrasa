@@ -1,0 +1,9 @@
+/* JavaScript: serialtabs */
+.serialtabs-nav{display:flex;justify-content:center;margin-bottom:60px; list-style: none;}
+.serialtabs-nav .sub-link-1{display:block;cursor:pointer;transition:400ms;}
+.serialtabs-nav .sub-link-1:hover{text-decoration:none;}
+.serialtabs-nav .sub-link-1.is-current{background-color:#fff;cursor:default;color:#000;opacity:1;}
+.serialtabs-nav[data-serialtabs-mode="tabs"] > li + li{margin-left:-2px;}
+.serialtabs-nav[data-serialtabs-mode="accordion"]{display:block;}
+.serialtabs-nav[data-serialtabs-mode="accordion"] > li + li{margin-top:-2px;}
+.serialtabs-nav[data-serialtabs-mode="accordion"] .serialtabs-nav-content{padding:20px;border:2px solid #2c2f2f;border-top:0;}

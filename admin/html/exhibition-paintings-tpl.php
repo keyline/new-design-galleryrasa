@@ -1,12 +1,12 @@
 <div class="col-sm-9 col-md-9">
     <div class="panel panel-default">
         <div class="panel-heading">
-            <h3 class="panel-title">Painting</h3>
+            <h3 class="panel-title">Artwork</h3>
         </div>
         <div class="panel-body">
             <div role="tabpanel">
 
-                <h2 class="sub-header">Painting List of <?php echo $artistarr['artist_name'] ?></h2>
+                <h2 class="sub-header">Artwork List of <?php echo $artistarr['artist_name'] ?></h2>
                 <a href="add-new-exhibition-painting.php?artistid=<?php echo $artist_id ?>" class="btn btn-info">Add New</a>
 
                 <?php
@@ -35,6 +35,7 @@
                                 <th>Name of Painting</th>
                                 <th>Description</th>
                                 <th>Image</th>
+                                <th>Dimension</th>
                                 <th>Medium</th>
                                 <th>Year</th>
                                 <th>Fulldate</th>
@@ -90,11 +91,12 @@
                                             if ($v['image'] != '') {
                                                 ?>
 
-                                                <img src="<?php echo SITE_URL . '/' . EXHIBITION_THUMB_IMGS . $v['image']; ?>">
+                                                <img src="<?php echo SITE_URL . '/' . EXHIBITION_THUMB_IMGS . $v['image']; ?>" width="100" height="100">
                                                 <?php
                                             }
                                             ?>
                                         </td>
+                                        <td><?php echo $v['dimension']; ?></td>
                                         <td><?php echo $v['medium_name']; ?></td>
                                         <td><?php echo $v['year']; ?></td>
                                         <td><?php echo $v['fulldate']; ?></td>

@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 } else {
     try {
 
-        $sql = "SELECT * FROM exhibition ORDER BY exhibition_date DESC";
+        $sql = "SELECT * FROM exhibition ORDER BY from_exhibition_date DESC";
         $q = $conn->prepare($sql);
        
         $q->execute();
@@ -27,7 +27,10 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                 'exhibition_name' => $row['exhibition_name'],
                 'description' => $row['description'],
                 'photo' => $row['photo'],
-                'exhibition_date' => $row['exhibition_date'],
+                'from_exhibition_date' => $row['from_exhibition_date'],
+                'end_exhibition_date' => $row['end_exhibition_date'],
+                'city' => $row['city'],
+                'full_address' => $row['full_address'],
                 'status' => $row['status'],
                 'created_at' => $row['created_at'],
                 'updated_at' => $row['updated_at']

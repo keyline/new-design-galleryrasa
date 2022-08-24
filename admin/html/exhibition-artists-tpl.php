@@ -33,7 +33,7 @@
                                 <th>#</th>
                                 <th>Name of Artist</th>
                                 <th>Description</th>
-                                <th>Photo</th>
+                                <th>Photo</th>                                
                                 <th>Status</th>
                                 <th>Edit</th>
                                 <th>Add Painting</th>
@@ -56,14 +56,11 @@
                                             if ($v['photograph'] != '') {
                                                 ?>
 
-                                                <img src="<?php echo SITE_URL . '/' . EXHIBITION_THUMB_IMGS . $v['photograph']; ?>">
+                                                <img src="<?php echo SITE_URL . '/' . EXHIBITION_THUMB_IMGS . $v['photograph']; ?>" width="100" height="100">
                                                 <?php
                                             }
                                             ?>
-                                        </td>
-
-
-
+                                        </td>                                        
                                         <td><?php
                                             if ($v['status'] == '0') {
                                                 echo 'Inactive';

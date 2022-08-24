@@ -110,7 +110,7 @@ if (!isset($_COOKIE["cookieid"])) {
                                     <li class="nav-item"><a class="nav-link" href="<?php echo SITE_URL ?>visualarchive-search">VISUAL ARCHIVES</a></li>
                                     <li class="nav-item"><a class="nav-link" href="<?php echo SITE_URL ?>beforeSearch">BIBLIOGRAPHY</a></li>
                                     <li class="nav-item"><a class="nav-link" href="<?php echo SITE_URL ?>memorabilia-search">BENGALI FILM ARCHIVES</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="#">PODCAST</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="<?php echo SITE_URL ?>podcast-search">PODCAST</a></li>
                                     <li class="nav-item"><a class="nav-link" href="<?php echo SITE_URL ?>exhibition-search">EXHIBITION<span class="material-icons">new_releases</span></a></li>
                                 </ul>
                             </div>   
@@ -161,10 +161,10 @@ if (!isset($_COOKIE["cookieid"])) {
                                     <div class="nav-boxs nav-boxs-mobile">
                                         <ul class="nav navbar-nav navbar-left " id="nav">
                                             <li class="nav-item"><a class="nav-link" href="<?php echo SITE_URL ?>">home</a></li>
-                                            <li class="nav-item"><a class="nav-link" href="#">VISUAL ARCHIVES</a></li>
-                                            <li class="nav-item"><a class="nav-link" href="#">BIBLIOGRAPHY</a></li>
-                                            <li class="nav-item"><a class="nav-link" href="#">BENGALI FILM ARCHIVES</a></li>
-                                            <li class="nav-item"><a class="nav-link" href="#">PODCAST</a></li>
+                                            <li class="nav-item"><a class="nav-link" href="<?php echo SITE_URL ?>visualarchive-search">VISUAL ARCHIVES</a></li>
+                                            <li class="nav-item"><a class="nav-link" href="<?php echo SITE_URL ?>beforeSearch">BIBLIOGRAPHY</a></li>
+                                            <li class="nav-item"><a class="nav-link" href="<?php echo SITE_URL ?>memorabilia-search">BENGALI FILM ARCHIVES</a></li>
+                                            <li class="nav-item"><a class="nav-link" href="<?php echo SITE_URL ?>podcast-search">PODCAST</a></li>
                                             <li class="nav-item"><a class="nav-link" href="<?php echo SITE_URL ?>exhibition-search">EXHIBITION</a></li>
                                         </ul>
                                     </div>
