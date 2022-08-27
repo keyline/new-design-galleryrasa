@@ -92,6 +92,8 @@
                 <h4>Product Details</h4>
                 <?php
                 $sql_prod = "select * from order_products where order_id = '$order_id'";
+                // echo $sql_prod;
+                // exit();
                 $q_prod = $conn->prepare($sql_prod);
                 $q_prod->execute();
                 $q_prod->setFetchMode(PDO::FETCH_ASSOC);

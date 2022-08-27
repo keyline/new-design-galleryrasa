@@ -165,30 +165,46 @@ $cust_id = $_SESSION['user-id'];
                                 </div>
                             </div>
                             <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
-                            <?php
+                                <?php
                                 // echo  $_SESSION['user-id'];
                                 // exit();
-                                        $sql_user = "select * from order_products where customer_id = '" . $_SESSION['user-id'] . "' ORDER BY `order_products`.`id` DESC";
-                                        // echo $sql_user;
-                                        $q_user = $conn->prepare($sql_user);
-                                        $q_user->execute();
-                                        $q_user->setFetchMode(PDO::FETCH_ASSOC);
-                                        $row_user = $q_user->fetchAll();
-                                        // print_r($row_user);
-                                        ?>
+                                // $sql_user = "select * from order_products where customer_id = '" . $_SESSION['user-id'] . "' ORDER BY `order_products`.`id` DESC";
+                                // // echo $sql_user;
+                                // $q_user = $conn->prepare($sql_user);
+                                // $q_user->execute();
+                                // $q_user->setFetchMode(PDO::FETCH_ASSOC);
+                                // $row_user = $q_user->fetchAll();
+                                // print_r($row_user);
+
+                                $sql = "select ord.*,cust.fname,cust.lname,cust.email,cust.phone,gateway.name gateway_name,c_add.name ship_cust_name,c_add.phone ship_cust_phone,c_add.street_address,c_add.city,c_add.state,c_add.country,c_add.zip,c_add.landmark,c_add.parent_id from tbl_order ord,customer_login cust,gateway,customer_address c_add  where ord.customer_id=cust.id and ord.gateway_id=gateway.id and ord.address_id=c_add.id and c_add.customer_id = '" . $_SESSION['user-id'] . "' order by ord.order_id desc";
+
+                                // echo $sql;
+                                // exit;
+                                $q = $conn->prepare($sql);
+                                //$category_id = 2;
+
+                                $q->execute();
+                                $q->setFetchMode(PDO::FETCH_ASSOC);
+                                $count = $q->rowCount();
+                                $row = $q->fetchAll();
+                                // print_r($row);
+                                // die;
+
+                                ?>                                        
                                 <div class="history">Order History<img class="img-fluid" src="<?php echo SITE_URL ?>images/refresh.png"></div>
                                 <div class="dashboard-acco">
                                     <div class="accordion" id="accordionExample">
-                                    <?php foreach($row_user as $row){ ?>                                              
+                                    <?php // foreach($row_user as $row){ ?>
+                                        <?php foreach($row as $data){ ?>                                              
                                         <div class="card">
                                             <div class="card-header" id="headingFour">
                                                 <h2 class="mb-0">
-                                                    <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseFour<?php echo  $row['id']; ?>" aria-expanded="false" aria-controls="collapseFour">
+                                                    <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseFour<?php echo  $data['order_id']; ?>" aria-expanded="false" aria-controls="collapseFour">
                                                         <div class="dashboard-cart">
                                                             <div class="dashboard-order">
                                                                 <div class="order-inner">
-                                                                    <p><?php echo  $row['order_id']; ?></p><span>|</span>
-                                                                    <p><?php echo  $row['added_on']; ?><br></p>
+                                                                    <p><?php echo  $data['order_org_id']; ?></p><span>|</span>
+                                                                    <p><?php // echo  $data['added_on']; ?><br></p>
                                                                 </div>
                                                                 <div class="order-action green">
                                                                     DELIVERED
@@ -201,13 +217,13 @@ $cust_id = $_SESSION['user-id'];
                                                                     <div class="cart-right">
                                                                         <div class="cart-right-box">
                                                                             <div class="cart-name">
-                                                                            <?php echo  $row['product_name']; ?><br>
+                                                                            <?php // echo  $row['product_name']; ?><br>
                                                                             </div>
                                                                             <div class="cart-content">
-                                                                            <?php echo  $row['details']; ?>
+                                                                            <?php // echo  $row['details']; ?>
                                                                             </div>
                                                                         </div>
-                                                                        <div class="cart-count">₹ <?php echo  $row['price']; ?></div>
+                                                                        <div class="cart-count">₹ <?php echo  $data['price']; ?></div>
                                                                     </div>
                                                                 </div>
                                                                 <p>+ 3 Items</p>
@@ -217,49 +233,43 @@ $cust_id = $_SESSION['user-id'];
                                                     </button>
                                                 </h2>
                                             </div>
-                                            <div id="collapseFour<?php echo  $row['id']; ?>" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
+                                            <div id="collapseFour<?php echo  $data['order_id']; ?>" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
                                                 <div class="card-body">
                                                     <div class="order-border">
+                                                        <?php
+                                                            $demo =$data['order_id'];
+                                                            $query = "select * from order_products where order_id ='$demo'";
+                                                            echo $query;
+                                                            $q = $conn->prepare($query);
+                                                            //$category_id = 2;
+                                                            $q->execute();
+                                                            $q->setFetchMode(PDO::FETCH_ASSOC);
+                                                            // $count = $q->rowCount();
+                                                            $row_data = $q->fetchAll();
+                                                            // print_r($row_data);
+                                                        ?>
                                                         <div class="order-info">
                                                             <div class="order-left">
-                                                                1. Akash Patal-PDF of Song Synopsis Book, 6 pages + covers x 1
+                                                                <?php 
+                                                                    foreach($row_data as $demo){
+                                                                ?>
+                                                                1. <?php echo $demo['product_name'] ?>-<?php echo $demo['details'] ?> x <?php echo $demo['quantity'] ?>  -  ₹<?php echo $demo['price'] ?>
+                                                                <br>
+                                                                <?php } ?>
                                                             </div>
-                                                            <div class="order-right">
+                                                            <!-- <div class="order-right">
                                                                 ₹ 100 / $ 1.33
-                                                            </div>
+                                                            </div> -->
                                                         </div>
-                                                        <div class="order-info">
-                                                            <div class="order-left">
-                                                                2. Akash Patal-PDF of Song Synopsis Book, 6 pages + covers x 1
-                                                            </div>
-                                                            <div class="order-right">
-                                                                ₹ 100 / $ 1.33
-                                                            </div>
-                                                        </div>
-                                                        <div class="order-info">
-                                                            <div class="order-left">
-                                                                3. Akash Patal-PDF of Song Synopsis Book, 6 pages + covers x 1
-                                                            </div>
-                                                            <div class="order-right">
-                                                                ₹ 100 / $ 1.33
-                                                            </div>
-                                                        </div>
-                                                        <div class="order-info">
-                                                            <div class="order-left">
-                                                                4. Akash Patal-PDF of Song Synopsis Book, 6 pages + covers x 1
-                                                            </div>
-                                                            <div class="order-right">
-                                                                ₹ 100 / $ 1.33
-                                                            </div>
-                                                        </div>
+                                                        
                                                     </div>
                                                     <div class="order-shipped">
                                                         <div class="shipped-title">
                                                             Shipped to:
                                                         </div>
                                                         <div class="shipped-content">
-                                                            3 C N R BId, Mangammana Plya Road, Bommana Halli,<br>
-                                                            Bengaluru, Karnataka - 560068
+                                                        <?php echo  $data['street_address']; ?>,<br>
+                                                        <?php echo  $data['state']; ?>,  <?php echo  $data['landmark']; ?>,  <?php echo  $data['country']; ?> , <?php echo  $data['city']; ?> - <?php echo  $data['zip']; ?>
                                                         </div>
                                                     </div>
 
@@ -268,7 +278,7 @@ $cust_id = $_SESSION['user-id'];
                                                             Payment Method:
                                                         </div>
                                                         <div class="shipped-content">
-                                                            Online Payment
+                                                        <?php echo  $data['gateway_name']; ?>
                                                         </div>
                                                     </div>
                                                 </div>
