@@ -108,7 +108,7 @@
     <!-- <div class="footer-bottom">
         <div class="container">
             <div class="row justify-content-center text-center flex-nowrap">
-                <span>&copy; <?php echo date("Y") ?> Gallery Rasa. All Rights Reserved. Powered by Keyline Creative Services</span>
+                <span>&copy; <?php // echo date("Y") ?> Gallery Rasa. All Rights Reserved. Powered by Keyline Creative Services</span>
 
             </div>
         </div>

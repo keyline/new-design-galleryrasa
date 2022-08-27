@@ -1096,7 +1096,8 @@ FROM
 //                        $leftHtml = left_filter_html_adv_filtered($filter_data_af, $keys, $countData, $noofsearchedproducts);
 //                    } else {
 
-                        $leftHtml = left_filter_html_adv($filter_data_af, $keys, $countData);
+                        //$leftHtml = left_filter_html_adv($filter_data_af, $keys, $countData);
+                        $leftHtml = left_filter_html_second($filter_data_af, $keys, $countData);
 //                    }
 
                     $alljournaldropdownarr = alljournaldropdown($conn);
@@ -1280,7 +1281,9 @@ FROM
 //            print_r($filter_data_af);
 //            exit;
 
-            $leftHtml = left_filter_html_only_adv($filter_data_af, $keys, $countData, $productstr);
+            //$leftHtml = left_filter_html_only_adv($filter_data_af, $keys, $countData, $productstr);
+            //echo '<pre>';print_r($productstr);die;
+            $leftHtml = left_filter_html_second($filter_data_af, $keys, $countData, $productstr);
 
 //            print('<pre>');
 //            print_r($leftHtml);
@@ -1344,3 +1347,53 @@ function array_filter_recursive($input) {
     return array_filter($input);
 }
 ?>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        
+        $("#artistSearch").on("input", function() {
+            var value = $(this).val().toLowerCase();
+            $("#artistMainList .subList").filter(function() {
+              $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
+        $("#authorSearch").on("input", function() {
+            var value = $(this).val().toLowerCase();
+            $("#authorMainList .subList").filter(function() {
+              $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
+        $("#editorSearch").on("input", function() {
+            var value = $(this).val().toLowerCase();
+            $("#editorMainList .subList").filter(function() {
+              $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
+        $("#languageSearch").on("input", function() {
+            var value = $(this).val().toLowerCase();
+            $("#languageMainList .subList").filter(function() {
+              $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
+        $("#popSearch").on("input", function() {
+            var value = $(this).val().toLowerCase();
+            $("#popMainList .subList").filter(function() {
+              $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
+        $("#publisherSearch").on("input", function() {
+            var value = $(this).val().toLowerCase();
+            $("#publisherMainList .subList").filter(function() {
+              $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
+        $("#yearSearch").on("input", function() {
+            var value = $(this).val().toLowerCase();
+            $("#yearMainList .subList").filter(function() {
+              $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
+
+
+    });
+</script>
