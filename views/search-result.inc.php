@@ -89,14 +89,14 @@
                                 {searchList}
                             <!-- </div> -->
                             <div class="artist-pagination" id="pagination-section">
-                                    <div class="col-lg-12">
-                                        <div class="artist-pagination">
-                                            <nav aria-label="Page navigation example">
-                                                <ul id="pagin" class="pagination">
-                                                </ul>
-                                            </nav>
-                                        </div>
+                                <div class="col-lg-12">
+                                    <div class="artist-pagination">
+                                        <nav aria-label="Page navigation example">
+                                            <ul id="pagin" class="pagination">
+                                            </ul>
+                                        </nav>
                                     </div>
+                                </div>
                             </div>
                         </div>
                         </div>
@@ -300,8 +300,6 @@
                 showPage(parseInt($(this).text()));
         });
     }
-
-
 </script>
 
 <script type="text/javascript">

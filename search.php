@@ -606,7 +606,9 @@ FROM
                  * params array $keys (Only which keys are required for filter)
                  * 
                  */
-                $leftHtml = left_filter_html($filter_data_af, $keys, $countData);
+                //$leftHtml = left_filter_html($filter_data_af, $keys, $countData);
+                //echo '<pre>';print_r($filter_data_af);die;
+                $leftHtml = left_filter_html_second($filter_data_af, $keys, $countData);
 
 //                print_r($leftHtml);
 //                exit;

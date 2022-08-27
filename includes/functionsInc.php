@@ -909,6 +909,7 @@ function mainSearch_query($params = '', $subParams = '', $array = array(), $coun
 function get_html($array, $keys = array(),$usersession, $html = '') {
     $conn = dbconnect();
     $output = array();
+
     $referenceType_sorted = get_subCategory_options();
     $sortedReferenceType = [];
     array_walk($referenceType_sorted['h'], function($v, $k) use (&$sortedReferenceType) {
@@ -922,6 +923,7 @@ function get_html($array, $keys = array(),$usersession, $html = '') {
         }
         return ($sortMe[$a] < $sortMe[$b]) ? -1 : 1;
     });
+    //echo '<pre>';print_r($array);die;
     $iterator = new RecursiveIteratorIterator(new RecursiveArrayIterator($array), RecursiveIteratorIterator::SELF_FIRST);
 
     foreach ($iterator as $k => $v) {
@@ -941,12 +943,12 @@ function get_html($array, $keys = array(),$usersession, $html = '') {
             if ($iterator->getDepth() == 2) {
 
                 $html .= '<div class="line-content">
-                <div class="bibliography-search-inner">
-                <div class="bibliography-info">
-                <div class="bibliography-content">
-                    <p class="bibliography-fix">' . $main_key . ' </p>
-                    <p>' . $k . '</p>
-                </div>';
+                            <div class="bibliography-search-inner">
+                                <div class="bibliography-info">
+                                    <div class="bibliography-content">
+                                        <p class="bibliography-fix">' . $main_key . ' </p>
+                                        <p>' . $k . '</p>
+                                    </div>';
             }
 
 //echo "$level$indent$k" . ":-" . $iterator->getDepth(). " :<br>";
@@ -961,87 +963,30 @@ function get_html($array, $keys = array(),$usersession, $html = '') {
 //echo "$indent$k : $v <br>";
             if (array_key_exists($k, $keys)) {
                 $html .= '<div class="bibliography-content">
-                <p class="bibliography-fix">' . replace_underscore_space($k, $main_key) . '</p>
-                <p>' . bibliography_replace_dollar($v) . '</p>
-            </div>';
+                            <p class="bibliography-fix">' . replace_underscore_space($k, $main_key) . '</p>
+                            <p>' . bibliography_replace_dollar($v) . '</p>
+                        </div>';
             }
 
 
-            if ($j == 0) {
+            if ($j == 0) {                
                 
-                
-                if($usersession==true){
-                
-                $html .= '</div><div class="bibliography-action">
-                <div class="cite-action">
-                    <a href="javascript:void(0);" data-toggle="modal" data-target="#citethis" class="cite-btn"><i data-toggle="tooltip" title="" data-original-title="Cite this" data-placement="left" onclick="javascript:CiteThis(' . $productID . ');">Cite This</i></a></li>
-                </div>
-                <div class="details-action">
-                       <a  href="' . SITE_URL . '/details/' . $productID . '" class="details-btn" target="_blank">details</a>
-                   </div>
-                   </div>';
-                
-                }else{
-                    
-                    
-                   $html .= '</div><div class="bibliography-action">
-                   <div class="cite-action">
-                       <a href="javascript:void(0);" data-toggle="modal" data-target="#citethis" class="cite-btn"><i data-toggle="tooltip" title="" data-original-title="Cite this" data-placement="left" onclick="javascript:CiteThis(' . $productID . ');">Cite This</i></a></li>
-                   </div>
-                   <div class="details-action">
-                    <a  data-toggle="modal" data-target="#exampleModallogin" class="details-btn" target="_blank">details</a>
-                   </div>
-               </div>';
-                   
-                   
-                   $html .= '<div class="modal fade vLogin rasa-new-modal" id="exampleModallogin" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Login To View Details</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <form method="POST" action="login.php">
-        <div class="row">
-            <div class="col-md-3">
-                <label>Email <strong>*</strong></label>
-            </div>
-            
-            <div class="col-md-9">
-                <input type="text" class="form-control" name="email" id="email" required>
-            </div>
-            <div class="clearfix"></div>
-            <br>
-            <div class="col-md-3">
-                <label>Password <strong>*</strong></label>
-            </div>
-            <div class="col-md-9">
-                <input type="password" class="form-control" name="pass" id="pass" required>
-            </div>
-            <div class="col-md-3"></div>
-            <div class="col-md-9">
-                <input type="submit" class="btn form-control" value="Login">
-            </div>
-            <div class="col-md-3"></div>
-            <div class="col-md-5">
-                <a href="forget-password.php" class="btn form-control border-0 text-left mt-1">Forgot Password</a>
-            </div>
-            <div class="col-md-4 d-flex align-items-center justify-content-start">
-                <a href="login-register.php" >Register</a>
-            </div>
-            </div>
-        </form>
-      </div>';
-                   
-                   
-                    
-                    
-                }
-                
-                
+                $html .=   '</div>
+                            <div class="bibliography-action">
+                                <div class="cite-action">
+                                    <a href="javascript:void(0);" data-toggle="modal" data-target="#citethis" class="cite-btn"><i data-toggle="tooltip" title="" data-original-title="Cite this" data-placement="left" onclick="javascript:CiteThis(' . $productID . ');">Cite This</i></a></li>
+                                </div>';
+                                if($usersession==true){
+                        $html .='<div class="details-action">
+                                   <a  href="' . SITE_URL . '/details/' . $productID . '" class="details-btn" target="_blank">details</a>
+                                </div>';
+                                } else {
+                        $html .='<div class="details-action">
+                                    <a data-toggle="modal" data-target="#exampleModallogin" class="details-btn" target="_blank">details</a>
+                                </div>';
+                                }
+                    $html .='</div>
+                        </div>';
 
                 $querypdf = "SELECT * FROM bibliography_pdf where prodid = %s";
                 $sqlpdf = sprintf($querypdf, $productID);
@@ -1071,20 +1016,95 @@ function get_html($array, $keys = array(),$usersession, $html = '') {
 
 
                     //$html .= '<a class="btn btn-primary" href="' . 'bibpdf?pdf=' . urlencode($orgnameexcptextnd) . '&ext=' . $ext . '">Download PDF</a><br><br>';
-                }
-
-
-                $html .= '</div>
-				            </div>                                        
-                                </div>
-                                    </div>
-                                    <hr>
-                                        </div>
-                                ';
+                }                
+                $html .= '</div>';
             }
         }
     }
 
+    if(!$usersession==true){
+        // $html .= '<div class="modal fade vLogin rasa-new-modal" id="exampleModallogin" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        //             <div class="modal-dialog" role="document">
+        //                 <div class="modal-content">
+        //                     <div class="modal-header">
+        //                         <h5 class="modal-title" id="exampleModalLabel">Login To View Details</h5>
+        //                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        //                           <span aria-hidden="true">&times;</span>
+        //                         </button>
+        //                     </div>
+        //                     <div class="modal-body">
+        //                         <form method="POST" action="login.php">
+        //                             <div class="row">
+        //                                 <div class="col-md-3">
+        //                                     <label>Email <strong>*</strong></label>
+        //                                 </div>        
+        //                                 <div class="col-md-9">
+        //                                     <input type="text" class="form-control" name="email" id="email" required>
+        //                                 </div>
+        //                                 <div class="clearfix"></div>
+        //                                 <br>
+        //                                 <div class="col-md-3">
+        //                                     <label>Password <strong>*</strong></label>
+        //                                 </div>
+        //                                 <div class="col-md-9">
+        //                                     <input type="password" class="form-control" name="pass" id="pass" required>
+        //                                 </div>
+        //                                 <div class="col-md-3"></div>
+        //                                 <div class="col-md-9">
+        //                                     <input type="submit" class="btn form-control" value="Login">
+        //                                 </div>
+        //                                 <div class="col-md-3"></div>
+        //                                 <div class="col-md-5">
+        //                                     <a href="forget-password.php" class="btn form-control border-0 text-left mt-1">Forgot Password</a>
+        //                                 </div>
+        //                                 <div class="col-md-4 d-flex align-items-center justify-content-start">
+        //                                     <a href="login-register.php" >Register</a>
+        //                                 </div>
+        //                             </div>
+        //                         </form>
+        //                     </div>
+        //                 </div>
+        //             </div>
+        //         <div>';
+        $html .= '<div class="modal fade vLogin rasa-new-modal" id="exampleModallogin" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Login To View Details</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <label>Email <strong>*</strong></label>
+                                    </div>
+                                    <div class="col-md-9">
+                                        <input type="text" class="form-control" name="email" id="email" required>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label>Password <strong>*</strong></label>
+                                    </div>
+                                    <div class="col-md-9">
+                                        <input type="password" class="form-control" name="pass" id="pass" required>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <input type="submit" class="btn form-control" value="Login">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <a href="forget-password.php" class="btn form-control border-0 text-left mt-1">Forgot Password</a>
+                                    </div>
+                                    <div class="col-md-6 d-flex align-items-center justify-content-start">
+                                        <a href="login-register.php" >Register</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                  </div>';
+    }
+    //echo $html;die;
     return $html;
 }
 
@@ -1312,12 +1332,12 @@ function left_filter_html($someArray = array(), $keys = array(), $count = array(
         $sessData = $_SESSION['bParam'];
         $sessCount = count($sessData);
     }
-//return $someArray;
-//exit;
+    //return $someArray;
+    //exit;
     $html = '<form action="search" class="filter-form" id="filter-form" method="post">                
-<div class="search-filters" style="margin-bottom:20px;">
+                <div class="search-filters" style="margin-bottom:20px;">
                     <div class="filter-group">';
-//now loop through each filter and value
+    //now loop through each filter and value
     foreach ($someArray As $key => $value) {
         $checked = ($key == "reference_type" || $key == 'language') ? "checked" : Null;
 
@@ -1387,14 +1407,14 @@ function left_filter_html($someArray = array(), $keys = array(), $count = array(
 
 
                     if (!empty($value[$i])) {
-//Print count
+                        //Print count
                         if (array_key_exists($key, $count)) {
                             for ($j = 0; $j < count($count[$key]); $j++) {
 
                                 if ($value[$i] == $count[$key][$j]['name']) {
                                     $c = $count[$key][$j]['count'];
                                 }
-//echo $count[$key][$val[$j]]['count'] . "<br>";
+                                //echo $count[$key][$val[$j]]['count'] . "<br>";
                             }
                         }
 
@@ -1462,14 +1482,389 @@ function left_filter_html($someArray = array(), $keys = array(), $count = array(
                 </div>';
     $html .= '<button id="btnSubmit" type="submit" class="btn btn-red form-control" name="submitButton" value="BiblioSearch">Search</button>
                             <button id="btnBack" type="submit" class="btn btn-red form-control" name="resetButton" value="Back">Reset</button>
-<input id="objSearch" name="objSearch" type="hidden" value=""></form>            
+                <input id="objSearch" name="objSearch" type="hidden" value=""></form>            
         ';
 
     return $html;
 }
 
 
+function left_filter_html_second($someArray = array(), $keys = array(), $count = array()) {
+    $someArray = array_map('array_filter', $someArray);
+    
+    $reference_type = [];
+    $artist = [];
+    $author = [];
+    $editor = [];
+    $language = [];
+    $place_of_publication = [];
+    $publisher = [];
+    $gregorian_year = [];
 
+    /* classification */
+        if (array_key_exists('reference_type', $someArray)) {
+            $reference_type = $someArray['reference_type'];
+        }
+        //echo '<pre>';print_r($someArray);die;
+        $reference_type_html = '';
+        if(count($reference_type)>0){
+            foreach($reference_type as $key=>$value){
+                $reference_type_html .= '<li>
+                                            <div class="form-check form-check-inline ">
+                                                <input class="form-check-input greencheck" type="checkbox" id="inlineCheckboxRT'.$key.'" value="'.$key.'">
+                                                <label class="form-check-label" for="inlineCheckboxRT'.$key.'">'.$value.'</label>
+                                            </div>
+                                        </li>';
+            }
+        }    
+    /* classification */
+    /* artist */
+        if (array_key_exists('artist', $someArray)) {
+            $artist = $someArray['artist'];
+        }
+        //echo '<pre>';print_r($someArray);die;
+        $artist_html = '';
+        if(count($artist)>0){
+            foreach($artist as $key=>$value){
+                $artist_html .= '<li>
+                                            <div class="form-check form-check-inline ">
+                                                <input class="form-check-input greencheck" type="checkbox" id="inlineCheckboxART'.$key.'" value="'.$key.'">
+                                                <label class="form-check-label" for="inlineCheckboxART'.$key.'">'.$value.'</label>
+                                            </div>
+                                        </li>';
+            }
+        }    
+    /* artist */
+    /* author */
+        if (array_key_exists('author', $someArray)) {
+            $author = $someArray['author'];
+        }
+        //echo '<pre>';print_r($someArray);die;
+        $author_html = '';
+        if(count($author)>0){
+            foreach($author as $key=>$value){
+                $author_html .= '<li>
+                                            <div class="form-check form-check-inline ">
+                                                <input class="form-check-input greencheck" type="checkbox" id="inlineCheckboxAUTH'.$key.'" value="'.$key.'">
+                                                <label class="form-check-label" for="inlineCheckboxAUTH'.$key.'">'.$value.'</label>
+                                            </div>
+                                        </li>';
+            }
+        }    
+    /* author */
+    /* editor */
+        if (array_key_exists('editor', $someArray)) {
+            $editor = $someArray['editor'];
+        }
+        //echo '<pre>';print_r($someArray);die;
+        $editor_html = '';
+        if(count($editor)>0){
+            foreach($editor as $key=>$value){
+                $editor_html .= '<li>
+                                            <div class="form-check form-check-inline ">
+                                                <input class="form-check-input greencheck" type="checkbox" id="inlineCheckboxEDT'.$key.'" value="'.$key.'">
+                                                <label class="form-check-label" for="inlineCheckboxEDT'.$key.'">'.$value.'</label>
+                                            </div>
+                                        </li>';
+            }
+        }    
+    /* editor */
+    /* language */
+        if (array_key_exists('language', $someArray)) {
+            $language = $someArray['language'];
+        }
+        //echo '<pre>';print_r($someArray);die;
+        $language_html = '';
+        if(count($language)>0){
+            foreach($language as $key=>$value){
+                $language_html .= '<li>
+                                            <div class="form-check form-check-inline ">
+                                                <input class="form-check-input greencheck" type="checkbox" id="inlineCheckboxLANG'.$key.'" value="'.$key.'">
+                                                <label class="form-check-label" for="inlineCheckboxLANG'.$key.'">'.$value.'</label>
+                                            </div>
+                                        </li>';
+            }
+        }    
+    /* language */
+    /* place_of_publication */
+        if (array_key_exists('place_of_publication', $someArray)) {
+            $place_of_publication = $someArray['place_of_publication'];
+        }
+        //echo '<pre>';print_r($someArray);die;
+        $place_of_publication_html = '';
+        if(count($place_of_publication)>0){
+            foreach($place_of_publication as $key=>$value){
+                $place_of_publication_html .= '<li>
+                                            <div class="form-check form-check-inline ">
+                                                <input class="form-check-input greencheck" type="checkbox" id="inlineCheckboxPOP'.$key.'" value="'.$key.'">
+                                                <label class="form-check-label" for="inlineCheckboxPOP'.$key.'">'.$value.'</label>
+                                            </div>
+                                        </li>';
+            }
+        }    
+    /* place_of_publication */
+    /* publisher */
+        if (array_key_exists('publisher', $someArray)) {
+            $publisher = $someArray['publisher'];
+        }
+        //echo '<pre>';print_r($someArray);die;
+        $publisher_html = '';
+        if(count($publisher)>0){
+            foreach($publisher as $key=>$value){
+                $publisher_html .= '<li>
+                                            <div class="form-check form-check-inline ">
+                                                <input class="form-check-input greencheck" type="checkbox" id="inlineCheckboxPUB'.$key.'" value="'.$key.'">
+                                                <label class="form-check-label" for="inlineCheckboxPUB'.$key.'">'.$value.'</label>
+                                            </div>
+                                        </li>';
+            }
+        }    
+    /* publisher */
+    /* gregorian_year */
+        if (array_key_exists('gregorian_year', $someArray)) {
+            $gregorian_year = $someArray['gregorian_year'];
+        }
+        //echo '<pre>';print_r($someArray);die;
+        $gregorian_year_html    = '';
+        $from_year_html         = '<option value="" selected>Select From Year</option>';
+        $to_year_html           = '<option value="" selected>Select From Year</option>';
+        if(count($gregorian_year)>0){
+            foreach($gregorian_year as $key=>$value){
+                $gregorian_year_html .= '<li>
+                                            <div class="form-check form-check-inline ">
+                                                <input class="form-check-input greencheck" type="checkbox" id="inlineCheckboxGY'.$key.'" value="'.$key.'">
+                                                <label class="form-check-label" for="inlineCheckboxGY'.$key.'">'.$value.'</label>
+                                            </div>
+                                        </li>';
+                $from_year_html         .= '<option value="'.$value.'">'.$value.'</option>';
+                $to_year_html         .= '<option value="'.$value.'">'.$value.'</option>';
+            }
+        }    
+    /* gregorian_year */
+    $html = '<div class="menu">
+        <div class="menu-sec">
+            <div class="accordion" id="accordionExample">
+                <div class="card">
+                    <div class="card-header" id="headingOne">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                CLASSIFICATION
+                                <span class="material-icons">keyboard_arrow_down</span>
+                            </button>
+                        </h2>
+                    </div>
+
+                    <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+                        <div class="card-body">
+                            <ul class="list-unstyled active collapse show" id="eprSubmenu" style="">'.$reference_type_html.'</ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header" id="headingTwo">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                artist
+                                <span class="material-icons">keyboard_arrow_down</span>
+                            </button>
+                        </h2>
+                    </div>
+                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                        <div class="card-body">
+                            <div class="card-form">
+                                <form>
+                                    <div class="form-group">
+                                        <input type="email" class="form-control" placeholder="SEARCH IN ARTIST">
+                                    </div>
+                                </form>
+                            </div>
+                            <ul class="list-unstyled active collapse show" id="eprSubmenu" style="">'.$artist_html.'</ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header" id="headingThree">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                author
+                                <span class="material-icons">keyboard_arrow_down</span>
+                            </button>
+                        </h2>
+                    </div>
+
+                    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                        <div class="card-body">
+                            <div class="card-form">
+                                <form>
+                                    <div class="form-group">
+                                        <input type="email" class="form-control" placeholder="SEARCH IN ARTIST">
+                                    </div>
+                                </form>
+                            </div>
+                            <ul class="list-unstyled active collapse show" id="eprSubmenu" style="">'.$author_html.'</ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header" id="headingFour">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                editor
+                                <span class="material-icons">keyboard_arrow_down</span>
+                            </button>
+                        </h2>
+                    </div>
+
+                    <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
+                        <div class="card-body">
+                            <div class="card-form">
+                                <form>
+                                    <div class="form-group">
+                                        <input type="email" class="form-control" placeholder="SEARCH IN ARTIST">
+                                    </div>
+                                </form>
+                            </div>
+                            <ul class="list-unstyled active collapse show" id="eprSubmenu" style="">'.$editor_html.'</ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header" id="headingFive">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                                language
+                                <span class="material-icons">keyboard_arrow_down</span>
+                            </button>
+                        </h2>
+                    </div>
+
+                    <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordionExample">
+                        <div class="card-body">
+                            <div class="card-form">
+                                <form>
+                                    <div class="form-group">
+                                        <input type="email" class="form-control" placeholder="SEARCH IN ARTIST">
+                                    </div>
+                                </form>
+                            </div>
+                            <ul class="list-unstyled active collapse show" id="eprSubmenu" style="">'.$language_html.'</ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header" id="headingSix">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                                place of publication
+                                <span class="material-icons">keyboard_arrow_down</span>
+                            </button>
+                        </h2>
+                    </div>
+
+                    <div id="collapseSix" class="collapse" aria-labelledby="headingSix" data-parent="#accordionExample">
+                        <div class="card-body">
+                            <div class="card-form">
+                                <form>
+                                    <div class="form-group">
+                                        <input type="email" class="form-control" placeholder="SEARCH IN ARTIST">
+                                    </div>
+                                </form>
+                            </div>
+                            <ul class="list-unstyled active collapse show" id="eprSubmenu" style="">'.$place_of_publication_html.'</ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header" id="headingSeven">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+                                publisher
+                                <span class="material-icons">keyboard_arrow_down</span>
+                            </button>
+                        </h2>
+                    </div>
+
+                    <div id="collapseSeven" class="collapse" aria-labelledby="headingSeven" data-parent="#accordionExample">
+                        <div class="card-body">
+                            <div class="card-form">
+                                <form>
+                                    <div class="form-group">
+                                        <input type="email" class="form-control" placeholder="SEARCH IN ARTIST">
+                                    </div>
+                                </form>
+                            </div>
+                            <ul class="list-unstyled active collapse show" id="eprSubmenu" style="">'.$publisher_html.'</ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header" id="headingEight">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
+                                year
+                                <span class="material-icons">keyboard_arrow_down</span>
+                            </button>
+                        </h2>
+                    </div>
+
+                    <div id="collapseEight" class="collapse" aria-labelledby="headingEight" data-parent="#accordionExample">
+                        <div class="card-body">
+                            <div class="card-form">
+                                <form>
+                                    <div class="form-group">
+                                        <input type="email" class="form-control" placeholder="SEARCH IN ARTIST">
+                                    </div>
+                                </form>
+                            </div>
+                            <ul class="list-unstyled active collapse show" id="eprSubmenu" style="">'.$gregorian_year_html.'</ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="menu-sec menu-sec-2">
+            <div class="menu-title">year range</div>
+            <div class="accordion" id="accordionExample">
+                <div class="card">
+                    <div class="card-header" id="headingNine">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseNine" aria-expanded="false" aria-controls="collapseNine">
+                                from
+                                <span class="material-icons">keyboard_arrow_down</span>
+                            </button>
+                        </h2>
+                    </div>
+
+                    <div id="collapseNine" class="collapse" aria-labelledby="headingNine" data-parent="#accordionExample">
+                        <div class="card-body">
+                            <select class="form-control" name="from_year" id="from_year">'.$from_year_html.'</select>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header" id="headingTen">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseTen" aria-expanded="false" aria-controls="collapseTen">
+                                to
+                                <span class="material-icons">keyboard_arrow_down</span>
+                            </button>
+                        </h2>
+                    </div>
+                    <div id="collapseTen" class="collapse" aria-labelledby="headingTen" data-parent="#accordionExample">
+                        <div class="card-body">
+                            <select class="form-control" name="to_year" id="to_year">'.$to_year_html.'</select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="apply-action">
+                <a href="#" class="apply-btn">apply filters</a>
+            </div>
+        </div>
+    </div>';
+    return $html;
+}
 
 
 function left_filter_html_only_adv($someArray = array(), $keys = array(), $count = array(), $productstr) {
