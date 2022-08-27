@@ -3,6 +3,7 @@ $start_time = microtime(TRUE);
 if (!isset($_COOKIE["cookieid"])) {
     setcookie("cookieid", gen_id(20), time() + 60 * 60 * 24 * 30, '/');
 }  #30 days to expire/delete user shopping basket
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -112,28 +113,34 @@ if (!isset($_COOKIE["cookieid"])) {
                                 </ul>
                             </div>   
                         </div>
-                        
                             <div class="head-bar">
-                                
+                            <?php if (isset($_SESSION["user-id"])) {
+                                $sql_user = "SELECT COUNT(id)  as productCount FROM cart WHERE customer_id='" . $_SESSION['user-id'] . "'";
+                                // echo $sql_user;
+                                $q_user = $conn->prepare($sql_user);
+                                $q_user->execute();
+                                $q_user->setFetchMode(PDO::FETCH_ASSOC);
+                                $row_user = $q_user->fetch();
+                                // print_r($row_user); ?>
                             <div class="drafts-action">
-                                <a href="<?php echo SITE_URL ?>cart-checkout/cart.php" class="drafts-btn"><span class="material-icons cart-box">shopping_bag</span><span class="badge">2</span></a>
+                                <a href="<?php echo SITE_URL ?>cart-checkout/cart.php" class="drafts-btn"><span class="material-icons cart-box">shopping_bag</span><span class="badge"><?php echo $row_user['productCount']; ?></span></a>
                             </div>
-
-                            <?php
-                                if (!isset($_SESSION['user-email'])) {
-                            ?>
+                            <?php }
+                            else{ ?>
+                            <div class="drafts-action">
+                                <a href="<?php echo SITE_URL ?>cart-checkout/cart.php" class="drafts-btn"><span class="material-icons cart-box">shopping_bag</span><span class="badge">0</span></a>
+                            </div>
+                                <?php } ?>
+                            <?php if (!isset($_SESSION['user-email'])) { ?>
                                 <div class="contact-action">
                                     <a href="<?php echo SITE_URL ?>login-register" class="contact-btn"><span class="material-icons cart-box">person</span></a>
                                 </div>
-                            <?php
-                            } else {
-                                ?>
+                            <?php } else { ?>
                                 <div class="contact-action">
                                     <a href="<?php echo SITE_URL ?>/customer-dashboard/customer-dashboard" class="contact-btn"><span class="material-icons cart-box">person</span></a>
                                 </div>
                             <?php }
                             ?>
-                            
                             <div class="right-nav">
                                 <button class="sidebar-toggle">
                                     <span class="material-icons">menu</span>

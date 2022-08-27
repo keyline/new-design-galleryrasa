@@ -979,6 +979,7 @@ function get_html($array, $keys = array(),$usersession, $html = '') {
                 <div class="details-action">
                        <a  href="' . SITE_URL . '/details/' . $productID . '" class="details-btn" target="_blank">details</a>
                    </div>
+                   </div>
                    </div>';
                 
                 }else{
@@ -1074,13 +1075,13 @@ function get_html($array, $keys = array(),$usersession, $html = '') {
                 }
 
 
-                $html .= '</div>
-				            </div>                                        
-                                </div>
-                                    </div>
-                                    <hr>
-                                        </div>
-                                ';
+                // $html .= '</div>
+				//             </div>                                        
+                //                 </div>
+                //                     </div>
+                //                     <hr>
+                //                         </div>
+                //                 ';
             }
         }
     }
