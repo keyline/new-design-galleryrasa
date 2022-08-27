@@ -161,7 +161,7 @@ $cust_id = $_SESSION['user-id'];
                                             </div>
                                         </div>
                                         <button type="submit" class="submit-btn" id="processdata" >update password</button>
-                                    </form>
+                                    </form>                 
                                 </div>
                             </div>
                             <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
@@ -189,7 +189,6 @@ $cust_id = $_SESSION['user-id'];
                                 $row = $q->fetchAll();
                                 // print_r($row);
                                 // die;
-
                                 ?>                                        
                                 <div class="history">Order History<img class="img-fluid" src="<?php echo SITE_URL ?>images/refresh.png"></div>
                                 <div class="dashboard-acco">
@@ -260,8 +259,7 @@ $cust_id = $_SESSION['user-id'];
                                                             <!-- <div class="order-right">
                                                                 ₹ 100 / $ 1.33
                                                             </div> -->
-                                                        </div>
-                                                        
+                                                        </div>                                                        
                                                     </div>
                                                     <div class="order-shipped">
                                                         <div class="shipped-title">

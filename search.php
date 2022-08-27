@@ -684,3 +684,54 @@ FROM
     }
     include(INC_FOLDER . "footerInc.php");
 }
+?>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        
+        $("#artistSearch").on("input", function() {
+            var value = $(this).val().toLowerCase();
+            $("#artistMainList .subList").filter(function() {
+              $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
+        $("#authorSearch").on("input", function() {
+            var value = $(this).val().toLowerCase();
+            $("#authorMainList .subList").filter(function() {
+              $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
+        $("#editorSearch").on("input", function() {
+            var value = $(this).val().toLowerCase();
+            $("#editorMainList .subList").filter(function() {
+              $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
+        $("#languageSearch").on("input", function() {
+            var value = $(this).val().toLowerCase();
+            $("#languageMainList .subList").filter(function() {
+              $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
+        $("#popSearch").on("input", function() {
+            var value = $(this).val().toLowerCase();
+            $("#popMainList .subList").filter(function() {
+              $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
+        $("#publisherSearch").on("input", function() {
+            var value = $(this).val().toLowerCase();
+            $("#publisherMainList .subList").filter(function() {
+              $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
+        $("#yearSearch").on("input", function() {
+            var value = $(this).val().toLowerCase();
+            $("#yearMainList .subList").filter(function() {
+              $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
+
+
+    });
+</script>

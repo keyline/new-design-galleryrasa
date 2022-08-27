@@ -218,7 +218,6 @@
                         </div>
                         <div class="col-md-4">
                             <select name="status">
-
                                 <option value="initiated">Initiated</option>
                                 <option value="placed">Placed</option>
                                 <option value="processing">Processing</option>

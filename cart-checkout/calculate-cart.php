@@ -7,10 +7,11 @@ require_once("../" . INCLUDED_FILES . "functionsInc.php");
 require_once("../" . INCLUDED_FILES . "pdo-debug.php");
 
 
-$conn = dbconnect();
-if (isset($_POST)) {
 //    print_r($_POST);
 //    exit;
+
+$conn = dbconnect();
+if (isset($_POST)) {
 //    $_SESSION['cart_product_id'] = $_POST['product_id'];
 //    $_SESSION['cart_image_id'] = $_POST['image_id'];
 //    $_SESSION['cart_price'] = $_POST['price'];
@@ -71,6 +72,7 @@ if (isset($_POST)) {
             'type' => ':typeDesc',
             'size' => ':sizeDesc',
             'price' => ':priceProd',
+            'subtotal' => ':subtotal',
             'taxable' => ':taxable',
             'date' => 'now()'
         );
@@ -84,8 +86,8 @@ if (isset($_POST)) {
             ':typeDesc'=> $type,
             ':sizeDesc'=> $size,
             ':priceProd'=> $price,
-            ':taxable'=> $taxable
-            
+            ':subtotal'=> ($price*$quantity),
+            ':taxable'=> $taxable            
         );
 
         try {
