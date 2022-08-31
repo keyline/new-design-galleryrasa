@@ -4,7 +4,6 @@ require_once(INCLUDED_FILES . "config.inc.php");
 require_once(INCLUDED_FILES . "dbConn.php");
 require_once(INCLUDED_FILES . "functionsInc.php");
 $conn = dbconnect();
-
 $title = "Contact Us";
 require_once(INCLUDED_FILES . "headerInc.php");
 ?>

@@ -101,7 +101,7 @@ WHERE t.product_id =" . $pid . ")) as tbl2 GROUP BY tbl2.n, tbl2.an ORDER BY tbl
                 for($i=0; $i<count($v); $i++){
                     
                     $imageDetails .= '<div class="col-md-3 image2Cart image-box-outercol-md-3 image2Cart image-box-outer wow  fadeInDown" data-wow-duration="1s" data-wow-delay="0.5s">'
-                            . '<div class="'.$k . "_" .$i. ' image-box-inner"><a class="thumbnail" href="'.SITE_URL . '/' . IMGSRC . strtolower($k) . '/' . $v[$i]['name'].'"><img class="img-responsive image-mem" src="'. SITE_URL . '/' . IMGSRC . 'thumbs/' . $v[$i]['name'] . '"></a>'
+                            . '<div class="'.$k . "_" .$i. ' image-box-inner"><img class="img-responsive image-mem" src="'. SITE_URL . '/' . IMGSRC . 'thumbs/' . $v[$i]['name'] . '"></a>'
                             . '</div>';
 
 
@@ -115,10 +115,7 @@ WHERE t.product_id =" . $pid . ")) as tbl2 GROUP BY tbl2.n, tbl2.an ORDER BY tbl
                        // $imageDetails .= get_html_from_JSON($v[$i]['imageDetails']);
                        // $imageDetails .= get_add_to_cart_button($v[$i]['imageDetails'], $k);
                         
-                    }
-                    
-                    
-                    
+                    } 
                     
                     $imageDetails .= '</div>';
                 }

@@ -1526,12 +1526,12 @@ function left_filter_html_second($someArray = array(), $keys = array(), $count =
         $artist_html = '';
         if(count($artist)>0){
             foreach($artist as $key=>$value){
-                $artist_html .= '<li>
-                                            <div class="form-check form-check-inline ">
-                                                <input class="form-check-input greencheck" type="checkbox" id="inlineCheckboxART'.$key.'" value="'.$key.'">
-                                                <label class="form-check-label" for="inlineCheckboxART'.$key.'">'.$value.'</label>
-                                            </div>
-                                        </li>';
+                $artist_html .= '<li class="subList">
+                                    <div class="form-check form-check-inline ">
+                                        <input class="form-check-input greencheck" type="checkbox" id="inlineCheckboxART'.$key.'" value="'.$key.'">
+                                        <label class="form-check-label" for="inlineCheckboxART'.$key.'">'.$value.'</label>
+                                    </div>
+                                </li>';
             }
         }    
     /* artist */
@@ -1543,12 +1543,12 @@ function left_filter_html_second($someArray = array(), $keys = array(), $count =
         $author_html = '';
         if(count($author)>0){
             foreach($author as $key=>$value){
-                $author_html .= '<li>
-                                            <div class="form-check form-check-inline ">
-                                                <input class="form-check-input greencheck" type="checkbox" id="inlineCheckboxAUTH'.$key.'" value="'.$key.'">
-                                                <label class="form-check-label" for="inlineCheckboxAUTH'.$key.'">'.$value.'</label>
-                                            </div>
-                                        </li>';
+                $author_html .= '<li class="subList">
+                                    <div class="form-check form-check-inline ">
+                                        <input class="form-check-input greencheck" type="checkbox" id="inlineCheckboxAUTH'.$key.'" value="'.$key.'">
+                                        <label class="form-check-label" for="inlineCheckboxAUTH'.$key.'">'.$value.'</label>
+                                    </div>
+                                </li>';
             }
         }    
     /* author */
@@ -1560,12 +1560,12 @@ function left_filter_html_second($someArray = array(), $keys = array(), $count =
         $editor_html = '';
         if(count($editor)>0){
             foreach($editor as $key=>$value){
-                $editor_html .= '<li>
-                                            <div class="form-check form-check-inline ">
-                                                <input class="form-check-input greencheck" type="checkbox" id="inlineCheckboxEDT'.$key.'" value="'.$key.'">
-                                                <label class="form-check-label" for="inlineCheckboxEDT'.$key.'">'.$value.'</label>
-                                            </div>
-                                        </li>';
+                $editor_html .= '<li class="subList">
+                                    <div class="form-check form-check-inline ">
+                                        <input class="form-check-input greencheck" type="checkbox" id="inlineCheckboxEDT'.$key.'" value="'.$key.'">
+                                        <label class="form-check-label" for="inlineCheckboxEDT'.$key.'">'.$value.'</label>
+                                    </div>
+                                </li>';
             }
         }    
     /* editor */
@@ -1577,12 +1577,12 @@ function left_filter_html_second($someArray = array(), $keys = array(), $count =
         $language_html = '';
         if(count($language)>0){
             foreach($language as $key=>$value){
-                $language_html .= '<li>
-                                            <div class="form-check form-check-inline ">
-                                                <input class="form-check-input greencheck" type="checkbox" id="inlineCheckboxLANG'.$key.'" value="'.$key.'">
-                                                <label class="form-check-label" for="inlineCheckboxLANG'.$key.'">'.$value.'</label>
-                                            </div>
-                                        </li>';
+                $language_html .= '<li class="subList">
+                                    <div class="form-check form-check-inline ">
+                                        <input class="form-check-input greencheck" type="checkbox" id="inlineCheckboxLANG'.$key.'" value="'.$key.'">
+                                        <label class="form-check-label" for="inlineCheckboxLANG'.$key.'">'.$value.'</label>
+                                    </div>
+                                </li>';
             }
         }    
     /* language */
@@ -1594,12 +1594,12 @@ function left_filter_html_second($someArray = array(), $keys = array(), $count =
         $place_of_publication_html = '';
         if(count($place_of_publication)>0){
             foreach($place_of_publication as $key=>$value){
-                $place_of_publication_html .= '<li>
-                                            <div class="form-check form-check-inline ">
-                                                <input class="form-check-input greencheck" type="checkbox" id="inlineCheckboxPOP'.$key.'" value="'.$key.'">
-                                                <label class="form-check-label" for="inlineCheckboxPOP'.$key.'">'.$value.'</label>
-                                            </div>
-                                        </li>';
+                $place_of_publication_html .= '<li class="subList">
+                                                    <div class="form-check form-check-inline ">
+                                                        <input class="form-check-input greencheck" type="checkbox" id="inlineCheckboxPOP'.$key.'" value="'.$key.'">
+                                                        <label class="form-check-label" for="inlineCheckboxPOP'.$key.'">'.$value.'</label>
+                                                    </div>
+                                                </li>';
             }
         }    
     /* place_of_publication */
@@ -1611,12 +1611,12 @@ function left_filter_html_second($someArray = array(), $keys = array(), $count =
         $publisher_html = '';
         if(count($publisher)>0){
             foreach($publisher as $key=>$value){
-                $publisher_html .= '<li>
-                                            <div class="form-check form-check-inline ">
-                                                <input class="form-check-input greencheck" type="checkbox" id="inlineCheckboxPUB'.$key.'" value="'.$key.'">
-                                                <label class="form-check-label" for="inlineCheckboxPUB'.$key.'">'.$value.'</label>
-                                            </div>
-                                        </li>';
+                $publisher_html .= '<li class="subList">
+                                        <div class="form-check form-check-inline ">
+                                            <input class="form-check-input greencheck" type="checkbox" id="inlineCheckboxPUB'.$key.'" value="'.$key.'">
+                                            <label class="form-check-label" for="inlineCheckboxPUB'.$key.'">'.$value.'</label>
+                                        </div>
+                                    </li>';
             }
         }    
     /* publisher */
@@ -1630,7 +1630,7 @@ function left_filter_html_second($someArray = array(), $keys = array(), $count =
         $to_year_html           = '<option value="" selected>Select From Year</option>';
         if(count($gregorian_year)>0){
             foreach($gregorian_year as $key=>$value){
-                $gregorian_year_html .= '<li>
+                $gregorian_year_html .= '<li class="subList">
                                             <div class="form-check form-check-inline ">
                                                 <input class="form-check-input greencheck" type="checkbox" id="inlineCheckboxGY'.$key.'" value="'.$key.'">
                                                 <label class="form-check-label" for="inlineCheckboxGY'.$key.'">'.$value.'</label>
@@ -1656,7 +1656,7 @@ function left_filter_html_second($someArray = array(), $keys = array(), $count =
 
                     <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
                         <div class="card-body">
-                            <ul class="list-unstyled active collapse show" id="eprSubmenu" style="">'.$reference_type_html.'</ul>
+                            <ul class="list-unstyled active collapse show" style="height:200px; overflow-y:scroll;">'.$reference_type_html.'</ul>
                         </div>
                     </div>
                 </div>
@@ -1674,11 +1674,11 @@ function left_filter_html_second($someArray = array(), $keys = array(), $count =
                             <div class="card-form">
                                 <form>
                                     <div class="form-group">
-                                        <input type="email" class="form-control" placeholder="SEARCH IN ARTIST">
+                                        <input type="email" class="form-control" placeholder="SEARCH IN ARTIST" id="artistSearch">
                                     </div>
                                 </form>
                             </div>
-                            <ul class="list-unstyled active collapse show" id="eprSubmenu" style="">'.$artist_html.'</ul>
+                            <ul class="list-unstyled active collapse show" id="artistMainList" style="height:200px; overflow-y:scroll;">'.$artist_html.'</ul>
                         </div>
                     </div>
                 </div>
@@ -1697,11 +1697,11 @@ function left_filter_html_second($someArray = array(), $keys = array(), $count =
                             <div class="card-form">
                                 <form>
                                     <div class="form-group">
-                                        <input type="email" class="form-control" placeholder="SEARCH IN ARTIST">
+                                        <input type="email" class="form-control" placeholder="SEARCH IN AUTHOR" id="authorSearch">
                                     </div>
                                 </form>
                             </div>
-                            <ul class="list-unstyled active collapse show" id="eprSubmenu" style="">'.$author_html.'</ul>
+                            <ul class="list-unstyled active collapse show" id="authorMainList" style="height:200px; overflow-y:scroll;">'.$author_html.'</ul>
                         </div>
                     </div>
                 </div>
@@ -1720,11 +1720,11 @@ function left_filter_html_second($someArray = array(), $keys = array(), $count =
                             <div class="card-form">
                                 <form>
                                     <div class="form-group">
-                                        <input type="email" class="form-control" placeholder="SEARCH IN ARTIST">
+                                        <input type="email" class="form-control" placeholder="SEARCH IN EDITOR" id="editorSearch">
                                     </div>
                                 </form>
                             </div>
-                            <ul class="list-unstyled active collapse show" id="eprSubmenu" style="">'.$editor_html.'</ul>
+                            <ul class="list-unstyled active collapse show" id="editorMainList" style="height:200px; overflow-y:scroll;">'.$editor_html.'</ul>
                         </div>
                     </div>
                 </div>
@@ -1743,11 +1743,11 @@ function left_filter_html_second($someArray = array(), $keys = array(), $count =
                             <div class="card-form">
                                 <form>
                                     <div class="form-group">
-                                        <input type="email" class="form-control" placeholder="SEARCH IN ARTIST">
+                                        <input type="email" class="form-control" placeholder="SEARCH IN LANGUAGE" id="languageSearch">
                                     </div>
                                 </form>
                             </div>
-                            <ul class="list-unstyled active collapse show" id="eprSubmenu" style="">'.$language_html.'</ul>
+                            <ul class="list-unstyled active collapse show" id="languageMainList" style="height:200px; overflow-y:scroll;">'.$language_html.'</ul>
                         </div>
                     </div>
                 </div>
@@ -1766,11 +1766,11 @@ function left_filter_html_second($someArray = array(), $keys = array(), $count =
                             <div class="card-form">
                                 <form>
                                     <div class="form-group">
-                                        <input type="email" class="form-control" placeholder="SEARCH IN ARTIST">
+                                        <input type="email" class="form-control" placeholder="SEARCH IN PLACE OF PUBLICATION" id="popSearch">
                                     </div>
                                 </form>
                             </div>
-                            <ul class="list-unstyled active collapse show" id="eprSubmenu" style="">'.$place_of_publication_html.'</ul>
+                            <ul class="list-unstyled active collapse show" id="popMainList" style="height:200px; overflow-y:scroll;">'.$place_of_publication_html.'</ul>
                         </div>
                     </div>
                 </div>
@@ -1789,11 +1789,11 @@ function left_filter_html_second($someArray = array(), $keys = array(), $count =
                             <div class="card-form">
                                 <form>
                                     <div class="form-group">
-                                        <input type="email" class="form-control" placeholder="SEARCH IN ARTIST">
+                                        <input type="email" class="form-control" placeholder="SEARCH IN PUBLISHER" id="publisherSearch">
                                     </div>
                                 </form>
                             </div>
-                            <ul class="list-unstyled active collapse show" id="eprSubmenu" style="">'.$publisher_html.'</ul>
+                            <ul class="list-unstyled active collapse show" id="publisherMainList" style="height:200px; overflow-y:scroll;">'.$publisher_html.'</ul>
                         </div>
                     </div>
                 </div>
@@ -1812,11 +1812,11 @@ function left_filter_html_second($someArray = array(), $keys = array(), $count =
                             <div class="card-form">
                                 <form>
                                     <div class="form-group">
-                                        <input type="email" class="form-control" placeholder="SEARCH IN ARTIST">
+                                        <input type="email" class="form-control" placeholder="SEARCH IN YEAR" id="yearSearch">
                                     </div>
                                 </form>
                             </div>
-                            <ul class="list-unstyled active collapse show" id="eprSubmenu" style="">'.$gregorian_year_html.'</ul>
+                            <ul class="list-unstyled active collapse show" id="yearMainList" style="height:200px; overflow-y:scroll;">'.$gregorian_year_html.'</ul>
                         </div>
                     </div>
                 </div>
@@ -2535,142 +2535,454 @@ function getL2Keys($array) {
  * Memorabilia search left filter data
  */
 
-function memorabilia_left_search($array = array(), $keys = array(), $count = array(), $html = '') {
-    $result = array();
-    $checked = '';
-    $someArray = array_map('array_filter', $array);
-    $iterator = new RecursiveIteratorIterator(new RecursiveArrayIterator($someArray), RecursiveIteratorIterator::SELF_FIRST);
+    function memorabilia_left_search($array = array(), $keys = array(), $count = array(), $html = '') {
+        $result = array();
+        $checked = '';
+        $someArray = array_map('array_filter', $array);
+        $iterator = new RecursiveIteratorIterator(new RecursiveArrayIterator($someArray), RecursiveIteratorIterator::SELF_FIRST);
 
-    foreach ($iterator as $k => $v) {
-        if ($iterator->hasChildren()) {
+        foreach ($iterator as $k => $v) {
+            if ($iterator->hasChildren()) {
 
-            if ($iterator->getDepth()) {
-                $level1 = $k;
-            }
-        } else {
-            if (array_key_exists($level1, $keys))
-                $result[$level1][] = $v;
-        }
-    }
-    $final = assoc_Array_unique($result);
-//Sorting Final Data
-    $sortingKeys = array('year' => 1, 'film' => 1, 'cast' => 1, 'director' => 1, 'music' => 1, 'playback' => 1, 'producer' => 1, 'story' => 1, 'photography' => 1, 'art' => 1, 'editor' => 1, 'distributor' => 1, 'hall' => 1, 'script' => 1,);
-    $iterator = new RecursiveIteratorIterator(new RecursiveArrayIterator($final), RecursiveIteratorIterator::SELF_FIRST);
-    foreach ($iterator as $k => $v) {
-        if ($iterator->hasChildren()) {
-            if ($iterator->getDepth() == 0) {
-                $attr = $k;
-            }
-        } else {
-            if (array_key_exists($attr, $sortingKeys)) {
-                sort($final[$attr]);
-            }
-        }
-    }
-
-
-    $html = '<form action="memorabilia" class="filter-form" id="filter-form" method="post">                <div class="search-filters" style="margin-bottom:20px;">
-                    <div class="filter-group">';
-//now loop through each filter and value
-    /**
-     * Creating left panel order
-     */
-    $properOrderedArray = array_replace(array_flip(array('year', 'film', 'cast', 'director', 'music', 'playback')), $final);
-
-    if (isset($_SESSION['fParam']) && isset($_SESSION['append'])) {
-        $sessData = array_merge($_SESSION['fParam'], $_SESSION['append']);
-        $sessCount = count($sessData);
-    } else {
-        $sessData = $_SESSION['fParam'];
-        $sessCount = count($sessData);
-    }
-
-//    print "<pre>";
-//    print_r($properOrderedArray);
-    foreach ($properOrderedArray As $key => $value) {
-//        if (array_key_exists($key, $keys)) {
-
-        $html .= '<h4 class="accordion-header inactive-header">' . uppercasefirstword($key) . '</h4>
-                        <section class="accordion-content">
-                        <div id="' . $key . '-header"></div>
-                            <ul class="list-unstyled" id="' . $key . '">';
-        if (is_array($value)) {
-
-            /**
-             * Checked values which are already stored in Session
-             */
-            for ($i = 0; $i < count($value); $i++) {
-
-
-                if (!empty($value[$i])) {
-                    if (!empty($sessData)) {
-                        $checked = (in_array($value[$i], array_column($sessData, $key))) ? 'checked' : '';
-                    }
-
-                    if (array_key_exists($key, $count)) {
-                        for ($j = 0; $j < count($count[$key]); $j++) {
-
-                            if ($value[$i] == $count[$key][$j]['name']) {
-                                $c = $count[$key][$j]['count'];
-                            }
-//echo $count[$key][$val[$j]]['count'] . "<br>";
-                        }
-                    }
-
-                    $html .= '<li class="li_' . $i . '">
-                                                <input type="checkbox" name="' . $key . '[]" value="' . $value[$i] . '" class="' . $key . '"' . $checked . '>
-                                                <label for="check_book">' . $value[$i] . '</label><span class="count"> (' . $c . ')</span>
-                                            </li>';
+                if ($iterator->getDepth()) {
+                    $level1 = $k;
                 }
-            }   //Value for loop closed
+            } else {
+                if (array_key_exists($level1, $keys))
+                    $result[$level1][] = $v;
+            }
         }
-        $html .= '</ul></section>';
-//        } No need of array key exists
+        $final = assoc_Array_unique($result);
+        //Sorting Final Data
+        $sortingKeys = array('year' => 1, 'film' => 1, 'cast' => 1, 'director' => 1, 'music' => 1, 'playback' => 1, 'producer' => 1, 'story' => 1, 'photography' => 1, 'art' => 1, 'editor' => 1, 'distributor' => 1, 'hall' => 1, 'script' => 1,);
+        $iterator = new RecursiveIteratorIterator(new RecursiveArrayIterator($final), RecursiveIteratorIterator::SELF_FIRST);
+        foreach ($iterator as $k => $v) {
+            if ($iterator->hasChildren()) {
+                if ($iterator->getDepth() == 0) {
+                    $attr = $k;
+                }
+            } else {
+                if (array_key_exists($attr, $sortingKeys)) {
+                    sort($final[$attr]);
+                }
+            }
+        }
+
+
+        $html = '<form action="memorabilia" class="filter-form" id="filter-form" method="post">                <div class="search-filters" style="margin-bottom:20px;">
+                        <div class="filter-group">';
+        //now loop through each filter and value
+        /**
+         * Creating left panel order
+         */
+        $properOrderedArray = array_replace(array_flip(array('year', 'film', 'cast', 'director', 'music', 'playback')), $final);
+
+        if (isset($_SESSION['fParam']) && isset($_SESSION['append'])) {
+            $sessData = array_merge($_SESSION['fParam'], $_SESSION['append']);
+            $sessCount = count($sessData);
+        } else {
+            $sessData = $_SESSION['fParam'];
+            $sessCount = count($sessData);
+        }
+
+        //    print "<pre>";
+        //    print_r($properOrderedArray);
+        //echo "<pre>";print_r($properOrderedArray);die;
+        foreach ($properOrderedArray As $key => $value) {
+        //        if (array_key_exists($key, $keys)) {
+
+            $html .= '<h4 class="accordion-header inactive-header">' . uppercasefirstword($key) . '</h4>
+                            <section class="accordion-content">
+                            <div id="' . $key . '-header"></div>
+                                <ul class="list-unstyled" id="' . $key . '">';
+            if (is_array($value)) {
+
+                /**
+                 * Checked values which are already stored in Session
+                 */
+                for ($i = 0; $i < count($value); $i++) {
+
+
+                    if (!empty($value[$i])) {
+                        if (!empty($sessData)) {
+                            $checked = (in_array($value[$i], array_column($sessData, $key))) ? 'checked' : '';
+                        }
+
+                        if (array_key_exists($key, $count)) {
+                            for ($j = 0; $j < count($count[$key]); $j++) {
+
+                                if ($value[$i] == $count[$key][$j]['name']) {
+                                    $c = $count[$key][$j]['count'];
+                                }
+        //echo $count[$key][$val[$j]]['count'] . "<br>";
+                            }
+                        }
+
+                        $html .= '<li class="li_' . $i . '">
+                                                    <input type="checkbox" name="' . $key . '[]" value="' . $value[$i] . '" class="' . $key . '"' . $checked . '>
+                                                    <label for="check_book">' . $value[$i] . '</label><span class="count"> (' . $c . ')</span>
+                                                </li>';
+                    }
+                }   //Value for loop closed
+            }
+            $html .= '</ul></section>';
+        //        } No need of array key exists
+        }
+
+        //For Year Range select dropdown
+        if (array_key_exists('year', $properOrderedArray)) {
+            $match = '-';
+            $options = '';
+            $html .= '<h4 class="accordion-header inactive-header">Year Range</h4>
+                            <section class="accordion-content">';
+            if (!empty($properOrderedArray['year'])) {
+                foreach ($properOrderedArray['year'] as $val) {
+
+                    $years [] = (strpos($val, $match) === false) ? $val : substr($val, 0, strpos($val, "-"));
+                }
+
+                asort($years);
+                foreach ($years as $year) {
+
+                    $options .= '<option value="' . $year . '">' . $year . '</option>';
+                }
+
+                $html .= '<div class="form-group">
+                                    <div class="input-group">
+                                        <div class="input-group-addon">From</div>
+                                        <select class="form-control" id="FromYear" name="year_range[]"><option selected="selected" value="-1">Select year</option>' . $options . '</select>
+                                    </div>
+                                </div>';
+                $html .= '<div class="form-group">
+                                    <div class="input-group">
+                                        <div class="input-group-addon" style="padding:6px 21px;">To</div>
+                                        <select class="form-control" id="ToYear" name="year_range[]">
+                                                <option selected="selected" value="-1">Select year</option>' . $options . '</select>
+                                    </div>
+                                </div>
+                            </section>';
+            }
+        }
+        $html .= '</div>
+                    </div>
+                    <button id="btnSubmit" type="submit" class="btn btn-red form-control" name="submitButton" value="MemorabilaSearch">Search</button>
+                                <button id="btnReset" type="submit" class="btn btn-red form-control" name="resetButton" value="reset">Reset</button>
+                                <input id="objSearch" name="objSearch" type="hidden" value=""></form>';
+
+        return $html;
     }
 
-//For Year Range select dropdown
-    if (array_key_exists('year', $properOrderedArray)) {
-        $match = '-';
-        $options = '';
-        $html .= '<h4 class="accordion-header inactive-header">Year Range</h4>
-                        <section class="accordion-content">';
-        if (!empty($properOrderedArray['year'])) {
-            foreach ($properOrderedArray['year'] as $val) {
+/* Memorabilia search left filter data in new design */
+    function memorabilia_left_search_new_design($array = array(), $keys = array(), $count = array(), $html = '') {
 
-                $years [] = (strpos($val, $match) === false) ? $val : substr($val, 0, strpos($val, "-"));
+        $result = array();
+        $checked = '';
+        $someArray = array_map('array_filter', $array);
+        $iterator = new RecursiveIteratorIterator(new RecursiveArrayIterator($someArray), RecursiveIteratorIterator::SELF_FIRST);
+        foreach ($iterator as $k => $v) {
+            if ($iterator->hasChildren()) {
+
+                if ($iterator->getDepth()) {
+                    $level1 = $k;
+                }
+            } else {
+                if (array_key_exists($level1, $keys))
+                    $result[$level1][] = $v;
             }
-
-            asort($years);
-            foreach ($years as $year) {
-
-                $options .= '<option value="' . $year . '">' . $year . '</option>';
+        }
+        $final = assoc_Array_unique($result);
+        //Sorting Final Data
+        $sortingKeys = array('year' => 1, 'film' => 1, 'cast' => 1, 'director' => 1, 'music' => 1, 'playback' => 1, 'producer' => 1, 'story' => 1, 'photography' => 1, 'art' => 1, 'editor' => 1, 'distributor' => 1, 'hall' => 1, 'script' => 1,);
+        $iterator = new RecursiveIteratorIterator(new RecursiveArrayIterator($final), RecursiveIteratorIterator::SELF_FIRST);
+        foreach ($iterator as $k => $v) {
+            if ($iterator->hasChildren()) {
+                if ($iterator->getDepth() == 0) {
+                    $attr = $k;
+                }
+            } else {
+                if (array_key_exists($attr, $sortingKeys)) {
+                    sort($final[$attr]);
+                }
             }
+        }        
+        $properOrderedArray = array_replace(array_flip(array('year', 'film', 'cast', 'director', 'music', 'playback')), $final);
+        //echo '<pre>';print_r($properOrderedArray);die;
+        $someArray = $properOrderedArray;
+        $year           = [];
+        $film           = [];
+        $cast           = [];
+        $director       = [];
+        $music          = [];
+        $playback       = [];
 
-            $html .= '<div class="form-group">
-                                <div class="input-group">
-                                    <div class="input-group-addon">From</div>
-                                    <select class="form-control" id="FromYear" name="year_range[]"><option selected="selected" value="-1">Select year</option>' . $options . '</select>
+        $year_html      = '';
+        $film_html      = '';
+        $cast_html      = '';
+        $director_html  = '';
+        $music_html     = '';
+        $playback_html  = '';
+        /* year */
+            if (array_key_exists('year', $someArray)) {
+                $year = $someArray['year'];
+            }            
+            if(count($year)>0){
+                foreach($year as $key=>$value){
+                    $year_html .= '<li class="subList">
+                                        <div class="form-check form-check-inline ">
+                                            <input class="form-check-input greencheck" type="checkbox" id="inlineCheckboxYEAR'.$key.'" value="'.$key.'">
+                                            <label class="form-check-label" for="inlineCheckboxYEAR'.$key.'">'.$value.'</label>
+                                        </div>
+                                    </li>';
+                }
+            }    
+        /* year */
+        /* film */
+            if (array_key_exists('film', $someArray)) {
+                $film = $someArray['film'];
+            }            
+            if(count($film)>0){
+                foreach($film as $key=>$value){
+                    $film_html .= '<li class="subList">
+                                        <div class="form-check form-check-inline ">
+                                            <input class="form-check-input greencheck" type="checkbox" id="inlineCheckboxFILM'.$key.'" value="'.$key.'">
+                                            <label class="form-check-label" for="inlineCheckboxFILM'.$key.'">'.$value.'</label>
+                                        </div>
+                                    </li>';
+                }
+            }
+        /* film */
+        /* cast */
+            if (array_key_exists('cast', $someArray)) {
+                $cast = $someArray['cast'];
+            }            
+            if(count($cast)>0){
+                foreach($cast as $key=>$value){
+                    $cast_html .= '<li class="subList">
+                                        <div class="form-check form-check-inline ">
+                                            <input class="form-check-input greencheck" type="checkbox" id="inlineCheckboxCAST'.$key.'" value="'.$key.'">
+                                            <label class="form-check-label" for="inlineCheckboxCAST'.$key.'">'.$value.'</label>
+                                        </div>
+                                    </li>';
+                }
+            }
+        /* cast */
+        /* director */
+            if (array_key_exists('director', $someArray)) {
+                $director = $someArray['director'];
+            }            
+            if(count($director)>0){
+                foreach($director as $key=>$value){
+                    $director_html .= '<li class="subList">
+                                        <div class="form-check form-check-inline ">
+                                            <input class="form-check-input greencheck" type="checkbox" id="inlineCheckboxDIRECTOR'.$key.'" value="'.$key.'">
+                                            <label class="form-check-label" for="inlineCheckboxDIRECTOR'.$key.'">'.$value.'</label>
+                                        </div>
+                                    </li>';
+                }
+            }
+        /* director */
+        /* music */
+            if (array_key_exists('music', $someArray)) {
+                $music = $someArray['music'];
+            }            
+            if(count($music)>0){
+                foreach($music as $key=>$value){
+                    $music_html .= '<li class="subList">
+                                        <div class="form-check form-check-inline ">
+                                            <input class="form-check-input greencheck" type="checkbox" id="inlineCheckboxMUSIC'.$key.'" value="'.$key.'">
+                                            <label class="form-check-label" for="inlineCheckboxMUSIC'.$key.'">'.$value.'</label>
+                                        </div>
+                                    </li>';
+                }
+            }
+        /* music */
+        /* playback */
+            if (array_key_exists('playback', $someArray)) {
+                $playback = $someArray['playback'];
+            }            
+            if(count($playback)>0){
+                foreach($playback as $key=>$value){
+                    $playback_html .= '<li class="subList">
+                                        <div class="form-check form-check-inline ">
+                                            <input class="form-check-input greencheck" type="checkbox" id="inlineCheckboxPLAYBACK'.$key.'" value="'.$key.'">
+                                            <label class="form-check-label" for="inlineCheckboxPLAYBACK'.$key.'">'.$value.'</label>
+                                        </div>
+                                    </li>';
+                }
+            }
+        /* playback */
+        $html = '<div class="menu">
+                    <div class="menu-sec">
+                        <div class="accordion" id="accordionExample">
+                            <div class="card">
+                                <div class="card-header" id="headingOne">
+                                    <h2 class="mb-0">
+                                        <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                            YEAR
+                                            <span class="material-icons">keyboard_arrow_down</span>
+                                        </button>
+                                    </h2>
                                 </div>
-                            </div>';
-            $html .= '<div class="form-group">
-                                <div class="input-group">
-                                    <div class="input-group-addon" style="padding:6px 21px;">To</div>
-                                    <select class="form-control" id="ToYear" name="year_range[]">
-                                            <option selected="selected" value="-1">Select year</option>' . $options . '</select>
+
+                                <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+                                    <div class="card-body">
+                                        <div class="card-form">
+                                            <form>
+                                                <div class="form-group">
+                                                    <input type="email" class="form-control" placeholder="SEARCH IN YEAR" id="yearSearch">
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <ul class="list-unstyled active collapse show" id="yearMainList" style="height:200px; overflow-y:scroll;">'.$year_html.'</ul>
+                                    </div>
                                 </div>
                             </div>
-                        </section>';
-        }
-    }
-    $html .= '</div>
-                </div>
-                <button id="btnSubmit" type="submit" class="btn btn-red form-control" name="submitButton" value="MemorabilaSearch">Search</button>
-                            <button id="btnReset" type="submit" class="btn btn-red form-control" name="resetButton" value="reset">Reset</button>
-<input id="objSearch" name="objSearch" type="hidden" value=""></form>            
-        ';
+                            <div class="card">
+                                <div class="card-header" id="headingTwo">
+                                    <h2 class="mb-0">
+                                        <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                            FILM
+                                            <span class="material-icons">keyboard_arrow_down</span>
+                                        </button>
+                                    </h2>
+                                </div>
+                                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                                    <div class="card-body">
+                                        <div class="card-form">
+                                            <form>
+                                                <div class="form-group">
+                                                    <input type="email" class="form-control" placeholder="SEARCH IN FILM" id="filmSearch">
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <ul class="list-unstyled active collapse show" id="filmMainList" style="height:200px; overflow-y:scroll;">'.$film_html.'</ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="headingThree">
+                                    <h2 class="mb-0">
+                                        <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                            CAST
+                                            <span class="material-icons">keyboard_arrow_down</span>
+                                        </button>
+                                    </h2>
+                                </div>
 
-    return $html;
-}
+                                <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                                    <div class="card-body">
+                                        <div class="card-form">
+                                            <form>
+                                                <div class="form-group">
+                                                    <input type="email" class="form-control" placeholder="SEARCH IN CAST" id="castSearch">
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <ul class="list-unstyled active collapse show" id="castMainList" style="height:200px; overflow-y:scroll;">'.$cast_html.'</ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="headingFour">
+                                    <h2 class="mb-0">
+                                        <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                            DIRECTOR
+                                            <span class="material-icons">keyboard_arrow_down</span>
+                                        </button>
+                                    </h2>
+                                </div>
+
+                                <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
+                                    <div class="card-body">
+                                        <div class="card-form">
+                                            <form>
+                                                <div class="form-group">
+                                                    <input type="email" class="form-control" placeholder="SEARCH IN DIRECTOR" id="directorSearch">
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <ul class="list-unstyled active collapse show" id="directorMainList" style="height:200px; overflow-y:scroll;">'.$director_html.'</ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="headingFive">
+                                    <h2 class="mb-0">
+                                        <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                                            MUSIC
+                                            <span class="material-icons">keyboard_arrow_down</span>
+                                        </button>
+                                    </h2>
+                                </div>
+
+                                <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordionExample">
+                                    <div class="card-body">
+                                        <div class="card-form">
+                                            <form>
+                                                <div class="form-group">
+                                                    <input type="email" class="form-control" placeholder="SEARCH IN MUSIC" id="musicSearch">
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <ul class="list-unstyled active collapse show" id="musicMainList" style="height:200px; overflow-y:scroll;">'.$music_html.'</ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="headingSix">
+                                    <h2 class="mb-0">
+                                        <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                                            PLAYBACK
+                                            <span class="material-icons">keyboard_arrow_down</span>
+                                        </button>
+                                    </h2>
+                                </div>
+
+                                <div id="collapseSix" class="collapse" aria-labelledby="headingSix" data-parent="#accordionExample">
+                                    <div class="card-body">
+                                        <div class="card-form">
+                                            <form>
+                                                <div class="form-group">
+                                                    <input type="email" class="form-control" placeholder="SEARCH IN PLAYBACK" id="playbackSearch">
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <ul class="list-unstyled active collapse show" id="playbackMainList" style="height:200px; overflow-y:scroll;">'.$playback_html.'</ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="headingSeven">
+                                    <h2 class="mb-0">
+                                        <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+                                            YEAR RANGE
+                                            <span class="material-icons">keyboard_arrow_down</span>
+                                        </button>
+                                    </h2>
+                                </div>
+
+                                <div id="collapseSeven" class="collapse" aria-labelledby="headingSeven" data-parent="#accordionExample">
+                                    <div class="card-body">
+                                        <div class="card-form">
+                                            <form>
+                                                <div class="form-group">
+                                                    <input type="email" class="form-control" placeholder="SEARCH IN YEAR RANGE" id="yearRangeSearch">
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <ul class="list-unstyled active collapse show" id="yearRangeMainList" style="height:200px; overflow-y:scroll;">'.$year_html.'</ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="apply-action">
+                            <a href="#" class="apply-btn">apply filters</a>
+                        </div>
+                    </div>
+                </div>';
+        return $html;
+    }
+/* Memorabilia search left filter data in new design */
 
 /**
  * Associative array Unique recursive 
@@ -3080,7 +3392,7 @@ function get_html_from_JSON($json = null, $type = '') {
     $html = '';
     $decode = json_decode($json, true);
 //$html .= '<div class="select-image-cart"><select class="imgOptions" style="width: 100%;">';
-    $html .= '<div class="select-image-cart">';
+    $html .= '<div class="right-details">';
 //    print '<pre>';
 //    print_r($decode);
     if (!empty($decode['sellOriginal'])) {
@@ -3097,24 +3409,22 @@ function get_html_from_JSON($json = null, $type = '') {
         }
 
         if ($count_details != 0) {
-            $html .= '<h3>Original</h3><table class="table table-bordered table-hover buy-table">'
-                    . '<thead class="buy-thead">'
-                    . '<tr class="buy-tr">'
-                    . '<th class="buy-th">Description</th><th class="buy-th">Price</th><th class="buy-th"></th></tr></thead>'
-                    . '<tbody class="buy-tbody">';
+            $html .='<div class="memorabilia-details-title">
+                        Original
+                    </div>';
 
             for ($i = 0; $i < count($decode['sellOriginal']); $i++) {
 
                 if (strlen($decode['sellOriginal'][$i]['size']) > 0 || !($decode['sellOriginal'][$i]['size'] == '')) {
 //$html .= '<option value="' . $decode['sellOriginal'][$i]['size'] . '$' . $decode['sellOriginal'][$i]['price'] .'">'. '&nbsp;'. $decode['sellOriginal'][$i]['size']. ''. $img_price. '</option>' ;  
 
-                    $html .= '<tr class="buy-tr"><td class="buy-td">' . $decode['sellOriginal'][$i]['size'] . '</td>';
+                    $html .= '<div class="exhibition-search-title">' . $decode['sellOriginal'][$i]['size'] . '</div>';
                     if ($conv_rate == '') {
-                        $html .= '<td class="buy-td">' . $decode['sellOriginal'][$i]['price'] . '</td>';
+                        $html .= '<div class="print-cost"> ₹' . $decode['sellOriginal'][$i]['price'] . '</div>';
                     } else {
                         $urd_val = $decode['sellOriginal'][$i]['price'] / $conv_rate;
                         $urd_val = round($urd_val, 2);
-                        $html .= '<td class="buy-td"> INR: ' . $decode['sellOriginal'][$i]['price'] . ' / USD: ' . $urd_val . '</td>';
+                        $html .= '<div class="print-cost"> ₹ ' . $decode['sellOriginal'][$i]['price'] . ' / $ ' . $urd_val . '</div>';
                     }
 
                     if (strlen($decode['sellOriginal'][$i]['price']) > 0 || !($decode['sellOriginal'][$i]['price'] == '')) {
@@ -3124,7 +3434,7 @@ function get_html_from_JSON($json = null, $type = '') {
                             $taxable = 1;
                         }
 
-                        $html .= '<td class="buy-td">';
+                         // $html .= '<div class="exhibition-search-content"></div>';
 
                         $html .= '<form class="cart-add-form" method="POST" id="original" action="' . SITE_URL . '/cart-checkout/calculate-cart.php">';
                         $html .= '<input type="hidden" name="product_id" id="product_id" value="' . $decode['product'] . '">' .
@@ -3135,16 +3445,12 @@ function get_html_from_JSON($json = null, $type = '') {
                                 '<input type="hidden" name="taxable" id="size" value="' . $taxable . '">' .
                                 '<input type="hidden" name="imageType" id="imageType" value="' . $type . '">' .
                                 '<button type="submit" name="original_submit" class="btn form-control">Add to Cart</button></form></div>';
-
-                        $html .= '</td>';
                     } else {
-                        $html .= '<td class="buy-td"></td>';
+                       //
                     }
                     $html .= '</tr>';
                 }
             }
-
-            $html .= '</table>';
         }
     }
 
@@ -3160,23 +3466,21 @@ function get_html_from_JSON($json = null, $type = '') {
             }
         }
         if ($count_details_p != 0) {
-            $html .= '<h3>Print</h3><table class="table table-bordered table-hover buy-table">'
-                    . '<thead class="buy-thead">'
-                    . '<tr class="buy-tr">'
-                    . '<th class="buy-th">Description</th><th class="buy-th">Price</th><th class="buy-th"></th></tr></thead>'
-                    . '<tbody class="buy-tbody">';
+            $html .= '<div class="memorabilia-details-title">
+                        PRINT
+                    </div>';
 
             for ($i = 0; $i < count($decode['sellPrint']); $i++) {
                 if (strlen($decode['sellPrint'][$i]['size']) > 0 || !($decode['sellPrint'][$i]['size'] == '')) {
 //$html .= '<option value="' . $decode['sellPrint'][$i]['size'] . '$' . $decode['sellPrint'][$i]['price'] .'">'. '&nbsp;'. $decode['sellPrint'][$i]['size']. ''. $img_price2. '</option>' ;  
 
-                    $html .= '<tr class="buy-tr"><td class="buy-td">' . $decode['sellPrint'][$i]['size'] . '</td>';
+                    $html .= '<div class="exhibition-search-title">' . $decode['sellPrint'][$i]['size'] . '</div>';
                     if ($conv_rate == '') {
-                        $html .= '<td class="buy-td">' . $decode['sellPrint'][$i]['price'] . '</td>';
+                        $html .= '<div class="print-cost">' . $decode['sellPrint'][$i]['price'] . '</div>';
                     } else {
                         $urd_val = $decode['sellPrint'][$i]['price'] / $conv_rate;
                         $urd_val = round($urd_val, 2);
-                        $html .= '<td class="buy-td"> INR: ' . $decode['sellPrint'][$i]['price'] . ' / USD: ' . $urd_val . '</td>';
+                        $html .= '<div class="print-cost"> ₹ ' . $decode['sellPrint'][$i]['price'] . ' / $ ' . $urd_val . '</div>';
                     }
 
                     if (strlen($decode['sellPrint'][$i]['price']) > 0 || !($decode['sellPrint'][$i]['price'] == '')) {
@@ -3185,7 +3489,7 @@ function get_html_from_JSON($json = null, $type = '') {
                         } else {
                             $taxable = 1;
                         }
-                        $html .= '<td class="buy-td">';
+                        // $html .= '<div class="exhibition-search-content"></div>';
 
                         $html .= '<form class="cart-add-form" method="POST" id="printed" action="' . SITE_URL . '/cart-checkout/calculate-cart.php">';
                         $html .= '<input type="hidden" name="product_id" id="product_id" value="' . $decode['product'] . '">' .
@@ -3195,21 +3499,14 @@ function get_html_from_JSON($json = null, $type = '') {
                                 '<input type="hidden" name="price" id="size" value="' . $decode['sellPrint'][$i]['price'] . '">' .
                                 '<input type="hidden" name="taxable" id="size" value="' . $taxable . '">' .
                                 '<input type="hidden" name="imageType" id="imageType" value="' . $type . '">' .
-                                '<button type="submit" name="original_submit" class="btn form-control">Add to Cart</button></form></div>';
-
-                        $html .= '</td>';
+                                '<button type="submit" name="original_submit" class="enquiry-btn">Add to Cart</button></form></div>';
                     } else {
-                        $html .= '<td class="buy-td"></td>';
+                        //
                     }
-                    $html .= '</tr>';
                 }
             }
-            $html .= '</table>';
         }
     }
-
-//$html .= '</select>';
-
     return $html;
 }
 

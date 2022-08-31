@@ -7,11 +7,20 @@ if (!isset($_SESSION['user-email'])) {
     goto_location(SITE_URL . '/login-register');
     exit;
 }
+// print_r($_SESSION);
+// die;
 
 $conn = dbconnect();
 include("../" . INC_FOLDER . "headerInc.php");
 $cust_id = $_SESSION['user-id'];
 
+
+    $sql_user = "SELECT COUNT(id)  as productCount FROM cart WHERE customer_id='" . $_SESSION['user-id'] . "'";
+    $q_user = $conn->prepare($sql_user);
+    $q_user->execute();
+    $q_user->setFetchMode(PDO::FETCH_ASSOC);
+    $row_user = $q_user->fetch();
+    $cartItemCount = $row_user['productCount'];
 ?>
 <main>
 <div>
@@ -176,7 +185,7 @@ $cust_id = $_SESSION['user-id'];
                                 // $row_user = $q_user->fetchAll();
                                 // print_r($row_user);
 
-                                $sql = "select ord.*,cust.fname,cust.lname,cust.email,cust.phone,gateway.name gateway_name,c_add.name ship_cust_name,c_add.phone ship_cust_phone,c_add.street_address,c_add.city,c_add.state,c_add.country,c_add.zip,c_add.landmark,c_add.parent_id from tbl_order ord,customer_login cust,gateway,customer_address c_add  where ord.customer_id=cust.id and ord.gateway_id=gateway.id and ord.address_id=c_add.id and c_add.customer_id = '" . $_SESSION['user-id'] . "' order by ord.order_id desc";
+                                $sql = "select ord.*,cust.fname,cust.lname,cust.email,cust.phone,gateway.name gateway_name,c_add.name shipping_name,c_add.phone ship_cust_phone,c_add.shipping_address,c_add.shipping_city,c_add.shipping_state,c_add.shipping_country,c_add.shipping_zip,c_add.shipping_landmark,c_add.parent_id from tbl_order ord,customer_login cust,gateway,customer_address c_add  where ord.customer_id=cust.id and ord.gateway_id=gateway.id and ord.address_id=c_add.id and c_add.customer_id = '" . $_SESSION['user-id'] . "' order by ord.order_id desc";
 
                                 // echo $sql;
                                 // exit;
@@ -198,15 +207,17 @@ $cust_id = $_SESSION['user-id'];
                                         <div class="card">
                                             <div class="card-header" id="headingFour">
                                                 <h2 class="mb-0">
-                                                    <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseFour<?php echo  $data['order_id']; ?>" aria-expanded="false" aria-controls="collapseFour">
+                                                    <button class="customer_dashboardbox btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseFour<?php echo  $data['order_id']; ?>" aria-expanded="false" aria-controls="collapseFour">
                                                         <div class="dashboard-cart">
                                                             <div class="dashboard-order">
                                                                 <div class="order-inner">
                                                                     <p><?php echo  $data['order_org_id']; ?></p><span>|</span>
-                                                                    <p><?php // echo  $data['added_on']; ?><br></p>
+                                                                    <p><?php 
+                                                                    $originalDate = $data['date'];
+                                                                    echo $newdateformat = date("d M Y", strtotime($originalDate)); ?><br></p>       
                                                                 </div>
-                                                                <div class="order-action green">
-                                                                    DELIVERED
+                                                                <div class="order-action sky">
+                                                                    PROCESSING
                                                                 </div>
                                                             </div>
                                                             <div class="cart-box">
@@ -214,18 +225,40 @@ $cust_id = $_SESSION['user-id'];
                                                                     <div class="cart-left">
                                                                     </div>
                                                                     <div class="cart-right">
+                                                                    <?php
+                                                                        $result =$data['order_id'];
+                                                                        // echo $result;
+                                                                        $query = "select * from order_products where order_id ='$result' LIMIT 1";
+                                                                        // echo $query;
+                                                                        $q = $conn->prepare($query);
+                                                                        $q->execute();
+                                                                        $q->setFetchMode(PDO::FETCH_ASSOC);
+                                                                        $row_data = $q->fetch();
+                                                                        // print_r($row_data);
+                                                                    ?>
                                                                         <div class="cart-right-box">
                                                                             <div class="cart-name">
-                                                                            <?php // echo  $row['product_name']; ?><br>
+                                                                            <?php echo  $row_data['product_name']; ?><br>
                                                                             </div>
                                                                             <div class="cart-content">
-                                                                            <?php // echo  $row['details']; ?>
+                                                                            <?php echo  $row_data['details']; ?>
                                                                             </div>
                                                                         </div>
                                                                         <div class="cart-count">₹ <?php echo  $data['price']; ?></div>
                                                                     </div>
                                                                 </div>
-                                                                <p>+ 3 Items</p>
+                                                                <?php
+                                                                    $result =$data['order_id'];
+                                                                    // echo $result;
+                                                                    $query = "SELECT COUNT(id) AS productID FROM order_products where order_id ='$result'";
+                                                                    // echo $query;
+                                                                    $q = $conn->prepare($query);
+                                                                    $q->execute();
+                                                                    $q->setFetchMode(PDO::FETCH_ASSOC);
+                                                                    $row_result = $q->fetch();
+                                                                    // print_r($row_result);
+                                                                ?>
+                                                                <p>+ <?php echo $row_result['productID']; ?> Items</p>
                                                             </div>
                                                         </div>
                                                         <div class="order-btn">view order details<i class="zmdi zmdi-chevron-down"></i></div>
@@ -236,9 +269,10 @@ $cust_id = $_SESSION['user-id'];
                                                 <div class="card-body">
                                                     <div class="order-border">
                                                         <?php
-                                                            $demo =$data['order_id'];
-                                                            $query = "select * from order_products where order_id ='$demo'";
-                                                            echo $query;
+                                                            $result =$data['order_id'];
+                                                            // echo $result;
+                                                            $query = "select * from order_products where order_id ='$result'";
+                                                            // echo $query;
                                                             $q = $conn->prepare($query);
                                                             //$category_id = 2;
                                                             $q->execute();
@@ -249,12 +283,12 @@ $cust_id = $_SESSION['user-id'];
                                                         ?>
                                                         <div class="order-info">
                                                             <div class="order-left">
-                                                                <?php 
-                                                                    foreach($row_data as $demo){
-                                                                ?>
-                                                                1. <?php echo $demo['product_name'] ?>-<?php echo $demo['details'] ?> x <?php echo $demo['quantity'] ?>  -  ₹<?php echo $demo['price'] ?>
-                                                                <br>
-                                                                <?php } ?>
+                                                                <?php $i=1; 
+                                                                if($row_data){
+                                                                    foreach($row_data as $demo){ ?>
+                                                                        <?php echo $i; ?>. <?php echo $demo['product_name'] ?>-<?php echo $demo['details'] ?> x <?php echo $demo['quantity'] ?>  -  ₹<?php echo $demo['price'] ?>
+                                                                        <br>                                                                
+                                                                        <?php $i++; } } ?>                                                                                        
                                                             </div>
                                                             <!-- <div class="order-right">
                                                                 ₹ 100 / $ 1.33
@@ -266,11 +300,10 @@ $cust_id = $_SESSION['user-id'];
                                                             Shipped to:
                                                         </div>
                                                         <div class="shipped-content">
-                                                        <?php echo  $data['street_address']; ?>,<br>
-                                                        <?php echo  $data['state']; ?>,  <?php echo  $data['landmark']; ?>,  <?php echo  $data['country']; ?> , <?php echo  $data['city']; ?> - <?php echo  $data['zip']; ?>
+                                                        <?php echo  $data['shipping_address']; ?>,<br>
+                                                        <?php echo  $data['shipping_state']; ?>,  <?php echo  $data['shipping_landmark']; ?>,  <?php echo  $data['shipping_country']; ?> , <?php echo  $data['shipping_city']; ?> - <?php echo  $data['shipping_zip']; ?>
                                                         </div>
                                                     </div>
-
                                                     <div class="order-shipped">
                                                         <div class="shipped-title">
                                                             Payment Method:
@@ -450,6 +483,18 @@ include("../" . INC_FOLDER . "footerInc.php");
                 $('#shipping_landmark').val("");
             }
         })
+
+        var cartItemCount = '<?=$cartItemCount?>';
+        if(cartItemCount>0){
+            /* tab */
+                $('.nav-link').removeClass('active');
+                $('#pills-addresses-tab').addClass('active');
+            /* tab */
+            /* content */
+                $('.tab-pane').removeClass('show active');
+                $('#pills-addresses').addClass('show active');
+            /* content */
+        }        
     })
 </script>
 <script type="text/javascript">

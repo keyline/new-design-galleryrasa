@@ -469,9 +469,10 @@ p.category_id = 2 AND v.value='" . $v . "' AND f.attribute_name = '" . $k . "' G
         $keys = array('year' => 1, 'film' => 1, 'cast' => 1, 'director' => 1, 'music' => 1, 'playback' => 1);
 
         //Getting left search html
-        $getResult = memorabilia_left_search($finalData, $keys, $countData);
-//        print "<pre>";
-//        print_r($finalData);
+        //echo "<pre>";print_r($finalData);die;
+        //$getResult = memorabilia_left_search($finalData, $keys, $countData);
+        $getResult = memorabilia_left_search_new_design($finalData, $keys, $countData);
+
         //var_dump($getResult);
 //        exit;
         //Getting the right hand HTML
@@ -903,6 +904,53 @@ p.category_id = 2 AND v.value='" . $v . "' AND f.attribute_name = '" . $k . "' G
 
     include(INC_FOLDER . "footerInc.php");
 }
+?>
+<script type="text/javascript">
+    $(document).ready(function(){
+        
+        $("#yearSearch").on("input", function() {
+            var value = $(this).val().toLowerCase();
+            $("#yearMainList .subList").filter(function() {
+              $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
+        $("#filmSearch").on("input", function() {
+            var value = $(this).val().toLowerCase();
+            $("#filmMainList .subList").filter(function() {
+              $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
+        $("#castSearch").on("input", function() {
+            var value = $(this).val().toLowerCase();
+            $("#castMainList .subList").filter(function() {
+              $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
+        $("#directorSearch").on("input", function() {
+            var value = $(this).val().toLowerCase();
+            $("#directorMainList .subList").filter(function() {
+              $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
+        $("#musicSearch").on("input", function() {
+            var value = $(this).val().toLowerCase();
+            $("#musicMainList .subList").filter(function() {
+              $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
+        $("#playbackSearch").on("input", function() {
+            var value = $(this).val().toLowerCase();
+            $("#playbackMainList .subList").filter(function() {
+              $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
+        $("#yearRangeSearch").on("input", function() {
+            var value = $(this).val().toLowerCase();
+            $("#yearRangeMainList .subList").filter(function() {
+              $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
 
 
-
+    });
+</script>

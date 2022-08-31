@@ -122,8 +122,8 @@
                 <div class="copy-part">
                     <div class="copy-link">
                         <ul class="mobile-footer">
-                            <li><a href="<?php echo SITE_URL ?>page/about-us">About us</a></li>
-                            <li><a href="<?php echo SITE_URL ?>/page/vision-statement">VISION STATEMENT</a></li>
+                            <li><a href="<?php echo SITE_URL ?>about-us">About us</a></li>
+                            <li><a href="<?php echo SITE_URL ?>vision-statement">VISION STATEMENT</a></li>
                             <li><a href="<?php echo SITE_URL ?>testimonials">TESTIMONIALS</a></li>
                             <li><a href="#">in the press</a></li>
                             <li><a href="#">photo book</a></li>

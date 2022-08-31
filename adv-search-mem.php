@@ -300,7 +300,8 @@ FROM
 //Getting left search html
 
 
-        $getResult = memorabilia_left_search($finalData, $keys, $countData);
+        //$getResult = memorabilia_left_search($finalData, $keys, $countData);
+        $getResult = memorabilia_left_search_new_design($finalData, $keys, $countData);
 //        print "<pre>";
 //        print_r($getResult);
 //        exit;

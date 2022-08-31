@@ -3,6 +3,8 @@ require_once("require.php");
 require_once(INCLUDED_FILES . "config.inc.php");
 require_once(INCLUDED_FILES . "dbConn.php");
 require_once(INCLUDED_FILES . "functionsInc.php");
+$conn = dbconnect();
+$title = "Contact Us";
 include(INC_FOLDER . "homeheaderInc.php");
 ?>
 
