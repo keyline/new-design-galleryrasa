@@ -639,14 +639,14 @@ p.category_id = 2 AND v.value='" . $v . "' AND f.attribute_name = '" . $k . "' G
                                                                 <img class="img-fluid" alt="%s" src="%s">
                                                             </div>
                                                         <div class="artist-sub">
-                                                            <a  href="%s" class="artist-sub-btn">
+                                                            <a  href="%s" class="artist-sub-btn" target="_blank">
                                                             %s
                                                             </a> 
                                                         </div>
                                                         </div>
                                                     
                                                         <div class="artist-year">
-                                                            1941
+                                                             
                                                         </div>
                                                     </div>
                                                 </div>
@@ -661,13 +661,6 @@ p.category_id = 2 AND v.value='" . $v . "' AND f.attribute_name = '" . $k . "' G
                                         } else {
 
                                             $modalurl = 'data-toggle="modal" data-target="#exampleModal"';
-
-
-
-
-
-
-
 
                                             $modal = '<div class="modal fade vLogin" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -733,7 +726,7 @@ p.category_id = 2 AND v.value='" . $v . "' AND f.attribute_name = '" . $k . "' G
                                                         </div>
                                                     
                                                         <div class="artist-year">
-                                                            1941
+                                                            
                                                         </div>
                                                     </div>
                                                 </div>
@@ -774,14 +767,14 @@ p.category_id = 2 AND v.value='" . $v . "' AND f.attribute_name = '" . $k . "' G
                                                     <img class="img-fluid" alt="%s" src="%s">
                                                 </div>
                                             <div class="artist-sub">
-                                                <a  href="%s" class="artist-sub-btn">
+                                                <a  href="%s" class="artist-sub-btn" target="_blank">
                                                 %s
                                                 </a> 
                                             </div>
                                             </div>
                                         
                                             <div class="artist-year">
-                                                1941
+                                                
                                             </div>
                                         </div>
                                     </div>
@@ -865,7 +858,7 @@ p.category_id = 2 AND v.value='" . $v . "' AND f.attribute_name = '" . $k . "' G
                                                     <img class="img-fluid" alt="%s" src="%s">
                                                 </div>
                                             <div class="artist-sub">
-                                                <a  ' . $modalurl . '" class="artist-sub-btn">
+                                                <a  ' . $modalurl . '" class="artist-sub-btn" >
                                                 %s
                                                 </a> 
                                             </div>

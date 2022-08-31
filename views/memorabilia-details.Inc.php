@@ -5,7 +5,7 @@
                 <div class="col-lg-12">
                     <div class="visual-inner">
                         <div class="back-action">
-                            <a href="#" class="back-btn"><span class="material-icons">arrow_back</span>back</a>
+                            <!-- <a href="#" class="back-btn"><span class="material-icons">arrow_back</span>back</a> -->
                         </div>
                     </div>
                 </div>
@@ -13,7 +13,7 @@
             <div class="row">
                 <div class="col-lg-5">
                     {imageDetails}
-                    <div class="sticky-sec">
+                    <!-- <div class="sticky-sec">
                         <div class="book">
                             <a href="#" class="book-btn btn zoom">
                                 <span class="material-icons">zoom_in</span>
@@ -54,7 +54,7 @@
                                 <p>enlarge</p>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
                 <div class="col-lg-7">
                     <div class="right-details">
@@ -72,9 +72,9 @@
                                 {colour}
                             </div>
                         </div>
-                        <div class="memorabilia-action">
+                        <!-- <div class="memorabilia-action">
                             <a href="#" class="memorabilia-btn"><span class="material-icons">star</span>BUY MEMORABILIA<span class="material-icons arrow">arrow_forward</span></a>
-                        </div>
+                        </div> -->
                         
                         <table class="table table-bordered">
                             <tbody>
@@ -87,12 +87,7 @@
         </div>
     </section>
 
-
-    
-    
-    
-                   <!-- Modal -->
-    <div class="press-modal">
+    <!-- <div class="press-modal">
         <div class="modal fade" id="enlargeModal" tabindex="-1" aria-labelledby="enlargeModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -111,5 +106,5 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 </main>

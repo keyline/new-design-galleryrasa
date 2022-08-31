@@ -242,11 +242,11 @@
 <script type="text/javascript">
     function ajaxPagination(contentCount){
         //Pagination
-        pageSize = 9;
+        pageSize = 10;
         incremSlide = 10;
         startPage = 0;
         numberPage = 0;
-        alert(contentCount);
+        // alert(contentCount);
         var pageCount =  contentCount / pageSize;
         var totalSlidepPage = Math.floor(pageCount / incremSlide);
             

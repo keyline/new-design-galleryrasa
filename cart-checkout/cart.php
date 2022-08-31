@@ -50,14 +50,14 @@ $cartItems = get_user_cart($_SESSION['user-id']);
                                 if($cartItems){ foreach($cartItems as $item){
                         ?>
                             <div class="cart-box">
-                                <div class="cart-left">
+                                <!-- <div class="cart-left"> -->
                                     <?php
                                     $img_name = get_image_name($item["image_id"]);
                                     if ($item["imagetype"] != 'Bibliography') {
                                     ?>
                                         <img src="<?php echo SITE_URL ?>/product_images/thumbs/<?php echo $img_name["m_image_name"]; ?>" style="width: 100px;">
                                     <?php } else { echo $img_name["m_image_name"]; }?>
-                                </div>
+                                <!-- </div> -->
                                 <div class="cart-right">
                                     <div class="cart-name">
                                         <?php
@@ -98,11 +98,7 @@ $cartItems = get_user_cart($_SESSION['user-id']);
                             </div>
                             <?php $subtotal += ($item["price"] * $item["quantity"]);?>
                             <?php } }?>
-                        <?php } else {?>
-                            <h2>Cart is empty</h2>
-                        <?php } } else {?>
-                            <h2>Cart is empty</h2>
-                        <?php }?>                        
+                                    
                     </div>
                     <div class="subtotal-inner">
                         <div class="subtotal-info">
@@ -170,6 +166,11 @@ $cartItems = get_user_cart($_SESSION['user-id']);
                                 </form>
                                 </div>
                             </div>
+                            <?php } else {?>
+                            <h2 style="text-align: center;color: red;">Cart is empty</h2>
+                        <?php } } else {?>
+                            <h2 style="text-align: center;color: red;">Cart is empty</h2>
+                        <?php }?>           
                         </div>
                     </div>
                     <!-- <div class="payment-action">

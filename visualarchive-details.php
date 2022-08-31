@@ -697,7 +697,7 @@ WHERE t.product_id =" . $pid . ")) as tbl2 GROUP BY tbl2.n, tbl2.an ORDER BY tbl
 
 
         $imageDetails = '';
-
+        $singleImg = '';
 //    print_r($dataImage);
 //    exit;
         if (!empty($dataImage)) {
@@ -742,7 +742,7 @@ WHERE t.product_id =" . $pid . ")) as tbl2 GROUP BY tbl2.n, tbl2.an ORDER BY tbl
                             //. '</a>'
                             . '</div>';
 
-
+                            $singleImg .= '<img class="img-fluid" src="' . '../artworkimage?img=' . urlencode($orgnameexcptextnd) . '&ext=' . $ext . '">';
 
                             // $imageDetails .= '</div>';
                         }
@@ -803,8 +803,8 @@ if ($userflag == false) {
 } else {
 
     $list = file_get_contents(VIEWS_FOLDER . 'visualarchive-detailsInc.php');
-    $search = array('{usercheck}',  '{imageDetails}', '{productName}', '{language}', '{attributeList}', '{download}', '{viewImage}');
-    $replace = array('',  $imageDetails, $productName, $language, $contentHtml, $downloadform, $viewImage);
+    $search = array('{usercheck}',  '{imageDetails}', '{productName}', '{language}', '{attributeList}', '{download}', '{viewImage}' , '{singleImg}' );
+    $replace = array('',  $imageDetails, $productName, $language, $contentHtml, $downloadform, $viewImage, $singleImg );
     echo $detailsView = str_replace($search, $replace, $list);
 }
 

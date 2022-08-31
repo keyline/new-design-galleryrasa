@@ -113,24 +113,21 @@ if (!isset($_COOKIE["cookieid"])) {
                                 </ul>
                             </div>   
                         </div>
-                            <div class="head-bar">
-                            <?php if (isset($_SESSION["user-id"])) {
+                        <div class="head-bar">
+                            <?php if(isset($_SESSION["user-id"])) {
                                 $sql_user = "SELECT COUNT(id)  as productCount FROM cart WHERE customer_id='" . $_SESSION['user-id'] . "'";
-                                // echo $sql_user;
                                 $q_user = $conn->prepare($sql_user);
                                 $q_user->execute();
                                 $q_user->setFetchMode(PDO::FETCH_ASSOC);
-                                $row_user = $q_user->fetch();
-                                // print_r($row_user); ?>
+                                $row_user = $q_user->fetch(); ?>
                             <div class="drafts-action">
                                 <a href="<?php echo SITE_URL ?>cart-checkout/cart.php" class="drafts-btn"><span class="material-icons cart-box">shopping_bag</span><span class="badge"><?php echo $row_user['productCount']; ?></span></a>
                             </div>
-                            <?php }
-                            else{ ?>
-                            <div class="drafts-action">
-                                <a href="<?php echo SITE_URL ?>cart-checkout/cart.php" class="drafts-btn"><span class="material-icons cart-box">shopping_bag</span><span class="badge">0</span></a>
-                            </div>
-                                <?php } ?>
+                            <?php } else{ ?>
+                                <div class="drafts-action">
+                                    <a href="<?php echo SITE_URL ?>cart-checkout/cart.php" class="drafts-btn"><span class="material-icons cart-box">shopping_bag</span><span class="badge">0</span></a>
+                                </div>
+                            <?php } ?>
                             <?php if (!isset($_SESSION['user-email'])) { ?>
                                 <div class="contact-action">
                                     <a href="<?php echo SITE_URL ?>login-register" class="contact-btn"><span class="material-icons cart-box">person</span></a>
@@ -139,8 +136,7 @@ if (!isset($_COOKIE["cookieid"])) {
                                 <div class="contact-action">
                                     <a href="<?php echo SITE_URL ?>/customer-dashboard/customer-dashboard" class="contact-btn"><span class="material-icons cart-box">person</span></a>
                                 </div>
-                            <?php }
-                            ?>
+                            <?php } ?>
                             <div class="right-nav">
                                 <button class="sidebar-toggle">
                                     <span class="material-icons">menu</span>
@@ -163,9 +159,9 @@ if (!isset($_COOKIE["cookieid"])) {
                                     <div class="nav-boxs nav-boxs-mobile">
                                         <ul class="nav navbar-nav navbar-left " id="nav">
                                             <li class="nav-item"><a class="nav-link" href="<?php echo SITE_URL ?>">home</a></li>
-                                            <li class="nav-item"><a class="nav-link" href="#">VISUAL ARCHIVES</a></li>
-                                            <li class="nav-item"><a class="nav-link" href="#">BIBLIOGRAPHY</a></li>
-                                            <li class="nav-item"><a class="nav-link" href="#">BENGALI FILM ARCHIVES</a></li>
+                                            <li class="nav-item"><a class="nav-link" href="<?php echo SITE_URL ?>visualarchive-search">VISUAL ARCHIVES</a></li>
+                                            <li class="nav-item"><a class="nav-link" href="<?php echo SITE_URL ?>beforeSearch">BIBLIOGRAPHY</a></li>
+                                            <li class="nav-item"><a class="nav-link" href="<?php echo SITE_URL ?>memorabilia-search">BENGALI FILM ARCHIVES</a></li>
                                             <li class="nav-item"><a class="nav-link" href="<?php echo SITE_URL ?>podcast-search">PODCAST</a></li>
                                             <li class="nav-item"><a class="nav-link" href="<?php echo SITE_URL ?>exhibition-search">EXHIBITION</a></li>
                                         </ul>
