@@ -14,9 +14,6 @@
                     <div class="details-info">
                         <div class="left-details">
                             {imageDetails}
-                            <!-- <div class="details-img box target">
-                                <img class="img-fluid" src="images/artist-1.jpg">
-                            </div> -->
                             <div class="sticky-sec">
                                 <div class="book">
                                     <a href="#" class="book-btn btn zoom">
@@ -41,15 +38,7 @@
                                     <div class="tooltip-reset">
                                         <p>reset</p>
                                     </div>
-                                </div>
-                                <div class="book">
-                                    <a href="#" class="book-btn arrow">
-                                        <span class="material-icons">arrow_downward</span>
-                                    </a>
-                                    <div class="tooltip-download">
-                                        <p>download</p>
-                                    </div>
-                                </div>
+                                </div>                            
                                 <div class="book">
                                     <a href="#" class="book-btn" data-toggle="modal" data-target="#enlargeModal">
                                         <span class="material-icons">zoom_out_map</span>

@@ -591,8 +591,6 @@ p.category_id = 2 AND v.value='" . $v . "' AND f.attribute_name = '" . $k . "' G
                 foreach ($films as $filmName => $film) {
 
 
-
-
                     if (is_array($film)) {
 
 

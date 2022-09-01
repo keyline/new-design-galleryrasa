@@ -231,13 +231,15 @@
 <script type="text/javascript">
     function ajaxPagination(contentCount){
         //Pagination
-        pageSize = 9;
+        pageSize = 10;
         incremSlide = 10;
         startPage = 0;
         numberPage = 0;
         // alert(contentCount);
         var pageCount =  contentCount / pageSize;
+        // alert(pageCount);
         var totalSlidepPage = Math.floor(pageCount / incremSlide);
+        // alert(totalSlidepPage);
             
         for(var i = 0 ; i<pageCount;i++){
             $("#pagin").append('<li class="page-item"><a class="page-link" href="javascript:void(0);">'+(i+1)+'</a></li> ');
@@ -246,23 +248,23 @@
             }
         }
         //var prevIcon = '<a class="page-link" href="#" aria-label="Previous"><i class="zmdi zmdi-chevron-left"></i></a>';
-        var prevIcon = '<i class="page-link prev"></i>';
-        var prev = $("<li/>").addClass("prev page-item").html(prevIcon).click(function(){
+        var prevIcon = '<li class="page-item">Prev</li>';
+        var prev = $("<li/>").addClass("page-link prev").html(prevIcon).click(function(){
             startPage-=10;
             incremSlide-=10;
             numberPage--;
             slide();
         });
-        prev.hide();
+        // prev.hide();
         //var nextIcon = '<a class="page-link" href="#" aria-label="Next"><i class="zmdi zmdi-chevron-right"></i></a>';
-        var nextIcon = '<i class="page-link prev"></i>';
-        var next = $("<li/>").addClass("next page-item").html(nextIcon).click(function(){
+        var nextIcon = '<i class="page-item">Next</i>';
+        var next = $("<li/>").addClass("page-link prev").html(nextIcon).click(function(){
             startPage+=10;
             incremSlide+=10;
             numberPage++;
             slide();
         });
-        next.hide();
+        // next.hide();
 
         $("#pagin").prepend(prev).append(next);
 
@@ -300,8 +302,6 @@
                 showPage(parseInt($(this).text()));
         });
     }
-
-
 </script>
 
 <script type="text/javascript">

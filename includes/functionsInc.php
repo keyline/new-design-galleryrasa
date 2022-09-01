@@ -969,7 +969,7 @@ function get_html($array, $keys = array(),$usersession, $html = '') {
             }
 
 
-            if ($j == 0) {                
+            if ($j == 0) {
                 
                 $html .=   '</div>
                             <div class="bibliography-action">
