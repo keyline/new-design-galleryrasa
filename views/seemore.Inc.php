@@ -9,7 +9,7 @@
         </div>
     </div>
     <!--CiteThis modal box-->
-    <div class="modal fade" id="citethis" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal fade rasa-new-modal show" id="citethis" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -20,7 +20,6 @@
                     <div id="divCitethis" class="col-md-12 col-sm-12 col-xs-12 "></div>
                     <div class="clearfix"></div>
                 </div>
-
             </div>
             <!-- /.modal-content -->
         </div>
@@ -44,7 +43,5 @@
             <!-- /.modal-content -->
         </div>
         <!-- /.modal-dialog -->
-    
-    
-</div>
+    </div>
 </main>

@@ -549,7 +549,7 @@ FROM
             <div class="col-lg-12">
                 <div class="visual-inner">
                     <div class="back-action">
-                        <a href="#" class="back-btn"><i class="zmdi zmdi-arrow-left"></i>back</a>
+                        
                     </div>
                 </div>
             </div>

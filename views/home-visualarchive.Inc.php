@@ -4,11 +4,6 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="visual-inner">
-                        <!--
-                        <div class="visual-ban">
-                            <img class="img-fluid" src="assets/img/Rectangle 105.jpg" alt="">
-                        </div>
--->
                         <div class="row">
                             <div class="col-lg-9 flex-height">
                                 <div class="visual-info">
@@ -102,12 +97,12 @@
         </div>
     </section>
 
-
     <!-- Modal -->
+
     <div class="advance-modal">
         <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="advancedModalLabel" aria-hidden="true">
             <div class="modal-dialog">
-                <div class="modal-content">
+                <div class="modal-content">               
                     <div class="modal-body">
                         <div class="advanced-search">
                             <div class="row">
@@ -120,28 +115,29 @@
                             <div class="row">
                                 <div class="col-lg-6">
                                     <div class="right-part">
-                                        <form action="adv-search-va" id="adv-search-bibliography">
-                                        <div class="form-group">
-                                                <select class="program-name form-control" name="visualarchive1[]" multiple="multiple" data-placeholder="Enter Artist’s Name"></select>
-                                                <input type="hidden" name="catg" value="Visual Archive">
-                                                <input type="hidden" name="att[0]" value="va_artist">
-                                            </div>
-                                            <input type="hidden" name="catg" value="Visual Archive">
-                                            <input type="hidden" name="att[0]" value="va_artist">
+                                        <form>
                                             <div class="form-group">
-                                                
+                                                <input type="email" class="form-control" placeholder="NAME">
+                                            </div>
+                                            <div class="form-group">                                            
                                                 <div class="dropdown">
-                                                <?php echo $select_py; ?>
-                                                    <!-- <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown">
+                                                    <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown">
                                                         <p>year of publication<span class="material-icons">keyboard_arrow_down</span></p>
-                                                    </button> -->
-                                                    
-                                                    <!-- <div class="dropdown-menu radio">
+                                                    </button>
+                                                    <div class="dropdown-menu radio">
                                                         <label class="dropdown-item">
-                                                            <input class="jRadioDropdown" type="radio" value="001" name="alphabet" id="publicationyeardiv">
-                                                            <i> </i>
+                                                            <input class="jRadioDropdown" type="radio" value="001" name="alphabet">
+                                                            <i>year of publication</i>
                                                         </label>
-                                                    </div> -->
+                                                        <label class="dropdown-item">
+                                                            <input class="jRadioDropdown" type="radio" value="002" name="alphabet">
+                                                            <i>year of publication 2</i>
+                                                        </label>
+                                                        <label class="dropdown-item">
+                                                            <input class="jRadioDropdown" type="radio" value="003" name="alphabet">
+                                                            <i>year of publication 3</i>
+                                                        </label>
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div class="form-group">
@@ -150,60 +146,88 @@
                                                         <p>from year<span class="material-icons">keyboard_arrow_down</span></p>
                                                     </button>
                                                     <div class="dropdown-menu radio">
-
                                                         <label class="dropdown-item">
-                                                            <input class="jRadioDropdown" type="radio" value="001" name="fromartworkyr" id="fromtoart1">
-                                                            <i><?php echo $artworkoptions ?></i>
+                                                            <input class="jRadioDropdown" type="radio" value="001" name="alphabet">
+                                                            <i>from year</i>
+                                                        </label>
+                                                        <label class="dropdown-item">
+                                                            <input class="jRadioDropdown" type="radio" value="002" name="alphabet">
+                                                            <i>from year 2</i>
+                                                        </label>
+                                                        <label class="dropdown-item">
+                                                            <input class="jRadioDropdown" type="radio" value="003" name="alphabet">
+                                                            <i>from year 3</i>
                                                         </label>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <div class="dropdown">
-                                                <?php echo $select_med ?>
-                                                    <!-- <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown">
+                                                    <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown">
                                                         <p>medium<span class="material-icons">keyboard_arrow_down</span></p>
                                                     </button>
                                                     <div class="dropdown-menu radio">
-
                                                         <label class="dropdown-item">
-                                                            <input class="jRadioDropdown" id="mediumdiv" type="radio" value="001" name="alphabet">
-                                                            <i></i>
+                                                            <input class="jRadioDropdown" type="radio" value="001" name="alphabet">
+                                                            <i>medium</i>
                                                         </label>
-                                                    </div> -->
+                                                        <label class="dropdown-item">
+                                                            <input class="jRadioDropdown" type="radio" value="002" name="alphabet">
+                                                            <i>medium 2</i>
+                                                        </label>
+                                                        <label class="dropdown-item">
+                                                            <input class="jRadioDropdown" type="radio" value="003" name="alphabet">
+                                                            <i>medium 3</i>
+                                                        </label>
+                                                    </div>
                                                 </div>
                                             </div>
+                                        </form>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
-                                    <div class="right-part">  
+                                    <div class="right-part">
+                                        <form>
                                             <div class="form-group">
                                                 <div class="dropdown">
-                                                <?php echo $select_sub2; ?>
-                                                    <!-- <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown">
+                                                    <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown">
                                                         <p>CLASSIFICATION<span class="material-icons">keyboard_arrow_down</span></p>
                                                     </button>
                                                     <div class="dropdown-menu radio">
                                                         <label class="dropdown-item">
                                                             <input class="jRadioDropdown" type="radio" value="001" name="alphabet">
-                                                            <i> </i>
+                                                            <i>CLASSIFICATION</i>
                                                         </label>
-                                                    </div> -->
+                                                        <label class="dropdown-item">
+                                                            <input class="jRadioDropdown" type="radio" value="002" name="alphabet">
+                                                            <i>CLASSIFICATION 2</i>
+                                                        </label>
+                                                        <label class="dropdown-item">
+                                                            <input class="jRadioDropdown" type="radio" value="003" name="alphabet">
+                                                            <i>CLASSIFICATION 3</i>
+                                                        </label>
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <div class="dropdown" placeholder="abc">
-                                                <?php echo $select_ay ?>
-                                                    <!-- <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown">
+                                                <div class="dropdown">
+                                                    <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown">
                                                         <p>year of artwork<span class="material-icons">keyboard_arrow_down</span></p>
                                                     </button>
                                                     <div class="dropdown-menu radio">
-
                                                         <label class="dropdown-item">
                                                             <input class="jRadioDropdown" type="radio" value="001" name="alphabet">
-                                                            <i></i>
+                                                            <i>year of artwork</i>
                                                         </label>
-                                                    </div> -->
+                                                        <label class="dropdown-item">
+                                                            <input class="jRadioDropdown" type="radio" value="002" name="alphabet">
+                                                            <i>year of artwork 2</i>
+                                                        </label>
+                                                        <label class="dropdown-item">
+                                                            <input class="jRadioDropdown" type="radio" value="003" name="alphabet">
+                                                            <i>year of artwork 3</i>
+                                                        </label>
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div class="form-group">
@@ -212,36 +236,40 @@
                                                         <p>to year<span class="material-icons">keyboard_arrow_down</span></p>
                                                     </button>
                                                     <div class="dropdown-menu radio">
-
                                                         <label class="dropdown-item">
-                                                            <input class="jRadioDropdown" type="radio" value="001" name="toartworkyr" id="fromtoart2">
-                                                            <i><?php echo $artworkoptions ?></i>
+                                                            <input class="jRadioDropdown" type="radio" value="001" name="alphabet">
+                                                            <i>to year</i>
+                                                        </label>
+                                                        <label class="dropdown-item">
+                                                            <input class="jRadioDropdown" type="radio" value="002" name="alphabet">
+                                                            <i>to year 2</i>
+                                                        </label>
+                                                        <label class="dropdown-item">
+                                                            <input class="jRadioDropdown" type="radio" value="003" name="alphabet">
+                                                            <i>to year 3</i>
                                                         </label>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <input type="email" class="form-control" name="descriptive_tag[]" multiple="multiple" placeholder="descriptive tags" id="adv-search-bibliography">
+                                                <input type="email" class="form-control" placeholder="descriptive tags">
                                             </div>
-                                            <input type="submit" name="adv_submit" class="search-box" value="Search"/>
-                                            <button type="button" class="cancel-btn" data-dismiss="modal">CANCEL</button>
                                         </form>
                                     </div>
                                 </div>
                             </div>
-                            <!-- <div class="row">
+                            <div class="row">
                                 <div class="col-lg-6">
-                                                    <div class="right-part">
+                                    <div class="right-part">
                                             <button type="button" class="search-box">Search</button>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
-                                                    <div class="right-part">
+                                    <div class="right-part">
                                             <button type="button" class="cancel-btn" data-dismiss="modal">CANCEL</button>
                                     </div>
                                 </div>
-                            </div> -->
-
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -249,152 +277,3 @@
         </div>
     </div>
 </main>
-
-
-
-
-
-
-
-
-
-
-
-
-<!--<div class="container search-page-background-memoribilia text-center">
-    <div class="col-md-6 col-md-offset-3">
-        <h3 class="ct-h-big text-center text-uppercase search-heading">Visual Archive</h3>
-        <p class="search-sub-heading text-center">Content Coming Soon.....</p>
-    </div>
-    <div class="col-md-10 col-sm-10 col-md-offset-1 col-sm-offset-1">
-
-        <div class="search-bar">
-            <form method="post" action="visualarchive-result" name="search_form" id="search_form">
-                <div class="col-md-6 col-md-offset-3">
-                    <div class="form-group">
-                        <div class="col-md-9 col-sm-9 col-xs-12">
-
-                            <select class="program-name" name="visualarchive[]" multiple="multiple" data-placeholder="Search by Artist"></select>
-                        </div>
-
-
-
-                        <div class="col-md-3 col-sm-3 col-xs-12 text-center">
-                            <button type="submit" class="btn btn-default search-bttn" value="entryPoint" name="srchButtonEntryPoint"><span class="glyphicon glyphicon-search" ></span> Search</button>
-                        </div>
-                        <input type="hidden" name="catg" value="Visual Archive">
-                        <input type="hidden" name="att[0]" value="va_artist">
-
-                    </div>
-            </form>
-
-            <p style="" class="adv-search">  Refine your search with <a href="#" id="myBtn" data-toggle="modal" data-target="#">
-                    Advanced Search</a></p>
-        </div>
-    </div>
-
-
-
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title" id="myModalLabel">Search</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                </div>
-                <div class="modal-body" style="margin-bottom: 27px;">
-
-                    <form method="POST" action="adv-search-mem.php" id="adv-search-mem">
-                        <div class="col-md-12">
-                            <div class="col-md-6">
-
-                                <label>Name</label>
-                                <input type="text" name="author" class="form-control"/>
-
-                            </div>
-                            <div class="col-md-6">
-                                <label>Select In/As</label>
-                                <select name="attr" class="form-control" id="select-attributes">
-                                    <option value="-1">Choose A Role</option>
-                                    <option value="cast">Cast</option>
-                                    <option value="director">Director</option>
-                                    <option value="editor">Editor</option>
-                                    <option value="music">Music Director</option>
-                                    <option value="photography">Cinematographer</option>
-                                    <option value="story">Story</option>
-                                    <option value="lyrics">Lyrics</option>
-                                    <option value="playback">Playback Singer</option>
-                                </select>
-
-                            </div>
-                        </div>
-                        <div class="clearfix"></div>
-                        <br>
-                        <div class="col-md-12">
-                            <div class="col-md-6">
-
-                                <label>Distributor</label>
-                                <input type="text" name="distributor" class="form-control"/>
-
-                            </div>
-                            <div class="col-md-6">
-                                <label>Film</label>
-                                <input type="text" name="film" class="form-control"/>
-
-                            </div>
-                        </div>
-                        <div class="clearfix"></div>
-                        <br>
-                        <div class="col-md-12">
-                            <div class="col-md-6">
-
-                                <label>Producer</label>
-                                <input type="hall" name="producer" class="form-control"/>
-
-                            </div>
-
-                            <div class="col-md-6">
-                                <label>Year</label>
-                                <input type="text" name="year" class="form-control"/>
-
-                            </div>
-                        </div>
-
-
-                        <div class="clearfix"></div>
-                        <br>
-
-
-                        <div class="modal-footer">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="col-md-10">
-                                        <input type="submit" name="adv_submit" class="btn" value="Search"/>
-
-                                    </div>
-                                    <div class="col-md-2">
-                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                    </div>
-                                </div>
-
-                            </div>
-
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-</div>
-</div>
-<div class="clearfix"></div>
-<br>
-<br>
-<div class="container">
-    <div class="owl-carousel owl-theme wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.5s">-->
-<?php //echo $carouselHTML; ?>
-<!--        {carousel_items}-->
-<!--    </div>
-</div>-->
