@@ -1076,6 +1076,7 @@ function get_html($array, $keys = array(),$usersession, $html = '') {
                                 </button>
                             </div>
                             <div class="modal-body">
+                                <form method="POST" action="login.php">
                                 <div class="row">
                                     <div class="col-md-3">
                                         <label>Email <strong>*</strong></label>
@@ -1099,6 +1100,7 @@ function get_html($array, $keys = array(),$usersession, $html = '') {
                                         <a href="login-register.php" >Register</a>
                                     </div>
                                 </div>
+                                </form>
                             </div>
                         </div>
                     </div>
