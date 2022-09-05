@@ -117,10 +117,11 @@
                             </div>
                                 </div>
                             </div>
-                            <div class="row">
+                           
+                                            <form method="POST" action="adv-search-mem.php" id="adv-search-mem">
+                                            <div class="row">
                                     <div class="col-lg-6">
                                         <div class="right-part">
-                                            <form method="POST" action="adv-search-mem.php" id="adv-search-mem">
                                                 <div class="form-group">
                                                     <input type="text" name="author" class="form-control" placeholder="NAME">
                                                 </div>
@@ -153,12 +154,21 @@
                                                 <div class="form-group">
                                                     <input type="text" class="form-control" name="year" placeholder="year">
                                                 </div>
-                                                <input type="submit" name="adv_submit" class="search-box" value="Search"/>
-                                                <button type="button" class="cancel-btn" data-dismiss="modal">CANCEL</button>
-                                            </form>
-                                        </div>
+                                                </div>
                                     </div>
+                                    <div class="col-lg-6">
+                                        <div class="right-part">
+                                        <input type="submit" name="adv_submit" class="search-box" value="Search"/>
                                 </div>
+                                </div>
+                                <div class="col-lg-6">
+                                        <div class="right-part">
+                                        <button type="button" class="cancel-btn" data-dismiss="modal">CANCEL</button>
+                                </div>
+                                </div>
+                                </div>
+                                            </form>
+                                        
                             </div>
                     </div>
                 </div>

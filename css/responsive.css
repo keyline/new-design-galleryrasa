@@ -35,7 +35,7 @@
     padding-left: 3px;
 }
     .testimonials.vision-statement {
-    padding: 30px 12px 180px 0px;
+    padding: 20px 12px 180px 0px;
 }
     .start-body.visual-page.bibliography-page .hearder-options .user-options .top-search .drop-form{
     width: 24%;
@@ -47,15 +47,16 @@
 
 /*LARGE PC VERSION*/
 @media screen and (max-width: 1400px) {
+   
     .select2-container--default .select2-selection--multiple {
         min-height: 68px;
     }
     .select2-container--default .select2-selection--multiple .select2-selection__rendered {
         width: 442px;
     }
-    .start-body.visual-page.bibliography-page .hearder-options .user-options .top-search .drop-form{
+    /* .start-body.visual-page.bibliography-page .hearder-options .user-options .top-search .drop-form{
         margin-left: 0px;
-    }
+    } */
     .ms-parent .ms-choice {
         height: 68px!important;
     }
@@ -143,7 +144,7 @@
 }
     .hearder-options .top-search .search-barOption {
     width: 66%;
-    margin-right: 20px;
+    /* margin-right: 20px; */
 }
     .hearder-options .user-options .top-search .drop-form {
     width: 34%;
@@ -190,9 +191,12 @@
     padding-right: 10px;
     padding-left: 7px;
 }
-        .start-body.visual-page.bibliography-page .hearder-options .top-search .search-barOption {
-    width: 76%;
-}
+        /* .start-body.visual-page.bibliography-page .hearder-options .top-search .search-barOption {
+    width: 100%;
+} */
+/* .start-body.visual-page.bibliography-page .hearder-options .user-options .top-search .drop-form {
+    width: 100%;
+} */
     .start-body.visual-page.bibliography-page div.select:after {
         right: 36px;
 }
@@ -273,6 +277,13 @@
     .visual-search-details-page.exhibition-details-page.bengali-film-archives-search-details .details-info {
     height: 570px;
 }
+.select2-container .select2-selection--single {
+    height: 68px;
+}
+.hearder-options .btn-search{
+    height: 68px;
+}
+
 
 /*
     .container{
@@ -283,6 +294,9 @@
 
 /*PC VERSION*/
 @media screen and (max-width: 1200px) {
+    .start-body.visual-page.bibliography-page .hearder-options .top-search .search-barOption {
+        width: 100%;
+    }
     .start-body.visual-page.rasa-inner.bengali-film-archives .visual-info{
         padding: 0px 40px;
     }
@@ -368,8 +382,23 @@
     .visual-search-details-page.exhibition-details-page.bengali-film-archives-search-details .details-info {
     height: 450px;
 }
-
-
+.start-body.visual-page.rasa-inner.bibliography-page .hearder-options .user-options .top-search{
+    display: block;
+}
+.start-body.visual-page.bibliography-page .hearder-options .user-options .top-search .drop-form{
+   margin-left: 0;
+   margin-top: 15px;
+   width: 100%;
+}
+.start-body.visual-page.bibliography-page .left-body{
+    padding-left: 0;
+}
+.start-body.visual-page.rasa-inner.bibliography-page .search-new-namrata {
+    margin-left: 17px;
+}
+.start-body.visual-page.bibliography-page .ms-parent {
+    margin: 0px 16px 0px 14px;
+}
 }
 
 @media screen and (min-width: 992px) {
@@ -380,6 +409,13 @@
 }
 /*TAB VERSION*/
 @media screen and (max-width: 991px) {
+  
+    .start-body .visual-inner .hearder-options .btn-search{
+        margin-right: 0;
+    }
+    .hearder-options .user-options .search .search-input {
+        margin-right: 0px;
+    }
     .get-modal .modal-content {
     top: 44%;
 }
@@ -852,8 +888,9 @@
 }
     .start-body.visual-page.bibliography-page .hearder-options .top-search .search-barOption {
     width: 100%;
-    padding-left: 16px;
+    /* padding-left: 16px; */
 }
+
     .visual-search-details-page .sticky-sec .book .tooltip-next {
     right: 66px;
 /*
@@ -899,11 +936,48 @@
 .start-body.visual-page.visual-search-page.bibliography-search .search-barOption .btn-default.form-control.search-bttn{
     width: 72px!important;
 }
+.start-body.visual-page.rasa-inner.bibliography-page .search-new-namrata{
+    width: 100%;
+}
+.start-body.visual-page.bibliography-page .left-body{
+    padding-left: 0;
+}
     
 }
 
 /*MOBILE VERSION*/
 @media screen and (max-width: 767px) {
+   
+    .testimonials .testimonial-info .testimonial-learn .testimonial-name {
+        font-size: 24px;
+        line-height: 24px;
+        padding-bottom: 10px;
+    }
+    .testimonials .testimonial-info .testimonial-learn .testimonial-action .learn-btn {
+        font-size: 14px;
+    }
+    .testimonials .owl-carousel .owl-nav button.owl-next {
+        top: auto;
+        bottom: 0;
+    }
+    .testimonials .owl-carousel .owl-nav button.owl-prev {
+        top: auto;
+        bottom: 0;
+    }
+    .visual-search-details-page.exhibition-details-page.cart-page .payment-action .payment-btn{
+        width: 260px;
+        margin-top: 20px;
+    }
+    .visual-search-details-page.exhibition-details-page.cart-page .subtotal-inner .subtotal-info .subtotal-right.redio-info .redio-box .cart-box-inner {
+        display: block;
+    }
+    .visual-search-details-page.exhibition-details-page.cart-page .subtotal-inner .subtotal-info .subtotal-right.redio-info .redio-box .cart-box-inner .cart-box-info {
+       
+        justify-content: flex-start;
+    }
+    .visual-search-details-page.exhibition-details-page.cart-page .subtotal-inner input[type="radio"] {
+        margin-left: -20px;
+    }
     .start-body.visual-page.bibliography-page .left-body{
         padding-left: 0;
     }
@@ -2279,7 +2353,7 @@ div.select .input {
      width: 97%;
 }
     .visual-artist .artist-inner {
-    padding-right: 7px;
+    padding-right: 10px;
 }
     .visual-artist .artist-inner .owl-carousel .owl-nav button.owl-next {
     right: -10px;

@@ -16,14 +16,14 @@
                                                     <div class="search">
                                                         <div class="top-search">
                                                             <div class="search-barOption">
-                                                                <form method="post" action="visualarchive-result" name="search_form" id="search_form" class="visualarchive-result">
-                                                                    <div class="form-group row">
-                                                                        <div class="col-md-11 p-0">
+                                                                <form method="post" action="visualarchive-result" name="search_form" id="search_form" class="visualarchive-result search-input">
+                                                                    <div class="form-group">
+                                                                        <!-- <div class="col-md-11 p-0"> -->
                                                                             <select class="program-name" name="visualarchive[]" multiple="multiple" data-placeholder="Search by Artist"></select>
-                                                                        </div>
-                                                                        <div class="col-md-1 p-0">
+                                                                        <!-- </div> -->
+                                                                        <!-- <div class="col-md-1 p-0"> -->
                                                                                 <button type="submit" value="entryPoint" name="srchButtonEntryPoint" class="btn-search" type="submit"><span class="material-icons">search</span></button >
-                                                                            </div>
+                                                                            <!-- </div> -->
                                                                     </div>
                                                                         <input type="hidden" name="catg" value="Visual Archive">
                                                                         <input type="hidden" name="att[0]" value="va_artist">

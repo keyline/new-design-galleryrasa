@@ -92,7 +92,7 @@ if (!isset($_COOKIE["cookieid"])) {
     </head>
     <!-- NAVBAR
     ================================================== -->
-    <body class="pattern-banner">
+    <body class="noise-banner">
         <!-- <header class="header"> -->
         <!--  NEW NAV ENDS   -->
         <section class="topPanel">

@@ -138,10 +138,11 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="row">
+                            
+                                        <form action="adv-search" method="POST" id="adv-search-bibliography">
+                                        <div class="row">
                                 <div class="col-lg-6">
                                     <div class="right-part">
-                                        <form action="adv-search" method="POST" id="adv-search-bibliography">
                                             <div class="form-group">
                                                 <input type="text" name="author" class="form-control" placeholder="NAME">
                                             </div>
@@ -194,20 +195,22 @@
                                             <div class="form-group">
                                                 <input type="text" name="descriptive_tags" class="form-control" placeholder="TAGS">
                                             </div>
-                                            <div class="col-lg-8">
-                                                <div class="right-part">
-                                                <input type="submit" name="adv_submit" class="search-box" value="Search"/>
-                                                </div>
+                                          
                                             </div>
-                                            <div class="col-lg-8">
-                                                <div class="right-part">
-                                                    <button type="button" class="cancel-btn" data-dismiss="modal">CANCEL</button>
-                                                </div>
-                                            </div>
-                                        </form>
-                                    </div>
                                 </div>
+                                <div class="col-lg-6">
+                                    <div class="right-part">
+                                    <input type="submit" name="adv_submit" class="search-box" value="Search"/>
                             </div>
+                            </div>
+                            <div class="col-lg-6">
+                                    <div class="right-part">
+                                    <button type="button" class="cancel-btn" data-dismiss="modal">CANCEL</button>
+                            </div>
+                            </div>
+                            </div>
+                                        </form>
+                                    
                         </div>
                     </div>
                 </div>

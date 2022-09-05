@@ -145,21 +145,27 @@ $cartItems = get_user_cart($_SESSION['user-id']);
                             <div class="subtotal-right redio-info">
                                 <div class="redio-box">
                                 <form method="POST" action="order.php">
-                                <input type="hidden" name="shipping_addr" id="shipping_addr" value="<?php echo $bill_addr['shipping_address']; ?>">
+                                <div class="cart-box-inner">
                                 <?php
                                 $get_arr = get_gateways();
                                 foreach ($get_arr as $get_item) {
                                     ?>
+                                    
+                                    <div class="cart-box-info">
+                                     <input type="radio" name="gateway" id="gateway" value="<?php echo $get_item['id']; ?>" required>
                                     <label for="<?php echo $get_item['name']; ?>">
                                         <?php echo $get_item['name']; ?>: 
                                     </label>
+                                    </div>
+                                    
                                     <!-- <div class="col-md-8"> -->
-                                        <input type="radio" name="gateway" id="gateway" value="<?php echo $get_item['id']; ?>" required>
+                                        <!-- <input type="radio" name="gateway" id="gateway" value="<?php echo $get_item['id']; ?>" required> -->
                                     <!-- </div> -->
                                     <div class="clearfix"></div>
                                     <?php
                                 }
                                 ?>
+                                </div>
                                 <div class="payment-action">
                                     <input type="submit" class="payment-btn" name="submit_order" value="proceed to payment" >
                                 </div>
