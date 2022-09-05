@@ -21,7 +21,7 @@
                                                         <div class="top-search">
                                                             <div class="search-barOption">
                                                                 <form method="post" action="visualarchive-result" class="search-input"  name="search_form" id="search_form" role="form">
-                                                                        <div class="col-md-10 col-sm-6 p-0">
+                                                                        <div class="col-lg-10 col-md-11 col-sm-11 p-0">
                                                                             <select class="program-name form-control" name="visualarchive[]" multiple="multiple" data-placeholder="Enter Artist’s Name"></select>
                                                                         </div>
                                                                         <button type="submit" class="btn-search" value="entryPoint" name="srchButtonEntryPoint">

@@ -1071,34 +1071,38 @@ function get_html($array, $keys = array(),$usersession, $html = '') {
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h5 class="modal-title" id="exampleModalLabel">Login To View Details</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                  <span aria-hidden="true">&times;</span>
-                                </button>
+                              
                             </div>
                             <div class="modal-body">
                                 <form method="POST" action="login.php">
                                 <div class="row">
-                                    <div class="col-md-3">
+                                <div class="col-md-3 flex-v-cen pb-4">
                                         <label>Email <strong>*</strong></label>
                                     </div>
-                                    <div class="col-md-9">
+                                    <div class="col-md-9 pb-4">
                                         <input type="text" class="form-control" name="email" id="email" required>
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-3 flex-v-cen pb-4">
                                         <label>Password <strong>*</strong></label>
                                     </div>
-                                    <div class="col-md-9">
+                                    <div class="col-md-9 pb-4">
                                         <input type="password" class="form-control" name="pass" id="pass" required>
                                     </div>
-                                    <div class="col-md-12">
-                                        <input type="submit" class="btn form-control" value="Login">
+                                    <div class="col-md-3"></div>
+                                    <div class="col-md-9">
+                                        <input type="submit" class="btn form-control login-btn" value="Login">
                                     </div>
-                                    <div class="col-md-6">
-                                        <a href="forget-password.php" class="btn form-control border-0 text-left mt-1">Forgot Password</a>
-                                    </div>
-                                    <div class="col-md-6 d-flex align-items-center justify-content-start">
-                                        <a href="login-register.php" >Register</a>
-                                    </div>
+                                    <div class="col-md-3"></div>
+            <div class="col-md-9">
+            <div class="password-inner">
+            <div class="password-box">
+                <a href="forget-password.php" class="btn forget-btn form-control border-0 text-left mt-1">Forgot Password</a>
+            </div>
+            <div class="password-box">
+            <a class="register-btn" href="login-register.php">Register</a>
+            </div>
+        </div> 
+        </div>
                                 </div>
                                 </form>
                             </div>

@@ -662,41 +662,44 @@ p.category_id = 2 AND v.value='" . $v . "' AND f.attribute_name = '" . $k . "' G
 
                                             $modalurl = 'data-toggle="modal" data-target="#exampleModal"';
 
-                                            $modal = '<div class="modal fade vLogin" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            $modal = '<div class="modal fade vLogin rasa-new-modal" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Login To View Details</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+        
       </div>
       <div class="modal-body">
         <form method="POST" action="login.php">
             <div class="row">
-            <div class="col-md-3">
+            <div class="col-md-3 flex-v-cen pb-4">
                 <label>Email <strong>*</strong></label>
             </div>
-            <div class="col-md-9">
+            <div class="col-md-9 pb-4">
             <input type="hidden" value="' . $_SERVER['HTTP_REFERER'] . '" name="prevurl" >
                 <input type="text" class="form-control" name="email" id="email" required>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-3 flex-v-cen pb-4">
                 <label>Password <strong>*</strong></label>
             </div>
-            <div class="col-md-9">
+            <div class="col-md-9 pb-4">
                 <input type="password" class="form-control" name="pass" id="pass" required>
             </div>
             <div class="col-md-3"></div>
             <div class="col-md-9">
-                <input type="submit" class="btn form-control" value="Login">
-                
+                <input type="submit" class="btn form-control login-btn" value="Login">
             </div>
             <div class="col-md-3"></div>
             <div class="col-md-9">
-                <a href="forget-password.php" class="btn btn-default mr-3">Forgot Password</a>
-                <a href="login-register.php" >Register</a>
+            <div class="password-inner">
+            <div class="password-box">
+                <a href="forget-password.php" class="btn forget-btn form-control btn-default mr-3">Forgot Password</a>
             </div>
+            <div class="password-box">
+            <a class="register-btn" href="login-register.php">Register</a>
+            </div>
+        </div> 
+        </div>
             </div>
         </form>
       </div>
@@ -802,39 +805,42 @@ p.category_id = 2 AND v.value='" . $v . "' AND f.attribute_name = '" . $k . "' G
       </div>
       <div class="modal-body">
         <form method="POST" action="login.php">
-            <div class="col-md-4">
+        <div class="row">
+        <div class="col-md-3 flex-v-cen pb-4">
                 <label>Email <strong>*</strong></label>
             </div>
-            <div class="col-md-8">
+            <div class="col-md-9 pb-4">
                 <input type="text" class="form-control" name="email" id="email" required>
             </div>
             <div class="clearfix"></div>
-            <br>
-            <div class="col-md-4">
+           
+            <div class="col-md-3 flex-v-cen pb-4">
                 <label>Password <strong>*</strong></label>
             </div>
-            <div class="col-md-8">
+            <div class="col-md-9 pb-4">
                 <input type="password" class="form-control" name="pass" id="pass" required>
             </div>
             <div class="clearfix"></div>
-            <br>
-            <div class="col-md-4">
-
-            </div>
-            <div class="col-md-2">
-                <input type="submit" class="btn btn-success" value="Login">
+          
+            <div class="col-md-3"></div>
+            <div class="col-md-9">
+                <input type="submit" class="btn form-control login-btn" value="Login">
+                
             </div>
             <div class="col-md-4">
                 <a href="forget-password.php" class="btn btn-default">Forgot Password</a>
             </div>
-            
-            <div class="col-md-2">
+         
+            <div class="col-md-3"></div>
+            <div class="col-md-9">
+                <div class="password-inner">
+                <div class="password-box">
+                    <a href="forget-password.php" class="btn forget-btn form-control btn-default mr-3">Forgot Password</a>
+                </div>
                 
+            </div> 
             </div>
-            <div class="col-md-4">
-                <a href="login-register.php" >Register</a>
             </div>
-            
         </form>
       </div>
       <div class="modal-footer">

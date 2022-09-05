@@ -79,7 +79,7 @@ body{ min-height: 100%; background: #fff;}
 
 /***********BOOTSTRAP FIX STARTS***********/
 
-@media (min-width: 576px) {
+/* @media (min-width: 576px) {
 .container { max-width: none;padding: 0px 20px; }
 .modal-dialo { max-width: 700px; }
 .modal-sm { max-width: 400px; }
@@ -101,7 +101,32 @@ body{ min-height: 100%; background: #fff;}
 }
 @media (min-width: 1900px) {
 .container { max-width: 1400px;padding: 0px 20px; }
-}
+} */
+
+
+@media (min-width: 576px) {
+    .container { max-width: none; }
+    .modal-dialo { max-width: 700px; }
+    .modal-sm { max-width: 400px; }
+    }
+    @media (min-width: 768px) {
+    .container { max-width: 740px; }
+    }
+    @media (min-width: 992px) {
+    .container { max-width: 960px; }
+    }
+    @media (min-width: 1200px) {
+    .container { max-width: 1400px; }
+    }
+    @media (min-width: 1440px) {
+    .container { max-width : 1400px; }
+    }
+    @media (min-width: 1600px) {
+    .container { max-width: 1400px; }
+    }
+    @media (min-width: 1900px) {
+    .container { max-width: 1400px; }
+    }
 /***********BOOTSTRAP FIX ENDS***********/
 
 
@@ -467,7 +492,7 @@ a {
 @media screen and (min-width: 676px) {
   .sidebar {
 /*    width: 400px;*/
-       width: 500px;
+       width: 600px;
   }
 }
  .nav-boxs.nav-boxs-mobile{
@@ -596,6 +621,7 @@ a {
     display: flex;
     justify-content: center;
     align-items: center;
+    border: none;
 }
 .topPanel .nav-inner .nav-social h4{
     font-size: 20px;
@@ -725,9 +751,9 @@ label.custom-select {
 .search_ajaxdetails::-webkit-scrollbar-thumb:hover {
   background: #555; 
 }
-.search-wrap .search_ajaxdetails {
+/* .search-wrap .search_ajaxdetails {
     display: none;
-}
+} */
 .search-wrap.active .search_ajaxdetails {
     display: block;
     background: #fff;
@@ -801,8 +827,18 @@ label.custom-select {
 }
 .hearder-options .user-options .search .search-input{
     display: flex;
+    margin-right: 20px;
+}
+.start-body.visual-page.rasa-inner .hearder-options .user-options .search .search-input{
+    margin-right: 0px!important;
+    display: flex;
 }
 
+.start-body.start-body-desktop .dropdown-menu{
+    background-color: #f7fafb;
+    border: 1px solid #d5d8d9c7;
+    border-width: 1px 1px 0px;
+}
 .hearder-options .user-options .top-search{
     display: flex;
     align-items: center;
@@ -830,7 +866,7 @@ label.custom-select {
         background-color: var(--primaryColor);
     color: #fff;
     font-size: 40px;
-    width: 80px;
+    width: 90px;
     height: 76px;
     display: flex;
     border: none;
@@ -839,7 +875,7 @@ label.custom-select {
     justify-content: center;
 }
 .hearder-options .btn-search span{
-    font-size: 40px;
+    font-size: 42px;
 }
 .hearder-options .btn-search:hover{
     background-color: var(--textColor);
@@ -879,7 +915,7 @@ label.custom-select {
     display: flex;
 } */
 .hearder-options .top-search{
-    margin-bottom: 20px;
+    margin-bottom: 16px;
 }
 .hearder-options .user-options .top-search .drop-form{
     width: 32%;
@@ -1112,7 +1148,7 @@ div.select .input{
     padding: 40px 12px 40px 0px;
 }
 .start-body.visual-page.rasa-inner .visual-inner{
-        background-image: url(../images/Rectangle105.jpg);
+        background-image: url(../images/Rectangle-105.jpg);
     height: 430px;
     box-shadow: 12px 12px 0px 0px #d6d7d9;
 }
@@ -1146,7 +1182,7 @@ div.select .input{
     transition: .5s ease all;
     z-index: 99;
     height: 76px;
-    margin-right: 18px;
+    margin-right: 20px;
 }
 .start-body .visual-inner .hearder-options .btn-search:hover{
     background-color: var(--textColor);
@@ -1158,10 +1194,10 @@ div.select .input{
     font-size: 16px;
     font-family: 'Roboto Mono', monospace;
 }
-.start-body.visual-page.rasa-inner.bengali-film-archives .select2-container--default .select2-search--inline .select2-search__field{
+/* .start-body.visual-page.rasa-inner.bengali-film-archives .select2-container--default .select2-search--inline .select2-search__field{
     padding-left: 28px;
     
-}
+} */
 .start-body .visual-inner .hearder-options .drop-form{
         background-color: var(--textColor);
     height: 76px;
@@ -1187,6 +1223,7 @@ div.select .input{
 }
 .start-body .visual-inner .hearder-options .drop-form .advanced-btn span{
     padding-left: 10px;
+    font-size: 34px;
 }
 
 /*
@@ -1343,6 +1380,11 @@ div.select .input{
     border-radius: 0;
     padding-left: 18px;
     border: 1px solid #d5d8d9c7;
+    font-weight: 500;
+    font-size: 14px;
+    font-family: 'Roboto Mono';
+    color: var(--textColor);
+    text-transform: uppercase;
 }
 .advance-modal div.select p {
     padding: 20px 10px 20px 9px;
@@ -1525,14 +1567,18 @@ background-color: var(--textColor);
     background-color: var(--textColor);
     width: 100%;
     text-align: center;
-    height: 60px;
-    font-size: 17px;
+    height: 148px;
+    font-size: 16px;
+    padding: 20px;
     font-weight: 400;
     font-family: 'Roboto';
     display: flex;
     justify-content: center;
     align-items: center;
     transition: .5s ease all;
+}
+.start-body.visual-page.rasa-inner .select2-container--default .select2-selection--multiple .select2-selection__rendered{
+    padding-left: 35px;
 }
 .artist-search .artist-inner .artist-info .artist-box .artist-year{
     color: var(--textColor);
@@ -1595,6 +1641,9 @@ background-color: var(--textColor);
     background-color: transparent;
     padding-left: 5px;
     padding-right: 5px;
+}
+.artist-search .artist-pagination .pagination .page-link.prev i{
+    font-style: normal;
 }
 .artist-search .artist-pagination .pagination .page-link.prev:hover{
     background-color: transparent;
@@ -2053,7 +2102,7 @@ top: 0;
     border-bottom: 1px solid #D5D8D9;
 }
 .visual-search-details-page .right-details .table-bordered tr td{
-    padding: 15px 0;
+    padding: 20px 0;
     color: var(--primaryColor);
     text-transform: capitalize;
     font-family: 'Roboto', sans-serif;
@@ -2064,6 +2113,7 @@ top: 0;
     border-left: 1px solid #D5D8D9!important;
     padding-left: 50px!important;
     color: var(--textColor)!important;
+    text-transform: initial!important;
 }
 .visual-search-details-page .right-details .table-bordered tr:last-child{
     border: none;
@@ -2084,8 +2134,8 @@ top: 0;
 
 /* ********|| BIBLIOGRAPHY PAGE STARTS ||******** */
 .start-body.visual-page.rasa-inner.bibliography-page .visual-info {
-    padding: 0px 0px 0px 14px;
-    width: 87%;
+    padding: 0px 0px 0px 0px;
+    width: 85%;
 }
 .start-body.visual-page.bibliography-page div.select{
     margin-right: 18px;
@@ -2119,7 +2169,7 @@ top: 0;
     margin: 0px 14px;
 }
 .start-body.visual-page.bibliography-page .hearder-options .user-options .top-search .drop-form{
-    width: 20%;
+    width: 25%;
     /* margin-left: 22px; */
     margin-left: 18px;
 }
@@ -2441,6 +2491,8 @@ top: 0;
 .artist-search.bibliography-search .bibliography-search-inner .bibliography-info .bibliography-fix{
     color: var(--primaryColor);
     width: 180px;
+    min-width: 180px;
+    max-width: 180px;
     font-size: 14px;
     font-weight: 700;
     font-family: 'Roboto Mono', monospace;
@@ -2471,6 +2523,9 @@ top: 0;
     transition: .5s ease all;
     margin-top: 10px;
     margin-right: 18px;
+}
+.artist-search.bibliography-search .bibliography-search-inner .bibliography-action .cite-action .cite-btn i{
+    font-style: normal;
 }
 .artist-search.bibliography-search .bibliography-search-inner .bibliography-action .details-action .details-btn{
         background-color: var(--primaryColor);
@@ -2503,10 +2558,17 @@ top: 0;
 .artist-search.bibliography-search .bibliography-total-box{
     display: flex;
 }
+.accordion>.card>.card-header .btn-link span{
+    font-size: 26px;
+}
 .artist-search.bibliography-search .bibliography-total-box .bibliography-left-box{
     width: 21%;
     padding-right: 36px;
     position: relative;
+}
+.artist-search.bibliography-search .bibliography-total-box .bibliography-left-box .menu .menu-sec.menu-sec-2 .card-header .material-icons{
+    color: #333;
+    font-size: 28px;
 }
 .artist-search.bibliography-search .bibliography-total-box .bibliography-left-box #btnBack .btn-red.form-control{
     position: absolute;
@@ -2545,7 +2607,7 @@ top: 0;
     display: flex;
     justify-content: center;
     align-content: center;
-    padding: 15px 0px;
+    padding: 8px 0px;
     width: 100%;
 /*
     word-spacing: 5px;
@@ -2897,7 +2959,7 @@ a:hover{
 	font-weight:normal; font-style:normal; 
 	display:block;
 border-bottom: 1px solid #d5d8d9c7;
-/* padding: 18px; */
+padding: 18px;
 font-weight: 500;
     font-size: 14px;
     font-family: 'Roboto Mono';
@@ -2916,6 +2978,9 @@ font-weight: 500;
     font-weight: 600;
     text-decoration: underline;
 }.dropdown-item.active, .dropdown-item:active{
+    background-color:#fff;
+}
+.advance-modal .dropdown-item:focus, .advance-modal .dropdown-item:hover{
     background-color:#fff;
 }
  .dropdown{
@@ -2948,7 +3013,7 @@ border: none;
     color: var(--textColor);
 }
 .dropdown-item:focus, .dropdown-item:hover{
-    background-color: #fff;
+    background-color: #f7fafb;
 }
 .start-body.visual-page.bibliography-page .dropdown-menu.radio.show {
     transform: translate3d(0px, 75px, 0px)!important;
@@ -4069,6 +4134,7 @@ font-size: 16px;
     color: #fff;
     font-family: 'Roboto Mono';
     font-size: 16px;
+    border: none;
     font-weight: 400;
     text-transform: uppercase;
     height: 76px;
@@ -4501,7 +4567,7 @@ font-size: 16px;
     display: flex;
     align-items: center;
 }
-.visual-search-details-page.exhibition-details-page.cart-page .right-details .cart-box .buy-cart .cart-del{
+.visual-search-details-page.exhibition-details-page.cart-page .right-details .cart-box .buy-cart .cart-del a{
     font-family: 'Roboto', sans-serif;
     font-weight: 500;
     font-size: 14px;
@@ -4612,10 +4678,11 @@ body
 
 .visual-search-details-page.exhibition-details-page.cart-page .subtotal-inner input[type="radio"] + label
 {
-  cursor: pointer;
-  position: relative;
-  padding-left: 30px;
-  line-height: 20px;
+    cursor: pointer;
+    position: relative;
+    padding-left: 13px;
+    line-height: 20px;
+    padding-right: 30px;
 }
 
 .visual-search-details-page.exhibition-details-page.cart-page .subtotal-inner input[type="radio"] + label::before {
@@ -4626,30 +4693,34 @@ body
     border: 3px solid var(--primaryColor);
     border-radius: 50%;
     position: absolute;
-    top: 50%;
-    left: -2px;
+    top: 41%;
+    left: -24px;
     transform: translateY(-50%);
     opacity: 1;
     transition: all 0.3s;
+    z-index: -1;
 }
 
 .visual-search-details-page.exhibition-details-page.cart-page .subtotal-inner input[type="radio"] + label::after
 {
-  content: "";
-  display: inline-block;
-  width: 10px;
-  aspect-ratio: 1;
-  border: 2px solid var(--primaryColor);
-  background: var(--primaryColor);
-  border-radius: 50%;
-  position: absolute;
-  left: 6px;
-  top: 50%;
-  transform: translateY(-50%);
-  opacity: 0;
-  transition: all 0.3s;
+    content: "";
+    display: inline-block;
+    width: 10px;
+    aspect-ratio: 1;
+    border: 2px solid var(--primaryColor);
+    background: var(--primaryColor);
+    border-radius: 50%;
+    border-radius: 50%;
+    position: absolute;
+    left: -16px;
+    top: 40%;
+    transform: translateY(-50%);
+    opacity: 0;
+    transition: all 0.3s;
 }
-
+.start-body.podcast-page.artist-search.get-page.profile.dashboard .form-control[readonly]{
+    background-color: #fff;
+}
 .visual-search-details-page.exhibition-details-page.cart-page .subtotal-inner input[type="radio"]:checked + label::after
 {
   opacity: 1;
@@ -4657,7 +4728,7 @@ body
 .visual-search-details-page.exhibition-details-page.cart-page .subtotal-inner .subtotal-info{
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    /* align-items: center; */
     color: var(--textColor);
     border-bottom: 1px solid #D5D8D9;
     padding: 20px 0px;
@@ -4724,6 +4795,7 @@ body
     justify-content: center;
     align-items: center;
     position: relative;
+    border: none;
 /*
     word-spacing: 5px;
     letter-spacing: 0.8px;
@@ -4946,13 +5018,13 @@ body
         padding: 38px;
     border-radius: 0;
     border: 1px solid #e2e2e2;
-    font-family: 'Roboto Mono';
+    font-family: 'Roboto';
     font-weight: 500;
     font-size: 14px;
 }
 .start-body.podcast-page.artist-search.get-page .podcast-body .get-form .form-control::placeholder{
     color: var(--textColor);
-    font-family: 'Roboto Mono';
+    font-family: 'Roboto';
     font-weight: 500;
     font-size: 14px;
     text-transform: uppercase;
@@ -5368,12 +5440,13 @@ span{
     text-transform: capitalize;
     font-weight: 500;
     font-size: 16px;
+    font-family: 'Roboto';
 }
 .start-body.podcast-page.artist-search.get-page.profile.dashboard  .podcast-body .get-form .form-control{
         padding: 38px 24px;
      font-weight: 500;
     font-size: 16px;
-    font-family: 'Roboto Mono';
+    /* font-family: 'Roboto Mono'; */
 }
 .start-body.podcast-page.artist-search.get-page.profile.dashboard .podcast-body .get-form .submit-btn{
     width: 190px;
@@ -5696,7 +5769,7 @@ span{
 .visual-artist.about-inner .about-info .about-action .about-action-box{
         background-color: var(--textColor);
     display: inline-block;
-        margin-top: 44px;
+        margin-top: 20px;
 }
 .visual-artist.about-inner .about-info .about-action .explore-btn:hover{
     background-color: #fff;
@@ -5993,11 +6066,11 @@ background-color: #fff;
 /* ********|| TESTIMONIALS PAGE ENDS ||******** */
 
 /* ********|| VISION STATEMENT PAGE STARTS ||******** */
-/*
+
 .testimonials.vision-statement {
-    padding: 30px 12px 180px 0px;
+    padding: 20px 12px 180px 0px;
 }
-*/
+
 .testimonials.vision-statement .testimonials-inner{
     padding-right: 20px;
 }
@@ -6524,7 +6597,7 @@ background-color: transparent;
 align-items: center;
 text-align: left;
 /* background-color: #F7FAFB; */
-    height: 76px;
+    /* height: 74px; */
     border-radius: 0;
     border-right: 0;
     color: var(--textColor);
@@ -6533,16 +6606,45 @@ text-align: left;
     font-family: 'Roboto Mono', monospace;
     padding-left: 18px;
 }
+.start-body.visual-page.rasa-inner .hearder-options.visual-search .select2-search input{
+    padding-left: 0px;
+}
+/* .start-body.visual-page.rasa-inner.bibliography-page .select2-container--default .select2-search--inline .select2-search__field{
+    padding-left: 26px;
+} */
+.hearder-options .user-options .search .search-input .form-group{
+    display: flex;
+}
+.start-body.visual-page.visual-search-page .hearder-options .user-options .search .search-input{
+    display: block;
+    margin-right: 0px;
+}
+.start-body.visual-page.visual-search-page .visual-inner .hearder-options .btn-search {
+    margin-right: 0px;
+}
 
 
-
-
+.start-body.visual-page.rasa-inner.bibliography-page .top-search.biblography-search .ms-parent .ms-choice{
+    background-color: #F7FAFB;
+    
+}
 .ms-parent .ms-choice{
     border: none;
     color: #212529;
     font-family: 'Roboto Mono';
     height: 76px!important;
     background-color: #fff;
+}
+.advance-modal .ms-choice > span{
+    top: 10px;
+}
+.advance-modal .ms-parent .ms-choice{
+   
+    border: 1px solid #d5d8d9c7!important;
+    height: 64px!important;
+}
+.start-body.visual-page.rasa-inner.bibliography-page .top-search.biblography-search .ms-parent .ms-choice{
+   
 }
 .ms-choice > span {
     top: 15px;
@@ -6620,9 +6722,12 @@ text-align: left;
   .select2-container--default .select2-search--inline .select2-search__field{
     text-align: left!important;
   }
-  .start-body.visual-page.rasa-inner.bibliography-page .select2-container--default .select2-selection--multiple .select2-selection__rendered{
+  /* .start-body.visual-page.rasa-inner.bibliography-page .select2-container--default .select2-selection--multiple .select2-selection__rendered{
     padding:  6px 12px 6px 28px;
   }
+  .start-body.visual-page.rasa-inner.bibliography-page .select2-container--default .select2-selection--multiple .select2-selection__rendered {
+    padding: 6px 12px 6px 28px;
+} */
   .ui-widget-content{
     border: 1px solid #909090;
     background: transparent;
@@ -6632,6 +6737,7 @@ text-align: left;
   }
   .list-unstyled {
     margin: 0!important;
+    height: auto!important;
   }
   .search-filters input{
     margin-bottom: 0px!important;
@@ -6661,6 +6767,7 @@ text-align: left;
 
 .start-body.visual-page.visual-search-page .select2-container--default .select2-selection--multiple{
     background-color: #fff!important;
+    border: 1px solid #ced4da;
     /* padding-left: 35px; */
 }
 .search-barOption .btn-default.form-control.search-bttn{
@@ -6765,7 +6872,9 @@ text-align: left;
     display: flex;
     margin-right: 4px;
 }
-
+.start-body.visual-page.rasa-inner.bibliography-page .search-new-namrata{
+    width: 66%;
+}
 .start-body.visual-page.rasa-inner.bibliography-page .visual-inner .hearder-options .btn-search{
     margin-right: 0!important;
 }
@@ -6776,6 +6885,8 @@ text-align: left;
 }
 .visual-search-details-page.bibliography-search-details-page .bibliography-cite .form-control i{
     color: #fff;
+    font-style: normal;
+    font-family: 'Roboto Mono';
 }
 
 .ms-drop.bottom input{
@@ -6931,3 +7042,111 @@ text-align: left;
     line-height: 24px!important;
     margin-top: 20px;
 }
+.start-body.visual-page.visual-search-page .select2-container--default .select2-selection--multiple .select2-selection__rendered {
+    padding-left: 40px;
+}
+.rasa-new-modal .modal-dialog .modal-content {
+    padding: 40px;
+    background-color: #f7fafb;
+    border: none;
+}
+.rasa-new-modal .modal-header .modal-title {
+    color: var(--textColor);
+    font-weight: 700;
+    font-size: 17px;
+    font-family: 'Roboto Mono';
+    text-transform: uppercase;
+    padding-bottom: 20px;
+}
+.rasa-new-modal .modal-header {
+    border: none;
+    padding: 0;
+}
+.rasa-new-modal .modal-dialog .modal-body {
+    padding: 0;
+}
+.rasa-new-modal label {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+}
+.rasa-new-modal .form-control {
+    background-color: #fff;
+    border: 1px solid #ced4da;
+    border-radius: 0px;
+}
+.rasa-new-modal .form-control.login-btn {
+    color: #fff;
+    font-family: 'Roboto Mono';
+    font-size: 16px;
+    font-weight: 400;
+    text-transform: uppercase;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    /* padding-right: 44px; */
+    width: 100%;
+    transition: .5s ease all;
+    background-color: var(--primaryColor);
+}
+.rasa-new-modal .password-inner {
+    display: flex;
+    align-items: center;
+    /* justify-content: center; */
+    padding-top: 10px;
+}
+.rasa-new-modal .password-inner .password-box .forget-btn.form-control {
+    background-color: transparent;
+    padding-right: 20px;
+    color: var(--textColor);
+    font-size: 17px;
+    font-weight: 500;
+    font-family: 'Roboto';
+    border: none;
+}
+.rasa-new-modal .form-control {
+    background-color: #fff;
+    border: 1px solid #ced4da;
+    border-radius: 0px;
+}
+.rasa-new-modal .password-inner .password-box .register-btn {
+    font-weight: 500;
+    color: var(--primaryColor);
+    font-size: 16px;
+    font-family: 'Roboto';
+}
+.rasa-new-modal .modal-dialog {
+    max-width: 630px;
+    top: 9%;
+}
+.rasa-new-modal .forget-btn {
+    display: flex!important;
+    justify-content: flex-start!important;
+    align-items: center;
+}
+.visual-search-details-page.exhibition-details-page.cart-page .subtotal-inner .subtotal-info .subtotal-right.redio-info .redio-box .cart-box-inner {
+    display: flex;
+}
+.visual-search-details-page.exhibition-details-page.cart-page .subtotal-inner .subtotal-info .subtotal-right.redio-info .redio-box .cart-box-inner .cart-box-info{
+    display: flex;
+    justify-content: center;
+}
+.visual-search-details-page.exhibition-details-page.cart-page .subtotal-inner input[type="radio"] {
+    appearance: none;
+    z-index: 99;
+    height: 29px;
+    width: 24px;
+    /* background-color: transparent; */
+    cursor: pointer;
+}
+/* .select2.select2-container.select2-container--default.select2-container--focus.select2-container--open.select2-container--above{
+    border: 1px solid #ced4da;
+} */
+
+
+
+
+
+

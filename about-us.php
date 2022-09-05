@@ -6,7 +6,7 @@ require_once(INCLUDED_FILES . "dbConn.php");
 require_once(INCLUDED_FILES . "functionsInc.php");
 $conn = dbconnect();
 $title = "About Us";
-include(INC_FOLDER . "homeheaderInc.php");
+include(INC_FOLDER . "headerInc.php");
 
 
 ?>
