@@ -11,6 +11,14 @@ $('.close-btn').on('click', function(){
     $('.header .sidebar').removeClass('active');
     $('.menu-overlay').removeClass('active');
 });
+// $(".header .menu-overlay").click(function(){
+//     $(".header .sidebar").removeClass("active");
+//     $(this).removeClass('active');
+//   });
+// $('.menu-overlay-box').on('click', function(){
+//     $('.header .sidebar').removeClass('active');
+//     $('.menu-overlay').removeClass('active');
+// });
 
 //navigation-part end
 
@@ -1005,4 +1013,18 @@ window.addEventListener("click", windowOnClick);
 
     $('#example-multiple-selected').multiselect();
 
+//jQuery code
+$( document ).on( "click", ".button-nav, .navigation-backdrop", function () {
+  
+    var $nav = $( "#navigation-demo" );
+    var $hasClass = $nav.hasClass( "open" );
 
+    if ( !$hasClass ) {
+        $nav.addClass( "open" );
+        $( "body" ).append( "<div class='navigation-backdrop'></div>" );
+    } else {
+        $nav.removeClass( "open" );
+        $( ".navigation-backdrop" ).remove();
+    }
+
+});

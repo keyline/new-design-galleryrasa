@@ -85,7 +85,7 @@ if (!isset($_COOKIE["cookieid"])) {
     <!-- NAVBAR
     ================================================== -->
     <body class="pattern-banner">
-        <!-- <header class="header"> -->
+        <header class="header">
         <!--  NEW NAV ENDS   -->
         <section class="topPanel">
             <div class="container">
@@ -142,7 +142,7 @@ if (!isset($_COOKIE["cookieid"])) {
                                     <span class="material-icons">menu</span>
                                 </button>
                                 <!-- sidebar -->
-                                <aside class="sidebar">
+                                <aside class="sidebar" id="sideBox">
                                     <div class="sidebar-header">
                                         <button class="close-btn"><i class="zmdi zmdi-close"></i></button>
                                     </div>
@@ -209,6 +209,9 @@ if (!isset($_COOKIE["cookieid"])) {
             </div>
         </section>
         <!--  NEW NAV ENDS   -->
-    <!-- </header> -->
-    <!-- <div class="menu-overlay"></div> -->
+    </header>
+    
+    <div class="menu-overlay-box">
+    <div class="menu-overlay"></div>
+    </div>
 

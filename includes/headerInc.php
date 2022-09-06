@@ -93,7 +93,7 @@ if (!isset($_COOKIE["cookieid"])) {
     <!-- NAVBAR
     ================================================== -->
     <body class="noise-banner">
-        <!-- <header class="header"> -->
+        <header class="header">
         <!--  NEW NAV ENDS   -->
         <section class="topPanel">
             <div class="container">
@@ -150,83 +150,48 @@ if (!isset($_COOKIE["cookieid"])) {
                                     <span class="material-icons">menu</span>
                                 </button>
                                 <!-- sidebar -->
-                                <aside class="sidebar">
-                                    <div class="sidebar-header">
-                                        <button class="close-btn"><i class="zmdi zmdi-close"></i></button>
-                                        <!-- <span class="material-symbols">close</span> -->
-                                        <!-- <span class="material-symbols">done</span> -->
-                                    </div>
-                                    <div class="nav-boxs">
-                                        <ul class="nav navbar-nav navbar-left " id="nav">
-                                            <li class="nav-item"><a class="nav-link" href="<?php echo SITE_URL ?>about-us">About us</a></li>
-                                            <li class="nav-item"><a class="nav-link" href="<?php echo SITE_URL ?>vision-statement">VISION STATEMENT</a></li>
-                                            <li class="nav-item"><a class="nav-link" href="<?php echo SITE_URL ?>testimonials">TESTIMONIALS</a></li>
-                                            <li class="nav-item"><a class="nav-link" href="#">in the press</a></li>
-                                            <li class="nav-item"><a class="nav-link" href="#">photo book</a></li>
-                                            <li class="nav-item"><a class="nav-link" href="<?php echo SITE_URL ?>contactus"">CONTACT US</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="nav-boxs nav-boxs-mobile">
-                                        <ul class="nav navbar-nav navbar-left " id="nav">
-                                            <li class="nav-item"><a class="nav-link" href="<?php echo SITE_URL ?>">home</a></li>
-                                            <li class="nav-item"><a class="nav-link" href="<?php echo SITE_URL ?>visualarchive-search">VISUAL ARCHIVES</a></li>
-                                            <li class="nav-item"><a class="nav-link" href="<?php echo SITE_URL ?>beforeSearch">BIBLIOGRAPHY</a></li>
-                                            <li class="nav-item"><a class="nav-link" href="<?php echo SITE_URL ?>memorabilia-search">BENGALI FILM ARCHIVES</a></li>
-                                            <li class="nav-item"><a class="nav-link" href="<?php echo SITE_URL ?>podcast-search">PODCAST</a></li>
-                                            <li class="nav-item"><a class="nav-link" href="<?php echo SITE_URL ?>exhibition-search">EXHIBITION</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="nav-form">
-                                        <h4>Subscribe to our Newsletter</h4>
-                                        <?php
-                                        if (isset($_SESSION['newsletter'])) {
-                                            ?>
-                                            <p>
-                                                <?php echo $_SESSION['newsletter']; ?> 
-                                            </p>
-                                            <?php
-                                            unset($_SESSION['newsletter']);
-                                        }
-                                        ?>
-                                        <!-- <form>
-                                            <div class="form-group">
-                                                <input type="email" class="form-control" placeholder="your name">
-                                            </div>
-                                            <div class="form-group arrow-box">
-                                                <input type="email" class="form-control" placeholder="your e-mail address">
-                                                <a href="#" class="arrow"><i class="zmdi zmdi-arrow-right"></i></a>
-                                            </div>
-                                        </form> -->
-                                        <form id="contact-form" method="post" action="contact_newsletter.php" role="form">
-                                            <div class="form-group">
-                                                <input type="text" name="fullname" class="form-control" id="fullname" placeholder="your name">
-                                            </div>
-                                            <div class="form-group arrow-box">
-                                                <input type="email" name="fullemail" class="form-control" id="fullemail" aria-describedby="emailHelp" placeholder="your e-mail address">
-                                                <!-- <a href="#" class="arrow"><i class="zmdi zmdi-arrow-right"></i></a> -->
-                                                <button type="submit" class="arrow"><i class="zmdi zmdi-arrow-right"></i></button>
-                                            </div>
-                                            <div class="form-group">
-                                                <!--<div class="g-recaptcha" data-sitekey="6LeGYzEbAAAAABEW4etvHZZKGwNs3SaF7FAQcCAK" data-callback="verifyRecaptchaCallback" data-expired-callback="expiredRecaptchaCallback"></div>-->
+                                <div class="main">
+  
+	<div class="header-top">
+      <button class="button-nav">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </button>
+      <h1>Heading Title</h1>
+	</div>
+  
+	<!-- navigation open -->
+		<div class="navigation" id="navigation-demo">
+	  		<nav>
+          <div class="navigation-button">
+      				<button class="button-nav">Close</button>
+          </div>
 
-                                                <div class="g-recaptcha" data-sitekey="6LeGYzEbAAAAABEW4etvHZZKGwNs3SaF7FAQcCAK"></div>
-                                                <!-- <div class="g-recaptcha" id="sape_captcha" data-sitekey="6LcwDKsZAAAAAGh3QyRMNaEANIPKUPvYuoOpQ2JY"></div> -->
-
-                                                <!-- <button type="submit" class="btn btn-primary form-control" data-recaptcha="true" required data-error="Please complete the Captcha">Submit</button> -->
-                                                <div class="help-block with-errors"></div>
-                                            </div>
-                                        </form>
-                                    </div>
-                                    <div class="nav-social">
-                                        <h4>Find us on Social Media</h4>
-                                        <ul>
-                                            <li><a href="https://www.facebook.com/galleryrasa" target="_blank"><img class="img-fluid" src="images/facebook-white.png"></a></li>
-                                            <li><a href="https://www.instagram.com/galleryrasa_official" target="_blank"><img class="img-fluid" src="images/insta-white.png"></a></li>
-                                            <li><a href="https://twitter.com/galleryrasaart" target="_blank"><img class="img-fluid" src="images/twe-white.png"></a></li>
-                                            <li><a href="https://www.linkedin.com/in/rakesh-sahni-19369063" target="_blank"><img class="img-fluid" src="images/in-white.png"></a></li>
-                                        </ul>
-                                    </div>
-                                </aside>
+          <h3 class="navigation-heading">Heading Navigation</h3>
+	    		<ul class="navigation-list">
+	      			<li><a href="#">Link 1</a></li>
+	      			<li><a href="#">Link 2</a></li>
+              <li><a href="#">Link 3</a></li>
+	    		</ul>
+              
+          <h3 class="navigation-heading">Heading Navigation</h3>
+	    		<ul class="navigation-list">
+	      			<li><a href="#">Link 4</a></li>
+	      			<li><a href="#">Link 5</a></li>
+              <li><a href="#">Link 6</a></li>
+	    		</ul>
+              
+	  		</nav>
+		</div>
+	<!-- navigation close -->
+  
+  	<article style="padding:15px">
+  		<p>Lorem Ipsum ...</p>
+  	</article>
+  	
+</div>
+        
                             </div>
                         </div>
                     </div>
@@ -234,6 +199,13 @@ if (!isset($_COOKIE["cookieid"])) {
             </div>
         </section>
         <!--  NEW NAV ENDS   -->
-    <!-- </header> -->
-    <!-- <div class="menu-overlay"></div> -->
+    </header>
+    
+    <div class="menu-overlay-box">
+    <div class="menu-overlay"></div>
+    </div>
+
+
+
+    
 
