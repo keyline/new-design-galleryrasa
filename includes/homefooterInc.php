@@ -796,7 +796,7 @@ $time_taken = round($time_taken, 5);
         $(document).find(".lg-outer").addClass("test");
     })
 </script>
-<script>
+<!-- <script>
     $("#myRange_test1, #zoom-in, #zoom-out").on("click", function () {
         $(this).parents("div").find(".light-box-gallery-wrapper .thumb-img-wrapper .ZoomContainer").hide();
     })
@@ -823,7 +823,7 @@ $time_taken = round($time_taken, 5);
 
     });
 
-</script>
+</script> -->
 
 <!--</div>-->
 

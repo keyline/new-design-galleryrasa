@@ -129,12 +129,12 @@ if ($response['success'] === true) {
             header("Location: contactus.php");
         }
     } else {
-        $_SESSION['fail'] = 'Fill up the form completely';
+        $_SESSION['fail'] = 'ONE OR MORE FIELDS HAVE ERROR. TRY AGAIN';
 
         header("Location: contactus.php");
     }
 } else {
-    $_SESSION['fail'] = 'Wrong Captcha';
+    $_SESSION['fail'] = 'ONE OR MORE FIELDS HAVE ERROR. TRY AGAIN';
 
     header("Location: contactus.php");
 }

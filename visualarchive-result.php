@@ -638,10 +638,12 @@ p.category_id = 2 AND v.value='" . $v . "' AND f.attribute_name = '" . $k . "' G
                                                                 %s
                                                                 <img class="img-fluid" alt="%s" src="%s">
                                                             </div>
+                                                        <div class="artist-new-search">
                                                         <div class="artist-sub">
                                                             <a  href="%s" class="artist-sub-btn" target="_blank">
                                                             %s
                                                             </a> 
+                                                        </div>
                                                         </div>
                                                         </div>
                                                     
@@ -769,10 +771,12 @@ p.category_id = 2 AND v.value='" . $v . "' AND f.attribute_name = '" . $k . "' G
                                                     %s
                                                     <img class="img-fluid" alt="%s" src="%s">
                                                 </div>
+                                                <div class="artist-new-search">
                                             <div class="artist-sub">
                                                 <a  href="%s" class="artist-sub-btn" target="_blank">
                                                 %s
                                                 </a> 
+                                            </div>
                                             </div>
                                             </div>
                                         

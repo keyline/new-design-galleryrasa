@@ -11,6 +11,11 @@ require_once(INCLUDED_FILES . "headerInc.php");
 <section class="start-body podcast-page artist-search get-page">
         <div class="container">
             <div class="row">
+                <!-- <div class="col-lg-12">
+                <div class="contact-wrong">
+                <span class="label label-success" style="background-color: red;padding: 5px;color: #fff;float: right;">Wrong Captcha</span>
+                </div>
+                </div> -->
                 <div class="col-lg-6">
                     <div class="podcast-body get-body">
                         <div class="podcast-title">
@@ -80,7 +85,7 @@ require_once(INCLUDED_FILES . "headerInc.php");
                         </div>
                         <ul>
                             <li>
-                                <span class="material-icons">whatsapp</span>
+                            <i class="zmdi zmdi-whatsapp"></i>
                                 <a href="#" class="get-icon">+91 76040 81323</a>
                             </li>
                             <li>

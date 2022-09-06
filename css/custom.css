@@ -823,7 +823,7 @@ main .btn.add-to-cart-btn {
 
 .ms-choice>div:before {
     content: "\e5cf";
-    font-family: FontAwesome;
+    font-family: "Material Icons";
     color: #888;
     display: block;
     text-align: center;
