@@ -19,7 +19,7 @@
                                                                 <form method="post" action="visualarchive-result" name="search_form" id="search_form" class="visualarchive-result search-input">
                                                                     <div class="form-group">
                                                                         <!-- <div class="col-md-11 p-0"> -->
-                                                                            <select class="program-name" name="visualarchive[]" multiple="multiple" data-placeholder="Search by Artist"></select>
+                                                                            <select class="program-name" name="visualarchive[]" multiple="multiple" data-placeholder="enter artist’s name"></select>
                                                                         <!-- </div> -->
                                                                         <!-- <div class="col-md-1 p-0"> -->
                                                                                 <button type="submit" value="entryPoint" name="srchButtonEntryPoint" class="btn-search" type="submit"><span class="material-icons">search</span></button >
