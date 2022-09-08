@@ -824,18 +824,21 @@ main .btn.add-to-cart-btn {
 .ms-choice>div:before {
     content: "\e5cf";
     font-family: "Material Icons";
-    color: #888;
+    color: #333;
     display: block;
     text-align: center;
     font-size: 20px;
     position: absolute;
-    top: 30px;
-    left: 50%;
+    font-size: 34px;
+    top: 32px;
+    /* right: -37px; */
+    /* left: -24px; */
+    left: 0%;
     transform: translate(-50%, -50%);
 }
 
 .ms-choice>div.open:before {
-    content: "\f0d8";
+    content: "\e5cf";
 }
 
 .ms-parent .ms-choice>div,
