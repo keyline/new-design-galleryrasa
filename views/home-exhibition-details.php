@@ -1,5 +1,5 @@
 <main>
-	<section class="visual-search-details-page exhibition-details-page">
+	<section class="visual-search-details-page exhibition-details-page exhibition-details-new">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">

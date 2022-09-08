@@ -2588,7 +2588,7 @@ top: 0;
     background-color: var(--textColor);
 }
 .artist-search.bibliography-search .artist-pagination .pagination{
-    padding-top: 10px;
+    padding-top: 80px;
 }
 .artist-search.bibliography-search .artist-inner .artist-top.artist-top-2{
     margin-bottom: 0px;
@@ -2699,10 +2699,10 @@ top: 0;
 /* ********|| BENGALI FILM ARCHIVES PAGE ENDS ||******** */
 
 /* ********|| BENGALI FILM ARCHIVES SEARCH PAGE STARTS ||******** */
-.artist-search.bibliography-search.bengali-film-search .artist-inner .artist-info .artist-box{
+/* .artist-search.bibliography-search.bengali-film-search .artist-inner .artist-info .artist-box{
     width: calc(100% / 4);
     
-}
+} */
 .artist-search .artist-inner .artist-info .artist-box .artist-img.artist-img-bengali{
     border: transparent!important;
 }
@@ -4129,7 +4129,10 @@ font-size: 16px;
     letter-spacing: 1px;
 
 }
-.visual-search-details-page.exhibition-details-page .exhibition-search-title:after{
+.artist-search.bibliography-search.bengali-film-search .artist-inner .artist-info .line-content{
+    width: calc(100% / 4); 
+}
+.visual-search-details-page.exhibition-details-page.exhibition-details-new .exhibition-search-title:after{
     position: absolute;
     content: '';
     background-color: var(--primaryColor);
