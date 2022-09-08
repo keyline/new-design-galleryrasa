@@ -947,6 +947,9 @@
 
 /*MOBILE VERSION*/
 @media screen and (max-width: 767px) {
+    .ms-choice>div:before {
+        top: 38px;
+    }
    
     .testimonials .testimonial-info .testimonial-learn .testimonial-name {
         font-size: 24px;
