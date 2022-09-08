@@ -190,46 +190,54 @@
 <script type="text/javascript">
     function ajaxPagination(contentCount){
         //Pagination
-        pageSize = 9;
-        incremSlide = 10;
+        pageSize = 8;
+        incremSlide = 9;
         startPage = 0;
         numberPage = 0;
         // alert(contentCount);
         var pageCount =  contentCount / pageSize;
+        // alert(pageCount);
         var totalSlidepPage = Math.floor(pageCount / incremSlide);
+        // alert(totalSlidepPage);
             
         for(var i = 0 ; i<pageCount;i++){
-            $("#pagin").append('<li class="page-item"><a class="page-link" href="javascript:void(0);">'+(i+1)+'</a></li> ');
+            $("#pagin").append('<li><a class="page-link" href="javascript:void(0);">'+(i+1)+'</a></li> ');
             if(i>pageSize){
                 $("#pagin li").eq(i).hide();
             }
         }
         //var prevIcon = '<a class="page-link" href="#" aria-label="Previous"><i class="zmdi zmdi-chevron-left"></i></a>';
-        var prevIcon = '<i class="page-link prev"></i>';
-        var prev = $("<li/>").addClass("prev page-item").html(prevIcon).click(function(){
-            startPage-=10;
-            incremSlide-=10;
+        var prevIcon = '<i>Prev</i>';
+        var prev = $("<li/>").addClass("page-link prev").html(prevIcon).click(function(){
+            startPage-=9;
+            incremSlide-=9;
             numberPage--;
             slide();
         });
-        prev.hide();
+        //prev.hide();
+
         //var nextIcon = '<a class="page-link" href="#" aria-label="Next"><i class="zmdi zmdi-chevron-right"></i></a>';
-        var nextIcon = '<i class="page-link prev"></i>';
-        var next = $("<li/>").addClass("next page-item").html(nextIcon).click(function(){
-            startPage+=10;
-            incremSlide+=10;
+        var nextIcon = '<i>Next</i>';
+        var next = $("<li/>").addClass("page-link prev").html(nextIcon).click(function(){
+            startPage+=9;
+            incremSlide+=9;
             numberPage++;
             slide();
+            // alert('avijit');
         });
-        next.hide();
+        //next.hide();
 
         $("#pagin").prepend(prev).append(next);
 
         $("#pagin li").first().find("a").addClass("active");
 
+        // alert(startPage);
+
         slide = function(sens){
+            //alert(startPage);
+            //alert(numberPage);
+            //alert(totalSlidepPage);
             $("#pagin li").hide();
-            
             for(t=startPage;t<incremSlide;t++){
                 $("#pagin li").eq(t+1).show();
             }
@@ -240,10 +248,12 @@
                 next.hide();
                 prev.show();
             }else{
-                next.show();
+                //alert('avijit');
                 prev.show();
+                next.show();
             }
         }
+
         showPage = function(page) {
                 $(".line-content").hide();
                 $(".line-content").each(function(n) {
@@ -259,6 +269,4 @@
                 showPage(parseInt($(this).text()));
         });
     }
-
-
 </script>

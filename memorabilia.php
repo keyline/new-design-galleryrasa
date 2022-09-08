@@ -608,22 +608,24 @@ p.category_id = 2 AND v.value='" . $v . "' AND f.attribute_name = '" . $k . "' G
 
                                             if ($usersession == false) {
                                                 $baseHTML = '<a data-toggle="modal" data-target="#exampleModallogin2">
-                                                <div class="artist-box">
-                                                    <div class="artist-box-info">
-                                                            %s
-                                                        <div class="artist-box-body">
-                                                            <div class="artist-img artist-img-bengali">                                                            
-                                                                <img class="img-fluid" src="%s" alt="%s">
-                                                            </div>
-                                                            <div class="artist-new-search">
-                                                            <div class="artist-sub">
-                                                                <a data-toggle="modal" data-target="#exampleModallogin2" class="artist-sub-btn">
+                                                <div class="line-content">
+                                                    <div class="artist-box">
+                                                        <div class="artist-box-info">
                                                                 %s
-                                                                </a>
+                                                            <div class="artist-box-body">
+                                                                <div class="artist-img artist-img-bengali">                                                            
+                                                                    <img class="img-fluid" src="%s" alt="%s">
+                                                                </div>
+                                                                <div class="artist-new-search">
+                                                                <div class="artist-sub">
+                                                                    <a data-toggle="modal" data-target="#exampleModallogin2" class="artist-sub-btn">
+                                                                    %s
+                                                                    </a>
+                                                                </div>
+                                                                </div>
                                                             </div>
-                                                            </div>
+                                                            %s
                                                         </div>
-                                                        %s
                                                     </div>
                                                 </div>
                                             </a>'.$modal;
@@ -640,22 +642,24 @@ p.category_id = 2 AND v.value='" . $v . "' AND f.attribute_name = '" . $k . "' G
 
 
                                                 $baseHTML = '<a href="%s" target="_blank">
-                                                <div class="artist-box">
-                                                    <div class="artist-box-info">
+                                                <div class="line-content">
+                                                    <div class="artist-box">
+                                                        <div class="artist-box-info">
+                                                                %s
+                                                            <div class="artist-box-body">
+                                                                <div class="artist-img artist-img-bengali">                                                            
+                                                                    <img class="img-fluid"  alt="%s" src="%s">
+                                                                </div>
+                                                                <div class="artist-new-search">
+                                                                <div class="artist-sub">
+                                                                    <a href="%s" target="_blank" class="artist-sub-btn">
+                                                                        %s
+                                                                    </a>
+                                                                </div>
+                                                                </div>
+                                                            </div>
                                                             %s
-                                                        <div class="artist-box-body">
-                                                            <div class="artist-img artist-img-bengali">                                                            
-                                                                <img class="img-fluid"  alt="%s" src="%s">
-                                                            </div>
-                                                            <div class="artist-new-search">
-                                                            <div class="artist-sub">
-                                                                <a href="%s" target="_blank" class="artist-sub-btn">
-                                                                    %s
-                                                                </a>
-                                                            </div>
-                                                            </div>
                                                         </div>
-                                                        %s
                                                     </div>
                                                 </div>
                                             </a>';
@@ -701,22 +705,24 @@ p.category_id = 2 AND v.value='" . $v . "' AND f.attribute_name = '" . $k . "' G
                                             if ($usersession == false) {
 
                                                 $baseHTML = '<a data-toggle="modal" data-target="#exampleModallogin2">
-                                                <div class="artist-box">
-                                                    <div class="artist-box-info">
+                                                <div class="line-content">
+                                                    <div class="artist-box">
+                                                        <div class="artist-box-info">
+                                                                %s
+                                                            <div class="artist-box-body">
+                                                                <div class="artist-img artist-img-bengali">                                                            
+                                                                    <img class="img-fluid"  alt="%s" src="%s">
+                                                                </div>
+                                                                <div class="artist-new-search">
+                                                                <div class="artist-sub">
+                                                                    <a data-toggle="modal" data-target="#exampleModallogin2" class="artist-sub-btn">
+                                                                        %s
+                                                                    </a>
+                                                                </div>
+                                                                </div>
+                                                            </div>
                                                             %s
-                                                        <div class="artist-box-body">
-                                                            <div class="artist-img artist-img-bengali">                                                            
-                                                                <img class="img-fluid"  alt="%s" src="%s">
-                                                            </div>
-                                                            <div class="artist-new-search">
-                                                            <div class="artist-sub">
-                                                                <a data-toggle="modal" data-target="#exampleModallogin2" class="artist-sub-btn">
-                                                                    %s
-                                                                </a>
-                                                            </div>
-                                                            </div>
                                                         </div>
-                                                        %s
                                                     </div>
                                                 </div>
                                             </a>'.$modal;
@@ -728,22 +734,24 @@ p.category_id = 2 AND v.value='" . $v . "' AND f.attribute_name = '" . $k . "' G
                                             } else {
 
                                                 $baseHTML = '<a href="%s" target="_blank">
-                                                <div class="artist-box">
-                                                    <div class="artist-box-info">
+                                                <div class="line-content">
+                                                    <div class="artist-box">
+                                                        <div class="artist-box-info">
+                                                                %s
+                                                            <div class="artist-box-body">
+                                                                <div class="artist-img artist-img-bengali">                                                            
+                                                                    <img class="img-fluid"  alt="%s" src="%s">
+                                                                </div>
+                                                                <div class="artist-new-search">
+                                                                <div class="artist-sub">
+                                                                    <a href="%s" target="_blank" class="artist-sub-btn">
+                                                                        %s
+                                                                    </a>
+                                                                </div>
+                                                                </div>
+                                                            </div>
                                                             %s
-                                                        <div class="artist-box-body">
-                                                            <div class="artist-img artist-img-bengali">                                                            
-                                                                <img class="img-fluid"  alt="%s" src="%s">
-                                                            </div>
-                                                            <div class="artist-new-search">
-                                                            <div class="artist-sub">
-                                                                <a href="%s" target="_blank" class="artist-sub-btn">
-                                                                    %s
-                                                                </a>
-                                                            </div>
-                                                            </div>
                                                         </div>
-                                                        %s
                                                     </div>
                                                 </div>
                                             </a>';
@@ -775,22 +783,24 @@ p.category_id = 2 AND v.value='" . $v . "' AND f.attribute_name = '" . $k . "' G
                                             if ($usersession == false) {
 
                                                 $baseHTML = '<a data-toggle="modal" data-target="#exampleModallogin2">
-                                                <div class="artist-box">
-                                                    <div class="artist-box-info">
+                                                <div class="line-content">
+                                                    <div class="artist-box">
+                                                        <div class="artist-box-info">
+                                                                %s
+                                                            <div class="artist-box-body">
+                                                                <div class="artist-img artist-img-bengali">                                                            
+                                                                    <img class="img-fluid" src="%s" alt="%s">
+                                                                </div>
+                                                                <div class="artist-new-search">
+                                                                <div class="artist-sub">
+                                                                    <a data-toggle="modal" data-target="#exampleModallogin2" class="artist-sub-btn">
+                                                                        %s
+                                                                    </a>
+                                                                </div>
+                                                                </div>
+                                                            </div>
                                                             %s
-                                                        <div class="artist-box-body">
-                                                            <div class="artist-img artist-img-bengali">                                                            
-                                                                <img class="img-fluid" src="%s" alt="%s">
-                                                            </div>
-                                                            <div class="artist-new-search">
-                                                            <div class="artist-sub">
-                                                                <a data-toggle="modal" data-target="#exampleModallogin2" class="artist-sub-btn">
-                                                                    %s
-                                                                </a>
-                                                            </div>
-                                                            </div>
                                                         </div>
-                                                        %s
                                                     </div>
                                                 </div>
                                             </a>'.$modal;
@@ -802,22 +812,24 @@ p.category_id = 2 AND v.value='" . $v . "' AND f.attribute_name = '" . $k . "' G
                                             } else {
 
                                                 $baseHTML = '<a href="%s" target="_blank">
-                                                <div class="artist-box">
-                                                    <div class="artist-box-info">
+                                                <div class="line-content">
+                                                    <div class="artist-box">
+                                                        <div class="artist-box-info">
+                                                                %s
+                                                            <div class="artist-box-body">
+                                                                <div class="artist-img artist-img-bengali">                                                            
+                                                                    <img class="img-fluid"  src="%s" alt="%s" >
+                                                                </div>
+                                                                <div class="artist-new-search">
+                                                                <div class="artist-sub">
+                                                                    <a href="%s" target="_blank" class="artist-sub-btn">
+                                                                        %s
+                                                                    </a>
+                                                                </div>
+                                                                </div>
+                                                            </div>
                                                             %s
-                                                        <div class="artist-box-body">
-                                                            <div class="artist-img artist-img-bengali">                                                            
-                                                                <img class="img-fluid"  src="%s" alt="%s" >
-                                                            </div>
-                                                            <div class="artist-new-search">
-                                                            <div class="artist-sub">
-                                                                <a href="%s" target="_blank" class="artist-sub-btn">
-                                                                    %s
-                                                                </a>
-                                                            </div>
-                                                            </div>
                                                         </div>
-                                                        %s
                                                     </div>
                                                 </div>
                                             </a>';
@@ -841,22 +853,24 @@ p.category_id = 2 AND v.value='" . $v . "' AND f.attribute_name = '" . $k . "' G
                                 
                                 
                                 $baseHTML = '<a data-toggle="modal" data-target="#exampleModallogin2">
-                                <div class="artist-box">
-                                    <div class="artist-box-info">
+                                <div class="line-content">
+                                    <div class="artist-box">
+                                        <div class="artist-box-info">
+                                                %s
+                                            <div class="artist-box-body">
+                                                <div class="artist-img artist-img-bengali">                                                            
+                                                    <img class="img-fluid" src="%s" alt="%s">
+                                                </div>
+                                                <div class="artist-new-search">
+                                                <div class="artist-sub">
+                                                    <a data-toggle="modal" data-target="#exampleModallogin2" class="artist-sub-btn">
+                                                        %s
+                                                    </a>
+                                                </div>
+                                                </div>
+                                            </div>
                                             %s
-                                        <div class="artist-box-body">
-                                            <div class="artist-img artist-img-bengali">                                                            
-                                                <img class="img-fluid" src="%s" alt="%s">
-                                            </div>
-                                            <div class="artist-new-search">
-                                            <div class="artist-sub">
-                                                <a data-toggle="modal" data-target="#exampleModallogin2" class="artist-sub-btn">
-                                                    %s
-                                                </a>
-                                            </div>
-                                            </div>
                                         </div>
-                                        %s
                                     </div>
                                 </div>
                             </a>'.$modal;
@@ -869,22 +883,24 @@ p.category_id = 2 AND v.value='" . $v . "' AND f.attribute_name = '" . $k . "' G
 
 
                                 $baseHTML = '<a href="%s" target="_blank">
-                                <div class="artist-box">
-                                    <div class="artist-box-info">
+                                <div class="line-content">
+                                    <div class="artist-box">
+                                        <div class="artist-box-info">
+                                                %s
+                                            <div class="artist-box-body">
+                                                <div class="artist-img artist-img-bengali">                                                            
+                                                    <img class="img-fluid"  alt="%s" src="%s">
+                                                </div>
+                                                <div class="artist-new-search">
+                                                <div class="artist-sub">
+                                                    <a href="%s" target="_blank" class="artist-sub-btn">
+                                                        %s
+                                                    </a>
+                                                </div>
+                                                </div>
+                                            </div>
                                             %s
-                                        <div class="artist-box-body">
-                                            <div class="artist-img artist-img-bengali">                                                            
-                                                <img class="img-fluid"  alt="%s" src="%s">
-                                            </div>
-                                            <div class="artist-new-search">
-                                            <div class="artist-sub">
-                                                <a href="%s" target="_blank" class="artist-sub-btn">
-                                                    %s
-                                                </a>
-                                            </div>
-                                            </div>
                                         </div>
-                                        %s
                                     </div>
                                 </div>
                             </a>';
