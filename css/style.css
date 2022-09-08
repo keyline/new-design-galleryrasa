@@ -751,9 +751,9 @@ label.custom-select {
 .search_ajaxdetails::-webkit-scrollbar-thumb:hover {
   background: #555; 
 }
-/* .search-wrap .search_ajaxdetails {
+.search-wrap .search_ajaxdetails {
     display: none;
-} */
+}
 .search-wrap.active .search_ajaxdetails {
     display: block;
     background: #fff;
@@ -1617,10 +1617,23 @@ background-color: var(--textColor);
     height: 60px;
     background-color: #333;
     display: flex;
+    justify-content: center;
     align-items: center;
+    transition: .5s ease all;
+}
+.artist-inner .artist-box .artist-box-info .artist-box-body .artist-new-search{
+    height: 60px;
+    background-color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: .5s ease all;
+}
+.artist-inner .artist-box:hover .artist-box-info .artist-box-body .artist-new-search{
+    background-color: var(--primaryColor);
 }
 .artist-box-doc .artist-box .artist-box-info .artist-box-body .artist-new-search .artist-sub{
-    background-color: #333;
+    /* background-color: #333; */
     text-overflow: ellipsis;
     /* width: 100px; */
     overflow: hidden;
@@ -1632,8 +1645,11 @@ background-color: var(--textColor);
     align-items: center;
     text-align: center;
 }
-.artist-search .artist-inner .artist-info .artist-box:hover .artist-sub .artist-sub-btn{
+/* .artist-search .artist-inner .artist-info .artist-box:hover .artist-sub .artist-sub-btn{
         background-color: var(--primaryColor);
+} */
+.artist-box-doc .artist-box:hover .artist-box-info .artist-box-body .artist-new-search{
+    background-color: var(--primaryColor);
 }
 .artist-search .artist-inner .artist-info .artist-box .artist-box-info{
     position: relative;
@@ -1643,9 +1659,9 @@ background-color: var(--textColor);
     box-shadow: 6px 6px 0px 0px #d6d7d9;
     transition: .5s ease all;
 }
-.artist-search .artist-inner .artist-info .artist-box:hover .artist-sub{
+/* .artist-search .artist-inner .artist-info .artist-box:hover .artist-sub{
     background-color: var(--primaryColor);
-}
+} */
 .artist-search .artist-pagination .pagination{
     justify-content: center;
         padding-top: 60px;
@@ -6778,7 +6794,7 @@ text-align: left;
     /* padding-left: 35px; */
 }
 .list-unstyled li{
-    display: flex;
+    /* display: flex; */
     align-items: center;
     padding-bottom: 15px;
 }
