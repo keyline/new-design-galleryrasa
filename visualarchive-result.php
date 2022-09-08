@@ -723,10 +723,12 @@ p.category_id = 2 AND v.value='" . $v . "' AND f.attribute_name = '" . $k . "' G
                                                                 %s
                                                                 <img class="img-fluid" alt="%s" src="%s">
                                                             </div>
+                                                            <div class="artist-new-search">
                                                         <div class="artist-sub">
                                                             <a  ' . $modalurl . '" class="artist-sub-btn">
                                                             %s
                                                             </a> 
+                                                        </div>
                                                         </div>
                                                         </div>
                                                     
@@ -867,10 +869,12 @@ p.category_id = 2 AND v.value='" . $v . "' AND f.attribute_name = '" . $k . "' G
                                                     %s
                                                     <img class="img-fluid" alt="%s" src="%s">
                                                 </div>
+                                                <div class="artist-new-search">
                                             <div class="artist-sub">
                                                 <a  ' . $modalurl . '" class="artist-sub-btn" >
                                                 %s
                                                 </a> 
+                                            </div>
                                             </div>
                                             </div>
                                         

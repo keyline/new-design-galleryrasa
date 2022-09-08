@@ -615,10 +615,12 @@ p.category_id = 2 AND v.value='" . $v . "' AND f.attribute_name = '" . $k . "' G
                                                             <div class="artist-img artist-img-bengali">                                                            
                                                                 <img class="img-fluid" src="%s" alt="%s">
                                                             </div>
+                                                            <div class="artist-new-search">
                                                             <div class="artist-sub">
                                                                 <a data-toggle="modal" data-target="#exampleModallogin2" class="artist-sub-btn">
                                                                 %s
                                                                 </a>
+                                                            </div>
                                                             </div>
                                                         </div>
                                                         %s
@@ -645,10 +647,12 @@ p.category_id = 2 AND v.value='" . $v . "' AND f.attribute_name = '" . $k . "' G
                                                             <div class="artist-img artist-img-bengali">                                                            
                                                                 <img class="img-fluid"  alt="%s" src="%s">
                                                             </div>
+                                                            <div class="artist-new-search">
                                                             <div class="artist-sub">
                                                                 <a href="%s" target="_blank" class="artist-sub-btn">
                                                                     %s
                                                                 </a>
+                                                            </div>
                                                             </div>
                                                         </div>
                                                         %s
@@ -704,10 +708,12 @@ p.category_id = 2 AND v.value='" . $v . "' AND f.attribute_name = '" . $k . "' G
                                                             <div class="artist-img artist-img-bengali">                                                            
                                                                 <img class="img-fluid"  alt="%s" src="%s">
                                                             </div>
+                                                            <div class="artist-new-search">
                                                             <div class="artist-sub">
                                                                 <a data-toggle="modal" data-target="#exampleModallogin2" class="artist-sub-btn">
                                                                     %s
                                                                 </a>
+                                                            </div>
                                                             </div>
                                                         </div>
                                                         %s
@@ -729,10 +735,12 @@ p.category_id = 2 AND v.value='" . $v . "' AND f.attribute_name = '" . $k . "' G
                                                             <div class="artist-img artist-img-bengali">                                                            
                                                                 <img class="img-fluid"  alt="%s" src="%s">
                                                             </div>
+                                                            <div class="artist-new-search">
                                                             <div class="artist-sub">
                                                                 <a href="%s" target="_blank" class="artist-sub-btn">
                                                                     %s
                                                                 </a>
+                                                            </div>
                                                             </div>
                                                         </div>
                                                         %s
@@ -774,10 +782,12 @@ p.category_id = 2 AND v.value='" . $v . "' AND f.attribute_name = '" . $k . "' G
                                                             <div class="artist-img artist-img-bengali">                                                            
                                                                 <img class="img-fluid" src="%s" alt="%s">
                                                             </div>
+                                                            <div class="artist-new-search">
                                                             <div class="artist-sub">
                                                                 <a data-toggle="modal" data-target="#exampleModallogin2" class="artist-sub-btn">
                                                                     %s
                                                                 </a>
+                                                            </div>
                                                             </div>
                                                         </div>
                                                         %s
@@ -799,10 +809,12 @@ p.category_id = 2 AND v.value='" . $v . "' AND f.attribute_name = '" . $k . "' G
                                                             <div class="artist-img artist-img-bengali">                                                            
                                                                 <img class="img-fluid"  src="%s" alt="%s" >
                                                             </div>
+                                                            <div class="artist-new-search">
                                                             <div class="artist-sub">
                                                                 <a href="%s" target="_blank" class="artist-sub-btn">
                                                                     %s
                                                                 </a>
+                                                            </div>
                                                             </div>
                                                         </div>
                                                         %s
@@ -836,10 +848,12 @@ p.category_id = 2 AND v.value='" . $v . "' AND f.attribute_name = '" . $k . "' G
                                             <div class="artist-img artist-img-bengali">                                                            
                                                 <img class="img-fluid" src="%s" alt="%s">
                                             </div>
+                                            <div class="artist-new-search">
                                             <div class="artist-sub">
                                                 <a data-toggle="modal" data-target="#exampleModallogin2" class="artist-sub-btn">
                                                     %s
                                                 </a>
+                                            </div>
                                             </div>
                                         </div>
                                         %s
@@ -862,10 +876,12 @@ p.category_id = 2 AND v.value='" . $v . "' AND f.attribute_name = '" . $k . "' G
                                             <div class="artist-img artist-img-bengali">                                                            
                                                 <img class="img-fluid"  alt="%s" src="%s">
                                             </div>
+                                            <div class="artist-new-search">
                                             <div class="artist-sub">
                                                 <a href="%s" target="_blank" class="artist-sub-btn">
                                                     %s
                                                 </a>
+                                            </div>
                                             </div>
                                         </div>
                                         %s
