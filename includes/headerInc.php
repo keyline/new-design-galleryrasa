@@ -43,6 +43,8 @@ if (!isset($_COOKIE["cookieid"])) {
 <link rel="stylesheet" href="<?php echo SITE_URL . CSS_FOLDER ?>/jquery-ui.css">
 <link rel="stylesheet" href="<?php echo SITE_URL . CSS_FOLDER ?>custom.css">
 <link rel="stylesheet" type="text/css" href="<?php echo SITE_URL . CSS_FOLDER ?>style.css">
+<link rel="stylesheet" type="text/css" href="<?php echo SITE_URL . CSS_FOLDER ?>pushbar.css">
+<link rel="stylesheet" type="text/css" href="<?php echo SITE_URL . CSS_FOLDER ?>demo.css">
 <link rel="stylesheet" type="text/css" href="<?php echo SITE_URL . CSS_FOLDER ?>responsive.css">
 <link rel="stylesheet" href="<?php echo SITE_URL . CSS_FOLDER ?>jquery.bs4-scrolling-tabs.css">
 <link rel="stylesheet" href="<?php echo SITE_URL . CSS_FOLDER ?>font">

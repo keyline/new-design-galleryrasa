@@ -1014,17 +1014,17 @@ window.addEventListener("click", windowOnClick);
     $('#example-multiple-selected').multiselect();
 
 //jQuery code
-$( document ).on( "click", ".button-nav, .navigation-backdrop", function () {
+// $( document ).on( "click", ".button-nav, .navigation-backdrop", function () {
   
-    var $nav = $( "#navigation-demo" );
-    var $hasClass = $nav.hasClass( "open" );
+//     var $nav = $( "#navigation-demo" );
+//     var $hasClass = $nav.hasClass( "open" );
 
-    if ( !$hasClass ) {
-        $nav.addClass( "open" );
-        $( "body" ).append( "<div class='navigation-backdrop'></div>" );
-    } else {
-        $nav.removeClass( "open" );
-        $( ".navigation-backdrop" ).remove();
-    }
+//     if ( !$hasClass ) {
+//         $nav.addClass( "open" );
+//         $( "body" ).append( "<div class='navigation-backdrop'></div>" );
+//     } else {
+//         $nav.removeClass( "open" );
+//         $( ".navigation-backdrop" ).remove();
+//     }
 
-});
+// });
