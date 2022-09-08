@@ -9,8 +9,8 @@ require_once("../" . PAYU_FILES . "PayUMoney.php");
 $conn = dbconnect();
 $cust_id = $_SESSION['user-id'];
 
-print_r($_POST);
-die;
+// print_r($_POST);
+// die;
 
 
 if (!isset($_SESSION['bill_addr_exist'])) {

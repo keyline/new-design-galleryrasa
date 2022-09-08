@@ -1680,6 +1680,7 @@ background-color: var(--textColor);
 }
 .artist-search .artist-pagination .pagination .page-link.prev i{
     font-style: normal;
+    cursor: pointer;
 }
 .artist-search .artist-pagination .pagination .page-link.prev:hover{
     background-color: transparent;
@@ -1696,6 +1697,7 @@ background-color: var(--textColor);
     padding: 17px 24px;
     color: #AAAAAA;
     font-size: 16px;
+    margin: 0px 10px;
     font-weight: 500;
     font-family: 'Roboto';
         transition: .5s ease all;
