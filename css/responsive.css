@@ -43,6 +43,12 @@
     .start-body.visual-page.bibliography-page .hearder-options .top-search .search-barOption {
     width: 76%;
 }
+
+}
+@media screen and (min-width: 1401px) {
+    .homepage_only .select2-container {
+        max-width: 729px;
+    }
 }
 
 /*LARGE PC VERSION*/
@@ -291,9 +297,14 @@
     }
 */
 }
-
+@media screen and (min-width: 1201px) {
+    .homepage_only .select2-dropdown{position: relative;    width: 100% !important;}
+}
 /*PC VERSION*/
 @media screen and (max-width: 1200px) {
+    .homepage_only .select2-container {
+        max-width: 646px;
+    }
     .start-body.visual-page.bibliography-page .hearder-options .top-search .search-barOption {
         width: 100%;
     }

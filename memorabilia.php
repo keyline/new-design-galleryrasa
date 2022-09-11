@@ -923,6 +923,24 @@ p.category_id = 2 AND v.value='" . $v . "' AND f.attribute_name = '" . $k . "' G
 
 
     if ($html) {
+
+
+        $keywordArr=explode(":",$keyword);        
+        $first=str_replace("Cast", "(Cast) ", $keywordArr[0]);
+        $second=$keywordArr[1];
+        $keyword = $second.' '.$first;
+
+        $keywordArr=explode(":",$keyword);        
+        $first=str_replace("Director", "(Director) ", $keywordArr[0]);
+        $second=$keywordArr[1];
+        $keyword = $second.' '.$first;
+
+        $keywordArr=explode(":",$keyword);        
+        $first=str_replace("Film", "(Film) ", $keywordArr[0]);
+        $second=$keywordArr[1];
+        $keyword = $second.' '.$first;
+
+
         $styleDisplay = 'block';
         $list = file_get_contents(VIEWS_FOLDER . 'memorabilia.Inc.php');
         $search = array('{isShow}', '{keywordSearched}', '{countofRows}', '{leftPart}', '{rightPart}');
