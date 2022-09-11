@@ -958,6 +958,10 @@ p.category_id = 2 AND v.value='" . $v . "' AND f.attribute_name = '" . $k . "' G
     if ($html) {
 
         $keyword = str_replace("Va_artist:", "Artist: ", $keyword);
+        $keywordArr=explode(":",$keyword);        
+        $first=str_replace("Artist", "(Artist) ", $keywordArr[0]);
+        $second=$keywordArr[1];
+        $keyword = $second.' '.$first;
 
 
         $styleDisplay = 'block';

@@ -84,7 +84,7 @@ if (!isset($_COOKIE["cookieid"])) {
     </head>
     <!-- NAVBAR
     ================================================== -->
-    <body class="pattern-banner">
+    <body class="pattern-banner homepage_only">
         <header class="header">
         <!--  NEW NAV ENDS   -->
         <section class="topPanel">
