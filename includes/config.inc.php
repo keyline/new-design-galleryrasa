@@ -112,6 +112,7 @@
     define('ADMIN_FOLDER', '/admin/');
     define('CSS_FOLDER', '/css/');
     define('JS_FOLDER', '/js/');
+     define('OWL_FOLDER', '/owl/');
     define('OLD_CSS_FOLDER', '/admincss/');
     define('OLD_JS_FOLDER', '/adminjs/');
     define('IMGSRC', 'product_images/');
