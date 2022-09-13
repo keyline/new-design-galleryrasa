@@ -6246,6 +6246,7 @@ background-color: #fff;
     font-size: 14px;
     font-weight: 700;
     color: var(--primaryColor);
+    text-transform: uppercase;
 }
 .testimonials.press .press-box .press-inner .press-info .press-right{
     color: #AAAAAA;
