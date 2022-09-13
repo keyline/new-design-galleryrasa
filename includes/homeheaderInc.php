@@ -151,8 +151,8 @@ if (!isset($_COOKIE["cookieid"])) {
                                             <li class="nav-item"><a class="nav-link" href="<?php echo SITE_URL ?>about-us">About us</a></li>
                                             <li class="nav-item"><a class="nav-link" href="<?php echo SITE_URL ?>vision-statement">VISION STATEMENT</a></li>
                                             <li class="nav-item"><a class="nav-link" href="<?php echo SITE_URL ?>testimonials">TESTIMONIALS</a></li>
-                                            <li class="nav-item"><a class="nav-link" href="#">in the press</a></li>
-                                            <li class="nav-item"><a class="nav-link" href="#">photo book</a></li>
+                                            <li class="nav-item"><a class="nav-link" href="<?php echo SITE_URL ?>in_the_press">in the press</a></li>
+                                            <li class="nav-item"><a class="nav-link" href="<?php echo SITE_URL ?>photo_book">photo book</a></li>
                                             <li class="nav-item"><a class="nav-link" href="<?php echo SITE_URL ?>contactus">CONTACT US</a></li>
                                         </ul>
                                     </div>
