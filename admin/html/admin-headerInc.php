@@ -352,6 +352,58 @@
                                 
                             </div>
                         </div>
+
+
+                        <div class="panel-group" role="tablist" style="margin-bottom:0.5em; ">
+                            <div class="panel panel-default">
+                                <div class="panel-heading" role="tab" id="collapseListGroupHeading2">
+                                    <h4 class="panel-title">
+                                        <a class="" role="button" data-toggle="collapse" href="#collapseListGroup9" aria-expanded="true" aria-controls="collapseListGroup6">
+                                            In the press
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div id="collapseListGroup9"  class="panel-collapse collapse" role="tabpane2" aria-labelledby="collapseListGroupHeading6" aria-expanded="true">
+
+                                    <div class="list-group" >
+                                        <a href="press-list.php" class="list-group-item">
+                                            List of all press
+                                        </a>
+                                    </div>
+                                    <div class="list-group" >
+                                        <a href="upload_press.php" class="list-group-item">
+                                            Photos Upload
+                                        </a>
+                                    </div>
+                                </div>                                
+                            </div>
+                        </div>
+
+                        <div class="panel-group" role="tablist" style="margin-bottom:0.5em; ">
+                            <div class="panel panel-default">
+                                <div class="panel-heading" role="tab" id="collapseListGroupHeading2">
+                                    <h4 class="panel-title">
+                                        <a class="" role="button" data-toggle="collapse" href="#collapseListGroup10" aria-expanded="true" aria-controls="collapseListGroup6">
+                                            Photo Book
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div id="collapseListGroup10"  class="panel-collapse collapse" role="tabpane2" aria-labelledby="collapseListGroupHeading6" aria-expanded="true">
+
+                                    <div class="list-group" >
+                                        <a href="photobook-list.php" class="list-group-item">
+                                            List of all photo book
+                                        </a>
+                                    </div>
+                                    <div class="list-group" >
+                                        <a href="upload_photobook.php" class="list-group-item">
+                                            Photos Upload
+                                        </a>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </div>
         
         
                         
