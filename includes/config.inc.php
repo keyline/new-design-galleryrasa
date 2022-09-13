@@ -1,26 +1,26 @@
 <?php
-     define('gR_Version', '1.3');
-    define('DB_USER', 'galleryr_whyusr');
-    define('DB_PASS', 'CTTzz#-(e5p7');
+    //define folder
+    define('gR_Version', '1.3');
+    define('DB_USER', 'root');
+    define('DB_PASS', '');
     define('DB_HOST', 'localhost');
-    define('DB_NAME', 'galleryr_blues');
-    
-    define('ORG_SITE_URL', 'https://uat.galleryrasa.com/');
-    define('SITE_URL', 'https://uat.galleryrasa.com/');
-    define('ADMIN_URL', 'https://uat.galleryrasa.com/admin');
+    define('DB_NAME', 'galleryrasa');
+    define('ORG_SITE_URL', 'https://localhost/galleryrasa_dev/');
+    define('SITE_URL', 'https://localhost/galleryrasa_dev/');
+    define('ADMIN_URL', 'https://localhost/galleryrasa_dev/admin');
     define('APPS_BASE_PATH', $_SERVER['DOCUMENT_ROOT'] . "/");
     
     define('CURRENCY_CODE', '$ ');  # US [ $ ], GB [ & pound; ] #Euro [ & euro ];
 
     #ReCaptcha
     # To use reCaptcha, get your keys from    https://www.google.com / recaptcha / admin
-    define('RECAPTCHA_SITEKEY', ''); 
-    define('RECAPTCHA_SECRET', ''); 
+    define('RECAPTCHA_SITEKEY', '');
+    define('RECAPTCHA_SECRET', '');
     define('RECAPTCHA_LAN', 'en');
 
     define("ADDTOCART", true);
     
-   define("LOG_PATH", 'logs/');
+    define("LOG_PATH", 'logs/');
     
 
     define('SHOW_ERR', true); //show database error. Set to true only when debugging
@@ -32,7 +32,7 @@
 
 
     define('LOW_STOCK_ALERT', true); #enable email alert</low>
-    define('LOW_STOCK_LEVEL',5); # send email alert if stock level is equal or less than this number
+    define('LOW_STOCK_LEVEL', 5); # send email alert if stock level is equal or less than this number
     
     @date_default_timezone_set("Asia/Kolkata");
     # date_default_timezone_set("Europe/London"); #set your default time zone.  http://php.net/manual/en/timezones.php
@@ -50,25 +50,28 @@
     define('VA_MEDIUM_WIDTH', 500); // in pixels 500
     define('VA_MEDIUM_HEIGHT', 300); // in pixels 300
     
-    define('VA_MEDIUM_URL', 'va-medium'); 
+    // define('VA_MEDIUM_URL', 'va-medium');
     
-    define('TOP_DEALS_TILE', '<h3 class="text-warning" style="margin-top:0"> Top Deals</h3>'); 
+    define('TOP_DEALS_TILE', '<h3 class="text-warning" style="margin-top:0"> Top Deals</h3>');
     
     define('NO_IMAGE', 'Image Not Available'); //default
     define('P_DESCRIPTION_ONE', 'Description'); //default
     define('P_DESCRIPTION_TWO', 'Features'); //default
     define('P_DESCRIPTION_THREE', 'Information'); //default
     define('ORDER_COMPLETION_MSG', 'Your order has completed successfully. <br />Thank you for shopping with us');
-    define('PRODUCT_ADDED_MSG',
+    define(
+        'PRODUCT_ADDED_MSG',
         '<h2>{MSG} successfully</h2>
         <a href="add-new" class="btn btn-info">Add {BTN}</a>
         <a href="{SHOP}" class="btn btn-info" target="_blank">View on shopfront</a>
         <a href="{EDIT}" class="btn btn-info">View on Edit page</a>
-        <a href="index" class="btn btn-info">Go to Product List</a>');
-    define('ATTRIBUTE_ADDED_MSG', 
-            '<h2>{MSG} successfully</h2>
+        <a href="index" class="btn btn-info">Go to Product List</a>'
+    );
+    define(
+        'ATTRIBUTE_ADDED_MSG',
+        '<h2>{MSG} successfully</h2>
             <a href="add-attributes" class="btn-btn-info">Add {BTN}</a>'
-             );
+    );
     define('EMPTY_SHOPPING_CART', 'Your shopping basket is empty');
     define('NO_PRODUCT_FOUND_MSG', 'Not Found');
     define('ORDER_PENDING', 'Pending');
@@ -110,9 +113,8 @@
     #folders
     define('CACHE_FILE', 'cache/');
     define('ADMIN_FOLDER', '/admin/');
-    define('CSS_FOLDER', '/css/');
-    define('JS_FOLDER', '/js/');
-	define('OWL_FOLDER', '/owl/');
+    define('CSS_FOLDER', 'css/');
+    define('JS_FOLDER', 'js/');
     define('OLD_CSS_FOLDER', '/admincss/');
     define('OLD_JS_FOLDER', '/adminjs/');
     define('IMGSRC', 'product_images/');
@@ -122,27 +124,30 @@
     define('INC_FOLDER', 'includes/');
     define('INC_LIB', INC_FOLDER.'lib/');
     define('VIEWS_FOLDER', 'views/');
+    define('OWL_FOLDER', '/owl/');
     define('THUMB_IMGS', IMGSRC.'thumbs/');
     define('VA_THUMB_IMGS', IMGSRC.'artwork_thumbs/');
     define('VA_MEDIUM_URL', IMGSRC.'va-medium/');
     define('EXHIBITION_THUMB_IMGS', IMGSRC.'exhibition_thumbs/');
+    define('PODCAST_THUMB_IMGS', IMGSRC.'podcast_thumbs/');
+    define('PRESS_THUMB_IMGS', IMGSRC.'press_thumbs/');
+    define('PHOTOBOOK_THUMB_IMGS', IMGSRC.'photobook_thumbs/');
     define('ARTWORKS_IMGS', IMGSRC.'artwork/');
     define('ARTWORKS_ORG_IMGS', IMGSRC.'Art Work/');
-    define('ARTWORKS_FOLDER','Art Work/');
+    define('ARTWORKS_FOLDER', 'Art Work/');
     define('VARCHIVE', IMGSRC.'va-images/');
     define('IMAGES_FOLDER', IMGSRC);
     define('FEATURED_ITEMS', IMGSRC.'featured');
     define('ADMIN_HTML', 'html/');
-	define('PODCAST_THUMB_IMGS', IMGSRC.'podcast_thumbs/');
-	define('PRESS_THUMB_IMGS', IMGSRC.'press_thumbs/');
-    define('PHOTOBOOK_THUMB_IMGS', IMGSRC.'photobook_thumbs/');
     //define('APPS_BASE_PATH', $_SERVER['DOCUMENT_ROOT'] . "/beta/");
 
 
-    define('CAROUSEL_SIDE_PAGINATION',
+    define(
+        'CAROUSEL_SIDE_PAGINATION',
         '<a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
         <span class="glyphicon glyphicon-chevron-left"></span></a>
-        <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>');
+        <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>'
+    );
     $allowedFiles = array(
         'image/pjpeg',
         'image/jpeg',
@@ -163,7 +168,6 @@
 
     function my_error_handler($e_number, $e_message, $e_file, $e_line, $e_vars)
     {
-
         echo $message = "An error occurred in script '$e_file' on line $e_line: $e_message";
         /*
         if(SHOW_ERR) {
@@ -175,8 +179,6 @@
 
         #debug_print_backtrace();
         */
-
     }
 
     set_error_handler('my_error_handler');
-?>

@@ -659,20 +659,20 @@ FROM
                 $options2 = get_subCategory_optionsBib($conn);
                 $select_sub = $options2['s'];
 
-                $keywordArr=explode(":",$keyword);        
-                $first=str_replace("Artist", "(Artist) ", $keywordArr[0]);
-                $second=$keywordArr[1];
-                $keyword = $second.' '.$first;
+                // $keywordArr=explode(":",$keyword);        
+                // $first=str_replace("Artist", "(Artist) ", $keywordArr[0]);
+                // $second=$keywordArr[1];
+                // $keyword = $second.' '.$first;
                 
-                $keywordArr=explode(":",$keyword);        
-                $first=str_replace("Author", "(Author) ", $keywordArr[0]);
-                $second=$keywordArr[1];
-                $keyword = $second.' '.$first;
+                // $keywordArr=explode(":",$keyword);        
+                // $first=str_replace("Author", "(Author) ", $keywordArr[0]);
+                // $second=$keywordArr[1];
+                // $keyword = $second.' '.$first;
 
-                $keywordArr=explode(":",$keyword);        
-                $first=str_replace("Editor", "(Editor) ", $keywordArr[0]);
-                $second=$keywordArr[1];
-                $keyword = $second.' '.$first;
+                // $keywordArr=explode(":",$keyword);        
+                // $first=str_replace("Editor", "(Editor) ", $keywordArr[0]);
+                // $second=$keywordArr[1];
+                // $keyword = $second.' '.$first;
 
 
                 $search_view = file_get_contents(VIEWS_FOLDER . 'search-result.inc.php');
