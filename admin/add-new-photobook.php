@@ -13,10 +13,11 @@ $photobook_destination = '../' . 'photobook' . '/';
 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
     
-    // print_r($_FILES);die;
+    // print_r($_POST);die;
 
     // $event_id = $_POST['event_id'];
     $eventtitle = $_POST['eventtitle'];
+    $eventdetails = $_POST['eventdetails'];
     $imgFile = $_FILES['eventImg'];
     $eventdate = $_POST['eventdate'];
     // $epidate = date("l M d, Y",strtotime($epidate1));
@@ -83,8 +84,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         try {
             $conn = dbconnect();
             $err = false;
-            $query1 = "insert into photobook_tbl(event_title,event_img,event_date) " . "values(:event_title,:event_img,:event_date)";
-            $bind1 = array(':event_title' => $eventtitle, ':event_img' => $newImageName, ':event_date' => $eventdate);
+            $query1 = "insert into photobook_tbl(event_title,event_details,event_img,event_date) " . "values(:event_title,:event_details,:event_img,:event_date)";
+            $bind1 = array(':event_title' => $eventtitle,':event_details' => $eventdetails,  ':event_img' => $newImageName, ':event_date' => $eventdate);
             $stmt1 = $conn->prepare($query1);
             // echo PdoDebugger::show($query1, $bind1);
             // exit;

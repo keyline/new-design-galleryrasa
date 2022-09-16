@@ -14,19 +14,20 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 } else {
     try {
 
-        $sql = "SELECT * FROM photobook_tbl ORDER BY event_date DESC";
+        $sql = "SELECT * FROM `press_img` inner join in_the_press on press_img.press_id=in_the_press.press_id";
         $q = $conn->prepare($sql);
         $q->execute();
         $q->setFetchMode(PDO::FETCH_ASSOC);
         $count = $q->rowCount();
         while ($row = $q->fetch()) {
             
-            $photo_list[] = array(
-                'event_id' => $row['event_id'],
-                'event_title' => $row['event_title'],
-                'event_details' => $row['event_details'],
-                'event_img' => $row['event_img'],
-                'event_date' => $row['event_date']
+            $press_listing[] = array(
+                'img_id' => $row['img_id'],
+                'press_id' => $row['press_id'],
+                'title' => $row['title'],
+                'press_name' => $row['press_name'],
+                'title_img' => $row['title_img'],
+                'create_at' => $row['create_at']
             );
         }
     } catch (PDOException $pe) {
@@ -34,6 +35,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     }
 
     include(ADMIN_HTML . "admin-headerInc.php");
-    include(ADMIN_HTML . 'photobook-list-tpl.php');
+    include(ADMIN_HTML . 'press-listing-tpl.php');
     include(ADMIN_HTML . "admin-footerInc.php");
 }
