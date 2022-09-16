@@ -18,6 +18,7 @@ $photoid = $_POST['photo'];
 
 $photoname = $_POST['photoname'];
 $photodate = $_POST['photodate'];
+$photodetails = $_POST['photodetails'];
 $imgFile = $_FILES['ImageFile'];
 
 $OldImageFile = $_POST['OldImageFile'];
@@ -84,9 +85,9 @@ if ($fileuploadflag == true) {
     try {
         $conn = dbconnect();
         $err = false;
-        $query1 = "update  photobook_tbl set event_title=:event_title,event_img=:event_img, event_date=:event_date "
+        $query1 = "update  photobook_tbl set event_title=:event_title,event_details=:event_details,event_img=:event_img, event_date=:event_date "
                 . " where event_id=:photoid";
-        $bind1 = array(':event_title' => $photoname, ':event_img' => $newImageName,':event_date' => $photodate, ':photoid' => $photoid);
+        $bind1 = array(':event_title' => $photoname,':event_details' => $photodetails, ':event_img' => $newImageName,':event_date' => $photodate, ':photoid' => $photoid);
         $stmt1 = $conn->prepare($query1);
         // echo PdoDebugger::show($query1, $bind1);
         // exit;

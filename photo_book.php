@@ -54,6 +54,7 @@ include_once('includes/homeheaderInc.php');
                                         </div>
                                         <div class="photobook-info">
                                             <div class="photobook-name"><?php echo $key['event_title'] ?></div>
+                                            <div class="photobook-name"><?php echo $key['event_details'] ?></div>
                                             <div class="photobook-content"><?php $date = $key['event_date'];
                                                 echo date('F d, Y', strtotime($date)) ?></div>
                                         </div>

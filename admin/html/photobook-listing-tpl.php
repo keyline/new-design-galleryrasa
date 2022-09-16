@@ -6,8 +6,8 @@
         <div class="panel-body">
             <div role="tabpanel">
 
-                <h2 class="sub-header">All Photo Book</h2>
-                <a href="add-new-photobook" class="btn btn-info">Add New</a>
+                <h2 class="sub-header">Photo Book List</h2>
+                <a href="upload_photobook.php" class="btn btn-info">Add New</a>
 
                 <?php
                 if (isset($_SESSION['succ'])) {
@@ -31,31 +31,29 @@
                         <thead>
                             <tr>
                                 <th>Sl No.</th>
-                                <th>Name</th>
-                                <th>Details</th>
-                                <th>Image</th>                               
-                                <th>Date</th>
-                                <th>Edit</th>
+                                <th>Event Name</th>                               
+                                <th>Press Name</th>
+                                <th>Press Image</th>
+                                <th>Delete</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <?php if (!empty($photo_list)): ?>
-                                <?php $i = 1; foreach ($photo_list as $k => $v): ?>
+                            <?php if (!empty($photobook_listing)): ?>
+                                <?php $i = 1; foreach ($photobook_listing as $k => $v): ?>
                                     <tr id="rw">
                                         <td><?php echo $i ?></td>
                                         <td><?php echo $v['event_title']; ?></td>
-                                        <td><?php echo  $v['event_details']; ?></td>
+                                        <td><?php echo $v['photo_title']; ?></td>
                                         <td>
                                         <?php                                             
-                                            if ($v['event_img'] != '') { ?>
+                                            if ($v['photo_img'] != '') { ?>
 
-                                                <img src="<?php echo SITE_URL . '/' . PHOTOBOOK_THUMB_IMGS . $v['event_img']; ?>" width="100" height="100">
+                                                <img src="<?php echo SITE_URL . '/' . PHOTOBOOK_THUMB_IMGS . $v['photo_img']; ?>" width="100" height="100">
                                                 <?php
                                             }
                                             ?>
-                                        </td>
-                                        <td><?php echo $v['event_date']; ?></td>                                        
-                                        <td><a href="edit-photobook.php?photo_id=<?php echo $v['event_id'] ?>"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a></td>
+                                        </td>                                        
+                                        <td><a href="delete-photobookImg.php?photo_id=<?php echo $v['photo_id'] ?>" onclick="return confirm('Are you sure you want to delete this item?');"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a></td>
                                     </tr>
                                     <?php $i++;
                                 endforeach; ?>
