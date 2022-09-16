@@ -38,6 +38,10 @@
                                 <input type="text" class="form-control" id="photoname" name="photoname" required value="<?php echo $photo['event_title'] ?>">
                             </div>
                             <div class="form-group">
+                                <label for="pname">Details</label>
+                                <input type="text" class="form-control" id="photodetails" name="photodetails" required value="<?php echo $photo['event_details'] ?>">
+                            </div>
+                            <div class="form-group">
                                 <label for="tags">Photo</label>
                                 <input name="OldImageFile" type="hidden" value="<?php echo $photo['event_img']; ?>" class="btn btn-success">
                                 <input name="ImageFile" type="file"  class="btn btn-success">

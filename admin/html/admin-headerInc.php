@@ -367,12 +367,12 @@
 
                                     <div class="list-group" >
                                         <a href="press-list.php" class="list-group-item">
-                                            List of all press
+                                            List of all Events
                                         </a>
                                     </div>
                                     <div class="list-group" >
-                                        <a href="upload_press.php" class="list-group-item">
-                                            Photos Upload
+                                        <a href="press_listing.php" class="list-group-item">
+                                            Press articles uploads
                                         </a>
                                     </div>
                                 </div>                                
@@ -396,7 +396,7 @@
                                         </a>
                                     </div>
                                     <div class="list-group" >
-                                        <a href="upload_photobook.php" class="list-group-item">
+                                        <a href="photobook_listing.php" class="list-group-item">
                                             Photos Upload
                                         </a>
                                     </div>

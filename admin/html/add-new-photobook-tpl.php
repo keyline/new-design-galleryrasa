@@ -32,6 +32,10 @@
                                 <input type="text" class="form-control" id="eventtitle" name="eventtitle" placeholder="Enter Event name" required="">
                             </div>
                             <div class="form-group">
+                                <label for="pname">Event Details</label>
+                                <input type="text" class="form-control" id="eventtitle" name="eventdetails" placeholder="Enter Event Details" required="">
+                            </div>
+                            <div class="form-group">
                                 <label for="tags">Event Image</label>
                                 <input name="eventImg" type="file"  class="btn btn-success">
                             </div>
