@@ -945,9 +945,27 @@ label.custom-select {
     width: 80%;
     /* margin-right: 5px; */
 }
+.hearder-options .top-search .search-barOption.home-search-barOption{
+    width: 100%;
+    /* margin-right: 5px; */
+}
 /* .hearder-options .top-search .search-barOption #search_form{
     display: flex;
 } */
+.hearder-options .top-search .search-barOption.home-search-barOption .select2-container--default .select2-selection--single .select2-selection__placeholder{
+    padding-left: 50px;
+}
+.hearder-options .top-search .search-barOption.home-search-barOption .searchbar{
+    position: absolute;
+    color: var(--primaryColor);
+    z-index: 99;
+    top: 28px;
+    left: 18px;
+}
+.hearder-options .user-options .search .search-barOption.home-search-barOption .search-input{
+    display: block;
+    position: relative;
+}
 .hearder-options .top-search{
     margin-bottom: 16px;
 }
@@ -5913,6 +5931,7 @@ span{
     font-family: 'Roboto';
     font-weight: 400;
     font-size: 16px;
+    text-transform: none;
 }
 .artist-search.bibliography-search.bengali-film-search.faq .card-header{
     border-bottom: none
@@ -6399,8 +6418,8 @@ background-color: #fff;
 */
 .press-modal .modal-header .downlode span{
     color: #fff;
-    padding-right: 20px;
-        padding-top: 15px;
+    padding-right: 50px;
+        padding-top: 17px;
 }
 /*.swiper-button-next.swiper-button-disabled, .swiper-button-prev.swiper-button-disabled*/
 
