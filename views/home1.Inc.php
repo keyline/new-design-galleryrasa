@@ -50,16 +50,20 @@
                                 <div class="search-wrap">
                                     <div class="search">
                                         <div class="top-search">
-                                                 <div class="search-barOption">
+                                                 <div class="search-barOption home-search-barOption">
                                             <!-- <form action="product_search.php" class="search-input" method="post">
                                                 <input class="form-control" type="search" placeholder="Search" name="keyword" value="" id="mySearch" required>
                                                 <button class="btn-search" type="submit"><span class="material-icons">search</span></button>
                                             </form> -->
-                                            <form method="post" name="search_form" id="search_form_all" role="form" class="search-input">
+                                            <form method="post" name="search_form" id="search_form_all" role="form" class="search-input home-search-input">
                                                 <!-- <div class="row justify-content-center flex-nowrap"> -->
                                                     <!-- <div class="col-12"> -->
-                                                        <select class="program-name2 form-control" id="select-all-attr" name="searchall[]"  data-placeholder="Search"></select>
-                                                        <button class="btn-search" type="submit"><span class="material-icons">search</span></button>
+                                                        <div class="searchbar">
+                                                    <span class="material-icons">search</span>
+                                                    </div>
+                                                    <div class="searchbar-box">
+                                                        <select class="program-name2 form-control" id="select-all-attr" name="searchall[]"  data-placeholder="Search Artist"></select>
+                                                        <!-- <button class="btn-search" type="submit"><span class="material-icons">search</span></button> -->
 
                                                         <!-- <input class="form-control" type="search" placeholder="Search" name="searchall[]" value="" id="select-all-attr" required> -->
                                                         <!-- <button class="btn-search" type="submit"><span class="material-icons">search</span></button> -->
@@ -75,10 +79,11 @@
                                                     <input type="hidden" name="att[5]" value="director">
                                                     <input type="hidden" name="att[6]" value="va_artist">
                                                 <!-- </div> -->
+                                               </div>
                                             </form>
                                         </div>
 
-                                        <div class="drop-form">
+                                        <!-- <div class="drop-form">
                                                                    <div class="dropdown">
                                                     <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown">
                                                         <p>VISUAL ARCHIVES<span class="material-icons">keyboard_arrow_down</span></p>
@@ -107,7 +112,7 @@
                                                     </div>
                                                 </div>
          
-                                        </div>
+                                        </div> -->
                                         </div>
                                         
                                    

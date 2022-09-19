@@ -1048,7 +1048,7 @@
         height: 56px;
     }
     .topPanel {
-        padding: 20px 0px 24px;
+        padding: 20px 0px 0px;
     }
     .brand .logo img {
         width: 78px;

@@ -6461,6 +6461,17 @@ body {
     font-size: 16px;
     text-transform: uppercase;
 }
-
+.search-input.home-search-input .select2-dropdown{
+    background-color: #f7fafb;
+    border: 1px solid #D5D8D9;
+}
+.search-input.home-search-input .select2-results__option{
+    height: 76px!important;
+    color: var(--textColor);
+    font-weight: 600;
+    font-size: 16px;
+    font-family: 'Roboto Mono', monospace;
+    padding-left: 18px;
+}
 
 
