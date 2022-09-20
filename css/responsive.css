@@ -950,7 +950,20 @@
     .ms-choice>div:before {
         top: 38px;
     }
-   
+    .start-body.start-body-mobile .hearder-options .top-search .search-barOption{
+        position: relative;
+    }
+    .start-body.start-body-mobile .searchbar{
+        position: absolute;
+        color: var(--primaryColor);
+        z-index: 99;
+        top: 18px;
+        left: 18px;
+    }
+    .start-body.start-body-mobile .searchbar-box{
+        width: 100%;
+    }
+  
     .testimonials .testimonial-info .testimonial-learn .testimonial-name {
         font-size: 24px;
         line-height: 24px;
@@ -1568,6 +1581,8 @@
     }
     .start-body.start-body-mobile .hearder-options .top-search .search-barOption .form-control{
         font-size: 14px;
+        border: 1px solid #ced4da;
+        padding-left: 50px;
     }
     .hearder-options .btn-search {
     font-size: 26px;
