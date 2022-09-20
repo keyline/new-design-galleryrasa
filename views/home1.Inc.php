@@ -261,12 +261,17 @@
                                         <div class="top-search">
                                                  <div class="search-barOption">
                                             <form action="product_search.php" class="search-input" method="post">
+                                            <div class="searchbar-box">
                                                 <input class="form-control" type="search" placeholder="Search" name="keyword" value="" id="mySearch" required>
-                                                <button class="btn-search" type="submit"><i class="zmdi zmdi-search"></i></button>
+                                                </div>
+                                                <div class="searchbar">
+                                                    <span class="material-icons">search</span>
+                                                    </div>
+                                                <!-- <button class="btn-search" type="submit"><i class="zmdi zmdi-search"></i></button> -->
                                             </form>
                                         </div>
 
-                                            <div class="drop-form">
+                                            <!-- <div class="drop-form">
                                                                 <div class="dropdown">
                                                     <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown">
                                                         <p>VISUAL ARCHIVES<span class="material-icons">keyboard_arrow_down</span></p>
@@ -293,7 +298,7 @@
                                                     </div>
                                                 </div>
          
-                                        </div>
+                                        </div> -->
                                             
                                         </div>
                                    

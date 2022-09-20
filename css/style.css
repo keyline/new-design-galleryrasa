@@ -861,7 +861,7 @@ label.custom-select {
 }
 .hearder-options .user-options .search .search-input{
     display: flex;
-    margin-right: 20px;
+    /* margin-right: 20px; */
 }
 .start-body.visual-page.rasa-inner .hearder-options .user-options .search .search-input{
     margin-right: 0px!important;
