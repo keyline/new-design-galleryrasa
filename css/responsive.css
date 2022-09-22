@@ -53,6 +53,9 @@
 
 /*LARGE PC VERSION*/
 @media screen and (max-width: 1400px) {
+    .start-body.visual-page.visual-search-page.bibliography-search .hearder-options .user-options .top-search .dropdown{
+        height: 68px;
+    }
    
     .select2-container--default .select2-selection--multiple {
         min-height: 68px;
@@ -302,8 +305,24 @@
 }
 /*PC VERSION*/
 @media screen and (max-width: 1200px) {
+<<<<<<< HEAD
     .homepage_only .select2-container {
         max-width: 646px;
+=======
+    .start-body.visual-page.visual-search-page.bibliography-search .hearder-options .user-options .top-search .search-barOption {
+        width: 100%;
+    }
+    .start-body.visual-page.visual-search-page.bibliography-search .hearder-options .user-options .top-search{
+        display: block;
+    }
+    .start-body.visual-page.visual-search-page.bibliography-search .top-search .drop-form{
+        width: 100%;
+    }
+    .start-body.visual-page.visual-search-page.bibliography-search .hearder-options .user-options .top-search .dropdown {
+        width: 100%;
+        margin-bottom: 15px;
+        margin-top: 15px;
+>>>>>>> design_fixing
     }
     .start-body.visual-page.bibliography-page .hearder-options .top-search .search-barOption {
         width: 100%;
@@ -958,6 +977,9 @@
 
 /*MOBILE VERSION*/
 @media screen and (max-width: 767px) {
+    .start-body.visual-page.visual-search-page.bibliography-search .hearder-options .user-options .top-search .dropdown{
+        height: 56px;
+    }
     .ms-choice>div:before {
         top: 38px;
     }
