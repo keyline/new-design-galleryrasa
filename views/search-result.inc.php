@@ -37,6 +37,7 @@
                                                                      
 
                                                                         </div>
+             
                                                                         <input type="hidden" name="catg" value="bibliography">
                                                                         <input type="hidden" name="att[0]" value="author">
                                                                         <input type="hidden" name="att[1]" value="artist">
@@ -46,6 +47,31 @@
                                                             
                                                             
                                                         </div>
+                                                        <div class="dropdown">
+                                                    <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown">
+                                                        <p>CLASSIFICATION<span class="material-icons">keyboard_arrow_down</span></p>
+                                                    </button>
+                                                    <div class="dropdown-menu radio">
+
+                                                        <label class="dropdown-item" tabindex="0">
+                                                            <input class="jRadioDropdown" type="radio" value="001" name="alphabet" tabindex="-1">
+                                                            <i>CLASSIFICATION</i>
+                                                        </label>
+
+                                                        <label class="dropdown-item" tabindex="0">
+                                                            <input class="jRadioDropdown" type="radio" value="002" name="alphabet" tabindex="-1">
+                                                            <i>CLASSIFICATION 2</i>
+                                                        </label>
+
+                                                        <label class="dropdown-item" tabindex="0">
+                                                            <input class="jRadioDropdown" type="radio" value="003" name="alphabet" tabindex="-1">
+                                                            <i>CLASSIFICATION 3</i>
+                                                        </label>
+
+
+
+                                                    </div>
+                                                </div>
                                                         <div class="drop-form">
                                                                 <a href="#" class="advanced-btn" data-toggle="modal" data-target="#advancedModal">Advanced Search<span class="material-icons">manage_search</span>
                                                                 </a>
