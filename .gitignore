@@ -4,4 +4,6 @@ includes/db_config.php
 error_log
 admin/error_log
 .htaccess
-
+product_images/
+press/
+podcast/
