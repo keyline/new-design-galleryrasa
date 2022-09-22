@@ -32,19 +32,20 @@ include_once('includes/homeheaderInc.php');
                     </div>
                 </div>
             </div>
-            <?php 
+            <?php
                 $sql2 = "SELECT * FROM `in_the_press`";
-                $q2 = $conn->query($sql2);
-                $q2->execute();
-                $q2->setFetchMode(PDO::FETCH_ASSOC);
-                $press = $q2->fetchAll();
-                // print_r ($press);
-                // exit();
-            ?>
+$q2 = $conn->query($sql2);
+$q2->execute();
+$q2->setFetchMode(PDO::FETCH_ASSOC);
+$press = $q2->fetchAll();
+// print_r ($press);
+// exit();
+?>
             <div class="row">
                 <div class="col-lg-12 p-1">
                     <div class="press-box">
-                    <?php if($press){ foreach ($press as $key) { ?> 
+                    <?php if ($press) {
+                        foreach ($press as $key) { ?> 
                         <div class="press-inner">
                             <a href="#" data-toggle="modal" data-target="#pressModal<?php echo $key['press_id']; ?>">
                                 <div class="press-body">
@@ -53,21 +54,24 @@ include_once('includes/homeheaderInc.php');
                                     </div>
                                     <div class="press-info">
                                         <div class="press-left"><?php
-                                        $time=strtotime($key['press_date']);
-                                        echo $month=date("F",$time) ." ";   echo $year=date("Y",$time); ?></div>
+                                            $time=strtotime($key['press_date']);
+                            echo $month=date("F", $time) ." ";
+                            echo $year=date("Y", $time); ?></div>
                                         <div class="press-right"><span class="material-icons">arrow_forward_ios</span></div>
                                     </div>
                                 </div>
                             </a>
                         </div>
-                    <?php } } ?>    
+                    <?php }
+                        } ?>    
                     </div>
                 </div>
             </div>
         </div>
     </section>
     <!-- Modal -->
-    <?php if($press){ foreach ($press as $pair) { ?> 
+    <?php if ($press) {
+        foreach ($press as $pair) { ?> 
         <div class="press-modal">
             <div class="modal fade" id="pressModal<?php echo $pair['press_id']; ?>" tabindex="-1" aria-labelledby="pressModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
@@ -81,26 +85,34 @@ include_once('includes/homeheaderInc.php');
                         </div>
                         <div class="modal-body">
                             <div class="press-inner">
-                            <?php 
-                                $sql2 = 'SELECT * FROM `press_img` where press_id= '. $pair['press_id'] .' ';
-                                $q2 = $conn->query($sql2);
-                                $q2->execute();
-                                $q2->setFetchMode(PDO::FETCH_ASSOC);
-                                $pressData = $q2->fetchAll();
-                                // print_r ($pressData);
-                            ?>
+                            <?php
+                                    $sql2 = 'SELECT * FROM `press_img` where press_id= '. $pair['press_id'] .' ';
+            $q2 = $conn->query($sql2);
+            $q2->execute();
+            $q2->setFetchMode(PDO::FETCH_ASSOC);
+            $pressData = $q2->fetchAll();
+            // print_r ($pressData);
+            ?>
                                 <div class="swiper mySwiper">
                                     <div class="swiper-wrapper">
-                                    <?php if($pressData){ foreach ($pressData as $k) { ?> 
+                                    <?php if ($pressData) {
+                                        foreach ($pressData as $k) {
+                                            $ext = pathinfo($k['title_img'], PATHINFO_EXTENSION);
+
+                                            $imgExplodeExtension= explode(".", $k['title_img']);
+
+                                            ?> 
                                         <div class="swiper-slide">
-                                            <img class="img-fluid" src="<?php echo SITE_URL . '/' . PRESS_THUMB_IMGS . $k['title_img']; ?>">
+                                            <img class="img-fluid" src="<?php echo SITE_URL . '/' . PRESS_IMGS . base64_encode($imgExplodeExtension[0]) . "." . $ext;?>">
+                                    
                                             <div class="press-box">
                                                 <h5><?php echo $k['title']; ?></h5>
                                                 <p><?php $date = $k['create_at'];
-                                                echo date('F d, Y', strtotime($date)); ?></p>
+                                            echo date('F d, Y', strtotime($date)); ?></p>
                                             </div>
                                         </div>
-                                    <?php } } ?> 
+                                    <?php }
+                                        } ?> 
                                     </div>
                                     <div class="next-btn">
                                         <div class="swiper-button-next"><i class="zmdi zmdi-arrow-right"></i></div>
@@ -114,7 +126,8 @@ include_once('includes/homeheaderInc.php');
                 </div>
             </div>
         </div>
-    <?php } } ?>  
+    <?php }
+        } ?>  
 </body>    
 </html>    
 <?php include_once("includes/footerInc.php"); ?>
