@@ -15,7 +15,8 @@
 //    include_once($filename);
 //}
 
-function product_discount($price, $discount, $f = false) {
+function product_discount($price, $discount, $f = false)
+{
     if ($f) {
         return $price * ($discount / 100);
     } else {
@@ -23,7 +24,8 @@ function product_discount($price, $discount, $f = false) {
     }
 }
 
-function no_admin_exist() {
+function no_admin_exist()
+{
     try {
         $conn = dbconnect();
         $q = $conn->query("SELECT * FROM " . ADMIN_TBL);
@@ -36,7 +38,8 @@ function no_admin_exist() {
     }
 }
 
-function clean_link($str) {
+function clean_link($str)
+{
     $clean = preg_replace("/[^a-zA-Z0-9\/_|+ -]/", '', $str);
     $clean = strtolower(trim($clean, '-'));
     $clean = preg_replace("/[\/_|+ -]+/", '-', $clean);
@@ -44,8 +47,9 @@ function clean_link($str) {
 }
 
 //function send_mail($to, $subject, $msg, $type, $emailfrom, $name = null) {
-function send_mail($to, $subject, $msg, $emailfrom, $namefrm, $type = "html") {
-// $namefrm = ($name == null) ? ($emailfrom) : ($name);
+function send_mail($to, $subject, $msg, $emailfrom, $namefrm, $type = "html")
+{
+    // $namefrm = ($name == null) ? ($emailfrom) : ($name);
 //    if ($type == 1) {
 //        $type = "html";
 //    } else {
@@ -65,7 +69,8 @@ function send_mail($to, $subject, $msg, $emailfrom, $namefrm, $type = "html") {
     }
 }
 
-function update_views($conn, $col = 'views', $tbl = PRODUCTS_TBL, $id = 'prodid') {
+function update_views($conn, $col = 'views', $tbl = PRODUCTS_TBL, $id = 'prodid')
+{
     try {
         $qry = "UPDATE " . $tbl . "
 	        SET " . $col . "=" . $col . "+1
@@ -79,24 +84,25 @@ function update_views($conn, $col = 'views', $tbl = PRODUCTS_TBL, $id = 'prodid'
     }
 }
 
-function check_auth_admin() {
+function check_auth_admin()
+{
     if (!isset($_SESSION['valid_admin'])) {
         goto_location('login');
         exit;
     }
 }
 
-function clean($string) 
-    {
-       $string = str_replace(' ', '-', $string); // Replaces all spaces with hyphens.
-       $string2 = preg_replace('/[^A-Za-z0-9\-]/', '', $string); // Removes special chars.
-       $string3 = preg_replace('/-+/', '-', $string2);
-       return $string3;
-    }
+function clean($string)
+{
+    $string = str_replace(' ', '-', $string); // Replaces all spaces with hyphens.
+    $string2 = preg_replace('/[^A-Za-z0-9\-]/', '', $string); // Removes special chars.
+    $string3 = preg_replace('/-+/', '-', $string2);
+    return $string3;
+}
 
-function create_folder($folder = null) {
+function create_folder($folder = null)
+{
     if (!is_null($folder)) {
-
         if (!is_dir($folder)) {
             $old_musk = umask(0);
             mkdir($folder, 0755);
@@ -105,7 +111,8 @@ function create_folder($folder = null) {
     }
 }
 
-function upload_name($imgFile) {
+function upload_name($imgFile)
+{
     $RandomNum = rand(0, 9999999999);
     $ImageName = str_replace(' ', '-', strtolower($imgFile["name"]));
     $exp = explode('.', $imgFile["name"]);
@@ -114,8 +121,8 @@ function upload_name($imgFile) {
     return substr($ImageName, 0, 30) . '-' . $RandomNum . '.' . $ImageExt;
 }
 
-function update($table, $fields, $criteria, $pdo = false) {
-
+function update($table, $fields, $criteria, $pdo = false)
+{
     foreach ($fields as $k => $value) {
         if ($value == 'now()' || $pdo) {
             $updates[] = "{$k}={$value}";
@@ -134,7 +141,8 @@ function update($table, $fields, $criteria, $pdo = false) {
     return $string;
 }
 
-function product_attributes($conn, $id, $atid) {
+function product_attributes($conn, $id, $atid)
+{
     try {
         $q = $conn->prepare("SELECT " . ATTRIBUTES_TBL . ".*, " . ATTRIBUTE_VARS_TBL . ".*
 	            FROM " . ATTRIBUTES_TBL . "
@@ -165,7 +173,8 @@ function product_attributes($conn, $id, $atid) {
 	    </div>';
 }
 
-function db_error($err) {
+function db_error($err)
+{
     if (SHOW_ERR) {
         return $err;
     } else {
@@ -173,13 +182,14 @@ function db_error($err) {
     }
 }
 
-function gen_id($len) {
+function gen_id($len)
+{
     $id = md5(uniqid(microtime(), 1)) . getmypid();
     return $id = substr($id, 0, $len);
 }
 
-function get_email_address($conn) {
-
+function get_email_address($conn)
+{
     $q = $conn->prepare("SELECT email  FROM " . ADMIN_TBL . " where user='" . $_SESSION['valid_admin'] . "'");
     $q->execute();
     $q->setFetchMode(PDO::FETCH_ASSOC);
@@ -187,7 +197,8 @@ function get_email_address($conn) {
     return $row['email'];
 }
 
-function insert($table, $fields) {
+function insert($table, $fields)
+{
     foreach ($fields as $k => $v) {
         $key[] = "{$k}";
         $value[] = "{$v}";
@@ -198,10 +209,9 @@ function insert($table, $fields) {
     return "INSERT INTO {$table} ({$keys}) VALUES({$values})";
 }
 
-function insert_multi($table, $fields) {
-
-
-    foreach ($fields AS $k => $value) {
+function insert_multi($table, $fields)
+{
+    foreach ($fields as $k => $value) {
         $key[] = array_keys($value);
         $value[] = array_values($value);
     }
@@ -212,11 +222,12 @@ function insert_multi($table, $fields) {
         'key' => $key,
         'val' => $value
     );
-//return "INSERT INTO {$table} ({$keys}) VALUES({$values})";
+    //return "INSERT INTO {$table} ({$keys}) VALUES({$values})";
     return $sql;
 }
 
-function get_stock_status($stock) {
+function get_stock_status($stock)
+{
     if ($stock > 0) {
         $qry = "SELECT * FROM " . CATEGORIES_TBL . " where id=:id";
         $q = $conn->prepare($qry);
@@ -225,9 +236,9 @@ function get_stock_status($stock) {
     }
 }
 
-function save_pages($conn) {
+function save_pages($conn)
+{
     try {
-
         $sql = "SELECT * FROM " . PAGES_TBL . " WHERE page_status=1";
         $q = $conn->query($sql);
         $q->setFetchMode(PDO::FETCH_ASSOC);
@@ -256,14 +267,15 @@ function save_pages($conn) {
             $link .= '<li><a href="' . SITE_URL . '/' . $rows['page_link'] . '">' . stripslashes($rows['page_name']) . '</a></li>';
         }
     } catch (PDOException $pe) {
-
         echo db_error($pe->getMessage());
     }
-    if (strlen($link) > 1)
+    if (strlen($link) > 1) {
         cachefile('../' . INC_FOLDER . CACHE_FILE . 'pages_cache.txt', $link);
+    }
 }
 
-function get_product_info($row) {
+function get_product_info($row)
+{
     if (!is_null($row['attrib1']) || !is_null($row['attrib2'])) {
         $arr = array_merge((array) $row['attrib1'], (array) $row['attrib2']);
         $a = '<br />' . join("<br /> ", $arr);
@@ -273,12 +285,14 @@ function get_product_info($row) {
     return stripslashes($a);
 }
 
-function goto_location($link) {
+function goto_location($link)
+{
     return header("Location: $link");
 }
 
-function get_categories($conn, $json = false, $n = null, $c = null, $hc = array()) {
-//Where no subcategories
+function get_categories($conn, $json = false, $n = null, $c = null, $hc = array())
+{
+    //Where no subcategories
     $qry = "SELECT * FROM " . CATEGORIES_TBL . " WHERE parent IS NULL ORDER By product_type_id desc";
     $q = $conn->prepare($qry);
     $q->execute();
@@ -308,13 +322,12 @@ function get_categories($conn, $json = false, $n = null, $c = null, $hc = array(
     );
 }
 
-function get_attrib_names($conn) {
-
+function get_attrib_names($conn)
+{
     $q = $conn->query("SELECT * FROM " . ATTRIBUTES_TBL);
     $q->setFetchMode(PDO::FETCH_ASSOC);
     $li = '';
     while ($row = $q->fetch()) {
-
         $li .= '<li class="list-group-item" id="rw' . $row['id'] . '"><span id="spanattrn' . $row['id'] . '">
 	        ' . $row['id'] . ' <input type="text" id="attrn' . $row['id'] . '"  style="width:35%; padding:3px;" name="attrn' . $row['id'] . '" value="' . stripslashes($row['name']) . '">
 	        <input type="submit" value="Save" onclick="save_attrn(' . $row['id'] . ')" class="btn btn-default btn-sm"></span> &nbsp; &nbsp; <a href="#" onclick="options_list(' . $row['id'] . ')" class="btn btn-default btn-sm">List</a> &nbsp; &nbsp; <a href="#" onclick="select_attrib(' . $row['id'] . ')" class="btn btn-default btn-sm">Select</a> &nbsp; &nbsp; <a href="#" onclick="attrn_del(' . $row['id'] . ')"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a></li>';
@@ -323,7 +336,8 @@ function get_attrib_names($conn) {
     return '<ul class="list-group">' . $li . '</ul>';
 }
 
-function get_attrib_options_list($conn) {
+function get_attrib_options_list($conn)
+{
     $q = $conn->prepare("SELECT " . ATTRIBUTES_TBL . ".*, " . ATTRIBUTE_VARS_TBL . ".*
 	        FROM " . ATTRIBUTES_TBL . "
 	        LEFT JOIN
@@ -369,7 +383,8 @@ function get_attrib_options_list($conn) {
     return array('a' => $a, 'b' => $b);
 }
 
-function create_thumb($sourcefile, $destfile, $fw, $fh, $jpegquality = 97) {
+function create_thumb($sourcefile, $destfile, $fw, $fh, $jpegquality = 97)
+{
     list($width, $height, $from_type) = getimagesize($sourcefile);
     switch ($from_type) {
         case 1:
@@ -404,7 +419,8 @@ function create_thumb($sourcefile, $destfile, $fw, $fh, $jpegquality = 97) {
     imageJpeg($tempImage, $destfile, $jpegquality);
 }
 
-function list_carousel($id, $stat, $img) {
+function list_carousel($id, $stat, $img)
+{
     $status = ($stat == 1) ? (' checked') : ('');
     $i = (!is_null($img)) ? ('<img src="product-img.php?img=' . $img . '&t=2" border="0">') : ('');
     return '
@@ -423,7 +439,8 @@ function list_carousel($id, $stat, $img) {
 	    </div>';
 }
 
-function prod_attib_frm($id) {
+function prod_attib_frm($id)
+{
     $p = $id == 2 ? ('with price option') : ('');
     return '<div class="form-group">
 	    <label for="attributes' . $id . '">Attributes  <small>' . $p . '</small> &nbsp; &nbsp;<small><a href="#" data-toggle="modal" name="attrib-modal" id="' . $id . '" data-target="#attrib">Edit</a></small></label>
@@ -433,7 +450,8 @@ function prod_attib_frm($id) {
 	    </div>';
 }
 
-function cachefile($path, $filename) {
+function cachefile($path, $filename)
+{
     $fh = fopen($path, "w+");
     if (fwrite($fh, $filename) === false) {
         echo "Cannot write to file ($filename)";
@@ -442,8 +460,8 @@ function cachefile($path, $filename) {
     fclose($fh);
 }
 
-function get_product_images($conn, $id) {
-
+function get_product_images($conn, $id)
+{
     $qry = "SELECT *  FROM " . IMAGES_TBL . "
 	    WHERE prodid=:id";
     $q = $conn->prepare($qry);
@@ -459,7 +477,8 @@ function get_product_images($conn, $id) {
     return '<div class="row">' . $img . '</div>';
 }
 
-function cache_carousel($conn) {
+function cache_carousel($conn)
+{
     $search = array(
         '{ACTIVE}',
         '{PAGINATION_ID}',
@@ -516,13 +535,14 @@ function cache_carousel($conn) {
         cachefile('../' . INC_FOLDER . CACHE_FILE . 'carousel.txt', $cache);
     }
     if ($total == 0) {
-        if (file_exists('../' . INC_FOLDER . CACHE_FILE . 'carousel.txt'))
+        if (file_exists('../' . INC_FOLDER . CACHE_FILE . 'carousel.txt')) {
             unlink('../' . INC_FOLDER . CACHE_FILE . 'carousel.txt');
+        }
     }
 }
 
-function pagination($page, $count, $rpp, $qrylink, $showpages = false, $m_rw = false, $anchor = '') {
-
+function pagination($page, $count, $rpp, $qrylink, $showpages = false, $m_rw = false, $anchor = '')
+{
     $nav = $pagelinks = "";
     if (is_numeric($page)) {
         $sqlstart = ($page - 1) * $rpp;
@@ -532,7 +552,6 @@ function pagination($page, $count, $rpp, $qrylink, $showpages = false, $m_rw = f
     }
 
     if ($count >= $rpp && $count > 0) {
-
         $pages = $count / $rpp;
         $pages = ceil($pages);
         $tpages = $pages;
@@ -583,7 +602,8 @@ function pagination($page, $count, $rpp, $qrylink, $showpages = false, $m_rw = f
     return array('qstart' => $sqlstart, 'nav' => $nav); #
 }
 
-function get_attribute_fields($conn) {
+function get_attribute_fields($conn)
+{
     $sql = "SELECT * FROM " . ATTR_FLDS_TBL . " order by id ASC";
     $q = $conn->prepare($sql);
 
@@ -591,7 +611,6 @@ function get_attribute_fields($conn) {
     $q->setFetchMode(PDO::FETCH_ASSOC);
 
     while ($row = $q->fetch()) {
-
         $hc[] = array(
             'id' => $row['id'],
             'attribute_name' => $row['attribute_name'],
@@ -606,7 +625,8 @@ function get_attribute_fields($conn) {
     return $hc;
 }
 
-function get_left_menu($conn, $param = array()) {
+function get_left_menu($conn, $param = array())
+{
     $param = array(
         '2' => 'Artist',
         '24' => 'Source Language',
@@ -623,7 +643,6 @@ function get_left_menu($conn, $param = array()) {
         $q->execute();
         $q->setFetchMode(PDO::FETCH_ASSOC);
         while ($row = $q->fetch()) {
-
             $uc .= '<li><a href="#" class="item-' . $row['attr_value_id'] . '" data-filter="*">' . $row['value'] . '</a></li>';
         }
         $uc .= "</br>";
@@ -633,8 +652,8 @@ function get_left_menu($conn, $param = array()) {
     return $uc;
 }
 
-function get_attribute_values($conn, $attr_id = int, $key = "", $type = null, $hc = array()) {
-
+function get_attribute_values($conn, $attr_id = int, $key = "", $type = null, $hc = array())
+{
     $qry = "SELECT * FROM " . ATTR_VAL . " where attr_id=:attr_id ORDER By attr_value_id";
     $q = $conn->prepare($qry);
     $q->bindParam(':attr_id', $attr_id);
@@ -669,7 +688,8 @@ function get_attribute_values($conn, $attr_id = int, $key = "", $type = null, $h
     );
 }
 
-function get_select_fields($selectID, $key) {
+function get_select_fields($selectID, $key)
+{
     $conn = dbconnect();
     $sl = $li = '';
     $qry = "SELECT * FROM " . ATTR_VAL . " where attr_id=:attr_id ORDER By attr_value_id";
@@ -688,8 +708,8 @@ function get_select_fields($selectID, $key) {
     );
 }
 
-function get_select_fields_values($selectID = null) {
-
+function get_select_fields_values($selectID = null)
+{
     $qry = "SELECT * FROM " . ATTR_VAL . " where attr_id=:attr_id ORDER By attr_value_id";
     $q = $conn->prepare($qry);
     $q->bindParam(':attr_id', $attr_id);
@@ -698,13 +718,13 @@ function get_select_fields_values($selectID = null) {
     $row_count = $q->rowCount();
     if ($row_count > 0) {
         while ($row = $q->fetch()) {
-
             $msl .= '<option value="' . $row['attr_value_id'] . '">' . stripslashes($row['value']) . '</option>';
         }
     }
 }
 
-function get_subCategory_options($conn = null, $hc = array()) {
+function get_subCategory_options($conn = null, $hc = array())
+{
     $conn = dbconnect();
     $qry = "SELECT product_type_name, product_type_id FROM " . PROD_CATEGORY . " WHERE parent=1 ORDER BY sort_order ASC";
     $q = $conn->prepare($qry);
@@ -712,7 +732,6 @@ function get_subCategory_options($conn = null, $hc = array()) {
     $q->setFetchMode(PDO::FETCH_ASSOC);
     $msl = '';
     while ($row = $q->fetch()) {
-
         $msl .= '<option value="' . $row['product_type_id'] . '">' . stripslashes($row['product_type_name']) . '</option>';
         $hc[] = array(
             'id' => $row['product_type_id'],
@@ -728,17 +747,17 @@ function get_subCategory_options($conn = null, $hc = array()) {
     );
 }
 
-function get_subCategory_optionsBib($conn = null, $hc = array()) {
+function get_subCategory_optionsBib($conn = null, $hc = array())
+{
     $conn = dbconnect();
     $qry = "SELECT product_type_name, product_type_id FROM " . PROD_CATEGORY . " WHERE parent=1 ORDER BY sort_order ASC";
     // echo $qry;
-    // exit(); 
+    // exit();
     $q = $conn->prepare($qry);
     $q->execute();
     $q->setFetchMode(PDO::FETCH_ASSOC);
     $msl = '';
     while ($row = $q->fetch()) {
-
         $msl .= '<option value="' . stripslashes($row['product_type_name']) . '">' . stripslashes($row['product_type_name']) . '</option>';
         $hc[] = array(
             'id' => $row['product_type_id'],
@@ -754,8 +773,8 @@ function get_subCategory_optionsBib($conn = null, $hc = array()) {
     );
 }
 
-function get_parent_category($conn) {
-
+function get_parent_category($conn)
+{
     $qry = "SELECT product_type_name, product_type_id FROM " . PROD_CATEGORY . " WHERE parent IS NULL";
 
 
@@ -764,7 +783,6 @@ function get_parent_category($conn) {
     $q->setFetchMode(PDO::FETCH_ASSOC);
     $msl = '';
     while ($row = $q->fetch()) {
-
         $msl .= '<option value="' . $row['product_type_name'] . '">' . stripslashes($row['product_type_name']) . '</option>';
         $hc[] = array(
             'id' => $row['product_type_id'],
@@ -779,7 +797,8 @@ function get_parent_category($conn) {
     );
 }
 
-function get_attributes_html($conn, $hc = array(), $type = '') {
+function get_attributes_html($conn, $hc = array(), $type = '')
+{
     $type = (!empty($_SESSION['attribute'])) ? $_SESSION['attribute'] : $type;
     $qry = "SELECT
                 attr_common_flds_ecomc.attribute_name,
@@ -799,17 +818,17 @@ function get_attributes_html($conn, $hc = array(), $type = '') {
     $outerHtml = '';
     $innerHtml = array();
     if ($row_cnt > 0) {
-
         while ($row = $q->fetch()) {
             $innerHtml[] = get_attribute_values($conn, $row['id'], $row['attribute_name'], $row['field_type']);
-//$innerHtml[] = $row['attribute_name'];
+            //$innerHtml[] = $row['attribute_name'];
         }
     }
 
     return $innerHtml;
 }
 
-function get_Inputtype_text_fields() {
+function get_Inputtype_text_fields()
+{
     $result = array();
     try {
         $conn = dbconnect();
@@ -825,7 +844,7 @@ where attr_common_flds_ecomc.field_type IN ('text', 'textarea', 'file', 'date') 
         $q->execute();
         $q->setFetchMode(PDO::FETCH_ASSOC);
         $row = $q->fetchAll();
-        foreach ($row AS $k => $v) {
+        foreach ($row as $k => $v) {
             $result[$v['attribute_name']] = $v['id'];
         }
         return $result;
@@ -834,8 +853,8 @@ where attr_common_flds_ecomc.field_type IN ('text', 'textarea', 'file', 'date') 
     }
 }
 
-function mainSearch_query($params = '', $subParams = '', $array = array(), $count = false) {
-
+function mainSearch_query($params = '', $subParams = '', $array = array(), $count = false)
+{
     if (!empty($params)) {
         $params = "(" . $params . ") AND ";
     }
@@ -906,13 +925,14 @@ function mainSearch_query($params = '', $subParams = '', $array = array(), $coun
     return $qry;
 }
 
-function get_html($array, $keys = array(),$usersession, $html = '') {
+function get_html($array, $keys = array(), $usersession, $html = '')
+{
     $conn = dbconnect();
     $output = array();
 
     $referenceType_sorted = get_subCategory_options();
     $sortedReferenceType = [];
-    array_walk($referenceType_sorted['h'], function($v, $k) use (&$sortedReferenceType) {
+    array_walk($referenceType_sorted['h'], function ($v, $k) use (&$sortedReferenceType) {
         $sortedReferenceType[] = $v['name'];
     });
     //Sorting data with reference_type
@@ -927,11 +947,10 @@ function get_html($array, $keys = array(),$usersession, $html = '') {
     $iterator = new RecursiveIteratorIterator(new RecursiveArrayIterator($array), RecursiveIteratorIterator::SELF_FIRST);
 
     foreach ($iterator as $k => $v) {
-//$indent = str_repeat('&nbsp;', 10 * $iterator->getDepth());
-// Not at end: show key only
+        //$indent = str_repeat('&nbsp;', 10 * $iterator->getDepth());
+        // Not at end: show key only
 
         if ($iterator->hasChildren()) {
-
             $j = $count = count($v);
 
             if ($iterator->getDepth() == 0) {
@@ -941,7 +960,6 @@ function get_html($array, $keys = array(),$usersession, $html = '') {
                 $productID = $k;
             }
             if ($iterator->getDepth() == 2) {
-
                 $html .= '<div class="line-content">
                             <div class="bibliography-search-inner">
                                 <div class="bibliography-info">
@@ -951,16 +969,16 @@ function get_html($array, $keys = array(),$usersession, $html = '') {
                                     </div>';
             }
 
-//echo "$level$indent$k" . ":-" . $iterator->getDepth(). " :<br>";
-// At end: show key, value and path
+        //echo "$level$indent$k" . ":-" . $iterator->getDepth(). " :<br>";
+        // At end: show key, value and path
         } else {
             $j--;
             for ($p = array(), $i = 0, $z = $iterator->getDepth(); $i <= $z; $i++) {
                 $p[] = $iterator->getSubIterator($i)->key();
             }
 
-//$path = implode(',', $p);
-//echo "$indent$k : $v <br>";
+            //$path = implode(',', $p);
+            //echo "$indent$k : $v <br>";
             if (array_key_exists($k, $keys)) {
                 $html .= '<div class="bibliography-content">
                             <p class="bibliography-fix">' . replace_underscore_space($k, $main_key) . '</p>
@@ -970,22 +988,21 @@ function get_html($array, $keys = array(),$usersession, $html = '') {
 
 
             if ($j == 0) {
-                
                 $html .=   '</div>
                             <div class="bibliography-action">
                                 <div class="cite-action">
                                     <a href="javascript:void(0);" data-toggle="modal" data-target="#citethis" class="cite-btn"><i data-toggle="tooltip" title="" data-original-title="Cite this" data-placement="left" onclick="javascript:CiteThis(' . $productID . ');">Cite This</i></a></li>
                                 </div>';
-                                if($usersession==true){
-                        $html .='<div class="details-action">
+                if ($usersession==true) {
+                    $html .='<div class="details-action">
                                    <a  href="' . SITE_URL . '/details/' . $productID . '" class="details-btn" target="_blank">details</a>
                                 </div>';
-                                } else {
-                        $html .='<div class="details-action">
+                } else {
+                    $html .='<div class="details-action">
                                     <a data-toggle="modal" data-target="#exampleModallogin" class="details-btn" target="_blank">details</a>
                                 </div>';
-                                }
-                    $html .='</div>
+                }
+                $html .='</div>
                         </div>';
 
                 $querypdf = "SELECT * FROM bibliography_pdf where prodid = %s";
@@ -997,7 +1014,6 @@ function get_html($array, $keys = array(),$usersession, $html = '') {
 
 
                 foreach ($pdfarr as $kpdf => $vpdf) {
-
                     $pdfname = $vpdf['bib_pdf'];
                     $imgarr = explode(".", $pdfname);
                     $ext = end($imgarr);
@@ -1005,9 +1021,7 @@ function get_html($array, $keys = array(),$usersession, $html = '') {
                     $orgnameexcptextnd = '';
                     $imgorgcnt = $imgarrcnt - 1;
                     for ($l = 0; $l < $imgorgcnt; $l++) {
-
                         if ($l == ($imgorgcnt - 1)) {
-
                             $orgnameexcptextnd .= $imgarr[$l];
                         } else {
                             $orgnameexcptextnd .= $imgarr[$l] . '.';
@@ -1016,13 +1030,13 @@ function get_html($array, $keys = array(),$usersession, $html = '') {
 
 
                     //$html .= '<a class="btn btn-primary" href="' . 'bibpdf?pdf=' . urlencode($orgnameexcptextnd) . '&ext=' . $ext . '">Download PDF</a><br><br>';
-                }                
+                }
                 $html .= '</div>';
             }
         }
     }
 
-    if(!$usersession==true){
+    if (!$usersession==true) {
         // $html .= '<div class="modal fade vLogin rasa-new-modal" id="exampleModallogin" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         //             <div class="modal-dialog" role="document">
         //                 <div class="modal-content">
@@ -1037,7 +1051,7 @@ function get_html($array, $keys = array(),$usersession, $html = '') {
         //                             <div class="row">
         //                                 <div class="col-md-3">
         //                                     <label>Email <strong>*</strong></label>
-        //                                 </div>        
+        //                                 </div>
         //                                 <div class="col-md-9">
         //                                     <input type="text" class="form-control" name="email" id="email" required>
         //                                 </div>
@@ -1114,15 +1128,16 @@ function get_html($array, $keys = array(),$usersession, $html = '') {
     return $html;
 }
 
-function listArrayRecursive($someArray) {
+function listArrayRecursive($someArray)
+{
     $iterator = new RecursiveIteratorIterator(new RecursiveArrayIterator($someArray), RecursiveIteratorIterator::SELF_FIRST);
     foreach ($iterator as $k => $v) {
         $indent = str_repeat('&nbsp;', 10 * $iterator->getDepth());
-// Not at end: show key only
+        // Not at end: show key only
         $depth = $iterator->getDepth();
         if ($iterator->hasChildren()) {
             echo "depth: $depth - $indent$k :<br>";
-// At end: show key, value and path
+        // At end: show key, value and path
         } else {
             for ($p = array(), $i = 0, $z = $iterator->getDepth(); $i <= $z; $i++) {
                 $p[] = $iterator->getSubIterator($i)->key();
@@ -1133,8 +1148,8 @@ function listArrayRecursive($someArray) {
     }
 }
 
-function getAttributesByProductID($productID = '') {
-
+function getAttributesByProductID($productID = '')
+{
     $qry = 'SELECT tbl2.n product, tbl2.an attribute_name, group_concat(tbl2.v SEPARATOR ", ") AS value
                 FROM
                 (SELECT
@@ -1161,7 +1176,8 @@ function getAttributesByProductID($productID = '') {
     }
 }
 
-function split_name($name) {
+function split_name($name)
+{
     $parts = explode(' ', $name);
     return array(
         'fn' => array_shift($parts),
@@ -1170,7 +1186,8 @@ function split_name($name) {
     );
 }
 
-function getcategoryName($productID = '') {
+function getcategoryName($productID = '')
+{
     $qry = 'SELECT
                 p.prodid,
                 p.prodname,
@@ -1197,25 +1214,29 @@ function getcategoryName($productID = '') {
 }
 
 //Uppercase all words in string
-function uppercasewords($string) {
+function uppercasewords($string)
+{
     $uppercasestring = ucwords($string);
     return $uppercasestring;
 }
 
-function cleanvars($variable) {
+function cleanvars($variable)
+{
     $cleanvariable = stripslashes($variable);
     $cleanvariable = trim($cleanvariable);
     return $cleanvariable;
 }
 
 //Uppercase first word in a string
-function uppercasefirstword($string) {
+function uppercasefirstword($string)
+{
     $lowercasestring = strtolower($string);
     $uppercasestring = ucfirst($lowercasestring);
     return $uppercasestring;
 }
 
-function selectAllById($table, $where = array(), $values = array()) {
+function selectAllById($table, $where = array(), $values = array())
+{
     $query = 'SELECT * FROM :table';
     $params = array('table' => $table);
     if (!is_null($id)) {
@@ -1225,7 +1246,7 @@ function selectAllById($table, $where = array(), $values = array()) {
     $r = $this->conn->prepare($query)
             ->execute($params)
             ->fetchAll();
-//More stuff here to manipulate $r (results)
+    //More stuff here to manipulate $r (results)
     return $r;
 }
 
@@ -1234,7 +1255,8 @@ function selectAllById($table, $where = array(), $values = array()) {
  * Paramter Category_id
  */
 
-function atrributeListBycategory($categoryID) {
+function atrributeListBycategory($categoryID)
+{
     $list = array();
     $qry = "SELECT `attribute_id` FROM `product_type_attribute_key` WHERE `p_type_id`= :typeID";
     try {
@@ -1247,7 +1269,7 @@ function atrributeListBycategory($categoryID) {
         for ($i = 0; $i < count($result); $i++) {
             $list[$result[$i]['attribute_id']] = 1;
         }
-        return !empty($list) ? $list : FALSE;
+        return !empty($list) ? $list : false;
     } catch (PDOException $pe) {
         $err = true;
         $er = db_error($pe->getMessage()) . '. Check that relevant fields like Info tab are completed';
@@ -1256,16 +1278,17 @@ function atrributeListBycategory($categoryID) {
 
 /**
  * left_filter_data returns data as Array
- * 
+ *
  * return array of values with keys as attribute name
  * then we build HTML to show
- * 
+ *
  * @param array
  */
-function left_filter_data($someArray = array(), $keys = array(), $test = false) {
+function left_filter_data($someArray = array(), $keys = array(), $test = false)
+{
     $referenceType_sorted = get_subCategory_options();
     $sortedReferenceType = [];
-    array_walk($referenceType_sorted['h'], function($v, $k) use (&$sortedReferenceType) {
+    array_walk($referenceType_sorted['h'], function ($v, $k) use (&$sortedReferenceType) {
         $sortedReferenceType[] = $v['name'];
     });
     //Sorting data with reference_type
@@ -1277,30 +1300,30 @@ function left_filter_data($someArray = array(), $keys = array(), $test = false) 
         return ($sortMe[$a] < $sortMe[$b]) ? -1 : 1;
     });
     $iterator = new RecursiveIteratorIterator(new RecursiveArrayIterator($someArray), RecursiveIteratorIterator::SELF_FIRST);
-//$keys = array('author' => 1, 'editor' => 1);
+    //$keys = array('author' => 1, 'editor' => 1);
     $result = array();
-//For debugging purpose
+    //For debugging purpose
     if ($test) {
         return $someArray;
     }
-//Now starts mining
+    //Now starts mining
     foreach ($iterator as $k => $v) {
         $indent = str_repeat('&nbsp;', 10 * $iterator->getDepth());
-// Not at end: show key only
+        // Not at end: show key only
 
         if ($iterator->hasChildren()) {
             if (!$iterator->getDepth()) {
-//echo "$indent$k :<br>";
+                //echo "$indent$k :<br>";
                 $key = $k;
             }
 
-// At end: show key, value and path
+        // At end: show key, value and path
         } else {
             for ($p = array(), $i = 0, $z = $iterator->getDepth(); $i <= $z; $i++) {
                 $p[] = $iterator->getSubIterator($i)->key();
             }
             $path = implode(',', $p);
-//echo "$indent$k : $v  | $productID<br>";
+            //echo "$indent$k : $v  | $productID<br>";
             if (array_key_exists($k, $keys)) {
                 $parts = explode("$", $v);
                 if (strpos($v, '$') !== false) {
@@ -1320,12 +1343,13 @@ function left_filter_data($someArray = array(), $keys = array(), $test = false) 
 }
 
 /**
- * 
+ *
  */
-function left_filter_html($someArray = array(), $keys = array(), $count = array()) {
+function left_filter_html($someArray = array(), $keys = array(), $count = array())
+{
     $someArray = array_map('array_filter', $someArray);
     $checked2 = '';
-    uksort($someArray, function($a, $b) use ($keys) {
+    uksort($someArray, function ($a, $b) use ($keys) {
         if ($keys[$a] > $keys[$b]) {
             return 1;
         } elseif ($keys[$a] < $keys[$b]) {
@@ -1341,62 +1365,71 @@ function left_filter_html($someArray = array(), $keys = array(), $count = array(
     //return $someArray;
     //exit;
     $html = '<form action="search" class="filter-form" id="filter-form" method="post">                
-                <div class="search-filters" style="margin-bottom:20px;">
-                    <div class="filter-group">';
+                <div class="artist-inner">
+                                <div class="artist-top artist-top-2">
+                                    <p class="filters">FILTERS<span class="material-icons">filter_alt</span></p>
+                                    <p class="reset"><button id="btnBack" type="submit" class="btn btn-red form-control" name="resetButton" value="Back">Reset</button></p>
+                                </div>
+                            </div>
+                            <div class="menu">
+                                <div class="menu-sec">
+                                    <div class="accordion" id="accordionExample">';
     //now loop through each filter and value
-    foreach ($someArray As $key => $value) {
-        $checked = ($key == "reference_type" || $key == 'language') ? "checked" : Null;
+    foreach ($someArray as $key => $value) {
+        $checked = ($key == "reference_type" || $key == 'language') ? "checked" : null;
 
 
 
         if (array_key_exists($key, $keys) && !empty($value)) {
+            $accordianHeaderKey= replace_underscore_space($key);
+            $html .= "<div class=\"card\">
+                                            <div class=\"card-header\" id=\"headingOne\">
+                                                <h2 class=\"mb-0\">
+                                                    <button class=\"btn btn-link btn-block text-left collapsed\" type=\"button\" data-toggle=\"collapse\" data-target=\"#collapse_{$accordianHeaderKey}\" aria-expanded=\"true\" aria-controls=\"collapse_{$accordianHeaderKey}\">
+                                                        {$accordianHeaderKey}
+                                                        <span class=\"material-icons\">keyboard_arrow_down</span>
+                                                    </button>
+                                                </h2>
+                                            </div>
 
+                                            <div id=\"collapse_{$accordianHeaderKey}\" class=\"collapse\" aria-labelledby=\"headingOne\" data-parent=\"#accordionExample\">
+                                                <div class=\"card-body\">
+                                                <div id=\"{$key}-header\"></div>
+                                                    <ul class=\"list-unstyled active collapse show\" id=\"eprSubmenu\" style=\"\">";
 
-
-            $html .= '<h6 class="accordion-header inactive-header">' . replace_underscore_space($key) . '</h6>
-            
-                        <section class="accordion-content">
-                        <div id="' . $key . '-header"></div>
-                            <ul class="list-unstyled" id="' . $key . '">';
             if (is_array($value)) {
-
-
-
                 if ($value[0] == 'Select All') {
-
                     $kpos = '0';
                     $cnti = count($value);
 
-                    // Move k-th element to end 
+                    // Move k-th element to end
 
                     $cntn = $cnti - 1;
                     if (isset($value[$cntn])) {
-
                         $tpos = $value[$kpos];
                         $value[$kpos] = $value[$cnti - 1];
                         $value[$cnti - 1] = $tpos;
 
-                        // Sort all elements  
-                        // except last 
+                        // Sort all elements
+                        // except last
                         $tpos = $value[count($value) - 1];
                         $value = array_slice($value, 0, -1);
                         sort($value);
                         array_push($value, $tpos);
 
-                        // Store last element 
-                        // (originally k-th) 
+                        // Store last element
+                        // (originally k-th)
                         $lastpos = $value[$cnti - 1];
 
-                        // Move all elements from  
-                        // k-th to one position ahead. 
-                        for ($ipos = $cnti - 1; $ipos > $kpos; $ipos--)
+                        // Move all elements from
+                        // k-th to one position ahead.
+                        for ($ipos = $cnti - 1; $ipos > $kpos; $ipos--) {
                             $value[$ipos] = $value[$ipos - 1];
+                        }
 
-                        // Restore k-th element 
+                        // Restore k-th element
                         $value[$kpos] = $lastpos;
                     } else {
-
-
                         $restvalarr = array_slice($value, 1);
 
                         sort($restvalarr);
@@ -1406,17 +1439,13 @@ function left_filter_html($someArray = array(), $keys = array(), $count = array(
                         $value = array_merge($arr1, $restvalarr);
                     }
                 } else {
-
                     sort($value);
                 }
                 for ($i = 0; $i < count($value); $i++) {
-
-
                     if (!empty($value[$i])) {
                         //Print count
                         if (array_key_exists($key, $count)) {
                             for ($j = 0; $j < count($count[$key]); $j++) {
-
                                 if ($value[$i] == $count[$key][$j]['name']) {
                                     $c = $count[$key][$j]['count'];
                                 }
@@ -1430,74 +1459,100 @@ function left_filter_html($someArray = array(), $keys = array(), $count = array(
                             $checked2 = (in_array($value[$i], array_column($sessData, $key))) ? 'checked' : '';
                         }
                         if ($value[$i] == 'Select All') {
-                            $html .= '<li>
-                                                <input type="checkbox" class="' . $key . '-All" value="' . $value[$i] . '" class="check"' . $checked . '>
-                                                <label for="check_book">' . replace_underscore_space($value[$i]) . '</label>
-                                                </li>';
+                            $html .= "<li>
+                                                            <div class=\"form-check form-check-inline \">
+                                                                <input class=\"form-check-input greencheck {$key}-All\" type=\"checkbox\" id=\"inlineCheckbox2\" value=\"{$value[$i]}\" {$checked}>
+                                                                <label class=\"form-check-label\" for=\"{$key}\">" . replace_underscore_space($value[$i]) . "</label></div></li>";
                         } elseif ($key == 'artist') {
-                            $html .= '<li class="artist">
-                                                <input type="checkbox" name="' . $key . '[]" value="' . $value[$i] . '" id="check_book" class="' . $key . '"' . $checked . $checked2 . '>
-                                                <label for="check_book">' . replace_underscore_space($value[$i]) . '</label><span class="count"> (' . $c . ')</span>' . paint_artist_mapping($value[$i]) . '</li>';
+                            $html .= "<li class=\"artist\">
+                                                            <div class=\"form-check form-check-inline\">
+                                                                <input class=\"form-check-input greencheck {$key}-All\" type=\"checkbox\" id=\"inlineCheckbox2\" value=\"{$value[$i]}\" {$checked}>
+                                                                <label class=\"form-check-label\" for=\"{$key}\">" . replace_underscore_space($value[$i]) . "</label>". "<span class=\"count\"> (" . $c . ")</span>". paint_artist_mapping($value[$i]). "</div></li>";
                         } else {
-                            $html .= '<li>
-                                                <input type="checkbox" name="' . $key . '[]" value="' . $value[$i] . '" id="check_book" class="' . $key . '"' . $checked . $checked2 . '>
-                                                <label for="check_book">' . replace_underscore_space($value[$i]) . '</label><span class="count"> (' . $c . ')</span>
-                                                </li>';
+                            $html .= "<li>
+                                                            <div class=\"form-check form-check-inline \">
+                                                                <input class=\"form-check-input greencheck {$key}\" type=\"checkbox\" name=\"{$key}[]\" id=\"inlineCheckbox2\" value=\"{$value[$i]}\" {$checked} {$checked2}>
+                                                                <label class=\"form-check-label\" for=\"inlineCheckbox1\">" . replace_underscore_space($value[$i]) . "</label><span class=\"count\">({$c})</span></div></li>";
                         }
                     }
                 }
             }
-            $html .= '</ul></section>';
+            $html .= "</ul></div></div></div>";
         }
     }
-
+    //Wrapping menu section 1
+    $html .= "</div></div>";
 
 
     if (array_key_exists('gregorian_year', $someArray)) {
+        //Starting menu section 2
+        $html .= "<div class=\"menu-sec menu-sec-2\">
+                                    <div class=\"menu-title\">year range</div>
+                                    <div class=\"accordion\" id=\"accordionExample\">";
+
         $match = '-';
         $options = '';
-        $html .= '<h4 class="accordion-header inactive-header">Year Range</h4>
-                        <section class="accordion-content">';
-        foreach ($someArray['gregorian_year'] as $val) {
 
+        foreach ($someArray['gregorian_year'] as $val) {
             $years [] = (strpos($val, $match) === false) ? $val : substr($val, 0, strpos($val, "-"));
         }
 
         asort($years);
         foreach ($years as $year) {
-
             $options .= '<option value="' . $year . '">' . $year . '</option>';
         }
 
-        $html .= '<div class="form-group">
-                                <div class="input-group">
-                                    <div class="input-group-addon">From</div>
-                                    <select class="form-control" id="FromYear" name="year_range[]"><option selected="selected" value="-1">Select year</option>' . $options . '</select>
-                                </div>
-                            </div>';
-        $html .= '<div class="form-group">
-                                <div class="input-group">
-                                    <div class="input-group-addon">To</div>
-                                    <select class="form-control" id="ToYear" name="year_range[]">
-                                            <option selected="selected" value="-1">Select year</option>' . $options . '</select>
-                                </div>
-                            </div>
-                        </section>';
+        //building from inputs
+        $html .= "<div class=\"card\">
+                                            <div class=\"card-header\" id=\"headingNine\">
+                                                <h2 class=\"mb-0\">
+                                                    <button class=\"btn btn-link btn-block text-left collapsed\" type=\"button\" data-toggle=\"collapse\" data-target=\"#collapseNine\" aria-expanded=\"false\" aria-controls=\"collapseNine\">
+                                                        from
+                                                        <span class=\"material-icons\">keyboard_arrow_down</span>
+                                                    </button>
+                                                </h2>
+                                            </div>
+
+                                            <div id=\"collapseNine\" class=\"collapse\" aria-labelledby=\"headingNine\" data-parent=\"#accordionExample\">
+                                                <div class=\"card-body\">
+                                                <select class=\"form-control\" id=\"FromYear\" name=\"year_range[]\"><option selected=\"selected\" value=\"-1\">Select year</option>{$options}</select>
+                                                </div>
+                                            </div>
+                                        </div>";
+        //Building To inputs
+        $html .= "<div class=\"card\">
+                                            <div class=\"card-header\" id=\"headingTen\">
+                                                <h2 class=\"mb-0\">
+                                                    <button class=\"btn btn-link btn-block text-left collapsed\" type=\"button\" data-toggle=\"collapse\" data-target=\"#collapseTen\" aria-expanded=\"false\" aria-controls=\"collapseTen\">
+                                                        to
+                                                        <span class=\"material-icons\">keyboard_arrow_down</span>
+                                                    </button>
+                                                </h2>
+                                            </div>
+                                            <div id=\"collapseTen\" class=\"collapse\" aria-labelledby=\"headingTen\" data-parent=\"#accordionExample\">
+                                                <div class=\"card-body\">
+                                                    <select class=\"form-control\" id=\"ToYear\" name=\"year_range[]\">
+                                            <option selected=\"selected\" value=\"-1\">Select year</option>{$options}</select>
+                                                </div>
+                                            </div>
+                                        </div>";
     }
-    $html .= '</div>
-                </div>';
-    $html .= '<button id="btnSubmit" type="submit" class="btn btn-red form-control" name="submitButton" value="BiblioSearch">Search</button>
-                            <button id="btnBack" type="submit" class="btn btn-red form-control" name="resetButton" value="Back">Reset</button>
-                <input id="objSearch" name="objSearch" type="hidden" value=""></form>            
-        ';
+    //Closing accordian
+    $html .= '</div>';
+    // submit input
+    $html .= '<button id="btnSubmit" type="submit" class="apply-btn btn btn-red form-control" name="submitButton" value="BiblioSearch">apply filters</button>
+                <input id="objSearch" name="objSearch" type="hidden" value=""></form>';
+    //Closing menu section 2, menu
+    $html .= "</div></div>";
 
     return $html;
 }
 
 
-function left_filter_html_second($someArray = array(), $keys = array(), $count = array()) {
+function left_filter_html_second($someArray = array(), $keys = array(), $count = array())
+{
     $someArray = array_map('array_filter', $someArray);
-    
+
     $reference_type = [];
     $artist = [];
     $author = [];
@@ -1508,144 +1563,144 @@ function left_filter_html_second($someArray = array(), $keys = array(), $count =
     $gregorian_year = [];
 
     /* classification */
-        if (array_key_exists('reference_type', $someArray)) {
-            $reference_type = $someArray['reference_type'];
-        }
-        //echo '<pre>';print_r($someArray);die;
-        $reference_type_html = '';
-        if(count($reference_type)>0){
-            foreach($reference_type as $key=>$value){
-                $reference_type_html .= '<li>
+    if (array_key_exists('reference_type', $someArray)) {
+        $reference_type = $someArray['reference_type'];
+    }
+    //echo '<pre>';print_r($someArray);die;
+    $reference_type_html = '';
+    if (count($reference_type)>0) {
+        foreach ($reference_type as $key=>$value) {
+            $reference_type_html .= '<li>
                                             <div class="form-check form-check-inline ">
                                                 <input class="form-check-input greencheck" type="checkbox" id="inlineCheckboxRT'.$key.'" value="'.$key.'">
                                                 <label class="form-check-label" for="inlineCheckboxRT'.$key.'">'.$value.'</label>
                                             </div>
                                         </li>';
-            }
-        }    
+        }
+    }
     /* classification */
     /* artist */
-        if (array_key_exists('artist', $someArray)) {
-            $artist = $someArray['artist'];
-        }
-        //echo '<pre>';print_r($someArray);die;
-        $artist_html = '';
-        if(count($artist)>0){
-            foreach($artist as $key=>$value){
-                $artist_html .= '<li class="subList">
+    if (array_key_exists('artist', $someArray)) {
+        $artist = $someArray['artist'];
+    }
+    //echo '<pre>';print_r($someArray);die;
+    $artist_html = '';
+    if (count($artist)>0) {
+        foreach ($artist as $key=>$value) {
+            $artist_html .= '<li class="subList">
                                     <div class="form-check form-check-inline ">
                                         <input class="form-check-input greencheck" type="checkbox" id="inlineCheckboxART'.$key.'" value="'.$key.'">
                                         <label class="form-check-label" for="inlineCheckboxART'.$key.'">'.$value.'</label>
                                     </div>
                                 </li>';
-            }
-        }    
+        }
+    }
     /* artist */
     /* author */
-        if (array_key_exists('author', $someArray)) {
-            $author = $someArray['author'];
-        }
-        //echo '<pre>';print_r($someArray);die;
-        $author_html = '';
-        if(count($author)>0){
-            foreach($author as $key=>$value){
-                $author_html .= '<li class="subList">
+    if (array_key_exists('author', $someArray)) {
+        $author = $someArray['author'];
+    }
+    //echo '<pre>';print_r($someArray);die;
+    $author_html = '';
+    if (count($author)>0) {
+        foreach ($author as $key=>$value) {
+            $author_html .= '<li class="subList">
                                     <div class="form-check form-check-inline ">
                                         <input class="form-check-input greencheck" type="checkbox" id="inlineCheckboxAUTH'.$key.'" value="'.$key.'">
                                         <label class="form-check-label" for="inlineCheckboxAUTH'.$key.'">'.$value.'</label>
                                     </div>
                                 </li>';
-            }
-        }    
+        }
+    }
     /* author */
     /* editor */
-        if (array_key_exists('editor', $someArray)) {
-            $editor = $someArray['editor'];
-        }
-        //echo '<pre>';print_r($someArray);die;
-        $editor_html = '';
-        if(count($editor)>0){
-            foreach($editor as $key=>$value){
-                $editor_html .= '<li class="subList">
+    if (array_key_exists('editor', $someArray)) {
+        $editor = $someArray['editor'];
+    }
+    //echo '<pre>';print_r($someArray);die;
+    $editor_html = '';
+    if (count($editor)>0) {
+        foreach ($editor as $key=>$value) {
+            $editor_html .= '<li class="subList">
                                     <div class="form-check form-check-inline ">
                                         <input class="form-check-input greencheck" type="checkbox" id="inlineCheckboxEDT'.$key.'" value="'.$key.'">
                                         <label class="form-check-label" for="inlineCheckboxEDT'.$key.'">'.$value.'</label>
                                     </div>
                                 </li>';
-            }
-        }    
+        }
+    }
     /* editor */
     /* language */
-        if (array_key_exists('language', $someArray)) {
-            $language = $someArray['language'];
-        }
-        //echo '<pre>';print_r($someArray);die;
-        $language_html = '';
-        if(count($language)>0){
-            foreach($language as $key=>$value){
-                $language_html .= '<li class="subList">
+    if (array_key_exists('language', $someArray)) {
+        $language = $someArray['language'];
+    }
+    //echo '<pre>';print_r($someArray);die;
+    $language_html = '';
+    if (count($language)>0) {
+        foreach ($language as $key=>$value) {
+            $language_html .= '<li class="subList">
                                     <div class="form-check form-check-inline ">
                                         <input class="form-check-input greencheck" type="checkbox" id="inlineCheckboxLANG'.$key.'" value="'.$key.'">
                                         <label class="form-check-label" for="inlineCheckboxLANG'.$key.'">'.$value.'</label>
                                     </div>
                                 </li>';
-            }
-        }    
+        }
+    }
     /* language */
     /* place_of_publication */
-        if (array_key_exists('place_of_publication', $someArray)) {
-            $place_of_publication = $someArray['place_of_publication'];
-        }
-        //echo '<pre>';print_r($someArray);die;
-        $place_of_publication_html = '';
-        if(count($place_of_publication)>0){
-            foreach($place_of_publication as $key=>$value){
-                $place_of_publication_html .= '<li class="subList">
+    if (array_key_exists('place_of_publication', $someArray)) {
+        $place_of_publication = $someArray['place_of_publication'];
+    }
+    //echo '<pre>';print_r($someArray);die;
+    $place_of_publication_html = '';
+    if (count($place_of_publication)>0) {
+        foreach ($place_of_publication as $key=>$value) {
+            $place_of_publication_html .= '<li class="subList">
                                                     <div class="form-check form-check-inline ">
                                                         <input class="form-check-input greencheck" type="checkbox" id="inlineCheckboxPOP'.$key.'" value="'.$key.'">
                                                         <label class="form-check-label" for="inlineCheckboxPOP'.$key.'">'.$value.'</label>
                                                     </div>
                                                 </li>';
-            }
-        }    
+        }
+    }
     /* place_of_publication */
     /* publisher */
-        if (array_key_exists('publisher', $someArray)) {
-            $publisher = $someArray['publisher'];
-        }
-        //echo '<pre>';print_r($someArray);die;
-        $publisher_html = '';
-        if(count($publisher)>0){
-            foreach($publisher as $key=>$value){
-                $publisher_html .= '<li class="subList">
+    if (array_key_exists('publisher', $someArray)) {
+        $publisher = $someArray['publisher'];
+    }
+    //echo '<pre>';print_r($someArray);die;
+    $publisher_html = '';
+    if (count($publisher)>0) {
+        foreach ($publisher as $key=>$value) {
+            $publisher_html .= '<li class="subList">
                                         <div class="form-check form-check-inline ">
                                             <input class="form-check-input greencheck" type="checkbox" id="inlineCheckboxPUB'.$key.'" value="'.$key.'">
                                             <label class="form-check-label" for="inlineCheckboxPUB'.$key.'">'.$value.'</label>
                                         </div>
                                     </li>';
-            }
-        }    
+        }
+    }
     /* publisher */
     /* gregorian_year */
-        if (array_key_exists('gregorian_year', $someArray)) {
-            $gregorian_year = $someArray['gregorian_year'];
-        }
-        //echo '<pre>';print_r($someArray);die;
-        $gregorian_year_html    = '';
-        $from_year_html         = '<option value="" selected>Select From Year</option>';
-        $to_year_html           = '<option value="" selected>Select From Year</option>';
-        if(count($gregorian_year)>0){
-            foreach($gregorian_year as $key=>$value){
-                $gregorian_year_html .= '<li class="subList">
+    if (array_key_exists('gregorian_year', $someArray)) {
+        $gregorian_year = $someArray['gregorian_year'];
+    }
+    //echo '<pre>';print_r($someArray);die;
+    $gregorian_year_html    = '';
+    $from_year_html         = '<option value="" selected>Select From Year</option>';
+    $to_year_html           = '<option value="" selected>Select To Year</option>';
+    if (count($gregorian_year)>0) {
+        foreach ($gregorian_year as $key=>$value) {
+            $gregorian_year_html .= '<li class="subList">
                                             <div class="form-check form-check-inline ">
                                                 <input class="form-check-input greencheck" type="checkbox" id="inlineCheckboxGY'.$key.'" value="'.$key.'">
                                                 <label class="form-check-label" for="inlineCheckboxGY'.$key.'">'.$value.'</label>
                                             </div>
                                         </li>';
-                $from_year_html         .= '<option value="'.$value.'">'.$value.'</option>';
-                $to_year_html         .= '<option value="'.$value.'">'.$value.'</option>';
-            }
-        }    
+            $from_year_html         .= '<option value="'.$value.'">'.$value.'</option>';
+            $to_year_html         .= '<option value="'.$value.'">'.$value.'</option>';
+        }
+    }
     /* gregorian_year */
     $html = '<div class="menu">
         <div class="menu-sec">
@@ -1865,7 +1920,7 @@ function left_filter_html_second($someArray = array(), $keys = array(), $count =
                 </div>
             </div>
             <div class="apply-action">
-                <a href="#" class="apply-btn">apply filters</a>
+                <button id="btnSubmit" type="submit" class="apply-btn" name="submitButton" value="BiblioSearch">apply filters</button>
             </div>
         </div>
     </div>';
@@ -1873,10 +1928,11 @@ function left_filter_html_second($someArray = array(), $keys = array(), $count =
 }
 
 
-function left_filter_html_only_adv($someArray = array(), $keys = array(), $count = array(), $productstr) {
+function left_filter_html_only_adv($someArray = array(), $keys = array(), $count = array(), $productstr)
+{
     $someArray = array_map('array_filter', $someArray);
     $checked2 = '';
-    uksort($someArray, function($a, $b) use ($keys) {
+    uksort($someArray, function ($a, $b) use ($keys) {
         if ($keys[$a] > $keys[$b]) {
             return 1;
         } elseif ($keys[$a] < $keys[$b]) {
@@ -1895,59 +1951,50 @@ function left_filter_html_only_adv($someArray = array(), $keys = array(), $count
 <input type="hidden" name="allproductsid" value="'.$productstr.'">
 <div class="search-filters" style="margin-bottom:20px;">
                     <div class="filter-group">';
-//now loop through each filter and value
-    foreach ($someArray As $key => $value) {
-        $checked = ($key == "reference_type" || $key == 'language') ? "checked" : Null;
+    //now loop through each filter and value
+    foreach ($someArray as $key => $value) {
+        $checked = ($key == "reference_type" || $key == 'language') ? "checked" : null;
 
 
 
         if (array_key_exists($key, $keys) && !empty($value)) {
-
-
-
             $html .= '<h4 class="accordion-header inactive-header">' . replace_underscore_space($key) . '</h4>
                         <section class="accordion-content">
                         <div id="' . $key . '-header"></div>
                             <ul class="list-unstyled" id="' . $key . '">';
             if (is_array($value)) {
-
-
-
                 if ($value[0] == 'Select All') {
-
                     $kpos = '0';
                     $cnti = count($value);
 
-                    // Move k-th element to end 
+                    // Move k-th element to end
 
                     $cntn = $cnti - 1;
                     if (isset($value[$cntn])) {
-
                         $tpos = $value[$kpos];
                         $value[$kpos] = $value[$cnti - 1];
                         $value[$cnti - 1] = $tpos;
 
-                        // Sort all elements  
-                        // except last 
+                        // Sort all elements
+                        // except last
                         $tpos = $value[count($value) - 1];
                         $value = array_slice($value, 0, -1);
                         sort($value);
                         array_push($value, $tpos);
 
-                        // Store last element 
-                        // (originally k-th) 
+                        // Store last element
+                        // (originally k-th)
                         $lastpos = $value[$cnti - 1];
 
-                        // Move all elements from  
-                        // k-th to one position ahead. 
-                        for ($ipos = $cnti - 1; $ipos > $kpos; $ipos--)
+                        // Move all elements from
+                        // k-th to one position ahead.
+                        for ($ipos = $cnti - 1; $ipos > $kpos; $ipos--) {
                             $value[$ipos] = $value[$ipos - 1];
+                        }
 
-                        // Restore k-th element 
+                        // Restore k-th element
                         $value[$kpos] = $lastpos;
                     } else {
-
-
                         $restvalarr = array_slice($value, 1);
 
                         sort($restvalarr);
@@ -1957,21 +2004,17 @@ function left_filter_html_only_adv($someArray = array(), $keys = array(), $count
                         $value = array_merge($arr1, $restvalarr);
                     }
                 } else {
-
                     sort($value);
                 }
                 for ($i = 0; $i < count($value); $i++) {
-
-
                     if (!empty($value[$i])) {
-//Print count
+                        //Print count
                         if (array_key_exists($key, $count)) {
                             for ($j = 0; $j < count($count[$key]); $j++) {
-
                                 if ($value[$i] == $count[$key][$j]['name']) {
                                     $c = $count[$key][$j]['count'];
                                 }
-//echo $count[$key][$val[$j]]['count'] . "<br>";
+                                //echo $count[$key][$val[$j]]['count'] . "<br>";
                             }
                         }
 
@@ -2010,13 +2053,11 @@ function left_filter_html_only_adv($someArray = array(), $keys = array(), $count
         $html .= '<h4 class="accordion-header inactive-header">Year Range</h4>
                         <section class="accordion-content">';
         foreach ($someArray['gregorian_year'] as $val) {
-
             $years [] = (strpos($val, $match) === false) ? $val : substr($val, 0, strpos($val, "-"));
         }
 
         asort($years);
         foreach ($years as $year) {
-
             $options .= '<option value="' . $year . '">' . $year . '</option>';
         }
 
@@ -2047,11 +2088,12 @@ function left_filter_html_only_adv($someArray = array(), $keys = array(), $count
 
 
 
-function left_filter_html_adv($someArray = array(), $keys = array(), $count = array()) {
+function left_filter_html_adv($someArray = array(), $keys = array(), $count = array())
+{
     $someArray = array_map('array_filter', $someArray);
     $checked2 = '';
     $c = '0';
-    uksort($someArray, function($a, $b) use ($keys) {
+    uksort($someArray, function ($a, $b) use ($keys) {
         if ($keys[$a] > $keys[$b]) {
             return 1;
         } elseif ($keys[$a] < $keys[$b]) {
@@ -2069,59 +2111,50 @@ function left_filter_html_adv($someArray = array(), $keys = array(), $count = ar
 <form action="adv-search" class="filter-form" id="filter-form" method="post">                
 <div class="search-filters" style="margin-bottom:20px;">
                     <div class="filter-group">';
-//now loop through each filter and value
-    foreach ($someArray As $key => $value) {
-        $checked = ($key == "reference_type" || $key == 'language') ? "checked" : Null;
+    //now loop through each filter and value
+    foreach ($someArray as $key => $value) {
+        $checked = ($key == "reference_type" || $key == 'language') ? "checked" : null;
 
 
 
         if (array_key_exists($key, $keys) && !empty($value)) {
-
-
-
             $html .= '<h4 class="accordion-header inactive-header">' . replace_underscore_space($key) . '</h4>
                         <section class="accordion-content">
                         <div id="' . $key . '-header"></div>
                             <ul class="list-unstyled" id="' . $key . '">';
             if (is_array($value)) {
-
-
-
                 if ($value[0] == 'Select All') {
-
                     $kpos = '0';
                     $cnti = count($value);
 
-                    // Move k-th element to end 
+                    // Move k-th element to end
 
                     $cntn = $cnti - 1;
                     if (isset($value[$cntn])) {
-
                         $tpos = $value[$kpos];
                         $value[$kpos] = $value[$cnti - 1];
                         $value[$cnti - 1] = $tpos;
 
-                        // Sort all elements  
-                        // except last 
+                        // Sort all elements
+                        // except last
                         $tpos = $value[count($value) - 1];
                         $value = array_slice($value, 0, -1);
                         sort($value);
                         array_push($value, $tpos);
 
-                        // Store last element 
-                        // (originally k-th) 
+                        // Store last element
+                        // (originally k-th)
                         $lastpos = $value[$cnti - 1];
 
-                        // Move all elements from  
-                        // k-th to one position ahead. 
-                        for ($ipos = $cnti - 1; $ipos > $kpos; $ipos--)
+                        // Move all elements from
+                        // k-th to one position ahead.
+                        for ($ipos = $cnti - 1; $ipos > $kpos; $ipos--) {
                             $value[$ipos] = $value[$ipos - 1];
+                        }
 
-                        // Restore k-th element 
+                        // Restore k-th element
                         $value[$kpos] = $lastpos;
                     } else {
-
-
                         $restvalarr = array_slice($value, 1);
 
                         sort($restvalarr);
@@ -2131,25 +2164,17 @@ function left_filter_html_adv($someArray = array(), $keys = array(), $count = ar
                         $value = array_merge($arr1, $restvalarr);
                     }
                 } else {
-
                     sort($value);
                 }
                 for ($i = 0; $i < count($value); $i++) {
-
-
                     if (!empty($value[$i])) {
-                        
-                        
-                        
-                        
-//Print count
+                        //Print count
                         if (array_key_exists($key, $count)) {
                             for ($j = 0; $j < count($count[$key]); $j++) {
-
                                 if ($value[$i] == $count[$key][$j]['name']) {
                                     $c = $count[$key][$j]['count'];
                                 }
-//echo $count[$key][$val[$j]]['count'] . "<br>";
+                                //echo $count[$key][$val[$j]]['count'] . "<br>";
                             }
                         }
 
@@ -2188,13 +2213,11 @@ function left_filter_html_adv($someArray = array(), $keys = array(), $count = ar
         $html .= '<h4 class="accordion-header inactive-header">Year Range</h4>
                         <section class="accordion-content">';
         foreach ($someArray['gregorian_year'] as $val) {
-
             $years [] = (strpos($val, $match) === false) ? $val : substr($val, 0, strpos($val, "-"));
         }
 
         asort($years);
         foreach ($years as $year) {
-
             $options .= '<option value="' . $year . '">' . $year . '</option>';
         }
 
@@ -2243,7 +2266,7 @@ function left_filter_html_adv($someArray = array(), $keys = array(), $count = ar
 //    }
 //
 //    $html = '<h4 class="search-filters-title" id="search-filters-title">Refine Search</h4>
-//<form action="adv-search" class="filter-form" id="filter-form" method="post">                
+//<form action="adv-search" class="filter-form" id="filter-form" method="post">
 //<div class="search-filters" style="margin-bottom:20px;">
 //                    <div class="filter-group">';
 ////now loop through each filter and value
@@ -2269,7 +2292,7 @@ function left_filter_html_adv($someArray = array(), $keys = array(), $count = ar
 //                    $kpos = '0';
 //                    $cnti = count($value);
 //
-//                    // Move k-th element to end 
+//                    // Move k-th element to end
 //
 //                    $cntn = $cnti - 1;
 //                    if (isset($value[$cntn])) {
@@ -2278,23 +2301,23 @@ function left_filter_html_adv($someArray = array(), $keys = array(), $count = ar
 //                        $value[$kpos] = $value[$cnti - 1];
 //                        $value[$cnti - 1] = $tpos;
 //
-//                        // Sort all elements  
-//                        // except last 
+//                        // Sort all elements
+//                        // except last
 //                        $tpos = $value[count($value) - 1];
 //                        $value = array_slice($value, 0, -1);
 //                        sort($value);
 //                        array_push($value, $tpos);
 //
-//                        // Store last element 
-//                        // (originally k-th) 
+//                        // Store last element
+//                        // (originally k-th)
 //                        $lastpos = $value[$cnti - 1];
 //
-//                        // Move all elements from  
-//                        // k-th to one position ahead. 
+//                        // Move all elements from
+//                        // k-th to one position ahead.
 //                        for ($ipos = $cnti - 1; $ipos > $kpos; $ipos--)
 //                            $value[$ipos] = $value[$ipos - 1];
 //
-//                        // Restore k-th element 
+//                        // Restore k-th element
 //                        $value[$kpos] = $lastpos;
 //                    } else {
 //
@@ -2315,10 +2338,10 @@ function left_filter_html_adv($someArray = array(), $keys = array(), $count = ar
 //
 //
 //                    if (!empty($value[$i])) {
-//                        
-//                        
-//                        
-//                        
+//
+//
+//
+//
 ////Print count
 //                        if (array_key_exists($key, $count)) {
 //                            for ($j = 0; $j < count($count[$key]); $j++) {
@@ -2394,19 +2417,20 @@ function left_filter_html_adv($someArray = array(), $keys = array(), $count = ar
 //                </div>';
 //    $html .= '<button id="btnSubmit" type="submit" class="btn btn-red form-control" name="submitButton" value="BiblioSearch">Search</button>
 //                            <button id="btnBack" type="submit" class="btn btn-red form-control" name="resetButton" value="Back">Reset</button>
-//<input id="objSearch" name="objSearch" type="hidden" value=""></form>            
+//<input id="objSearch" name="objSearch" type="hidden" value=""></form>
 //        ';
 //
 //    return $html;
 //}
 
 /**
- * 
+ *
  * @param type $someArray as array
  * @param type $preserveKeys as boolean
  * @return type Array
  */
-function arrayUnique($someArray = array(), $preserveKeys = false) {
+function arrayUnique($someArray = array(), $preserveKeys = false)
+{
     $uniqueArray = array();
     $hashes = array();
 
@@ -2431,8 +2455,8 @@ function arrayUnique($someArray = array(), $preserveKeys = false) {
     return $uniqueArray;
 }
 
-function list_products($row) {
-
+function list_products($row)
+{
     $replace = array(
         '{ProdId}',
         '{ProductImg}',
@@ -2456,7 +2480,8 @@ function list_products($row) {
     return array($replace, $products);
 }
 
-function paint_gallery_details($row) {
+function paint_gallery_details($row)
+{
     $html = '';
 
     $sql = "SELECT
@@ -2481,7 +2506,6 @@ function paint_gallery_details($row) {
         while ($currentRow = $q->fetch()) {
             $pid = $currentRow['prodid'];
             if ($row['prodid'] == $pid) {
-
                 $html .= '<li><span class="heading">' . uppercasefirstword(replace_underscore_space($currentRow['attribute_name'])) . '</span>&nbsp;&#8259;&nbsp;<span>' . $currentRow['value'] . '</span></li>';
             }
         }
@@ -2491,13 +2515,13 @@ function paint_gallery_details($row) {
     }
 }
 
-function replace_underscore_space($str = '', $parent = NULL) {
-
+function replace_underscore_space($str = '', $parent = null)
+{
     if (!empty($str)) {
         if (preg_match("/_/", $str)) {
             if (preg_match('/\breference_type\b/', $str)) {
                 $str = str_replace("reference_type", "Classification", $str);
-                //$str = str_replace("reference_type", "reference_type", $str);
+            //$str = str_replace("reference_type", "reference_type", $str);
             } elseif (preg_match('/\bgregorian_month\b/', $str)) {
                 $str = str_replace("gregorian_month", "Month", $str);
             } elseif (preg_match('/\bgregorian_year\b/', $str)) {
@@ -2513,13 +2537,14 @@ function replace_underscore_space($str = '', $parent = NULL) {
         } elseif (preg_match("/bed/", $str)) {
             $str = ucwords(str_replace("b", "", $str));
             return $str;
-        } else
+        } else {
             return ucwords($str);
+        }
     }
 }
 
-function replace_space_underscore($str = '') {
-
+function replace_space_underscore($str = '')
+{
     if (!empty($str)) {
         if (strpos(" ", $str) === false) {
             $str = ucwords(str_replace(" ", "_", $str));
@@ -2529,7 +2554,8 @@ function replace_space_underscore($str = '') {
     }
 }
 
-function getL2Keys($array) {
+function getL2Keys($array)
+{
     $result = array();
     foreach ($array as $sub) {
         $result = array_merge($result, $sub);
@@ -2541,125 +2567,120 @@ function getL2Keys($array) {
  * Memorabilia search left filter data
  */
 
-    function memorabilia_left_search($array = array(), $keys = array(), $count = array(), $html = '') {
-        $result = array();
-        $checked = '';
-        $someArray = array_map('array_filter', $array);
-        $iterator = new RecursiveIteratorIterator(new RecursiveArrayIterator($someArray), RecursiveIteratorIterator::SELF_FIRST);
+function memorabilia_left_search($array = array(), $keys = array(), $count = array(), $html = '')
+{
+    $result = array();
+    $checked = '';
+    $someArray = array_map('array_filter', $array);
+    $iterator = new RecursiveIteratorIterator(new RecursiveArrayIterator($someArray), RecursiveIteratorIterator::SELF_FIRST);
 
-        foreach ($iterator as $k => $v) {
-            if ($iterator->hasChildren()) {
-
-                if ($iterator->getDepth()) {
-                    $level1 = $k;
-                }
-            } else {
-                if (array_key_exists($level1, $keys))
-                    $result[$level1][] = $v;
+    foreach ($iterator as $k => $v) {
+        if ($iterator->hasChildren()) {
+            if ($iterator->getDepth()) {
+                $level1 = $k;
             }
-        }
-        $final = assoc_Array_unique($result);
-        //Sorting Final Data
-        $sortingKeys = array('year' => 1, 'film' => 1, 'cast' => 1, 'director' => 1, 'music' => 1, 'playback' => 1, 'producer' => 1, 'story' => 1, 'photography' => 1, 'art' => 1, 'editor' => 1, 'distributor' => 1, 'hall' => 1, 'script' => 1,);
-        $iterator = new RecursiveIteratorIterator(new RecursiveArrayIterator($final), RecursiveIteratorIterator::SELF_FIRST);
-        foreach ($iterator as $k => $v) {
-            if ($iterator->hasChildren()) {
-                if ($iterator->getDepth() == 0) {
-                    $attr = $k;
-                }
-            } else {
-                if (array_key_exists($attr, $sortingKeys)) {
-                    sort($final[$attr]);
-                }
-            }
-        }
-
-
-        $html = '<form action="memorabilia" class="filter-form" id="filter-form" method="post">                <div class="search-filters" style="margin-bottom:20px;">
-                        <div class="filter-group">';
-        //now loop through each filter and value
-        /**
-         * Creating left panel order
-         */
-        $properOrderedArray = array_replace(array_flip(array('year', 'film', 'cast', 'director', 'music', 'playback')), $final);
-
-        if (isset($_SESSION['fParam']) && isset($_SESSION['append'])) {
-            $sessData = array_merge($_SESSION['fParam'], $_SESSION['append']);
-            $sessCount = count($sessData);
         } else {
-            $sessData = $_SESSION['fParam'];
-            $sessCount = count($sessData);
+            if (array_key_exists($level1, $keys)) {
+                $result[$level1][] = $v;
+            }
         }
+    }
+    $final = assoc_Array_unique($result);
+    //Sorting Final Data
+    $sortingKeys = array('year' => 1, 'film' => 1, 'cast' => 1, 'director' => 1, 'music' => 1, 'playback' => 1, 'producer' => 1, 'story' => 1, 'photography' => 1, 'art' => 1, 'editor' => 1, 'distributor' => 1, 'hall' => 1, 'script' => 1,);
+    $iterator = new RecursiveIteratorIterator(new RecursiveArrayIterator($final), RecursiveIteratorIterator::SELF_FIRST);
+    foreach ($iterator as $k => $v) {
+        if ($iterator->hasChildren()) {
+            if ($iterator->getDepth() == 0) {
+                $attr = $k;
+            }
+        } else {
+            if (array_key_exists($attr, $sortingKeys)) {
+                sort($final[$attr]);
+            }
+        }
+    }
+
+
+    $html = '<form action="memorabilia" class="filter-form" id="filter-form" method="post">                <div class="search-filters" style="margin-bottom:20px;">
+                        <div class="filter-group">';
+    //now loop through each filter and value
+    /**
+     * Creating left panel order
+     */
+    $properOrderedArray = array_replace(array_flip(array('year', 'film', 'cast', 'director', 'music', 'playback')), $final);
+
+    if (isset($_SESSION['fParam']) && isset($_SESSION['append'])) {
+        $sessData = array_merge($_SESSION['fParam'], $_SESSION['append']);
+        $sessCount = count($sessData);
+    } else {
+        $sessData = $_SESSION['fParam'];
+        $sessCount = count($sessData);
+    }
 
         //    print "<pre>";
         //    print_r($properOrderedArray);
-        //echo "<pre>";print_r($properOrderedArray);die;
-        foreach ($properOrderedArray As $key => $value) {
+    //echo "<pre>";print_r($properOrderedArray);die;
+    foreach ($properOrderedArray as $key => $value) {
         //        if (array_key_exists($key, $keys)) {
 
-            $html .= '<h4 class="accordion-header inactive-header">' . uppercasefirstword($key) . '</h4>
+        $html .= '<h4 class="accordion-header inactive-header">' . uppercasefirstword($key) . '</h4>
                             <section class="accordion-content">
                             <div id="' . $key . '-header"></div>
                                 <ul class="list-unstyled" id="' . $key . '">';
-            if (is_array($value)) {
+        if (is_array($value)) {
+            /**
+             * Checked values which are already stored in Session
+             */
+            for ($i = 0; $i < count($value); $i++) {
+                if (!empty($value[$i])) {
+                    if (!empty($sessData)) {
+                        $checked = (in_array($value[$i], array_column($sessData, $key))) ? 'checked' : '';
+                    }
 
-                /**
-                 * Checked values which are already stored in Session
-                 */
-                for ($i = 0; $i < count($value); $i++) {
-
-
-                    if (!empty($value[$i])) {
-                        if (!empty($sessData)) {
-                            $checked = (in_array($value[$i], array_column($sessData, $key))) ? 'checked' : '';
-                        }
-
-                        if (array_key_exists($key, $count)) {
-                            for ($j = 0; $j < count($count[$key]); $j++) {
-
-                                if ($value[$i] == $count[$key][$j]['name']) {
-                                    $c = $count[$key][$j]['count'];
-                                }
-        //echo $count[$key][$val[$j]]['count'] . "<br>";
+                    if (array_key_exists($key, $count)) {
+                        for ($j = 0; $j < count($count[$key]); $j++) {
+                            if ($value[$i] == $count[$key][$j]['name']) {
+                                $c = $count[$key][$j]['count'];
                             }
+                            //echo $count[$key][$val[$j]]['count'] . "<br>";
                         }
+                    }
 
-                        $html .= '<li class="li_' . $i . '">
+                    $html .= '<li class="li_' . $i . '">
                                                     <input type="checkbox" name="' . $key . '[]" value="' . $value[$i] . '" class="' . $key . '"' . $checked . '>
                                                     <label for="check_book">' . $value[$i] . '</label><span class="count"> (' . $c . ')</span>
                                                 </li>';
-                    }
-                }   //Value for loop closed
-            }
-            $html .= '</ul></section>';
-        //        } No need of array key exists
+                }
+            }   //Value for loop closed
         }
+        $html .= '</ul></section>';
+        //        } No need of array key exists
+    }
 
-        //For Year Range select dropdown
-        if (array_key_exists('year', $properOrderedArray)) {
-            $match = '-';
-            $options = '';
-            $html .= '<h4 class="accordion-header inactive-header">Year Range</h4>
+    //For Year Range select dropdown
+    if (array_key_exists('year', $properOrderedArray)) {
+        $match = '-';
+        $options = '';
+        $html .= '<h4 class="accordion-header inactive-header">Year Range</h4>
                             <section class="accordion-content">';
-            if (!empty($properOrderedArray['year'])) {
-                foreach ($properOrderedArray['year'] as $val) {
+        if (!empty($properOrderedArray['year'])) {
+            foreach ($properOrderedArray['year'] as $val) {
+                $years [] = (strpos($val, $match) === false) ? $val : substr($val, 0, strpos($val, "-"));
+            }
 
-                    $years [] = (strpos($val, $match) === false) ? $val : substr($val, 0, strpos($val, "-"));
-                }
+            asort($years);
+            foreach ($years as $year) {
+                $options .= '<option value="' . $year . '">' . $year . '</option>';
+            }
 
-                asort($years);
-                foreach ($years as $year) {
-
-                    $options .= '<option value="' . $year . '">' . $year . '</option>';
-                }
-
-                $html .= '<div class="form-group">
+            $html .= '<div class="form-group">
                                     <div class="input-group">
                                         <div class="input-group-addon">From</div>
                                         <select class="form-control" id="FromYear" name="year_range[]"><option selected="selected" value="-1">Select year</option>' . $options . '</select>
                                     </div>
                                 </div>';
-                $html .= '<div class="form-group">
+            $html .= '<div class="form-group">
                                     <div class="input-group">
                                         <div class="input-group-addon" style="padding:6px 21px;">To</div>
                                         <select class="form-control" id="ToYear" name="year_range[]">
@@ -2667,157 +2688,157 @@ function getL2Keys($array) {
                                     </div>
                                 </div>
                             </section>';
-            }
         }
-        $html .= '</div>
+    }
+    $html .= '</div>
                     </div>
                     <button id="btnSubmit" type="submit" class="btn btn-red form-control" name="submitButton" value="MemorabilaSearch">Search</button>
                                 <button id="btnReset" type="submit" class="btn btn-red form-control" name="resetButton" value="reset">Reset</button>
                                 <input id="objSearch" name="objSearch" type="hidden" value=""></form>';
 
-        return $html;
-    }
+    return $html;
+}
 
 /* Memorabilia search left filter data in new design */
-    function memorabilia_left_search_new_design($array = array(), $keys = array(), $count = array(), $html = '') {
-
-        $result = array();
-        $checked = '';
-        $someArray = array_map('array_filter', $array);
-        $iterator = new RecursiveIteratorIterator(new RecursiveArrayIterator($someArray), RecursiveIteratorIterator::SELF_FIRST);
-        foreach ($iterator as $k => $v) {
-            if ($iterator->hasChildren()) {
-
-                if ($iterator->getDepth()) {
-                    $level1 = $k;
-                }
-            } else {
-                if (array_key_exists($level1, $keys))
-                    $result[$level1][] = $v;
+function memorabilia_left_search_new_design($array = array(), $keys = array(), $count = array(), $html = '')
+{
+    $result = array();
+    $checked = '';
+    $someArray = array_map('array_filter', $array);
+    $iterator = new RecursiveIteratorIterator(new RecursiveArrayIterator($someArray), RecursiveIteratorIterator::SELF_FIRST);
+    foreach ($iterator as $k => $v) {
+        if ($iterator->hasChildren()) {
+            if ($iterator->getDepth()) {
+                $level1 = $k;
+            }
+        } else {
+            if (array_key_exists($level1, $keys)) {
+                $result[$level1][] = $v;
             }
         }
-        $final = assoc_Array_unique($result);
-        //Sorting Final Data
-        $sortingKeys = array('year' => 1, 'film' => 1, 'cast' => 1, 'director' => 1, 'music' => 1, 'playback' => 1, 'producer' => 1, 'story' => 1, 'photography' => 1, 'art' => 1, 'editor' => 1, 'distributor' => 1, 'hall' => 1, 'script' => 1,);
-        $iterator = new RecursiveIteratorIterator(new RecursiveArrayIterator($final), RecursiveIteratorIterator::SELF_FIRST);
-        foreach ($iterator as $k => $v) {
-            if ($iterator->hasChildren()) {
-                if ($iterator->getDepth() == 0) {
-                    $attr = $k;
-                }
-            } else {
-                if (array_key_exists($attr, $sortingKeys)) {
-                    sort($final[$attr]);
-                }
+    }
+    $final = assoc_Array_unique($result);
+    //Sorting Final Data
+    $sortingKeys = array('year' => 1, 'film' => 1, 'cast' => 1, 'director' => 1, 'music' => 1, 'playback' => 1, 'producer' => 1, 'story' => 1, 'photography' => 1, 'art' => 1, 'editor' => 1, 'distributor' => 1, 'hall' => 1, 'script' => 1,);
+    $iterator = new RecursiveIteratorIterator(new RecursiveArrayIterator($final), RecursiveIteratorIterator::SELF_FIRST);
+    foreach ($iterator as $k => $v) {
+        if ($iterator->hasChildren()) {
+            if ($iterator->getDepth() == 0) {
+                $attr = $k;
             }
-        }        
-        $properOrderedArray = array_replace(array_flip(array('year', 'film', 'cast', 'director', 'music', 'playback')), $final);
-        //echo '<pre>';print_r($properOrderedArray);die;
-        $someArray = $properOrderedArray;
-        $year           = [];
-        $film           = [];
-        $cast           = [];
-        $director       = [];
-        $music          = [];
-        $playback       = [];
+        } else {
+            if (array_key_exists($attr, $sortingKeys)) {
+                sort($final[$attr]);
+            }
+        }
+    }
+    $properOrderedArray = array_replace(array_flip(array('year', 'film', 'cast', 'director', 'music', 'playback')), $final);
+    //echo '<pre>';print_r($properOrderedArray);die;
+    $someArray = $properOrderedArray;
+    $year           = [];
+    $film           = [];
+    $cast           = [];
+    $director       = [];
+    $music          = [];
+    $playback       = [];
 
-        $year_html      = '';
-        $film_html      = '';
-        $cast_html      = '';
-        $director_html  = '';
-        $music_html     = '';
-        $playback_html  = '';
-        /* year */
-            if (array_key_exists('year', $someArray)) {
-                $year = $someArray['year'];
-            }            
-            if(count($year)>0){
-                foreach($year as $key=>$value){
-                    $year_html .= '<li class="subList">
+    $year_html      = '';
+    $film_html      = '';
+    $cast_html      = '';
+    $director_html  = '';
+    $music_html     = '';
+    $playback_html  = '';
+    /* year */
+    if (array_key_exists('year', $someArray)) {
+        $year = $someArray['year'];
+    }
+    if (count($year)>0) {
+        foreach ($year as $key=>$value) {
+            $year_html .= '<li class="subList">
                                         <div class="form-check form-check-inline ">
                                             <input class="form-check-input greencheck" type="checkbox" id="inlineCheckboxYEAR'.$key.'" value="'.$key.'">
                                             <label class="form-check-label" for="inlineCheckboxYEAR'.$key.'">'.$value.'</label>
                                         </div>
                                     </li>';
-                }
-            }    
-        /* year */
-        /* film */
-            if (array_key_exists('film', $someArray)) {
-                $film = $someArray['film'];
-            }            
-            if(count($film)>0){
-                foreach($film as $key=>$value){
-                    $film_html .= '<li class="subList">
+        }
+    }
+    /* year */
+    /* film */
+    if (array_key_exists('film', $someArray)) {
+        $film = $someArray['film'];
+    }
+    if (count($film)>0) {
+        foreach ($film as $key=>$value) {
+            $film_html .= '<li class="subList">
                                         <div class="form-check form-check-inline ">
                                             <input class="form-check-input greencheck" type="checkbox" id="inlineCheckboxFILM'.$key.'" value="'.$key.'">
                                             <label class="form-check-label" for="inlineCheckboxFILM'.$key.'">'.$value.'</label>
                                         </div>
                                     </li>';
-                }
-            }
-        /* film */
-        /* cast */
-            if (array_key_exists('cast', $someArray)) {
-                $cast = $someArray['cast'];
-            }            
-            if(count($cast)>0){
-                foreach($cast as $key=>$value){
-                    $cast_html .= '<li class="subList">
+        }
+    }
+    /* film */
+    /* cast */
+    if (array_key_exists('cast', $someArray)) {
+        $cast = $someArray['cast'];
+    }
+    if (count($cast)>0) {
+        foreach ($cast as $key=>$value) {
+            $cast_html .= '<li class="subList">
                                         <div class="form-check form-check-inline ">
                                             <input class="form-check-input greencheck" type="checkbox" id="inlineCheckboxCAST'.$key.'" value="'.$key.'">
                                             <label class="form-check-label" for="inlineCheckboxCAST'.$key.'">'.$value.'</label>
                                         </div>
                                     </li>';
-                }
-            }
-        /* cast */
-        /* director */
-            if (array_key_exists('director', $someArray)) {
-                $director = $someArray['director'];
-            }            
-            if(count($director)>0){
-                foreach($director as $key=>$value){
-                    $director_html .= '<li class="subList">
+        }
+    }
+    /* cast */
+    /* director */
+    if (array_key_exists('director', $someArray)) {
+        $director = $someArray['director'];
+    }
+    if (count($director)>0) {
+        foreach ($director as $key=>$value) {
+            $director_html .= '<li class="subList">
                                         <div class="form-check form-check-inline ">
                                             <input class="form-check-input greencheck" type="checkbox" id="inlineCheckboxDIRECTOR'.$key.'" value="'.$key.'">
                                             <label class="form-check-label" for="inlineCheckboxDIRECTOR'.$key.'">'.$value.'</label>
                                         </div>
                                     </li>';
-                }
-            }
-        /* director */
-        /* music */
-            if (array_key_exists('music', $someArray)) {
-                $music = $someArray['music'];
-            }            
-            if(count($music)>0){
-                foreach($music as $key=>$value){
-                    $music_html .= '<li class="subList">
+        }
+    }
+    /* director */
+    /* music */
+    if (array_key_exists('music', $someArray)) {
+        $music = $someArray['music'];
+    }
+    if (count($music)>0) {
+        foreach ($music as $key=>$value) {
+            $music_html .= '<li class="subList">
                                         <div class="form-check form-check-inline ">
                                             <input class="form-check-input greencheck" type="checkbox" id="inlineCheckboxMUSIC'.$key.'" value="'.$key.'">
                                             <label class="form-check-label" for="inlineCheckboxMUSIC'.$key.'">'.$value.'</label>
                                         </div>
                                     </li>';
-                }
-            }
-        /* music */
-        /* playback */
-            if (array_key_exists('playback', $someArray)) {
-                $playback = $someArray['playback'];
-            }            
-            if(count($playback)>0){
-                foreach($playback as $key=>$value){
-                    $playback_html .= '<li class="subList">
+        }
+    }
+    /* music */
+    /* playback */
+    if (array_key_exists('playback', $someArray)) {
+        $playback = $someArray['playback'];
+    }
+    if (count($playback)>0) {
+        foreach ($playback as $key=>$value) {
+            $playback_html .= '<li class="subList">
                                         <div class="form-check form-check-inline ">
                                             <input class="form-check-input greencheck" type="checkbox" id="inlineCheckboxPLAYBACK'.$key.'" value="'.$key.'">
                                             <label class="form-check-label" for="inlineCheckboxPLAYBACK'.$key.'">'.$value.'</label>
                                         </div>
                                     </li>';
-                }
-            }
-        /* playback */
-        $html = '<div class="menu">
+        }
+    }
+    /* playback */
+    $html = '<div class="menu">
                     <div class="menu-sec">
                         <div class="accordion" id="accordionExample">
                             <div class="card">
@@ -2986,15 +3007,16 @@ function getL2Keys($array) {
                         </div>
                     </div>
                 </div>';
-        return $html;
-    }
+    return $html;
+}
 /* Memorabilia search left filter data in new design */
 
 /**
- * Associative array Unique recursive 
+ * Associative array Unique recursive
  * Return array
  */
-function assoc_Array_unique($array) {
+function assoc_Array_unique($array)
+{
 //    $count = array_sum(array_map('count', $array));
 //    if($count){
 //        return $array;
@@ -3010,7 +3032,8 @@ function assoc_Array_unique($array) {
     return $result;
 }
 
-function get_subcategoryList_by_name($categoryName = 'Book') {
+function get_subcategoryList_by_name($categoryName = 'Book')
+{
     try {
         $conn = dbconnect();
         $q = $conn->prepare("SELECT `product_type_name`, `product_type_id` FROM product_type_ecomc WHERE `parent` =(SELECT `parent` FROM `product_type_ecomc` WHERE `product_type_name`=:pname)");
@@ -3028,10 +3051,11 @@ function get_subcategoryList_by_name($categoryName = 'Book') {
 }
 
 /**
- * 
+ *
  * @param type string $category
  */
-function get_attrKeys_by_category($category = 'Bibliography') {
+function get_attrKeys_by_category($category = 'Bibliography')
+{
     $keyData = array();
     try {
         $conn = dbconnect();
@@ -3052,13 +3076,14 @@ function get_attrKeys_by_category($category = 'Bibliography') {
         while ($row = $q->fetch()) {
             $keyData[] = strtolower(replace_underscore_space($row['attribute_name']));
         }
-        return $q->rowCount() == 0 ? NULL : $keyData;
+        return $q->rowCount() == 0 ? null : $keyData;
     } catch (PDOException $pe) {
         echo db_error($pe->getMessage());
     }
 }
 
-function getFullname($array = array()) {
+function getFullname($array = array())
+{
     if (!empty($array)) {
         foreach ($array as $key => $val) {
             if ($key == 'name') {
@@ -3073,30 +3098,33 @@ function getFullname($array = array()) {
     return $fullName;
 }
 
-function preg_array_key_exists($pattern, $array) {
-// extract the keys.
+function preg_array_key_exists($pattern, $array)
+{
+    // extract the keys.
     $keys = array_keys($array);
 
-// convert the preg_grep() returned array to int..and return.
-// the ret value of preg_grep() will be an array of values
-// that match the pattern.
+    // convert the preg_grep() returned array to int..and return.
+    // the ret value of preg_grep() will be an array of values
+    // that match the pattern.
     return (int) preg_grep($pattern, $keys);
 }
 
-function preg_custom($pattern, $str) {
-
+function preg_custom($pattern, $str)
+{
     if (preg_match($pattern, $str, $match)) {
         return true;
     }
     return false;
 }
 
-function fullName($someArray = array()) {
+function fullName($someArray = array())
+{
     $result = join(" ", array_reverse($someArray));
     return trim($result);
 }
 
-function r_implode($array, $delim = "$") {
+function r_implode($array, $delim = "$")
+{
     $data = array();
     foreach ($array as $key => $val) {
         $dbK = strtolower(replace_space_underscore($key));
@@ -3116,11 +3144,13 @@ function r_implode($array, $delim = "$") {
     return $data;
 }
 
-function rempty($var) {
+function rempty($var)
+{
     return !($var == "" || $var == null || $var == " ");
 }
 
-function get_all_inputtype_fields() {
+function get_all_inputtype_fields()
+{
     $result = array();
     try {
         $conn = dbconnect();
@@ -3136,7 +3166,7 @@ where attr_common_flds_ecomc.field_type IN ('text', 'textarea', 'file', 'date', 
         $q->execute();
         $q->setFetchMode(PDO::FETCH_ASSOC);
         $row = $q->fetchAll();
-        foreach ($row AS $k => $v) {
+        foreach ($row as $k => $v) {
             $result[$v['attribute_name']] = $v['id'];
         }
         return $result;
@@ -3145,10 +3175,10 @@ where attr_common_flds_ecomc.field_type IN ('text', 'textarea', 'file', 'date', 
     }
 }
 
-function Excel_data_insert($Somearray = array(), $field_type) {
+function Excel_data_insert($Somearray = array(), $field_type)
+{
     $productEntry = array();
     foreach ($Somearray as $k => $v) {
-
         if (!empty($v)) {
             if (strpos($v, "$") !== false) {
                 $data = explode("$", $v);
@@ -3175,13 +3205,13 @@ function Excel_data_insert($Somearray = array(), $field_type) {
                                     $productEntry[] = $row['attr_value_id'];
                                 }
                             }
-//$pp[] = $qry;
+                            //$pp[] = $qry;
                         } catch (Exception $pe) {
                             echo db_error($pe->getMessage());
                         }
                     }
-//return $pp;
-//return $productEntry;
+                    //return $pp;
+                    //return $productEntry;
                 }
             } else {
                 if ($field_type[$k] == 'select-multiple') {
@@ -3206,11 +3236,11 @@ function Excel_data_insert($Somearray = array(), $field_type) {
                                 $productEntry[] = $row['attr_value_id'];
                             }
                         }
-//$pp[] = $qry;
+                        //$pp[] = $qry;
                     } catch (Exception $pe) {
                         echo db_error($pe->getMessage());
                     }
-                } // if block field type check   
+                } // if block field type check
                 else {
                     $conn = dbconnect();
                     try {
@@ -3232,7 +3262,7 @@ function Excel_data_insert($Somearray = array(), $field_type) {
                                 $productEntry[] = $row['attr_value_id'];
                             }
                         }
-//$pp[] = $qry; 
+                        //$pp[] = $qry;
                     } catch (Exception $pe) {
                         echo db_error($pe->getMessage());
                     }
@@ -3242,10 +3272,11 @@ function Excel_data_insert($Somearray = array(), $field_type) {
     } //Closing of foreach
 
     return $productEntry;
-//return $pp;
+    //return $pp;
 }
 
-function get_input_type_fields() {
+function get_input_type_fields()
+{
     $result = array();
     try {
         $conn = dbconnect();
@@ -3261,7 +3292,7 @@ where attr_common_flds_ecomc.field_type IN ('text', 'textarea', 'file', 'date', 
         $q->execute();
         $q->setFetchMode(PDO::FETCH_ASSOC);
         $row = $q->fetchAll();
-        foreach ($row AS $k => $v) {
+        foreach ($row as $k => $v) {
             $result[$v['id']] = $v['field_type'];
         }
         return $result;
@@ -3271,10 +3302,11 @@ where attr_common_flds_ecomc.field_type IN ('text', 'textarea', 'file', 'date', 
 }
 
 //function get_adv_search($param1, $param2) {
-function get_adv_search($firstkey, $qry_inner, $count = false) {
+function get_adv_search($firstkey, $qry_inner, $count = false)
+{
     $search_data = array();
     if (!$count) {
-//for Data
+        //for Data
         $query_outer = "  SELECT 
                     tbl2.id productId, 
                     tbl2.n product, 
@@ -3326,8 +3358,6 @@ GROUP BY
                                 %s)
 		GROUP BY t.attribute_value_id order by p.prodname";
         $query = $count_query_outer . $count_query_inner;
-        
-        
     }
 
 
@@ -3340,16 +3370,15 @@ GROUP BY
         //return $sql;
 
         $q = $conn->prepare($sql);
-//$q->bindParam(':customarstatus',1,PDO::PARAM_INT);
-// $bind = array(':firstkey' => $firstkey, ':innerqry' => $qry_inner);
-//$bind = array(':person' => '%'.$param1.'%', ':attribute' => $param2);
-//exit;
+        //$q->bindParam(':customarstatus',1,PDO::PARAM_INT);
+        // $bind = array(':firstkey' => $firstkey, ':innerqry' => $qry_inner);
+        //$bind = array(':person' => '%'.$param1.'%', ':attribute' => $param2);
+        //exit;
         $q->execute();
-//return PdoDebugger::show($query, $bind);
+        //return PdoDebugger::show($query, $bind);
         $q->setFetchMode(PDO::FETCH_ASSOC);
         while ($row = $q->fetch()) {
             if (!$count) {
-
                 $search_data[] = array(
                     'productId' => $row['productId'],
                     'product' => $row['product'],
@@ -3358,7 +3387,6 @@ GROUP BY
                     'value' => $row['value']
                 );
             } else {
-
                 $search_data[] = array(
                     'attribute_name' => $row['attribute_name'],
                     'relationcount' => $row['relationcount'],
@@ -3372,7 +3400,8 @@ GROUP BY
     }
 }
 
-function extractKeyValuePairs($string = "", $delimiter = " ") {
+function extractKeyValuePairs($string = "", $delimiter = " ")
+{
     $params = explode($delimiter, $string);
 
     $pairs = [];
@@ -3383,7 +3412,8 @@ function extractKeyValuePairs($string = "", $delimiter = " ") {
     return $pairs;
 }
 
-function get_html_from_JSON($json = null, $type = '') {
+function get_html_from_JSON($json = null, $type = '')
+{
     if (!ADDTOCART) {
         return false;
     }
@@ -3397,7 +3427,7 @@ function get_html_from_JSON($json = null, $type = '') {
 
     $html = '';
     $decode = json_decode($json, true);
-//$html .= '<div class="select-image-cart"><select class="imgOptions" style="width: 100%;">';
+    //$html .= '<div class="select-image-cart"><select class="imgOptions" style="width: 100%;">';
     $html .= '<div class="right-details">';
 //    print '<pre>';
 //    print_r($decode);
@@ -3420,9 +3450,8 @@ function get_html_from_JSON($json = null, $type = '') {
                     </div>';
 
             for ($i = 0; $i < count($decode['sellOriginal']); $i++) {
-
                 if (strlen($decode['sellOriginal'][$i]['size']) > 0 || !($decode['sellOriginal'][$i]['size'] == '')) {
-//$html .= '<option value="' . $decode['sellOriginal'][$i]['size'] . '$' . $decode['sellOriginal'][$i]['price'] .'">'. '&nbsp;'. $decode['sellOriginal'][$i]['size']. ''. $img_price. '</option>' ;  
+                    //$html .= '<option value="' . $decode['sellOriginal'][$i]['size'] . '$' . $decode['sellOriginal'][$i]['price'] .'">'. '&nbsp;'. $decode['sellOriginal'][$i]['size']. ''. $img_price. '</option>' ;
 
                     $html .= '<div class="exhibition-search-title">' . $decode['sellOriginal'][$i]['size'] . '</div>';
                     if ($conv_rate == '') {
@@ -3440,7 +3469,7 @@ function get_html_from_JSON($json = null, $type = '') {
                             $taxable = 1;
                         }
 
-                         // $html .= '<div class="exhibition-search-content"></div>';
+                        // $html .= '<div class="exhibition-search-content"></div>';
 
                         $html .= '<form class="cart-add-form" method="POST" id="original" action="' . SITE_URL . '/cart-checkout/calculate-cart.php">';
                         $html .= '<input type="hidden" name="product_id" id="product_id" value="' . $decode['product'] . '">' .
@@ -3461,7 +3490,6 @@ function get_html_from_JSON($json = null, $type = '') {
     }
 
     if (!empty($decode['sellPrint'])) {
-
         $count_details_p = 0;
         for ($i = 0; $i < count($decode['sellPrint']); $i++) {
             if ($decode['sellPrint'][$i]['size'] != '') {
@@ -3478,7 +3506,7 @@ function get_html_from_JSON($json = null, $type = '') {
 
             for ($i = 0; $i < count($decode['sellPrint']); $i++) {
                 if (strlen($decode['sellPrint'][$i]['size']) > 0 || !($decode['sellPrint'][$i]['size'] == '')) {
-//$html .= '<option value="' . $decode['sellPrint'][$i]['size'] . '$' . $decode['sellPrint'][$i]['price'] .'">'. '&nbsp;'. $decode['sellPrint'][$i]['size']. ''. $img_price2. '</option>' ;  
+                    //$html .= '<option value="' . $decode['sellPrint'][$i]['size'] . '$' . $decode['sellPrint'][$i]['price'] .'">'. '&nbsp;'. $decode['sellPrint'][$i]['size']. ''. $img_price2. '</option>' ;
 
                     $html .= '<div class="exhibition-search-title">' . $decode['sellPrint'][$i]['size'] . '</div>';
                     if ($conv_rate == '') {
@@ -3516,7 +3544,8 @@ function get_html_from_JSON($json = null, $type = '') {
     return $html;
 }
 
-function get_add_to_cart_button($json = null, $type = '', $bibliography = false) {
+function get_add_to_cart_button($json = null, $type = '', $bibliography = false)
+{
     if (!ADDTOCART) {
         return false;
     }
@@ -3530,10 +3559,9 @@ function get_add_to_cart_button($json = null, $type = '', $bibliography = false)
 
     if (!$bibliography) {
         $html = '';
-        $jsonDecode = json_decode($json, TRUE);
+        $jsonDecode = json_decode($json, true);
 
         if (!empty($jsonDecode)) {
-
             $html .= '<form class="cart-add-form" method="POST" id="original" action="' . SITE_URL . '/cart-checkout/calculate-cart.php">';
 
             $html .= '<input type="hidden" name="product_id" id="product_id" value="' . $jsonDecode['product'] . '">' .
@@ -3553,7 +3581,6 @@ function get_add_to_cart_button($json = null, $type = '', $bibliography = false)
     if (!empty($decode['sellPrint'])) {
         $count_details = 0;
         for ($i = 0; $i < count($decode['sellPrint']); $i++) {
-
             if ($decode['sellPrint'][$i]['price'] != '') {
                 $count_details = $count_details + 1;
             }
@@ -3587,13 +3614,14 @@ function get_add_to_cart_button($json = null, $type = '', $bibliography = false)
     return $html;
 }
 
-function GeraHash($qtd) {
-//Under the string $Caracteres you write all the characters you want to be used to randomly generate the code. 
+function GeraHash($qtd)
+{
+    //Under the string $Caracteres you write all the characters you want to be used to randomly generate the code.
     $Caracteres = 'ABCDEFGHIJKLMOPQRSTUVXWYZ0123456789';
     $QuantidadeCaracteres = strlen($Caracteres);
     $QuantidadeCaracteres--;
 
-    $Hash = NULL;
+    $Hash = null;
     for ($x = 1; $x <= $qtd; $x++) {
         $Posicao = rand(0, $QuantidadeCaracteres);
         $Hash .= substr($Caracteres, $Posicao, 1);
@@ -3602,14 +3630,15 @@ function GeraHash($qtd) {
     return $Hash;
 }
 
-function check_valid_customer($email = '') {
+function check_valid_customer($email = '')
+{
     try {
         $conn = dbconnect();
 //        $q = $conn->prepare("SELECT name FROM " . CUSTOMAR_TBL . " WHERE `mobile`=:mobileno OR `alt_phone`=:altphnno");
         $q = $conn->prepare("SELECT * FROM customer_login WHERE `email`=:emailid");
 
-//$q->bindParam();
-//$bind = array(':mobileno' => $mobile, ':altphnno' => $mobile);
+        //$q->bindParam();
+        //$bind = array(':mobileno' => $mobile, ':altphnno' => $mobile);
         $bind = array(':emailid' => $email);
 
         $q->execute($bind);
@@ -3621,38 +3650,40 @@ function check_valid_customer($email = '') {
     }
 }
 
-function check_valid_customerlogin($email, $password) {
+function check_valid_customerlogin($email, $password)
+{
     try {
         $conn = dbconnect();
 
-//echo $password;
-// $q2 = $conn->prepare("SELECT * FROM customer_login WHERE `email`=':emailid' and `password`=':password' and status = '0'");
+        //echo $password;
+        // $q2 = $conn->prepare("SELECT * FROM customer_login WHERE `email`=':emailid' and `password`=':password' and status = '0'");
 
         $query = "SELECT * FROM customer_login WHERE `email`='%s' and `password`='%s' and status = '0'";
         $sql = sprintf($query, $email, $password);
         $q2 = $conn->prepare($sql);
 
-//$q->bindParam();
-//$bind2 = array(':emailid' => $email, ':password' => $password);
+        //$q->bindParam();
+        //$bind2 = array(':emailid' => $email, ':password' => $password);
 
         $q2->execute();
         $q2->setFetchMode(PDO::FETCH_ASSOC);
-//return $sql;
+        //return $sql;
         return $q2->rowCount() > 0 ? true : false;
     } catch (PDOException $pe) {
         echo db_error($pe->getMessage());
     }
 }
 
-function check_auth_user() {
+function check_auth_user()
+{
     if (!isset($_SESSION['user-email'])) {
         goto_location('login-register');
         exit;
     }
 }
 
-function get_user_data($param) {
-
+function get_user_data($param)
+{
     try {
         $conn = dbconnect();
         $query = "SELECT * FROM customer_login WHERE `email`='%s'";
@@ -3668,8 +3699,8 @@ function get_user_data($param) {
     }
 }
 
-function get_user_databyid($param) {
-
+function get_user_databyid($param)
+{
     try {
         $conn = dbconnect();
         $query = "SELECT * FROM customer_login WHERE `id`='%s'";
@@ -3685,17 +3716,18 @@ function get_user_databyid($param) {
     }
 }
 
-function check_cust_address_par($id) {
+function check_cust_address_par($id)
+{
     try {
         $conn = dbconnect();
 //        $q = $conn->prepare("SELECT name FROM " . CUSTOMAR_TBL . " WHERE `mobile`=:mobileno OR `alt_phone`=:altphnno");
-//$q = $conn->prepare("SELECT * FROM customer_address WHERE `customer_id`=:userid and `parent_id` = '0'");
+        //$q = $conn->prepare("SELECT * FROM customer_address WHERE `customer_id`=:userid and `parent_id` = '0'");
 
         $query = "SELECT * FROM customer_address WHERE `customer_id`='%s' and `parent_id` = '0'";
 
         $sql = sprintf($query, $id);
         $q = $conn->prepare($sql);
-//$bind = array(':userid' => $id);
+        //$bind = array(':userid' => $id);
 
         $q->execute();
         $q->setFetchMode(PDO::FETCH_ASSOC);
@@ -3706,8 +3738,8 @@ function check_cust_address_par($id) {
     }
 }
 
-function get_user_bill_addr($id) {
-
+function get_user_bill_addr($id)
+{
     try {
         $conn = dbconnect();
         $query = "SELECT * FROM customer_address WHERE `customer_id`='%s' and `parent_id` = '0'";
@@ -3723,17 +3755,18 @@ function get_user_bill_addr($id) {
     }
 }
 
-function check_cust_addr_child($id) {
+function check_cust_addr_child($id)
+{
     try {
         $conn = dbconnect();
 //        $q = $conn->prepare("SELECT name FROM " . CUSTOMAR_TBL . " WHERE `mobile`=:mobileno OR `alt_phone`=:altphnno");
-//$q = $conn->prepare("SELECT * FROM customer_address WHERE `customer_id`=:userid and `parent_id` = '0'");
+        //$q = $conn->prepare("SELECT * FROM customer_address WHERE `customer_id`=:userid and `parent_id` = '0'");
 
         $query = "SELECT * FROM customer_address WHERE `customer_id`='%s' and `parent_id` <> '0'";
 
         $sql = sprintf($query, $id);
         $q = $conn->prepare($sql);
-//$bind = array(':userid' => $id);
+        //$bind = array(':userid' => $id);
 
         $q->execute();
         $q->setFetchMode(PDO::FETCH_ASSOC);
@@ -3744,8 +3777,8 @@ function check_cust_addr_child($id) {
     }
 }
 
-function get_user_addr_ship($id) {
-
+function get_user_addr_ship($id)
+{
     try {
         $conn = dbconnect();
         $query = "SELECT * FROM customer_address WHERE `customer_id`='%s' and `parent_id` <> '0'";
@@ -3761,8 +3794,8 @@ function get_user_addr_ship($id) {
     }
 }
 
-function get_user_addr($id) {
-
+function get_user_addr($id)
+{
     try {
         $conn = dbconnect();
         $query = "SELECT * FROM customer_address WHERE `id`='%s' and `parent_id` <> '0'";
@@ -3778,8 +3811,8 @@ function get_user_addr($id) {
     }
 }
 
-function get_user_cart($id) {
-
+function get_user_cart($id)
+{
     try {
         $conn = dbconnect();
         $query = "SELECT * FROM cart WHERE `customer_id`='%s'";
@@ -3795,7 +3828,8 @@ function get_user_cart($id) {
     }
 }
 
-function check_cart_exists($id) {
+function check_cart_exists($id)
+{
     try {
         $conn = dbconnect();
         $query = "SELECT * FROM cart WHERE `customer_id`='%s'";
@@ -3812,8 +3846,8 @@ function check_cart_exists($id) {
     }
 }
 
-function get_prod_name($id) {
-
+function get_prod_name($id)
+{
     try {
         $conn = dbconnect();
         $query = "SELECT * FROM products_ecomc WHERE `prodid`='%s'";
@@ -3829,8 +3863,8 @@ function get_prod_name($id) {
     }
 }
 
-function get_image_name($id) {
-
+function get_image_name($id)
+{
     try {
         $conn = dbconnect();
         $query = "SELECT * FROM memorabilia_images WHERE `m_image_id`='%s'";
@@ -3847,7 +3881,7 @@ function get_image_name($id) {
 //                'image_name'=> $row['m_image_name'],
 //                'image_category'=> $row['m_image_category_text'],
 //                'image_details' => json_decode($row['m_image_details'], true)
-//            
+//
 //            );
 //        }
 //    return $data;
@@ -3856,8 +3890,8 @@ function get_image_name($id) {
     }
 }
 
-function get_gateways() {
-
+function get_gateways()
+{
     try {
         $conn = dbconnect();
         $query = "SELECT * FROM gateway WHERE `status`='0'";
@@ -3873,8 +3907,8 @@ function get_gateways() {
     }
 }
 
-function get_last_user_addr($id) {
-
+function get_last_user_addr($id)
+{
     try {
         $conn = dbconnect();
         $query = "SELECT * from customer_address WHERE `customer_id`='%s' and parent_id = '0'";
@@ -3890,8 +3924,8 @@ function get_last_user_addr($id) {
     }
 }
 
-function get_cur_ship_addr($id) {
-
+function get_cur_ship_addr($id)
+{
     try {
         $conn = dbconnect();
         $query = "SELECT max(id) max_id from customer_address WHERE `customer_id`='%s' and parent_id <> '0'";
@@ -3907,8 +3941,8 @@ function get_cur_ship_addr($id) {
     }
 }
 
-function get_cart($id) {
-
+function get_cart($id)
+{
     try {
         $conn = dbconnect();
         $query = "SELECT * FROM cart WHERE `customer_id`='%s'";
@@ -3924,8 +3958,8 @@ function get_cart($id) {
     }
 }
 
-function get_particular_gateway($id) {
-
+function get_particular_gateway($id)
+{
     try {
         $conn = dbconnect();
         $query = "select * from gateway where id ='%s'";
@@ -3941,8 +3975,8 @@ function get_particular_gateway($id) {
     }
 }
 
-function ordered_item($id) {
-
+function ordered_item($id)
+{
     try {
         $conn = dbconnect();
         $query = "SELECT * FROM order_products WHERE `order_id`='%s'";
@@ -3958,8 +3992,8 @@ function ordered_item($id) {
     }
 }
 
-function get_particular_email($ename) {
-
+function get_particular_email($ename)
+{
     try {
         $conn = dbconnect();
         $query = "select * from email_template where 	email_name ='%s'";
@@ -3975,7 +4009,8 @@ function get_particular_email($ename) {
     }
 }
 
-function get_order_status_byID($order_id = '') {
+function get_order_status_byID($order_id = '')
+{
     try {
         $conn = dbconnect();
         $q = $conn->prepare("SELECT order_status.status, order_status.order_id FROM order_status where id = (select max(id) from order_status where order_id = :orderID)");
@@ -3992,8 +4027,8 @@ function get_order_status_byID($order_id = '') {
 /**
  * default values when user not clicked select all
  */
-function get_uniqueLanguages() {
-
+function get_uniqueLanguages()
+{
     try {
         $conn = dbconnect();
         $qry = "SELECT DISTINCT value FROM `attribute_value_ecomc` WHERE attr_id =15";
@@ -4008,46 +4043,48 @@ function get_uniqueLanguages() {
     }
 }
 
-function check_valid_customeremail($email) {
+function check_valid_customeremail($email)
+{
     try {
         $conn = dbconnect();
 
-//echo $password;
-// $q2 = $conn->prepare("SELECT * FROM customer_login WHERE `email`=':emailid' and `password`=':password' and status = '0'");
+        //echo $password;
+        // $q2 = $conn->prepare("SELECT * FROM customer_login WHERE `email`=':emailid' and `password`=':password' and status = '0'");
 
         $query = "SELECT * FROM customer_login WHERE `email`='%s' and status = '0'";
         $sql = sprintf($query, $email);
         $q2 = $conn->prepare($sql);
 
-//$q->bindParam();
-//$bind2 = array(':emailid' => $email, ':password' => $password);
+        //$q->bindParam();
+        //$bind2 = array(':emailid' => $email, ':password' => $password);
 
         $q2->execute();
         $q2->setFetchMode(PDO::FETCH_ASSOC);
-//return $sql;
+        //return $sql;
         return $q2->rowCount() > 0 ? true : false;
     } catch (PDOException $pe) {
         echo db_error($pe->getMessage());
     }
 }
 
-function check_valid_customerhash($email, $hash) {
+function check_valid_customerhash($email, $hash)
+{
     try {
         $conn = dbconnect();
 
-//echo $password;
-// $q2 = $conn->prepare("SELECT * FROM customer_login WHERE `email`=':emailid' and `password`=':password' and status = '0'");
+        //echo $password;
+        // $q2 = $conn->prepare("SELECT * FROM customer_login WHERE `email`=':emailid' and `password`=':password' and status = '0'");
 
         $query = "SELECT * FROM customer_login WHERE `email`='%s' and hash ='%s' and status = '0'";
         $sql = sprintf($query, $email, $hash);
         $q2 = $conn->prepare($sql);
 
-//$q->bindParam();
-//$bind2 = array(':emailid' => $email, ':password' => $password);
+        //$q->bindParam();
+        //$bind2 = array(':emailid' => $email, ':password' => $password);
 
         $q2->execute();
         $q2->setFetchMode(PDO::FETCH_ASSOC);
-//return $sql;
+        //return $sql;
         return $q2->rowCount() > 0 ? true : false;
     } catch (PDOException $pe) {
         echo db_error($pe->getMessage());
@@ -4056,20 +4093,20 @@ function check_valid_customerhash($email, $hash) {
 
 /**
  * Specially for Bibliography Details Sorting keys to need
- * 
- * @return an sorted array 
+ *
+ * @return an sorted array
  */
-function bibliography_details_flatten_array(array $someArray) {
-
+function bibliography_details_flatten_array(array $someArray)
+{
     $singledm = array();
     $iterator = new RecursiveIteratorIterator(new RecursiveArrayIterator($someArray), RecursiveIteratorIterator::SELF_FIRST);
     foreach ($iterator as $k => $v) {
         $indent = str_repeat('&nbsp;', 10 * $iterator->getDepth());
-// Not at end: show key only
+        // Not at end: show key only
         $depth = $iterator->getDepth();
         if ($iterator->hasChildren()) {
-//echo "depth: $depth - $indent$k :<br>";
-// At end: show key, value and path
+            //echo "depth: $depth - $indent$k :<br>";
+            // At end: show key, value and path
             if ($depth == 0) {
                 $singledm['category'] = $k;
             }
@@ -4080,8 +4117,6 @@ function bibliography_details_flatten_array(array $someArray) {
                 $singledm['pid'] = $k;
             }
         } else {
-
-
             $singledm[$k] = $v;
         }
     }
@@ -4095,17 +4130,19 @@ function bibliography_details_flatten_array(array $someArray) {
  * @param array $new
  * @return type
  */
-function array_insert_after(array $array, $key, array $new) {
+function array_insert_after(array $array, $key, array $new)
+{
     $keys = array_keys($array);
     $index = array_search($key, $keys);
     $pos = false === $index ? count($array) : $index + 1;
-//return array_slice($array,0,$pos);
+    //return array_slice($array,0,$pos);
 
 
     return array_replace_recursive(array_slice($array, 0, $pos), $new, array_slice($array, $pos));
 }
 
-function array_insert_before(array $array, $key, array $new) {
+function array_insert_before(array $array, $key, array $new)
+{
     $keys = array_keys($array);
     //return $new;
     $index = array_search($key, $keys);
@@ -4114,13 +4151,14 @@ function array_insert_before(array $array, $key, array $new) {
     $pos = false === $index ? count($array) : $index + 1;
 
 
-//return array_slice($array, $pos);
+    //return array_slice($array, $pos);
 
     return array_replace_recursive($new, array_slice($array, 0, $pos), array_slice($array, $pos));
 //    return array_replace(array_slice($array, 0, $pos), $new, array_slice($array, $pos));
 }
 
-function array_insert_before1($key, array &$array, $new_key, $new_value) {
+function array_insert_before1($key, array &$array, $new_key, $new_value)
+{
     if (array_key_exists($key, $array)) {
         $new = array();
         foreach ($array as $k => $value) {
@@ -4131,36 +4169,38 @@ function array_insert_before1($key, array &$array, $new_key, $new_value) {
         }
         return $new;
     }
-    return FALSE;
+    return false;
 }
 
-//define function name  
-function m_log($arMsg) {
-//define empty string                                 
+//define function name
+function m_log($arMsg)
+{
+    //define empty string
     $stEntry = "";
-//get the event occur date time,when it will happened  
+    //get the event occur date time,when it will happened
     $arLogData['event_datetime'] = '[' . date('D Y-m-d h:i:s A') . '] [client ' . $_SERVER['REMOTE_ADDR'] . ']';
-//if message is array type  
+    //if message is array type
     if (is_array($arMsg)) {
-//concatenate msg with datetime  
-        foreach ($arMsg as $msg)
+        //concatenate msg with datetime
+        foreach ($arMsg as $msg) {
             $stEntry .= $arLogData['event_datetime'] . " " . $msg . "rn";
-    } else {   //concatenate msg with datetime  
+        }
+    } else {   //concatenate msg with datetime
         $stEntry .= $arLogData['event_datetime'] . " " . $arMsg . "\r\n";
     }
-//create file with current date name  
+    //create file with current date name
     $stCurLogFileName = 'log_' . date('Ymd') . '.txt';
-//open the file append mode,dats the log file will create day wise 
+    //open the file append mode,dats the log file will create day wise
     $Path = $_SERVER['DOCUMENT_ROOT'] . "/" . LOG_PATH;
     $fHandler = fopen($Path . $stCurLogFileName, 'a');
-//write the info into the file  
+    //write the info into the file
     fwrite($fHandler, $stEntry);
-//close handler  
+    //close handler
     fclose($fHandler);
 }
 
-function get_image_count_memoribilia($pid) {
-
+function get_image_count_memoribilia($pid)
+{
     try {
         $conn = dbconnect();
         $query = "SELECT count(m_image_id) count_fid FROM memorabilia_images WHERE `product_id`='%s'";
@@ -4176,8 +4216,8 @@ function get_image_count_memoribilia($pid) {
     }
 }
 
-function get_PDF_count_bibliography($pid, $choice = FALSE) {
-
+function get_PDF_count_bibliography($pid, $choice = false)
+{
     try {
         $conn = dbconnect();
         $query = "SELECT count(m_image_id) count_fid_p FROM memorabilia_images WHERE `product_id`='%s' and m_image_category= 'B'";
@@ -4196,8 +4236,8 @@ function get_PDF_count_bibliography($pid, $choice = FALSE) {
     }
 }
 
-function get_poster_count_memoribilia($pid, $choice = false) {
-
+function get_poster_count_memoribilia($pid, $choice = false)
+{
     try {
         $conn = dbconnect();
         $query = "SELECT count(m_image_id) count_fid_p FROM memorabilia_images WHERE `product_id`='%s' and m_image_category= 'P'";
@@ -4216,8 +4256,8 @@ function get_poster_count_memoribilia($pid, $choice = false) {
     }
 }
 
-function get_card_count_memoribilia($pid, $choice = false) {
-
+function get_card_count_memoribilia($pid, $choice = false)
+{
     try {
         $conn = dbconnect();
         $query = "SELECT count(m_image_id) count_fid_p FROM memorabilia_images WHERE `product_id`='%s' and m_image_category= 'C'";
@@ -4236,8 +4276,8 @@ function get_card_count_memoribilia($pid, $choice = false) {
     }
 }
 
-function get_synopsis_count_memoribilia($pid, $choice = false) {
-
+function get_synopsis_count_memoribilia($pid, $choice = false)
+{
     try {
         $conn = dbconnect();
         $query = "SELECT count(m_image_id) count_fid_p FROM memorabilia_images WHERE `product_id`='%s' and m_image_category= 'S'";
@@ -4256,7 +4296,8 @@ function get_synopsis_count_memoribilia($pid, $choice = false) {
     }
 }
 
-function count_click($type, $product) {
+function count_click($type, $product)
+{
     $conn = dbconnect();
     $date = date("Y-m-d H:i:s");
     $link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
@@ -4268,8 +4309,8 @@ function count_click($type, $product) {
     $q1->execute();
 }
 
-function get_video($pid) {
-
+function get_video($pid)
+{
     try {
         $conn = dbconnect();
         $query = "select * from video where `product_id` ='%s'";
@@ -4285,13 +4326,14 @@ function get_video($pid) {
     }
 }
 
-function paint_artist_mapping($artistName = '') {
-//Replace Special symbols from artist name
+function paint_artist_mapping($artistName = '')
+{
+    //Replace Special symbols from artist name
 
     $s = preg_replace('~^[^a-zA-Z0-9]+|[^a-zA-Z0-9]+$~', '', $artistName);
     $urlName = preg_replace('~[^a-zA-Z0-9]+~', '-', $s);
 
-//Check attribute ID and Get artist value id from Table: [attr_common_flds_ecomc] [attribute_value_ecomc]
+    //Check attribute ID and Get artist value id from Table: [attr_common_flds_ecomc] [attribute_value_ecomc]
     $checkID = array('artist' => 133);
     $html = '';
     $rowCount_final = 0;
@@ -4326,15 +4368,14 @@ function paint_artist_mapping($artistName = '') {
             return ($rowCount_final > 0) ? $html : false;
         }
         return $artistName;
-//return $data;
+        //return $data;
     } catch (PDOException $pe) {
-
         echo db_error($pe->getMessage());
     }
 }
 
-function get_conv_rate() {
-
+function get_conv_rate()
+{
     try {
         $conn = dbconnect();
         $query = "SELECT conv_rate from admin_ecomc";
@@ -4353,7 +4394,8 @@ function get_conv_rate() {
 /**
  * Bibliography multiple author or artist separated with $ due comma in the string
  */
-function bibliography_replace_dollar($string = '') {
+function bibliography_replace_dollar($string = '')
+{
     if (strpos($string, '$') !== false) {
         $str = str_replace("$", ", ", $string);
         return $str;
@@ -4361,7 +4403,8 @@ function bibliography_replace_dollar($string = '') {
     return $string;
 }
 
-function get_listExhibition() {
+function get_listExhibition()
+{
     try {
         $conn = dbconnect();
 
@@ -4373,7 +4416,6 @@ function get_listExhibition() {
         $q->setFetchMode(PDO::FETCH_ASSOC);
         $msl = '';
         while ($row = $q->fetch()) {
-
             $msl .= '<option value="' . $row['exhibition_id'] . '">' . stripslashes($row['ex_name']) . '</option>';
             $hc[] = array(
                 'id' => $row['exhibition_id'],
@@ -4391,9 +4433,10 @@ function get_listExhibition() {
     }
 }
 
-function array_value_recursive(array $referenceTypes, array $arr) {
+function array_value_recursive(array $referenceTypes, array $arr)
+{
     $val = array(); //Output
-    array_walk_recursive($arr, function($v, $k) use($referenceTypes, &$val) {
+    array_walk_recursive($arr, function ($v, $k) use ($referenceTypes, &$val) {
         //(in_array($k, $referenceTypes)) ? $val[$k] : $val[$k]=$v;
         echo $k . "<br>";
         var_dump(in_array($k, $referenceTypes));
@@ -4401,8 +4444,8 @@ function array_value_recursive(array $referenceTypes, array $arr) {
     return count($val) > 1 ? $val : array_pop($val);
 }
 
-function get_image_count_visualarchive($pid) {
-
+function get_image_count_visualarchive($pid)
+{
     try {
         $conn = dbconnect();
         $query = "SELECT count(va_image_id) count_fid FROM visual_archive_images WHERE `va_product_id`='%s'";
@@ -4418,8 +4461,8 @@ function get_image_count_visualarchive($pid) {
     }
 }
 
-function get_varchive_classification($conn = null) {
-
+function get_varchive_classification($conn = null)
+{
     try {
         $conn = dbconnect();
         $query = "SELECT ave.* FROM attr_common_flds_ecomc acfe,attribute_value_ecomc ave "
@@ -4443,7 +4486,8 @@ function get_varchive_classification($conn = null) {
   @param Type:int $product_id
   @return Type:string value of the attribute in that product
  */
-function get_pagination_value($product_id) {
+function get_pagination_value($product_id)
+{
     $conn = dbconnect();
     $qry = "SELECT `av`.`value` FROM `products_ecomc` AS `p` LEFT JOIN `product_attribute_value` AS `pav` ON 			`p`.`prodid`=`pav`.`product_id`
                 LEFT JOIN `attribute_value_ecomc` AS `av` ON `pav`.`attribute_value_id`=`av`.`attr_value_id` LEFT JOIN `attr_common_flds_ecomc` AS `af` ON `af`.`id`=`av`.`attr_id`
@@ -4463,7 +4507,8 @@ function get_pagination_value($product_id) {
   Description: is image already available on table
   @param Type:INT $imageID
  */
-function is_va_image_exists($imageID) {
+function is_va_image_exists($imageID)
+{
     $conn = dbconnect();
     $qry = "SELECT * FROM `" . VISUALARCHIVE_IMAGES_TBL . "` WHERE `va_image_id`=:imageId";
     $stmt = $conn->prepare($qry);
@@ -4478,8 +4523,8 @@ function is_va_image_exists($imageID) {
 //for va credit
 
 
-function get_customer_credit($param) {
-
+function get_customer_credit($param)
+{
     try {
         $conn = dbconnect();
         $query = "SELECT * FROM customer_credit WHERE `customer_id`='%s'";
@@ -4495,8 +4540,8 @@ function get_customer_credit($param) {
     }
 }
 
-function get_product_credit($param) {
-
+function get_product_credit($param)
+{
     try {
         $conn = dbconnect();
         $query = "SELECT * FROM va_product_credit WHERE `prodid`='%s'";
@@ -4512,8 +4557,8 @@ function get_product_credit($param) {
     }
 }
 
-function get_va_singleimage($param) {
-
+function get_va_singleimage($param)
+{
     try {
         $conn = dbconnect();
         $query = "SELECT * FROM visual_archive_images WHERE `va_image_id`='%s'";
@@ -4529,8 +4574,8 @@ function get_va_singleimage($param) {
     }
 }
 
-function get_credit_timediff($param) {
-
+function get_credit_timediff($param)
+{
     try {
         $conn = dbconnect();
         $query = "select TIMESTAMPDIFF(second,a.credit_date,now()) timediff from 
@@ -4550,7 +4595,8 @@ order by credit_date desc limit 1)a";
     }
 }
 
-function secondsToTime($seconds) {
+function secondsToTime($seconds)
+{
     $dtF = new \DateTime('@0');
     $dtT = new \DateTime("@$seconds");
 
@@ -4558,7 +4604,8 @@ function secondsToTime($seconds) {
     return $dtF->diff($dtT)->format('%a days, %h hours');
 }
 
-function product_in_cust_credit($param1, $param2) {
+function product_in_cust_credit($param1, $param2)
+{
     try {
         $conn = dbconnect();
 
@@ -4576,8 +4623,8 @@ function product_in_cust_credit($param1, $param2) {
     }
 }
 
-function vaprodimages($prodid) {
-
+function vaprodimages($prodid)
+{
     try {
         $conn = dbconnect();
         $query = "SELECT * FROM visual_archive_images WHERE `va_product_id`='%s'";
@@ -4593,8 +4640,8 @@ function vaprodimages($prodid) {
     }
 }
 
-function get_admin_setting() {
-
+function get_admin_setting()
+{
     try {
         $conn = dbconnect();
         $query = "SELECT * from admin_ecomc";
@@ -4610,7 +4657,8 @@ function get_admin_setting() {
     }
 }
 
-function customer_in_credit($param1) {
+function customer_in_credit($param1)
+{
     try {
         $conn = dbconnect();
 
@@ -4628,7 +4676,8 @@ function customer_in_credit($param1) {
     }
 }
 
-function customer_credit($param1) {
+function customer_credit($param1)
+{
     try {
         $conn = dbconnect();
 
@@ -4646,8 +4695,8 @@ function customer_credit($param1) {
     }
 }
 
-function lastinsertid() {
-
+function lastinsertid()
+{
     try {
         $conn = dbconnect();
         $query = "SELECT LAST_INSERT_ID()";
@@ -4660,7 +4709,8 @@ function lastinsertid() {
     }
 }
 
-function count_customer_credit_buy($param1) {
+function count_customer_credit_buy($param1)
+{
     try {
         $conn = dbconnect();
 
@@ -4678,7 +4728,8 @@ function count_customer_credit_buy($param1) {
     }
 }
 
-function customer_details($param1) {
+function customer_details($param1)
+{
     try {
         $conn = dbconnect();
 
@@ -4696,7 +4747,8 @@ function customer_details($param1) {
     }
 }
 
-function get_credit_order_status_byID($order_id = '') {
+function get_credit_order_status_byID($order_id = '')
+{
     try {
         $conn = dbconnect();
         $q = $conn->prepare("SELECT credit_order_status.status, credit_order_status.credit_id "
@@ -4729,7 +4781,8 @@ function get_credit_order_status_byID($order_id = '') {
 //}
 
 
-function last_entered_credithistory($param1) {
+function last_entered_credithistory($param1)
+{
     try {
         $conn = dbconnect();
 
@@ -4748,7 +4801,8 @@ function last_entered_credithistory($param1) {
     }
 }
 
-function last_payment_stat($param1) {
+function last_payment_stat($param1)
+{
     try {
         $conn = dbconnect();
 
@@ -4767,7 +4821,8 @@ function last_payment_stat($param1) {
     }
 }
 
-function lastinsercredithistory($param1) {
+function lastinsercredithistory($param1)
+{
     try {
         $conn = dbconnect();
 
@@ -4785,7 +4840,8 @@ function lastinsercredithistory($param1) {
     }
 }
 
-function lastinsercredit($param1) {
+function lastinsercredit($param1)
+{
     try {
         $conn = dbconnect();
 
@@ -4803,7 +4859,8 @@ function lastinsercredit($param1) {
     }
 }
 
-function va_archivistremarks($param1) {
+function va_archivistremarks($param1)
+{
     try {
         $conn = dbconnect();
 
@@ -4825,7 +4882,8 @@ ave.attr_id = '205'";
     }
 }
 
-function va_noofpublications($param1) {
+function va_noofpublications($param1)
+{
     try {
         $conn = dbconnect();
 
@@ -4847,7 +4905,8 @@ ave.attr_id = '227'";
     }
 }
 
-function singleproducts($param1) {
+function singleproducts($param1)
+{
     try {
         $conn = dbconnect();
 
@@ -4867,7 +4926,8 @@ prodid = '%s' ";
     }
 }
 
-function lastinsertattrval($param1) {
+function lastinsertattrval($param1)
+{
     try {
         $conn = dbconnect();
 
@@ -4885,7 +4945,8 @@ function lastinsertattrval($param1) {
     }
 }
 
-function getnoofpublications($param1) {
+function getnoofpublications($param1)
+{
     try {
         $conn = dbconnect();
 
@@ -4907,7 +4968,8 @@ ave.attr_id = '227'";
     }
 }
 
-function singleexhibition($param1) {
+function singleexhibition($param1)
+{
     try {
         $conn = dbconnect();
 
@@ -4927,7 +4989,8 @@ id = '%s' ";
     }
 }
 
-function singlepodcast($param1) {
+function singlepodcast($param1)
+{
     try {
         $conn = dbconnect();
 
@@ -4947,7 +5010,8 @@ episode_id = '%s' ";
     }
 }
 
-function singlePress($param1) {
+function singlePress($param1)
+{
     try {
         $conn = dbconnect();
 
@@ -4965,7 +5029,8 @@ function singlePress($param1) {
     }
 }
 
-function singlePhoto($param1) {
+function singlePhoto($param1)
+{
     try {
         $conn = dbconnect();
 
@@ -4983,7 +5048,8 @@ function singlePhoto($param1) {
     }
 }
 
-function singleexhibitionartist($param1) {
+function singleexhibitionartist($param1)
+{
     try {
         $conn = dbconnect();
 
@@ -5003,8 +5069,8 @@ id = '%s' ";
     }
 }
 
-function allexhibition() {
-
+function allexhibition()
+{
     try {
         $conn = dbconnect();
         $query = "SELECT * FROM exhibition";
@@ -5020,8 +5086,8 @@ function allexhibition() {
     }
 }
 
-function allmedium() {
-
+function allmedium()
+{
     try {
         $conn = dbconnect();
         $query = "SELECT * FROM exhibition_medium where status = '1'";
@@ -5037,7 +5103,8 @@ function allmedium() {
     }
 }
 
-function singlepainting($param1) {
+function singlepainting($param1)
+{
     try {
         $conn = dbconnect();
 
@@ -5057,7 +5124,8 @@ id = '%s' ";
     }
 }
 
-function singlemedium($param1) {
+function singlemedium($param1)
+{
     try {
         $conn = dbconnect();
 
@@ -5077,7 +5145,8 @@ id = '%s' ";
     }
 }
 
-function last_entered_painting($param1) {
+function last_entered_painting($param1)
+{
     try {
         $conn = dbconnect();
 
@@ -5096,8 +5165,8 @@ function last_entered_painting($param1) {
     }
 }
 
-function allexhibitionofpaintings($param1) {
-
+function allexhibitionofpaintings($param1)
+{
     try {
         $conn = dbconnect();
         $query = "SELECT exhibition_paintings_relation.*,exhibition.exhibition_name,exhibition.status ex_status "
@@ -5116,15 +5185,14 @@ function allexhibitionofpaintings($param1) {
     }
 }
 
-function allexhibitionnotin($param1, $param2) {
-
+function allexhibitionnotin($param1, $param2)
+{
     try {
         $conn = dbconnect();
 
 
 
         if ($param2 != '') {
-
             $query = "SELECT * "
                     . "FROM exhibition "
                     . "where  "
@@ -5132,7 +5200,6 @@ function allexhibitionnotin($param1, $param2) {
 
             $sql = sprintf($query, $param1, $param2);
         } else {
-
             $query = "SELECT * "
                     . "FROM exhibition ";
 
@@ -5149,7 +5216,8 @@ function allexhibitionnotin($param1, $param2) {
     }
 }
 
-function count_downloaded_pdf($param1) {
+function count_downloaded_pdf($param1)
+{
     try {
         $conn = dbconnect();
 
@@ -5167,7 +5235,8 @@ function count_downloaded_pdf($param1) {
     }
 }
 
-function get_va_allclassification_options1($conn = null, $hc = array()) {
+function get_va_allclassification_options1($conn = null, $hc = array())
+{
     $conn = dbconnect();
     $qry = "select ave.* from attribute_value_ecomc ave where ave.attr_id = '221' order by ave.value";
     $q = $conn->prepare($qry);
@@ -5175,7 +5244,6 @@ function get_va_allclassification_options1($conn = null, $hc = array()) {
     $q->setFetchMode(PDO::FETCH_ASSOC);
     $msl = '';
     while ($row = $q->fetch()) {
-
         $msl .= '<option value="' . $row['value'] . '">' . stripslashes($row['value']) . '</option>';
         $hc[] = array(
             'id' => $row['attr_value_id'],
@@ -5191,7 +5259,8 @@ function get_va_allclassification_options1($conn = null, $hc = array()) {
     );
 }
 
-function get_va_allclassification_options2($conn = null, $hc = array()) {
+function get_va_allclassification_options2($conn = null, $hc = array())
+{
     $conn = dbconnect();
     $qry = "select ave.* from attribute_value_ecomc ave where ave.attr_id = '221' order by ave.value";
     $q = $conn->prepare($qry);
@@ -5199,7 +5268,6 @@ function get_va_allclassification_options2($conn = null, $hc = array()) {
     $q->setFetchMode(PDO::FETCH_ASSOC);
     $msl = '';
     while ($row = $q->fetch()) {
-
         $msl .= '<option value="' . $row['value'] . '">' . stripslashes($row['value']) . '</option>';
         $hc[] = array(
             'id' => $row['attr_value_id'],
@@ -5215,7 +5283,8 @@ function get_va_allclassification_options2($conn = null, $hc = array()) {
     );
 }
 
-function get_va_allclassification_options3($conn = null, $hc = array()) {
+function get_va_allclassification_options3($conn = null, $hc = array())
+{
     $conn = dbconnect();
     $qry = "select ave.* from attribute_value_ecomc ave where ave.attr_id = '221' order by ave.value";
     $q = $conn->prepare($qry);
@@ -5223,7 +5292,6 @@ function get_va_allclassification_options3($conn = null, $hc = array()) {
     $q->setFetchMode(PDO::FETCH_ASSOC);
     $msl = '';
     while ($row = $q->fetch()) {
-
         $msl .= '<option value="' . $row['value'] . '">' . stripslashes($row['value']) . '</option>';
         $hc[] = array(
             'id' => $row['attr_value_id'],
@@ -5239,7 +5307,8 @@ function get_va_allclassification_options3($conn = null, $hc = array()) {
     );
 }
 
-function get_va_allclassification_options4($conn = null, $hc = array()) {
+function get_va_allclassification_options4($conn = null, $hc = array())
+{
     $conn = dbconnect();
     $qry = "select ave.* from attribute_value_ecomc ave where ave.attr_id = '221' order by ave.value";
     $q = $conn->prepare($qry);
@@ -5247,7 +5316,6 @@ function get_va_allclassification_options4($conn = null, $hc = array()) {
     $q->setFetchMode(PDO::FETCH_ASSOC);
     $msl = '';
     while ($row = $q->fetch()) {
-
         $msl .= '<option value="' . $row['value'] . '">' . stripslashes($row['value']) . '</option>';
         $hc[] = array(
             'id' => $row['attr_value_id'],
@@ -5263,8 +5331,8 @@ function get_va_allclassification_options4($conn = null, $hc = array()) {
     );
 }
 
-function get_va_artworkyear_options($conn = null, $hc = array()) {
-
+function get_va_artworkyear_options($conn = null, $hc = array())
+{
     $conn = dbconnect();
 
     $qry = "select distinct ave.attr_id,ave.value 
@@ -5286,7 +5354,6 @@ order by ave.value";
 
 
     while ($row = $q->fetch()) {
-
         $msl .= '<option value="' . $row['value'] . '">' . stripslashes($row['value']) . '</option>';
         $hc[] = array(
             //'id' => $row['attr_value_id'],
@@ -5302,8 +5369,8 @@ order by ave.value";
     );
 }
 
-function get_va_medium_options($conn = null, $hc = array()) {
-
+function get_va_medium_options($conn = null, $hc = array())
+{
     $conn = dbconnect();
 
     $qry = "select distinct ave.attr_id,ave.value 
@@ -5325,7 +5392,6 @@ order by ave.value";
 
 
     while ($row = $q->fetch()) {
-
         $msl .= '<option value="' . $row['value'] . '">' . stripslashes($row['value']) . '</option>';
         $hc[] = array(
             //'id' => $row['attr_value_id'],
@@ -5341,8 +5407,8 @@ order by ave.value";
     );
 }
 
-function get_va_publicationyear_options($conn = null, $hc = array()) {
-
+function get_va_publicationyear_options($conn = null, $hc = array())
+{
     $conn = dbconnect();
 
     $qry = "select distinct ave.attr_id,ave.value 
@@ -5373,7 +5439,6 @@ order by ave.value";
 
 
     while ($row = $q->fetch()) {
-
         $msl .= '<option value="' . $row['value'] . '">' . stripslashes($row['value']) . '</option>';
         $hc[] = array(
             //'id' => $row['attr_value_id'],
@@ -5389,13 +5454,11 @@ order by ave.value";
     );
 }
 
-function get_va_publicationyear_optionsall($conn = null, $artiststr, $classificationstr) {
-
+function get_va_publicationyear_optionsall($conn = null, $artiststr, $classificationstr)
+{
     $conn = dbconnect();
 
     if ($artiststr != "" && $classificationstr != "") {
-
-
         $qry = "select distinct inn.v AS value from
 (SELECT p.prodid AS id, p.prodname AS n, f.attribute_name AS an, COUNT(v.value) as cn, v.`value` AS v 
 FROM 
@@ -5445,10 +5508,7 @@ GROUP BY t.attribute_value_id
 
 where an = 'va_year_publication' 
 order by inn.v";
-    } else if ($artiststr == "" && $classificationstr != "") {
-
-
-
+    } elseif ($artiststr == "" && $classificationstr != "") {
         $qry = "select distinct inn.v AS value from
 (SELECT p.prodid AS id, p.prodname AS n, f.attribute_name AS an, COUNT(v.value) as cn, v.`value` AS v 
 FROM 
@@ -5482,8 +5542,7 @@ GROUP BY t.attribute_value_id
 
 where an = 'va_year_publication' 
 order by inn.v";
-    } else if ($artiststr != "" && $classificationstr == "") {
-
+    } elseif ($artiststr != "" && $classificationstr == "") {
         $qry = "select distinct inn.v AS value from
 (SELECT p.prodid AS id, p.prodname AS n, f.attribute_name AS an, COUNT(v.value) as cn, v.`value` AS v 
 FROM 
@@ -5557,15 +5616,11 @@ order by inn.v";
 //    );
 }
 
-function get_va_artworkyear_optionsall($conn = null, $artiststr, $classificationstr) {
-
+function get_va_artworkyear_optionsall($conn = null, $artiststr, $classificationstr)
+{
     $conn = dbconnect();
 
     if ($artiststr != "" && $classificationstr != "") {
-
-
-
-
         $qry = "select distinct inn.v AS value from
 (SELECT p.prodid AS id, p.prodname AS n, f.attribute_name AS an, COUNT(v.value) as cn, v.`value` AS v 
 FROM 
@@ -5614,12 +5669,7 @@ GROUP BY t.attribute_value_id
  )inn 
 
 where an = 'va_year_artwork' order by inn.v";
-    } else if ($artiststr == "" && $classificationstr != "") {
-
-
-
-
-
+    } elseif ($artiststr == "" && $classificationstr != "") {
         $qry = "select distinct inn.v AS value from
 (SELECT p.prodid AS id, p.prodname AS n, f.attribute_name AS an, COUNT(v.value) as cn, v.`value` AS v 
 FROM 
@@ -5655,9 +5705,7 @@ GROUP BY t.attribute_value_id
  )inn 
 
 where an = 'va_year_artwork' order by inn.v";
-    } else if ($artiststr != "" && $classificationstr == "") {
-
-
+    } elseif ($artiststr != "" && $classificationstr == "") {
         $qry = "select distinct inn.v AS value from
 (SELECT p.prodid AS id, p.prodname AS n, f.attribute_name AS an, COUNT(v.value) as cn, v.`value` AS v 
 FROM 
@@ -5722,15 +5770,11 @@ where an = 'va_year_artwork' order by inn.v";
 
 
 
-function get_va_medium_optionsall($conn = null, $artiststr, $classificationstr) {
-
+function get_va_medium_optionsall($conn = null, $artiststr, $classificationstr)
+{
     $conn = dbconnect();
 
     if ($artiststr != "" && $classificationstr != "") {
-
-
-
-
         $qry = "select distinct inn.v AS value from
 (SELECT p.prodid AS id, p.prodname AS n, f.attribute_name AS an, COUNT(v.value) as cn, v.`value` AS v 
 FROM 
@@ -5779,12 +5823,7 @@ GROUP BY t.attribute_value_id
  )inn 
 
 where an = 'va_medium' order by inn.v";
-    } else if ($artiststr == "" && $classificationstr != "") {
-
-
-
-
-
+    } elseif ($artiststr == "" && $classificationstr != "") {
         $qry = "select distinct inn.v AS value from
 (SELECT p.prodid AS id, p.prodname AS n, f.attribute_name AS an, COUNT(v.value) as cn, v.`value` AS v 
 FROM 
@@ -5820,9 +5859,7 @@ GROUP BY t.attribute_value_id
  )inn 
 
 where an = 'va_medium' order by inn.v";
-    } else if ($artiststr != "" && $classificationstr == "") {
-
-
+    } elseif ($artiststr != "" && $classificationstr == "") {
         $qry = "select distinct inn.v AS value from
 (SELECT p.prodid AS id, p.prodname AS n, f.attribute_name AS an, COUNT(v.value) as cn, v.`value` AS v 
 FROM 
@@ -5884,13 +5921,11 @@ where an = 'va_medium' order by inn.v";
 
 
 
-function allpublicationyearsnew_optionsall($conn = null, $artiststr, $classificationstr) {
-
+function allpublicationyearsnew_optionsall($conn = null, $artiststr, $classificationstr)
+{
     try {
         $conn = dbconnect();
         if ($artiststr != "" && $classificationstr != "") {
-
-
             $qry = "select distinct inn.v AS value from
 (SELECT p.prodid AS id, p.prodname AS n, f.attribute_name AS an, COUNT(v.value) as cn, v.`value` AS v 
 FROM 
@@ -5940,10 +5975,7 @@ GROUP BY t.attribute_value_id
 
 where an = 'va_year_publication' 
 order by inn.v";
-        } else if ($artiststr == "" && $classificationstr != "") {
-
-
-
+        } elseif ($artiststr == "" && $classificationstr != "") {
             $qry = "select distinct inn.v AS value from
 (SELECT p.prodid AS id, p.prodname AS n, f.attribute_name AS an, COUNT(v.value) as cn, v.`value` AS v 
 FROM 
@@ -5977,8 +6009,7 @@ GROUP BY t.attribute_value_id
 
 where an = 'va_year_publication' 
 order by inn.v";
-        } else if ($artiststr != "" && $classificationstr == "") {
-
+        } elseif ($artiststr != "" && $classificationstr == "") {
             $qry = "select distinct inn.v AS value from
 (SELECT p.prodid AS id, p.prodname AS n, f.attribute_name AS an, COUNT(v.value) as cn, v.`value` AS v 
 FROM 
@@ -6031,15 +6062,11 @@ order by inn.v";
     }
 }
 
-function allartworkyearsnew_optionsall($conn = null, $artiststr, $classificationstr) {
-
+function allartworkyearsnew_optionsall($conn = null, $artiststr, $classificationstr)
+{
     try {
         $conn = dbconnect();
         if ($artiststr != "" && $classificationstr != "") {
-
-
-
-
             $qry = "select distinct inn.v AS value from
 (SELECT p.prodid AS id, p.prodname AS n, f.attribute_name AS an, COUNT(v.value) as cn, v.`value` AS v 
 FROM 
@@ -6088,9 +6115,7 @@ GROUP BY t.attribute_value_id
  )inn 
 
 where an = 'va_year_artwork' order by inn.v";
-        } else if ($artiststr == "" && $classificationstr != "") {
-
-
+        } elseif ($artiststr == "" && $classificationstr != "") {
             $qry = "select distinct inn.v AS value from
 (SELECT p.prodid AS id, p.prodname AS n, f.attribute_name AS an, COUNT(v.value) as cn, v.`value` AS v 
 FROM 
@@ -6126,9 +6151,7 @@ GROUP BY t.attribute_value_id
  )inn 
 
 where an = 'va_year_artwork' order by inn.v";
-        } else if ($artiststr != "" && $classificationstr == "") {
-
-
+        } elseif ($artiststr != "" && $classificationstr == "") {
             $qry = "select distinct inn.v AS value from
 (SELECT p.prodid AS id, p.prodname AS n, f.attribute_name AS an, COUNT(v.value) as cn, v.`value` AS v 
 FROM 
@@ -6163,16 +6186,16 @@ where an = 'va_year_artwork' order by inn.v";
         }
 
 
-//        $qry = "select distinct ave.attr_id,ave.value 
-//from product_type_attribute_key ptak,
-//attr_common_flds_ecomc acfe, attribute_value_ecomc ave 
-//where 
-//ptak.attribute_id = acfe.id 
-//and acfe.id = '213' 
-//and ptak.p_type_id = '19' 
-//and ave.attr_id = acfe.id 
-//and ave.value <> '' 
-//order by ave.value";
+//        $qry = "select distinct ave.attr_id,ave.value
+        //from product_type_attribute_key ptak,
+        //attr_common_flds_ecomc acfe, attribute_value_ecomc ave
+        //where
+        //ptak.attribute_id = acfe.id
+        //and acfe.id = '213'
+        //and ptak.p_type_id = '19'
+        //and ave.attr_id = acfe.id
+        //and ave.value <> ''
+        //order by ave.value";
 
         $q = $conn->prepare($qry);
         $q->execute();
@@ -6192,8 +6215,8 @@ where an = 'va_year_artwork' order by inn.v";
     }
 }
 
-function allpublicationyears() {
-
+function allpublicationyears()
+{
     try {
         $conn = dbconnect();
         $query = "SELECT distinct value FROM `attribute_value_ecomc` WHERE `attr_id` = 213 order by value";
@@ -6217,8 +6240,8 @@ function allpublicationyears() {
     }
 }
 
-function allartworkyears() {
-
+function allartworkyears()
+{
     try {
         $conn = dbconnect();
         $query = "SELECT distinct value FROM `attribute_value_ecomc` WHERE `attr_id` = 210 and value <> '' order by value";
@@ -6243,8 +6266,8 @@ function allartworkyears() {
     }
 }
 
-function alljournaldropdown($conn = null) {
-
+function alljournaldropdown($conn = null)
+{
     try {
         $conn = dbconnect();
         $query = "select distinct ave.value  
@@ -6329,8 +6352,8 @@ order by acfe.position";
     }
 }
 
-function alllanguagedropdown() {
-
+function alllanguagedropdown()
+{
     try {
         $conn = dbconnect();
         $query = "SELECT ave.value FROM  
@@ -6360,8 +6383,8 @@ order by ave.value";
         echo db_error($pe->getMessage());
     }
 }
-function get_allPDF_count_bibliography($pid, $choice = FALSE) {
-
+function get_allPDF_count_bibliography($pid, $choice = false)
+{
     try {
         $conn = dbconnect();
         $query = "SELECT count(id) count_pdf FROM bibliography_pdf WHERE `prodid`='%s'";
