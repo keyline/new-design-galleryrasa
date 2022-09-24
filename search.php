@@ -1,10 +1,11 @@
 <?php
+
 session_start();
 require_once("require.php");
 require_once(INCLUDED_FILES . "config.inc.php");
 require_once(INCLUDED_FILES . "dbConn.php");
 require_once(INCLUDED_FILES . "functionsInc.php");
-if ($_SERVER['REQUEST_METHOD'] == 'POST') { 
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     //Initialize variables
     $params = '';
     $subParams = '';
@@ -28,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 
     //if (isset($_POST['all-search-entry'])) {
-        $_POST['all-search-entry'] = 'entryPoint';
+    $_POST['all-search-entry'] = 'entryPoint';
     //}
 
 
@@ -46,13 +47,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         //For displaying artist searched for
         if (count($qry_arr) > 0) {
             foreach ($qry_arr as $k => $v) {
-
 //                print_r($v);
 //                echo '<br>';
                 if ($k == 'bibliography' || $k == 'searchall') {
                     $keyword = implode(',', array_map('ucwords', $v));
                     foreach ($v as $val) {
-
                         $exparr = explode(":", $val);
 
                         $cntarr = count($exparr);
@@ -67,7 +66,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 }
                 if ($k == 'sub-item') {
                     if (is_array($v)) {
-
                         $cntv = count($v);
                         for ($i = 0; $i < count($v); $i++) {
                             $qstr[] = $v[$i];
@@ -75,7 +73,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                             if ($i + 1 == $cntv) {
                                 $subParams2 .= $v[$i];
                             } else {
-
                                 $subParams2 .= $v[$i] . ',';
                             }
                         }
@@ -107,7 +104,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     if ($j == $cntsrch) {
                         $subParams2 .= $sub;
                     } else {
-
                         $subParams2 .= $sub . ',';
                     }
                 }
@@ -125,7 +121,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if (!empty($entryPoint)) {
             foreach ($entryPoint as $value) {
                 if (is_array($value)) {
-
                     foreach ($value as $k => $v) {
                         $params2[] = '(f.attribute_name="' . $k . '" AND v.value ="' . $v . '")';
                     }
@@ -146,16 +141,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 //        exit;
         //Count Query
         $count_qry = mainSearch_query($params, $subParams, $qstr, true);
-        //echo $count_qry;
+    //echo $count_qry;
     } elseif (isset($_POST['submitButton']) && $_POST['submitButton'] == 'BiblioSearch') {
-
         $params_qry = array();
 
         $search = get_subcategoryList_by_name();
 
         foreach ($qry_arr as $k => $v) {
-            if ($k == 'submitButton' || $k == 'objSearch')
+            if ($k == 'submitButton' || $k == 'objSearch') {
                 continue;
+            }
             if (is_array($v)) {
                 foreach ($v as $p => $m) {
                     if (array_key_exists($m, $search)) {
@@ -167,16 +162,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             }
         }
 
-//        print "<pre>";
-//        print_r($search);
-//        print_r($params_qry);
-//        exit;
+        print "<pre>";
+        print_r($search);
+        print_r($params_qry);
+        exit;
         /**
          * Defaults values for Reference-type and language
          */
         //$defaultKeys = array('reference-type'=>1, 'language'=>1);
         if (!(array_key_exists('reference_type', $params_qry)) && !(array_key_exists('language', $params_qry))) {
-
             foreach ($search as $m) {
                 $params_qry['reference_type'][] = $m;
             }
@@ -210,7 +204,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $flag = 0;
 
         for ($i = 0; $i < count($childKeys); $i++) {
-
             if ($childKeys[$i] === 'reference_type') {
                 $queryInner .= "(SELECT t.product_id FROM products_ecomc p LEFT JOIN product_attribute_value t ON p.prodid = t.product_id LEFT JOIN 
 attribute_value_ecomc v ON t.attribute_value_id = v.attr_value_id LEFT JOIN attr_common_flds_ecomc f ON v.attr_id = f.id WHERE 
@@ -218,8 +211,7 @@ p.category_id = 1 AND (p.subcatid IN (" . implode(",", $params_qry[$childKeys[$i
                 $j++;
                 $flag++;
             } elseif ($childKeys[$i] === 'language') {
-
-                foreach ($params_qry[$childKeys[$i]] AS $k => $v) {
+                foreach ($params_qry[$childKeys[$i]] as $k => $v) {
                     $lan[] = "v.value='$v'";
                 }
                 $queryInner .= "(SELECT t.product_id FROM products_ecomc p LEFT JOIN product_attribute_value t ON p.prodid = t.product_id LEFT JOIN 
@@ -232,8 +224,9 @@ p.category_id = 1 AND (" . implode(" OR ", $lan) . ") AND f.attribute_name = 'la
                 continue;
             }
 
-            if ($flag === 1)
+            if ($flag === 1) {
                 $queryInner .= " INNER JOIN ";
+            }
             if ($j >= 2) {
                 $queryInner .= " ON t" . ($j - 1) . ".product_id = t" . $j . ".product_id INNER JOIN ";
                 break;
@@ -257,11 +250,13 @@ p.category_id = 1 AND (" . implode(" OR ", $lan) . ") AND f.attribute_name = 'la
         $p = 1;
         $arrayCount = 0;
 
-        foreach ($params_qry AS $k => $value) {
-            if ($k == 'reference_type')
+        foreach ($params_qry as $k => $value) {
+            if ($k == 'reference_type') {
                 continue;
-            if ($k == 'language')
+            }
+            if ($k == 'language') {
                 continue;
+            }
             if ($k == 'year_range') {
                 $match = "-1";
 
@@ -272,17 +267,17 @@ p.category_id = 1 AND (" . implode(" OR ", $lan) . ") AND f.attribute_name = 'la
                     attribute_value_ecomc v ON t.attribute_value_id = v.attr_value_id LEFT JOIN attr_common_flds_ecomc f ON v.attr_id = f.id WHERE 
                 p.category_id = 1 AND v.value BETWEEN " . implode(" AND ", $params_qry['year_range']) . " AND f.attribute_name = 'gregorian_year' GROUP BY t.product_id)t" . $i;
 
-                    if ($i >= 3)
+                    if ($i >= 3) {
                         $queryInner .= " ON t" . $j . ".product_id = t" . $i . ".product_id INNER JOIN ";
+                    }
                 }
 
-                //continue;
-            }else {
+            //continue;
+            } else {
                 $key = $k;
                 $arrayCount += sizeof($value);
                 if (is_array($value)) {
-                    foreach ($value AS $v) {
-
+                    foreach ($value as $v) {
                         $j = $i++;
 
 
@@ -291,8 +286,9 @@ attribute_value_ecomc v ON t.attribute_value_id = v.attr_value_id LEFT JOIN attr
 p.category_id = 1 AND v.value="' . $v . '" AND f.attribute_name = "' . $k . '" GROUP BY t.product_id)t' . $i;
 
 
-                        if ($i >= 3)
+                        if ($i >= 3) {
                             $queryInner .= " ON t" . $j . ".product_id = t" . $i . ".product_id INNER JOIN ";
+                        }
                     }
                 }
             }
@@ -306,12 +302,12 @@ p.category_id = 1 AND v.value="' . $v . '" AND f.attribute_name = "' . $k . '" G
 
 
 
-//*********************Debug Purpose*************//        
-//$queryInner .= "ON t" . $i .".product_id = t" .($i-1) . ".product_id";
+        //*********************Debug Purpose*************//
+        //$queryInner .= "ON t" . $i .".product_id = t" .($i-1) . ".product_id";
 //         echo $queryInner;
 //         echo $arrayCount . "<br>";
 //         echo $i;
-//*********************Debug Purpose*************//
+        //*********************Debug Purpose*************//
         //Wrapping Query Inner with outer query to get full query
 
 
@@ -368,13 +364,11 @@ FROM
 
 
         $count_qry = sprintf($count_outer_qry, $queryInner);
-    }else {
-
+    } else {
         if (isset($_SESSION['bParam'])) {
             $keyword = implode(", ", r_implode($_SESSION['bParam'], ","));
             foreach ($_SESSION['bParam'] as $value) {
                 if (is_array($value)) {
-
                     foreach ($value as $k => $v) {
                         $params2[] = '(f.attribute_name="' . $k . '" AND v.value ="' . $v . '")';
                     }
@@ -412,7 +406,7 @@ FROM
         $conn = dbconnect();
         $referenceType_sorted = get_subCategory_options($conn);
         $sortedReferenceType = [];
-        array_walk($referenceType_sorted['h'], function($v, $k) use (&$sortedReferenceType) {
+        array_walk($referenceType_sorted['h'], function ($v, $k) use (&$sortedReferenceType) {
             $sortedReferenceType[] = $v['name'];
         });
         if (strlen($qry) > 0) {
@@ -442,17 +436,16 @@ FROM
             if (!empty($rows) && !empty($count_rows)) {
                 $data = array();
                 foreach ($rows as $row) {
-
                     if ($row['category'] == "Journal Article" && $row['attribute_name'] == "title_of_article") {
                         continue;
-                        //echo "found it";
-                    } else if ($row['category'] == "Catalogue Essay" && $row['attribute_name'] == "title_of_article") {
+                    //echo "found it";
+                    } elseif ($row['category'] == "Catalogue Essay" && $row['attribute_name'] == "title_of_article") {
                         continue;
-                    } else if ($row['category'] == "Catalogue[Solo]" && $row['attribute_name'] == "title_of_article") {
+                    } elseif ($row['category'] == "Catalogue[Solo]" && $row['attribute_name'] == "title_of_article") {
                         continue;
-                    }else if ($row['category'] == "Book Section" && $row['attribute_name'] == "title_of_article") {
+                    } elseif ($row['category'] == "Book Section" && $row['attribute_name'] == "title_of_article") {
                         continue;
-                    }else {
+                    } else {
                         $data[$row['category']][$row['productId']][$row['product']][$row['attribute_name']] = $row['value'];
                     }
                 }
@@ -487,14 +480,12 @@ FROM
 //                print "</pre>";
 //                exit;
                 if (isset($_SESSION)) {
-                    
                     if (isset($_SESSION['user-id'])) {
                         $usersession = true;
                     } else {
                         $usersession = false;
                     }
                 } else {
-                    
                     $usersession = false;
                 }
 
@@ -516,13 +507,10 @@ FROM
                 //$mergedArray = call_user_func_array('array_merge_recursive', $filter_data);
 
                 foreach ($filter_data as $key => $res) {
-
                     if (is_array($res)) {
-                        foreach ($res AS $k => $v) {
-
+                        foreach ($res as $k => $v) {
                             $attr = $k;
                             foreach ($v as $value) {
-
                                 $result[$attr][] = $value;
                             }
                         }
@@ -593,9 +581,9 @@ FROM
 
 
 
-
-//                print_r($filter_data_af);
-//                exit;
+                //print "<pre>";
+                //print_r($filter_data_af);
+                //exit;
                 // print "<pre>";
                 // print_r($filter_data);
                 // exit;
@@ -604,11 +592,13 @@ FROM
                  * @left_filter_html
                  * params array $filter_data
                  * params array $keys (Only which keys are required for filter)
-                 * 
+                 *
                  */
-                //$leftHtml = left_filter_html($filter_data_af, $keys, $countData);
-                //echo '<pre>';print_r($filter_data_af);die;
-                $leftHtml = left_filter_html_second($filter_data_af, $keys, $countData);
+                $leftHtml = left_filter_html($filter_data_af, $keys, $countData);
+                //echo '<pre>';
+                //print_r($leftHtml);
+                //die;
+                //$leftHtml = left_filter_html_second($filter_data_af, $keys, $countData);
 
 //                print_r($leftHtml);
 //                exit;
@@ -619,15 +609,15 @@ FROM
 
                 /**
                  * Get Total Search Result Row Count
-                 * Old Code 
+                 * Old Code
 
                   foreach ($countData as $key => $val) {
 
                   $result_count += (sizeof($val));
                   }
-                 * 
+                 *
                  * @alternate
-                 * $totalCharacterLength = array_sum(array_map(function($item) { 
+                 * $totalCharacterLength = array_sum(array_map(function($item) {
                   return $item['values']['character_length'];
                   }, $totalCharacterLength));
 
@@ -637,7 +627,7 @@ FROM
                  *  */
                 /**
                  * @Changed on 30/04/2019 AT 6:14PM
-                 * Get Total Search Result Count 
+                 * Get Total Search Result Count
                  */
 //                $options = get_subCategory_options($conn);
 //                $select_sub = $options['s'];
@@ -647,9 +637,13 @@ FROM
                 $alllanguagedropdownarr = alllanguagedropdown($conn);
 
 
-                $array_value_sum = create_function('$array,$key', '$total = 0; foreach($array as $row) $total = $total + $row[$key]; return $total;');
+                //$array_value_sum = create_function('$array,$key', '$total = 0; foreach($array as $row) $total = $total + $row[$key]; return $total;');
+                $result_count= array_reduce($countData['reference_type'], function ($carry, $item) {
+                    $carry += $item['count'];
+                    return $carry;
+                });
                 //Getting count reference_type
-                $result_count = $array_value_sum($countData['reference_type'], 'count');
+                //$result_count = $array_value_sum($countData['reference_type'], 'count');
                 $html = 1;
                 $options = get_subCategory_options($conn);
                 $select_sub2 = $options['s'];
@@ -659,17 +653,17 @@ FROM
                 $options2 = get_subCategory_optionsBib($conn);
                 $select_sub = $options2['s'];
 
-                // $keywordArr=explode(":",$keyword);        
+                // $keywordArr=explode(":",$keyword);
                 // $first=str_replace("Artist", "(Artist) ", $keywordArr[0]);
                 // $second=$keywordArr[1];
                 // $keyword = $second.' '.$first;
-                
-                // $keywordArr=explode(":",$keyword);        
+
+                // $keywordArr=explode(":",$keyword);
                 // $first=str_replace("Author", "(Author) ", $keywordArr[0]);
                 // $second=$keywordArr[1];
                 // $keyword = $second.' '.$first;
 
-                // $keywordArr=explode(":",$keyword);        
+                // $keywordArr=explode(":",$keyword);
                 // $first=str_replace("Editor", "(Editor) ", $keywordArr[0]);
                 // $second=$keywordArr[1];
                 // $keyword = $second.' '.$first;
@@ -699,54 +693,3 @@ FROM
     }
     include(INC_FOLDER . "footerInc.php");
 }
-?>
-
-<script type="text/javascript">
-    $(document).ready(function(){
-        
-        $("#artistSearch").on("input", function() {
-            var value = $(this).val().toLowerCase();
-            $("#artistMainList .subList").filter(function() {
-              $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-            });
-        });
-        $("#authorSearch").on("input", function() {
-            var value = $(this).val().toLowerCase();
-            $("#authorMainList .subList").filter(function() {
-              $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-            });
-        });
-        $("#editorSearch").on("input", function() {
-            var value = $(this).val().toLowerCase();
-            $("#editorMainList .subList").filter(function() {
-              $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-            });
-        });
-        $("#languageSearch").on("input", function() {
-            var value = $(this).val().toLowerCase();
-            $("#languageMainList .subList").filter(function() {
-              $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-            });
-        });
-        $("#popSearch").on("input", function() {
-            var value = $(this).val().toLowerCase();
-            $("#popMainList .subList").filter(function() {
-              $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-            });
-        });
-        $("#publisherSearch").on("input", function() {
-            var value = $(this).val().toLowerCase();
-            $("#publisherMainList .subList").filter(function() {
-              $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-            });
-        });
-        $("#yearSearch").on("input", function() {
-            var value = $(this).val().toLowerCase();
-            $("#yearMainList .subList").filter(function() {
-              $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-            });
-        });
-
-
-    });
-</script>

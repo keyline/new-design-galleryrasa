@@ -1,5 +1,5 @@
 <?php
-$start_time = microtime(TRUE);
+$start_time = microtime(true);
 if (!isset($_COOKIE["cookieid"])) {
     setcookie("cookieid", gen_id(20), time() + 60 * 60 * 24 * 30, '/');
 }  #30 days to expire/delete user shopping basket
@@ -56,15 +56,7 @@ if (!isset($_COOKIE["cookieid"])) {
 
 <link rel="stylesheet" type="text/css" href="slick/slick.css" />
 <link rel="stylesheet" type="text/css" href="slick/slick-theme.css" />
-        <script>
-            //paste this code under head tag or in a seperate js file.
-            // Wait for window load
-            $(window).load(function () {
-                // Animate loader off screen
-                $(".se-pre-con").fadeOut("slow");
-                ;
-            });
-        </script>
+        
 
         <style>
             @font-face {
@@ -80,7 +72,7 @@ if (!isset($_COOKIE["cookieid"])) {
                 echo "<script src='https://www.google.com/recaptcha/api.js?hl=" . RECAPTCHA_LAN . "'></script>";
             }
         }
-        ?>
+?>
     </head>
     <!-- NAVBAR
     ================================================== -->
@@ -114,7 +106,7 @@ if (!isset($_COOKIE["cookieid"])) {
                             </div>   
                         </div>
                         <div class="head-bar">
-                            <?php if(isset($_SESSION["user-id"])) {
+                            <?php if (isset($_SESSION["user-id"])) {
                                 $sql_user = "SELECT COUNT(id)  as productCount FROM cart WHERE customer_id='" . $_SESSION['user-id'] . "'";
                                 $q_user = $conn->prepare($sql_user);
                                 $q_user->execute();
@@ -123,7 +115,7 @@ if (!isset($_COOKIE["cookieid"])) {
                             <div class="drafts-action">
                                 <a href="<?php echo SITE_URL ?>cart-checkout/cart.php" class="drafts-btn"><span class="material-icons cart-box">shopping_bag</span><span class="badge"><?php echo $row_user['productCount']; ?></span></a>
                             </div>
-                            <?php } else{ ?>
+                            <?php } else { ?>
                                 <div class="drafts-action">
                                     <a href="<?php echo SITE_URL ?>cart-checkout/cart.php" class="drafts-btn"><span class="material-icons cart-box">shopping_bag</span><span class="badge">0</span></a>
                                 </div>
@@ -177,7 +169,7 @@ if (!isset($_COOKIE["cookieid"])) {
                                             <?php
                                             unset($_SESSION['newsletter']);
                                         }
-                                        ?>                                        
+?>                                        
                                         <form id="contact-form" method="post" action="contact_newsletter.php" role="form">
                                             <div class="form-group">
                                                 <input type="text" name="fullname" class="form-control" id="fullname" placeholder="your name">
@@ -214,4 +206,3 @@ if (!isset($_COOKIE["cookieid"])) {
     <div class="menu-overlay-box">
     <div class="menu-overlay"></div>
     </div>
-

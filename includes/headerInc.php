@@ -1,5 +1,5 @@
 <?php
-$start_time = microtime(TRUE);
+$start_time = microtime(true);
 if (!isset($_COOKIE["cookieid"])) {
     setcookie("cookieid", gen_id(20), time() + 60 * 60 * 24 * 30, '/');
 }  #30 days to expire/delete user shopping basket
@@ -66,16 +66,6 @@ if (!isset($_COOKIE["cookieid"])) {
 <link rel="stylesheet" type="text/css" href="slick/slick.css" />
 <link rel="stylesheet" type="text/css" href="slick/slick-theme.css" />
 
-        <script>
-            //paste this code under head tag or in a seperate js file.
-            // Wait for window load
-            $(window).load(function () {
-                // Animate loader off screen
-                $(".se-pre-con").fadeOut("slow");
-                ;
-            });
-        </script>
-
         <style>
             @font-face {
                 font-family: ink-free;
@@ -90,7 +80,7 @@ if (!isset($_COOKIE["cookieid"])) {
                 echo "<script src='https://www.google.com/recaptcha/api.js?hl=" . RECAPTCHA_LAN . "'></script>";
             }
         }
-        ?>
+?>
     </head>
     <!-- NAVBAR
     ================================================== -->
@@ -133,7 +123,7 @@ if (!isset($_COOKIE["cookieid"])) {
                             <div class="drafts-action">
                                 <a href="<?php echo SITE_URL ?>cart-checkout/cart.php" class="drafts-btn"><span class="material-icons cart-box">shopping_bag</span><span class="badge"><?php echo $row_user['productCount']; ?></span></a>
                             </div>
-                            <?php } else{ ?>
+                            <?php } else { ?>
                                 <div class="drafts-action">
                                     <a href="<?php echo SITE_URL ?>cart-checkout/cart.php" class="drafts-btn"><span class="material-icons cart-box">shopping_bag</span><span class="badge">0</span></a>
                                 </div>
@@ -189,7 +179,7 @@ if (!isset($_COOKIE["cookieid"])) {
                                             <?php
                                             unset($_SESSION['newsletter']);
                                         }
-                                        ?>
+?>
                                         <!-- <form>
                                             <div class="form-group">
                                                 <input type="email" class="form-control" placeholder="your name">
@@ -245,4 +235,3 @@ if (!isset($_COOKIE["cookieid"])) {
 
 
     
-
