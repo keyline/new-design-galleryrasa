@@ -7232,9 +7232,41 @@ text-align: left;
 /* .select2.select2-container.select2-container--default.select2-container--focus.select2-container--open.select2-container--above{
     border: 1px solid #ced4da;
 } */
-
-
-
-
-
-
+.artist-search.bibliography-search .bibliography-total-box .bibliography-left-box .dropdown{
+    height: 54px;
+    margin-bottom: 6px;
+    /* border: 1px solid #D5D8D9; */
+    border: 1px solid transparent;
+}
+.artist-search.bibliography-search .bibliography-total-box .bibliography-left-box .dropdown .btn-light p{
+    color: #AAA;
+    font-size: 14px!important;
+    text-transform: capitalize;
+}
+.artist-search.bibliography-search .bibliography-total-box .bibliography-left-box .dropdown .btn-light p span{
+    color: #333;
+    font-size: 28px;
+}
+.artist-search.bibliography-search .bibliography-total-box .bibliography-left-box .dropdown-menu{
+    max-height: 150px;
+    overflow-y: scroll;
+    top: -5px!important;
+}
+.artist-search.bibliography-search .bibliography-total-box .bibliography-left-box .dropdown-menu::-webkit-scrollbar {
+    width: 6px;               
+  }
+  .artist-search.bibliography-search .bibliography-total-box .bibliography-left-box .dropdown-menu::-webkit-scrollbar-track {
+    background: #D5D8D9;
+  /*    border: 3px solid #fff;*/
+  /*    border-radius: 20px; */
+  }
+  .artist-search.bibliography-search .bibliography-total-box .bibliography-left-box .dropdown-menu::-webkit-scrollbar-thumb {
+    background-color: var(--primaryColor);
+  /*  border-radius: 20px;  */
+  }
+  .artist-search.bibliography-search .bibliography-total-box .bibliography-left-box .dropdown-menu.radio i{
+    padding: 14px 18px;
+  }
+  .artist-search.bibliography-search .bibliography-total-box .bibliography-left-box .btn-light.dropdown-toggle {
+    border: 1px solid #D5D8D9;
+  }

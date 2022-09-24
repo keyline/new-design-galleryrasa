@@ -102,6 +102,104 @@
                                 </div>
                             </div>
                             {leftFilter}
+                            <div class="dropdown">
+                                                    <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown">
+                                                        <p>From<span class="material-icons">keyboard_arrow_down</span></p>
+                                                    </button>
+                                                    <div class="dropdown-menu radio">
+
+                                                        <label class="dropdown-item" tabindex="0">
+                                                            <input class="jRadioDropdown" type="radio" value="001" name="alphabet" tabindex="-1">
+                                                            <i>1908</i>
+                                                        </label>
+
+                                                        <label class="dropdown-item" tabindex="0">
+                                                            <input class="jRadioDropdown" type="radio" value="002" name="alphabet" tabindex="-1">
+                                                            <i>1908</i>
+                                                        </label>
+
+                                                        <label class="dropdown-item" tabindex="0">
+                                                            <input class="jRadioDropdown" type="radio" value="003" name="alphabet" tabindex="-1">
+                                                            <i>1910</i>
+                                                        </label>
+                                                        <label class="dropdown-item" tabindex="0">
+                                                            <input class="jRadioDropdown" type="radio" value="004" name="alphabet" tabindex="-1">
+                                                            <i>1911</i>
+                                                        </label>
+                                                        <label class="dropdown-item" tabindex="0">
+                                                            <input class="jRadioDropdown" type="radio" value="005" name="alphabet" tabindex="-1">
+                                                            <i>1912</i>
+                                                        </label>
+                                                        <label class="dropdown-item" tabindex="0">
+                                                            <input class="jRadioDropdown" type="radio" value="006" name="alphabet" tabindex="-1">
+                                                            <i>1913</i>
+                                                        </label>
+                                                        <label class="dropdown-item" tabindex="0">
+                                                            <input class="jRadioDropdown" type="radio" value="007" name="alphabet" tabindex="-1">
+                                                            <i>1914</i>
+                                                        </label>
+                                                        <label class="dropdown-item" tabindex="0">
+                                                            <input class="jRadioDropdown" type="radio" value="008" name="alphabet" tabindex="-1">
+                                                            <i>1915</i>
+                                                        </label>
+                                                        <label class="dropdown-item" tabindex="0">
+                                                            <input class="jRadioDropdown" type="radio" value="009" name="alphabet" tabindex="-1">
+                                                            <i>1916</i>
+                                                        </label>
+
+
+
+                                                    </div>
+                                                </div>
+                                                <div class="dropdown">
+                                                    <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown">
+                                                        <p>To<span class="material-icons">keyboard_arrow_down</span></p>
+                                                    </button>
+                                                    <div class="dropdown-menu radio">
+
+                                                        <label class="dropdown-item" tabindex="0">
+                                                            <input class="jRadioDropdown" type="radio" value="001" name="alphabet" tabindex="-1">
+                                                            <i>1908</i>
+                                                        </label>
+
+                                                        <label class="dropdown-item" tabindex="0">
+                                                            <input class="jRadioDropdown" type="radio" value="002" name="alphabet" tabindex="-1">
+                                                            <i>1908</i>
+                                                        </label>
+
+                                                        <label class="dropdown-item" tabindex="0">
+                                                            <input class="jRadioDropdown" type="radio" value="003" name="alphabet" tabindex="-1">
+                                                            <i>1910</i>
+                                                        </label>
+                                                        <label class="dropdown-item" tabindex="0">
+                                                            <input class="jRadioDropdown" type="radio" value="004" name="alphabet" tabindex="-1">
+                                                            <i>1911</i>
+                                                        </label>
+                                                        <label class="dropdown-item" tabindex="0">
+                                                            <input class="jRadioDropdown" type="radio" value="005" name="alphabet" tabindex="-1">
+                                                            <i>1912</i>
+                                                        </label>
+                                                        <label class="dropdown-item" tabindex="0">
+                                                            <input class="jRadioDropdown" type="radio" value="006" name="alphabet" tabindex="-1">
+                                                            <i>1913</i>
+                                                        </label>
+                                                        <label class="dropdown-item" tabindex="0">
+                                                            <input class="jRadioDropdown" type="radio" value="007" name="alphabet" tabindex="-1">
+                                                            <i>1914</i>
+                                                        </label>
+                                                        <label class="dropdown-item" tabindex="0">
+                                                            <input class="jRadioDropdown" type="radio" value="008" name="alphabet" tabindex="-1">
+                                                            <i>1915</i>
+                                                        </label>
+                                                        <label class="dropdown-item" tabindex="0">
+                                                            <input class="jRadioDropdown" type="radio" value="009" name="alphabet" tabindex="-1">
+                                                            <i>1916</i>
+                                                        </label>
+
+
+
+                                                    </div>
+                                                </div>
                         </div>
                         <div class="bibliography-right-box">
                             <div class="artist-inner">
