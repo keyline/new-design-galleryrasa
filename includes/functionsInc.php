@@ -1394,8 +1394,8 @@ function left_filter_html($someArray = array(), $keys = array(), $count = array(
 
                                             <div id=\"collapse_{$accordianHeaderKey}\" class=\"collapse\" aria-labelledby=\"headingOne\" data-parent=\"#accordionExample\">
                                                 <div class=\"card-body\">
-                                                <div id=\"{$key}-header\"></div>
-                                                    <ul class=\"list-unstyled active collapse show\" id=\"eprSubmenu\" style=\"\">";
+                                                <div class=\"card-form\" id=\"{$key}-header\"></div>
+                                                    <ul class=\"list-unstyled active collapse show\" id=\"{$key}\" style=\"\">";
 
             if (is_array($value)) {
                 if ($value[0] == 'Select All') {
@@ -1464,12 +1464,12 @@ function left_filter_html($someArray = array(), $keys = array(), $count = array(
                                                                 <input class=\"form-check-input greencheck {$key}-All\" type=\"checkbox\" id=\"inlineCheckbox2\" value=\"{$value[$i]}\" {$checked}>
                                                                 <label class=\"form-check-label\" for=\"{$key}\">" . replace_underscore_space($value[$i]) . "</label></div></li>";
                         } elseif ($key == 'artist') {
-                            $html .= "<li class=\"artist\">
+                            $html .= "<li class=\"artist subList\">
                                                             <div class=\"form-check form-check-inline\">
                                                                 <input class=\"form-check-input greencheck {$key}-All\" type=\"checkbox\" id=\"inlineCheckbox2\" value=\"{$value[$i]}\" {$checked}>
                                                                 <label class=\"form-check-label\" for=\"{$key}\">" . replace_underscore_space($value[$i]) . "</label>". "<span class=\"count\"> (" . $c . ")</span>". paint_artist_mapping($value[$i]). "</div></li>";
                         } else {
-                            $html .= "<li>
+                            $html .= "<li class=\"subList\">
                                                             <div class=\"form-check form-check-inline \">
                                                                 <input class=\"form-check-input greencheck {$key}\" type=\"checkbox\" name=\"{$key}[]\" id=\"inlineCheckbox2\" value=\"{$value[$i]}\" {$checked} {$checked2}>
                                                                 <label class=\"form-check-label\" for=\"inlineCheckbox1\">" . replace_underscore_space($value[$i]) . "</label><span class=\"count\">({$c})</span></div></li>";
@@ -1503,44 +1503,26 @@ function left_filter_html($someArray = array(), $keys = array(), $count = array(
         }
 
         //building from inputs
-        $html .= "<div class=\"card\">
-                                            <div class=\"card-header\" id=\"headingNine\">
-                                                <h2 class=\"mb-0\">
-                                                    <button class=\"btn btn-link btn-block text-left collapsed\" type=\"button\" data-toggle=\"collapse\" data-target=\"#collapseNine\" aria-expanded=\"false\" aria-controls=\"collapseNine\">
-                                                        from
-                                                        <span class=\"material-icons\">keyboard_arrow_down</span>
-                                                    </button>
-                                                </h2>
-                                            </div>
+        $html .= '<div class="form-group">
+                                <div class="input-group">
+                                    <div class="input-group-addon">From</div>
+                                    <select class="form-control" id="FromYear" name="year_range[]"><option selected="selected" value="-1">Select year</option>' . $options . '</select>
+                                </div>
+                            </div>';
 
-                                            <div id=\"collapseNine\" class=\"collapse\" aria-labelledby=\"headingNine\" data-parent=\"#accordionExample\">
-                                                <div class=\"card-body\">
-                                                <select class=\"form-control\" id=\"FromYear\" name=\"year_range[]\"><option selected=\"selected\" value=\"-1\">Select year</option>{$options}</select>
-                                                </div>
-                                            </div>
-                                        </div>";
         //Building To inputs
-        $html .= "<div class=\"card\">
-                                            <div class=\"card-header\" id=\"headingTen\">
-                                                <h2 class=\"mb-0\">
-                                                    <button class=\"btn btn-link btn-block text-left collapsed\" type=\"button\" data-toggle=\"collapse\" data-target=\"#collapseTen\" aria-expanded=\"false\" aria-controls=\"collapseTen\">
-                                                        to
-                                                        <span class=\"material-icons\">keyboard_arrow_down</span>
-                                                    </button>
-                                                </h2>
-                                            </div>
-                                            <div id=\"collapseTen\" class=\"collapse\" aria-labelledby=\"headingTen\" data-parent=\"#accordionExample\">
-                                                <div class=\"card-body\">
-                                                    <select class=\"form-control\" id=\"ToYear\" name=\"year_range[]\">
-                                            <option selected=\"selected\" value=\"-1\">Select year</option>{$options}</select>
-                                                </div>
-                                            </div>
-                                        </div>";
+        $html .= '<div class="form-group">
+                                <div class="input-group">
+                                    <div class="input-group-addon">To</div>
+                                    <select class="form-control" id="ToYear" name="year_range[]">
+                                            <option selected="selected" value="-1">Select year</option>' . $options . '</select>
+                                </div>
+                            </div>';
     }
     //Closing accordian
     $html .= '</div>';
     // submit input
-    $html .= '<button id="btnSubmit" type="submit" class="apply-btn btn btn-red form-control" name="submitButton" value="BiblioSearch">apply filters</button>
+    $html .= '<div class="apply-action"><button id="btnSubmit" type="submit" class="apply-btn" name="submitButton" value="BiblioSearch">apply filters</button></div>
                 <input id="objSearch" name="objSearch" type="hidden" value=""></form>';
     //Closing menu section 2, menu
     $html .= "</div></div>";

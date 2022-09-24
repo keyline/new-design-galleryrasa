@@ -1,4 +1,5 @@
 <?php
+
 session_start();
 require_once("require.php");
 require_once(INCLUDED_FILES . "config.inc.php");
@@ -161,10 +162,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             }
         }
 
-//        print "<pre>";
-//        print_r($search);
-//        print_r($params_qry);
-//        exit;
+        print "<pre>";
+        print_r($search);
+        print_r($params_qry);
+        exit;
         /**
          * Defaults values for Reference-type and language
          */
@@ -692,54 +693,3 @@ FROM
     }
     include(INC_FOLDER . "footerInc.php");
 }
-?>
-
-<script type="text/javascript">
-    $(document).ready(function(){
-        
-        $("#artistSearch").on("input", function() {
-            var value = $(this).val().toLowerCase();
-            $("#artistMainList .subList").filter(function() {
-              $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-            });
-        });
-        $("#authorSearch").on("input", function() {
-            var value = $(this).val().toLowerCase();
-            $("#authorMainList .subList").filter(function() {
-              $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-            });
-        });
-        $("#editorSearch").on("input", function() {
-            var value = $(this).val().toLowerCase();
-            $("#editorMainList .subList").filter(function() {
-              $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-            });
-        });
-        $("#languageSearch").on("input", function() {
-            var value = $(this).val().toLowerCase();
-            $("#languageMainList .subList").filter(function() {
-              $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-            });
-        });
-        $("#popSearch").on("input", function() {
-            var value = $(this).val().toLowerCase();
-            $("#popMainList .subList").filter(function() {
-              $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-            });
-        });
-        $("#publisherSearch").on("input", function() {
-            var value = $(this).val().toLowerCase();
-            $("#publisherMainList .subList").filter(function() {
-              $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-            });
-        });
-        $("#yearSearch").on("input", function() {
-            var value = $(this).val().toLowerCase();
-            $("#yearMainList .subList").filter(function() {
-              $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-            });
-        });
-
-
-    });
-</script>
