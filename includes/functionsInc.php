@@ -4331,11 +4331,11 @@ function paint_artist_mapping($artistName = '')
         $rowCount = $q->rowCount();
 
         if ($rowCount > 0) {
-            while ($row = $q->fetchObject()) {
+            while ($row = $q->fetch(PDO::FETCH_ASSOC)) {
                 $dataCheck[] = array(
-                    'value_id' => $row->attr_value_id,
-                    'attr_id' => $row->attr_id,
-                    'value' => $row->value
+                    'value_id' => $row['attr_value_id'],
+                    'attr_id' => $row['attr_id'],
+                    'value' => $row['value']
                 );
             }
             $qry = "SELECT * FROM `artworks` WHERE `artist_id`=:artistID";

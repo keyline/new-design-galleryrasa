@@ -17,7 +17,9 @@
                                                     <div class="search">
                                                         <div class="top-search">
                                                             <div class="search-barOption">
-                                                                <form method="post" action="search" name="search_form" id="search_form" class="bibliography-search-form">
+                                                                <form method="post" action="search" name="search_form" id="search_form" class="search-input">
+                                                                    <!-- bibliography-search-form -->
+                                                                
 
                                                                         <!-- <div class="form-group row">
                                                                             <div class="col-md-11 p-0">
@@ -30,28 +32,31 @@
                                                                             </div> -->
 
                                                                         <div class="form-group-new-part">
-                                                                                <select class="program-name" name="bibliography[]" multiple="multiple" data-placeholder="Search By Author / Artist / Editor / Topic"></select>
+                                                                                <select class="program-name form-control" name="bibliography[]" multiple="multiple" data-placeholder="Search By Author / Artist / Editor / Topic"></select>
                                                                         
                                                                         <button type="submit" class="btn btn-default form-control search-bttn" value="entry-point" name="bibliography-search-entry"><span class="glyphicon glyphicon-search"></span> <span class="material-icons">search</span>
                                                                                 </button>
                                                                      
 
                                                                         </div>
+                                                                        
              
                                                                         <input type="hidden" name="catg" value="bibliography">
                                                                         <input type="hidden" name="att[0]" value="author">
                                                                         <input type="hidden" name="att[1]" value="artist">
                                                                         <input type="hidden" name="att[2]" value="editor">
+                                                            
                                                                 </form>
                                                                
                                                             
                                                             
                                                         </div>
                                                         <div class="dropdown">
-                                                    <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown">
+                                                            {filter_search_subcategory_list}
+                                                    <!-- <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown">
                                                         <p>CLASSIFICATION<span class="material-icons">keyboard_arrow_down</span></p>
-                                                    </button>
-                                                    <div class="dropdown-menu radio">
+                                                    </button> -->
+                                                    <!-- <div class="dropdown-menu radio">
 
                                                         <label class="dropdown-item" tabindex="0">
                                                             <input class="jRadioDropdown" type="radio" value="001" name="alphabet" tabindex="-1">
@@ -70,7 +75,7 @@
 
 
 
-                                                    </div>
+                                                    </div> -->
                                                 </div>
                                                         <div class="drop-form">
                                                                 <a href="#" class="advanced-btn" data-toggle="modal" data-target="#advancedModal">Advanced Search<span class="material-icons">manage_search</span>

@@ -26,14 +26,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         goto_location("beforeSearch");
         exit;
     }
+    // if (isset($_POST['all-search-entry'])) {
+    //     $_POST['all-search-entry'] = 'entryPoint';
+    // }
+    //|| (isset($_POST['all-search-entry']) && $_POST['all-search-entry'] == 'entryPoint')
 
 
-    //if (isset($_POST['all-search-entry'])) {
-    $_POST['all-search-entry'] = 'entryPoint';
-    //}
-
-
-    if ((isset($_POST['bibliography-search-entry']) && $_POST['bibliography-search-entry'] == 'entry-point') || (isset($_POST['all-search-entry']) && $_POST['all-search-entry'] == 'entryPoint')) {
+    if ((isset($_POST['bibliography-search-entry']) && $_POST['bibliography-search-entry'] == 'entry-point')) {
+        //echo "Entry Case";
         //print '<pre>';
         // print_r($_POST);
         /**
@@ -143,6 +143,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $count_qry = mainSearch_query($params, $subParams, $qstr, true);
     //echo $count_qry;
     } elseif (isset($_POST['submitButton']) && $_POST['submitButton'] == 'BiblioSearch') {
+        //echo "Again Search case";
         $params_qry = array();
 
         $search = get_subcategoryList_by_name();
@@ -162,10 +163,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             }
         }
 
-        print "<pre>";
-        print_r($search);
-        print_r($params_qry);
-        exit;
+        // print "<pre>";
+        // print_r($search);
+        // print_r($params_qry);
+        // exit;
         /**
          * Defaults values for Reference-type and language
          */
@@ -365,6 +366,7 @@ FROM
 
         $count_qry = sprintf($count_outer_qry, $queryInner);
     } else {
+        //echo "Session Case";
         if (isset($_SESSION['bParam'])) {
             $keyword = implode(", ", r_implode($_SESSION['bParam'], ","));
             foreach ($_SESSION['bParam'] as $value) {
@@ -670,8 +672,8 @@ FROM
 
 
                 $search_view = file_get_contents(VIEWS_FOLDER . 'search-result.inc.php');
-                $search = array('{languagelist}', '{journallist}', '{subcategory_list}', '{leftFilter}', '{searchedKeyword}', '{TotalResult}', '{searchList}', '{adv-search-options}');
-                $replace = array($alllanguagedropdownarr, $alljournaldropdownarr, $select_sub2, $leftHtml, $keyword, $result_count, $Searchhtml, $options2['op']);
+                $search = array('{filter_search_subcategory_list}','{languagelist}', '{journallist}', '{subcategory_list}', '{leftFilter}', '{searchedKeyword}', '{TotalResult}', '{searchList}', '{adv-search-options}');
+                $replace = array($select_sub2, $alllanguagedropdownarr, $alljournaldropdownarr, $select_sub2, $leftHtml, $keyword, $result_count, $Searchhtml, $options2['op']);
                 $finalView = str_replace($search, $replace, $search_view);
             }
         } else {
