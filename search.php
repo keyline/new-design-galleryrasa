@@ -27,13 +27,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         exit;
     }
     // if (isset($_POST['all-search-entry'])) {
-    //     $_POST['all-search-entry'] = 'entryPoint';
+    //$_POST['all-search-entry'] = 'entryPoint';
     // }
     //|| (isset($_POST['all-search-entry']) && $_POST['all-search-entry'] == 'entryPoint')
 
 
-    if ((isset($_POST['bibliography-search-entry']) && $_POST['bibliography-search-entry'] == 'entry-point')) {
-        //echo "Entry Case";
+    if ((isset($_POST['bibliography-search-entry']) && $_POST['bibliography-search-entry'] == 'entry-point')
+        ||
+        (isset($_POST['searchall']) && $_POST['catg'] === 'all')
+    ) {
         //print '<pre>';
         // print_r($_POST);
         /**
@@ -137,13 +139,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         //Data Query
         //$qry = mainSearch_query($params, $subParams, $qstr);
         $qry = mainSearch_query($params, $subParams, $qstr);
-//        echo $qry;
-//        exit;
+        //echo $qry;
+        //exit;
         //Count Query
         $count_qry = mainSearch_query($params, $subParams, $qstr, true);
     //echo $count_qry;
     } elseif (isset($_POST['submitButton']) && $_POST['submitButton'] == 'BiblioSearch') {
-        //echo "Again Search case";
         $params_qry = array();
 
         $search = get_subcategoryList_by_name();
@@ -366,7 +367,6 @@ FROM
 
         $count_qry = sprintf($count_outer_qry, $queryInner);
     } else {
-        //echo "Session Case";
         if (isset($_SESSION['bParam'])) {
             $keyword = implode(", ", r_implode($_SESSION['bParam'], ","));
             foreach ($_SESSION['bParam'] as $value) {

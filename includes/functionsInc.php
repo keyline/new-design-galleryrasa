@@ -1347,6 +1347,8 @@ function left_filter_data($someArray = array(), $keys = array(), $test = false)
  */
 function left_filter_html($someArray = array(), $keys = array(), $count = array())
 {
+    $options_from="";
+    $options_to="";
     $someArray = array_map('array_filter', $someArray);
     $checked2 = '';
     uksort($someArray, function ($a, $b) use ($keys) {
@@ -1499,25 +1501,36 @@ function left_filter_html($someArray = array(), $keys = array(), $count = array(
 
         asort($years);
         foreach ($years as $year) {
-            $options .= '<option value="' . $year . '">' . $year . '</option>';
+            //$options .= '<option value="' . $year . '">' . $year . '</option>';
+            $options_from .= "<label class=\"dropdown-item\" tabindex=\"0\">
+                                                            <input class=\"jRadioDropdown\" type=\"radio\" value=\"{$year}\" name=\"year_range[0]\" tabindex=\"-1\">
+                                                            <i>{$year}</i>
+                                                        </label>";
+            $options_to .= "<label class=\"dropdown-item\" tabindex=\"0\">
+                                                            <input class=\"jRadioDropdown\" type=\"radio\" value=\"{$year}\" name=\"year_range[1]\" tabindex=\"-1\">
+                                                            <i>{$year}</i>
+                                                        </label>";
         }
 
         //building from inputs
-        $html .= '<div class="form-group">
-                                <div class="input-group">
-                                    <div class="input-group-addon">From</div>
-                                    <select class="form-control" id="FromYear" name="year_range[]"><option selected="selected" value="-1">Select year</option>' . $options . '</select>
-                                </div>
-                            </div>';
+        $html .= "<div class=\"dropdown\">
+                                                    <button type=\"button\" class=\"btn btn-light dropdown-toggle\" data-toggle=\"dropdown\">
+                                                        <p>From<span class=\"material-icons\">keyboard_arrow_down</span></p>
+                                                    </button>
+                                                    <div class=\"dropdown-menu radio\">
+                                                    {$options_from}
+                                                    </div>
+                                                </div>";
 
         //Building To inputs
-        $html .= '<div class="form-group">
-                                <div class="input-group">
-                                    <div class="input-group-addon">To</div>
-                                    <select class="form-control" id="ToYear" name="year_range[]">
-                                            <option selected="selected" value="-1">Select year</option>' . $options . '</select>
-                                </div>
-                            </div>';
+        $html .= "<div class=\"dropdown\">
+                                                    <button type=\"button\" class=\"btn btn-light dropdown-toggle\" data-toggle=\"dropdown\">
+                                                        <p>To<span class=\"material-icons\">keyboard_arrow_down</span></p>
+                                                    </button>
+                                                    <div class=\"dropdown-menu radio\">
+                                                    {$options_to}
+                                                    </div>
+                                                </div>";
     }
     //Closing accordian
     $html .= '</div>';

@@ -100,7 +100,9 @@ $(function () {
     });
 
     $('.program-name2').select2({
-        width: '100%',
+        width: 'resolve', // need to override the changed default
+        placeholder: "Search",
+        allowClear: true,
         // placeholder: 'Search by Cast/Director/Film',
         ajax: {
             url: 'ajx_response.php',
@@ -125,10 +127,11 @@ $(function () {
                     results: data
                 };
             },
-            formatResult: formatState,
+            templateSelection: formatState,
             cache: true
         },
-        minimumInputLength: 2
+        //minimumInputLength: 2
+        minimumResultsForSearch: Infinity,
     });
     $('.desc-tag').select2({
         width: '100%',
@@ -449,43 +452,7 @@ $(function () {
 
     });
 
-    const elem = document.getElementById('panzoom-element');
-    const zoomInButton = document.getElementById('zoom-in');
-    const zoomOutButton = document.getElementById('zoom-out');
-    const resetButton = document.getElementById('reset');
 
-    const rangeInput = document.getElementById('myRange_test1');
-
-    const panzoom = Panzoom(elem, {
-        maxScale: 4
-    });
-
-    const parent = elem.parentElement
-    // No function bind needed
-    // parent.addEventListener('wheel', panzoom.zoomWithWheel);
-    zoomInButton.addEventListener('click', panzoom.zoomIn)
-    zoomOutButton.addEventListener('click', panzoom.zoomOut)
-    resetButton.addEventListener('click', panzoom.reset)
-
-    rangeInput.addEventListener('input', function (event) {
-        panzoom.zoom(event.target.valueAsNumber);
-    });
-
-    var rang_value = document.getElementById("range_value");
-
-    rang_value.innerHTML = (rangeInput.value * 100) + "%";
-
-    rangeInput.oninput = function () {
-        rang_value.innerHTML = Math.trunc(this.value * 100) + "%";
-    }
-
-    $("#zoom_05").ezPlus({
-        zoomType: "inner",
-        debug: true,
-        cursor: "crosshair",
-        zoomWindowFadeIn: 500,
-        zoomWindowFadeOut: 500
-    });
 
     $("#popup").click(function () {
         $(document).find(".lg-outer").addClass("test");
@@ -532,8 +499,10 @@ $(function () {
 
     }).parent().addClass('active');
 
-    $("#select-all-attr").on('select2:select', function () {
+    $("#select-all-attr").on('change', function (e) {
         debugger;
+        //var data = e.params.data;
+        //console.log("Prog name 2", data);
         var val = $(this).val();
         var strval = val.toString();
         var last = strval.split(':');

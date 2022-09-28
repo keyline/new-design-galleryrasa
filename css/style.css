@@ -7305,3 +7305,6 @@ text-align: left;
   .artist-search.bibliography-search .bibliography-total-box .bibliography-left-box .btn-light.dropdown-toggle {
     border: 1px solid #D5D8D9;
   }
+.start-body.start-body-desktop .select2-container--default .select2-selection--multiple .select2-selection__rendered {
+    padding-left: 48px;
+}

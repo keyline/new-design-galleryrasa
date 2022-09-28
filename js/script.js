@@ -1005,13 +1005,13 @@ function windowOnClick(event) {
     }
 }
 
-trigger.addEventListener("click", toggleModal);
-closeButton.addEventListener("click", toggleModal);
+//trigger.addEventListener("click", toggleModal);
+//closeButton.addEventListener("click", toggleModal);
 window.addEventListener("click", windowOnClick);
 
 // select dropdown//
 
-    $('#example-multiple-selected').multiselect();
+//    $('#example-multiple-selected').multiselect();
 
 //jQuery code
 // $( document ).on( "click", ".button-nav, .navigation-backdrop", function () {

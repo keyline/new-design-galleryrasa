@@ -55,14 +55,16 @@
                                                 <input class="form-control" type="search" placeholder="Search" name="keyword" value="" id="mySearch" required>
                                                 <button class="btn-search" type="submit"><span class="material-icons">search</span></button>
                                             </form> -->
-                                            <form method="post" name="search_form" id="search_form_all" role="form" class="search-input home-search-input">
+                                            <form class="search-input home-search-input" method="post" name="search_form" id="search_form_all" role="form" class="search-input home-search-input">
                                                 <!-- <div class="row justify-content-center flex-nowrap"> -->
                                                     <!-- <div class="col-12"> -->
                                                         <div class="searchbar">
                                                     <span class="material-icons">search</span>
                                                     </div>
                                                     <div class="searchbar-box">
-                                                        <select class="program-name2 form-control" id="select-all-attr" name="searchall[]"  data-placeholder="Search Artist"></select>
+                
+                                                        
+                                                        <select class="program-name2 form-control" id="select-all-attr" name="searchall[]" multiple="multiple" style="width: 100%"></select>
                                                         <!-- <button class="btn-search" type="submit"><span class="material-icons">search</span></button> -->
 
                                                         <!-- <input class="form-control" type="search" placeholder="Search" name="searchall[]" value="" id="select-all-attr" required> -->
