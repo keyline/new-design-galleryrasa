@@ -62,12 +62,12 @@
                 <div class="col-lg-12">
                     <div class="bibliography-total-box">
                         <div class="bibliography-left-box">
-                            <div class="artist-inner">
+                            <!-- <div class="artist-inner">
                                 <div class="artist-top artist-top-2">
                                     <p class="filters">FILTERS<span class="material-icons">filter_alt</span></p>
                                     <p class="reset">reset</p>
                                 </div>
-                            </div>
+                            </div> -->
                             {leftPart}
                         </div>
                         <div class="bibliography-right-box">

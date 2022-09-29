@@ -83,10 +83,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         if (empty($entryPoint)) {
             $params2 = [];
         } else {
-
             foreach ($entryPoint as $value) {
                 if (is_array($value)) {
-
                     foreach ($value as $k => $v) {
                         $params2[] = "(f.attribute_name='" . $k . "' AND v.value ='" . $v . "')";
                     }
@@ -99,7 +97,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
 
         if (empty($finalParam)) {
-
             $sql = 'SELECT
                     p.prodid AS id,            
                     p.prodname  AS n,
@@ -143,8 +140,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                             LEFT JOIN attr_common_flds_ecomc f ON v.attr_id = f.id
                             WHERE p.category_id = 2  GROUP BY t.product_id) order BY p.prodid, m.m_image_category";
         } else {
-
-
             $sql = 'SELECT
                     p.prodid AS id,            
                     p.prodname  AS n,
@@ -191,7 +186,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
 
         $sql2 = $qry_img;
-        //echo $sql;
+    //echo $sql;
     } elseif (isset($_POST['submitButton']) && $_POST['submitButton'] == 'MemorabilaSearch') {
         /**
          * After Left search button POST
@@ -200,13 +195,14 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         // print_r($_POST);
 
         foreach ($_POST as $k => $v) {
-
-            if ($k == 'submitButton' OR $k == 'objSearch')
+            if ($k == 'submitButton' or $k == 'objSearch') {
                 continue;
+            }
             $match = "-1";
             $str = implode(',', $v);
-            if (stripos($str, $match) !== false)
+            if (stripos($str, $match) !== false) {
                 continue;
+            }
             $params_qry[$k] = $v;
         }
 
@@ -231,9 +227,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         //Appending New search terms to $_SESSION['append'] after comparing $_SESSION['bParam']
         $sessAppend = array_map('unserialize', array_diff(array_map('serialize', $newArray), array_map('serialize', $_SESSION['fParam'])));
 
-        foreach ($sessAppend AS $newsess) {
+        foreach ($sessAppend as $newsess) {
             if (is_array($newsess)) {
-
                 $_SESSION['append'][] = $newsess;
             }
         }
@@ -246,13 +241,11 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         $arrayCount = 0;
         //print "<pre>";
         // print_r($params_qry);
-        foreach ($params_qry AS $k => $value) {
-
+        foreach ($params_qry as $k => $value) {
             $key = $k;
             $arrayCount += sizeof($value);
             if (is_array($value)) {
                 if ($key == 'year_range') {
-
                     $match = "-1";
 
                     $stringCheck = implode(" ", $params_qry['year_range']);
@@ -265,13 +258,12 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                         if ($i == 1) {
                             $queryInner .= " INNER JOIN ";
                         }
-                        if ($i >= 2 && $i <= $arrayCount)
+                        if ($i >= 2 && $i <= $arrayCount) {
                             $queryInner .= " ON t" . $j . ".product_id = t" . $i . ".product_id INNER JOIN ";
+                        }
                     }
-                }else {
-
-                    foreach ($value AS $v) {
-
+                } else {
+                    foreach ($value as $v) {
                         $j = $i++;
 
 //                    for($i = $j; $i<count($v); $i++)
@@ -282,8 +274,9 @@ p.category_id = 2 AND v.value='" . $v . "' AND f.attribute_name = '" . $k . "' G
                         if ($i == 1) {
                             $queryInner .= " INNER JOIN ";
                         }
-                        if ($i >= 2 && $i <= $arrayCount)
+                        if ($i >= 2 && $i <= $arrayCount) {
                             $queryInner .= " ON t" . $j . ".product_id = t" . $i . ".product_id INNER JOIN ";
+                        }
                     }
                 }
             }
@@ -292,12 +285,12 @@ p.category_id = 2 AND v.value='" . $v . "' AND f.attribute_name = '" . $k . "' G
         $count = strlen($queryInner);
         $queryInner = substr($queryInner, 0, ($count - 12));
 
-//*********************Debug Purpose*************//        
-//$queryInner .= "ON t" . $i .".product_id = t" .($i-1) . ".product_id";
+        //*********************Debug Purpose*************//
+        //$queryInner .= "ON t" . $i .".product_id = t" .($i-1) . ".product_id";
 //         echo $queryInner;
 //         echo $arrayCount . "<br>";
 //         echo $i;
-//*********************Debug Purpose*************//
+        //*********************Debug Purpose*************//
         //Wrapping Query Inner with outer query to get full query
 
 
@@ -333,12 +326,10 @@ p.category_id = 2 AND v.value='" . $v . "' AND f.attribute_name = '" . $k . "' G
                     WHERE m.product_id IN (SELECT t1.product_id FROM (%s))";
 
         $sql2 = sprintf($qry_img, $queryInner);
-        //echo $sql;
-    }else {
-
+    //echo $sql;
+    } else {
         foreach ($_SESSION['fParam'] as $value) {
             if (is_array($value)) {
-
                 foreach ($value as $k => $v) {
                     $params2[] = "(f.attribute_name='" . $k . "' AND v.value ='" . $v . "')";
                 }
@@ -428,7 +419,6 @@ p.category_id = 2 AND v.value='" . $v . "' AND f.attribute_name = '" . $k . "' G
         if (!empty($rows)) {
             $data = array();
             foreach ($rows as $row) {
-
 //                $data[$row['n']][$row['an']][] = $row['v'];
                 $data[$row['id']][$row['n']][$row['an']][] = $row['v'];
                 $countData[$row['an']][] = array('name' => $row['v'], 'count' => $row['cn']);
@@ -458,7 +448,6 @@ p.category_id = 2 AND v.value='" . $v . "' AND f.attribute_name = '" . $k . "' G
 
         //$finalData = array_merge_recursive($data, $dataImage);
         if (!empty($dataImage) && !empty($data)) {
-
             $finalData = array_replace_recursive($data, $dataImage);
         } else {
             $finalData = $data;
@@ -469,9 +458,11 @@ p.category_id = 2 AND v.value='" . $v . "' AND f.attribute_name = '" . $k . "' G
         $keys = array('year' => 1, 'film' => 1, 'cast' => 1, 'director' => 1, 'music' => 1, 'playback' => 1);
 
         //Getting left search html
-        //echo "<pre>";print_r($finalData);die;
-        //$getResult = memorabilia_left_search($finalData, $keys, $countData);
-        $getResult = memorabilia_left_search_new_design($finalData, $keys, $countData);
+        //echo "<pre>";
+        //print_r($countData);
+        //die;
+        $getResult = memorabilia_left_search($finalData, $keys, $countData);
+        //$getResult = memorabilia_left_search_new_design($finalData, $keys, $countData);
 
         //var_dump($getResult);
 //        exit;
@@ -479,7 +470,8 @@ p.category_id = 2 AND v.value='" . $v . "' AND f.attribute_name = '" . $k . "' G
         $baseHTML = '';
         $htmlRight = '';
 
-        function myComparison($a, $b) {
+        function myComparison($a, $b)
+        {
             return (key($a) > key($b)) ? 1 : -1;
         }
 
@@ -492,8 +484,6 @@ p.category_id = 2 AND v.value='" . $v . "' AND f.attribute_name = '" . $k . "' G
             $html = 1;
 
             foreach ($finalData as $filmId => $films) {
-
-
                 // print_r($films);
 
                 $ids = array_column($films, 'year');
@@ -510,8 +500,6 @@ p.category_id = 2 AND v.value='" . $v . "' AND f.attribute_name = '" . $k . "' G
                     $imagecount = $fid['count_fid'];
 
                     if (isset($year_p)) {
-
-
                         $imagecount_html = '<div class="artist-year">' . $year_p . ' <span>|</span> ' . $imagecount . ' '. 'ITEMS' . '</div>';
                     } else {
                         $imagecount_html = '<div class="artist-year">' . $year_p . '</div>';
@@ -531,14 +519,12 @@ p.category_id = 2 AND v.value='" . $v . "' AND f.attribute_name = '" . $k . "' G
                 }
 
                 if (isset($_SESSION)) {
-
                     if (isset($_SESSION['user-id'])) {
                         $usersession = true;
                     } else {
                         $usersession = false;
                     }
                 } else {
-
                     $usersession = false;
                 }
 
@@ -591,21 +577,12 @@ p.category_id = 2 AND v.value='" . $v . "' AND f.attribute_name = '" . $k . "' G
 
 
                 foreach ($films as $filmName => $film) {
-
-
                     if (is_array($film)) {
-
-
-
                         if (array_key_exists('Poster', $film)) {
                             foreach ($film as $k => $v) {
-
                                 if (is_array($v) && $k == 'Poster') {
                                     for ($i = 0; $i < count($v); $i++) {
-
                                         if ($v[$i]['featured']) {
-
-
                                             if ($usersession == false) {
                                                 $baseHTML = '<a data-toggle="modal" data-target="#exampleModallogin2">
                                                 <div class="line-content">
@@ -632,15 +609,12 @@ p.category_id = 2 AND v.value='" . $v . "' AND f.attribute_name = '" . $k . "' G
 
 
 
-                                            $url = SITE_URL . "/memorabilia-details/" . $filmId;
-                                            $productName = $filmName;
-                                            $productImg = (!empty($v[$i]['name'])) ? (SITE_URL . '/' . THUMB_IMGS . $v[$i]['name']) : (SITE_URL . JS_FOLDER . 'holder.js/300x180/auto/text:' . NO_IMAGE);
-                                                $htmlRight .= sprintf($baseHTML,$video_html,$productImg,$productName, $productName,$imagecount_html);
-                                                //echo $key . "::" . $v[$i]['name'] . "<br>";
+                                                $url = SITE_URL . "/memorabilia-details/" . $filmId;
+                                                $productName = $filmName;
+                                                $productImg = (!empty($v[$i]['name'])) ? (SITE_URL . '/' . THUMB_IMGS . $v[$i]['name']) : (SITE_URL . JS_FOLDER . 'holder.js/300x180/auto/text:' . NO_IMAGE);
+                                                $htmlRight .= sprintf($baseHTML, $video_html, $productImg, $productName, $productName, $imagecount_html);
+                                            //echo $key . "::" . $v[$i]['name'] . "<br>";
                                             } else {
-
-
-
                                                 $baseHTML = '<a href="%s" target="_blank">
                                                 <div class="line-content">
                                                     <div class="artist-box">
@@ -667,7 +641,7 @@ p.category_id = 2 AND v.value='" . $v . "' AND f.attribute_name = '" . $k . "' G
                                                 $url = SITE_URL . "/memorabilia-details/" . $filmId;
                                                 $productName = $filmName;
                                                 $productImg = (!empty($v[$i]['name'])) ? (SITE_URL . '/' . THUMB_IMGS . $v[$i]['name']) : (SITE_URL . JS_FOLDER . 'holder.js/300x180/auto/text:' . NO_IMAGE);
-                                                $htmlRight .= sprintf($baseHTML,$url, $video_html, $productName, $productImg, $url, $productName , $imagecount_html);
+                                                $htmlRight .= sprintf($baseHTML, $url, $video_html, $productName, $productImg, $url, $productName, $imagecount_html);
                                                 //echo $key . "::" . $v[$i]['name'] . "<br>";
                                             }
                                         }
@@ -678,32 +652,16 @@ p.category_id = 2 AND v.value='" . $v . "' AND f.attribute_name = '" . $k . "' G
 
 
                         if (array_key_exists('Card', $film)) {
-
-
-
-
-
                             foreach ($film as $k => $v) {
-
-
-
-
                                 if (is_array($v) && $k == 'Card') {
-
-
-
-
                                     for ($i = 0; $i < count($v); $i++) {
-
                                         //print_r($v[$i]);
 
                                         if ($v[$i]['featured']) {
-
                                             //print_r($v[$i]['featured']);
 
 
                                             if ($usersession == false) {
-
                                                 $baseHTML = '<a data-toggle="modal" data-target="#exampleModallogin2">
                                                 <div class="line-content">
                                                     <div class="artist-box">
@@ -729,10 +687,9 @@ p.category_id = 2 AND v.value='" . $v . "' AND f.attribute_name = '" . $k . "' G
                                                 $url = SITE_URL . "/memorabilia-details/" . $filmId;
                                                 $productName = $filmName;
                                                 $productImg = (!empty($v[$i]['name'])) ? (SITE_URL . '/' . THUMB_IMGS . $v[$i]['name']) : (SITE_URL . JS_FOLDER . 'holder.js/300x180/auto/text:' . NO_IMAGE);
-                                                $htmlRight .= sprintf($baseHTML, $video_html, $productName, $productImg, $productName,$imagecount_html);
-                                                //echo $key . "::" . $v[$i]['name'] . "<br>";
+                                                $htmlRight .= sprintf($baseHTML, $video_html, $productName, $productImg, $productName, $imagecount_html);
+                                            //echo $key . "::" . $v[$i]['name'] . "<br>";
                                             } else {
-
                                                 $baseHTML = '<a href="%s" target="_blank">
                                                 <div class="line-content">
                                                     <div class="artist-box">
@@ -758,7 +715,7 @@ p.category_id = 2 AND v.value='" . $v . "' AND f.attribute_name = '" . $k . "' G
                                                 $url = SITE_URL . "/memorabilia-details/" . $filmId;
                                                 $productName = $filmName;
                                                 $productImg = (!empty($v[$i]['name'])) ? (SITE_URL . '/' . THUMB_IMGS . $v[$i]['name']) : (SITE_URL . JS_FOLDER . 'holder.js/300x180/auto/text:' . NO_IMAGE);
-                                                $htmlRight .= sprintf($baseHTML,$url, $video_html, $productName, $productImg, $url, $productName , $imagecount_html);
+                                                $htmlRight .= sprintf($baseHTML, $url, $video_html, $productName, $productImg, $url, $productName, $imagecount_html);
                                                 //echo $key . "::" . $v[$i]['name'] . "<br>";
                                             }
                                         }
@@ -770,7 +727,6 @@ p.category_id = 2 AND v.value='" . $v . "' AND f.attribute_name = '" . $k . "' G
 
                         if (array_key_exists('Synopsis', $film)) {
                             foreach ($film as $k => $v) {
-
                                 //print_r($v);
 
                                 if (is_array($v) && $k == 'Synopsis') {
@@ -778,10 +734,7 @@ p.category_id = 2 AND v.value='" . $v . "' AND f.attribute_name = '" . $k . "' G
                                         //print_r($v[$i]);
 
                                         if ($v[$i]['featured']) {
-
-
                                             if ($usersession == false) {
-
                                                 $baseHTML = '<a data-toggle="modal" data-target="#exampleModallogin2">
                                                 <div class="line-content">
                                                     <div class="artist-box">
@@ -807,10 +760,9 @@ p.category_id = 2 AND v.value='" . $v . "' AND f.attribute_name = '" . $k . "' G
                                                 $url = SITE_URL . "/memorabilia-details/" . $filmId;
                                                 $productName = $filmName;
                                                 $productImg = (!empty($v[$i]['name'])) ? (SITE_URL . '/' . THUMB_IMGS . $v[$i]['name']) : (SITE_URL . JS_FOLDER . 'holder.js/300x180/auto/text:' . NO_IMAGE);
-                                                $htmlRight .= sprintf($baseHTML, $video_html, $productImg, $productName, $productName,$imagecount_html );
-                                                //echo $key . "::" . $v[$i]['name'] . "<br>";
+                                                $htmlRight .= sprintf($baseHTML, $video_html, $productImg, $productName, $productName, $imagecount_html);
+                                            //echo $key . "::" . $v[$i]['name'] . "<br>";
                                             } else {
-
                                                 $baseHTML = '<a href="%s" target="_blank">
                                                 <div class="line-content">
                                                     <div class="artist-box">
@@ -836,7 +788,7 @@ p.category_id = 2 AND v.value='" . $v . "' AND f.attribute_name = '" . $k . "' G
                                                 $url = SITE_URL . "/memorabilia-details/" . $filmId;
                                                 $productName = $filmName;
                                                 $productImg = (!empty($v[$i]['name'])) ? (SITE_URL . '/' . THUMB_IMGS . $v[$i]['name']) : (SITE_URL . JS_FOLDER . 'holder.js/300x180/auto/text:' . NO_IMAGE);
-                                                $htmlRight .= sprintf($baseHTML,$url, $video_html, $productImg, $productName,$url, $productName,$imagecount_html );
+                                                $htmlRight .= sprintf($baseHTML, $url, $video_html, $productImg, $productName, $url, $productName, $imagecount_html);
                                                 //echo $key . "::" . $v[$i]['name'] . "<br>";
                                             }
                                         }
@@ -847,11 +799,7 @@ p.category_id = 2 AND v.value='" . $v . "' AND f.attribute_name = '" . $k . "' G
 
 
                         if (!array_key_exists('Synopsis', $film) && !array_key_exists('Card', $film) && !array_key_exists('Poster', $film)) {
-
-
                             if ($usersession == false) {
-                                
-                                
                                 $baseHTML = '<a data-toggle="modal" data-target="#exampleModallogin2">
                                 <div class="line-content">
                                     <div class="artist-box">
@@ -877,11 +825,8 @@ p.category_id = 2 AND v.value='" . $v . "' AND f.attribute_name = '" . $k . "' G
                                 $url = SITE_URL . "/memorabilia-details/" . $filmId;
                                 $productName = $filmName;
                                 $productImg = (SITE_URL . JS_FOLDER . 'holder.js/300x180/auto/text:' . NO_IMAGE);
-                                $htmlRight .= sprintf($baseHTML, $video_html, $productImg, $productName, $productName,$imagecount_html );
-                                
+                                $htmlRight .= sprintf($baseHTML, $video_html, $productImg, $productName, $productName, $imagecount_html);
                             } else {
-
-
                                 $baseHTML = '<a href="%s" target="_blank">
                                 <div class="line-content">
                                     <div class="artist-box">
@@ -907,7 +852,7 @@ p.category_id = 2 AND v.value='" . $v . "' AND f.attribute_name = '" . $k . "' G
                                 $url = SITE_URL . "/memorabilia-details/" . $filmId;
                                 $productName = $filmName;
                                 $productImg = (SITE_URL . JS_FOLDER . 'holder.js/300x180/auto/text:' . NO_IMAGE);
-                                $htmlRight .= sprintf($baseHTML, $url, $video_html,$productName, $productImg, $url, $productName,$imagecount_html );
+                                $htmlRight .= sprintf($baseHTML, $url, $video_html, $productName, $productImg, $url, $productName, $imagecount_html);
                             }
                         }
                     }
@@ -923,19 +868,17 @@ p.category_id = 2 AND v.value='" . $v . "' AND f.attribute_name = '" . $k . "' G
 
 
     if ($html) {
-
-
-        $keywordArr=explode(":",$keyword);        
+        $keywordArr=explode(":", $keyword);
         $first=str_replace("Cast", "(Cast) ", $keywordArr[0]);
         $second=$keywordArr[1];
         $keyword = $second.' '.$first;
 
-        $keywordArr=explode(":",$keyword);        
+        $keywordArr=explode(":", $keyword);
         $first=str_replace("Director", "(Director) ", $keywordArr[0]);
         $second=$keywordArr[1];
         $keyword = $second.' '.$first;
 
-        $keywordArr=explode(":",$keyword);        
+        $keywordArr=explode(":", $keyword);
         $first=str_replace("Film", "(Film) ", $keywordArr[0]);
         $second=$keywordArr[1];
         $keyword = $second.' '.$first;

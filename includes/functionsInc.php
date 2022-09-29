@@ -1468,7 +1468,7 @@ function left_filter_html($someArray = array(), $keys = array(), $count = array(
                         } elseif ($key == 'artist') {
                             $html .= "<li class=\"artist subList\">
                                                             <div class=\"form-check form-check-inline\">
-                                                                <input class=\"form-check-input greencheck {$key}-All\" type=\"checkbox\" id=\"inlineCheckbox2\" value=\"{$value[$i]}\" {$checked}>
+                                                                <input class=\"form-check-input greencheck {$key}-All\" type=\"checkbox\" name=\"{$key}[]\" id=\"inlineCheckbox2\" value=\"{$value[$i]}\" {$checked2}>
                                                                 <label class=\"form-check-label\" for=\"{$key}\">" . replace_underscore_space($value[$i]) . "</label>". "<span class=\"count\"> (" . $c . ")</span>". paint_artist_mapping($value[$i]). "</div></li>";
                         } else {
                             $html .= "<li class=\"subList\">
@@ -2597,8 +2597,16 @@ function memorabilia_left_search($array = array(), $keys = array(), $count = arr
     }
 
 
-    $html = '<form action="memorabilia" class="filter-form" id="filter-form" method="post">                <div class="search-filters" style="margin-bottom:20px;">
-                        <div class="filter-group">';
+    $html = '<form action="memorabilia" class="filter-form" id="filter-form" method="post">
+                        <div class="artist-inner">
+                                <div class="artist-top artist-top-2">
+                                    <p class="filters">FILTERS<span class="material-icons">filter_alt</span></p>
+                                    <p class="reset"><button id="btnBack" type="submit" class="btn btn-red form-control" name="resetButton" value="Back">Reset</button></p>
+                                </div>
+                            </div>
+                            <div class="menu">
+                                <div class="menu-sec">
+                                    <div class="accordion" id="accordionExample">';
     //now loop through each filter and value
     /**
      * Creating left panel order
@@ -2617,12 +2625,23 @@ function memorabilia_left_search($array = array(), $keys = array(), $count = arr
         //    print_r($properOrderedArray);
     //echo "<pre>";print_r($properOrderedArray);die;
     foreach ($properOrderedArray as $key => $value) {
-        //        if (array_key_exists($key, $keys)) {
+        $accordianHeaderKey= uppercasefirstword($key);
 
-        $html .= '<h4 class="accordion-header inactive-header">' . uppercasefirstword($key) . '</h4>
-                            <section class="accordion-content">
-                            <div id="' . $key . '-header"></div>
-                                <ul class="list-unstyled" id="' . $key . '">';
+        //new html
+        $html .= "<div class=\"card\">
+                                            <div class=\"card-header\" id=\"headingOne\">
+                                                <h2 class=\"mb-0\">
+                                                    <button class=\"btn btn-link btn-block text-left collapsed\" type=\"button\" data-toggle=\"collapse\" data-target=\"#collapse_{$accordianHeaderKey}\" aria-expanded=\"true\" aria-controls=\"collapse_{$accordianHeaderKey}\">
+                                                        {$accordianHeaderKey}
+                                                        <span class=\"material-icons\">keyboard_arrow_down</span>
+                                                    </button>
+                                                </h2>
+                                            </div>
+
+                                            <div id=\"collapse_{$accordianHeaderKey}\" class=\"collapse\" aria-labelledby=\"headingOne\" data-parent=\"#accordionExample\">
+                                                <div class=\"card-body\">
+                                                <div class=\"card-form\" id=\"{$key}-header\"></div>
+                                                    <ul class=\"list-unstyled active collapse show\" id=\"{$key}\" style=\"\">";
         if (is_array($value)) {
             /**
              * Checked values which are already stored in Session
@@ -2642,23 +2661,35 @@ function memorabilia_left_search($array = array(), $keys = array(), $count = arr
                         }
                     }
 
-                    $html .= '<li class="li_' . $i . '">
-                                                    <input type="checkbox" name="' . $key . '[]" value="' . $value[$i] . '" class="' . $key . '"' . $checked . '>
-                                                    <label for="check_book">' . $value[$i] . '</label><span class="count"> (' . $c . ')</span>
-                                                </li>';
+                    //New Li
+                    $html .= "<li class=\"li_{$i} subList\">
+                                                            <div class=\"form-check form-check-inline \">
+                                                                <input class=\"form-check-input greencheck {$key}\" type=\"checkbox\" id=\"inlineCheckbox2\" name=\"{$key}[]\" value=\"{$value[$i]}\" {$checked}>
+                                                                <label class=\"form-check-label\" for=\"inlineCheckbox1\">{$value[$i]}</label><span class=\"count\">({$c})</span>
+                                                            </div>
+                                                        </li>";
                 }
             }   //Value for loop closed
         }
-        $html .= '</ul></section>';
+        $html .= "</ul></div></div></div>";
+        //$html .= '</ul></section>';
         //        } No need of array key exists
     }
+
+
+    //Wrapping menu section 1
+    $html .= "</div></div>";
+
 
     //For Year Range select dropdown
     if (array_key_exists('year', $properOrderedArray)) {
         $match = '-';
-        $options = '';
-        $html .= '<h4 class="accordion-header inactive-header">Year Range</h4>
-                            <section class="accordion-content">';
+        $options_from = '';
+        $options_to= '';
+        $html .= "<div class=\"menu-sec menu-sec-2\">
+                                    <div class=\"menu-title\">Year Range</div>
+                                    <div class=\"accordion\" id=\"accordionExample\">";
+
         if (!empty($properOrderedArray['year'])) {
             foreach ($properOrderedArray['year'] as $val) {
                 $years [] = (strpos($val, $match) === false) ? $val : substr($val, 0, strpos($val, "-"));
@@ -2666,30 +2697,51 @@ function memorabilia_left_search($array = array(), $keys = array(), $count = arr
 
             asort($years);
             foreach ($years as $year) {
-                $options .= '<option value="' . $year . '">' . $year . '</option>';
+                //$options .= '<option value="' . $year . '">' . $year . '</option>';
+
+                $options_from .= "<label class=\"dropdown-item\" tabindex=\"0\">
+                                                            <input class=\"jRadioDropdown\" type=\"radio\" value=\"{$year}\" name=\"year_range[0]\" tabindex=\"-1\">
+                                                            <i>{$year}</i>
+                                                        </label>";
+                $options_to .= "<label class=\"dropdown-item\" tabindex=\"0\">
+                                                            <input class=\"jRadioDropdown\" type=\"radio\" value=\"{$year}\" name=\"year_range[1]\" tabindex=\"-1\">
+                                                            <i>{$year}</i>
+                                                        </label>";
             }
 
-            $html .= '<div class="form-group">
-                                    <div class="input-group">
-                                        <div class="input-group-addon">From</div>
-                                        <select class="form-control" id="FromYear" name="year_range[]"><option selected="selected" value="-1">Select year</option>' . $options . '</select>
-                                    </div>
-                                </div>';
-            $html .= '<div class="form-group">
-                                    <div class="input-group">
-                                        <div class="input-group-addon" style="padding:6px 21px;">To</div>
-                                        <select class="form-control" id="ToYear" name="year_range[]">
-                                                <option selected="selected" value="-1">Select year</option>' . $options . '</select>
-                                    </div>
-                                </div>
-                            </section>';
+            //New Html
+
+            //building from inputs
+            $html .= "<div class=\"dropdown\">
+                                                    <button type=\"button\" class=\"btn btn-light dropdown-toggle\" data-toggle=\"dropdown\">
+                                                        <p>From<span class=\"material-icons\">keyboard_arrow_down</span></p>
+                                                    </button>
+                                                    <div class=\"dropdown-menu radio\">
+                                                    {$options_from}
+                                                    </div>
+                                                </div>";
+
+            //Building To inputs
+            $html .= "<div class=\"dropdown\">
+                                                    <button type=\"button\" class=\"btn btn-light dropdown-toggle\" data-toggle=\"dropdown\">
+                                                        <p>To<span class=\"material-icons\">keyboard_arrow_down</span></p>
+                                                    </button>
+                                                    <div class=\"dropdown-menu radio\">
+                                                    {$options_to}
+                                                    </div>
+                                                </div>";
         }
     }
-    $html .= '</div>
-                    </div>
-                    <button id="btnSubmit" type="submit" class="btn btn-red form-control" name="submitButton" value="MemorabilaSearch">Search</button>
-                                <button id="btnReset" type="submit" class="btn btn-red form-control" name="resetButton" value="reset">Reset</button>
-                                <input id="objSearch" name="objSearch" type="hidden" value=""></form>';
+
+    //Closing accordian
+    $html .= '</div>';
+    // submit input
+    $html .= '<div class="apply-action"><button id="btnSubmit" type="submit" class="apply-btn" name="submitButton" value="BiblioSearch">apply filters</button></div>
+                <input id="objSearch" name="objSearch" type="hidden" value=""></form>';
+    //Closing menu section 2, menu
+    $html .= "</div></div>";
+
+
 
     return $html;
 }
