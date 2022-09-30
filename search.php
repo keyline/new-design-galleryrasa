@@ -164,10 +164,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             }
         }
 
-        // print "<pre>";
-        // print_r($search);
-        // print_r($params_qry);
-        // exit;
+        //print "<pre>";
+        //print_r($search);
+        //print_r($params_qry);
+        //exit;
         /**
          * Defaults values for Reference-type and language
          */
