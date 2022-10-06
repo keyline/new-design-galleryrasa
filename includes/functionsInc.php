@@ -1469,7 +1469,7 @@ function left_filter_html($someArray = array(), $keys = array(), $count = array(
                             $html .= "<li class=\"artist subList\">
                                                             <div class=\"form-check form-check-inline\">
                                                                 <input class=\"form-check-input greencheck {$key}-All\" type=\"checkbox\" name=\"{$key}[]\" id=\"inlineCheckbox2\" value=\"{$value[$i]}\" {$checked2}>
-                                                                <label class=\"form-check-label\" for=\"{$key}\">" . replace_underscore_space($value[$i]) . "</label>". "<span class=\"count\"> (" . $c . ")</span>". paint_artist_mapping($value[$i]). "</div></li>";
+                                                                <label class=\"form-check-label\" for=\"{$key}\">" . replace_underscore_space($value[$i]) . "</label>". "<span class=\"count\"> (" . $c . ")</span>". "</div></li>";
                         } else {
                             $html .= "<li class=\"subList\">
                                                             <div class=\"form-check form-check-inline \">
@@ -2102,21 +2102,40 @@ function left_filter_html_adv($someArray = array(), $keys = array(), $count = ar
         $sessCount = count($sessData);
     }
 
-    $html = '<h4 class="search-filters-title" id="search-filters-title">Refine Search</h4>
-<form action="adv-search" class="filter-form" id="filter-form" method="post">                
-<div class="search-filters" style="margin-bottom:20px;">
-                    <div class="filter-group">';
+    $html = '<form action="adv-search" class="filter-form" id="filter-form" method="post">                
+                <div class="artist-inner">
+                                <div class="artist-top artist-top-2">
+                                    <p class="filters">FILTERS<span class="material-icons">filter_alt</span></p>
+                                    <p class="reset"><button id="btnBack" type="submit" class="btn btn-red form-control" name="resetButton" value="Back">Reset</button></p>
+                                </div>
+                            </div>
+                            <div class="menu">
+                                <div class="menu-sec">
+                                    <div class="accordion" id="accordionExample">';
     //now loop through each filter and value
     foreach ($someArray as $key => $value) {
+        $accordianHeaderKey= replace_underscore_space($key);
+
         $checked = ($key == "reference_type" || $key == 'language') ? "checked" : null;
 
 
 
         if (array_key_exists($key, $keys) && !empty($value)) {
-            $html .= '<h4 class="accordion-header inactive-header">' . replace_underscore_space($key) . '</h4>
-                        <section class="accordion-content">
-                        <div id="' . $key . '-header"></div>
-                            <ul class="list-unstyled" id="' . $key . '">';
+            $html .= "<div class=\"card\">
+                                            <div class=\"card-header\" id=\"headingOne\">
+                                                <h2 class=\"mb-0\">
+                                                    <button class=\"btn btn-link btn-block text-left collapsed\" type=\"button\" data-toggle=\"collapse\" data-target=\"#collapse_{$accordianHeaderKey}\" aria-expanded=\"true\" aria-controls=\"collapse_{$accordianHeaderKey}\">
+                                                        {$accordianHeaderKey}
+                                                        <span class=\"material-icons\">keyboard_arrow_down</span>
+                                                    </button>
+                                                </h2>
+                                            </div>
+
+                                            <div id=\"collapse_{$accordianHeaderKey}\" class=\"collapse\" aria-labelledby=\"headingOne\" data-parent=\"#accordionExample\">
+                                                <div class=\"card-body\">
+                                                <div class=\"card-form\" id=\"{$key}-header\"></div>
+                                                    <ul class=\"list-unstyled autoheight_scrol active collapse show\" id=\"{$key}\" style=\"\">";
+
             if (is_array($value)) {
                 if ($value[0] == 'Select All') {
                     $kpos = '0';
@@ -2179,64 +2198,90 @@ function left_filter_html_adv($someArray = array(), $keys = array(), $count = ar
                             $checked2 = (in_array($value[$i], array_column($sessData, $key))) ? 'checked' : '';
                         }
                         if ($value[$i] == 'Select All') {
-                            $html .= '<li>
-                                                <input type="checkbox" class="' . $key . '-All" value="' . $value[$i] . '" class="check"' . $checked . '>
-                                                <label for="check_book">' . replace_underscore_space($value[$i]) . '</label>
-                                                </li>';
+                            $html .= "<li>
+                                                            <div class=\"form-check form-check-inline \">
+                                                                <input class=\"form-check-input greencheck {$key}-All\" type=\"checkbox\" id=\"inlineCheckbox2\" value=\"{$value[$i]}\" {$checked}>
+                                                                <label class=\"form-check-label\" for=\"{$key}\">" . replace_underscore_space($value[$i]) . "</label></div></li>";
                         } elseif ($key == 'artist') {
-                            $html .= '<li class="artist">
-                                                <input type="checkbox" name="' . $key . '[]" value="' . $value[$i] . '" id="check_book" class="' . $key . '"' . $checked . $checked2 . '>
-                                                <label for="check_book">' . replace_underscore_space($value[$i]) . '</label><span class="count"> (' . $c . ')</span>' . paint_artist_mapping($value[$i]) . '</li>';
+                            $html .= "<li class=\"artist subList\">
+                                                            <div class=\"form-check form-check-inline\">
+                                                                <input class=\"form-check-input greencheck {$key}-All\" type=\"checkbox\" name=\"{$key}[]\" id=\"inlineCheckbox2\" value=\"{$value[$i]}\" {$checked2}>
+                                                                <label class=\"form-check-label\" for=\"{$key}\">" . replace_underscore_space($value[$i]) . "</label>". "<span class=\"count\"> (" . $c . ")</span>" . "</div></li>";
                         } else {
-                            $html .= '<li>
-                                                <input type="checkbox" name="' . $key . '[]" value="' . $value[$i] . '" id="check_book" class="' . $key . '"' . $checked . $checked2 . '>
-                                                <label for="check_book">' . replace_underscore_space($value[$i]) . '</label><span class="count"> (' . $c . ')</span>
-                                                </li>';
+                            $html .= "<li class=\"subList\">
+                                                            <div class=\"form-check form-check-inline \">
+                                                                <input class=\"form-check-input greencheck {$key}\" type=\"checkbox\" name=\"{$key}[]\" id=\"inlineCheckbox2\" value=\"{$value[$i]}\" {$checked} {$checked2}>
+                                                                <label class=\"form-check-label\" for=\"inlineCheckbox1\">" . replace_underscore_space($value[$i]) . "</label><span class=\"count\">({$c})</span></div></li>";
                         }
                     }
                 }
             }
-            $html .= '</ul></section>';
+            $html .= "</ul></div></div></div>";
         }
     }
 
+
+    //Wrapping menu section 1
+    $html .= "</div></div>";
 
 
     if (array_key_exists('gregorian_year', $someArray)) {
         $match = '-';
         $options = '';
-        $html .= '<h4 class="accordion-header inactive-header">Year Range</h4>
-                        <section class="accordion-content">';
+        $options_from="";
+        $options_to="";
+        $html .= "<div class=\"menu-sec menu-sec-2\">
+                                    <div class=\"menu-title\">year range</div>
+                                    <div class=\"accordion\" id=\"accordionExample\">";
+
         foreach ($someArray['gregorian_year'] as $val) {
             $years [] = (strpos($val, $match) === false) ? $val : substr($val, 0, strpos($val, "-"));
         }
 
         asort($years);
         foreach ($years as $year) {
-            $options .= '<option value="' . $year . '">' . $year . '</option>';
+            $options_from .= "<label class=\"dropdown-item\" tabindex=\"0\">
+                                                            <input class=\"jRadioDropdown\" type=\"radio\" value=\"{$year}\" name=\"year_range[0]\" tabindex=\"-1\">
+                                                            <i>{$year}</i>
+                                                        </label>";
+            $options_to .= "<label class=\"dropdown-item\" tabindex=\"0\">
+                                                            <input class=\"jRadioDropdown\" type=\"radio\" value=\"{$year}\" name=\"year_range[1]\" tabindex=\"-1\">
+                                                            <i>{$year}</i>
+                                                        </label>";
         }
 
-        $html .= '<div class="form-group">
-                                <div class="input-group">
-                                    <div class="input-group-addon">From</div>
-                                    <select class="form-control" id="FromYear" name="year_range[]"><option selected="selected" value="-1">Select year</option>' . $options . '</select>
-                                </div>
-                            </div>';
-        $html .= '<div class="form-group">
-                                <div class="input-group">
-                                    <div class="input-group-addon">To</div>
-                                    <select class="form-control" id="ToYear" name="year_range[]">
-                                            <option selected="selected" value="-1">Select year</option>' . $options . '</select>
-                                </div>
-                            </div>
-                        </section>';
+
+        //building from inputs
+        $html .= "<div class=\"dropdown\">
+                                                    <button type=\"button\" class=\"btn btn-light dropdown-toggle\" data-toggle=\"dropdown\">
+                                                        <p>From<span class=\"material-icons\">keyboard_arrow_down</span></p>
+                                                    </button>
+                                                    <div class=\"dropdown-menu radio\">
+                                                    {$options_from}
+                                                    </div>
+                                                </div>";
+
+        //Building To inputs
+        $html .= "<div class=\"dropdown\">
+                                                    <button type=\"button\" class=\"btn btn-light dropdown-toggle\" data-toggle=\"dropdown\">
+                                                        <p>To<span class=\"material-icons\">keyboard_arrow_down</span></p>
+                                                    </button>
+                                                    <div class=\"dropdown-menu radio\">
+                                                    {$options_to}
+                                                    </div>
+                                                </div>";
     }
-    $html .= '</div>
-                </div>';
-    $html .= '<button id="btnSubmit" type="submit" class="btn btn-red form-control" name="submitButton" value="BiblioSearch">Search</button>
-                            <button id="btnBack" type="submit" class="btn btn-red form-control" name="resetButton" value="Back">Reset</button>
-<input id="objSearch" name="objSearch" type="hidden" value=""></form>            
-        ';
+
+    //Closing accordian
+    $html .= '</div>';
+
+
+    // submit input
+    $html .= '<div class="apply-action"><button id="btnSubmit" type="submit" class="apply-btn" name="submitButton" value="BiblioSearch">apply filters</button></div>
+                <input id="objSearch" name="objSearch" type="hidden" value=""></form>';
+    //Closing menu section 2, menu
+    $html .= "</div></div>";
+
 
     return $html;
 }
