@@ -22,9 +22,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
 
     if (isset($_POST['adv_submit']) && $_POST['adv_submit'] == 'Search') {
-
-
-
         $advsearch = true;
 
         if (isset($_POST['author'])) {
@@ -34,7 +31,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             $_SESSION['attr'] = $_POST['attr'];
         }
         if (isset($_POST['ref_type'])) {
-
             $_SESSION['ref_type'] = $_POST['ref_type'];
         }
         if (isset($_POST['language'])) {
@@ -74,15 +70,16 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         //$country = trim($_POST['country']);
         // $keyword = '';
         foreach ($_POST as $k => $v) {
-            if ($k == 'adv_submit')
+            if ($k == 'adv_submit') {
                 continue;
+            }
             $params_qry[$k] = $v;
         }
 
 
 
 //        print_r($params_qry['extract']);
-//        
+//
 //        print_r($params_qry);
 //        exit;
 
@@ -116,17 +113,11 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         $reference = "";
         $reference2 = "";
         if (!empty($ref_type)) {
-
-
-
             $cntreftype = count($ref_type);
             $refi = 1;
 
             foreach ($ref_type as $kref_type => $vref_type) {
-
-
                 if ($vref_type != '') {
-
                     if ($refi == '1' || $cntreftype == '1') {
                         $reference .= " AND pte.product_type_name = '" . $vref_type . "'";
 
@@ -138,7 +129,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                         $reference2 .= " OR pte.product_type_name = '" . $vref_type . "'";
                     }
                 } elseif ($vref_type == '' && !empty($params_qry['title1_of_parent'])) {
-                    foreach ($params_qry['title1_of_parent'] AS $k => $ref) {
+                    foreach ($params_qry['title1_of_parent'] as $k => $ref) {
                         //$ref = ($k == 2) ? 'Catalogue' : 'Book';
                         //$ref = ($k == 2) ? 'Journal Article' : 'Book';
                         if ($k == 2) {
@@ -151,9 +142,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                         $reference .= " AND pte.product_type_name = '" . $ref . "'";
                         $reference2 .= " pte.product_type_name = '" . $ref . "'";
                     } else {
-
-
-
                         $reference .= " OR pte.product_type_name = '" . $ref . "'";
                         $reference2 .= " OR pte.product_type_name = '" . $ref . "'";
                     }
@@ -172,7 +160,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 //    print_r($filterArray);
 //    exit;
         //Trimmed array for spaces
-#@last edited on  21-03-2018        //$trimmed_array = array_map('trim', $filterArray); 
+        #@last edited on  21-03-2018        //$trimmed_array = array_map('trim', $filterArray);
         //print_r($trimmed_array);
         $keys = array_keys($params_qry);
         //print_r($keys);
@@ -191,7 +179,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                     $new[][$indK] = $title;
                 }
             } else {
-
                 $new[] = array(
                     $keys[$i] => $params_qry[$keys[$i]]
                 );
@@ -200,14 +187,12 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
         $_SESSION['fParam'] = (!empty($new)) ? $new : null;
 
-        array_walk_recursive($new, function($k, $v) use(&$new_arr) {
-
-
+        array_walk_recursive($new, function ($k, $v) use (&$new_arr) {
             //echo $k . "-" . $v . "<br>";
             $new_arr[] = $v . '-' . $k;
         });
         $keyword = implode(",", $new_arr);
-//exit;
+        //exit;
         /*
          * FOR DEBUGING PURPOSE
 
@@ -230,8 +215,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         if ((count($params_qry) === 1) && (array_key_exists('ref_type', $params_qry))) {
             $firstkey = 'author';
             $qry_inner = '';
-//            $qry_inner = "(SELECT t.product_id FROM product_type_ecomc pte LEFT JOIN products_ecomc p ON pte.product_type_id = p.subcatid 
-//                        LEFT JOIN product_attribute_value t ON p.prodid = t.product_id LEFT JOIN attribute_value_ecomc v ON t.attribute_value_id = v.attr_value_id 
+//            $qry_inner = "(SELECT t.product_id FROM product_type_ecomc pte LEFT JOIN products_ecomc p ON pte.product_type_id = p.subcatid
+//                        LEFT JOIN product_attribute_value t ON p.prodid = t.product_id LEFT JOIN attribute_value_ecomc v ON t.attribute_value_id = v.attr_value_id
 //                        LEFT JOIN attr_common_flds_ecomc f ON v.attr_id = f.id WHERE  pte.product_type_name = '" . $ref_type . "' GROUP BY t.product_id) author";
 
 
@@ -256,21 +241,21 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                 $join = 'author';
                 $i = 0;
                 foreach ($params_qry as $qk => $qv) {
-
-                    if ($qk == 'ref_type')
+                    if ($qk == 'ref_type') {
                         continue;
+                    }
                     if ($i == 0) {
                         //$firstkey = $qk;
                         $firstkey = 'author';
                     }
-                    if ($qk == 'author')
+                    if ($qk == 'author') {
                         continue;
-                    if ($qk == 'attr')
+                    }
+                    if ($qk == 'attr') {
                         continue;
+                    }
                     if ($qk == 'title1_of_parent') {
                         foreach ($qv as $q) {
-
-
                             $qry_inner .= " INNER JOIN (SELECT t.product_id FROM product_type_ecomc pte LEFT JOIN products_ecomc p ON pte.product_type_id = p.subcatid 
                         LEFT JOIN product_attribute_value t ON p.prodid = t.product_id LEFT JOIN attribute_value_ecomc v ON t.attribute_value_id = v.attr_value_id 
                         LEFT JOIN attr_common_flds_ecomc f ON v.attr_id = f.id WHERE v.value like '%" . $q . "%' AND f.attribute_name = '" . $qk . "' " . $reference . " GROUP BY t.product_id)" . $qk . " ON " . $join . ".product_id=" . $qk . ".product_id ";
@@ -295,12 +280,12 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                 foreach ($params_qry as $qk => $qv) {
                     //echo $qk;
 
-                    if ($qk == 'ref_type')
+                    if ($qk == 'ref_type') {
                         continue;
+                    }
                     if ($i == 0) {
                         $firstkey = $qk;
                         if ($qk == 'title1_of_parent') {
-
 //                            print('<pre>');
 //                            print_r($qv);
 
@@ -314,9 +299,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
 
                             foreach ($qv as $q) {
-
-
-
                                 if ($qk == 'extract') {
                                     $qry_inner .= " (SELECT t.product_id FROM product_type_ecomc pte LEFT JOIN products_ecomc p ON pte.product_type_id = p.subcatid 
                         LEFT JOIN product_attribute_value t ON p.prodid = t.product_id LEFT JOIN attribute_value_ecomc v ON t.attribute_value_id = v.attr_value_id 
@@ -328,13 +310,11 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                                 }
                             }
                         } else {
-
                             if ($qk == 'extract') {
                                 $qry_inner .= " (SELECT t.product_id FROM product_type_ecomc pte LEFT JOIN products_ecomc p ON pte.product_type_id = p.subcatid 
                         LEFT JOIN product_attribute_value t ON p.prodid = t.product_id LEFT JOIN attribute_value_ecomc v ON t.attribute_value_id = v.attr_value_id 
                         LEFT JOIN attr_common_flds_ecomc f ON v.attr_id = f.id WHERE v.value like '%" . $params_qry[$qk] . "%'  " . $reference . " GROUP BY t.product_id)" . $qk . " ";
                             } else {
-
                                 $qry_inner .= " (SELECT t.product_id FROM product_type_ecomc pte LEFT JOIN products_ecomc p ON pte.product_type_id = p.subcatid 
                         LEFT JOIN product_attribute_value t ON p.prodid = t.product_id LEFT JOIN attribute_value_ecomc v ON t.attribute_value_id = v.attr_value_id 
                         LEFT JOIN attr_common_flds_ecomc f ON v.attr_id = f.id WHERE v.value like '%" . $params_qry[$qk] . "%' AND f.attribute_name = '" . $qk . "' " . $reference . " GROUP BY t.product_id)" . $qk . " ";
@@ -343,7 +323,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                         $join = $qk;
                     } else {
                         if ($qk == 'title1_of_parent') {
-
                             if (($qv['2'] != '' || isset($qv['2'])) && !isset($qv['1'])) {
                                 $jflag = true;
                                 $jstr = " AND pte.product_type_id = '7' ";
@@ -353,30 +332,22 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                             }
 
                             foreach ($qv as $q) {
-
                                 if ($qk == 'extract') {
-
                                     $qry_inner .= " INNER JOIN (SELECT t.product_id FROM product_type_ecomc pte LEFT JOIN products_ecomc p ON pte.product_type_id = p.subcatid 
                         LEFT JOIN product_attribute_value t ON p.prodid = t.product_id LEFT JOIN attribute_value_ecomc v ON t.attribute_value_id = v.attr_value_id 
                         LEFT JOIN attr_common_flds_ecomc f ON v.attr_id = f.id WHERE v.value like '%" . $q . "%' " . $reference . " GROUP BY t.product_id)" . $qk . " ON " . $join . ".product_id=" . $qk . ".product_id ";
                                 } else {
-
                                     $qry_inner .= " INNER JOIN (SELECT t.product_id FROM product_type_ecomc pte LEFT JOIN products_ecomc p ON pte.product_type_id = p.subcatid 
                         LEFT JOIN product_attribute_value t ON p.prodid = t.product_id LEFT JOIN attribute_value_ecomc v ON t.attribute_value_id = v.attr_value_id 
                         LEFT JOIN attr_common_flds_ecomc f ON v.attr_id = f.id WHERE v.value like '%" . $q . "%' " . $jstr . " AND f.attribute_name = '" . $qk . "' " . $reference . " GROUP BY t.product_id)" . $qk . " ON " . $join . ".product_id=" . $qk . ".product_id ";
                                 }
                             }
                         } else {
-
-
                             if ($qk == 'extract') {
-
                                 $qry_inner .= " INNER JOIN (SELECT t.product_id FROM product_type_ecomc pte LEFT JOIN products_ecomc p ON pte.product_type_id = p.subcatid 
                         LEFT JOIN product_attribute_value t ON p.prodid = t.product_id LEFT JOIN attribute_value_ecomc v ON t.attribute_value_id = v.attr_value_id 
                         LEFT JOIN attr_common_flds_ecomc f ON v.attr_id = f.id WHERE v.value like '%" . $params_qry[$qk] . "%' " . $reference . " GROUP BY t.product_id)" . $qk . " ON " . $join . ".product_id=" . $qk . ".product_id ";
                             } else {
-
-
                                 $qry_inner .= " INNER JOIN (SELECT t.product_id FROM product_type_ecomc pte LEFT JOIN products_ecomc p ON pte.product_type_id = p.subcatid 
                         LEFT JOIN product_attribute_value t ON p.prodid = t.product_id LEFT JOIN attribute_value_ecomc v ON t.attribute_value_id = v.attr_value_id 
                         LEFT JOIN attr_common_flds_ecomc f ON v.attr_id = f.id WHERE v.value like '%" . $params_qry[$qk] . "%' AND f.attribute_name = '" . $qk . "' " . $reference . " GROUP BY t.product_id)" . $qk . " ON " . $join . ".product_id=" . $qk . ".product_id ";
@@ -398,7 +369,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         $productstr = '';
 
         foreach ($adv_search_result as $kadv1 => $vkadv1) {
-
             $productstr .= $vkadv1['productId'] . ',';
         }
 
@@ -408,13 +378,12 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         //Query for Count
         $count_adv_search_result = get_adv_search($firstkey, $qry_inner, true);
 
-//echo $adv_search_result;
+    //echo $adv_search_result;
 //        exit;
 //        print "<pre>";
 //        print_r($adv_search_result);
 //        exit;
     } elseif (isset($_POST['submitButton']) && $_POST['submitButton'] == 'BiblioSearch') {
-
 //        print('<pre>');
 //        print_r($_POST);
 //        exit;
@@ -426,8 +395,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         $search = get_subcategoryList_by_name();
 
         foreach ($qry_arr as $k => $v) {
-            if ($k == 'submitButton' || $k == 'objSearch')
+            if ($k == 'submitButton' || $k == 'objSearch') {
                 continue;
+            }
             if (is_array($v)) {
                 foreach ($v as $p => $m) {
                     if (array_key_exists($m, $search)) {
@@ -440,7 +410,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         }
 
         if (!(array_key_exists('reference_type', $params_qry)) && !(array_key_exists('language', $params_qry))) {
-
             foreach ($search as $m) {
                 $params_qry['reference_type'][] = $m;
             }
@@ -469,7 +438,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         $flag = 0;
 
         for ($i = 0; $i < count($childKeys); $i++) {
-
             if ($childKeys[$i] === 'reference_type') {
                 $queryInner .= "(SELECT t.product_id FROM products_ecomc p LEFT JOIN product_attribute_value t ON p.prodid = t.product_id LEFT JOIN 
 attribute_value_ecomc v ON t.attribute_value_id = v.attr_value_id LEFT JOIN attr_common_flds_ecomc f ON v.attr_id = f.id WHERE 
@@ -477,8 +445,7 @@ p.category_id = 1 AND (p.subcatid IN (" . implode(",", $params_qry[$childKeys[$i
                 $j++;
                 $flag++;
             } elseif ($childKeys[$i] === 'language') {
-
-                foreach ($params_qry[$childKeys[$i]] AS $k => $v) {
+                foreach ($params_qry[$childKeys[$i]] as $k => $v) {
                     $lan[] = "v.value='$v'";
                 }
                 $queryInner .= "(SELECT t.product_id FROM products_ecomc p LEFT JOIN product_attribute_value t ON p.prodid = t.product_id LEFT JOIN 
@@ -491,8 +458,9 @@ p.category_id = 1 AND (" . implode(" OR ", $lan) . ") AND f.attribute_name = 'la
                 continue;
             }
 
-            if ($flag === 1)
+            if ($flag === 1) {
                 $queryInner .= " INNER JOIN ";
+            }
             if ($j >= 2) {
                 $queryInner .= " ON t" . ($j - 1) . ".product_id = t" . $j . ".product_id INNER JOIN ";
                 break;
@@ -516,11 +484,13 @@ p.category_id = 1 AND (" . implode(" OR ", $lan) . ") AND f.attribute_name = 'la
         $p = 1;
         $arrayCount = 0;
 
-        foreach ($params_qry AS $k => $value) {
-            if ($k == 'reference_type')
+        foreach ($params_qry as $k => $value) {
+            if ($k == 'reference_type') {
                 continue;
-            if ($k == 'language')
+            }
+            if ($k == 'language') {
                 continue;
+            }
             if ($k == 'year_range') {
                 $match = "-1";
 
@@ -531,15 +501,15 @@ p.category_id = 1 AND (" . implode(" OR ", $lan) . ") AND f.attribute_name = 'la
                     attribute_value_ecomc v ON t.attribute_value_id = v.attr_value_id LEFT JOIN attr_common_flds_ecomc f ON v.attr_id = f.id WHERE 
                 p.category_id = 1 AND v.value BETWEEN " . implode(" AND ", $params_qry['year_range']) . " AND f.attribute_name = 'gregorian_year' GROUP BY t.product_id)t" . $i;
 
-                    if ($i >= 3)
+                    if ($i >= 3) {
                         $queryInner .= " ON t" . $j . ".product_id = t" . $i . ".product_id INNER JOIN ";
+                    }
                 }
-            }else {
+            } else {
                 $key = $k;
                 $arrayCount += sizeof($value);
                 if (is_array($value)) {
-                    foreach ($value AS $v) {
-
+                    foreach ($value as $v) {
                         $j = $i++;
 
 
@@ -548,8 +518,9 @@ attribute_value_ecomc v ON t.attribute_value_id = v.attr_value_id LEFT JOIN attr
 p.category_id = 1 AND v.value="' . $v . '" AND f.attribute_name = "' . $k . '" GROUP BY t.product_id)t' . $i;
 
 
-                        if ($i >= 3)
+                        if ($i >= 3) {
                             $queryInner .= " ON t" . $j . ".product_id = t" . $i . ".product_id INNER JOIN ";
+                        }
                     }
                 }
             }
@@ -611,10 +582,7 @@ FROM
 
 
         $count_qry = sprintf($count_outer_qry, $queryInner);
-    }else {
-
-
-
+    } else {
         $advsearch = true;
         $firstkey = '';
         $adv_author = trim($_SESSION['author']);
@@ -635,8 +603,9 @@ FROM
         $descriptive_tags = trim($_SESSION['descriptive_tags']);
 
         foreach ($_SESSION['post'] as $k => $v) {
-            if ($k == 'adv_submit')
+            if ($k == 'adv_submit') {
                 continue;
+            }
             $params_qry[$k] = $v;
         }
 
@@ -677,17 +646,11 @@ FROM
         $reference = "";
         $reference2 = "";
         if (!empty($ref_type)) {
-
-
-
             $cntreftype = count($ref_type);
             $refi = 1;
 
             foreach ($ref_type as $kref_type => $vref_type) {
-
-
                 if ($vref_type != '') {
-
                     if ($refi == '1' || $cntreftype == '1') {
                         $reference .= " AND pte.product_type_name = '" . $vref_type . "'";
 
@@ -699,8 +662,7 @@ FROM
                         $reference2 .= " OR pte.product_type_name = '" . $vref_type . "'";
                     }
                 } elseif ($vref_type == '' && !empty($params_qry['title1_of_parent'])) {
-                    foreach ($params_qry['title1_of_parent'] AS $k => $ref) {
-
+                    foreach ($params_qry['title1_of_parent'] as $k => $ref) {
                         $ref = ($k == 2) ? 'Journal Article' : 'Book';
                     }
 
@@ -735,12 +697,10 @@ FROM
                 continue;
             } elseif ($keys[$i] == 'title1_of_parent') {
                 foreach ($params_qry[$keys[$i]] as $ind => $title) {
-
                     $indK = ($ind == 1) ? 'Book' : 'Journal';
                     $new[][$indK] = $title;
                 }
             } else {
-
                 $new[] = array(
                     $keys[$i] => $params_qry[$keys[$i]]
                 );
@@ -749,9 +709,7 @@ FROM
 
         $_SESSION['fParam'] = (!empty($new)) ? $new : null;
 
-        array_walk_recursive($new, function($k, $v) use(&$new_arr) {
-
-
+        array_walk_recursive($new, function ($k, $v) use (&$new_arr) {
             $new_arr[] = $v . '-' . $k;
         });
         $keyword = implode(",", $new_arr);
@@ -770,7 +728,6 @@ FROM
 
 
             if (array_key_exists('author', $params_qry)) {
-
                 if (array_key_exists('attr', $params_qry)) {
                     $qry_inner = "(SELECT t.product_id FROM product_type_ecomc pte LEFT JOIN products_ecomc p ON pte.product_type_id = p.subcatid 
                         LEFT JOIN product_attribute_value t ON p.prodid = t.product_id LEFT JOIN attribute_value_ecomc v ON t.attribute_value_id = v.attr_value_id 
@@ -783,16 +740,18 @@ FROM
                 $join = 'author';
                 $i = 0;
                 foreach ($params_qry as $qk => $qv) {
-                    if ($qk == 'ref_type')
+                    if ($qk == 'ref_type') {
                         continue;
+                    }
                     if ($i == 0) {
-
                         $firstkey = 'author';
                     }
-                    if ($qk == 'author')
+                    if ($qk == 'author') {
                         continue;
-                    if ($qk == 'attr')
+                    }
+                    if ($qk == 'attr') {
                         continue;
+                    }
                     if ($qk == 'title1_of_parent') {
                         foreach ($qv as $q) {
                             $qry_inner .= " INNER JOIN (SELECT t.product_id FROM product_type_ecomc pte LEFT JOIN products_ecomc p ON pte.product_type_id = p.subcatid 
@@ -811,20 +770,19 @@ FROM
                     $i++;
                 }
             } else {
-
                 $i = 0;
                 if (array_key_exists('attr', $params_qry)) {
                     unset($params_qry['attr']);
                 }
                 foreach ($params_qry as $qk => $qv) {
                     //echo $qk;
-                    if ($qk == 'ref_type')
+                    if ($qk == 'ref_type') {
                         continue;
+                    }
                     if ($i == 0) {
                         $firstkey = $qk;
                         if ($qk == 'title1_of_parent') {
                             foreach ($qv as $q) {
-
                                 if ($qk == 'extract') {
                                     $qry_inner .= " (SELECT t.product_id FROM product_type_ecomc pte LEFT JOIN products_ecomc p ON pte.product_type_id = p.subcatid 
                         LEFT JOIN product_attribute_value t ON p.prodid = t.product_id LEFT JOIN attribute_value_ecomc v ON t.attribute_value_id = v.attr_value_id 
@@ -836,13 +794,11 @@ FROM
                                 }
                             }
                         } else {
-
                             if ($qk == 'extract') {
                                 $qry_inner .= " (SELECT t.product_id FROM product_type_ecomc pte LEFT JOIN products_ecomc p ON pte.product_type_id = p.subcatid 
                         LEFT JOIN product_attribute_value t ON p.prodid = t.product_id LEFT JOIN attribute_value_ecomc v ON t.attribute_value_id = v.attr_value_id 
                         LEFT JOIN attr_common_flds_ecomc f ON v.attr_id = f.id WHERE v.value like '%" . $params_qry[$qk] . "%'  " . $reference . " GROUP BY t.product_id)" . $qk . " ";
                             } else {
-
                                 $qry_inner .= " (SELECT t.product_id FROM product_type_ecomc pte LEFT JOIN products_ecomc p ON pte.product_type_id = p.subcatid 
                         LEFT JOIN product_attribute_value t ON p.prodid = t.product_id LEFT JOIN attribute_value_ecomc v ON t.attribute_value_id = v.attr_value_id 
                         LEFT JOIN attr_common_flds_ecomc f ON v.attr_id = f.id WHERE v.value like '%" . $params_qry[$qk] . "%' AND f.attribute_name = '" . $qk . "' " . $reference . " GROUP BY t.product_id)" . $qk . " ";
@@ -852,30 +808,22 @@ FROM
                     } else {
                         if ($qk == 'title1_of_parent') {
                             foreach ($qv as $q) {
-
                                 if ($qk == 'extract') {
-
                                     $qry_inner .= " INNER JOIN (SELECT t.product_id FROM product_type_ecomc pte LEFT JOIN products_ecomc p ON pte.product_type_id = p.subcatid 
                         LEFT JOIN product_attribute_value t ON p.prodid = t.product_id LEFT JOIN attribute_value_ecomc v ON t.attribute_value_id = v.attr_value_id 
                         LEFT JOIN attr_common_flds_ecomc f ON v.attr_id = f.id WHERE v.value like '%" . $q . "%' " . $reference . " GROUP BY t.product_id)" . $qk . " ON " . $join . ".product_id=" . $qk . ".product_id ";
                                 } else {
-
                                     $qry_inner .= " INNER JOIN (SELECT t.product_id FROM product_type_ecomc pte LEFT JOIN products_ecomc p ON pte.product_type_id = p.subcatid 
                         LEFT JOIN product_attribute_value t ON p.prodid = t.product_id LEFT JOIN attribute_value_ecomc v ON t.attribute_value_id = v.attr_value_id 
                         LEFT JOIN attr_common_flds_ecomc f ON v.attr_id = f.id WHERE v.value like '%" . $q . "%' AND f.attribute_name = '" . $qk . "' " . $reference . " GROUP BY t.product_id)" . $qk . " ON " . $join . ".product_id=" . $qk . ".product_id ";
                                 }
                             }
                         } else {
-
-
                             if ($qk == 'extract') {
-
                                 $qry_inner .= " INNER JOIN (SELECT t.product_id FROM product_type_ecomc pte LEFT JOIN products_ecomc p ON pte.product_type_id = p.subcatid 
                         LEFT JOIN product_attribute_value t ON p.prodid = t.product_id LEFT JOIN attribute_value_ecomc v ON t.attribute_value_id = v.attr_value_id 
                         LEFT JOIN attr_common_flds_ecomc f ON v.attr_id = f.id WHERE v.value like '%" . $params_qry[$qk] . "%' " . $reference . " GROUP BY t.product_id)" . $qk . " ON " . $join . ".product_id=" . $qk . ".product_id ";
                             } else {
-
-
                                 $qry_inner .= " INNER JOIN (SELECT t.product_id FROM product_type_ecomc pte LEFT JOIN products_ecomc p ON pte.product_type_id = p.subcatid 
                         LEFT JOIN product_attribute_value t ON p.prodid = t.product_id LEFT JOIN attribute_value_ecomc v ON t.attribute_value_id = v.attr_value_id 
                         LEFT JOIN attr_common_flds_ecomc f ON v.attr_id = f.id WHERE v.value like '%" . $params_qry[$qk] . "%' AND f.attribute_name = '" . $qk . "' " . $reference . " GROUP BY t.product_id)" . $qk . " ON " . $join . ".product_id=" . $qk . ".product_id ";
@@ -899,12 +847,11 @@ FROM
 
 
     if ($advsearch == false) {
-
         try {
             $conn = dbconnect();
             $referenceType_sorted = get_subCategory_options($conn);
             $sortedReferenceType = [];
-            array_walk($referenceType_sorted['h'], function($v, $k) use (&$sortedReferenceType) {
+            array_walk($referenceType_sorted['h'], function ($v, $k) use (&$sortedReferenceType) {
                 $sortedReferenceType[] = $v['name'];
             });
             if (strlen($qry) > 0) {
@@ -930,16 +877,12 @@ FROM
                 $rightKeys = array('title_of_article' => 1, 'translated1_title_of_parent' => 1, 'translated_title' => 1, 'beditor' => 1, 'gregorian_month' => 1, 'gregorian_year' => 1, 'author' => 1, 'gallery_museum' => 1);
 
                 if (!empty($rows) && !empty($count_rows)) {
-
 //                    print('<pre>');
 //                    print_r($count_rows);
 //                    exit;
 
 
                     if (isset($_POST['allproductsid'])) {
-
-                        
-
                         $allproductsidarr = (explode(",", $_POST['allproductsid']));
 
 
@@ -947,12 +890,8 @@ FROM
                         $rowsfilteredindex = 0;
 
                         foreach ($rows as $kr1 => $vr1) {
-
                             foreach ($allproductsidarr as $kr2 => $vr2) {
-
                                 if ($vr1['productId'] == $vr2) {
-
-
                                     $rowsfiltered[$rowsfilteredindex]['productId'] = $vr1['productId'];
 
                                     $rowsfiltered[$rowsfilteredindex]['product'] = $vr1['product'];
@@ -971,10 +910,7 @@ FROM
                         $count_rowsfilteredindex = 0;
 
                         foreach ($count_rows as $kr3 => $vr3) {
-
-
                             if (in_array($vr3['id'], $allproductsidarr)) {
-
                                 $count_rowsfiltered[$count_rowsfilteredindex]['id'] = $vr3['id'];
 
                                 $count_rowsfiltered[$count_rowsfilteredindex]['n'] = $vr3['n'];
@@ -999,8 +935,6 @@ FROM
 
                         $noofsearchedproducts = count($productid2arr);
                     } else {
-
-
                         $rowsfiltered = $rows;
                         $count_rowsfiltered = $count_rows;
                     }
@@ -1008,10 +942,9 @@ FROM
 
                     $data = array();
                     foreach ($rowsfiltered as $row) {
-
                         if ($row['category'] == "Journal Article" && $row['attribute_name'] == "title_of_article") {
                             continue;
-                        } else if ($row['category'] == "Catalogue Essay" && $row['attribute_name'] == "title_of_article") {
+                        } elseif ($row['category'] == "Catalogue Essay" && $row['attribute_name'] == "title_of_article") {
                             continue;
                         } else {
                             $data[$row['category']][$row['productId']][$row['product']][$row['attribute_name']] = $row['value'];
@@ -1036,7 +969,6 @@ FROM
                     }
 
                     if (isset($_SESSION)) {
-
                         if (isset($_SESSION['user-id'])) {
                             $usersession = true;
                         } else {
@@ -1050,13 +982,10 @@ FROM
                     $filter_data = left_filter_data($leftData, $keys);
 
                     foreach ($filter_data as $key => $res) {
-
                         if (is_array($res)) {
-                            foreach ($res AS $k => $v) {
-
+                            foreach ($res as $k => $v) {
                                 $attr = $k;
                                 foreach ($v as $value) {
-
                                     $result[$attr][] = $value;
                                 }
                             }
@@ -1096,22 +1025,27 @@ FROM
 //                        $leftHtml = left_filter_html_adv_filtered($filter_data_af, $keys, $countData, $noofsearchedproducts);
 //                    } else {
 
-                        //$leftHtml = left_filter_html_adv($filter_data_af, $keys, $countData);
-                        $leftHtml = left_filter_html_second($filter_data_af, $keys, $countData);
+                    $leftHtml = left_filter_html_adv($filter_data_af, $keys, $countData);
+                    //$leftHtml = left_filter_html_second($filter_data_af, $keys, $countData);
 //                    }
 
                     $alljournaldropdownarr = alljournaldropdown($conn);
 
                     $alllanguagedropdownarr = alllanguagedropdown($conn);
 
-                    $array_value_sum = create_function('$array,$key', '$total = 0; foreach($array as $row) $total = $total + $row[$key]; return $total;');
+                    //$array_value_sum = create_function('$array,$key', '$total = 0; foreach($array as $row) $total = $total + $row[$key]; return $total;');
 
-                    if(!isset($countData['reference_type'])||$countData['reference_type']==''){
+                    if (!isset($countData['reference_type'])||$countData['reference_type']=='') {
                         $countData = [];
                         $countData['reference_type'] = '0';
                     }
-                    
-                    $result_count = $array_value_sum($countData['reference_type'], 'count');
+
+                    //$result_count = $array_value_sum($countData['reference_type'], 'count');
+                    $result_count= array_reduce($countData['reference_type'], function ($carry, $item) {
+                        $carry += $item['count'];
+                        return $carry;
+                    });
+
                     $html = 1;
                     $options = get_subCategory_options($conn);
                     $select_sub2 = $options['s'];
@@ -1129,12 +1063,8 @@ FROM
 
 
                     if (isset($_POST['allproductsid'])) {
-
-
-
                         $replace = array($alllanguagedropdownarr, $alljournaldropdownarr, $select_sub2, $leftHtml, $keyword, $noofsearchedproducts, $Searchhtml, $options2['op']);
                     } else {
-
                         $replace = array($alllanguagedropdownarr, $alljournaldropdownarr, $select_sub2, $leftHtml, $keyword, $result_count, $Searchhtml, $options2['op']);
                     }
 
@@ -1151,14 +1081,6 @@ FROM
             echo db_error($pe->getMessage());
         }
     } else {
-
-
-
-
-
-
-
-
         $keys = array('reference_type' => 10,
             'artist' => 11,
             'author' => 12,
@@ -1176,12 +1098,10 @@ FROM
             $data = array();
             $countData = array();
             foreach ($adv_search_result as $row) {
-
-
                 if ($row['category'] == "Journal Article" && $row['attribute_name'] == "title_of_article") {
                     continue;
-                    //echo "found it";
-                } else if ($row['category'] == "Catalogue Essay" && $row['attribute_name'] == "title_of_article") {
+                //echo "found it";
+                } elseif ($row['category'] == "Catalogue Essay" && $row['attribute_name'] == "title_of_article") {
                     continue;
                 } else {
                     $data[$row['category']][$row['productId']][$row['product']][$row['attribute_name']] = $row['value'];
@@ -1214,7 +1134,6 @@ FROM
              * Output mixed $searchhtml
              */
             if (isset($_SESSION)) {
-
                 if (isset($_SESSION['user-id'])) {
                     $usersession = true;
                 } else {
@@ -1236,14 +1155,10 @@ FROM
             $filter_data = left_filter_data($leftData, $keys);
 
             foreach ($filter_data as $key => $res) {
-
-
                 if (is_array($res)) {
-                    foreach ($res AS $k => $v) {
-
+                    foreach ($res as $k => $v) {
                         $attr = $k;
                         foreach ($v as $value) {
-
                             $result[$attr][] = $value;
                         }
                     }
@@ -1275,7 +1190,7 @@ FROM
              * @left_filter_html
              * params array $filter_data
              * params array $keys (Only which keys are required for filter)
-             * 
+             *
              */
 //            print('<pre>');
 //            print_r($filter_data_af);
@@ -1283,7 +1198,9 @@ FROM
 
             //$leftHtml = left_filter_html_only_adv($filter_data_af, $keys, $countData, $productstr);
             //echo '<pre>';print_r($productstr);die;
-            $leftHtml = left_filter_html_second($filter_data_af, $keys, $countData, $productstr);
+            //$leftHtml = left_filter_html_second($filter_data_af, $keys, $countData, $productstr);
+            $leftHtml = left_filter_html($filter_data_af, $keys, $countData);
+
 
 //            print('<pre>');
 //            print_r($leftHtml);
@@ -1293,7 +1210,7 @@ FROM
               foreach ($data as $key => $val) {
               $result_count += (sizeof($val));
               }
-             * 
+             *
              */
             $alljournaldropdownarr = alljournaldropdown($conn);
 
@@ -1301,9 +1218,14 @@ FROM
 
 
 
-            $array_value_sum = create_function('$array,$key', '$total = 0; foreach($array as $row) $total = $total + $row[$key]; return $total;');
+            //$array_value_sum = create_function('$array,$key', '$total = 0; foreach($array as $row) $total = $total + $row[$key]; return $total;');
             //Getting count reference_type
-            $result_count = $array_value_sum($countData['reference_type'], 'count');
+            //$result_count = $array_value_sum($countData['reference_type'], 'count');
+            $result_count= array_reduce($countData['reference_type'], function ($carry, $item) {
+                $carry += $item['count'];
+                return $carry;
+            });
+
             $html = 1;
             $options = get_subCategory_options();
             $select_sub = $options['s'];
@@ -1338,7 +1260,8 @@ if ($html == 0) {
 }
 include(INC_FOLDER . "footerInc.php");
 
-function array_filter_recursive($input) {
+function array_filter_recursive($input)
+{
     foreach ($input as &$value) {
         if (is_array($value)) {
             $value = array_filter_recursive($value);

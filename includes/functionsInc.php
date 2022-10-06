@@ -1397,7 +1397,7 @@ function left_filter_html($someArray = array(), $keys = array(), $count = array(
                                             <div id=\"collapse_{$accordianHeaderKey}\" class=\"collapse\" aria-labelledby=\"headingOne\" data-parent=\"#accordionExample\">
                                                 <div class=\"card-body\">
                                                 <div class=\"card-form\" id=\"{$key}-header\"></div>
-                                                    <ul class=\"list-unstyled active collapse show\" id=\"{$key}\" style=\"\">";
+                                                    <ul class=\"list-unstyled autoheight_scrol active collapse show\" id=\"{$key}\" style=\"\">";
 
             if (is_array($value)) {
                 if ($value[0] == 'Select All') {
