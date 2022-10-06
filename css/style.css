@@ -7308,3 +7308,7 @@ text-align: left;
 .start-body.start-body-desktop .select2-container--default .select2-selection--multiple .select2-selection__rendered {
     padding-left: 48px;
 }
+.autoheight_scrol {
+    height: 250px !important;
+    overflow-y: scroll;
+}
