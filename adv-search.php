@@ -1199,7 +1199,7 @@ FROM
             //$leftHtml = left_filter_html_only_adv($filter_data_af, $keys, $countData, $productstr);
             //echo '<pre>';print_r($productstr);die;
             //$leftHtml = left_filter_html_second($filter_data_af, $keys, $countData, $productstr);
-            $leftHtml = left_filter_html($filter_data_af, $keys, $countData);
+            $leftHtml = left_filter_html_adv($filter_data_af, $keys, $countData);
 
 
 //            print('<pre>');
