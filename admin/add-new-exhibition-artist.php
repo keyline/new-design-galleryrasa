@@ -24,6 +24,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
     $artistname = $_POST['artistname'];
     $desc = $_POST['desc'];
+    $birth = $_POST['birth'];
+    $death = $_POST['death'];
     
     $imgFile = $_FILES['ImageFile'];
 
@@ -95,9 +97,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             $err = false;
 
 
-            $query1 = "insert into exhibition_artists(artist_name,artist_description,photograph,status,created_at,updated_at) "
-                    . "values(:artist_name,:artist_description,:photograph,:status,:created_at,:updated_at)";
-            $bind1 = array(':artist_name' => $artistname, ':artist_description' => $desc, ':photograph' => $newImageName,
+            $query1 = "insert into exhibition_artists(artist_name,artist_birth,artist_death,artist_description,photograph,status,created_at,updated_at) "
+                    . "values(:artist_name,:artist_birth,:artist_death,:artist_description,:photograph,:status,:created_at,:updated_at)";
+            $bind1 = array(':artist_name' => $artistname, ':artist_birth' => $birth, ':artist_death' => $death, ':artist_description' => $desc, ':photograph' => $newImageName,
                  ':status' => '1', ':created_at' => $datetime,
                 ':updated_at' => $datetime);
             $stmt1 = $conn->prepare($query1);

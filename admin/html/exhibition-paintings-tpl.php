@@ -5,9 +5,10 @@
         </div>
         <div class="panel-body">
             <div role="tabpanel">
-
-                <h2 class="sub-header">Artwork List of <?php echo $artistarr['artist_name'] ?></h2>
-                <a href="add-new-exhibition-painting.php?artistid=<?php echo $artist_id ?>" class="btn btn-info">Add New</a>
+                <h2 class="sub-header">Artwork List of <?php echo $exhibitionarr['exhibition_name'] ?></h2>
+                <a href="add-new-exhibition-painting.php?exibition_id=<?php echo $exibition_id ?>" class="btn btn-info">Add New</a>
+                <a class="btn btn-info" href="exhibition-list.php">Back to Exhibiiton List</a>
+                <br>
 
                 <?php
                 if (isset($_SESSION['succ'])) {
@@ -31,60 +32,34 @@
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>Exhibition</th>
+                                <th>Artist Name</th>
                                 <th>Name of Painting</th>
                                 <th>Description</th>
                                 <th>Image</th>
                                 <th>Dimension</th>
                                 <th>Medium</th>
                                 <th>Year</th>
-                                <th>Fulldate</th>
                                 <th>Price</th>
-                                <th>Available At</th>
-                                <th>Status</th>
                                 <th>Edit</th>
+                                <th>Delete</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php if (!empty($painting_list)): ?>
                                 <?php
                                 $i = 1;
+                                   // print_r($painting_list);exit();
                                 foreach ($painting_list as $k => $v):
-
-
-
-                                    $exhibitionarr = allexhibitionofpaintings($v['id']);
+                                     // $artistarr = allexhibitionofpaintings($v['id']);
                                     ?>
 
                                     <tr id="rw">
                                         <td><?php echo $i ?></td>
-                                        <td><?php
-                                            if (!empty($exhibitionarr)) {
-
-                                                $countarr = count($exhibitionarr);
-                                                $k = 1;
-                                                foreach ($exhibitionarr as $k1 => $v1) {
-
-                                                    if ($v1['ex_status'] == '0') {
-                                                        $stat = 'Archived';
-                                                    } else if ($v1['ex_status'] == '1') {
-                                                        $stat = 'Open';
-                                                    } else if ($v1['ex_status'] == '2') {
-                                                        $stat = 'Canceled';
-                                                    }
-
-                                                    if ($countarr == $k) {
-                                                        echo $v1['exhibition_name'] . '(' . $stat . ')';
-                                                    } else {
-                                                        echo $v1['exhibition_name'] . '(' . $stat . '),<br>';
-                                                    }
-                                                    $k++;
-                                                }
-                                            }
-                                            //echo $v['exhibition_name'];
-                                            ?></td>
+                                        <td><?php echo $v['artist_name']; ?> </td>
                                         <td><?php echo $v['name']; ?></td>
-                                        <td><?php echo $v['description']; ?></td>
+                                        <td><?php
+                                         $desc = substr($v['description'], 0,60);
+                                         echo $desc; ?></td>
                                         <td>
                                             <?php
                                             //echo SITE_URL . '/' . EXHIBITION_THUMB_IMGS . $v['photo'];
@@ -97,27 +72,27 @@
                                             ?>
                                         </td>
                                         <td><?php echo $v['dimension']; ?></td>
-                                        <td><?php echo $v['medium_name']; ?></td>
+                                        <td><?php echo $v['medium']; ?></td>
                                         <td><?php echo $v['year']; ?></td>
-                                        <td><?php echo $v['fulldate']; ?></td>
+                                        <!-- <td>?php echo $v['fulldate']; ?></td> -->
                                         <td><?php echo $v['price']; ?></td>
-                                        <td><?php echo $v['currently_available_at']; ?></td>
+                                        <!-- <td>?php echo $v['currently_available_at']; ?></td> 
 
 
-                                        <td><?php
+                                        <td>?php
                                             if ($v['status'] == '0') {
                                                 echo 'Archived';
                                             } else if ($v['status'] == '1') {
                                                 echo 'In Exhibition';
                                             }
-                                            ?></td>
+                                            ?></td>-->
 
-                                        <td><a href="edit-exhibition-painting.php?painting_id=<?php echo $v['id'] ?>&artist_id=<?php echo $artist_id ?>">
+                                        <td><a href="edit-exhibition-painting.php?painting_id=<?php echo $v['id'] ?>&exibition_id=<?php echo $exhibitionarr['id']?>">
                                                 <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
                                             </a>
-                                        </td>  
+                                        </td>
 
-
+                                        <td><a href="delete-painting.php?id=<?php echo $v['id'] ?>&exibition_id=<?php echo $exhibitionarr['id']?>" onclick="return confirm('Are you sure you want to delete this item?')"><span class="glyphicon glyphicon-remove text-danger" aria-hidden="true"></span></a></td>
                                     </tr>
                                     <?php
                                     $i++;

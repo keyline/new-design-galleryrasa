@@ -12,7 +12,7 @@ unset($_SESSION['append']);
  include(INC_FOLDER . "headerInc.php");
 // dynamic start
 $conn = dbconnect();
-$sql2 = "SELECT exhibition_paintings.name, exhibition_artists.artist_name, exhibition_paintings.description,exhibition_paintings.image FROM `exhibition_paintings` INNER JOIN exhibition_artists ON exhibition_artists.id = exhibition_paintings.artist_id WHERE exhibition_paintings.id = $getid";
+$sql2 = "SELECT exhibition_paintings.name, exhibition_artists.*, exhibition_paintings.description,exhibition_paintings.image FROM `exhibition_paintings` INNER JOIN exhibition_artists ON exhibition_artists.id = exhibition_paintings.artist_id WHERE exhibition_paintings.id = $getid";
  
 $q2 = $conn->query($sql2);
 
@@ -22,7 +22,7 @@ $exrow = $q2->fetchAll();
 
 // print_r ($exrow); exit();
 
-$sql1 = "SELECT * FROM `exhibition_paintings` INNER JOIN exhibition_medium on exhibition_medium.id = exhibition_paintings.medium WHERE exhibition_paintings.id = $getid";
+$sql1 = "SELECT * FROM `exhibition_paintings` WHERE exhibition_paintings.id = $getid";
  
 $q1 = $conn->query($sql1);
 

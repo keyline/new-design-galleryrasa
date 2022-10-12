@@ -7,7 +7,7 @@
                         <div class="back-action">
 <!--                             $go_back = htmlspecialchars($_SERVER['HTTP_REFERER']);
 echo "<a href='$go_back'>Go Back</a>"; -->
-                            <a href="./exhibition-details.php" class="back-btn"><span class="material-icons">arrow_back</span>back</a>
+                            <a href="#"  class="back-btn" onclick="history.go(-1)" ><span class="material-icons">arrow_back</span>back</a>
                         </div>
                     </div>
         <div class="press-modal">
@@ -27,11 +27,11 @@ echo "<a href='$go_back'>Go Back</a>"; -->
                                                     <div class="left-details">
                                                         <div class="details-img box target">
                                                          <?php   if($key['image'] != '')
-                                                                                { ?>
-                                                                                    <img class="img-fluid" src="<?php echo SITE_URL . '/' . EXHIBITION_THUMB_IMGS . $key['image']; ?>">
-                                                                                <?php }else{ ?>
-                                                                                <img class="img-fluid" src="product_images/exhibition_thumbs/placeholder.jpg">
-                                                                                <?php } ?>
+                                                            { ?>
+                                                            <img class="img-fluid" src="<?php echo SITE_URL . '/' . EXHIBITION_THUMB_IMGS . $key['image']; ?>">
+                                                                <?php }else{ ?>
+                                                                <img class="img-fluid" src="product_images/exhibition_thumbs/placeholder.jpg">
+                                                                <?php } ?>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -108,10 +108,18 @@ echo "<a href='$go_back'>Go Back</a>"; -->
                                     <div class="right-details">
                                         <?php foreach($exrow as $k) {?>
                                         <div class="exhibition-search-title">
-                                            <?php echo $k['name']; ?>
+                                            <?php 
+                                            if (!empty($k['artist_death'])) {
+
+                                                echo $k['artist_name'] .'('. $k['artist_birth'] .'-'. $k['artist_death'] .')';
+                                            }
+                                            else{
+                                            echo $k['artist_name'] .'(b '. $k['artist_birth'] .')' ;
+                                            }
+                                            ?>
                                         </div>
                                         <div class="artist-name">
-                                            <?php echo $k['artist_name']; ?>
+                                            <?php echo $k['name']; ?>
                                         </div>
                                         <div class="exhibition-search-content">
                                             <?php echo $k['description']; ?>
@@ -131,7 +139,7 @@ echo "<a href='$go_back'>Go Back</a>"; -->
                                             <?php 
                                                 foreach($exartwork as $v) {?>
                                             <div class="details-content">
-                                                Base: <span><?php echo $v['medium_name']; ?></span>
+                                                Base: <span><?php echo $v['medium']; ?></span>
                                             </div>
                                             <div class="details-content">
                                                 Dimensions: <span><?php echo $v['dimension']; ?></span>
@@ -316,7 +324,7 @@ echo "<a href='$go_back'>Go Back</a>"; -->
                 </div>
                                         <div class="modal-body">
                                            <div class="light-part">
-                                    <img class="img-fluid" src="assets/img/exhibition-1.jpg">
+                                    <img class="img-fluid" src="<?php echo SITE_URL . '/' . EXHIBITION_THUMB_IMGS . $key['image']; ?>">
                                 </div>
                                         </div>
                                         

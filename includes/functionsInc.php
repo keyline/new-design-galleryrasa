@@ -5161,22 +5161,40 @@ id = '%s' ";
     }
 }
 
-function allexhibition()
+function allartist()
 {
     try {
         $conn = dbconnect();
-        $query = "SELECT * FROM exhibition";
+        $query = "SELECT * FROM exhibition_artists";
         $sql = sprintf($query);
         $q = $conn->prepare($sql);
-
+        // var_dump($q);
         $q->execute();
         $q->setFetchMode(PDO::FETCH_ASSOC);
-
         return $prod = $q->fetchAll();
+
     } catch (PDOException $pe) {
         echo db_error($pe->getMessage());
     }
 }
+
+
+// function allartist()
+// {
+//     try {
+//         $conn = dbconnect();
+//         $query = "SELECT * FROM exhibition_artists";
+//         $sql = sprintf($query);
+//         $q = $conn->prepare($sql);
+//         // var_dump($q);
+//         $q->execute();
+//         $q->setFetchMode(PDO::FETCH_ASSOC);
+//         return $prod = $q->fetchAll();
+
+//     } catch (PDOException $pe) {
+//         echo db_error($pe->getMessage());
+//     }
+// }
 
 function allmedium()
 {
@@ -5201,9 +5219,7 @@ function singlepainting($param1)
         $conn = dbconnect();
 
 
-        $query = "select * from exhibition_paintings  
-where 
-id = '%s' ";
+        $query = "select exhibition_paintings.*, exhibition_artists.artist_name from exhibition_paintings INNER JOIN exhibition_artists ON exhibition_paintings.artist_id = exhibition_artists.id WHERE exhibition_paintings.id = '%s' ";
         $sql = sprintf($query, $param1);
         $q = $conn->prepare($sql);
 
@@ -5244,7 +5260,7 @@ function last_entered_painting($param1)
 
 
         $query = "select * from exhibition_paintings where id="
-                . "(SELECT max(id) FROM exhibition_paintings where artist_id='%s') ";
+                . "(SELECT max(id) FROM exhibition_paintings where exhibition_id='%s') ";
         $sql = sprintf($query, $param1);
         $q = $conn->prepare($sql);
 
@@ -5261,9 +5277,9 @@ function allexhibitionofpaintings($param1)
 {
     try {
         $conn = dbconnect();
-        $query = "SELECT exhibition_paintings_relation.*,exhibition.exhibition_name,exhibition.status ex_status "
-                . "FROM exhibition_paintings_relation,exhibition "
-                . "where exhibition_paintings_relation.exhibition_id = exhibition.id and "
+        $query = "SELECT exhibition_paintings_relation.*,exhibition_artists.artist_name "
+                . "FROM exhibition_paintings_relation,exhibition_artists "
+                . "where exhibition_paintings_relation.artist_id = exhibition_artists.id and "
                 . "exhibition_paintings_relation.painting_id = '%s'";
         $sql = sprintf($query, $param1);
         $q = $conn->prepare($sql);

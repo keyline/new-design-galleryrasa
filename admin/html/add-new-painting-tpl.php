@@ -2,13 +2,13 @@
 
     <div class="panel panel-default">
         <div class="panel-heading">
-            <h3 class="panel-title">Add New Artwork of <?php echo $artistarr['artist_name'] ?></h3>
+            <h3 class="panel-title">Add New Artwork of <?php echo $exhibitionarr['exhibition_name'] ?></h3>
         </div>
         <div class="panel-body">
             <div role="tabpanel">
 
                 <br>
-                <a class="btn btn-info" href="exhibition-paintings.php?artist_id=<?php echo $artistid; ?>">Back to Artwork List</a>
+                <a class="btn btn-info" href="#" onclick="history.go(-1)">Back to Artwork List</a>
                 <br>
 
                 <?php
@@ -32,56 +32,36 @@
                 <!-- Tab panes -->
 
                 <form id="add-new-form" role="form" action="" method="post" enctype="multipart/form-data">
-                    <input type="hidden" class="form-control" name="artistid" value="<?php echo $artistid ?>">
+                    <input type="hidden" class="form-control" name="exhibitionid" value="<?php echo $exibition_id ?>">
                     <div class="tab-content">
                         <div role="tabpanel" class="tab-pane active" id="home">
                             <p>&nbsp;</p>
 
-<!--                            <div class="form-group">
-                                <label for="pname">Exhibition </label>
-                                <select class="form-control" name="exhibition">
-                                    <option value="">Select Exhibition</option>
-                                    ?php
-                                    foreach ($exhibitionarr as $k1 => $v1) {
-                                        if ($v1['status'] == '0') {
-                                            $status = 'Archived';
-                                        } else if ($v1['status'] == '1') {
-                                            $status = 'Open';
-                                        } else if ($v1['status'] == '2') {
-                                            $status = 'Canceled';
-                                        }
-                                        ?>
-                                        <option value="?php echo $v1['id'] ?>">?php echo $v1['exhibition_name'] . '(' . $status . ')' ?></option>
-                                        ?php
-                                    }
-                                    ?>
-                                </select>
-                            </div>-->
-
-
                             <div class="form-group">
-                                <label for="pname">Exhibition </label>
-                                <select class="form-control js-example-basic-multiple" name="exhibition[]" multiple="multiple">
+                                <label for="pname">Artist's Name</label>
+                                <select class="form-control" name="artist">
+                                    <option value="">Select Artist</option>
                                     <?php
-                                    foreach ($exhibitionarr as $k1 => $v1) {
-                                        if ($v1['status'] == '0') {
-                                            $status = 'Archived';
-                                        } else if ($v1['status'] == '1') {
-                                            $status = 'Open';
-                                        } else if ($v1['status'] == '2') {
-                                            $status = 'Canceled';
-                                        }
+
+                                $sql = "SELECT artist_name,id FROM `exhibition_artists`";
+                                $statement = $conn->query($sql);
+                                $data = $statement->fetchAll(PDO::FETCH_ASSOC);
+                                foreach ($data as $key) {                                    
                                         ?>
-                                        <option value="<?php echo $v1['id'] ?>"><?php echo $v1['exhibition_name'] . '(' . $status . ')' ?></option>
+                                        <option value="<?php echo $key['id'] ?>"><?php echo $key['artist_name']?></option>
                                         <?php
                                     }
                                     ?>
                                 </select>
                             </div>
+                            <div class="form-group">
+                                <label for="tags">Title of the Artwork</label>
+                                <input type="text" class="form-control" name="paintingname">
+                            </div>
 
                             <div class="form-group">
-                                <label for="tags">Artwork Name</label>
-                                <input type="text" class="form-control" name="paintingname">
+                                <label for="tags">Reference Number</label>
+                                <input type="text" class="form-control" name="referenceno">
                             </div>
 
                             <div class="form-group">
@@ -92,7 +72,7 @@
 
 
                             <div class="form-group">
-                                <label for="tags">Image</label>
+                                <label for="tags">Image of the artwork</label>
                                 <input name="ImageFile" type="file"  class="btn btn-success">
                             </div>
 
@@ -103,16 +83,23 @@
 
                             <div class="form-group">
                                 <label for="pname">Medium </label>
-                                <select class="form-control" name="medium">
+                                <input type="text" class="form-control" name="medium">
+                                <!-- <select class="form-control" name="medium">
                                     <option value="">Select Medium</option>
-                                    <?php
+                                    ?php
                                     foreach ($mediumarr as $k2 => $v2) {
                                         ?>
-                                        <option value="<?php echo $v2['id'] ?>"><?php echo $v2['medium_name']; ?></option>
-                                        <?php
+                                        <option value="?php echo $v2['id'] ?>">?php echo $v2['medium_name']; ?></option>
+                                        ?php
                                     }
                                     ?>
-                                </select>
+                                </select> -->
+                                <!-- <input type="text" placeholder="add medium" class="form-control" name="add_medium"> -->
+                            </div>
+
+                            <div class="form-group">
+                                <label for="tags">Position of Signature</label>
+                                <input type="text" class="form-control" name="signature">
                             </div>
 
                             <div class="form-group">
@@ -120,17 +107,17 @@
                                 <input type="text" class="form-control" name="paintingyear">
                             </div>
 
-                            <div class="form-group">
+                            <!-- <div class="form-group">
                                 <label for="tags">Painting Full Date</label>
                                 <input type="date" class="form-control" name="paintingdate">
-                            </div>
+                            </div> -->
 
                             <div class="form-group">
                                 <label for="tags">Price</label>
                                 <input type="text" class="form-control" name="price">
                             </div>
 
-                            <div class="form-group">
+                            <!-- <div class="form-group">
                                 <label for="tags">Currently Available At</label>
                                 <input type="text" class="form-control" name="available_at">
                             </div>
@@ -141,7 +128,7 @@
                                     <option value="0">Archived</option>
                                     <option value="1">In Exhibition</option>
                                 </select>
-                            </div>
+                            </div> -->
 
 
                             <div class="row">

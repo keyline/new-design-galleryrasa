@@ -14,8 +14,9 @@ unset($_SESSION['append']);
 //Get dynamic content for Memorabilia
 
 $conn = dbconnect();
-$currentDateTime = date("Y-m-d h:i");
-$sql2 = "SELECT * FROM `exhibition` WHERE `from_exhibition_date` <= '$currentDateTime' AND `end_exhibition_date` >= '$currentDateTime' ";
+echo $currentDateTime = date("Y-m-d H:i");
+
+$sql2 = "SELECT * FROM `exhibition` WHERE `from_exhibition_date` <= '$currentDateTime' AND `end_exhibition_date` >= '$currentDateTime' AND status = 0 ";
 $q2 = $conn->query($sql2);
 
 $q2->execute();
@@ -26,13 +27,13 @@ $exrow = $q2->fetchAll();
 
 // echo $currentDateTime; exit();
 
-$sql = "SELECT * FROM `exhibition` WHERE `from_exhibition_date` > '$currentDateTime' ";
+$sql = "SELECT * FROM `exhibition` WHERE `from_exhibition_date` > '$currentDateTime' AND status = 0 ";
 $q = $conn->query($sql);
 $q->execute();
 $q->setFetchMode(PDO::FETCH_ASSOC);
 $exrow1 = $q->fetchAll();
 
-$sql1 = "SELECT * FROM `exhibition` WHERE `from_exhibition_date` <= '$currentDateTime' AND `end_exhibition_date` < '$currentDateTime' ";
+$sql1 = "SELECT * FROM `exhibition` WHERE `from_exhibition_date` <= '$currentDateTime' AND `end_exhibition_date` < '$currentDateTime' AND status = 0 ";
 $q1 = $conn->query($sql1);
 $q1->execute();
 $q1->setFetchMode(PDO::FETCH_ASSOC);

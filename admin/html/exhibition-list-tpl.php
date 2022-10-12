@@ -25,6 +25,10 @@
                     unset($_SESSION['fail']);
                 }
                 ?>
+                <div id="dialog">
+<!-- <span class="ui-icon ui-icon-closethick">close</span> -->
+<div><p>Are you sure want to delete this exhibition or archieve this exhibition?</p></div>    
+</div>
                 <div class="table-responsive">
 
                     <table class="table table-striped" id="example">
@@ -38,8 +42,10 @@
                                 <th>End Date</th>
                                 <th>City</th>
                                 <th>Address</th>
-                                <th>Status</th>
-                                <th>Edit</th>
+                                <th>Edit</th>                                
+                                <th>Add Artist</th>
+                                <th>Add Artwork</th>
+                                <th>Delete</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -52,7 +58,11 @@
                                     <tr id="rw">
                                         <td><?php echo $i ?></td>
                                         <td><?php echo $v['exhibition_name']; ?></td>
-                                        <td><?php echo $v['description']; ?></td>
+                                        <td><?php 
+                                        $description = $v['description'];
+                                        $desc = substr($description, 0,60);
+                                        echo $desc ; ?>
+                                    </td>
                                         <td>
                                             <?php 
                                             //echo SITE_URL . '/' . EXHIBITION_THUMB_IMGS . $v['photo'];
@@ -73,33 +83,23 @@
                                             ?></td>
 
                                         <td><?php echo $v['city']; ?></td>
+
                                         <td><?php echo $v['full_address']; ?></td>
 
-                                        <td><?php
-                                            if ($v['status'] == '0') {
-                                                echo 'Archived';
-                                            } else if ($v['status'] == '1') {
-                                                echo 'Open';
-                                            } else if ($v['status'] == '2') {
-                                                echo 'Canceled';
-                                            }
-                                            ?></td>
+                                        <td><a href="edit-exhibition.php?exibition_id=<?php echo $v['id'] ?>"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a></td>
 
-                                        <td><a href="edit-exhibition.php?exibition_id=<?php echo $v['id'] ?>"><span
-                                                    class="glyphicon glyphicon-edit" aria-hidden="true"></span></a></td>           
+                                        <td><a href="exhibition-artists.php"><span class="glyphicon glyphicon-tasks" aria-hidden="true"></span></a></td>
 
+                                        <td><a href="exhibition-paintings.php?exibition_id=<?php echo $v['id'] ?>"><span class="glyphicon glyphicon-tasks" aria-hidden="true"></span></a>
+                                        </td>
 
-
-
+                                        <td><a href="#" class="delete-exhibition" data-exhibition="<?php echo $v['id'] ?>"><span class="glyphicon glyphicon-remove text-danger" aria-hidden="true"></span></a></td>
                                     </tr>
                                     <?php
                                     $i++;
                                 endforeach;
                                 ?>
                             <?php endif; ?>
-
-
-
                         </tbody>
                     </table>
 
@@ -109,3 +109,46 @@
         </div>
     </div>
 </div>
+
+
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js" crossorigin="anonymous"></script>
+<script>
+    $(function(){
+        $('.delete-exhibition').on('click',function(){
+        var exhibition = $(this).data('exhibition');
+        $('#dialog').dialog('open');
+    });
+
+    $('#dialog').dialog({
+        autoOpen: false,
+        draggable: false,
+        width: 400,
+        open: function () {                         // open event handler
+            $(this)                                // the element being dialogged
+                .parent()                          // get the dialog widget element
+                .find(".ui-dialog-titlebar-close") // find the close button for this dialog
+                .hide();                           // hide it
+        },
+        buttons: [
+            {
+                text: "Delete",
+                click: function () {
+                    //$(this).dialog("close");
+                    alert("Delete");
+                }
+            },
+            {
+                text: "Archeive",
+                click: function () {
+                    //$(this).dialog("close");
+                    alert("Archeive");
+                }
+            },
+
+        ]
+        
+    });
+});
+    
+
+</script> -->
