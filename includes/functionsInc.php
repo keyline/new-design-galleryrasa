@@ -2097,8 +2097,8 @@ function left_filter_html_adv($someArray = array(), $keys = array(), $count = ar
             return 0;
         }
     });
-    if (isset($_SESSION['bParam'])) {
-        $sessData = $_SESSION['bParam'];
+    if (isset($_SESSION['fParam'])) {
+        $sessData = $_SESSION['fParam'];
         $sessCount = count($sessData);
     }
 

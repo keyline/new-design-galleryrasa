@@ -18,31 +18,35 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $paramCount = 0;
     $countData = array();
     //Filter Search
-
+    //print_r($_POST);
+    //echo "session";
+    //echo "\r\n";
+    //print_r($_SESSION);
 
 
     if (isset($_POST['adv_submit']) && $_POST['adv_submit'] == 'Search') {
+        //echo "Case 1";
         $advsearch = true;
 
-        if (isset($_POST['author'])) {
+        if (isset($_POST['author']) && trim($_POST['author']) !== "") {
             $_SESSION['author'] = $_POST['author'];
         }
-        if (isset($_POST['attr'])) {
+        if (isset($_POST['attr']) && trim($_POST['attr']) !== "") {
             $_SESSION['attr'] = $_POST['attr'];
         }
-        if (isset($_POST['ref_type'])) {
+        if (isset($_POST['ref_type']) && trim($_POST['ref_type']) !== "") {
             $_SESSION['ref_type'] = $_POST['ref_type'];
         }
-        if (isset($_POST['language'])) {
+        if (isset($_POST['language']) && trim($_POST['language']) !== "") {
             $_SESSION['language'] = $_POST['language'];
         }
-        if (isset($_POST['publisher'])) {
+        if (isset($_POST['publisher']) && trim($_POST['publisher']) !== "") {
             $_SESSION['publisher'] = $_POST['publisher'];
         }
-        if (isset($_POST['gregorian_year'])) {
+        if (isset($_POST['gregorian_year']) && trim($_POST['gregorian_year']) !== "") {
             $_SESSION['gregorian_year'] = $_POST['gregorian_year'];
         }
-        if (isset($_POST['descriptive_tags'])) {
+        if (isset($_POST['descriptive_tags']) && trim($_POST['descriptive_tags']) !== "") {
             $_SESSION['descriptive_tags'] = $_POST['descriptive_tags'];
         }
         $_SESSION['post'] = $_POST;
@@ -80,8 +84,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
 //        print_r($params_qry['extract']);
 //
-//        print_r($params_qry);
-//        exit;
+        //print_r($params_qry);
+        //exit;
 
 
         /*
@@ -107,7 +111,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         if (false !== $key = array_search(-1, $params_qry)) {
             unset($params_qry[$key]);
         }
-
+        //storing values into session for search
+        $_SESSION['advParam']= $params_qry;
 //        print_r($params_qry);
 //        exit;
         $reference = "";
@@ -387,7 +392,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 //        print('<pre>');
 //        print_r($_POST);
 //        exit;
-
+        //echo "Case 2";
         $advsearch = false;
         $qry_arr = $_POST;
         $params_qry = array();
@@ -408,7 +413,12 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                 }
             }
         }
+        //injecting old search param into new query
+        array_map(function ($k, $v) use (&$params_qry) {
+            $params_qry[$k]= $v;
+        }, array_keys($_SESSION['advParam']), $_SESSION['advParam']);
 
+        //print_r($params_qry);
         if (!(array_key_exists('reference_type', $params_qry)) && !(array_key_exists('language', $params_qry))) {
             foreach ($search as $m) {
                 $params_qry['reference_type'][] = $m;
@@ -583,6 +593,7 @@ FROM
 
         $count_qry = sprintf($count_outer_qry, $queryInner);
     } else {
+        //echo "Case 3";
         $advsearch = true;
         $firstkey = '';
         $adv_author = trim($_SESSION['author']);
@@ -847,6 +858,7 @@ FROM
 
 
     if ($advsearch == false) {
+        //echo "Case 4";
         try {
             $conn = dbconnect();
             $referenceType_sorted = get_subCategory_options($conn);
@@ -1054,7 +1066,7 @@ FROM
                     $select_sub = $options2['s'];
 
                     $search_view = file_get_contents(VIEWS_FOLDER . 'adv-search-resultInc.php');
-                    $search = array('{languagelist}', '{journallist}', '{subcategory_list}', '{leftFilter}', '{searchedKeyword}', '{TotalResult}', '{searchList}', '{adv-search-options}');
+                    $search = array('{filter_search_subcategory_list}','{languagelist}', '{journallist}', '{subcategory_list}', '{leftFilter}', '{searchedKeyword}', '{TotalResult}', '{searchList}', '{adv-search-options}');
 
 
 //                     print("<pre>");
@@ -1063,9 +1075,9 @@ FROM
 
 
                     if (isset($_POST['allproductsid'])) {
-                        $replace = array($alllanguagedropdownarr, $alljournaldropdownarr, $select_sub2, $leftHtml, $keyword, $noofsearchedproducts, $Searchhtml, $options2['op']);
+                        $replace = array($select_sub2, $alllanguagedropdownarr, $alljournaldropdownarr, $select_sub2, $leftHtml, $keyword, $noofsearchedproducts, $Searchhtml, $options2['op']);
                     } else {
-                        $replace = array($alllanguagedropdownarr, $alljournaldropdownarr, $select_sub2, $leftHtml, $keyword, $result_count, $Searchhtml, $options2['op']);
+                        $replace = array($select_sub2, $alllanguagedropdownarr, $alljournaldropdownarr, $select_sub2, $leftHtml, $keyword, $result_count, $Searchhtml, $options2['op']);
                     }
 
 
@@ -1081,6 +1093,7 @@ FROM
             echo db_error($pe->getMessage());
         }
     } else {
+        //echo "Case 5";
         $keys = array('reference_type' => 10,
             'artist' => 11,
             'author' => 12,
@@ -1236,8 +1249,8 @@ FROM
 
 
             $search_view = file_get_contents(VIEWS_FOLDER . 'adv-search-resultInc.php');
-            $search = array('{languagelist}', '{journallist}', '{subcategory_list}', '{adv-search-options}', '{leftFilter}', '{searchedKeyword}', '{TotalResult}', '{searchList}');
-            $replace = array($alllanguagedropdownarr, $alljournaldropdownarr, $select_sub, $options2['op'], $leftHtml, $keyword, $result_count, $Searchhtml);
+            $search = array('{filter_search_subcategory_list}','{languagelist}', '{journallist}', '{subcategory_list}', '{adv-search-options}', '{leftFilter}', '{searchedKeyword}', '{TotalResult}', '{searchList}');
+            $replace = array($select_sub2,$alllanguagedropdownarr, $alljournaldropdownarr, $select_sub, $options2['op'], $leftHtml, $keyword, $result_count, $Searchhtml);
             $finalView = str_replace($search, $replace, $search_view);
         } else {
             goto_location('adv-search');
