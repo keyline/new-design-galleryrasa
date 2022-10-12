@@ -18,48 +18,23 @@ $conn = dbconnect();
 $exhibition_thumb_destination = '../' . EXHIBITION_THUMB_IMGS;
 $exhibition_destination = '../' . 'exhibition' . '/';
 
-$artist_id = $_GET['artist_id'];
+$exibition_id = $_GET['exibition_id'];
 
 $painting_id = $_GET['painting_id'];
 
-$artistarr = singleexhibitionartist($artist_id);
-
-
 $paintingarr = singlepainting($painting_id);
+ // print_r($paintingarr);exit();
 
-$singlemediumarr = singlemedium($paintingarr['medium']);
-$mediumarr = allmedium();
+$allartist = allartist();
+// print_r($allartist);
 
-
-//$singleexhibitionarr = singleexhibition($paintingarr['exhibition_id']);
-
-
-$exhibitionarr = allexhibition();
+ $singlemediumarr = singlemedium($paintingarr['medium']);
+ $mediumarr = allmedium();
 
 
-$existsexhibitionarr = allexhibitionofpaintings($painting_id);
+ $existsexhibitionarr = allexhibitionofpaintings($painting_id);
 
 
-$arrlength = count($existsexhibitionarr);
-$j = 1;
-$exhibitionnotinstr = '';        
-if (!empty($existsexhibitionarr)) {
-    foreach ($existsexhibitionarr as $k3 => $v3) {
-        
-        if($existsexhibitionarr == $j){
-            $exhibitionnotinstr .= $v3['exhibition_id'];
-        }else{
-            $exhibitionnotinstr .= $v3['exhibition_id'].',';
-        }
-        
-      $j++;  
-    }
-}
-
-
-//echo allexhibitionnotin($exhibitionnotinstr);
-//
-//exit;
 
 include(ADMIN_HTML . "admin-headerInc.php");
 include(ADMIN_HTML . "edit-exhibition-painting-tpl.php");

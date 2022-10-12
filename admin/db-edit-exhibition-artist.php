@@ -18,6 +18,8 @@ $artistid = $_POST['artistid'];
 
 $artistname = $_POST['artistname'];
 $desc = $_POST['desc'];
+$birth = $_POST['birth'];
+$death = $_POST['death'];
 $status = $_POST['status'];
 $imgFile = $_FILES['ImageFile'];
 
@@ -94,10 +96,10 @@ if ($fileuploadflag == true) {
         $err = false;
 
 
-        $query1 = "update exhibition_artists set artist_name=:artist_name,artist_description=:artist_description,"
+        $query1 = "update exhibition_artists set artist_name=:artist_name,artist_birth=:artist_birth,artist_death=:artist_death,artist_description=:artist_description,"
                 . "photograph=:photograph,status=:status,updated_at=:updated_at "
                 . " where id=:artistid";
-        $bind1 = array(':artist_name' => $artistname, ':artist_description' => $desc, 
+        $bind1 = array(':artist_name' => $artistname, ':artist_birth' => $birth, ':artist_death' => $death, ':artist_description' => $desc, 
             ':photograph' => $newImageName,
             ':status' => $status, 
             ':updated_at' => $datetime, ':artistid' => $artistid);

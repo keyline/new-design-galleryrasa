@@ -2,13 +2,13 @@
 
     <div class="panel panel-default">
         <div class="panel-heading">
-            <h3 class="panel-title">Edit Artwork of Artist of <?php echo $artistarr['artist_name'] ?></h3>
+            <h3 class="panel-title">Edit Artwork </h3>
         </div>
         <div class="panel-body">
             <div role="tabpanel">
 
                 <br>
-                <a class="btn btn-info" href="exhibition-paintings.php?artist_id=<?php echo $artist_id; ?>">Back to Artwork List</a>
+                <a class="btn btn-info" onclick="history.go(-1)" href="#">Back to Artwork List</a>
                 <br>
 
                 <?php
@@ -35,66 +35,15 @@
                     <div class="tab-content">
                         <div role="tabpanel" class="tab-pane active" id="home">
                             <p>&nbsp;</p>
-
-<!--                            <div class="form-group">
-                                <label for="pname">Exhibition </label>
-                                <select class="form-control" name="exhibition">
-                                    <option value="?php echo $singleexhibitionarr['id']; ?>"><?php echo $singleexhibitionarr['exhibition_name']; ?></option>
-                                    <option value="">Select Exhibition</option>
-                                    ?php
-                                    foreach ($exhibitionarr as $k1 => $v1) {
-                                        if ($v1['status'] == '0') {
-                                            $status = 'Archived';
-                                        } else if ($v1['status'] == '1') {
-                                            $status = 'Open';
-                                        } else if ($v1['status'] == '2') {
-                                            $status = 'Canceled';
-                                        }
-                                        ?>
-                                        <option value="?php echo $v1['id'] ?>">?php echo $v1['exhibition_name'] . '(' . $status . ')' ?></option>
-                                        ?php
-                                    }
-                                    ?>
-                                </select>
-                            </div>-->
-
-
-
-
                             <div class="form-group">
-                                <label for="pname">Exhibition </label>
-                                <select class="form-control js-example-basic-multiple" name="exhibition[]" multiple="multiple">
-                                    <?php
-                                    if (!empty($existsexhibitionarr)) {
-                                        foreach ($existsexhibitionarr as $k2 => $v2) {
-                                            if ($v2['status'] == '0') {
-                                                $status1 = 'Archived';
-                                            } else if ($v2['status'] == '1') {
-                                                $status1 = 'Open';
-                                            } else if ($v2['status'] == '2') {
-                                                $status1 = 'Canceled';
-                                            }
-                                            ?>
+                                <label for="pname">Aritst's Name</label>
+                                <select class="form-control js-example-basic-multiple" name="artists">  
+                                    <?php                                                      foreach ($allartist as $k1 => $v1) {?>                
 
-                                            <option selected value="<?php echo $v1['exhibition_id'] ?>"><?php echo $v2['exhibition_name'] . '(' . $status1 . ')' ?></option>
+                                            <option value="<?php echo $v1['id'] ?>"<?php echo $v1['id'] == $paintingarr['artist_id'] ? 'selected' : '';?>><?php echo $v1['artist_name'] ?></option>
                                             <?php
                                         }
-                                    }
-                                    ?>
-                                    <?php
-                                    $allexhibitionnotin = allexhibitionnotin($painting_id, $exhibitionnotinstr);
-                                    foreach ($allexhibitionnotin as $k1 => $v1) {
-                                        if ($v1['status'] == '0') {
-                                            $status = 'Archived';
-                                        } else if ($v1['status'] == '1') {
-                                            $status = 'Open';
-                                        } else if ($v1['status'] == '2') {
-                                            $status = 'Canceled';
-                                        }
-                                        ?>
-                                        <option value="<?php echo $v1['id'] ?>"><?php echo $v1['exhibition_name'] . '(' . $status . ')' ?></option>
-                                        <?php
-                                    }
+                                    
                                     ?>
                                 </select>
                             </div>
@@ -102,7 +51,7 @@
 
                             <div class="form-group">
                                 <label for="tags">Painting Name</label>
-                                <input type="hidden" name="artistid" value="<?php echo $artist_id ?>">
+                                <input type="hidden" name="exhibitionid" value="<?php echo $exibition_id ?>">
                                 <input type="hidden" name="paintingid" value="<?php echo $paintingarr['id'] ?>">
                                 <input type="text" class="form-control" name="paintingname" required  value="<?php echo $paintingarr['name'] ?>">
                             </div>
@@ -127,20 +76,25 @@
                                 }
                                 ?>
                             </div>
+                            <div class="form-group">
+                                <label for="tags">Reference Number</label>
+                                <input type="text" class="form-control" name="referenceno" value="<?php echo $paintingarr['reference_no'] ?>">
+                            </div>
 
                             <div class="form-group">
                                 <label for="pname">Medium </label>
-                                <select class="form-control" name="medium">
-                                    <option value="<?php echo $singlemediumarr['id'] ?>"><?php echo $singlemediumarr['medium_name'] ?></option>
+                                <!-- <select class="form-control" name="medium">
+                                    <option value="?php echo $singlemediumarr['id'] ?>">?php echo $singlemediumarr['medium_name'] ?></option>
                                     <option value="">Select Medium</option>
-                                    <?php
+                                    ?php
                                     foreach ($mediumarr as $k2 => $v2) {
                                         ?>
-                                        <option value="<?php echo $v2['id'] ?>"><?php echo $v2['medium_name']; ?></option>
-                                        <?php
+                                        <option value="?php echo $v2['id'] ?>">?php echo $v2['medium_name']; ?></option>
+                                        ?php
                                     }
                                     ?>
-                                </select>
+                                </select> -->
+                                <input type="text" class="form-control" name="medium" value="<?php echo $paintingarr['medium'] ?>">
                             </div>
 
                             <div class="form-group">
@@ -149,44 +103,18 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="tags">Year</label>
-                                <input type="text" class="form-control" name="paintingyear" value="<?php echo $paintingarr['year']; ?>">
+                                <label for="tags">Position of Signature</label>
+                                <input type="text" class="form-control" name="signature" value="<?php echo $paintingarr['signature'] ?>">
                             </div>
 
                             <div class="form-group">
-                                <label for="tags">Painting Full Date</label>
-                                <input type="date" class="form-control" name="paintingdate" value="<?php echo $paintingarr['fulldate']; ?>">
+                                <label for="tags">Year</label>
+                                <input type="text" class="form-control" name="paintingyear" value="<?php echo $paintingarr['year']; ?>">
                             </div>
-
                             <div class="form-group">
                                 <label for="tags">Price</label>
                                 <input type="text" class="form-control" name="price" value="<?php echo $paintingarr['price']; ?>">
                             </div>
-
-                            <div class="form-group">
-                                <label for="tags">Currently Available At</label>
-                                <input type="text" class="form-control" name="available_at" value="<?php echo $paintingarr['currently_available_at']; ?>">
-                            </div>
-
-
-                            <div class="form-group">
-                                <label for="stock">Status</label>
-                                <select class="form-control" name="status">
-                                    <option value="<?php echo $artistarr['status'] ?>">
-                                        <?php
-                                        if ($artistarr['status'] == '0') {
-                                            echo 'Archived';
-                                        } else if ($artistarr['status'] == '1') {
-                                            echo 'In Exhibition';
-                                        }
-                                        ?>
-                                    </option>
-                                    <option value="0">Archived</option>
-                                    <option value="1">In Exhibition</option>
-                                </select>
-                            </div>
-
-
                             <div class="row">
                                 <div class="col-md-12 ">
 

@@ -1208,5 +1208,61 @@
 
 
 </script>
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> -->
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js" crossorigin="anonymous"></script>
+<script>
+    $(function(){
+        $('.delete-exhibition').on('click',function(){
+        var exhibition = $(this).data('exhibition');
+        //alert(exhibition);
+        $('#dialog').dialog('open');
+    });
+
+    $('#dialog').dialog({
+        // show:"fadeIn",
+        // hide:"fold",
+        autoOpen: false,
+        draggable: false,
+        width: 400,
+        open: function () {                         // open event handler
+            $(this)                                // the element being dialogged
+                .parent()                          // get the dialog widget element
+                .find(".ui-dialog-titlebar-close") // find the close button for this dialog
+                .hide();                           // hide it
+            },
+        buttons: [
+            {
+                text: "Delete",
+                value : $('.delete-exhibition').attr('data-exhibition'),
+                class : "delete",
+                click: function () {                    
+                    //$(this).dialog("close");                    
+                    var exhibitionID = $('.delete').attr('value');
+                    //alert(exhibitionID);
+                    //alert("Delete");                                        
+                    window.location.href = 'delete-exhibition.php?id='+exhibitionID;                    
+
+                }
+            },
+            {
+                text: "Archeive",
+                value : $('.delete-exhibition').attr('data-exhibition'),
+                class : "archive",
+                click: function () {
+                    //$(this).dialog("close");
+                    var exhibitionID = $('.archive').attr('value');
+                     // alert(exhibitionID);
+                    window.location.href = 'archieve-exhibition.php?id='+exhibitionID;
+                }
+            },
+
+        ]
+        
+    });
+});
+    
+
+</script>
+
 </body>
 </html>

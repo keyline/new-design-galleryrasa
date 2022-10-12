@@ -120,17 +120,20 @@
                                             </div>
                                             <div class="exhibition-info">
                                                 <div class="exhibition-content">
-                                                    <?php echo $v['name']; ?>
+                                                    <?php echo $v['artist_name']; ?>
+                                                </div>
+                                                <div class="exhibition-content">
+                                                    <?php echo $v['name']; ?> , <?php echo $v['year']; ?>
                                                 </div>
                                                 <div class="artist-year">
-                                                    <?php echo $v['medium_name']; ?>
+                                                    <?php echo $v['medium']; ?>
                                                 </div>
                                                 <div class="artist-year">
                                                     <?php echo $v['dimension']; ?>
                                                 </div>
-                                                <div class="artist-year">
-                                                    <?php echo $v['year']; ?>
-                                                </div>
+                                                <!-- <div class="artist-year">
+                                                    ?php echo $v['year']; ?>
+                                                </div> -->
                                             </div>
                                         </div>
                                     </div>
@@ -179,7 +182,7 @@
                 </div>
                                         <div class="modal-body">
                                            <div class="light-part">
-                                    <img class="img-fluid" src="assets/img/exhibition-details.jpg">
+                                    <img class="img-fluid" src="<?php echo SITE_URL . '/' . EXHIBITION_THUMB_IMGS . $k['photo']; ?>">
                                 </div>
                                         </div>
                                         

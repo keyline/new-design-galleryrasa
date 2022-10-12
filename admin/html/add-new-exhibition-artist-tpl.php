@@ -2,10 +2,14 @@
 
     <div class="panel panel-default">
         <div class="panel-heading">
-            <h3 class="panel-title">Add New Exhibition</h3>
+            <h3 class="panel-title">Add New Artist</h3>
         </div>
         <div class="panel-body">
             <div role="tabpanel">
+
+                <br>
+                <a class="btn btn-info" href="exhibition-artists.php">Back to Artist List</a>
+                <br>
                 
                 <?php
                 if (isset($_SESSION['succ'])) {
@@ -37,11 +41,19 @@
                                 <input type="text" class="form-control" id="exname" name="artistname" required="">
                             </div>
                             <div class="form-group">
-                                <label for="tags">Description</label>
+                                <label for="tags">About the artist</label>
                                 <textarea class="form-control" rows="3" name="desc"></textarea>
                             </div>
 
+                            <div class="form-group">
+                                <label for="tags">Year of birth</label>
+                                <input type="text" class="form-control" name="birth">
+                            </div>
 
+                            <div class="form-group">
+                                <label for="tags">Year of death</label>
+                                <input type="text" class="form-control" name="death">
+                            </div>
 
                             <div class="form-group">
                                 <label for="tags">Photo</label>

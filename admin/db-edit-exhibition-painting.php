@@ -12,21 +12,23 @@ $exhibition_thumb_destination = '../' . EXHIBITION_THUMB_IMGS;
 $exhibition_destination = '../' . 'exhibition' . '/';
 
 
-$artistid = $_POST['artistid'];
+ // $artistid = $_POST['artistid'];
+$exibition_id = $_POST['exhibitionid'];
+
 
 $paintingid = $_POST['paintingid'];
 
-//$exhibition = $_POST['exhibition'];
+$artists = $_POST['artists'];
 $paintingname = $_POST['paintingname'];
 $desc = $_POST['desc'];
 $medium = $_POST['medium'];
 $paintingyear = $_POST['paintingyear'];
-$paintingdate = $_POST['paintingdate'];
+$referenceno = $_POST['referenceno'];
 $price = $_POST['price'];
-$available_at = $_POST['available_at'];
-$status = $_POST['status'];
+$signature = $_POST['signature'];
+$dimension = $_POST['dimension'];
 
-$exhibitionarr = $_POST['exhibition'];
+// $exhibitionarr = $_POST['exhibition'];
 
 $imgFile = $_FILES['ImageFile'];
 
@@ -104,14 +106,13 @@ if ($fileuploadflag == true) {
 
 
         $query1 = "update exhibition_paintings set "
-                . "name = :name,image = :image,description = :description,medium = :medium,"
-                . "year= :year,fulldate = :fulldate,price = :price,"
-                . "currently_available_at = :currently_available_at,status = :status,updated_at = :updated_at "
+                . "artist_id = :artist_id,name = :name,image = :image,reference_no = :reference_no,signature = :signature,dimension = :dimension,description = :description,medium = :medium,"
+                . "year= :year,price = :price,"
+                . "updated_at = :updated_at "
                 . " where id=:paintingid";
-        $bind1 = array(':name' => $paintingname,
-            ':image' => $newImageName, ':description' => $desc, ':medium' => $medium,
-            ':year' => $paintingyear, ':fulldate' => $paintingdate, ':price' => $price,
-            ':currently_available_at' => $available_at, ':status' => $status,
+        $bind1 = array(':artist_id' => $artists, ':name' => $paintingname,
+            ':image' => $newImageName, ':reference_no' => $referenceno, ':dimension' => $dimension, ':signature' => $signature, ':description' => $desc, ':medium' => $medium,
+            ':year' => $paintingyear, ':price' => $price,            
             ':updated_at' => $datetime, ':paintingid' => $paintingid);
         $stmt1 = $conn->prepare($query1);
 //echo PdoDebugger::show($query1, $bind1);
@@ -155,21 +156,21 @@ if ($fileuploadflag == true) {
 
 
             $_SESSION['succ'] = "Painting is edited successfully";
-            goto_location("edit-exhibition-painting.php?painting_id=" . $paintingid . "&artist_id=" . $artistid);
+            goto_location("edit-exhibition-painting.php?painting_id=" . $paintingid . "&exibition_id=" . $exibition_id);
         } else {
             $_SESSION['fail'] = "Painting is not edited";
-            goto_location("edit-exhibition-painting.php?painting_id=" . $paintingid . "&artist_id=" . $artistid);
+            goto_location("edit-exhibition-painting.php?painting_id=" . $paintingid . "&exibition_id=" . $exibition_id);
         }
     } catch (PDOException $pe) {
         $err = true;
         $er = db_error($pe->getMessage()) . '. Check that relevant fields like Info tab are completed';
 
         $_SESSION['fail'] = $er;
-        goto_location("edit-exhibition-painting.php?painting_id=" . $paintingid . "&artist_id=" . $artistid);
+        goto_location("edit-exhibition-painting.php?painting_id=" . $paintingid . "&exibition_id=" . $exibition_id);
     }
 } else {
 
     $_SESSION['fail'] = "Artist photo is not added";
-    goto_location("edit-exhibition-artist.php?artist_id=" . $artistid);
+    goto_location("edit-exhibition-artist.php?exibition_id=" . $exibition_id);
 }
 

@@ -1,3 +1,4 @@
+<script src="//cdn.ckeditor.com/4.13.1/full/ckeditor.js"></script>
 <div class="col-sm-9 col-md-9">
 
     <div class="panel panel-default">
@@ -39,7 +40,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="tags">Description</label>
-                                <textarea class="form-control" rows="3" name="desc"><?php echo $exhibitionarr['description'] ?></textarea>
+                                <textarea class="form-control ckeditor" rows="3" name="desc"><?php echo $exhibitionarr['description'] ?></textarea>
                             </div>
 
 
@@ -78,11 +79,11 @@
                                 <textarea class="form-control" rows="2" name="exfull_address"><?php echo $exhibitionarr['full_address'] ?></textarea>
                             </div>
 
-                            <div class="form-group">
+                            <!-- <div class="form-group">
                                 <label for="stock">Exhibition Status</label>
                                 <select class="form-control" name="status">
-                                    <option value="<?php echo $exhibitionarr['status'] ?>">
-                                        <?php
+                                    <option value="?php echo $exhibitionarr['status'] ?>">
+                                        ?php
                                         if ($exhibitionarr['status'] == '0') {
                                             echo 'Archived';
                                         } else if ($exhibitionarr['status'] == '1') {
@@ -96,7 +97,7 @@
                                     <option value="0">Archived</option>
                                     <option value="2">Canceled</option>
                                 </select>
-                            </div>
+                            </div> -->
 
 
                             <div class="row">

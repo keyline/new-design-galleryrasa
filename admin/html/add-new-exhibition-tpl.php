@@ -1,3 +1,5 @@
+
+<script src="//cdn.ckeditor.com/4.13.1/full/ckeditor.js"></script>
 <div class="col-sm-9 col-md-9">
 
     <div class="panel panel-default">
@@ -6,6 +8,10 @@
         </div>
         <div class="panel-body">
             <div role="tabpanel">
+
+                <br>
+                <a class="btn btn-info" href="exhibition-list.php">Back to Exhibiiton List</a>
+                <br>
                 
                 <?php
                 if (isset($_SESSION['succ'])) {
@@ -38,7 +44,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="tags">Description</label>
-                                <textarea class="form-control" rows="3" name="desc"></textarea>
+                                <textarea class="form-control ckeditor" rows="3" name="desc"></textarea>
                             </div>
 
 
@@ -69,14 +75,14 @@
                                 <textarea class="form-control" rows="2" name="exfull_address"></textarea>
                             </div>
 
-                            <div class="form-group">
+                            <!-- <div class="form-group">
                                 <label for="stock">Exhibition Status</label>
                                 <select class="form-control" name="status">
                                     <option value="1">Open</option>
                                     <option value="0">Archived</option>
                                     <option value="2">Canceled</option>
                                 </select>
-                            </div>
+                            </div> -->
 
 
                             <div class="row">

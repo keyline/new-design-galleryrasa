@@ -39,6 +39,16 @@
                                 <input type="text" class="form-control" id="exname" name="artistname" required="" value="<?php echo $artistarr['artist_name'] ?>">
                             </div>
                             <div class="form-group">
+                                <label for="tags">Year of birth</label>
+                                <input type="text" class="form-control" name="birth" value="<?php echo $artistarr['artist_birth'] ?>">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="tags">Year of death</label>
+                                <input type="text" class="form-control" name="death" value="<?php echo $artistarr['artist_death'] ?>">
+                            </div>
+
+                            <div class="form-group">
                                 <label for="tags">Description</label>
                                 <textarea class="form-control" rows="3" name="desc"><?php echo $artistarr['artist_description'] ?></textarea>
                             </div>

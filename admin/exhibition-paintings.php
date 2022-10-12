@@ -7,9 +7,11 @@ require_once("../" . INCLUDED_FILES . "functionsInc.php");
 check_auth_admin();
 $conn = dbconnect();
 
-$artist_id = $_GET['artist_id'];
+// $artist_id = $_GET['artist_id'];
+$exibition_id = $_GET['exibition_id'];
 
-$artistarr = singleexhibitionartist($artist_id);
+// $artistarr = singleexhibitionartist($artist_id);
+$exhibitionarr = singleexhibition($exibition_id);
 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
     print "<pre>";
@@ -17,12 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 } else {
     try {
 
-        $sql = "SELECT exhibition_paintings.*,exhibition_medium.medium_name medium_name "
-                . "FROM exhibition_paintings,exhibition_medium "
-                . "where "
-                . ""
-                . "exhibition_paintings.medium = exhibition_medium.id and "
-                . "exhibition_paintings.artist_id= '$artist_id' ORDER BY exhibition_paintings.year";
+        $sql = "SELECT exhibition_paintings.*, exhibition_artists.artist_name FROM `exhibition_paintings` LEFT JOIN exhibition_artists ON exhibition_paintings.artist_id = exhibition_artists.id WHERE exhibition_paintings.exhibition_id = $exibition_id ";
         $q = $conn->prepare($sql);
        
         $q->execute();
@@ -32,20 +29,23 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             
             $painting_list[] = array(
                 'id' => $row['id'],
-                'artist_id' => $row['artist_id'],
+                'exhibition_id' => $row['exhibition_id'],
+                'artist_name' => $row['artist_name'],
                 'name' => $row['name'],
+                'reference_no' => $row['reference_no'],
                 'image' => $row['image'],
                 'dimension' => $row['dimension'],
+                'signature' => $row['signature'],
                 'description' => $row['description'],
                 'medium' => $row['medium'],
                 'year' => $row['year'],
-                'fulldate' => $row['fulldate'],
+                // 'fulldate' => $row['fulldate'],
                 'price' => $row['price'],
-                'currently_available_at' => $row['currently_available_at'],
-                'status' => $row['status'],
+                // 'currently_available_at' => $row['currently_available_at'],
+                // 'status' => $row['status'],
                 'created_at' => $row['created_at'],
                 'updated_at' => $row['updated_at'],
-                'medium_name' => $row['medium_name']
+                // 'medium_name' => $row['medium_name']
             );
         }
     } catch (PDOException $pe) {
