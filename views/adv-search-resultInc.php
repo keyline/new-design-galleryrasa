@@ -46,6 +46,9 @@
                                                             
                                                             
                                                         </div>
+                                                        <div class="dropdown">
+                                                            {filter_search_subcategory_list}
+                                                        </div>
                                                         <div class="drop-form">
                                                                 <a href="#" class="advanced-btn" data-toggle="modal" data-target="#advancedModal">Advanced Search<span class="material-icons">manage_search</span>
                                                                 </a>
