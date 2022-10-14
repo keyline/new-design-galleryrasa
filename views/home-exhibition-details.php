@@ -50,25 +50,44 @@
                                     $date_time = $k['from_exhibition_date'];
                                     $dt = $k['end_exhibition_date'];
                                     $date_time = strtotime(str_replace(',', '', $date_time));
-                                    $date = date('jS M',$date_time);
+                                    $date = date('jS M, Y',$date_time);
                                     $time = date('h:i A',$date_time);
                                     $dt = strtotime(str_replace(',', '', $dt));
-                                    $d = date('jS M',$dt);
+                                    $d = date('jS M, Y',$dt);
                                     $t = date('h:i A',$dt);
 
                                     echo $date .' to '. $d;?>
                                 </li>
-                                <li><span class="material-icons">watch_later</span>
-                                <?php echo $time .' to '. $t; ?>
-                                <!-- 11:00 HRS - 18:00 HRS IST -->
-                                </li>
+                                <!-- <li><span class="material-icons">watch_later</span>
+                                ?php echo $time .' to '. $t; ?>
+                                 11:00 HRS - 18:00 HRS IST
+                                </li> -->
                                 <li><span class="material-icons">festival</span><?php echo $k['city'] .','. $k['full_address']; ?></li>
 
 
                             </ul>
                         </div>
                         <div class="exhibition-search-content">
-                            <?php echo $k['description']; ?>
+                            <?php echo substr($k['description'],0,300);if (substr($k['description'],301)) {  ?>
+                            <span id="dots">...</span>
+                            <span id="more"><?php echo substr($k['description'],301,2000); ?></span>
+                            <button onclick="myFunction()" id="myBtn">Read more</button>
+                        <?php } ?>
+                        </div>
+                        <div class="exhibition-search-content">
+                            <?php echo substr($k['essay_2'],0,240);if($k['essay_2']){  ?>                        
+                            <span id="dots1">...</span>
+                            <span id="more1"><?php echo substr($k['essay_2'],241,2000); ?></span>
+                            <button onclick="myFunction1()" id="myBtn1">Read more</button>
+                            <?php } ?>
+                        </div>
+                        <div class="exhibition-search-content">
+                            <?php echo substr($k['essay_3'],0,240);if($k['essay_3']){ ?>
+
+                            <span id="dots2">...</span>
+                            <span id="more2"><?php echo substr($k['essay_3'],241,2000); ?></span>
+                            <button onclick="myFunction2()" id="myBtn2">Read more</button>
+                        <?php } ?>
                         </div>
                         <!-- <div class="exhibition-search-content">
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sed orci eget nulla ultrices accumsan. Integer rhoncus metus sit amet lacinia posuere.
@@ -123,13 +142,13 @@
                                                     <?php echo $v['artist_name']; ?>
                                                 </div>
                                                 <div class="exhibition-content">
-                                                    <?php echo $v['name']; ?> , <?php echo $v['year']; ?>
+                                                    <?php echo $v['name']; ?>,<?php echo $v['year']; ?>
                                                 </div>
                                                 <div class="artist-year">
-                                                    <?php echo $v['medium']; ?>
+                                                    <?php echo ($v['medium']); ?>
                                                 </div>
                                                 <div class="artist-year">
-                                                    <?php echo $v['dimension']; ?>
+                                                    <?php echo ($v['dimension']); ?>
                                                 </div>
                                                 <!-- <div class="artist-year">
                                                     ?php echo $v['year']; ?>
@@ -191,3 +210,5 @@
                             </div>
 </div>
 </main>
+
+

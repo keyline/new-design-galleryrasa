@@ -40,14 +40,20 @@
 
                             <div class="form-group">
                                 <label for="pname">Exhibition Name</label>
-                                <input type="text" class="form-control" id="exname" name="exname" required="">
+                                <textarea class="form-control ckeditor" id="exname" name="exname" required=""></textarea>
                             </div>
                             <div class="form-group">
-                                <label for="tags">Description</label>
+                                <label for="tags">Essay1</label>
                                 <textarea class="form-control ckeditor" rows="3" name="desc"></textarea>
                             </div>
-
-
+                            <div class="form-group">
+                                <label for="tags">Essay2</label>
+                                <textarea class="form-control ckeditor" rows="3" name="desc2"></textarea>
+                            </div> 
+                            <div class="form-group">
+                                <label for="tags">Essay3</label>
+                                <textarea class="form-control ckeditor" rows="3" name="desc3"></textarea>
+                            </div>
 
                             <div class="form-group">
                                 <label for="tags">Photo</label>
