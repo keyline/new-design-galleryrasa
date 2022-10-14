@@ -321,11 +321,11 @@
                                             List of Exhibitions
                                         </a>
                                     </div>
-                                    <div class="list-group" >
+                                    <!-- <div class="list-group" >
                                         <a href="exhibition-artists.php" class="list-group-item">
                                             Exhibition Artists
                                         </a>
-                                    </div>
+                                    </div> -->
                                 </div>
                                 
                             </div>

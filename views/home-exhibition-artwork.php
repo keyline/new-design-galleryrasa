@@ -106,27 +106,36 @@ echo "<a href='$go_back'>Go Back</a>"; -->
                                     
 
                                     <div class="right-details">
-                                        <?php foreach($exrow as $k) {?>
+                                        <?php foreach($exrow as $k){?>
                                         <div class="exhibition-search-title">
                                             <?php 
                                             if (!empty($k['artist_death'])) {
 
-                                                echo $k['artist_name'] .'('. $k['artist_birth'] .'-'. $k['artist_death'] .')';
-                                            }
+                                                echo $k['artist_name'] ;?>
+                                                <span class="exhibition-span-title">
+                                                    <?php
+                                            echo '('. $k['artist_birth'] .'-'. $k['artist_death'] .')';?>
+                                                </span>
+                                            <?php }
+                                            
                                             else{
-                                            echo $k['artist_name'] .'(b '. $k['artist_birth'] .')' ;
-                                            }
+                                            echo $k['artist_name'] ;?>
+                                            <span class="exhibition-span-title">
+                                            <?php 
+                                            echo 'b.'. $k['artist_birth'] ;?>
+                                            </span>
+                                            <?php }
                                             ?>
                                         </div>
                                         <div class="artist-name">
-                                            <?php echo $k['name']; ?>
+                                            <?php echo $k['name'] .', '. $k['year']; ?>
                                         </div>
                                         <div class="exhibition-search-content">
                                             <?php echo $k['description']; ?>
                                         </div>   
                                     <?php } ?>
                                         <div class="artwork-details">
-                                            <div class="details-box">
+                                            <!-- <div class="details-box">
                                                 <div class="details-img">
                                                     <span class="material-icons">info</span>
 
@@ -135,23 +144,23 @@ echo "<a href='$go_back'>Go Back</a>"; -->
                                                 <div class="details-title">
                                                     Details
                                                 </div>
-                                            </div>
+                                            </div> -->
                                             <?php 
                                                 foreach($exartwork as $v) {?>
                                             <div class="details-content">
-                                                Base: <span><?php echo $v['medium']; ?></span>
+                                                <!-- Base: --> <span><?php echo $v['medium']; ?></span>
                                             </div>
                                             <div class="details-content">
-                                                Dimensions: <span><?php echo $v['dimension']; ?></span>
+                                                <!-- Dimensions: --> <span><?php echo $v['dimension']; ?></span>
+                                            </div>
+                                            <!-- <div class="details-content">
+                                                 Year:  <span>?php echo $v['year']; ?></span>
+                                            </div> -->
+                                            <div class="details-content">
+                                                <!-- Info: --> <span><?php echo $v['reference_no']; ?></span>
                                             </div>
                                             <div class="details-content">
-                                                Year: <span><?php echo $v['year']; ?></span>
-                                            </div>
-                                            <div class="details-content">
-                                                Info: <span>Detail here</span>
-                                            </div>
-                                            <div class="details-content">
-                                                Info 2: <span>Detail here</span>
+                                                <!-- Info 2: --> <span><?php echo $v['price']; ?></span>
                                             </div>
                                         <?php } ?>
 

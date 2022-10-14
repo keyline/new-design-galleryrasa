@@ -24,6 +24,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 // $slug = strtolower(clean($_POST['exname']); 
     $exname = $_POST['exname'];
     $desc = $_POST['desc'];
+    $desc2 = $_POST['desc2'];
+    $desc3 = $_POST['desc3'];
     $start_exdate = $_POST['start_exdate'];
     $end_exdate = $_POST['end_exdate'];
     $excity = $_POST['excity'];
@@ -100,9 +102,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             $err = false;
 
 
-            $query1 = "insert into exhibition(exhibition_name,description,photo,from_exhibition_date,end_exhibition_date,city,full_address,created_at,updated_at) "
-                    . "values(:exhibition_name,:description,:photo,:from_exhibition_date,:end_exhibition_date,:city,:full_address,:created_at,:updated_at)";
-            $bind1 = array(':exhibition_name' => $exname, ':description' => $desc, ':photo' => $newImageName,
+            $query1 = "insert into exhibition(exhibition_name,description,essay_2,essay_3,photo,from_exhibition_date,end_exhibition_date,city,full_address,created_at,updated_at) "
+                    . "values(:exhibition_name,:description,:essay_2,:essay_3,:photo,:from_exhibition_date,:end_exhibition_date,:city,:full_address,:created_at,:updated_at)";
+            $bind1 = array(':exhibition_name' => $exname, ':description' => $desc, ':essay_2' => $desc2, ':essay_3' => $desc3, ':photo' => $newImageName,
                 ':from_exhibition_date' => $start_exdate, ':end_exhibition_date' => $end_exdate, ':city' => $excity, ':full_address' => $exfull_address, ':created_at' => $datetime,
                 ':updated_at' => $datetime);
             $stmt1 = $conn->prepare($query1);
