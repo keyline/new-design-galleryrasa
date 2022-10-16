@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $getResult = array();
 
 
-    $_POST['all-search-entry'] = 'entryPoint';
+    //$_POST['all-search-entry'] = 'entryPoint';
 
     $qry_arr = filter_var_array($_POST, FILTER_SANITIZE_STRING);
     //print_r($qry_arr);exit;
@@ -192,7 +192,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
          * After Left search button POST
          * Search query
          */
-        // print_r($_POST);
+        //print_r($_POST);
 
         foreach ($_POST as $k => $v) {
             if ($k == 'submitButton' or $k == 'objSearch') {
@@ -209,9 +209,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         /**
          * Pushing left search params to $_SESSION['fParam']
          */
-//        print "<pre>";
-//        print_r($_SESSION['fParam']);
-//        print_r($params_qry);
+        //print "<pre>";
+        //print_r($_SESSION['fParam']);
+        //print_r($params_qry);
         //Changing structue of the $params_qry as to SESSION variable structure
         foreach ($params_qry as $key => $val) {
             $attr = $key;

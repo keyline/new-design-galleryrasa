@@ -18,12 +18,11 @@ $conn = dbconnect();
 $adminsettingarr = get_admin_setting();
 
 if (isset($_SESSION['user-id'])) {
-
     //   echo count_click('visual-archive',$_GET['pid']);
     $userflag = true;
 
 
-// cedit portion is optioanal    
+// cedit portion is optioanal
 //    $cutcreditrow = get_customer_credit($_SESSION['user-id']);
 //
 //    if (!empty($cutcreditrow)) {
@@ -224,7 +223,7 @@ if (isset($_SESSION['user-id'])) {
 //</div>';
 //        }
 //    }
-//    
+//
 } else {
     $userflag = false;
     $userflagmsg = '<h1 class="filmName"><a href="../login-register.php">Login</a> to view the details</h1>';
@@ -255,38 +254,38 @@ WHERE t.product_id =" . $pid . ")) as tbl2 GROUP BY tbl2.n, tbl2.an ORDER BY tbl
         if ($count) {
             $rows = $q->fetchAll();
         }
-        
+
 //        print('<pre>');
 //        print_r($rows);
-        
-        
+
+
         $productnameflag = 0;
         $classificationflag = 0;
-        foreach($rows as $k1 => $v1){
-            if($v1['alias']=="Name of the {{Product}}" && $v1['attribute_name']=="va_title_of_parent"){
+        foreach ($rows as $k1 => $v1) {
+            if ($v1['alias']=="Name of the {{Product}}" && $v1['attribute_name']=="va_title_of_parent") {
                 $productnameflag = 1;
             }
-            if($v1['alias']=="Classification" && $v1['attribute_name']=="va_classification"){
+            if ($v1['alias']=="Classification" && $v1['attribute_name']=="va_classification") {
                 $classificationflag = 1;
                 $clval = $v1['value'];
             }
         }
-        
-        
-        if($productnameflag == 1 && $classificationflag == 1){
+
+
+        if ($productnameflag == 1 && $classificationflag == 1) {
             $cntrows = count($rows);
             $cntindex = 0;
             foreach ($rows as $k2 => $v2) {
                 if ($v2['alias']=="Name of the {{Product}}" && $v2['attribute_name']=="va_title_of_parent") {
-                    $rows[$cntindex]['alias'] = 'Name of the '.$clval;                   
+                    $rows[$cntindex]['alias'] = 'Name of the '.$clval;
                 }
-                
-               $cntindex++; 
+
+                $cntindex++;
             }
         }
-        
-        
-        
+
+
+
         if (!empty($rows)) {
             $data = array();
             foreach ($rows as $row) {
@@ -329,7 +328,10 @@ WHERE t.product_id =" . $pid . ")) as tbl2 GROUP BY tbl2.n, tbl2.an ORDER BY tbl
         //Prepare html list for attributes
         $dbKeys = get_attrKeys_by_category('Visual Archive');
 
-        $ommitKey = array('Name of Visual Archive' => 1, 'Language' => 1,);
+    //    $ommitKey = array('Name of Visual Archive' => 1, 'Language' => 1,);
+
+        $ommitKey = array('Name of Visual Archive' => 1,); //Changed due to client required
+
 
         $contentHtml = '';
 
@@ -359,21 +361,19 @@ WHERE t.product_id =" . $pid . ")) as tbl2 GROUP BY tbl2.n, tbl2.an ORDER BY tbl
 
                 // print_r($value);
         //    if (array_key_exists("Place Of Publication", $value)) {
-        //       echo 'hello'; 
+        //       echo 'hello';
         //    }
                 foreach ($value as $k => $v) {
-
-
-
-                    if ($k == 'Language')
+                    if ($k == 'Language') {
                         $language = $v;
+                    }
 
-                    if (array_key_exists($k, $ommitKey))
+                    if (array_key_exists($k, $ommitKey)) {
                         continue;
+                    }
 
 
                     if (array_key_exists("Size In cms", $value)) {
-
                         if ($k == "Size In cms") {
                             $k = "Size";
 
@@ -394,14 +394,11 @@ WHERE t.product_id =" . $pid . ")) as tbl2 GROUP BY tbl2.n, tbl2.an ORDER BY tbl
                             }
 
                             if (($k == "Size") && (strpos($v, 'X') != true) && (strpos($v, 'x') != true)) {
-
-
                                 $cmarrchk = false;
                             }
 
 
                             if ($cmarrchk == false) {
-
                                 $cmarr1 = explode('x', $v);
                                 $separator = 'x';
 
@@ -411,8 +408,9 @@ WHERE t.product_id =" . $pid . ")) as tbl2 GROUP BY tbl2.n, tbl2.an ORDER BY tbl
 
                                 foreach ($lengtharr as $kl1 => $kv1) {
                                     foreach ($kv1 as $kv1key => $kv1val) {
-                                        if ($kv1val != '')
+                                        if ($kv1val != '') {
                                             $length = $kv1val;
+                                        }
                                     }
                                 }
 
@@ -426,23 +424,18 @@ WHERE t.product_id =" . $pid . ")) as tbl2 GROUP BY tbl2.n, tbl2.an ORDER BY tbl
                                 if (strpos($v, 'cms') !== false) {
                                     $v = $v . '; ' . $inchesstr . '';
                                 } else {
-
                                     $v = $v . ' cms; ' . $inchesstr . '';
                                 }
                             } else {
-
-
-
                                 if (count($cmarr1) == '2') {
-
-
                                     preg_match_all('!\d+\.*\d*!', trim($cmarr1[0]), $lengtharr);
 
 
                                     foreach ($lengtharr as $kl1 => $kv1) {
                                         foreach ($kv1 as $kv1key => $kv1val) {
-                                            if ($kv1val != '')
+                                            if ($kv1val != '') {
                                                 $length = $kv1val;
+                                            }
                                         }
                                     }
 
@@ -455,8 +448,9 @@ WHERE t.product_id =" . $pid . ")) as tbl2 GROUP BY tbl2.n, tbl2.an ORDER BY tbl
 
                                     foreach ($breadtharr as $kl2 => $kv2) {
                                         foreach ($kv2 as $kv2key => $kv2val) {
-                                            if ($kv2val != '')
+                                            if ($kv2val != '') {
                                                 $breadth = $kv2val;
+                                            }
                                         }
                                     }
 
@@ -481,14 +475,13 @@ WHERE t.product_id =" . $pid . ")) as tbl2 GROUP BY tbl2.n, tbl2.an ORDER BY tbl
                                     }
                                 }
                                 if (count($cmarr1) == '3') {
-
-
                                     preg_match_all('!\d+\.*\d*!', trim($cmarr1[0]), $lengtharr);
 
                                     foreach ($lengtharr as $kl1 => $kv1) {
                                         foreach ($kv1 as $kv1key => $kv1val) {
-                                            if ($kv1val != '')
+                                            if ($kv1val != '') {
                                                 $length = $kv1val;
+                                            }
                                         }
                                     }
 
@@ -499,8 +492,9 @@ WHERE t.product_id =" . $pid . ")) as tbl2 GROUP BY tbl2.n, tbl2.an ORDER BY tbl
 
                                     foreach ($breadtharr as $kl2 => $kv2) {
                                         foreach ($kv2 as $kv2key => $kv2val) {
-                                            if ($kv2val != '')
+                                            if ($kv2val != '') {
                                                 $breadth = $kv2val;
+                                            }
                                         }
                                     }
 
@@ -510,8 +504,9 @@ WHERE t.product_id =" . $pid . ")) as tbl2 GROUP BY tbl2.n, tbl2.an ORDER BY tbl
 
                                     foreach ($heightarr as $kl3 => $kv3) {
                                         foreach ($kv3 as $kv3key => $kv3val) {
-                                            if ($kv3val != '')
+                                            if ($kv3val != '') {
                                                 $height = $kv3val;
+                                            }
                                         }
                                     }
 
@@ -546,7 +541,6 @@ WHERE t.product_id =" . $pid . ")) as tbl2 GROUP BY tbl2.n, tbl2.an ORDER BY tbl
 
 
                     if (array_key_exists("Publisher/s", $value)) {
-
                         //echo 'hello';
 
                         if ($k == 'Publisher/s') {
@@ -571,9 +565,6 @@ WHERE t.product_id =" . $pid . ")) as tbl2 GROUP BY tbl2.n, tbl2.an ORDER BY tbl
 
 
                     if (array_key_exists("Date of Publication", $value)) {
-
-
-
                         if ($k == 'Date of Publication') {
                             $arr2[$arr2index] = 'Date of Publication';
 
@@ -602,10 +593,6 @@ WHERE t.product_id =" . $pid . ")) as tbl2 GROUP BY tbl2.n, tbl2.an ORDER BY tbl
 
 
                     if (array_key_exists("Date of Artwork", $value)) {
-
-
-
-
                         if ($k == 'Date of Artwork') {
                             $arr4[$arr4index] = 'Date of Artwork';
 
@@ -627,9 +614,6 @@ WHERE t.product_id =" . $pid . ")) as tbl2 GROUP BY tbl2.n, tbl2.an ORDER BY tbl
 
 
                     if (array_key_exists("Gallery/Museum", $value)) {
-
-
-
                         if ($k == 'Gallery/Museum') {
                             $arr5[$arr5index] = 'Gallery/Museum';
 
@@ -653,14 +637,13 @@ WHERE t.product_id =" . $pid . ")) as tbl2 GROUP BY tbl2.n, tbl2.an ORDER BY tbl
                     $arr3index++;
 
                     //$contentHtml .= "<li><strong>" . $k . "</strong>: " . $v . "</li><hr>";
-                    //if($v[$i][]$v[$i]['m_is_print']) 
+                    //if($v[$i][]$v[$i]['m_is_print'])
                 }
             }
         }
 
 
         if (in_array("Publisher/s", $arr3)) {
-
             $keyofarr3 = array_search('Publisher/s', $arr3);
             $arr3val[$keyofarr3] = $arr1val[0];
         }
@@ -709,7 +692,6 @@ WHERE t.product_id =" . $pid . ")) as tbl2 GROUP BY tbl2.n, tbl2.an ORDER BY tbl
                     $imageDetails .= '<div class="details-img box target ' . $k . '">';
                     if (is_array($v)) {
                         for ($i = 0; $i < count($v); $i++) {
-
                             $imgarr = explode(".", $v[$i]['name']);
 
                             $ext = end($imgarr);
@@ -719,9 +701,7 @@ WHERE t.product_id =" . $pid . ")) as tbl2 GROUP BY tbl2.n, tbl2.an ORDER BY tbl
                             $orgnameexcptextnd = '';
                             $imgorgcnt = $imgarrcnt - 1;
                             for ($l = 0; $l < $imgorgcnt; $l++) {
-
                                 if ($l == ($imgorgcnt - 1)) {
-
                                     $orgnameexcptextnd .= $imgarr[$l];
                                 } else {
                                     $orgnameexcptextnd .= $imgarr[$l] . '.';
@@ -737,7 +717,7 @@ WHERE t.product_id =" . $pid . ")) as tbl2 GROUP BY tbl2.n, tbl2.an ORDER BY tbl
                             //         //. '</a>'
                             //         . '</div>
                             //     ';
-                            
+
                             $imageDetails .= '<img class="img-fluid" src="' . '../artworkimage?img=' . urlencode($orgnameexcptextnd) . '&ext=' . $ext . '">'
                             //. '</a>'
                             . '</div>';
@@ -801,7 +781,6 @@ if ($userflag == false) {
     $replace = array($userflagmsg, '', '', '', '', '');
     echo $detailsView = str_replace($search, $replace, $list);
 } else {
-
     $list = file_get_contents(VIEWS_FOLDER . 'visualarchive-detailsInc.php');
     $search = array('{usercheck}',  '{imageDetails}', '{productName}', '{language}', '{attributeList}', '{download}', '{viewImage}' , '{singleImg}' );
     $replace = array('',  $imageDetails, $productName, $language, $contentHtml, $downloadform, $viewImage, $singleImg );
@@ -820,4 +799,3 @@ include(INC_FOLDER . "footerInc.php");
         $("#myModal").modal('show');
     });
 </script>
-

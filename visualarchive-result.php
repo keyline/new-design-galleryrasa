@@ -8,7 +8,7 @@ $conn = dbconnect();
 
 $adminsettingarr = get_admin_setting();
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
-//Initialize variables
+    //Initialize variables
     $params = '';
     $paramCount = 0;
     $countofRows = 0;
@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $data = array();
     $keyword = '';
     $getResult = array();
-//$entryPoint = [];
+    //$entryPoint = [];
 
 
 
@@ -31,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         }
     }
 
-//echo $_POST['all-search-entry'];
+    //echo $_POST['all-search-entry'];
     if (isset($_POST['all-search-entry'])) {
         $_POST['all-search-entry'] = 'entryPoint';
     }
@@ -39,8 +39,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
     $qry_arr = filter_var_array($_POST, FILTER_SANITIZE_STRING);
     if (empty($qry_arr)) {
-
-
         goto_location("visualarchive-search");
         exit;
     }
@@ -48,7 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
 
     if ((isset($_POST['srchButtonEntryPoint']) && $_POST['srchButtonEntryPoint'] == 'entryPoint') || (isset($_POST['all-search-entry']) && $_POST['all-search-entry'] == 'entryPoint')) {
-//print_r($_POST);
+        //print_r($_POST);
 //        print_r($_POST['visualarchive']);
 //        exit;
 
@@ -61,8 +59,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         unset($_SESSION['fParam']);
         $searchTerm = 'OR';
         $limitCount = 3;
-//For displaying artist searched for
-//print_r($qry_arr);
+        //For displaying artist searched for
+        //print_r($qry_arr);
 
         $emptyflag = true;
 
@@ -71,7 +69,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         if (count($qry_arr) > 0) {
             foreach ($qry_arr as $k => $v) {
                 if ($k == 'visualarchive' || $k == 'searchall') {
-
 //                    print_r($v);
 //                    if ($v == 'va_artist') {
 //                        $v = 'artist';
@@ -82,13 +79,11 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
 
                     foreach ($v as $val) {
-
                         $exparr = explode(":", $val);
 
                         $cntarr = count($exparr);
 
                         if ($cntarr == '3') {
-
                             $newval = $exparr[0] . ":" . $exparr[1];
                             $entryPoint[] = extractKeyValuePairs($newval, ":");
                         } else {
@@ -101,7 +96,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             }
         }
 //
-//print_r($entryPoint);
+        //print_r($entryPoint);
 //        exit;
 
 
@@ -122,11 +117,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         if (empty($entryPoint)) {
             $params2 = [];
         } else {
-
-
             foreach ($entryPoint as $value) {
                 if (is_array($value)) {
-
                     foreach ($value as $k => $v) {
                         $params2[] = "(f.attribute_name='" . $k . "' AND v.value ='" . $v . "')";
                     }
@@ -137,7 +129,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
 
         if (empty($finalParam)) {
-
             $sql = 'SELECT
                     p.prodid AS id,            
                     p.prodname  AS n,
@@ -180,8 +171,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                             LEFT JOIN attr_common_flds_ecomc f ON v.attr_id = f.id
                             WHERE p.category_id = 19  GROUP BY t.product_id) order BY p.prodid, vam.va_image_id";
         } else {
-
-
             $sql = 'SELECT
                     p.prodid AS id,            
                     p.prodname  AS n,
@@ -227,7 +216,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
 
         $sql2 = $qry_img;
-        //echo $sql;
+    //echo $sql;
     } elseif (isset($_POST['submitButton']) && $_POST['submitButton'] == 'VisualArchiveSearch') {
         /**
          * After Left search button POST
@@ -236,13 +225,14 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         //print_r($_POST);
 
         foreach ($_POST as $k => $v) {
-
-            if ($k == 'submitButton' OR $k == 'objSearch')
+            if ($k == 'submitButton' or $k == 'objSearch') {
                 continue;
+            }
             $match = "-1";
             $str = implode(',', $v);
-            if (stripos($str, $match) !== false)
+            if (stripos($str, $match) !== false) {
                 continue;
+            }
             $params_qry[$k] = $v;
         }
 
@@ -267,9 +257,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         //Appending New search terms to $_SESSION['append'] after comparing $_SESSION['bParam']
         $sessAppend = array_map('unserialize', array_diff(array_map('serialize', $newArray), array_map('serialize', $_SESSION['fParam'])));
 
-        foreach ($sessAppend AS $newsess) {
+        foreach ($sessAppend as $newsess) {
             if (is_array($newsess)) {
-
                 $_SESSION['append'][] = $newsess;
             }
         }
@@ -286,13 +275,11 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         $arrayCount = 0;
         //print "<pre>";
         // print_r($params_qry);
-        foreach ($params_qry AS $k => $value) {
-
+        foreach ($params_qry as $k => $value) {
             $key = $k;
             $arrayCount += sizeof($value);
             if (is_array($value)) {
                 if ($key == 'year_range') {
-
                     $match = "-1";
 
                     $stringCheck = implode(" ", $params_qry['year_range']);
@@ -305,13 +292,12 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                         if ($i == 1) {
                             $queryInner .= " INNER JOIN ";
                         }
-                        if ($i >= 2 && $i <= $arrayCount)
+                        if ($i >= 2 && $i <= $arrayCount) {
                             $queryInner .= " ON t" . $j . ".product_id = t" . $i . ".product_id INNER JOIN ";
+                        }
                     }
-                }else {
-
-                    foreach ($value AS $v) {
-
+                } else {
+                    foreach ($value as $v) {
                         $j = $i++;
 
 //                    for($i = $j; $i<count($v); $i++)
@@ -322,8 +308,9 @@ p.category_id = 2 AND v.value='" . $v . "' AND f.attribute_name = '" . $k . "' G
                         if ($i == 1) {
                             $queryInner .= " INNER JOIN ";
                         }
-                        if ($i >= 2 && $i <= $arrayCount)
+                        if ($i >= 2 && $i <= $arrayCount) {
                             $queryInner .= " ON t" . $j . ".product_id = t" . $i . ".product_id INNER JOIN ";
+                        }
                     }
                 }
             }
@@ -332,12 +319,12 @@ p.category_id = 2 AND v.value='" . $v . "' AND f.attribute_name = '" . $k . "' G
         $count = strlen($queryInner);
         $queryInner = substr($queryInner, 0, ($count - 12));
 
-//*********************Debug Purpose*************//        
-//$queryInner .= "ON t" . $i .".product_id = t" .($i-1) . ".product_id";
+        //*********************Debug Purpose*************//
+        //$queryInner .= "ON t" . $i .".product_id = t" .($i-1) . ".product_id";
 //         echo $queryInner;
 //         echo $arrayCount . "<br>";
 //         echo $i;
-//*********************Debug Purpose*************//
+        //*********************Debug Purpose*************//
         //Wrapping Query Inner with outer query to get full query
 
 
@@ -373,12 +360,10 @@ p.category_id = 2 AND v.value='" . $v . "' AND f.attribute_name = '" . $k . "' G
                     WHERE m.product_id IN (SELECT t1.product_id FROM (%s))";
 
         $sql2 = sprintf($qry_img, $queryInner);
-        //echo $sql;
-    }else {
-
+    //echo $sql;
+    } else {
         foreach ($_SESSION['fParam'] as $value) {
             if (is_array($value)) {
-
                 foreach ($value as $k => $v) {
                     $params2[] = "(f.attribute_name='" . $k . "' AND v.value ='" . $v . "')";
                 }
@@ -470,7 +455,6 @@ p.category_id = 2 AND v.value='" . $v . "' AND f.attribute_name = '" . $k . "' G
         if (!empty($rows)) {
             $data = array();
             foreach ($rows as $row) {
-
                 //print_r($row['v']);
 //                $data[$row['n']][$row['an']][] = $row['v'];
                 $data[$row['id']][$row['n']][$row['an']][] = $row['v'];
@@ -501,7 +485,6 @@ p.category_id = 2 AND v.value='" . $v . "' AND f.attribute_name = '" . $k . "' G
 
         //$finalData = array_merge_recursive($data, $dataImage);
         if (!empty($dataImage) && !empty($data)) {
-
             $finalData = array_replace_recursive($data, $dataImage);
         } else {
             $finalData = $data;
@@ -512,7 +495,8 @@ p.category_id = 2 AND v.value='" . $v . "' AND f.attribute_name = '" . $k . "' G
         $baseHTML = '';
         $htmlRight = '';
 
-        function myComparison($a, $b) {
+        function myComparison($a, $b)
+        {
             return (key($a) > key($b)) ? 1 : -1;
         }
 
@@ -522,19 +506,6 @@ p.category_id = 2 AND v.value='" . $v . "' AND f.attribute_name = '" . $k . "' G
         //exit(0);
 
         if (!empty($finalData)) {
-
-
-
-
-
-
-
-
-
-
-
-
-
             $html = 1;
             $year_p = 'India';
             foreach ($finalData as $filmId => $films) {
@@ -583,8 +554,6 @@ p.category_id = 2 AND v.value='" . $v . "' AND f.attribute_name = '" . $k . "' G
                     if ($noofpublications == '') {
                         // $imagecount_html = '<div class="va_count_img order-2 mt-3">' . $credithtml . '&nbsp;</div>';
                     } else {
-
-
                         // $imagecount_html = '<div class="d-flex order-2 mt-3"><div class="mem_count_img">' . $credithtml . '&nbsp</div><div class="film-year">' . $noofpublications . '</div></div>';
                     }
                 }
@@ -593,7 +562,7 @@ p.category_id = 2 AND v.value='" . $v . "' AND f.attribute_name = '" . $k . "' G
 
                 /**
                  * Video part not required
-                 * 
+                 *
                   $video_mem = get_video($filmId);
                   if ((!isset($video_mem['video_link'])) || (trim($video_mem['video_link']) == '')) {
                   $video_link = '';
@@ -602,7 +571,7 @@ p.category_id = 2 AND v.value='" . $v . "' AND f.attribute_name = '" . $k . "' G
                   $video_link = $video_mem['video_link'];
                   $video_html = '<div class="mem-vdo"><a href="video.php?vdo=' . $video_mem['id'] . '" target="_blank"><i class="fa fa-film" aria-hidden="true"></i></a></div>';
                   }
-                 * 
+                 *
                  */
                 $video_html = '';
 
@@ -610,23 +579,11 @@ p.category_id = 2 AND v.value='" . $v . "' AND f.attribute_name = '" . $k . "' G
 
                 foreach ($films as $filmName => $film) {
                     if (is_array($film)) {
-
-
-
-
-
-
                         if (array_key_exists('image', $film)) {
                             foreach ($film as $k => $v) {
-
                                 if (is_array($v) && $k == 'image') {
                                     for ($i = 0; $i < count($v); $i++) {
-
                                         if (isset($_SESSION['user-id'])) {
-
-
-
-
                                             $baseHTML = '<div class="artist-box-doc">
                                             <div class="line-content">
                                             <a href="%s">
@@ -659,9 +616,8 @@ p.category_id = 2 AND v.value='" . $v . "' AND f.attribute_name = '" . $k . "' G
                                             $url = SITE_URL . "visualarchive-details/" . $filmId;
                                             $productName = $filmName;
                                             $productImg = (!empty($v[$i]['name'])) ? (ORG_SITE_URL . '/' . VA_THUMB_IMGS . $v[$i]['name']) : (SITE_URL . JS_FOLDER . 'holder.js/300x180/auto/text:' . NO_IMAGE);
-                                            $htmlRight .= sprintf($baseHTML,$url, $imagecount_html, $video_html, $productName, $productImg , $url, $productName);
+                                            $htmlRight .= sprintf($baseHTML, $url, $imagecount_html, $video_html, $productName, $productImg, $url, $productName);
                                         } else {
-
                                             $modalurl = 'data-toggle="modal" data-target="#exampleModal"';
 
                                             $modal = '<div class="modal fade vLogin rasa-new-modal" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -743,7 +699,7 @@ p.category_id = 2 AND v.value='" . $v . "' AND f.attribute_name = '" . $k . "' G
                                             $url = SITE_URL . "/visualarchive-details/" . $filmId;
                                             $productName = $filmName;
                                             $productImg = (!empty($v[$i]['name'])) ? (ORG_SITE_URL . '/' . VA_THUMB_IMGS . $v[$i]['name']) : (SITE_URL . JS_FOLDER . 'holder.js/300x180/auto/text:' . NO_IMAGE);
-                                            $htmlRight .= sprintf($baseHTML, $imagecount_html, $video_html, $productName, $productImg , $productName);
+                                            $htmlRight .= sprintf($baseHTML, $imagecount_html, $video_html, $productName, $productImg, $productName);
                                             //$htmlRight .= sprintf($baseHTML, $imagecount_html, $video_html, $url, $productName, $productImg, $productName);
                                             //echo $key . "::" . $v[$i]['name'] . "<br>";
 //                                        }
@@ -755,13 +711,7 @@ p.category_id = 2 AND v.value='" . $v . "' AND f.attribute_name = '" . $k . "' G
 
 
                         if (!array_key_exists('image', $film)) {
-
-
-
                             if (isset($_SESSION['user-id'])) {
-
-
-
                                 $baseHTML = '<div class="artist-box-doc">
                                 <div class="line-content">
                                 <a href="%s">
@@ -793,10 +743,8 @@ p.category_id = 2 AND v.value='" . $v . "' AND f.attribute_name = '" . $k . "' G
                                 $url = SITE_URL . "/visualarchive-details/" . $filmId;
                                 $productName = $filmName;
                                 $productImg = (SITE_URL . JS_FOLDER . 'holder.js/300x180/auto/text:' . NO_IMAGE);
-                                $htmlRight .= sprintf($baseHTML,$url, $imagecount_html, $video_html, $productName, $productImg , $url, $productName);
-
+                                $htmlRight .= sprintf($baseHTML, $url, $imagecount_html, $video_html, $productName, $productImg, $url, $productName);
                             } else {
-
                                 $modalurl = 'data-toggle="modal" data-target="#exampleModal"';
 
 
@@ -889,7 +837,7 @@ p.category_id = 2 AND v.value='" . $v . "' AND f.attribute_name = '" . $k . "' G
                                 $url = SITE_URL . "/visualarchive-details/" . $filmId;
                                 $productName = $filmName;
                                 $productImg = (SITE_URL . JS_FOLDER . 'holder.js/300x180/auto/text:' . NO_IMAGE);
-                                $htmlRight .= sprintf($baseHTML, $imagecount_html, $video_html, $productName, $productImg , $productName);
+                                $htmlRight .= sprintf($baseHTML, $imagecount_html, $video_html, $productName, $productImg, $productName);
                                 //$htmlRight .= sprintf($baseHTML, $imagecount_html, $video_html, $url, $productName, $productImg, $productName);
                                 //echo $key . "::" . $v[$i]['name'] . "<br>";
 //                                        }
@@ -902,10 +850,10 @@ p.category_id = 2 AND v.value='" . $v . "' AND f.attribute_name = '" . $k . "' G
 //                                    %s
 //                                    %s
 //                                    <a href="%s" target="_blank">
-//                                    
-//<img class="img-responsive product-image" alt="%s" src="%s"/></a></div>
-//                                   
-//<div class="product-caption">
+//
+                            //<img class="img-responsive product-image" alt="%s" src="%s"/></a></div>
+//
+                            //<div class="product-caption">
 //                                    <h4><a href="%s" target="_blank">%s </a></h4>
 //                                    </div></div>';
 //                            $url = SITE_URL . "/visualarchive-details/" . $filmId;
@@ -913,7 +861,7 @@ p.category_id = 2 AND v.value='" . $v . "' AND f.attribute_name = '" . $k . "' G
 //                            $productImg = (SITE_URL . JS_FOLDER . 'holder.js/300x180/auto/text:' . NO_IMAGE);
 //                            $htmlRight .= sprintf($baseHTML, $imagecount_html, $video_html, $url, $productName, $productImg, $url, $productName);
 //                            //$htmlRight .= sprintf($baseHTML, $video_html, $url, $productName, $productImg, $url, $productName);
-//                       
+//
                         }
                     }
                 }
@@ -956,9 +904,8 @@ p.category_id = 2 AND v.value='" . $v . "' AND f.attribute_name = '" . $k . "' G
 
 
     if ($html) {
-
         $keyword = str_replace("Va_artist:", "Artist: ", $keyword);
-        $keywordArr=explode(":",$keyword);        
+        $keywordArr=explode(":", $keyword);
         $first=str_replace("Artist", "(Artist) ", $keywordArr[0]);
         $second=$keywordArr[1];
         $keyword = $second.' '.$first;
@@ -968,8 +915,8 @@ p.category_id = 2 AND v.value='" . $v . "' AND f.attribute_name = '" . $k . "' G
 //        $list = file_get_contents(VIEWS_FOLDER . 'visualarchive.Inc.php');
 //        $search = array('{isShow}', '{keywordSearched}', '{countofRows}', '{rightPart}');
 //        $replace = array($styleDisplay, $keyword, $countofRows, $htmlRight);
-//        echo $memorabiliaView = str_replace($search, $replace, $list); 
-        
+//        echo $memorabiliaView = str_replace($search, $replace, $list);
+
         include('views/visualarchive.Inc.php');
     } else {
         $items = NO_PRODUCT_FOUND_MSG;

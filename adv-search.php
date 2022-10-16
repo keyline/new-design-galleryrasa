@@ -10,7 +10,6 @@ $html = 0;
 $conn = dbconnect();
 $advsearch = true;
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
-    unset($_SESSION['fParam']);
     //Initializing variables
     $html = $result_count = 0;
     $params = $subParams = '';
@@ -26,6 +25,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
     if (isset($_POST['adv_submit']) && $_POST['adv_submit'] == 'Search') {
         //echo "Case 1";
+        unset($_SESSION['fParam']);
+
         $advsearch = true;
 
         if (isset($_POST['author']) && trim($_POST['author']) !== "") {
@@ -190,7 +191,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             }
         }
 
-        $_SESSION['fParam'] = (!empty($new)) ? $new : null;
+        //$_SESSION['fParam'] = (!empty($new)) ? array_pop($new) : null;
 
         array_walk_recursive($new, function ($k, $v) use (&$new_arr) {
             //echo $k . "-" . $v . "<br>";
@@ -392,7 +393,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 //        print('<pre>');
 //        print_r($_POST);
 //        exit;
-        //echo "Case 2";
+        echo "Case 2";
         $advsearch = false;
         $qry_arr = $_POST;
         $params_qry = array();
@@ -418,7 +419,17 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             $params_qry[$k]= $v;
         }, array_keys($_SESSION['advParam']), $_SESSION['advParam']);
 
-        //print_r($params_qry);
+        //Setup previous search param into session
+        $previousCheckedElements= isset($_SESSION['fParam']) ? $_SESSION['fParam'] : [];
+        array_map(function ($k, $v) use (&$previousCheckedElements) {
+            $previousCheckedElements[$k]= $v;
+        }, array_keys($params_qry), $params_qry);
+        $_SESSION['fParam']= $previousCheckedElements;
+        print_r($params_qry);
+        echo "-----";
+        print_r($_SESSION['fParam']);
+        //echo "-----";
+        //print_r($previousCheckedElements);
         if (!(array_key_exists('reference_type', $params_qry)) && !(array_key_exists('language', $params_qry))) {
             foreach ($search as $m) {
                 $params_qry['reference_type'][] = $m;
