@@ -1482,8 +1482,8 @@ function left_filter_html($someArray = array(), $keys = array(), $count = array(
             $html .= "</ul></div></div></div>";
         }
     }
-    //Wrapping menu section 1
-    $html .= "</div></div>";
+    //Wrapping accordian / menu section 1
+    $html .= "</div>";
 
 
     if (array_key_exists('gregorian_year', $someArray)) {
@@ -1531,9 +1531,11 @@ function left_filter_html($someArray = array(), $keys = array(), $count = array(
                                                     {$options_to}
                                                     </div>
                                                 </div>";
+
+        //Closing accordian menu-sec
+        $html .= '</div></div>';
     }
-    //Closing accordian
-    $html .= '</div>';
+
     // submit input
     $html .= '<div class="apply-action"><button id="btnSubmit" type="submit" class="apply-btn" name="submitButton" value="BiblioSearch">apply filters</button></div>
                 <input id="objSearch" name="objSearch" type="hidden" value=""></form>';
@@ -2195,7 +2197,13 @@ function left_filter_html_adv($someArray = array(), $keys = array(), $count = ar
 
 
                         if (!empty($sessData)) {
-                            $checked2 = (in_array($value[$i], array_column($sessData, $key))) ? 'checked' : '';
+                            if (is_array($sessData[$key])) {
+                                //new added
+                                $checked2 = (in_array($value[$i], $sessData[$key])) ? 'checked' : '';
+                            } else {
+                                //old
+                                $checked2 = (in_array($value[$i], array_column($sessData, $key))) ? 'checked' : '';
+                            }
                         }
                         if ($value[$i] == 'Select All') {
                             $html .= "<li>
@@ -2270,17 +2278,20 @@ function left_filter_html_adv($someArray = array(), $keys = array(), $count = ar
                                                     {$options_to}
                                                     </div>
                                                 </div>";
+
+
+        //Closing accordian
+
+        $html .= '</div></div>';
     }
 
-    //Closing accordian
-    $html .= '</div>';
 
 
     // submit input
     $html .= '<div class="apply-action"><button id="btnSubmit" type="submit" class="apply-btn" name="submitButton" value="BiblioSearch">apply filters</button></div>
                 <input id="objSearch" name="objSearch" type="hidden" value=""></form>';
     //Closing menu section 2, menu
-    $html .= "</div></div>";
+    $html .= "</div>";
 
 
     return $html;
@@ -2686,7 +2697,7 @@ function memorabilia_left_search($array = array(), $keys = array(), $count = arr
                                             <div id=\"collapse_{$accordianHeaderKey}\" class=\"collapse\" aria-labelledby=\"headingOne\" data-parent=\"#accordionExample\">
                                                 <div class=\"card-body\">
                                                 <div class=\"card-form\" id=\"{$key}-header\"></div>
-                                                    <ul class=\"list-unstyled active collapse show\" id=\"{$key}\" style=\"\">";
+                                                    <ul class=\"list-unstyled autoheight_scrol active collapse show\" id=\"{$key}\" style=\"\">";
         if (is_array($value)) {
             /**
              * Checked values which are already stored in Session
@@ -2776,15 +2787,17 @@ function memorabilia_left_search($array = array(), $keys = array(), $count = arr
                                                     </div>
                                                 </div>";
         }
+
+        //Closing accordian
+        $html .= '</div></div>';
     }
 
-    //Closing accordian
-    $html .= '</div>';
+
     // submit input
-    $html .= '<div class="apply-action"><button id="btnSubmit" type="submit" class="apply-btn" name="submitButton" value="BiblioSearch">apply filters</button></div>
+    $html .= '<div class="apply-action"><button id="btnSubmit" type="submit" class="apply-btn" name="submitButton" value="MemorabilaSearch">apply filters</button></div>
                 <input id="objSearch" name="objSearch" type="hidden" value=""></form>';
-    //Closing menu section 2, menu
-    $html .= "</div></div>";
+    //Closing  menu
+    $html .= "</div>";
 
 
 
