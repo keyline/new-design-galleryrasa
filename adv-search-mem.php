@@ -9,9 +9,8 @@ $conn = dbconnect();
 
 $paramCount = 0;
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
-
     unset($_SESSION['fParam']);
-//Initialize variables
+    //Initialize variables
     $params = '';
     $paramCount = 0;
     $countofRows = 0;
@@ -42,8 +41,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         }
 
         foreach ($_POST as $k => $v) {
-            if ($k == 'adv_submit')
+            if ($k == 'adv_submit') {
                 continue;
+            }
 
             $params_qry[$k] = $v;
         }
@@ -106,7 +106,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             } elseif ($i == 0 && $keys[$i] == 'author') {
                 continue;
             } else {
-
                 $new[] = array(
                     $keys[$i] => $trimmed_array[$keys[$i]]
                 );
@@ -115,7 +114,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         //print_r($new);
         $_SESSION['fParam'] = (!empty($new)) ? $new : null;
 
-        array_walk_recursive($new, function($k, $v) use(&$new_arr) {
+        array_walk_recursive($new, function ($k, $v) use (&$new_arr) {
             // echo $k . "-" . $v . "<br>";
             $new_arr[] = $v . '-' . $k;
         });
@@ -140,10 +139,12 @@ p.category_id = 2 AND v.value like '%" . $params_qry['author'] . "%' GROUP BY t.
                     //$firstkey = $qk;
                     $firstkey = 'author';
                 }
-                if ($qk == 'author')
+                if ($qk == 'author') {
                     continue;
-                if ($qk == 'attr')
+                }
+                if ($qk == 'attr') {
                     continue;
+                }
                 $qry_inner .= " INNER JOIN (SELECT t.product_id FROM products_ecomc p LEFT JOIN product_attribute_value t ON p.prodid = t.product_id LEFT JOIN 
 attribute_value_ecomc v ON t.attribute_value_id = v.attr_value_id LEFT JOIN attr_common_flds_ecomc f ON v.attr_id = f.id WHERE 
 p.category_id = 2 AND v.value like '%" . $params_qry[$qk] . "%' AND f.attribute_name = '" . $qk . "' GROUP BY t.product_id)" . $qk . " ON " . $join . ".product_id=" . $qk . ".product_id ";
@@ -176,11 +177,11 @@ p.category_id = 2 AND v.value like '%" . $params_qry[$qk] . "%' AND f.attribute_
             }
         }
 
-//echo $qry_inner;
-//exit;
+        //echo $qry_inner;
+        //exit;
         //$keyword = '';
         $keys = array('producer' => 1, 'story' => 1, 'director' => 1, 'photography' => 1, 'cast' => 1, 'year' => 1);
-//Comma separated search params for display in frontend
+        //Comma separated search params for display in frontend
     }
 
 
@@ -188,7 +189,7 @@ p.category_id = 2 AND v.value like '%" . $params_qry[$qk] . "%' AND f.attribute_
         $conn = dbconnect();
         $str = array();
 
-//Search query
+        //Search query
 
 
         $sql = "SELECT 
@@ -235,14 +236,13 @@ FROM
         if (!empty($rows)) {
             $data = array();
             foreach ($rows as $row) {
-
 //                $data[$row['n']][$row['an']][] = $row['v'];
                 $data[$row['id']][$row['n']][$row['an']][] = $row['v'];
                 $countData[$row['an']][] = array('name' => $row['v'], 'count' => $row['cn']);
             }
         }
 
-//Getting image details
+        //Getting image details
 
         $qry_img = "SELECT 
 p.prodname, 
@@ -277,14 +277,13 @@ FROM
         if ($count) {
             $dataImage = array();
             while ($row = $q->fetch()) {
-//$dataImage[$row['prodname']][$row['m_image_category_text']][] = array('id' => $row['m_image_id'],'name' => $row['m_image_name'], 'featured' => $row['is_featured'], 'product_id'=> $row['prodid']);
+                //$dataImage[$row['prodname']][$row['m_image_category_text']][] = array('id' => $row['m_image_id'],'name' => $row['m_image_name'], 'featured' => $row['is_featured'], 'product_id'=> $row['prodid']);
                 $dataImage[$row['prodid']][$row['prodname']][$row['m_image_category_text']][] = array('id' => $row['m_image_id'], 'name' => $row['m_image_name'], 'featured' => $row['is_featured'], 'product_id' => $row['prodid']);
             }
         }
 
-//$finalData = array_merge_recursive($data, $dataImage);
+        //$finalData = array_merge_recursive($data, $dataImage);
         if ((!empty($dataImage) && !empty($data))) {
-
             $finalData = array_replace_recursive($data, $dataImage);
 //            print "<pre>";
 //        print_r($finalData);
@@ -292,34 +291,32 @@ FROM
             $finalData = $data;
         };
 
-//$producer = array_column($finalData, 'Cast');
-//$output = custom_func($finalData);
+        //$producer = array_column($finalData, 'Cast');
+        //$output = custom_func($finalData);
         //$keys = array('producer' => 1, 'story' => 1, 'director' => 1, 'photography' => 1, 'music director' => 1, 'hall' => 1, 'playback' => 1, 'cast' => 1, 'film' => 1, 'color' => 1, 'year' => 1);
         $keys = array('year' => 1, 'film' => 1, 'cast' => 1, 'director' => 1, 'music' => 1, 'playback' => 1);
 
-//Getting left search html
+        //Getting left search html
 
 
         //$getResult = memorabilia_left_search($finalData, $keys, $countData);
-        $getResult = memorabilia_left_search_new_design($finalData, $keys, $countData);
+        $getResult = memorabilia_left_search($finalData, $keys, $countData);
 //        print "<pre>";
 //        print_r($getResult);
 //        exit;
-//Getting the right hand HTML
+        //Getting the right hand HTML
         $baseHTML = '';
         $htmlRight = '';
 
 
 
         if (isset($_SESSION)) {
-
             if (isset($_SESSION['user-id'])) {
                 $usersession = true;
             } else {
                 $usersession = false;
             }
         } else {
-
             $usersession = false;
         }
 
@@ -366,11 +363,13 @@ FROM
                       </div>
                     </div>';
 
-        function myComparison($a, $b) {
+        function myComparison($a, $b)
+        {
             return (key($a) > key($b)) ? 1 : -1;
         }
 
         uasort($finalData, 'myComparison');
+
         if (!empty($finalData)) {
             $html = 1;
             foreach ($finalData as $filmId => $films) {
@@ -386,21 +385,17 @@ FROM
                     $imagecount = $fid['count_fid'];
                     $imagecount_html = '<div class="artist-year">' . $year_p . ' <span>|</span> ' . $imagecount . ' '. 'ITEMS' . '</div>';
                 }
+
                 foreach ($films as $filmName => $film) {
                     if (is_array($film)) {
                         if (array_key_exists('Poster', $film)) {
                             foreach ($film as $k => $v) {
-
                                 if (is_array($v) && $k == 'Poster') {
                                     for ($i = 0; $i < count($v); $i++) {
                                         if ($v[$i]['featured']) {
-
-
-
                                             if ($usersession == false) {
-
-
                                                 $baseHTML = '<a data-toggle="modal" data-target="#exampleModallogin2">
+                                                <div class="line-content">
                                                 <div class="artist-box">
                                                     <div class="artist-box-info">
                                                         <div class="artist-box-body">
@@ -416,15 +411,16 @@ FROM
                                                         %s
                                                     </div>
                                                 </div>
+                                                </div>
                                             </a>' . $modal;
                                                 $url = SITE_URL . "/memorabilia-details/" . $filmId;
                                                 $productName = $filmName;
                                                 $productImg = (!empty($v[$i]['name'])) ? (SITE_URL . '/' . THUMB_IMGS . $v[$i]['name']) : (SITE_URL . JS_FOLDER . 'holder.js/300x180/auto/text:' . NO_IMAGE);
-                                                $htmlRight .= sprintf($baseHTML, $productName, $productImg, $productName,$imagecount_html);
-//echo $key . "::" . $v[$i]['name'] . "<br>";
+                                                $htmlRight .= sprintf($baseHTML, $productName, $productImg, $productName, $imagecount_html);
+                                            //echo $key . "::" . $v[$i]['name'] . "<br>";
                                             } else {
-
                                                 $baseHTML = '<a href="%s" target="_blank">
+                                                <div class="line-content">
                                                 <div class="artist-box">
                                                     <div class="artist-box-info">
                                                         <div class="artist-box-body">
@@ -440,12 +436,13 @@ FROM
                                                         %s
                                                     </div>
                                                 </div>
+                                                </div>
                                             </a>';
                                                 $url = SITE_URL . "/memorabilia-details/" . $filmId;
                                                 $productName = $filmName;
                                                 $productImg = (!empty($v[$i]['name'])) ? (SITE_URL . '/' . THUMB_IMGS . $v[$i]['name']) : (SITE_URL . JS_FOLDER . 'holder.js/300x180/auto/text:' . NO_IMAGE);
-                                                $htmlRight .= sprintf($baseHTML,$url, $productName, $productImg, $url,  $productName,$imagecount_html);
-//echo $key . "::" . $v[$i]['name'] . "<br>";
+                                                $htmlRight .= sprintf($baseHTML, $url, $productName, $productImg, $url, $productName, $imagecount_html);
+                                                //echo $key . "::" . $v[$i]['name'] . "<br>";
                                             }
                                         }
                                     }
@@ -454,13 +451,12 @@ FROM
                         }
                         if (array_key_exists('Card', $film)) {
                             foreach ($film as $k => $v) {
-
                                 if (is_array($v) && $k == 'Card') {
                                     for ($i = 0; $i < count($v); $i++) {
                                         if ($v[$i]['featured']) {
-
                                             if ($usersession == false) {
                                                 $baseHTML = '<a data-toggle="modal" data-target="#exampleModallogin2">
+                                                <div class="line-content">
                                                 <div class="artist-box">
                                                     <div class="artist-box-info">
                                                         <div class="artist-box-body">
@@ -476,15 +472,16 @@ FROM
                                                         %s
                                                     </div>
                                                 </div>
+                                            </div>
                                             </a>' . $modal;
                                                 $url = SITE_URL . "/memorabilia-details/" . $filmId;
                                                 $productName = $filmName;
                                                 $productImg = (!empty($v[$i]['name'])) ? (SITE_URL . '/' . THUMB_IMGS . $v[$i]['name']) : (SITE_URL . JS_FOLDER . 'holder.js/300x180/auto/text:' . NO_IMAGE);
-                                                $htmlRight .= sprintf($baseHTML, $productName, $productImg, $productName,$imagecount_html);
-//echo $key . "::" . $v[$i]['name'] . "<br>";
+                                                $htmlRight .= sprintf($baseHTML, $productName, $productImg, $productName, $imagecount_html);
+                                            //echo $key . "::" . $v[$i]['name'] . "<br>";
                                             } else {
-
                                                 $baseHTML = '<a href="%s" target="_blank">
+                                                <div class="line-content">
                                                 <div class="artist-box">
                                                     <div class="artist-box-info">
                                                         <div class="artist-box-body">
@@ -500,12 +497,13 @@ FROM
                                                         %s
                                                     </div>
                                                 </div>
+                                            </div>
                                             </a>';
                                                 $url = SITE_URL . "/memorabilia-details/" . $filmId;
                                                 $productName = $filmName;
                                                 $productImg = (!empty($v[$i]['name'])) ? (SITE_URL . '/' . THUMB_IMGS . $v[$i]['name']) : (SITE_URL . JS_FOLDER . 'holder.js/300x180/auto/text:' . NO_IMAGE);
-                                                $htmlRight .= sprintf($baseHTML,$url, $productName, $productImg, $url,  $productName,$imagecount_html);
-//echo $key . "::" . $v[$i]['name'] . "<br>";
+                                                $htmlRight .= sprintf($baseHTML, $url, $productName, $productImg, $url, $productName, $imagecount_html);
+                                                //echo $key . "::" . $v[$i]['name'] . "<br>";
                                             }
                                         }
                                     }
@@ -514,13 +512,12 @@ FROM
                         }
                         if (array_key_exists('Synopsis', $film)) {
                             foreach ($film as $k => $v) {
-
                                 if (is_array($v) && $k == 'Synopsis') {
                                     for ($i = 0; $i < count($v); $i++) {
                                         if ($v[$i]['featured']) {
-
                                             if ($usersession == false) {
                                                 $baseHTML = '<a data-toggle="modal" data-target="#exampleModallogin2">
+                                                <div class="line-content">
                                                 <div class="artist-box">
                                                     <div class="artist-box-info">
                                                         <div class="artist-box-body">
@@ -536,15 +533,16 @@ FROM
                                                         %s
                                                     </div>
                                                 </div>
+                                                </div>
                                             </a>' . $modal;
                                                 $url = SITE_URL . "/memorabilia-details/" . $filmId;
                                                 $productName = $filmName;
                                                 $productImg = (!empty($v[$i]['name'])) ? (SITE_URL . '/' . THUMB_IMGS . $v[$i]['name']) : (SITE_URL . JS_FOLDER . 'holder.js/300x180/auto/text:' . NO_IMAGE);
-                                                $htmlRight .= sprintf($baseHTML, $productName, $productImg, $productName,$imagecount_html);
-//echo $key . "::" . $v[$i]['name'] . "<br>";
+                                                $htmlRight .= sprintf($baseHTML, $productName, $productImg, $productName, $imagecount_html);
+                                            //echo $key . "::" . $v[$i]['name'] . "<br>";
                                             } else {
-
                                                 $baseHTML = '<a href="%s" target="_blank">
+                                                <div class="line-content">
                                                 <div class="artist-box">
                                                     <div class="artist-box-info">
                                                         <div class="artist-box-body">
@@ -560,12 +558,13 @@ FROM
                                                         %s
                                                     </div>
                                                 </div>
+                                                </div>
                                             </a>';
                                                 $url = SITE_URL . "/memorabilia-details/" . $filmId;
                                                 $productName = $filmName;
                                                 $productImg = (!empty($v[$i]['name'])) ? (SITE_URL . '/' . THUMB_IMGS . $v[$i]['name']) : (SITE_URL . JS_FOLDER . 'holder.js/300x180/auto/text:' . NO_IMAGE);
-                                                $htmlRight .= sprintf($baseHTML,$url, $productName, $productImg, $url,  $productName,$imagecount_html);
-//echo $key . "::" . $v[$i]['name'] . "<br>";
+                                                $htmlRight .= sprintf($baseHTML, $url, $productName, $productImg, $url, $productName, $imagecount_html);
+                                                //echo $key . "::" . $v[$i]['name'] . "<br>";
                                             }
                                         }
                                     }
@@ -573,9 +572,9 @@ FROM
                             }
                         }
                         if (!array_key_exists('Synopsis', $film) && !array_key_exists('Card', $film) && !array_key_exists('Poster', $film)) {
-
                             if ($usersession == false) {
                                 $baseHTML = '<a data-toggle="modal" data-target="#exampleModallogin2">
+                                <div class="line-content">
                                 <div class="artist-box">
                                     <div class="artist-box-info">
                                         <div class="artist-box-body">
@@ -591,14 +590,15 @@ FROM
                                         %s
                                     </div>
                                 </div>
+                                </div>
                             </a>'.$modal;
                                 $url = SITE_URL . "/memorabilia-details/" . $filmId;
                                 $productName = $filmName;
                                 $productImg = (SITE_URL . JS_FOLDER . 'holder.js/300x180/auto/text:' . NO_IMAGE);
-                                $htmlRight .= sprintf($baseHTML, $productName, $productImg, $productName,$imagecount_html);
+                                $htmlRight .= sprintf($baseHTML, $productName, $productImg, $productName, $imagecount_html);
                             } else {
-
                                 $baseHTML = '<a href="%s" target="_blank">
+                                <div class="line-content">
                                 <div class="artist-box">
                                     <div class="artist-box-info">
                                         <div class="artist-box-body">
@@ -614,11 +614,12 @@ FROM
                                         %s
                                     </div>
                                 </div>
+                                </div>
                             </a>';
                                 $url = SITE_URL . "/memorabilia-details/" . $filmId;
                                 $productName = $filmName;
                                 $productImg = (SITE_URL . JS_FOLDER . 'holder.js/300x180/auto/text:' . NO_IMAGE);
-                                $htmlRight .= sprintf($baseHTML,$url, $productName, $productImg, $url,  $productName,$imagecount_html);
+                                $htmlRight .= sprintf($baseHTML, $url, $productName, $productImg, $url, $productName, $imagecount_html);
                             }
                         }
                     }
@@ -695,7 +696,6 @@ WHERE t.product_id IN (SELECT
         if (!empty($rows)) {
             $data = array();
             foreach ($rows as $row) {
-
                 //$data[$row['n']][$row['an']][] = $row['v'];
                 $data[$row['id']][$row['n']][$row['an']][] = $row['v'];
                 $countData[$row['an']][] = array('name' => $row['v'], 'count' => $row['cn']);
@@ -726,7 +726,6 @@ order BY p.prodid, m.m_image_category
             }
         }
         if (!empty($dataImage)) {
-
             $finalData = array_replace_recursive($data, $dataImage);
         } else {
             $finalData = $data;
@@ -758,16 +757,16 @@ order BY p.prodid, m.m_image_category
                     $imagecount = $fid['count_fid'];
                     $imagecount_html = '<div class="mem_count_img">' . $imagecount . '</div>';
                 }
-
+                print "<pre>";
+                print_r($films);
+                exit();
                 foreach ($films as $filmName => $film) {
                     if (is_array($film)) {
                         if (array_key_exists('Poster', $film)) {
                             foreach ($film as $k => $v) {
-
                                 if (is_array($v) && $k == 'Poster') {
                                     for ($i = 0; $i < count($v); $i++) {
                                         if ($v[$i]['featured']) {
-
                                             $baseHTML = '<div class="col-sm-6 col-md-4 product-outerBorder wow flipInX" data-wow-duration="1s" data-wow-delay="0.5s"">
                        <div class="product-imageBox d-flex flex-column">
                        %s
@@ -788,11 +787,9 @@ order BY p.prodid, m.m_image_category
                             }
                         } elseif (array_key_exists('Card', $film)) {
                             foreach ($film as $k => $v) {
-
                                 if (is_array($v) && $k == 'Poster') {
                                     for ($i = 0; $i < count($v); $i++) {
                                         if ($v[$i]['featured']) {
-
                                             $baseHTML = '<div class="col-sm-6 col-md-4 product-outerBorder wow flipInX" data-wow-duration="1s" data-wow-delay="0.5s"">
                        <div class="product-imageBox d-flex flex-column">
                        %s
@@ -806,18 +803,16 @@ order BY p.prodid, m.m_image_category
                                             $productName = $filmName;
                                             $productImg = (!empty($v[$i]['name'])) ? (SITE_URL . '/' . THUMB_IMGS . $v[$i]['name']) : (SITE_URL . JS_FOLDER . 'holder.js/300x180/auto/text:' . NO_IMAGE);
                                             $htmlRight .= sprintf($baseHTML, $imagecount_html, $url, $productName, $productImg, $url, $productName);
-//echo $key . "::" . $v[$i]['name'] . "<br>";
+                                            //echo $key . "::" . $v[$i]['name'] . "<br>";
                                         }
                                     }
                                 }
                             }
                         } elseif (array_key_exists('Synopsis', $film)) {
                             foreach ($film as $k => $v) {
-
                                 if (is_array($v) && $k == 'Poster') {
                                     for ($i = 0; $i < count($v); $i++) {
                                         if ($v[$i]['featured']) {
-
                                             $baseHTML = '<div class="col-sm-6 col-md-4 product-outerBorder wow flipInX" data-wow-duration="1s" data-wow-delay="0.5s"">
                        <div class="product-imageBox d-flex flex-column">
                        %s
@@ -831,7 +826,7 @@ order BY p.prodid, m.m_image_category
                                             $productName = $filmName;
                                             $productImg = (!empty($v[$i]['name'])) ? (SITE_URL . '/' . THUMB_IMGS . $v[$i]['name']) : (SITE_URL . JS_FOLDER . 'holder.js/300x180/auto/text:' . NO_IMAGE);
                                             $htmlRight .= sprintf($baseHTML, $imagecount_html, $url, $productName, $productImg, $url, $productName);
-//echo $key . "::" . $v[$i]['name'] . "<br>";
+                                            //echo $key . "::" . $v[$i]['name'] . "<br>";
                                         }
                                     }
                                 }

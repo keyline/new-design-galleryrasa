@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
 
     if (isset($_POST['adv_submit']) && $_POST['adv_submit'] == 'Search') {
-        //echo "Case 1";
+        echo "Case 1";
         unset($_SESSION['fParam']);
 
         $advsearch = true;
@@ -212,7 +212,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
          */
 
 //        print "<pre>";
-//          print_r($params_qry);
+        print_r($params_qry);
 //          echo "Count Of param is -". count($params_qry);
 //          print_r($new);
 //          print_r($new_arr);
@@ -416,7 +416,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         }
         //injecting old search param into new query
         array_map(function ($k, $v) use (&$params_qry) {
-            $params_qry[$k]= $v;
+            $params_qry[$k]= [$v];
         }, array_keys($_SESSION['advParam']), $_SESSION['advParam']);
 
         //Setup previous search param into session
@@ -425,9 +425,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             $previousCheckedElements[$k]= $v;
         }, array_keys($params_qry), $params_qry);
         $_SESSION['fParam']= $previousCheckedElements;
-        print_r($params_qry);
-        echo "-----";
-        print_r($_SESSION['fParam']);
+        //print_r($params_qry);
+        //echo "-----";
+        //print_r($_SESSION['fParam']);
         //echo "-----";
         //print_r($previousCheckedElements);
         if (!(array_key_exists('reference_type', $params_qry)) && !(array_key_exists('language', $params_qry))) {
@@ -530,6 +530,9 @@ p.category_id = 1 AND (" . implode(" OR ", $lan) . ") AND f.attribute_name = 'la
                 $key = $k;
                 $arrayCount += sizeof($value);
                 if (is_array($value)) {
+                    echo "Current Key----" .$key;
+                    echo "\r\n";
+                    var_dump($value);
                     foreach ($value as $v) {
                         $j = $i++;
 
@@ -598,13 +601,13 @@ FROM
 (%s))) GROUP BY t.attribute_value_id order by p.prodname";
 
         //Merge Queries
-        $qry = sprintf($outerQuery, $queryInner);
+        echo $qry = sprintf($outerQuery, $queryInner);
 
 
 
         $count_qry = sprintf($count_outer_qry, $queryInner);
     } else {
-        //echo "Case 3";
+        echo "Case 3";
         $advsearch = true;
         $firstkey = '';
         $adv_author = trim($_SESSION['author']);
@@ -869,7 +872,7 @@ FROM
 
 
     if ($advsearch == false) {
-        //echo "Case 4";
+        echo "Case 4";
         try {
             $conn = dbconnect();
             $referenceType_sorted = get_subCategory_options($conn);
@@ -1104,7 +1107,7 @@ FROM
             echo db_error($pe->getMessage());
         }
     } else {
-        //echo "Case 5";
+        echo "Case 5";
         $keys = array('reference_type' => 10,
             'artist' => 11,
             'author' => 12,
@@ -1226,8 +1229,9 @@ FROM
             $leftHtml = left_filter_html_adv($filter_data_af, $keys, $countData);
 
 
-//            print('<pre>');
-//            print_r($leftHtml);
+            //print('<pre>');
+            //print_r($leftHtml);
+            //exit();
             /**
              * Get Total Search Result Row Count
 
