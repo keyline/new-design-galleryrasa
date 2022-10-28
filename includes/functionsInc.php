@@ -2099,6 +2099,7 @@ function left_filter_html_adv($someArray = array(), $keys = array(), $count = ar
             return 0;
         }
     });
+    //return $someArray;
     if (isset($_SESSION['fParam'])) {
         $sessData = $_SESSION['fParam'];
         $sessCount = count($sessData);
