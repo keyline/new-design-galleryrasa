@@ -62,33 +62,85 @@
                                 ?php echo $time .' to '. $t; ?>
                                  11:00 HRS - 18:00 HRS IST
                                 </li> -->
-                                <li><span class="material-icons">festival</span><?php echo $k['city'] .','. $k['full_address']; ?></li>
+                                <li><span class="material-icons">festival</span>
+                                    <?php 
+                                    if ($k['full_address']) {
+                                        echo $k['city'] .','. $k['full_address'];    
+                                    }
+                                    else{
+                                        echo $k['city'];    
+                                    }
+                                     ?></li>
 
 
                             </ul>
                         </div>
                         <div class="exhibition-search-content">
-                            <?php echo substr($k['description'],0,300);if (substr($k['description'],301)) {  ?>
-                            <span id="dots">...</span>
-                            <span id="more"><?php echo substr($k['description'],301,2000); ?></span>
-                            <button onclick="myFunction()" id="myBtn">Read more</button>
-                        <?php } ?>
+                            
+                            <div class="content hideContent">
+                            <?php echo $k['description'];?>
+                            
+                            </div>  
+                            <?php if(substr($k['description'],241,2000)){ ?>
+                              
+                            <div class="read-action exbition_readmore">
+                                <button class="show-more">Read more</button>
+                            </div>                          
+                            
+                             
+                            <?php } ?>                        
+                            <!-- <button onclick="myFunction()" id="myBtn">Read more</button> -->
+
                         </div>
+                        <?php if ($k['essay_2']) { ?>
+                            
                         <div class="exhibition-search-content">
-                            <?php echo substr($k['essay_2'],0,240);if($k['essay_2']){  ?>                        
+                            
+                            <div class="content hideContent">
+                            <?php echo $k['essay_2'];?>
+                            
+                            </div>  
+                            <?php if(substr($k['essay_2'],241,2000)){ ?>
+                            <div class="read-action exbition_readmore">                           
+                            <button class="show-more">Read more</button>
+                            </div>  
+                            <?php } ?>                        
+                            <!-- <button onclick="myFunction()" id="myBtn">Read more</button> -->
+
+                        </div>
+                    <?php } ?>
+                    <?php if ($k['essay_3']) { ?>
+                            
+                        <div class="exhibition-search-content">
+                            
+                            <div class="content hideContent">
+                            <?php echo $k['essay_3'];?>
+                            
+                            </div>  
+                            <?php if(substr($k['essay_3'],241,2000)){ ?>
+                            <div class="read-action exbition_readmore">
+                            <button class="show-more">Read more</button>
+                            </div>  
+                            <?php } ?>                        
+                            <!-- <button onclick="myFunction()" id="myBtn">Read more</button> -->
+
+                        </div>
+                    <?php } ?>
+                        <!-- <div class="exhibition-search-content">
+                            ?php echo substr($k['essay_2'],0,240);if($k['essay_2']){  ?>                        
                             <span id="dots1">...</span>
-                            <span id="more1"><?php echo substr($k['essay_2'],241,2000); ?></span>
+                            <span id="more1">?php echo substr($k['essay_2'],241,2000); ?></span>
                             <button onclick="myFunction1()" id="myBtn1">Read more</button>
-                            <?php } ?>
-                        </div>
-                        <div class="exhibition-search-content">
-                            <?php echo substr($k['essay_3'],0,240);if($k['essay_3']){ ?>
+                            ?php } ?>
+                        </div> -->
+                        <!-- <div class="exhibition-search-content">
+                            ?php echo substr($k['essay_3'],0,240);if($k['essay_3']){ ?>
 
                             <span id="dots2">...</span>
-                            <span id="more2"><?php echo substr($k['essay_3'],241,2000); ?></span>
+                            <span id="more2">?php echo substr($k['essay_3'],241,2000); ?></span>
                             <button onclick="myFunction2()" id="myBtn2">Read more</button>
-                        <?php } ?>
-                        </div>
+                        ?php } ?>
+                        </div> -->
                         <!-- <div class="exhibition-search-content">
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sed orci eget nulla ultrices accumsan. Integer rhoncus metus sit amet lacinia posuere.
                         </div> -->
