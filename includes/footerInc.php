@@ -362,8 +362,60 @@
 #more {display: none;}
 #more1 {display: none;}
 #more2 {display: none;}
-</style>
 
+.hideContent {
+    overflow: hidden;
+    line-height: 1.50;
+    height: 5.6em;
+    letter-spacing: 0.1px;
+
+}
+
+.showContent {
+    line-height: 1.50;
+    height: auto;
+    letter-spacing: 0.1px;
+    /*display: inline;*/
+    margin-top: 10px;
+}
+/*.showContent{
+    height: auto;
+}*/
+.show-more {
+    /*padding: 10px 0;*/
+    text-align: center;
+}
+.read-action.exbition_readmore button {
+    font-family: 'Roboto Mono';
+    border: none;
+    background: none;
+    text-transform: uppercase;
+    border-bottom: 1px solid #aaa;
+    padding-bottom: 12px;
+    font-size: 14px;
+    color: var(--textColor);
+}
+.read-action.exbition_readmore {
+    margin-top: 15px;
+}
+</style>
+<script type="text/javascript">
+    $(".show-more").on("click", function() {
+    var $this = $(this); 
+    var $content = $this.parent().prev("div.content");
+    var linkText = $this.text().toUpperCase();    
+    
+    if(linkText === "READ MORE"){
+        linkText = "Read less";
+        $content.switchClass("hideContent", "showContent", 400);
+    } else {
+        linkText = "Read more";
+        $content.switchClass("showContent", "hideContent", 400);
+    };
+
+    $this.text(linkText);
+});
+</script>
 <script>
 function myFunction() {
   var dots = document.getElementById("dots");

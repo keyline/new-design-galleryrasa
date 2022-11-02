@@ -18,6 +18,8 @@ $exhibitionid = $_POST['exhibition'];
 
 $exname = $_POST['exname'];
 $desc = $_POST['desc'];
+$desc2 = $_POST['desc2'];
+$desc3 = $_POST['desc3'];
 $start_exdate = $_POST['start_exdate'];
 $end_exdate = $_POST['end_exdate'];
 $excity = $_POST['excity'];
@@ -27,7 +29,8 @@ $imgFile = $_FILES['ImageFile'];
 
 $OldImageFile = $_POST['OldImageFile'];
 
-
+// print_r($_POST);
+// exit();
 
 
 if ($imgFile["name"] != '') {
@@ -98,16 +101,16 @@ if ($fileuploadflag == true) {
         $err = false;
 
 
-        $query1 = "update exhibition set exhibition_name=:exhibition_name,description=:description,"
+        $query1 = "update exhibition set exhibition_name=:exhibition_name,description=:description,essay_2=:essay_2,essay_3=:essay_3,"
                 . "photo=:photo,from_exhibition_date=:from_exhibition_date,"
                 ."end_exhibition_date=:end_exhibition_date,city=:city,full_address=:full_address,updated_at=:updated_at "
                 . " where id=:exhibitionid";
-        $bind1 = array(':exhibition_name' => $exname, ':description' => $desc, ':photo' => $newImageName,
+        $bind1 = array(':exhibition_name' => $exname, ':description' => $desc, ':essay_2' => $desc2, ':essay_3' => $desc3, ':photo' => $newImageName,
             ':from_exhibition_date' => $start_exdate, ':end_exhibition_date' => $end_exdate, ':city' => $excity, ':full_address' => $exfull_address, 
             ':updated_at' => $datetime, ':exhibitionid' => $exhibitionid);
         $stmt1 = $conn->prepare($query1);
-//echo PdoDebugger::show($query1, $bind1);
-//exit;
+// echo PdoDebugger::show($query1, $bind1);
+// exit;
         if ($stmt1->execute($bind1)) {
 
 

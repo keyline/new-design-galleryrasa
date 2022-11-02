@@ -36,11 +36,19 @@
                             <div class="form-group">
                                 <label for="pname">Exhibition Name</label>
                                 <input type="hidden" name="exhibition" value="<?php echo $exhibitionarr['id'] ?>">
-                                <input type="text" class="form-control" id="exname" name="exname" required="" value="<?php echo $exhibitionarr['exhibition_name'] ?>">
+                                <textarea class="form-control ckeditor" id="exname" name="exname" required=""><?php echo $exhibitionarr['exhibition_name']?></textarea>
                             </div>
                             <div class="form-group">
-                                <label for="tags">Description</label>
+                                <label for="tags">Essay1</label>
                                 <textarea class="form-control ckeditor" rows="3" name="desc"><?php echo $exhibitionarr['description'] ?></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="tags">Essay2</label>
+                                <textarea class="form-control ckeditor" rows="3" name="desc2"><?php echo $exhibitionarr['essay_2'] ?></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="tags">Essay3</label>
+                                <textarea class="form-control ckeditor" rows="3" name="desc3"><?php echo $exhibitionarr['essay_3'] ?></textarea>
                             </div>
 
 
