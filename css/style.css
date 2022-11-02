@@ -1597,7 +1597,7 @@ div.select .input{
     display: block;
     margin: 0 auto;
     height: 320px;
-    object-fit: cover;
+    object-fit: contain;
 }
 /*
 .artist-search .artist-inner .artist-info .artist-box .artist-sub {
