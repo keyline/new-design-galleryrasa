@@ -41,6 +41,10 @@ $exrow2 = $q1->fetchAll();
 
 
 
+
+// echo $exrowl;exit();
+
+
 // for($i=0; $i < count($exrow); $i++)
 // {
 // 	if($exrow[$i]['from_exhibition_date'] > date("Y-m-d")){

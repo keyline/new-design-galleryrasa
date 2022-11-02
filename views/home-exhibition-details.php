@@ -76,74 +76,29 @@
                             </ul>
                         </div>
                         <div class="exhibition-search-content">
-                            
-                            <div class="content hideContent">
-                            <?php echo $k['description'];?>
-                            
-                            </div>  
-                            <?php if(substr($k['description'],241,2000)){ ?>
-                              
-                            <div class="read-action exbition_readmore">
-                                <button class="show-more">Read more</button>
-                            </div>                          
-                            
-                             
-                            <?php } ?>                        
-                            <!-- <button onclick="myFunction()" id="myBtn">Read more</button> -->
-
-                        </div>
-                        <?php if ($k['essay_2']) { ?>
-                            
+                            <div id="primary-text3"><?php echo substr($k['description'],0,250);?> ...</div>
+                            <div id="more3" style="display:none;">
+                                <p><?php echo $k['description']; ?></p>
+                            </div>                        
+                            <a href="javascript:showMore(3)" class="show-more-new" id="readMore3">Read More</a>
+                            <a href="javascript:showLess(3)" class="show-more-new" id="readLess3" style="display:none;">Read Less</a>
+                        </div>              
                         <div class="exhibition-search-content">
-                            
-                            <div class="content hideContent">
-                            <?php echo $k['essay_2'];?>
-                            
-                            </div>  
-                            <?php if(substr($k['essay_2'],241,2000)){ ?>
-                            <div class="read-action exbition_readmore">                           
-                            <button class="show-more">Read more</button>
-                            </div>  
-                            <?php } ?>                        
-                            <!-- <button onclick="myFunction()" id="myBtn">Read more</button> -->
-
+                            <div id="primary-text1"><?php echo substr($k['essay_2'],0,250);?> ...</div>
+                            <div id="more1" style="display:none;">
+                                <p><?php echo $k['essay_2']; ?></p>
+                            </div>                        
+                            <a href="javascript:showMore(1)" class="show-more-new" id="readMore1">Read More</a>
+                            <a href="javascript:showLess(1)" class="show-more-new" id="readLess1" style="display:none;">Read Less</a>
                         </div>
-                    <?php } ?>
-                    <?php if ($k['essay_3']) { ?>
-                            
                         <div class="exhibition-search-content">
-                            
-                            <div class="content hideContent">
-                            <?php echo $k['essay_3'];?>
-                            
-                            </div>  
-                            <?php if(substr($k['essay_3'],241,2000)){ ?>
-                            <div class="read-action exbition_readmore">
-                            <button class="show-more">Read more</button>
-                            </div>  
-                            <?php } ?>                        
-                            <!-- <button onclick="myFunction()" id="myBtn">Read more</button> -->
-
+                            <div id="primary-text2"><?php echo substr($k['essay_3'],0,250);?> ...</div>
+                            <div id="more2" style="display:none;">
+                                <p><?php echo $k['essay_3']; ?></p>
+                            </div>                        
+                            <a href="javascript:showMore(2)" class="show-more-new" id="readMore2">Read More</a>
+                            <a href="javascript:showLess(2)" class="show-more-new" id="readLess2" style="display:none;">Read Less</a>
                         </div>
-                    <?php } ?>
-                        <!-- <div class="exhibition-search-content">
-                            ?php echo substr($k['essay_2'],0,240);if($k['essay_2']){  ?>                        
-                            <span id="dots1">...</span>
-                            <span id="more1">?php echo substr($k['essay_2'],241,2000); ?></span>
-                            <button onclick="myFunction1()" id="myBtn1">Read more</button>
-                            ?php } ?>
-                        </div> -->
-                        <!-- <div class="exhibition-search-content">
-                            ?php echo substr($k['essay_3'],0,240);if($k['essay_3']){ ?>
-
-                            <span id="dots2">...</span>
-                            <span id="more2">?php echo substr($k['essay_3'],241,2000); ?></span>
-                            <button onclick="myFunction2()" id="myBtn2">Read more</button>
-                        ?php } ?>
-                        </div> -->
-                        <!-- <div class="exhibition-search-content">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sed orci eget nulla ultrices accumsan. Integer rhoncus metus sit amet lacinia posuere.
-                        </div> -->
                         <div class="enquiry-btn">ENQUIRE<span class="material-icons arrow">arrow_forward</span></div>
                     </div>
                 </div>
