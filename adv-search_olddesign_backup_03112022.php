@@ -9,7 +9,6 @@ require_once(INCLUDED_FILES . "pdo-debug.php");
 $html = 0;
 $conn = dbconnect();
 $advsearch = true;
-
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
     unset($_SESSION['fParam']);
     //Initializing variables
@@ -197,18 +196,30 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         /*
          * FOR DEBUGING PURPOSE
 
-        print "<pre>";
-        print_r($params_qry);
-        echo "Count Of param is -". count($params_qry);
-        //print_r($new);
-        //print_r($new_arr);
-        echo $keyword;
-        exit;
-        */
+          print "<pre>";
+          print_r($params_qry);
+          echo "Count Of param is -". count($params_qry);
+          //print_r($new);
+          //print_r($new_arr);
+          echo $keyword;
+          //exit;
+         */
 
+//        print "<pre>";
+//          print_r($params_qry);
+//          echo "Count Of param is -". count($params_qry);
+//          print_r($new);
+//          print_r($new_arr);
+//          echo $keyword;
+//          exit;
         if ((count($params_qry) === 1) && (array_key_exists('ref_type', $params_qry))) {
             $firstkey = 'author';
             $qry_inner = '';
+//            $qry_inner = "(SELECT t.product_id FROM product_type_ecomc pte LEFT JOIN products_ecomc p ON pte.product_type_id = p.subcatid
+//                        LEFT JOIN product_attribute_value t ON p.prodid = t.product_id LEFT JOIN attribute_value_ecomc v ON t.attribute_value_id = v.attr_value_id
+//                        LEFT JOIN attr_common_flds_ecomc f ON v.attr_id = f.id WHERE  pte.product_type_name = '" . $ref_type . "' GROUP BY t.product_id) author";
+
+
             $qry_inner = "(SELECT t.product_id FROM product_type_ecomc pte LEFT JOIN products_ecomc p ON pte.product_type_id = p.subcatid 
                         LEFT JOIN product_attribute_value t ON p.prodid = t.product_id LEFT JOIN attribute_value_ecomc v ON t.attribute_value_id = v.attr_value_id 
                         LEFT JOIN attr_common_flds_ecomc f ON v.attr_id = f.id WHERE  " . $reference2 . " GROUP BY t.product_id) author";
@@ -855,13 +866,13 @@ FROM
                     $count_rows = $q1->fetchAll();
                 }
                 $keys = array('reference_type' => 10,
-                                'artist' => 11,
+                    'artist' => 11,
                     'author' => 12,
                     'editor' => 13,
-                                'language' => 14,
-                                'place_of_publication' => 15,
-                                'publisher' => 16,
-                                'gregorian_year' => 17);
+                    'language' => 14,
+                    'place_of_publication' => 15,
+                    'publisher' => 16,
+                    'gregorian_year' => 17);
                 $rightKeys = array('title_of_article' => 1, 'translated1_title_of_parent' => 1, 'translated_title' => 1, 'beditor' => 1, 'gregorian_month' => 1, 'gregorian_year' => 1, 'author' => 1, 'gallery_museum' => 1);
 
                 if (!empty($rows) && !empty($count_rows)) {
@@ -1020,20 +1031,14 @@ FROM
 
                     $alllanguagedropdownarr = alllanguagedropdown($conn);
 
-                    //$array_value_sum = create_function('$array,$key', '$total = 0; foreach($array as $row) $total = $total + $row[$key]; return $total;');
+                    $array_value_sum = create_function('$array,$key', '$total = 0; foreach($array as $row) $total = $total + $row[$key]; return $total;');
 
                     if (!isset($countData['reference_type'])||$countData['reference_type']=='') {
                         $countData = [];
                         $countData['reference_type'] = '0';
                     }
 
-                    //$result_count = $array_value_sum($countData['reference_type'], 'count');
-
-                    $result_count= array_reduce($countData['reference_type'], function ($carry, $item) {
-                        $carry += $item['count'];
-                        return $carry;
-                    });
-
+                    $result_count = $array_value_sum($countData['reference_type'], 'count');
                     $html = 1;
                     $options = get_subCategory_options($conn);
                     $select_sub2 = $options['s'];
@@ -1161,12 +1166,12 @@ FROM
             $countL = !empty($result['language']) ? count($result['language']) : 0;
             $udfArray = array(
                 'reference_type' => array(
-                        $countR => 'Select All'
+                    $countR => 'Select All'
                 )
             );
             $udfArray1 = array(
                 'language' => array(
-                        $countL => 'Select All'
+                    $countL => 'Select All'
                 )
             );
             $aif = array_insert_after($result, $key, $udfArray);
@@ -1180,7 +1185,14 @@ FROM
              * params array $keys (Only which keys are required for filter)
              *
              */
+//            print('<pre>');
+//            print_r($filter_data_af);
+//            exit;
+
             $leftHtml = left_filter_html_only_adv($filter_data_af, $keys, $countData, $productstr);
+
+//            print('<pre>');
+//            print_r($leftHtml);
             /**
              * Get Total Search Result Row Count
 
@@ -1195,14 +1207,9 @@ FROM
 
 
 
-            //$array_value_sum = create_function('$array,$key', '$total = 0; foreach($array as $row) $total = $total + $row[$key]; return $total;');
+            $array_value_sum = create_function('$array,$key', '$total = 0; foreach($array as $row) $total = $total + $row[$key]; return $total;');
             //Getting count reference_type
-            //$result_count = $array_value_sum($countData['reference_type'], 'count');
-            $result_count= array_reduce($countData['reference_type'], function ($carry, $item) {
-                $carry += $item['count'];
-                return $carry;
-            });
-
+            $result_count = $array_value_sum($countData['reference_type'], 'count');
             $html = 1;
             $options = get_subCategory_options();
             $select_sub = $options['s'];
@@ -1213,8 +1220,8 @@ FROM
 
 
             $search_view = file_get_contents(VIEWS_FOLDER . 'adv-search-resultInc.php');
-            $search = array('{filter_search_subcategory_list}','{languagelist}', '{journallist}', '{adv-search-options}', '{leftFilter}', '{searchedKeyword}', '{TotalResult}', '{searchList}');
-            $replace = array($select_sub2, $alllanguagedropdownarr, $alljournaldropdownarr, $options2['op'], $leftHtml, $keyword, $result_count, $Searchhtml);
+            $search = array('{languagelist}', '{journallist}', '{subcategory_list}', '{adv-search-options}', '{leftFilter}', '{searchedKeyword}', '{TotalResult}', '{searchList}');
+            $replace = array($alllanguagedropdownarr, $alljournaldropdownarr, $select_sub, $options2['op'], $leftHtml, $keyword, $result_count, $Searchhtml);
             $finalView = str_replace($search, $replace, $search_view);
         } else {
             goto_location('adv-search');

@@ -92,14 +92,6 @@ function check_auth_admin()
     }
 }
 
-function clean($string)
-{
-    $string = str_replace(' ', '-', $string); // Replaces all spaces with hyphens.
-    $string2 = preg_replace('/[^A-Za-z0-9\-]/', '', $string); // Removes special chars.
-    $string3 = preg_replace('/-+/', '-', $string2);
-    return $string3;
-}
-
 function create_folder($folder = null)
 {
     if (!is_null($folder)) {
@@ -751,8 +743,6 @@ function get_subCategory_optionsBib($conn = null, $hc = array())
 {
     $conn = dbconnect();
     $qry = "SELECT product_type_name, product_type_id FROM " . PROD_CATEGORY . " WHERE parent=1 ORDER BY sort_order ASC";
-    // echo $qry;
-    // exit();
     $q = $conn->prepare($qry);
     $q->execute();
     $q->setFetchMode(PDO::FETCH_ASSOC);
@@ -929,7 +919,6 @@ function get_html($array, $keys = array(), $usersession, $html = '')
 {
     $conn = dbconnect();
     $output = array();
-
     $referenceType_sorted = get_subCategory_options();
     $sortedReferenceType = [];
     array_walk($referenceType_sorted['h'], function ($v, $k) use (&$sortedReferenceType) {
@@ -943,7 +932,6 @@ function get_html($array, $keys = array(), $usersession, $html = '')
         }
         return ($sortMe[$a] < $sortMe[$b]) ? -1 : 1;
     });
-    //echo '<pre>';print_r($array);die;
     $iterator = new RecursiveIteratorIterator(new RecursiveArrayIterator($array), RecursiveIteratorIterator::SELF_FIRST);
 
     foreach ($iterator as $k => $v) {
@@ -960,13 +948,11 @@ function get_html($array, $keys = array(), $usersession, $html = '')
                 $productID = $k;
             }
             if ($iterator->getDepth() == 2) {
-                $html .= '<div class="line-content">
-                            <div class="bibliography-search-inner">
-                                <div class="bibliography-info">
-                                    <div class="bibliography-content">
-                                        <p class="bibliography-fix">' . $main_key . ' </p>
-                                        <p>' . $k . '</p>
-                                    </div>';
+                $html .= '<div class="row wow fadeInDown" data-wow-duration="1s" data-wow-delay="0.5s"><div class="col-md-9 table-responsive">
+                                    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="table searchcontent">
+                                        <tbody><tr>
+                                            <th style="width: 200px;">' . $main_key . ' </th><td><strong>' . $k . '</strong></td> 
+                                        </tr>';
             }
 
         //echo "$level$indent$k" . ":-" . $iterator->getDepth(). " :<br>";
@@ -980,30 +966,81 @@ function get_html($array, $keys = array(), $usersession, $html = '')
             //$path = implode(',', $p);
             //echo "$indent$k : $v <br>";
             if (array_key_exists($k, $keys)) {
-                $html .= '<div class="bibliography-content">
-                            <p class="bibliography-fix">' . replace_underscore_space($k, $main_key) . '</p>
-                            <p>' . bibliography_replace_dollar($v) . '</p>
-                        </div>';
+                $html .= '<tr>
+                                                <th>' . replace_underscore_space($k, $main_key) . '</th>
+                                                <td>' . bibliography_replace_dollar($v) . '</td>
+                                                </tr>';
             }
 
 
             if ($j == 0) {
-                $html .=   '</div>
-                            <div class="bibliography-action">
-                                <div class="cite-action">
-                                    <a href="javascript:void(0);" data-toggle="modal" data-target="#citethis" class="cite-btn"><i data-toggle="tooltip" title="" data-original-title="Cite this" data-placement="left" onclick="javascript:CiteThis(' . $productID . ');">Cite This</i></a></li>
-                                </div>';
                 if ($usersession==true) {
-                    $html .='<div class="details-action">
-                                   <a  href="' . SITE_URL . '/details/' . $productID . '" class="details-btn" target="_blank">details</a>
-                                </div>';
+                    $html .= '</tbody></table></div><div class="col-md-3 links"><div class="tools-icons text-center">
+                                    <ul class="bibliography_links list-unstyled">
+                                        <li><a href="javascript:void(0);" data-toggle="modal" data-target="#citethis" class="btn btn-default form-control"><i data-toggle="tooltip" title="" data-original-title="Cite this" data-placement="left" onclick="javascript:CiteThis(' . $productID . ');">Cite This</i></a></li>
+                                        <li><a href="' . SITE_URL . '/details/' . $productID . '" class="btn btn-default form-control" target="_blank">Details</a></li>
+                                        
+                                        
+                                   </ul>';
                 } else {
-                    $html .='<div class="details-action">
-                                    <a data-toggle="modal" data-target="#exampleModallogin" class="details-btn" target="_blank">details</a>
-                                </div>';
+                    $html .= '</tbody></table></div><div class="col-md-3 links"><div class="tools-icons text-center">
+                                    <ul class="bibliography_links list-unstyled">
+                                        <li><a href="javascript:void(0);" data-toggle="modal" data-target="#citethis" class="btn btn-default form-control"><i data-toggle="tooltip" title="" data-original-title="Cite this" data-placement="left" onclick="javascript:CiteThis(' . $productID . ');">Cite This</i></a></li>
+                                        <li><a data-toggle="modal" data-target="#exampleModallogin" class="btn btn-default form-control">Details</a></li>
+                                        
+                                        
+                                   </ul>';
+
+
+
+
+                    $html .= '<div class="modal fade vLogin" id="exampleModallogin" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Login To View Details</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form method="POST" action="login.php">
+        <div class="row">
+            <div class="col-md-3">
+                <label>Email <strong>*</strong></label>
+            </div>
+            
+            <div class="col-md-9">
+                <input type="text" class="form-control" name="email" id="email" required>
+            </div>
+            <div class="clearfix"></div>
+            <br>
+            <div class="col-md-3">
+                <label>Password <strong>*</strong></label>
+            </div>
+            <div class="col-md-9">
+                <input type="password" class="form-control" name="pass" id="pass" required>
+            </div>
+            <div class="col-md-3"></div>
+            <div class="col-md-9">
+                <input type="submit" class="btn form-control" value="Login">
+            </div>
+            <div class="col-md-3"></div>
+            <div class="col-md-5">
+                <a href="forget-password.php" class="btn form-control border-0 text-left mt-1">Forgot Password</a>
+            </div>
+            <div class="col-md-4 d-flex align-items-center justify-content-start">
+                <a href="login-register.php" >Register</a>
+            </div>
+            </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>';
                 }
-                $html .='</div>
-                        </div>';
+
+
 
                 $querypdf = "SELECT * FROM bibliography_pdf where prodid = %s";
                 $sqlpdf = sprintf($querypdf, $productID);
@@ -1031,100 +1068,17 @@ function get_html($array, $keys = array(), $usersession, $html = '')
 
                     //$html .= '<a class="btn btn-primary" href="' . 'bibpdf?pdf=' . urlencode($orgnameexcptextnd) . '&ext=' . $ext . '">Download PDF</a><br><br>';
                 }
-                $html .= '</div>';
+
+
+                $html .= '</div>
+				</div>
+                                </div>
+                                <hr>
+                                ';
             }
         }
     }
 
-    if (!$usersession==true) {
-        // $html .= '<div class="modal fade vLogin rasa-new-modal" id="exampleModallogin" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        //             <div class="modal-dialog" role="document">
-        //                 <div class="modal-content">
-        //                     <div class="modal-header">
-        //                         <h5 class="modal-title" id="exampleModalLabel">Login To View Details</h5>
-        //                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-        //                           <span aria-hidden="true">&times;</span>
-        //                         </button>
-        //                     </div>
-        //                     <div class="modal-body">
-        //                         <form method="POST" action="login.php">
-        //                             <div class="row">
-        //                                 <div class="col-md-3">
-        //                                     <label>Email <strong>*</strong></label>
-        //                                 </div>
-        //                                 <div class="col-md-9">
-        //                                     <input type="text" class="form-control" name="email" id="email" required>
-        //                                 </div>
-        //                                 <div class="clearfix"></div>
-        //                                 <br>
-        //                                 <div class="col-md-3">
-        //                                     <label>Password <strong>*</strong></label>
-        //                                 </div>
-        //                                 <div class="col-md-9">
-        //                                     <input type="password" class="form-control" name="pass" id="pass" required>
-        //                                 </div>
-        //                                 <div class="col-md-3"></div>
-        //                                 <div class="col-md-9">
-        //                                     <input type="submit" class="btn form-control" value="Login">
-        //                                 </div>
-        //                                 <div class="col-md-3"></div>
-        //                                 <div class="col-md-5">
-        //                                     <a href="forget-password.php" class="btn form-control border-0 text-left mt-1">Forgot Password</a>
-        //                                 </div>
-        //                                 <div class="col-md-4 d-flex align-items-center justify-content-start">
-        //                                     <a href="login-register.php" >Register</a>
-        //                                 </div>
-        //                             </div>
-        //                         </form>
-        //                     </div>
-        //                 </div>
-        //             </div>
-        //         <div>';
-        $html .= '<div class="modal fade vLogin rasa-new-modal" id="exampleModallogin" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Login To View Details</h5>
-                              
-                            </div>
-                            <div class="modal-body">
-                                <form method="POST" action="login.php">
-                                <div class="row">
-                                <div class="col-md-3 flex-v-cen pb-4">
-                                        <label>Email <strong>*</strong></label>
-                                    </div>
-                                    <div class="col-md-9 pb-4">
-                                        <input type="text" class="form-control" name="email" id="email" required>
-                                    </div>
-                                    <div class="col-md-3 flex-v-cen pb-4">
-                                        <label>Password <strong>*</strong></label>
-                                    </div>
-                                    <div class="col-md-9 pb-4">
-                                        <input type="password" class="form-control" name="pass" id="pass" required>
-                                    </div>
-                                    <div class="col-md-3"></div>
-                                    <div class="col-md-9">
-                                        <input type="submit" class="btn form-control login-btn" value="Login">
-                                    </div>
-                                    <div class="col-md-3"></div>
-            <div class="col-md-9">
-            <div class="password-inner">
-            <div class="password-box">
-                <a href="forget-password.php" class="btn forget-btn form-control border-0 text-left mt-1">Forgot Password</a>
-            </div>
-            <div class="password-box">
-            <a class="register-btn" href="login-register.php">Register</a>
-            </div>
-        </div> 
-        </div>
-                                </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                  </div>';
-    }
-    //echo $html;die;
     return $html;
 }
 
@@ -1347,8 +1301,6 @@ function left_filter_data($someArray = array(), $keys = array(), $test = false)
  */
 function left_filter_html($someArray = array(), $keys = array(), $count = array())
 {
-    $options_from="";
-    $options_to="";
     $someArray = array_map('array_filter', $someArray);
     $checked2 = '';
     uksort($someArray, function ($a, $b) use ($keys) {
@@ -1366,16 +1318,10 @@ function left_filter_html($someArray = array(), $keys = array(), $count = array(
     }
     //return $someArray;
     //exit;
-    $html = '<form action="search" class="filter-form" id="filter-form" method="post">                
-                <div class="artist-inner">
-                                <div class="artist-top artist-top-2">
-                                    <p class="filters">FILTERS<span class="material-icons">filter_alt</span></p>
-                                    <p class="reset"><button id="btnBack" type="submit" class="btn btn-red form-control" name="resetButton" value="Back">Reset</button></p>
-                                </div>
-                            </div>
-                            <div class="menu">
-                                <div class="menu-sec">
-                                    <div class="accordion" id="accordionExample">';
+    $html = '<h4 class="search-filters-title" id="search-filters-title">Refine Search</h4>
+<form action="search" class="filter-form" id="filter-form" method="post">                
+<div class="search-filters" style="margin-bottom:20px;">
+                    <div class="filter-group">';
     //now loop through each filter and value
     foreach ($someArray as $key => $value) {
         $checked = ($key == "reference_type" || $key == 'language') ? "checked" : null;
@@ -1383,22 +1329,10 @@ function left_filter_html($someArray = array(), $keys = array(), $count = array(
 
 
         if (array_key_exists($key, $keys) && !empty($value)) {
-            $accordianHeaderKey= replace_underscore_space($key);
-            $html .= "<div class=\"card\">
-                                            <div class=\"card-header\" id=\"headingOne\">
-                                                <h2 class=\"mb-0\">
-                                                    <button class=\"btn btn-link btn-block text-left collapsed\" type=\"button\" data-toggle=\"collapse\" data-target=\"#collapse_{$accordianHeaderKey}\" aria-expanded=\"true\" aria-controls=\"collapse_{$accordianHeaderKey}\">
-                                                        {$accordianHeaderKey}
-                                                        <span class=\"material-icons\">keyboard_arrow_down</span>
-                                                    </button>
-                                                </h2>
-                                            </div>
-
-                                            <div id=\"collapse_{$accordianHeaderKey}\" class=\"collapse\" aria-labelledby=\"headingOne\" data-parent=\"#accordionExample\">
-                                                <div class=\"card-body\">
-                                                <div class=\"card-form\" id=\"{$key}-header\"></div>
-                                                    <ul class=\"list-unstyled autoheight_scrol active collapse show\" id=\"{$key}\" style=\"\">";
-
+            $html .= '<h4 class="accordion-header inactive-header">' . replace_underscore_space($key) . '</h4>
+                        <section class="accordion-content">
+                        <div id="' . $key . '-header"></div>
+                            <ul class="list-unstyled" id="' . $key . '">';
             if (is_array($value)) {
                 if ($value[0] == 'Select All') {
                     $kpos = '0';
@@ -1461,468 +1395,70 @@ function left_filter_html($someArray = array(), $keys = array(), $count = array(
                             $checked2 = (in_array($value[$i], array_column($sessData, $key))) ? 'checked' : '';
                         }
                         if ($value[$i] == 'Select All') {
-                            $html .= "<li>
-                                                            <div class=\"form-check form-check-inline \">
-                                                                <input class=\"form-check-input greencheck {$key}-All\" type=\"checkbox\" id=\"inlineCheckbox2\" value=\"{$value[$i]}\" {$checked}>
-                                                                <label class=\"form-check-label\" for=\"{$key}\">" . replace_underscore_space($value[$i]) . "</label></div></li>";
+                            $html .= '<li>
+                                                <input type="checkbox" class="' . $key . '-All" value="' . $value[$i] . '" class="check"' . $checked . '>
+                                                <label for="check_book">' . replace_underscore_space($value[$i]) . '</label>
+                                                </li>';
                         } elseif ($key == 'artist') {
-                            $html .= "<li class=\"artist subList\">
-                                                            <div class=\"form-check form-check-inline\">
-                                                                <input class=\"form-check-input greencheck {$key}-All\" type=\"checkbox\" name=\"{$key}[]\" id=\"inlineCheckbox2\" value=\"{$value[$i]}\" {$checked2}>
-                                                                <label class=\"form-check-label\" for=\"{$key}\">" . replace_underscore_space($value[$i]) . "</label>". "<span class=\"count\"> (" . $c . ")</span>". "</div></li>";
+                            $html .= '<li class="artist">
+                                                <input type="checkbox" name="' . $key . '[]" value="' . $value[$i] . '" id="check_book" class="' . $key . '"' . $checked . $checked2 . '>
+                                                <label for="check_book">' . replace_underscore_space($value[$i]) . '</label><span class="count"> (' . $c . ')</span>' . paint_artist_mapping($value[$i]) . '</li>';
                         } else {
-                            $html .= "<li class=\"subList\">
-                                                            <div class=\"form-check form-check-inline \">
-                                                                <input class=\"form-check-input greencheck {$key}\" type=\"checkbox\" name=\"{$key}[]\" id=\"inlineCheckbox2\" value=\"{$value[$i]}\" {$checked} {$checked2}>
-                                                                <label class=\"form-check-label\" for=\"inlineCheckbox1\">" . replace_underscore_space($value[$i]) . "</label><span class=\"count\">({$c})</span></div></li>";
+                            $html .= '<li>
+                                                <input type="checkbox" name="' . $key . '[]" value="' . $value[$i] . '" id="check_book" class="' . $key . '"' . $checked . $checked2 . '>
+                                                <label for="check_book">' . replace_underscore_space($value[$i]) . '</label><span class="count"> (' . $c . ')</span>
+                                                </li>';
                         }
                     }
                 }
             }
-            $html .= "</ul></div></div></div>";
+            $html .= '</ul></section>';
         }
     }
-    //Wrapping accordian / menu section 1
-    $html .= "</div>";
+
 
 
     if (array_key_exists('gregorian_year', $someArray)) {
-        //Starting menu section 2
-        $html .= "<div class=\"menu-sec menu-sec-2\">
-                                    <div class=\"menu-title\">year range</div>
-                                    <div class=\"accordion\" id=\"accordionExample\">";
-
         $match = '-';
         $options = '';
-
+        $html .= '<h4 class="accordion-header inactive-header">Year Range</h4>
+                        <section class="accordion-content">';
         foreach ($someArray['gregorian_year'] as $val) {
             $years [] = (strpos($val, $match) === false) ? $val : substr($val, 0, strpos($val, "-"));
         }
 
         asort($years);
         foreach ($years as $year) {
-            //$options .= '<option value="' . $year . '">' . $year . '</option>';
-            $options_from .= "<label class=\"dropdown-item\" tabindex=\"0\">
-                                                            <input class=\"jRadioDropdown\" type=\"radio\" value=\"{$year}\" name=\"year_range[0]\" tabindex=\"-1\">
-                                                            <i>{$year}</i>
-                                                        </label>";
-            $options_to .= "<label class=\"dropdown-item\" tabindex=\"0\">
-                                                            <input class=\"jRadioDropdown\" type=\"radio\" value=\"{$year}\" name=\"year_range[1]\" tabindex=\"-1\">
-                                                            <i>{$year}</i>
-                                                        </label>";
+            $options .= '<option value="' . $year . '">' . $year . '</option>';
         }
 
-        //building from inputs
-        $html .= "<div class=\"dropdown\">
-                                                    <button type=\"button\" class=\"btn btn-light dropdown-toggle\" data-toggle=\"dropdown\">
-                                                        <p>From<span class=\"material-icons\">keyboard_arrow_down</span></p>
-                                                    </button>
-                                                    <div class=\"dropdown-menu radio\">
-                                                    {$options_from}
-                                                    </div>
-                                                </div>";
-
-        //Building To inputs
-        $html .= "<div class=\"dropdown\">
-                                                    <button type=\"button\" class=\"btn btn-light dropdown-toggle\" data-toggle=\"dropdown\">
-                                                        <p>To<span class=\"material-icons\">keyboard_arrow_down</span></p>
-                                                    </button>
-                                                    <div class=\"dropdown-menu radio\">
-                                                    {$options_to}
-                                                    </div>
-                                                </div>";
-
-        //Closing accordian menu-sec
-        $html .= '</div></div>';
+        $html .= '<div class="form-group">
+                                <div class="input-group">
+                                    <div class="input-group-addon">From</div>
+                                    <select class="form-control" id="FromYear" name="year_range[]"><option selected="selected" value="-1">Select year</option>' . $options . '</select>
+                                </div>
+                            </div>';
+        $html .= '<div class="form-group">
+                                <div class="input-group">
+                                    <div class="input-group-addon">To</div>
+                                    <select class="form-control" id="ToYear" name="year_range[]">
+                                            <option selected="selected" value="-1">Select year</option>' . $options . '</select>
+                                </div>
+                            </div>
+                        </section>';
     }
-
-    // submit input
-    $html .= '<div class="apply-action"><button id="btnSubmit" type="submit" class="apply-btn" name="submitButton" value="BiblioSearch">apply filters</button></div>
-                <input id="objSearch" name="objSearch" type="hidden" value=""></form>';
-    //Closing menu section 2, menu
-    $html .= "</div></div>";
+    $html .= '</div>
+                </div>';
+    $html .= '<button id="btnSubmit" type="submit" class="btn btn-red form-control" name="submitButton" value="BiblioSearch">Search</button>
+                            <button id="btnBack" type="submit" class="btn btn-red form-control" name="resetButton" value="Back">Reset</button>
+<input id="objSearch" name="objSearch" type="hidden" value=""></form>            
+        ';
 
     return $html;
 }
 
 
-function left_filter_html_second($someArray = array(), $keys = array(), $count = array())
-{
-    $someArray = array_map('array_filter', $someArray);
 
-    $reference_type = [];
-    $artist = [];
-    $author = [];
-    $editor = [];
-    $language = [];
-    $place_of_publication = [];
-    $publisher = [];
-    $gregorian_year = [];
-
-    /* classification */
-    if (array_key_exists('reference_type', $someArray)) {
-        $reference_type = $someArray['reference_type'];
-    }
-    //echo '<pre>';print_r($someArray);die;
-    $reference_type_html = '';
-    if (count($reference_type)>0) {
-        foreach ($reference_type as $key=>$value) {
-            $reference_type_html .= '<li>
-                                            <div class="form-check form-check-inline ">
-                                                <input class="form-check-input greencheck" type="checkbox" id="inlineCheckboxRT'.$key.'" value="'.$key.'">
-                                                <label class="form-check-label" for="inlineCheckboxRT'.$key.'">'.$value.'</label>
-                                            </div>
-                                        </li>';
-        }
-    }
-    /* classification */
-    /* artist */
-    if (array_key_exists('artist', $someArray)) {
-        $artist = $someArray['artist'];
-    }
-    //echo '<pre>';print_r($someArray);die;
-    $artist_html = '';
-    if (count($artist)>0) {
-        foreach ($artist as $key=>$value) {
-            $artist_html .= '<li class="subList">
-                                    <div class="form-check form-check-inline ">
-                                        <input class="form-check-input greencheck" type="checkbox" id="inlineCheckboxART'.$key.'" value="'.$key.'">
-                                        <label class="form-check-label" for="inlineCheckboxART'.$key.'">'.$value.'</label>
-                                    </div>
-                                </li>';
-        }
-    }
-    /* artist */
-    /* author */
-    if (array_key_exists('author', $someArray)) {
-        $author = $someArray['author'];
-    }
-    //echo '<pre>';print_r($someArray);die;
-    $author_html = '';
-    if (count($author)>0) {
-        foreach ($author as $key=>$value) {
-            $author_html .= '<li class="subList">
-                                    <div class="form-check form-check-inline ">
-                                        <input class="form-check-input greencheck" type="checkbox" id="inlineCheckboxAUTH'.$key.'" value="'.$key.'">
-                                        <label class="form-check-label" for="inlineCheckboxAUTH'.$key.'">'.$value.'</label>
-                                    </div>
-                                </li>';
-        }
-    }
-    /* author */
-    /* editor */
-    if (array_key_exists('editor', $someArray)) {
-        $editor = $someArray['editor'];
-    }
-    //echo '<pre>';print_r($someArray);die;
-    $editor_html = '';
-    if (count($editor)>0) {
-        foreach ($editor as $key=>$value) {
-            $editor_html .= '<li class="subList">
-                                    <div class="form-check form-check-inline ">
-                                        <input class="form-check-input greencheck" type="checkbox" id="inlineCheckboxEDT'.$key.'" value="'.$key.'">
-                                        <label class="form-check-label" for="inlineCheckboxEDT'.$key.'">'.$value.'</label>
-                                    </div>
-                                </li>';
-        }
-    }
-    /* editor */
-    /* language */
-    if (array_key_exists('language', $someArray)) {
-        $language = $someArray['language'];
-    }
-    //echo '<pre>';print_r($someArray);die;
-    $language_html = '';
-    if (count($language)>0) {
-        foreach ($language as $key=>$value) {
-            $language_html .= '<li class="subList">
-                                    <div class="form-check form-check-inline ">
-                                        <input class="form-check-input greencheck" type="checkbox" id="inlineCheckboxLANG'.$key.'" value="'.$key.'">
-                                        <label class="form-check-label" for="inlineCheckboxLANG'.$key.'">'.$value.'</label>
-                                    </div>
-                                </li>';
-        }
-    }
-    /* language */
-    /* place_of_publication */
-    if (array_key_exists('place_of_publication', $someArray)) {
-        $place_of_publication = $someArray['place_of_publication'];
-    }
-    //echo '<pre>';print_r($someArray);die;
-    $place_of_publication_html = '';
-    if (count($place_of_publication)>0) {
-        foreach ($place_of_publication as $key=>$value) {
-            $place_of_publication_html .= '<li class="subList">
-                                                    <div class="form-check form-check-inline ">
-                                                        <input class="form-check-input greencheck" type="checkbox" id="inlineCheckboxPOP'.$key.'" value="'.$key.'">
-                                                        <label class="form-check-label" for="inlineCheckboxPOP'.$key.'">'.$value.'</label>
-                                                    </div>
-                                                </li>';
-        }
-    }
-    /* place_of_publication */
-    /* publisher */
-    if (array_key_exists('publisher', $someArray)) {
-        $publisher = $someArray['publisher'];
-    }
-    //echo '<pre>';print_r($someArray);die;
-    $publisher_html = '';
-    if (count($publisher)>0) {
-        foreach ($publisher as $key=>$value) {
-            $publisher_html .= '<li class="subList">
-                                        <div class="form-check form-check-inline ">
-                                            <input class="form-check-input greencheck" type="checkbox" id="inlineCheckboxPUB'.$key.'" value="'.$key.'">
-                                            <label class="form-check-label" for="inlineCheckboxPUB'.$key.'">'.$value.'</label>
-                                        </div>
-                                    </li>';
-        }
-    }
-    /* publisher */
-    /* gregorian_year */
-    if (array_key_exists('gregorian_year', $someArray)) {
-        $gregorian_year = $someArray['gregorian_year'];
-    }
-    //echo '<pre>';print_r($someArray);die;
-    $gregorian_year_html    = '';
-    $from_year_html         = '<option value="" selected>Select From Year</option>';
-    $to_year_html           = '<option value="" selected>Select To Year</option>';
-    if (count($gregorian_year)>0) {
-        foreach ($gregorian_year as $key=>$value) {
-            $gregorian_year_html .= '<li class="subList">
-                                            <div class="form-check form-check-inline ">
-                                                <input class="form-check-input greencheck" type="checkbox" id="inlineCheckboxGY'.$key.'" value="'.$key.'">
-                                                <label class="form-check-label" for="inlineCheckboxGY'.$key.'">'.$value.'</label>
-                                            </div>
-                                        </li>';
-            $from_year_html         .= '<option value="'.$value.'">'.$value.'</option>';
-            $to_year_html         .= '<option value="'.$value.'">'.$value.'</option>';
-        }
-    }
-    /* gregorian_year */
-    $html = '<div class="menu">
-        <div class="menu-sec">
-            <div class="accordion" id="accordionExample">
-                <div class="card">
-                    <div class="card-header" id="headingOne">
-                        <h2 class="mb-0">
-                            <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                CLASSIFICATION
-                                <span class="material-icons">keyboard_arrow_down</span>
-                            </button>
-                        </h2>
-                    </div>
-
-                    <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
-                        <div class="card-body">
-                            <ul class="list-unstyled active collapse show" style="height:200px; overflow-y:scroll;">'.$reference_type_html.'</ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-header" id="headingTwo">
-                        <h2 class="mb-0">
-                            <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                artist
-                                <span class="material-icons">keyboard_arrow_down</span>
-                            </button>
-                        </h2>
-                    </div>
-                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
-                        <div class="card-body">
-                            <div class="card-form">
-                                <form>
-                                    <div class="form-group">
-                                        <input type="email" class="form-control" placeholder="SEARCH IN ARTIST" id="artistSearch">
-                                    </div>
-                                </form>
-                            </div>
-                            <ul class="list-unstyled active collapse show" id="artistMainList" style="height:200px; overflow-y:scroll;">'.$artist_html.'</ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-header" id="headingThree">
-                        <h2 class="mb-0">
-                            <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                author
-                                <span class="material-icons">keyboard_arrow_down</span>
-                            </button>
-                        </h2>
-                    </div>
-
-                    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
-                        <div class="card-body">
-                            <div class="card-form">
-                                <form>
-                                    <div class="form-group">
-                                        <input type="email" class="form-control" placeholder="SEARCH IN AUTHOR" id="authorSearch">
-                                    </div>
-                                </form>
-                            </div>
-                            <ul class="list-unstyled active collapse show" id="authorMainList" style="height:200px; overflow-y:scroll;">'.$author_html.'</ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-header" id="headingFour">
-                        <h2 class="mb-0">
-                            <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                                editor
-                                <span class="material-icons">keyboard_arrow_down</span>
-                            </button>
-                        </h2>
-                    </div>
-
-                    <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
-                        <div class="card-body">
-                            <div class="card-form">
-                                <form>
-                                    <div class="form-group">
-                                        <input type="email" class="form-control" placeholder="SEARCH IN EDITOR" id="editorSearch">
-                                    </div>
-                                </form>
-                            </div>
-                            <ul class="list-unstyled active collapse show" id="editorMainList" style="height:200px; overflow-y:scroll;">'.$editor_html.'</ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-header" id="headingFive">
-                        <h2 class="mb-0">
-                            <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-                                language
-                                <span class="material-icons">keyboard_arrow_down</span>
-                            </button>
-                        </h2>
-                    </div>
-
-                    <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordionExample">
-                        <div class="card-body">
-                            <div class="card-form">
-                                <form>
-                                    <div class="form-group">
-                                        <input type="email" class="form-control" placeholder="SEARCH IN LANGUAGE" id="languageSearch">
-                                    </div>
-                                </form>
-                            </div>
-                            <ul class="list-unstyled active collapse show" id="languageMainList" style="height:200px; overflow-y:scroll;">'.$language_html.'</ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-header" id="headingSix">
-                        <h2 class="mb-0">
-                            <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
-                                place of publication
-                                <span class="material-icons">keyboard_arrow_down</span>
-                            </button>
-                        </h2>
-                    </div>
-
-                    <div id="collapseSix" class="collapse" aria-labelledby="headingSix" data-parent="#accordionExample">
-                        <div class="card-body">
-                            <div class="card-form">
-                                <form>
-                                    <div class="form-group">
-                                        <input type="email" class="form-control" placeholder="SEARCH IN PLACE OF PUBLICATION" id="popSearch">
-                                    </div>
-                                </form>
-                            </div>
-                            <ul class="list-unstyled active collapse show" id="popMainList" style="height:200px; overflow-y:scroll;">'.$place_of_publication_html.'</ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-header" id="headingSeven">
-                        <h2 class="mb-0">
-                            <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
-                                publisher
-                                <span class="material-icons">keyboard_arrow_down</span>
-                            </button>
-                        </h2>
-                    </div>
-
-                    <div id="collapseSeven" class="collapse" aria-labelledby="headingSeven" data-parent="#accordionExample">
-                        <div class="card-body">
-                            <div class="card-form">
-                                <form>
-                                    <div class="form-group">
-                                        <input type="email" class="form-control" placeholder="SEARCH IN PUBLISHER" id="publisherSearch">
-                                    </div>
-                                </form>
-                            </div>
-                            <ul class="list-unstyled active collapse show" id="publisherMainList" style="height:200px; overflow-y:scroll;">'.$publisher_html.'</ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-header" id="headingEight">
-                        <h2 class="mb-0">
-                            <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
-                                year
-                                <span class="material-icons">keyboard_arrow_down</span>
-                            </button>
-                        </h2>
-                    </div>
-
-                    <div id="collapseEight" class="collapse" aria-labelledby="headingEight" data-parent="#accordionExample">
-                        <div class="card-body">
-                            <div class="card-form">
-                                <form>
-                                    <div class="form-group">
-                                        <input type="email" class="form-control" placeholder="SEARCH IN YEAR" id="yearSearch">
-                                    </div>
-                                </form>
-                            </div>
-                            <ul class="list-unstyled active collapse show" id="yearMainList" style="height:200px; overflow-y:scroll;">'.$gregorian_year_html.'</ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-        <div class="menu-sec menu-sec-2">
-            <div class="menu-title">year range</div>
-            <div class="accordion" id="accordionExample">
-                <div class="card">
-                    <div class="card-header" id="headingNine">
-                        <h2 class="mb-0">
-                            <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseNine" aria-expanded="false" aria-controls="collapseNine">
-                                from
-                                <span class="material-icons">keyboard_arrow_down</span>
-                            </button>
-                        </h2>
-                    </div>
-
-                    <div id="collapseNine" class="collapse" aria-labelledby="headingNine" data-parent="#accordionExample">
-                        <div class="card-body">
-                            <select class="form-control" name="from_year" id="from_year">'.$from_year_html.'</select>
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-header" id="headingTen">
-                        <h2 class="mb-0">
-                            <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseTen" aria-expanded="false" aria-controls="collapseTen">
-                                to
-                                <span class="material-icons">keyboard_arrow_down</span>
-                            </button>
-                        </h2>
-                    </div>
-                    <div id="collapseTen" class="collapse" aria-labelledby="headingTen" data-parent="#accordionExample">
-                        <div class="card-body">
-                            <select class="form-control" name="to_year" id="to_year">'.$to_year_html.'</select>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="apply-action">
-                <button id="btnSubmit" type="submit" class="apply-btn" name="submitButton" value="BiblioSearch">apply filters</button>
-            </div>
-        </div>
-    </div>';
-    return $html;
-}
 
 
 function left_filter_html_only_adv($someArray = array(), $keys = array(), $count = array(), $productstr)
@@ -1942,26 +1478,12 @@ function left_filter_html_only_adv($someArray = array(), $keys = array(), $count
         $sessData = $_SESSION['bParam'];
         $sessCount = count($sessData);
     }
-    /**
-      $html = '<h4 class="search-filters-title" id="search-filters-title">Refine Search</h4>
-    <form action="adv-search" class="filter-form" id="filter-form" method="post">
-    <input type="hidden" name="allproductsid" value="'.$productstr.'">
-    <div class="search-filters" style="margin-bottom:20px;">
-                        <div class="filter-group">';
-    */
-    $html = '<form action="adv-search" class="filter-form" id="filter-form" method="post">
-                <input type="hidden" name="allproductsid" value="'.$productstr.'">                
-                <div class="artist-inner">
-                                <div class="artist-top artist-top-2">
-                                    <p class="filters">FILTERS<span class="material-icons">filter_alt</span></p>
-                                    <p class="reset"><button id="btnBack" type="submit" class="btn btn-red form-control" name="resetButton" value="Back">Reset</button></p>
-                                </div>
-                            </div>
-                            <div class="menu">
-                                <div class="menu-sec">
-                                    <div class="accordion" id="accordionExample">';
 
-
+    $html = '<h4 class="search-filters-title" id="search-filters-title">Refine Search</h4>
+<form action="adv-search" class="filter-form" id="filter-form" method="post">  
+<input type="hidden" name="allproductsid" value="'.$productstr.'">
+<div class="search-filters" style="margin-bottom:20px;">
+                    <div class="filter-group">';
     //now loop through each filter and value
     foreach ($someArray as $key => $value) {
         $checked = ($key == "reference_type" || $key == 'language') ? "checked" : null;
@@ -1969,28 +1491,10 @@ function left_filter_html_only_adv($someArray = array(), $keys = array(), $count
 
 
         if (array_key_exists($key, $keys) && !empty($value)) {
-            /*
             $html .= '<h4 class="accordion-header inactive-header">' . replace_underscore_space($key) . '</h4>
                         <section class="accordion-content">
                         <div id="' . $key . '-header"></div>
                             <ul class="list-unstyled" id="' . $key . '">';
-            */
-            $accordianHeaderKey= replace_underscore_space($key);
-            $html .= "<div class=\"card\">
-                                            <div class=\"card-header\" id=\"headingOne\">
-                                                <h2 class=\"mb-0\">
-                                                    <button class=\"btn btn-link btn-block text-left collapsed\" type=\"button\" data-toggle=\"collapse\" data-target=\"#collapse_{$accordianHeaderKey}\" aria-expanded=\"true\" aria-controls=\"collapse_{$accordianHeaderKey}\">
-                                                        {$accordianHeaderKey}
-                                                        <span class=\"material-icons\">keyboard_arrow_down</span>
-                                                    </button>
-                                                </h2>
-                                            </div>
-
-                                            <div id=\"collapse_{$accordianHeaderKey}\" class=\"collapse\" aria-labelledby=\"headingOne\" data-parent=\"#accordionExample\">
-                                                <div class=\"card-body\">
-                                                <div class=\"card-form\" id=\"{$key}-header\"></div>
-                                                    <ul class=\"list-unstyled autoheight_scrol active collapse show\" id=\"{$key}\" style=\"\">";
-
             if (is_array($value)) {
                 if ($value[0] == 'Select All') {
                     $kpos = '0';
@@ -2053,136 +1557,64 @@ function left_filter_html_only_adv($someArray = array(), $keys = array(), $count
                             $checked2 = (in_array($value[$i], array_column($sessData, $key))) ? 'checked' : '';
                         }
                         if ($value[$i] == 'Select All') {
-                            /*
                             $html .= '<li>
                                                 <input type="checkbox" class="' . $key . '-All" value="' . $value[$i] . '" class="check"' . $checked . '>
                                                 <label for="check_book">' . replace_underscore_space($value[$i]) . '</label>
                                                 </li>';
-                            */
-                            $html .= "<li>
-                                                            <div class=\"form-check form-check-inline \">
-                                                                <input class=\"form-check-input greencheck {$key}-All\" type=\"checkbox\" id=\"inlineCheckbox2\" value=\"{$value[$i]}\" {$checked}>
-                                                                <label class=\"form-check-label\" for=\"{$key}\">" . replace_underscore_space($value[$i]) . "</label></div></li>";
                         } elseif ($key == 'artist') {
-                            /*
                             $html .= '<li class="artist">
                                                 <input type="checkbox" name="' . $key . '[]" value="' . $value[$i] . '" id="check_book" class="' . $key . '"' . $checked . $checked2 . '>
                                                 <label for="check_book">' . replace_underscore_space($value[$i]) . '</label><span class="count"> (' . $c . ')</span>' . paint_artist_mapping($value[$i]) . '</li>';
-                                                */
-                            $html .= "<li class=\"artist subList\">
-                                                            <div class=\"form-check form-check-inline\">
-                                                                <input class=\"form-check-input greencheck {$key}-All\" type=\"checkbox\" name=\"{$key}[]\" id=\"inlineCheckbox2\" value=\"{$value[$i]}\" {$checked2}>
-                                                                <label class=\"form-check-label\" for=\"{$key}\">" . replace_underscore_space($value[$i]) . "</label>". "<span class=\"count\"> (" . $c . ")</span>". "</div></li>";
                         } else {
-                            /*
                             $html .= '<li>
                                                 <input type="checkbox" name="' . $key . '[]" value="' . $value[$i] . '" id="check_book" class="' . $key . '"' . $checked . $checked2 . '>
                                                 <label for="check_book">' . replace_underscore_space($value[$i]) . '</label><span class="count"> (' . $c . ')</span>
                                                 </li>';
-                                                */
-                            $html .= "<li class=\"subList\">
-                                                            <div class=\"form-check form-check-inline \">
-                                                                <input class=\"form-check-input greencheck {$key}\" type=\"checkbox\" name=\"{$key}[]\" id=\"inlineCheckbox2\" value=\"{$value[$i]}\" {$checked} {$checked2}>
-                                                                <label class=\"form-check-label\" for=\"inlineCheckbox1\">" . replace_underscore_space($value[$i]) . "</label><span class=\"count\">({$c})</span></div></li>";
                         }
                     }
                 }
             }
-            //$html .= '</ul></section>';
-            $html .= "</ul></div></div></div>";
+            $html .= '</ul></section>';
         }
     }
-    //Wrapping accordian / menu section 1
-    $html .= "</div>";
-    if (array_key_exists('gregorian_year', $someArray)) {
-        //Starting menu section 2
 
+
+
+    if (array_key_exists('gregorian_year', $someArray)) {
         $match = '-';
         $options = '';
-        $options_from="";
-        $options_to="";
-        /*
         $html .= '<h4 class="accordion-header inactive-header">Year Range</h4>
                         <section class="accordion-content">';
-                        */
-        $html .= "<div class=\"menu-sec menu-sec-2\">
-                                    <div class=\"menu-title\">year range</div>
-                                    <div class=\"accordion\" id=\"accordionExample\">";
-
         foreach ($someArray['gregorian_year'] as $val) {
-            //$years [] = (strpos($val, $match) === false) ? $val : substr($val, 0, strpos($val, "-"));
             $years [] = (strpos($val, $match) === false) ? $val : substr($val, 0, strpos($val, "-"));
         }
 
         asort($years);
         foreach ($years as $year) {
-            //$options .= '<option value="' . $year . '">' . $year . '</option>';
-
-            $options_from .= "<label class=\"dropdown-item\" tabindex=\"0\">
-                                                            <input class=\"jRadioDropdown\" type=\"radio\" value=\"{$year}\" name=\"year_range[0]\" tabindex=\"-1\">
-                                                            <i>{$year}</i>
-                                                        </label>";
-            $options_to .= "<label class=\"dropdown-item\" tabindex=\"0\">
-                                                            <input class=\"jRadioDropdown\" type=\"radio\" value=\"{$year}\" name=\"year_range[1]\" tabindex=\"-1\">
-                                                            <i>{$year}</i>
-                                                        </label>";
+            $options .= '<option value="' . $year . '">' . $year . '</option>';
         }
 
-        //building from inputs
-        $html .= "<div class=\"dropdown\">
-                                                    <button type=\"button\" class=\"btn btn-light dropdown-toggle\" data-toggle=\"dropdown\">
-                                                        <p>From<span class=\"material-icons\">keyboard_arrow_down</span></p>
-                                                    </button>
-                                                    <div class=\"dropdown-menu radio\">
-                                                    {$options_from}
-                                                    </div>
-                                                </div>";
-
-        //Building To inputs
-        $html .= "<div class=\"dropdown\">
-                                                    <button type=\"button\" class=\"btn btn-light dropdown-toggle\" data-toggle=\"dropdown\">
-                                                        <p>To<span class=\"material-icons\">keyboard_arrow_down</span></p>
-                                                    </button>
-                                                    <div class=\"dropdown-menu radio\">
-                                                    {$options_to}
-                                                    </div>
-                                                </div>";
-        /*
-                $html .= '<div class="form-group">
-                                        <div class="input-group">
-                                            <div class="input-group-addon">From</div>
-                                            <select class="form-control" id="FromYear" name="year_range[]"><option selected="selected" value="-1">Select year</option>' . $options . '</select>
-                                        </div>
-                                    </div>';
-                $html .= '<div class="form-group">
-                                        <div class="input-group">
-                                            <div class="input-group-addon">To</div>
-                                            <select class="form-control" id="ToYear" name="year_range[]">
-                                                    <option selected="selected" value="-1">Select year</option>' . $options . '</select>
-                                        </div>
-                                    </div>
-                                </section>';
-                                */
-
-        //Closing accordian menu-sec
-        $html .= '</div></div>';
+        $html .= '<div class="form-group">
+                                <div class="input-group">
+                                    <div class="input-group-addon">From</div>
+                                    <select class="form-control" id="FromYear" name="year_range[]"><option selected="selected" value="-1">Select year</option>' . $options . '</select>
+                                </div>
+                            </div>';
+        $html .= '<div class="form-group">
+                                <div class="input-group">
+                                    <div class="input-group-addon">To</div>
+                                    <select class="form-control" id="ToYear" name="year_range[]">
+                                            <option selected="selected" value="-1">Select year</option>' . $options . '</select>
+                                </div>
+                            </div>
+                        </section>';
     }
-
-    // submit input
-    $html .= '<div class="apply-action"><button id="btnSubmit" type="submit" class="apply-btn" name="submitButton" value="BiblioSearch">apply filters</button></div>
-                <input id="objSearch" name="objSearch" type="hidden" value=""></form>';
-    //Closing menu section 2, menu
-    $html .= "</div></div>";
-
-    /*
     $html .= '</div>
                 </div>';
-
     $html .= '<button id="btnSubmit" type="submit" class="btn btn-red form-control" name="submitButton" value="BiblioSearch">Search</button>
                             <button id="btnBack" type="submit" class="btn btn-red form-control" name="resetButton" value="Back">Reset</button>
-<input id="objSearch" name="objSearch" type="hidden" value=""></form>
+<input id="objSearch" name="objSearch" type="hidden" value=""></form>            
         ';
-        */
 
     return $html;
 }
@@ -2203,46 +1635,26 @@ function left_filter_html_adv($someArray = array(), $keys = array(), $count = ar
             return 0;
         }
     });
-    //return $someArray;
     if (isset($_SESSION['bParam'])) {
         $sessData = $_SESSION['bParam'];
         $sessCount = count($sessData);
     }
 
-    $html = '<form action="adv-search" class="filter-form" id="filter-form" method="post">                
-                <div class="artist-inner">
-                                <div class="artist-top artist-top-2">
-                                    <p class="filters">FILTERS<span class="material-icons">filter_alt</span></p>
-                                    <p class="reset"><button id="btnBack" type="submit" class="btn btn-red form-control" name="resetButton" value="Back">Reset</button></p>
-                                </div>
-                            </div>
-                            <div class="menu">
-                                <div class="menu-sec">
-                                    <div class="accordion" id="accordionExample">';
+    $html = '<h4 class="search-filters-title" id="search-filters-title">Refine Search</h4>
+<form action="adv-search" class="filter-form" id="filter-form" method="post">                
+<div class="search-filters" style="margin-bottom:20px;">
+                    <div class="filter-group">';
     //now loop through each filter and value
     foreach ($someArray as $key => $value) {
-        $accordianHeaderKey= replace_underscore_space($key);
-
         $checked = ($key == "reference_type" || $key == 'language') ? "checked" : null;
 
 
 
         if (array_key_exists($key, $keys) && !empty($value)) {
-            $html .= "<div class=\"card\">
-                                            <div class=\"card-header\" id=\"headingOne\">
-                                                <h2 class=\"mb-0\">
-                                                    <button class=\"btn btn-link btn-block text-left collapsed\" type=\"button\" data-toggle=\"collapse\" data-target=\"#collapse_{$accordianHeaderKey}\" aria-expanded=\"true\" aria-controls=\"collapse_{$accordianHeaderKey}\">
-                                                        {$accordianHeaderKey}
-                                                        <span class=\"material-icons\">keyboard_arrow_down</span>
-                                                    </button>
-                                                </h2>
-                                            </div>
-
-                                            <div id=\"collapse_{$accordianHeaderKey}\" class=\"collapse\" aria-labelledby=\"headingOne\" data-parent=\"#accordionExample\">
-                                                <div class=\"card-body\">
-                                                <div class=\"card-form\" id=\"{$key}-header\"></div>
-                                                    <ul class=\"list-unstyled autoheight_scrol active collapse show\" id=\"{$key}\" style=\"\">";
-
+            $html .= '<h4 class="accordion-header inactive-header">' . replace_underscore_space($key) . '</h4>
+                        <section class="accordion-content">
+                        <div id="' . $key . '-header"></div>
+                            <ul class="list-unstyled" id="' . $key . '">';
             if (is_array($value)) {
                 if ($value[0] == 'Select All') {
                     $kpos = '0';
@@ -2302,102 +1714,67 @@ function left_filter_html_adv($someArray = array(), $keys = array(), $count = ar
 
 
                         if (!empty($sessData)) {
-                            if (is_array($sessData[$key])) {
-                                //new added
-                                $checked2 = (in_array($value[$i], $sessData[$key])) ? 'checked' : '';
-                            } else {
-                                //old
-                                $checked2 = (in_array($value[$i], array_column($sessData, $key))) ? 'checked' : '';
-                            }
+                            $checked2 = (in_array($value[$i], array_column($sessData, $key))) ? 'checked' : '';
                         }
                         if ($value[$i] == 'Select All') {
-                            $html .= "<li>
-                                                            <div class=\"form-check form-check-inline \">
-                                                                <input class=\"form-check-input greencheck {$key}-All\" type=\"checkbox\" id=\"inlineCheckbox2\" value=\"{$value[$i]}\" {$checked}>
-                                                                <label class=\"form-check-label\" for=\"{$key}\">" . replace_underscore_space($value[$i]) . "</label></div></li>";
+                            $html .= '<li>
+                                                <input type="checkbox" class="' . $key . '-All" value="' . $value[$i] . '" class="check"' . $checked . '>
+                                                <label for="check_book">' . replace_underscore_space($value[$i]) . '</label>
+                                                </li>';
                         } elseif ($key == 'artist') {
-                            $html .= "<li class=\"artist subList\">
-                                                            <div class=\"form-check form-check-inline\">
-                                                                <input class=\"form-check-input greencheck {$key}-All\" type=\"checkbox\" name=\"{$key}[]\" id=\"inlineCheckbox2\" value=\"{$value[$i]}\" {$checked2}>
-                                                                <label class=\"form-check-label\" for=\"{$key}\">" . replace_underscore_space($value[$i]) . "</label>". "<span class=\"count\"> (" . $c . ")</span>" . "</div></li>";
+                            $html .= '<li class="artist">
+                                                <input type="checkbox" name="' . $key . '[]" value="' . $value[$i] . '" id="check_book" class="' . $key . '"' . $checked . $checked2 . '>
+                                                <label for="check_book">' . replace_underscore_space($value[$i]) . '</label><span class="count"> (' . $c . ')</span>' . paint_artist_mapping($value[$i]) . '</li>';
                         } else {
-                            $html .= "<li class=\"subList\">
-                                                            <div class=\"form-check form-check-inline \">
-                                                                <input class=\"form-check-input greencheck {$key}\" type=\"checkbox\" name=\"{$key}[]\" id=\"inlineCheckbox2\" value=\"{$value[$i]}\" {$checked} {$checked2}>
-                                                                <label class=\"form-check-label\" for=\"inlineCheckbox1\">" . replace_underscore_space($value[$i]) . "</label><span class=\"count\">({$c})</span></div></li>";
+                            $html .= '<li>
+                                                <input type="checkbox" name="' . $key . '[]" value="' . $value[$i] . '" id="check_book" class="' . $key . '"' . $checked . $checked2 . '>
+                                                <label for="check_book">' . replace_underscore_space($value[$i]) . '</label><span class="count"> (' . $c . ')</span>
+                                                </li>';
                         }
                     }
                 }
             }
-            $html .= "</ul></div></div></div>";
+            $html .= '</ul></section>';
         }
     }
 
-
-    //Wrapping menu section 1
-    $html .= "</div>";
 
 
     if (array_key_exists('gregorian_year', $someArray)) {
         $match = '-';
         $options = '';
-        $options_from="";
-        $options_to="";
-        $html .= "<div class=\"menu-sec menu-sec-2\">
-                                    <div class=\"menu-title\">year range</div>
-                                    <div class=\"accordion\" id=\"accordionExample\">";
-
+        $html .= '<h4 class="accordion-header inactive-header">Year Range</h4>
+                        <section class="accordion-content">';
         foreach ($someArray['gregorian_year'] as $val) {
             $years [] = (strpos($val, $match) === false) ? $val : substr($val, 0, strpos($val, "-"));
         }
 
         asort($years);
         foreach ($years as $year) {
-            $options_from .= "<label class=\"dropdown-item\" tabindex=\"0\">
-                                                            <input class=\"jRadioDropdown\" type=\"radio\" value=\"{$year}\" name=\"year_range[0]\" tabindex=\"-1\">
-                                                            <i>{$year}</i>
-                                                        </label>";
-            $options_to .= "<label class=\"dropdown-item\" tabindex=\"0\">
-                                                            <input class=\"jRadioDropdown\" type=\"radio\" value=\"{$year}\" name=\"year_range[1]\" tabindex=\"-1\">
-                                                            <i>{$year}</i>
-                                                        </label>";
+            $options .= '<option value="' . $year . '">' . $year . '</option>';
         }
 
-
-        //building from inputs
-        $html .= "<div class=\"dropdown\">
-                                                    <button type=\"button\" class=\"btn btn-light dropdown-toggle\" data-toggle=\"dropdown\">
-                                                        <p>From<span class=\"material-icons\">keyboard_arrow_down</span></p>
-                                                    </button>
-                                                    <div class=\"dropdown-menu radio\">
-                                                    {$options_from}
-                                                    </div>
-                                                </div>";
-
-        //Building To inputs
-        $html .= "<div class=\"dropdown\">
-                                                    <button type=\"button\" class=\"btn btn-light dropdown-toggle\" data-toggle=\"dropdown\">
-                                                        <p>To<span class=\"material-icons\">keyboard_arrow_down</span></p>
-                                                    </button>
-                                                    <div class=\"dropdown-menu radio\">
-                                                    {$options_to}
-                                                    </div>
-                                                </div>";
-
-
-        //Closing accordian
-
-        $html .= '</div></div>';
+        $html .= '<div class="form-group">
+                                <div class="input-group">
+                                    <div class="input-group-addon">From</div>
+                                    <select class="form-control" id="FromYear" name="year_range[]"><option selected="selected" value="-1">Select year</option>' . $options . '</select>
+                                </div>
+                            </div>';
+        $html .= '<div class="form-group">
+                                <div class="input-group">
+                                    <div class="input-group-addon">To</div>
+                                    <select class="form-control" id="ToYear" name="year_range[]">
+                                            <option selected="selected" value="-1">Select year</option>' . $options . '</select>
+                                </div>
+                            </div>
+                        </section>';
     }
-
-
-
-    // submit input
-    $html .= '<div class="apply-action"><button id="btnSubmit" type="submit" class="apply-btn" name="submitButton" value="BiblioSearch">apply filters</button></div>
-                <input id="objSearch" name="objSearch" type="hidden" value=""></form>';
-    //Closing menu section 2, menu
-    $html .= "</div></div>";
-
+    $html .= '</div>
+                </div>';
+    $html .= '<button id="btnSubmit" type="submit" class="btn btn-red form-control" name="submitButton" value="BiblioSearch">Search</button>
+                            <button id="btnBack" type="submit" class="btn btn-red form-control" name="resetButton" value="Back">Reset</button>
+<input id="objSearch" name="objSearch" type="hidden" value=""></form>            
+        ';
 
     return $html;
 }
@@ -2758,16 +2135,9 @@ function memorabilia_left_search($array = array(), $keys = array(), $count = arr
     }
 
 
-    $html = '<form action="memorabilia" class="filter-form" id="filter-form" method="post">
-                        <div class="artist-inner">
-                                <div class="artist-top artist-top-2">
-                                    <p class="filters">FILTERS<span class="material-icons">filter_alt</span></p>
-                                    <p class="reset"><button id="btnBack" type="submit" class="btn btn-red form-control" name="resetButton" value="Back">Reset</button></p>
-                                </div>
-                            </div>
-                            <div class="menu">
-                                <div class="menu-sec">
-                                    <div class="accordion" id="accordionExample">';
+    $html = '<h4 class="search-filters-title" id="search-filters-title">Refine Search</h4>
+<form action="memorabilia" class="filter-form" id="filter-form" method="post">                <div class="search-filters" style="margin-bottom:20px;">
+                    <div class="filter-group">';
     //now loop through each filter and value
     /**
      * Creating left panel order
@@ -2782,27 +2152,15 @@ function memorabilia_left_search($array = array(), $keys = array(), $count = arr
         $sessCount = count($sessData);
     }
 
-        //    print "<pre>";
-        //    print_r($properOrderedArray);
-    //echo "<pre>";print_r($properOrderedArray);die;
+//    print "<pre>";
+//    print_r($properOrderedArray);
     foreach ($properOrderedArray as $key => $value) {
-        $accordianHeaderKey= uppercasefirstword($key);
+//        if (array_key_exists($key, $keys)) {
 
-        //new html
-        $html .= "<div class=\"card\">
-                                            <div class=\"card-header\" id=\"headingOne\">
-                                                <h2 class=\"mb-0\">
-                                                    <button class=\"btn btn-link btn-block text-left collapsed\" type=\"button\" data-toggle=\"collapse\" data-target=\"#collapse_{$accordianHeaderKey}\" aria-expanded=\"true\" aria-controls=\"collapse_{$accordianHeaderKey}\">
-                                                        {$accordianHeaderKey}
-                                                        <span class=\"material-icons\">keyboard_arrow_down</span>
-                                                    </button>
-                                                </h2>
-                                            </div>
-
-                                            <div id=\"collapse_{$accordianHeaderKey}\" class=\"collapse\" aria-labelledby=\"headingOne\" data-parent=\"#accordionExample\">
-                                                <div class=\"card-body\">
-                                                <div class=\"card-form\" id=\"{$key}-header\"></div>
-                                                    <ul class=\"list-unstyled autoheight_scrol active collapse show\" id=\"{$key}\" style=\"\">";
+        $html .= '<h4 class="accordion-header inactive-header">' . uppercasefirstword($key) . '</h4>
+                        <section class="accordion-content">
+                        <div id="' . $key . '-header"></div>
+                            <ul class="list-unstyled" id="' . $key . '">';
         if (is_array($value)) {
             /**
              * Checked values which are already stored in Session
@@ -2822,35 +2180,23 @@ function memorabilia_left_search($array = array(), $keys = array(), $count = arr
                         }
                     }
 
-                    //New Li
-                    $html .= "<li class=\"li_{$i} subList\">
-                                                            <div class=\"form-check form-check-inline \">
-                                                                <input class=\"form-check-input greencheck {$key}\" type=\"checkbox\" id=\"inlineCheckbox2\" name=\"{$key}[]\" value=\"{$value[$i]}\" {$checked}>
-                                                                <label class=\"form-check-label\" for=\"inlineCheckbox1\">{$value[$i]}</label><span class=\"count\">({$c})</span>
-                                                            </div>
-                                                        </li>";
+                    $html .= '<li class="li_' . $i . '">
+                                                <input type="checkbox" name="' . $key . '[]" value="' . $value[$i] . '" class="' . $key . '"' . $checked . '>
+                                                <label for="check_book">' . $value[$i] . '</label><span class="count"> (' . $c . ')</span>
+                                            </li>';
                 }
             }   //Value for loop closed
         }
-        $html .= "</ul></div></div></div>";
-        //$html .= '</ul></section>';
-        //        } No need of array key exists
+        $html .= '</ul></section>';
+//        } No need of array key exists
     }
-
-
-    //Wrapping menu section 1
-    $html .= "</div></div>";
-
 
     //For Year Range select dropdown
     if (array_key_exists('year', $properOrderedArray)) {
         $match = '-';
-        $options_from = '';
-        $options_to= '';
-        $html .= "<div class=\"menu-sec menu-sec-2\">
-                                    <div class=\"menu-title\">Year Range</div>
-                                    <div class=\"accordion\" id=\"accordionExample\">";
-
+        $options = '';
+        $html .= '<h4 class="accordion-header inactive-header">Year Range</h4>
+                        <section class="accordion-content">';
         if (!empty($properOrderedArray['year'])) {
             foreach ($properOrderedArray['year'] as $val) {
                 $years [] = (strpos($val, $match) === false) ? $val : substr($val, 0, strpos($val, "-"));
@@ -2858,368 +2204,34 @@ function memorabilia_left_search($array = array(), $keys = array(), $count = arr
 
             asort($years);
             foreach ($years as $year) {
-                //$options .= '<option value="' . $year . '">' . $year . '</option>';
-
-                $options_from .= "<label class=\"dropdown-item\" tabindex=\"0\">
-                                                            <input class=\"jRadioDropdown\" type=\"radio\" value=\"{$year}\" name=\"year_range[0]\" tabindex=\"-1\">
-                                                            <i>{$year}</i>
-                                                        </label>";
-                $options_to .= "<label class=\"dropdown-item\" tabindex=\"0\">
-                                                            <input class=\"jRadioDropdown\" type=\"radio\" value=\"{$year}\" name=\"year_range[1]\" tabindex=\"-1\">
-                                                            <i>{$year}</i>
-                                                        </label>";
+                $options .= '<option value="' . $year . '">' . $year . '</option>';
             }
 
-            //New Html
-
-            //building from inputs
-            $html .= "<div class=\"dropdown\">
-                                                    <button type=\"button\" class=\"btn btn-light dropdown-toggle\" data-toggle=\"dropdown\">
-                                                        <p>From<span class=\"material-icons\">keyboard_arrow_down</span></p>
-                                                    </button>
-                                                    <div class=\"dropdown-menu radio\">
-                                                    {$options_from}
-                                                    </div>
-                                                </div>";
-
-            //Building To inputs
-            $html .= "<div class=\"dropdown\">
-                                                    <button type=\"button\" class=\"btn btn-light dropdown-toggle\" data-toggle=\"dropdown\">
-                                                        <p>To<span class=\"material-icons\">keyboard_arrow_down</span></p>
-                                                    </button>
-                                                    <div class=\"dropdown-menu radio\">
-                                                    {$options_to}
-                                                    </div>
-                                                </div>";
+            $html .= '<div class="form-group">
+                                <div class="input-group">
+                                    <div class="input-group-addon">From</div>
+                                    <select class="form-control" id="FromYear" name="year_range[]"><option selected="selected" value="-1">Select year</option>' . $options . '</select>
+                                </div>
+                            </div>';
+            $html .= '<div class="form-group">
+                                <div class="input-group">
+                                    <div class="input-group-addon" style="padding:6px 21px;">To</div>
+                                    <select class="form-control" id="ToYear" name="year_range[]">
+                                            <option selected="selected" value="-1">Select year</option>' . $options . '</select>
+                                </div>
+                            </div>
+                        </section>';
         }
-
-        //Closing accordian
-        $html .= '</div></div>';
     }
-
-
-    // submit input
-    $html .= '<div class="apply-action"><button id="btnSubmit" type="submit" class="apply-btn" name="submitButton" value="MemorabilaSearch">apply filters</button></div>
-                <input id="objSearch" name="objSearch" type="hidden" value=""></form>';
-    //Closing  menu
-    $html .= "</div>";
-
-
+    $html .= '</div>
+                </div>
+                <button id="btnSubmit" type="submit" class="btn btn-red form-control" name="submitButton" value="MemorabilaSearch">Search</button>
+                            <button id="btnReset" type="submit" class="btn btn-red form-control" name="resetButton" value="reset">Reset</button>
+<input id="objSearch" name="objSearch" type="hidden" value=""></form>            
+        ';
 
     return $html;
 }
-
-/* Memorabilia search left filter data in new design */
-function memorabilia_left_search_new_design($array = array(), $keys = array(), $count = array(), $html = '')
-{
-    $result = array();
-    $checked = '';
-    $someArray = array_map('array_filter', $array);
-    $iterator = new RecursiveIteratorIterator(new RecursiveArrayIterator($someArray), RecursiveIteratorIterator::SELF_FIRST);
-    foreach ($iterator as $k => $v) {
-        if ($iterator->hasChildren()) {
-            if ($iterator->getDepth()) {
-                $level1 = $k;
-            }
-        } else {
-            if (array_key_exists($level1, $keys)) {
-                $result[$level1][] = $v;
-            }
-        }
-    }
-    $final = assoc_Array_unique($result);
-    //Sorting Final Data
-    $sortingKeys = array('year' => 1, 'film' => 1, 'cast' => 1, 'director' => 1, 'music' => 1, 'playback' => 1, 'producer' => 1, 'story' => 1, 'photography' => 1, 'art' => 1, 'editor' => 1, 'distributor' => 1, 'hall' => 1, 'script' => 1,);
-    $iterator = new RecursiveIteratorIterator(new RecursiveArrayIterator($final), RecursiveIteratorIterator::SELF_FIRST);
-    foreach ($iterator as $k => $v) {
-        if ($iterator->hasChildren()) {
-            if ($iterator->getDepth() == 0) {
-                $attr = $k;
-            }
-        } else {
-            if (array_key_exists($attr, $sortingKeys)) {
-                sort($final[$attr]);
-            }
-        }
-    }
-    $properOrderedArray = array_replace(array_flip(array('year', 'film', 'cast', 'director', 'music', 'playback')), $final);
-    //echo '<pre>';print_r($properOrderedArray);die;
-    $someArray = $properOrderedArray;
-    $year           = [];
-    $film           = [];
-    $cast           = [];
-    $director       = [];
-    $music          = [];
-    $playback       = [];
-
-    $year_html      = '';
-    $film_html      = '';
-    $cast_html      = '';
-    $director_html  = '';
-    $music_html     = '';
-    $playback_html  = '';
-    /* year */
-    if (array_key_exists('year', $someArray)) {
-        $year = $someArray['year'];
-    }
-    if (count($year)>0) {
-        foreach ($year as $key=>$value) {
-            $year_html .= '<li class="subList">
-                                        <div class="form-check form-check-inline ">
-                                            <input class="form-check-input greencheck" type="checkbox" id="inlineCheckboxYEAR'.$key.'" value="'.$key.'">
-                                            <label class="form-check-label" for="inlineCheckboxYEAR'.$key.'">'.$value.'</label>
-                                        </div>
-                                    </li>';
-        }
-    }
-    /* year */
-    /* film */
-    if (array_key_exists('film', $someArray)) {
-        $film = $someArray['film'];
-    }
-    if (count($film)>0) {
-        foreach ($film as $key=>$value) {
-            $film_html .= '<li class="subList">
-                                        <div class="form-check form-check-inline ">
-                                            <input class="form-check-input greencheck" type="checkbox" id="inlineCheckboxFILM'.$key.'" value="'.$key.'">
-                                            <label class="form-check-label" for="inlineCheckboxFILM'.$key.'">'.$value.'</label>
-                                        </div>
-                                    </li>';
-        }
-    }
-    /* film */
-    /* cast */
-    if (array_key_exists('cast', $someArray)) {
-        $cast = $someArray['cast'];
-    }
-    if (count($cast)>0) {
-        foreach ($cast as $key=>$value) {
-            $cast_html .= '<li class="subList">
-                                        <div class="form-check form-check-inline ">
-                                            <input class="form-check-input greencheck" type="checkbox" id="inlineCheckboxCAST'.$key.'" value="'.$key.'">
-                                            <label class="form-check-label" for="inlineCheckboxCAST'.$key.'">'.$value.'</label>
-                                        </div>
-                                    </li>';
-        }
-    }
-    /* cast */
-    /* director */
-    if (array_key_exists('director', $someArray)) {
-        $director = $someArray['director'];
-    }
-    if (count($director)>0) {
-        foreach ($director as $key=>$value) {
-            $director_html .= '<li class="subList">
-                                        <div class="form-check form-check-inline ">
-                                            <input class="form-check-input greencheck" type="checkbox" id="inlineCheckboxDIRECTOR'.$key.'" value="'.$key.'">
-                                            <label class="form-check-label" for="inlineCheckboxDIRECTOR'.$key.'">'.$value.'</label>
-                                        </div>
-                                    </li>';
-        }
-    }
-    /* director */
-    /* music */
-    if (array_key_exists('music', $someArray)) {
-        $music = $someArray['music'];
-    }
-    if (count($music)>0) {
-        foreach ($music as $key=>$value) {
-            $music_html .= '<li class="subList">
-                                        <div class="form-check form-check-inline ">
-                                            <input class="form-check-input greencheck" type="checkbox" id="inlineCheckboxMUSIC'.$key.'" value="'.$key.'">
-                                            <label class="form-check-label" for="inlineCheckboxMUSIC'.$key.'">'.$value.'</label>
-                                        </div>
-                                    </li>';
-        }
-    }
-    /* music */
-    /* playback */
-    if (array_key_exists('playback', $someArray)) {
-        $playback = $someArray['playback'];
-    }
-    if (count($playback)>0) {
-        foreach ($playback as $key=>$value) {
-            $playback_html .= '<li class="subList">
-                                        <div class="form-check form-check-inline ">
-                                            <input class="form-check-input greencheck" type="checkbox" id="inlineCheckboxPLAYBACK'.$key.'" value="'.$key.'">
-                                            <label class="form-check-label" for="inlineCheckboxPLAYBACK'.$key.'">'.$value.'</label>
-                                        </div>
-                                    </li>';
-        }
-    }
-    /* playback */
-    $html = '<div class="menu">
-                    <div class="menu-sec">
-                        <div class="accordion" id="accordionExample">
-                            <div class="card">
-                                <div class="card-header" id="headingOne">
-                                    <h2 class="mb-0">
-                                        <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                            YEAR
-                                            <span class="material-icons">keyboard_arrow_down</span>
-                                        </button>
-                                    </h2>
-                                </div>
-
-                                <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
-                                    <div class="card-body">
-                                        <div class="card-form">
-                                            <form>
-                                                <div class="form-group">
-                                                    <input type="email" class="form-control" placeholder="SEARCH IN YEAR" id="yearSearch">
-                                                </div>
-                                            </form>
-                                        </div>
-                                        <ul class="list-unstyled active collapse show" id="yearMainList" style="height:200px; overflow-y:scroll;">'.$year_html.'</ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card">
-                                <div class="card-header" id="headingTwo">
-                                    <h2 class="mb-0">
-                                        <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                            FILM
-                                            <span class="material-icons">keyboard_arrow_down</span>
-                                        </button>
-                                    </h2>
-                                </div>
-                                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
-                                    <div class="card-body">
-                                        <div class="card-form">
-                                            <form>
-                                                <div class="form-group">
-                                                    <input type="email" class="form-control" placeholder="SEARCH IN FILM" id="filmSearch">
-                                                </div>
-                                            </form>
-                                        </div>
-                                        <ul class="list-unstyled active collapse show" id="filmMainList" style="height:200px; overflow-y:scroll;">'.$film_html.'</ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card">
-                                <div class="card-header" id="headingThree">
-                                    <h2 class="mb-0">
-                                        <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                            CAST
-                                            <span class="material-icons">keyboard_arrow_down</span>
-                                        </button>
-                                    </h2>
-                                </div>
-
-                                <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
-                                    <div class="card-body">
-                                        <div class="card-form">
-                                            <form>
-                                                <div class="form-group">
-                                                    <input type="email" class="form-control" placeholder="SEARCH IN CAST" id="castSearch">
-                                                </div>
-                                            </form>
-                                        </div>
-                                        <ul class="list-unstyled active collapse show" id="castMainList" style="height:200px; overflow-y:scroll;">'.$cast_html.'</ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card">
-                                <div class="card-header" id="headingFour">
-                                    <h2 class="mb-0">
-                                        <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                                            DIRECTOR
-                                            <span class="material-icons">keyboard_arrow_down</span>
-                                        </button>
-                                    </h2>
-                                </div>
-
-                                <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
-                                    <div class="card-body">
-                                        <div class="card-form">
-                                            <form>
-                                                <div class="form-group">
-                                                    <input type="email" class="form-control" placeholder="SEARCH IN DIRECTOR" id="directorSearch">
-                                                </div>
-                                            </form>
-                                        </div>
-                                        <ul class="list-unstyled active collapse show" id="directorMainList" style="height:200px; overflow-y:scroll;">'.$director_html.'</ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card">
-                                <div class="card-header" id="headingFive">
-                                    <h2 class="mb-0">
-                                        <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-                                            MUSIC
-                                            <span class="material-icons">keyboard_arrow_down</span>
-                                        </button>
-                                    </h2>
-                                </div>
-
-                                <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordionExample">
-                                    <div class="card-body">
-                                        <div class="card-form">
-                                            <form>
-                                                <div class="form-group">
-                                                    <input type="email" class="form-control" placeholder="SEARCH IN MUSIC" id="musicSearch">
-                                                </div>
-                                            </form>
-                                        </div>
-                                        <ul class="list-unstyled active collapse show" id="musicMainList" style="height:200px; overflow-y:scroll;">'.$music_html.'</ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card">
-                                <div class="card-header" id="headingSix">
-                                    <h2 class="mb-0">
-                                        <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
-                                            PLAYBACK
-                                            <span class="material-icons">keyboard_arrow_down</span>
-                                        </button>
-                                    </h2>
-                                </div>
-
-                                <div id="collapseSix" class="collapse" aria-labelledby="headingSix" data-parent="#accordionExample">
-                                    <div class="card-body">
-                                        <div class="card-form">
-                                            <form>
-                                                <div class="form-group">
-                                                    <input type="email" class="form-control" placeholder="SEARCH IN PLAYBACK" id="playbackSearch">
-                                                </div>
-                                            </form>
-                                        </div>
-                                        <ul class="list-unstyled active collapse show" id="playbackMainList" style="height:200px; overflow-y:scroll;">'.$playback_html.'</ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card">
-                                <div class="card-header" id="headingSeven">
-                                    <h2 class="mb-0">
-                                        <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
-                                            YEAR RANGE
-                                            <span class="material-icons">keyboard_arrow_down</span>
-                                        </button>
-                                    </h2>
-                                </div>
-
-                                <div id="collapseSeven" class="collapse" aria-labelledby="headingSeven" data-parent="#accordionExample">
-                                    <div class="card-body">
-                                        <div class="card-form">
-                                            <form>
-                                                <div class="form-group">
-                                                    <input type="email" class="form-control" placeholder="SEARCH IN YEAR RANGE" id="yearRangeSearch">
-                                                </div>
-                                            </form>
-                                        </div>
-                                        <ul class="list-unstyled active collapse show" id="yearRangeMainList" style="height:200px; overflow-y:scroll;">'.$year_html.'</ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="apply-action">
-                            <a href="#" class="apply-btn">apply filters</a>
-                        </div>
-                    </div>
-                </div>';
-    return $html;
-}
-/* Memorabilia search left filter data in new design */
 
 /**
  * Associative array Unique recursive
@@ -3638,7 +2650,7 @@ function get_html_from_JSON($json = null, $type = '')
     $html = '';
     $decode = json_decode($json, true);
     //$html .= '<div class="select-image-cart"><select class="imgOptions" style="width: 100%;">';
-    $html .= '<div class="right-details">';
+    $html .= '<div class="select-image-cart">';
 //    print '<pre>';
 //    print_r($decode);
     if (!empty($decode['sellOriginal'])) {
@@ -3655,21 +2667,23 @@ function get_html_from_JSON($json = null, $type = '')
         }
 
         if ($count_details != 0) {
-            $html .='<div class="memorabilia-details-title">
-                        Original
-                    </div>';
+            $html .= '<h3>Original</h3><table class="table table-bordered table-hover buy-table">'
+                    . '<thead class="buy-thead">'
+                    . '<tr class="buy-tr">'
+                    . '<th class="buy-th">Description</th><th class="buy-th">Price</th><th class="buy-th"></th></tr></thead>'
+                    . '<tbody class="buy-tbody">';
 
             for ($i = 0; $i < count($decode['sellOriginal']); $i++) {
                 if (strlen($decode['sellOriginal'][$i]['size']) > 0 || !($decode['sellOriginal'][$i]['size'] == '')) {
                     //$html .= '<option value="' . $decode['sellOriginal'][$i]['size'] . '$' . $decode['sellOriginal'][$i]['price'] .'">'. '&nbsp;'. $decode['sellOriginal'][$i]['size']. ''. $img_price. '</option>' ;
 
-                    $html .= '<div class="exhibition-search-title">' . $decode['sellOriginal'][$i]['size'] . '</div>';
+                    $html .= '<tr class="buy-tr"><td class="buy-td">' . $decode['sellOriginal'][$i]['size'] . '</td>';
                     if ($conv_rate == '') {
-                        $html .= '<div class="print-cost"> ₹' . $decode['sellOriginal'][$i]['price'] . '</div>';
+                        $html .= '<td class="buy-td">' . $decode['sellOriginal'][$i]['price'] . '</td>';
                     } else {
                         $urd_val = $decode['sellOriginal'][$i]['price'] / $conv_rate;
                         $urd_val = round($urd_val, 2);
-                        $html .= '<div class="print-cost"> ₹ ' . $decode['sellOriginal'][$i]['price'] . ' / $ ' . $urd_val . '</div>';
+                        $html .= '<td class="buy-td"> INR: ' . $decode['sellOriginal'][$i]['price'] . ' / USD: ' . $urd_val . '</td>';
                     }
 
                     if (strlen($decode['sellOriginal'][$i]['price']) > 0 || !($decode['sellOriginal'][$i]['price'] == '')) {
@@ -3679,7 +2693,7 @@ function get_html_from_JSON($json = null, $type = '')
                             $taxable = 1;
                         }
 
-                        // $html .= '<div class="exhibition-search-content"></div>';
+                        $html .= '<td class="buy-td">';
 
                         $html .= '<form class="cart-add-form" method="POST" id="original" action="' . SITE_URL . '/cart-checkout/calculate-cart.php">';
                         $html .= '<input type="hidden" name="product_id" id="product_id" value="' . $decode['product'] . '">' .
@@ -3690,12 +2704,16 @@ function get_html_from_JSON($json = null, $type = '')
                                 '<input type="hidden" name="taxable" id="size" value="' . $taxable . '">' .
                                 '<input type="hidden" name="imageType" id="imageType" value="' . $type . '">' .
                                 '<button type="submit" name="original_submit" class="btn form-control">Add to Cart</button></form></div>';
+
+                        $html .= '</td>';
                     } else {
-                       //
+                        $html .= '<td class="buy-td"></td>';
                     }
                     $html .= '</tr>';
                 }
             }
+
+            $html .= '</table>';
         }
     }
 
@@ -3710,21 +2728,23 @@ function get_html_from_JSON($json = null, $type = '')
             }
         }
         if ($count_details_p != 0) {
-            $html .= '<div class="memorabilia-details-title">
-                        PRINT
-                    </div>';
+            $html .= '<h3>Print</h3><table class="table table-bordered table-hover buy-table">'
+                    . '<thead class="buy-thead">'
+                    . '<tr class="buy-tr">'
+                    . '<th class="buy-th">Description</th><th class="buy-th">Price</th><th class="buy-th"></th></tr></thead>'
+                    . '<tbody class="buy-tbody">';
 
             for ($i = 0; $i < count($decode['sellPrint']); $i++) {
                 if (strlen($decode['sellPrint'][$i]['size']) > 0 || !($decode['sellPrint'][$i]['size'] == '')) {
                     //$html .= '<option value="' . $decode['sellPrint'][$i]['size'] . '$' . $decode['sellPrint'][$i]['price'] .'">'. '&nbsp;'. $decode['sellPrint'][$i]['size']. ''. $img_price2. '</option>' ;
 
-                    $html .= '<div class="exhibition-search-title">' . $decode['sellPrint'][$i]['size'] . '</div>';
+                    $html .= '<tr class="buy-tr"><td class="buy-td">' . $decode['sellPrint'][$i]['size'] . '</td>';
                     if ($conv_rate == '') {
-                        $html .= '<div class="print-cost">' . $decode['sellPrint'][$i]['price'] . '</div>';
+                        $html .= '<td class="buy-td">' . $decode['sellPrint'][$i]['price'] . '</td>';
                     } else {
                         $urd_val = $decode['sellPrint'][$i]['price'] / $conv_rate;
                         $urd_val = round($urd_val, 2);
-                        $html .= '<div class="print-cost"> ₹ ' . $decode['sellPrint'][$i]['price'] . ' / $ ' . $urd_val . '</div>';
+                        $html .= '<td class="buy-td"> INR: ' . $decode['sellPrint'][$i]['price'] . ' / USD: ' . $urd_val . '</td>';
                     }
 
                     if (strlen($decode['sellPrint'][$i]['price']) > 0 || !($decode['sellPrint'][$i]['price'] == '')) {
@@ -3733,7 +2753,7 @@ function get_html_from_JSON($json = null, $type = '')
                         } else {
                             $taxable = 1;
                         }
-                        // $html .= '<div class="exhibition-search-content"></div>';
+                        $html .= '<td class="buy-td">';
 
                         $html .= '<form class="cart-add-form" method="POST" id="printed" action="' . SITE_URL . '/cart-checkout/calculate-cart.php">';
                         $html .= '<input type="hidden" name="product_id" id="product_id" value="' . $decode['product'] . '">' .
@@ -3743,14 +2763,21 @@ function get_html_from_JSON($json = null, $type = '')
                                 '<input type="hidden" name="price" id="size" value="' . $decode['sellPrint'][$i]['price'] . '">' .
                                 '<input type="hidden" name="taxable" id="size" value="' . $taxable . '">' .
                                 '<input type="hidden" name="imageType" id="imageType" value="' . $type . '">' .
-                                '<button type="submit" name="original_submit" class="enquiry-btn">Add to Cart</button></form></div>';
+                                '<button type="submit" name="original_submit" class="btn form-control">Add to Cart</button></form></div>';
+
+                        $html .= '</td>';
                     } else {
-                        //
+                        $html .= '<td class="buy-td"></td>';
                     }
+                    $html .= '</tr>';
                 }
             }
+            $html .= '</table>';
         }
     }
+
+    //$html .= '</select>';
+
     return $html;
 }
 
@@ -4559,11 +3586,11 @@ function paint_artist_mapping($artistName = '')
         $rowCount = $q->rowCount();
 
         if ($rowCount > 0) {
-            while ($row = $q->fetch(PDO::FETCH_ASSOC)) {
+            while ($row = $q->fetchObject()) {
                 $dataCheck[] = array(
-                    'value_id' => $row['attr_value_id'],
-                    'attr_id' => $row['attr_id'],
-                    'value' => $row['value']
+                    'value_id' => $row->attr_value_id,
+                    'attr_id' => $row->attr_id,
+                    'value' => $row->value
                 );
             }
             $qry = "SELECT * FROM `artworks` WHERE `artist_id`=:artistID";
@@ -5199,65 +4226,6 @@ id = '%s' ";
     }
 }
 
-function singlepodcast($param1)
-{
-    try {
-        $conn = dbconnect();
-
-
-        $query = "select * from podcast  
-where 
-episode_id = '%s' ";
-        $sql = sprintf($query, $param1);
-        $q = $conn->prepare($sql);
-
-        $q->execute();
-        $q->setFetchMode(PDO::FETCH_ASSOC);
-
-        return $cust_addr = $q->fetch();
-    } catch (PDOException $pe) {
-        echo db_error($pe->getMessage());
-    }
-}
-
-function singlePress($param1)
-{
-    try {
-        $conn = dbconnect();
-
-
-        $query = "select * from in_the_press where press_id = '%s' ";
-        $sql = sprintf($query, $param1);
-        $q = $conn->prepare($sql);
-
-        $q->execute();
-        $q->setFetchMode(PDO::FETCH_ASSOC);
-
-        return $cust_addr = $q->fetch();
-    } catch (PDOException $pe) {
-        echo db_error($pe->getMessage());
-    }
-}
-
-function singlePhoto($param1)
-{
-    try {
-        $conn = dbconnect();
-
-
-        $query = "select * from photobook_tbl where event_id = '%s' ";
-        $sql = sprintf($query, $param1);
-        $q = $conn->prepare($sql);
-
-        $q->execute();
-        $q->setFetchMode(PDO::FETCH_ASSOC);
-
-        return $cust_addr = $q->fetch();
-    } catch (PDOException $pe) {
-        echo db_error($pe->getMessage());
-    }
-}
-
 function singleexhibitionartist($param1)
 {
     try {
@@ -5279,40 +4247,22 @@ id = '%s' ";
     }
 }
 
-function allartist()
+function allexhibition()
 {
     try {
         $conn = dbconnect();
-        $query = "SELECT * FROM exhibition_artists";
+        $query = "SELECT * FROM exhibition";
         $sql = sprintf($query);
         $q = $conn->prepare($sql);
-        // var_dump($q);
+
         $q->execute();
         $q->setFetchMode(PDO::FETCH_ASSOC);
-        return $prod = $q->fetchAll();
 
+        return $prod = $q->fetchAll();
     } catch (PDOException $pe) {
         echo db_error($pe->getMessage());
     }
 }
-
-
-// function allartist()
-// {
-//     try {
-//         $conn = dbconnect();
-//         $query = "SELECT * FROM exhibition_artists";
-//         $sql = sprintf($query);
-//         $q = $conn->prepare($sql);
-//         // var_dump($q);
-//         $q->execute();
-//         $q->setFetchMode(PDO::FETCH_ASSOC);
-//         return $prod = $q->fetchAll();
-
-//     } catch (PDOException $pe) {
-//         echo db_error($pe->getMessage());
-//     }
-// }
 
 function allmedium()
 {
@@ -5337,7 +4287,9 @@ function singlepainting($param1)
         $conn = dbconnect();
 
 
-        $query = "select exhibition_paintings.*, exhibition_artists.artist_name from exhibition_paintings INNER JOIN exhibition_artists ON exhibition_paintings.artist_id = exhibition_artists.id WHERE exhibition_paintings.id = '%s' ";
+        $query = "select * from exhibition_paintings  
+where 
+id = '%s' ";
         $sql = sprintf($query, $param1);
         $q = $conn->prepare($sql);
 
@@ -5378,7 +4330,7 @@ function last_entered_painting($param1)
 
 
         $query = "select * from exhibition_paintings where id="
-                . "(SELECT max(id) FROM exhibition_paintings where exhibition_id='%s') ";
+                . "(SELECT max(id) FROM exhibition_paintings where artist_id='%s') ";
         $sql = sprintf($query, $param1);
         $q = $conn->prepare($sql);
 
@@ -5395,9 +4347,9 @@ function allexhibitionofpaintings($param1)
 {
     try {
         $conn = dbconnect();
-        $query = "SELECT exhibition_paintings_relation.*,exhibition_artists.artist_name "
-                . "FROM exhibition_paintings_relation,exhibition_artists "
-                . "where exhibition_paintings_relation.artist_id = exhibition_artists.id and "
+        $query = "SELECT exhibition_paintings_relation.*,exhibition.exhibition_name,exhibition.status ex_status "
+                . "FROM exhibition_paintings_relation,exhibition "
+                . "where exhibition_paintings_relation.exhibition_id = exhibition.id and "
                 . "exhibition_paintings_relation.painting_id = '%s'";
         $sql = sprintf($query, $param1);
         $q = $conn->prepare($sql);
