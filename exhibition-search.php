@@ -14,11 +14,10 @@ unset($_SESSION['append']);
 //Get dynamic content for Memorabilia
 
 $conn = dbconnect();
-echo $currentDateTime = date("Y-m-d H:i");
+$currentDateTime = date("Y-m-d H:i");
 
 $sql2 = "SELECT * FROM `exhibition` WHERE `from_exhibition_date` <= '$currentDateTime' AND `end_exhibition_date` >= '$currentDateTime' AND status = 0 ";
 $q2 = $conn->query($sql2);
-
 $q2->execute();
 $q2->setFetchMode(PDO::FETCH_ASSOC);
 $exrow = $q2->fetchAll();
@@ -40,9 +39,12 @@ $q1->setFetchMode(PDO::FETCH_ASSOC);
 $exrow2 = $q1->fetchAll();
 
 
-
-
-// echo $exrowl;exit();
+$sqll = "SELECT MAX(id) AS max_id, exhibition_name FROM `exhibition` ";
+$ql = $conn->query($sqll);
+$ql->execute();
+$ql->setFetchMode(PDO::FETCH_ASSOC);
+$row = $ql->fetchAll();
+$max_id = $row[0]['max_id'];
 
 
 // for($i=0; $i < count($exrow); $i++)
