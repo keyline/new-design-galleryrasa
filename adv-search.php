@@ -1042,7 +1042,7 @@ FROM
                     $select_sub = $options2['s'];
 
                     $search_view = file_get_contents(VIEWS_FOLDER . 'adv-search-resultInc.php');
-                    $search = array('{languagelist}', '{journallist}', '{subcategory_list}', '{leftFilter}', '{searchedKeyword}', '{TotalResult}', '{searchList}', '{adv-search-options}');
+                    $search = array('{filter_search_subcategory_list}','{languagelist}', '{journallist}', '{leftFilter}', '{searchedKeyword}', '{TotalResult}', '{searchList}', '{adv-search-options}');
 
 
 //                     print("<pre>");
@@ -1051,9 +1051,9 @@ FROM
 
 
                     if (isset($_POST['allproductsid'])) {
-                        $replace = array($alllanguagedropdownarr, $alljournaldropdownarr, $select_sub2, $leftHtml, $keyword, $noofsearchedproducts, $Searchhtml, $options2['op']);
+                        $replace = array($select_sub2, $alllanguagedropdownarr, $alljournaldropdownarr,  $leftHtml, $keyword, $noofsearchedproducts, $Searchhtml, $options2['op']);
                     } else {
-                        $replace = array($alllanguagedropdownarr, $alljournaldropdownarr, $select_sub2, $leftHtml, $keyword, $result_count, $Searchhtml, $options2['op']);
+                        $replace = array($select_sub2, $alllanguagedropdownarr, $alljournaldropdownarr,  $leftHtml, $keyword, $result_count, $Searchhtml, $options2['op']);
                     }
 
 
