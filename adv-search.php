@@ -281,6 +281,11 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                             if (($qv['2'] != '' || isset($qv['2'])) && !isset($qv['1'])) {
                                 $jflag = true;
                                 $jstr = " AND pte.product_type_id = '7' ";
+                            } elseif (($qv['1'] != '' || isset($qv['1'])) && !isset($qv['2'])) {
+                                # code...
+
+                                $jflag = true;
+                                $jstr = " AND pte.product_type_id IN (5,8) ";
                             } else {
                                 $jflag = false;
                                 $jstr = '';
@@ -315,6 +320,11 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                             if (($qv['2'] != '' || isset($qv['2'])) && !isset($qv['1'])) {
                                 $jflag = true;
                                 $jstr = " AND pte.product_type_id = '7' ";
+                            } elseif (($qv['1'] != '' || isset($qv['1'])) && !isset($qv['2'])) {
+                                # code...
+
+                                $jflag = true;
+                                $jstr = " AND pte.product_type_id IN (5,8) ";
                             } else {
                                 $jflag = false;
                                 $jstr = '';
@@ -571,6 +581,7 @@ FROM
 
         $count_qry = sprintf($count_outer_qry, $queryInner);
     } else {
+        //WHen resetting happens
         $advsearch = true;
         $firstkey = '';
         $adv_author = trim($_SESSION['author']);
@@ -770,6 +781,19 @@ FROM
                     if ($i == 0) {
                         $firstkey = $qk;
                         if ($qk == 'title1_of_parent') {
+                            if (($qv['2'] != '' || isset($qv['2'])) && !isset($qv['1'])) {
+                                $jflag = true;
+                                $jstr = " AND pte.product_type_id = '7' ";
+                            } elseif (($qv['1'] != '' || isset($qv['1'])) && !isset($qv['2'])) {
+                                # code...
+
+                                $jflag = true;
+                                $jstr = " AND pte.product_type_id IN (5,8) ";
+                            } else {
+                                $jflag = false;
+                                $jstr = '';
+                            }
+
                             foreach ($qv as $q) {
                                 if ($qk == 'extract') {
                                     $qry_inner .= " (SELECT t.product_id FROM product_type_ecomc pte LEFT JOIN products_ecomc p ON pte.product_type_id = p.subcatid 
@@ -778,7 +802,7 @@ FROM
                                 } else {
                                     $qry_inner .= " (SELECT t.product_id FROM product_type_ecomc pte LEFT JOIN products_ecomc p ON pte.product_type_id = p.subcatid 
                         LEFT JOIN product_attribute_value t ON p.prodid = t.product_id LEFT JOIN attribute_value_ecomc v ON t.attribute_value_id = v.attr_value_id 
-                        LEFT JOIN attr_common_flds_ecomc f ON v.attr_id = f.id WHERE v.value like '%" . $q . "%' AND f.attribute_name = '" . $qk . "' " . $reference . " GROUP BY t.product_id)" . $qk . " ";
+                        LEFT JOIN attr_common_flds_ecomc f ON v.attr_id = f.id WHERE v.value like '%" . $q . "%'". $jstr . " AND f.attribute_name = '" . $qk . "' " . $reference . " GROUP BY t.product_id)" . $qk . " ";
                                 }
                             }
                         } else {
@@ -795,6 +819,24 @@ FROM
                         $join = $qk;
                     } else {
                         if ($qk == 'title1_of_parent') {
+                            /**
+                             * added by shuvadeep@keylines.net on 07/11/2022
+                             * for specific search on particular category
+                             * Book/Journal Article
+                             */
+                            if (($qv['2'] != '' || isset($qv['2'])) && !isset($qv['1'])) {
+                                $jflag = true;
+                                $jstr = " AND pte.product_type_id = '7' ";
+                            } elseif (($qv['1'] != '' || isset($qv['1'])) && !isset($qv['2'])) {
+                                # code...
+
+                                $jflag = true;
+                                $jstr = " AND pte.product_type_id IN (5,8) ";
+                            } else {
+                                $jflag = false;
+                                $jstr = '';
+                            }
+
                             foreach ($qv as $q) {
                                 if ($qk == 'extract') {
                                     $qry_inner .= " INNER JOIN (SELECT t.product_id FROM product_type_ecomc pte LEFT JOIN products_ecomc p ON pte.product_type_id = p.subcatid 
@@ -803,7 +845,7 @@ FROM
                                 } else {
                                     $qry_inner .= " INNER JOIN (SELECT t.product_id FROM product_type_ecomc pte LEFT JOIN products_ecomc p ON pte.product_type_id = p.subcatid 
                         LEFT JOIN product_attribute_value t ON p.prodid = t.product_id LEFT JOIN attribute_value_ecomc v ON t.attribute_value_id = v.attr_value_id 
-                        LEFT JOIN attr_common_flds_ecomc f ON v.attr_id = f.id WHERE v.value like '%" . $q . "%' AND f.attribute_name = '" . $qk . "' " . $reference . " GROUP BY t.product_id)" . $qk . " ON " . $join . ".product_id=" . $qk . ".product_id ";
+                        LEFT JOIN attr_common_flds_ecomc f ON v.attr_id = f.id WHERE v.value like '%" . $q . "%'". $jstr ." AND f.attribute_name = '" . $qk . "' " . $reference . " GROUP BY t.product_id)" . $qk . " ON " . $join . ".product_id=" . $qk . ".product_id ";
                                 }
                             }
                         } else {
@@ -827,6 +869,19 @@ FROM
 
 
         $adv_search_result = get_adv_search($firstkey, $qry_inner);
+
+        /**
+         * added by shuvadeep@keylines.net on 07/11/200
+         * issue was after reset, left search not delivering result with
+         * modified selection in left panel
+         */
+
+        $productstr = '';
+
+        foreach ($adv_search_result as $kadv1 => $vkadv1) {
+            $productstr .= $vkadv1['productId'] . ',';
+        }
+
 
         $count_adv_search_result = get_adv_search($firstkey, $qry_inner, true);
     }
@@ -868,6 +923,9 @@ FROM
 //                    print('<pre>');
 //                    print_r($count_rows);
 //                    exit;
+                    //print "<pre>";
+                    //print_r($rows);
+                    //print_r($allproductsidarr);
 
 
                     if (isset($_POST['allproductsid'])) {

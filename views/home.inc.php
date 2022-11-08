@@ -145,10 +145,10 @@
                                                 <!-- <label>Select In/As</label> -->
                                                 <select name="attr" class="form-control" id="select-attributes-biblio">
                                                     <option value="">Select In/As</option>
-                                                    <option value="author">Author</option>
+                                                    <!-- <option value="author">Author</option> -->
                                                     <option value="contributor">Contributor</option>
-                                                    <option value="editor">Editor</option>
-                                                    <option value="artist">Artist</option>
+                                                    <!-- <option value="editor">Editor</option> -->
+                                                    <!-- <option value="artist">Artist</option> -->
                                                     <option value="curator">Curator</option>
                                                 </select>
                                             </div>
