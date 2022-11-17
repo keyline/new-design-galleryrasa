@@ -743,6 +743,8 @@ FROM
                 }
                 $countofRows += sizeof($films);
             }
+        } else {
+            throw new Exception("Could not finalize data", 1);
         }
     } catch (PDOException $pe) {
         $data_empty = 'Empty';

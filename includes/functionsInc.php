@@ -2777,8 +2777,10 @@ function memorabilia_left_search($array = array(), $keys = array(), $count = arr
      * Creating left panel order
      */
     $properOrderedArray = array_replace(array_flip(array('year', 'film', 'cast', 'director', 'music', 'playback')), $final);
-
-    if (isset($_SESSION['fParam']) && isset($_SESSION['append'])) {
+    if ($isAdvanceSearch) {
+        $sessData=[];
+        $sessCount = count($sessData);
+    } elseif (isset($_SESSION['fParam']) && isset($_SESSION['append'])) {
         $sessData = array_merge($_SESSION['fParam'], $_SESSION['append']);
         $sessCount = count($sessData);
     } else {
