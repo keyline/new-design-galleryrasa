@@ -239,7 +239,7 @@ p.category_id = 2 AND v.value like '%" . $params_qry[$qk] . "%' AND f.attribute_
                 $qry_inner
                 . ") group by t.attribute_value_id";
 
-        echo $sql;
+    //echo $sql;
 
     //  $sql = vsprintf($sql, $str);
     } elseif (isset($_POST['submitButton']) && $_POST['submitButton'] == 'MemorabilaSearch') {
