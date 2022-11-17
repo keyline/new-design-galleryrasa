@@ -2723,10 +2723,11 @@ function getL2Keys($array)
  * Memorabilia search left filter data
  */
 
-function memorabilia_left_search($array = array(), $keys = array(), $count = array(), $html = '')
+function memorabilia_left_search($array = array(), $keys = array(), $count = array(), $isAdvanceSearch=false)
 {
     $result = array();
     $checked = '';
+    $html = '';
     $someArray = array_map('array_filter', $array);
     $iterator = new RecursiveIteratorIterator(new RecursiveArrayIterator($someArray), RecursiveIteratorIterator::SELF_FIRST);
 
@@ -2757,9 +2758,12 @@ function memorabilia_left_search($array = array(), $keys = array(), $count = arr
         }
     }
 
-
-    $html = '<form action="memorabilia" class="filter-form" id="filter-form" method="post">
-                        <div class="artist-inner">
+    if (! $isAdvanceSearch) {
+        $html= "<form action=\"memorabilia\" class=\"filter-form\" id=\"filter-form\" method=\"post\">";
+    } else {
+        $html= "<form action=\"adv-search-mem\" class=\"filter-form\" id=\"filter-form\" method=\"post\">";
+    }
+    $html .= '<div class="artist-inner">
                                 <div class="artist-top artist-top-2">
                                     <p class="filters">FILTERS<span class="material-icons">filter_alt</span></p>
                                     <p class="reset"><button id="btnBack" type="submit" class="btn btn-red form-control" name="resetButton" value="Back">Reset</button></p>
@@ -5290,7 +5294,6 @@ function allartist()
         $q->execute();
         $q->setFetchMode(PDO::FETCH_ASSOC);
         return $prod = $q->fetchAll();
-
     } catch (PDOException $pe) {
         echo db_error($pe->getMessage());
     }
