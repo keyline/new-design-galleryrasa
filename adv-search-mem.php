@@ -8,8 +8,31 @@ require_once(INCLUDED_FILES . "functionsInc.php");
 $conn = dbconnect();
 
 $paramCount = 0;
+
+$qryInnerTpl= "(SELECT t.product_id FROM products_ecomc p LEFT JOIN product_attribute_value t ON p.prodid = t.product_id LEFT JOIN 
+attribute_value_ecomc v ON t.attribute_value_id = v.attr_value_id LEFT JOIN attr_common_flds_ecomc f ON v.attr_id = f.id WHERE 
+p.category_id = 2 AND (v.value='%s' AND f.attribute_name = '%s') GROUP BY t.product_id)%s ";
+
+$qryOuterTpl= "SELECT 
+        p.prodid AS id,
+        p.prodname AS n,
+        COUNT(av.`value`) as cn,
+        af.attribute_name AS an,
+        av.`value` AS v
+        FROM products_ecomc p 
+        LEFT JOIN product_attribute_value pv ON pv.product_id=p.prodid
+        LEFT JOIN attribute_value_ecomc av ON pv.attribute_value_id=av.attr_value_id
+        LEFT JOIN attr_common_flds_ecomc af ON av.attr_id=af.id
+        LEFT JOIN product_type_ecomc AS pt ON p.subcatid = pt.product_type_id
+        WHERE p.prodid IN(
+            select %s.product_id from (
+                 %s
+            ))
+        GROUP BY pv.product_attr_val_id";
+$joinStr= " INNER JOIN ";
+$joinOnTpl= " ON %s.product_id=%s.product_id";
+
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
-    unset($_SESSION['fParam']);
     //Initialize variables
     $params = '';
     $paramCount = 0;
@@ -23,6 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 //        exit;
 //    }
     if (isset($_POST['adv_submit']) && $_POST['adv_submit'] == 'Search') {
+        unset($_SESSION['fParam']);
         $firstkey = '';
         $adv_author = trim($_POST['author']);
         $adv_attr = $_POST['attr'];
@@ -116,7 +140,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
         array_walk_recursive($new, function ($k, $v) use (&$new_arr) {
             // echo $k . "-" . $v . "<br>";
-            $new_arr[] = $v . '-' . $k;
+            $new_arr[] = ucwords(strtolower($v)) . '-' . ucwords(strtolower($k));
         });
         $keyword = implode(",", $new_arr);
 
@@ -182,50 +206,141 @@ p.category_id = 2 AND v.value like '%" . $params_qry[$qk] . "%' AND f.attribute_
         //$keyword = '';
         $keys = array('producer' => 1, 'story' => 1, 'director' => 1, 'photography' => 1, 'cast' => 1, 'year' => 1);
         //Comma separated search params for display in frontend
+
+        $str = array();
+
+        //Search query
+        $sql = "SELECT 
+            p.prodid AS id, 
+            p.prodname AS n, 
+            f.attribute_name AS an, 
+            COUNT(v.`value`) as cn,
+            v.`value` AS v 
+            FROM 
+            products_ecomc AS p 
+            LEFT JOIN 
+            product_attribute_value AS t 
+            ON 
+            p.prodid = t.product_id 
+            LEFT JOIN 
+            attribute_value_ecomc AS v 
+            ON 
+            t.attribute_value_id = v.attr_value_id 
+            LEFT JOIN 
+            attr_common_flds_ecomc AS f 
+            ON 
+            v.attr_id = f.id 
+            WHERE 
+            t.product_id IN 
+            (SELECT 
+            " . $firstkey . ".product_id 
+            FROM 
+            " .
+                $qry_inner
+                . ") group by t.attribute_value_id";
+
+        echo $sql;
+
+    //  $sql = vsprintf($sql, $str);
+    } elseif (isset($_POST['submitButton']) && $_POST['submitButton'] == 'MemorabilaSearch') {
+        //Posted data from left search
+        $data_empty = 'Not Empty';
+
+        $params_qry= array();
+
+        $posted_details = filter_input_array(INPUT_POST, FILTER_SANITIZE_SPECIAL_CHARS);
+
+        //Building Inner query
+        $tableIndex=1;
+        $qry_inner="";
+        $joinOn="";
+        $sql="";
+        //print_r($posted_details);
+        //exit();
+        $leftSearchParams=[];
+        foreach ($posted_details as $key => $value) {
+            # code...
+
+            if ($key == 'submitButton' || $key == 'objSearch') {
+                continue;
+            }
+
+            $currentFirstkey= $key;
+            if (is_array($value)) {
+                foreach ($value as $index => $attrVal) {
+                    # code...
+                    array_push($leftSearchParams, array($currentFirstkey => $attrVal));
+                    $qry_inner .= vsprintf($qryInnerTpl, [$attrVal, $currentFirstkey, "{$currentFirstkey}{$tableIndex}",]);
+                    if ($tableIndex > 1) {
+                        $qry_inner .= $joinStr;
+                        $prevJoinIndex=($tableIndex-1);
+                        $joinOn .= vsprintf($joinOnTpl, ["{$currentFirstkey}{$tableIndex}", "{$currentFirstkey}.{$tableIndex}"]);
+                    }
+                    ++$tableIndex;
+                }
+            }
+        }
+
+        //Adding previous filter
+        if (isset($_SESSION['fParam'][0])) {
+            foreach ($_SESSION['fParam'][0] as $key => $value) {
+                # code...
+                $firstkey= $key;
+                $prevJoinIndex=($tableIndex-1);
+                $qry_inner .= $joinStr;
+                $qry_inner .= "(SELECT t.product_id FROM products_ecomc p LEFT JOIN product_attribute_value t ON p.prodid = t.product_id LEFT JOIN 
+attribute_value_ecomc v ON t.attribute_value_id = v.attr_value_id LEFT JOIN attr_common_flds_ecomc f ON v.attr_id = f.id WHERE 
+p.category_id = 2 AND v.value like '%" . $value . "%' AND f.attribute_name = '" . $key . "' GROUP BY t.product_id)" . $firstkey . $tableIndex . " ";
+
+                $qry_inner .= vsprintf($joinOnTpl, ["{$currentFirstkey}{$prevJoinIndex}", "{$firstkey}{$tableIndex}"]);
+            }
+        } else {
+        }
+
+
+
+        $sql .= vsprintf($qryOuterTpl, ["{$currentFirstkey}{$prevJoinIndex}",$qry_inner]);
+
+        //Build keyword from searched params
+
+        array_walk_recursive($leftSearchParams, function ($k, $v) use (&$new_arr) {
+            // echo $k . "-" . $v . "<br>";
+            $new_arr[] = ucwords(strtolower($v)) . '-' . ucwords(strtolower($k));
+        });
+
+        $keyword = implode(",", $new_arr);
+        $firstkey= "{$firstkey}{$tableIndex}";
+    } else {
+        //echo 'resetting';
+        $data_empty = 'Not Empty';
+        $prevParams= $_SESSION['fParam'][0];
+        $qry_inner="";
+        $sql="";
+        foreach ($prevParams as $key => $value) {
+            # code...
+            $firstkey= $key;
+            //$qry_inner .= vsprintf($qryInnerTpl, [$value, $key]);
+            $qry_inner .= " (SELECT t.product_id FROM products_ecomc p LEFT JOIN product_attribute_value t ON p.prodid = t.product_id LEFT JOIN 
+attribute_value_ecomc v ON t.attribute_value_id = v.attr_value_id LEFT JOIN attr_common_flds_ecomc f ON v.attr_id = f.id WHERE 
+p.category_id = 2 AND v.value like '%" . $value . "%' AND f.attribute_name = '" . $key . "' GROUP BY t.product_id)" . $firstkey . " ";
+        }
+        $sql .= vsprintf($qryOuterTpl, [$firstkey,$qry_inner]);
+
+
+        array_walk_recursive($prevParams, function ($k, $v) use (&$new_arr) {
+            // echo $k . "-" . $v . "<br>";
+            $new_arr[] = ucwords(strtolower($v)) . '-' . ucwords(strtolower($k));
+        });
+
+        $keyword = implode(",", $new_arr);
+
+
+        //exit();
     }
 
 
     try {
-        $conn = dbconnect();
-        $str = array();
-
-        //Search query
-
-
-        $sql = "SELECT 
-p.prodid AS id, 
-p.prodname AS n, 
-f.attribute_name AS an, 
-COUNT(v.`value`) as cn,
-v.`value` AS v 
-FROM 
-products_ecomc AS p 
-LEFT JOIN 
-product_attribute_value AS t 
-ON 
-p.prodid = t.product_id 
-LEFT JOIN 
-attribute_value_ecomc AS v 
-ON 
-t.attribute_value_id = v.attr_value_id 
-LEFT JOIN 
-attr_common_flds_ecomc AS f 
-ON 
-v.attr_id = f.id 
-WHERE 
-t.product_id IN 
-(SELECT 
-" . $firstkey . ".product_id 
-FROM 
-" .
-                $qry_inner
-                . ") group by t.attribute_value_id";
-
-
-
-        //  $sql = vsprintf($sql, $str);
-
-
+        //$conn = dbconnect();
         $q = $conn->prepare($sql);
         $q->execute();
         $q->setFetchMode(PDO::FETCH_ASSOC);
@@ -240,6 +355,8 @@ FROM
                 $data[$row['id']][$row['n']][$row['an']][] = $row['v'];
                 $countData[$row['an']][] = array('name' => $row['v'], 'count' => $row['cn']);
             }
+        } else {
+            throw new Exception("No data found!", 1);
         }
 
         //Getting image details
@@ -289,7 +406,7 @@ FROM
 //        print_r($finalData);
         } else {
             $finalData = $data;
-        };
+        }
 
         //$producer = array_column($finalData, 'Cast');
         //$output = custom_func($finalData);
@@ -300,7 +417,7 @@ FROM
 
 
         //$getResult = memorabilia_left_search($finalData, $keys, $countData);
-        $getResult = memorabilia_left_search($finalData, $keys, $countData);
+        $getResult = memorabilia_left_search($finalData, $keys, $countData, true);
 //        print "<pre>";
 //        print_r($getResult);
 //        exit;
@@ -628,10 +745,12 @@ FROM
             }
         }
     } catch (PDOException $pe) {
+        $data_empty = 'Empty';
+
         $items = db_error($pe->getMessage());
     }
-    include(INC_FOLDER . "headerInc.php");
 
+    include(INC_FOLDER . "headerInc.php");
 
     //if ($data_empty === false) {
     $styleDisplay = 'block';
@@ -735,7 +854,7 @@ order BY p.prodid, m.m_image_category
         //Getting left hand HTML
         $keys = array('producer' => 1, 'story' => 1, 'director' => 1, 'photography' => 1, 'music director' => 1, 'playback' => 1, 'cast' => 1, 'film' => 1, 'color' => 1, 'year' => 1);
 
-        $htmlLeft = memorabilia_left_search($finalData, $keys, $countData);
+        $htmlLeft = memorabilia_left_search($finalData, $keys, $countData, true);
 
 //        print "<pre>";
 //        print_r($finalData);
@@ -757,9 +876,9 @@ order BY p.prodid, m.m_image_category
                     $imagecount = $fid['count_fid'];
                     $imagecount_html = '<div class="mem_count_img">' . $imagecount . '</div>';
                 }
-                print "<pre>";
-                print_r($films);
-                exit();
+                //print "<pre>";
+                //print_r($films);
+                //exit();
                 foreach ($films as $filmName => $film) {
                     if (is_array($film)) {
                         if (array_key_exists('Poster', $film)) {

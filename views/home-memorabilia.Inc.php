@@ -131,8 +131,8 @@
                                                 <div class="form-group">
                                                 <select name="attr" class="form-control" id="select-attributes">
                                                     <option value="-1">Select In/As</option>
-                                                    <option value="cast">Cast</option>
-                                                    <option value="director">Director</option>
+                                                    <!-- <option value="cast">Cast</option> -->
+                                                    <!-- <option value="director">Director</option> -->
                                                     <option value="beditor">Editor</option>
                                                     <option value="music">Music Director</option>
                                                     <option value="photography">Cinematographer</option>

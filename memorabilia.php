@@ -875,12 +875,12 @@ p.category_id = 2 AND v.value='" . $v . "' AND f.attribute_name = '" . $k . "' G
 
         $keywordArr=explode(":", $keyword);
         $first=str_replace("Director", "(Director) ", $keywordArr[0]);
-        $second=$keywordArr[1];
+        $second=isset($keywordArr[1]) ? $keywordArr[1] : '' ;
         $keyword = $second.' '.$first;
 
         $keywordArr=explode(":", $keyword);
         $first=str_replace("Film", "(Film) ", $keywordArr[0]);
-        $second=$keywordArr[1];
+        $second=isset($keywordArr[1]) ? $keywordArr[1] : '';
         $keyword = $second.' '.$first;
 
 
