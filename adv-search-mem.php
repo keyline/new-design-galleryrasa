@@ -266,7 +266,7 @@ p.category_id = 2 AND v.value like '%" . $params_qry[$qk] . "%' AND f.attribute_
             }
 
             $currentFirstkey= $key;
-            if (is_array($value)) {
+            if (is_array($value) && $key !== 'year_range') {
                 foreach ($value as $index => $attrVal) {
                     # code...
                     array_push($leftSearchParams, array($currentFirstkey => $attrVal));
@@ -278,6 +278,29 @@ p.category_id = 2 AND v.value like '%" . $params_qry[$qk] . "%' AND f.attribute_
                     }
                     ++$tableIndex;
                 }
+            } elseif (is_array($value) && $key === 'year_range') {
+                # code...
+                $currentFirstkey='year';
+
+                $match = "-1";
+
+                $keyword = implode(" To ", r_implode($posted_details, ","));
+
+                array_push($leftSearchParams, array('year' => $keyword));
+
+                $stringCheck = implode(" ", $posted_details['year_range']);
+
+                if (stripos($stringCheck, $match) === false) {
+                    $qry_inner .= "(SELECT t.product_id FROM products_ecomc p LEFT JOIN product_attribute_value t ON p.prodid = t.product_id LEFT JOIN 
+                    attribute_value_ecomc v ON t.attribute_value_id = v.attr_value_id LEFT JOIN attr_common_flds_ecomc f ON v.attr_id = f.id WHERE 
+                p.category_id = 2 AND v.value BETWEEN " . implode(" AND ", $posted_details['year_range']) . " AND f.attribute_name = 'year' GROUP BY t.product_id)year" . $tableIndex;
+                } else {
+                    throw new Exception("Year range values are incorrect!", 1);
+                }
+
+                ++$tableIndex;
+            } else {
+                throw new Exception("No search paramerters found", 1);
             }
         }
 
