@@ -16,7 +16,8 @@ RewriteRule ^page/([a-z-]+)$ page.php?pagename=$1 [N]
 RewriteRule ^details/([0-9-/]+)$ seemore.php?pid=$1
 RewriteRule ^memorabilia-details/([0-9a-zA-Z-]+)$ memorabilia-details.php?pid=$1
 RewriteRule ^visualarchive-details/([0-9a-zA-Z-]+)$ visualarchive-details.php?pid=$1
-
+#exhibition download
+RewriteRule ^download/([a-z]+)/([0-9]+)$ downloadimage.php?catg=$1&item=$2 [L,NC]
 
 RewriteRule ^artworkimage/(.*)/(.*)$ artworkimage.php?img=$1&ext=$2 [L,NC]
 
