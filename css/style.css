@@ -203,6 +203,30 @@ body{ min-height: 100%; background: #fff;}
 .header .header-navigation .dropdown-toggle::after { color: var(--primaryColor); }
 .header .responsive-action .btn-menu { color: var(--primaryColor); font-size: 28px; }
 .form-control:focus { border-color: none; box-shadow: none; }
+.header .head-bar .contact-action .dropdown {
+    border: none;
+    height: auto;
+}
+.header .head-bar .contact-action .dropdown-menu.show {
+    background: var(--primaryColor);
+    border-radius: 0;
+    min-width: 13rem;
+}
+.header .head-bar .contact-action .dropdown-menu.show a.dropdown-item {
+    border-bottom: 1px solid #65a2b5;
+    padding: 5px 10px;
+    display: flex;
+    white-space: normal;
+}
+.header .head-bar .contact-action .dropdown-menu.show a.dropdown-item:last-child {
+    border-bottom: none;
+}
+.header .head-bar .contact-action .dropdown-menu.show a.dropdown-item span.material-icons {
+    padding-right: 10px;
+}
+.header .head-bar .contact-action .dropdown-menu.show a.dropdown-item:hover{
+    color: var(--secondaryColor);
+}
 /* ********|| HEADER ENDS ||******** */
 
 /* ********|| NAV BAR STARTS ||******** */
@@ -4172,10 +4196,10 @@ font-size: 16px;
 .visual-search-details-page.exhibition-details-page .exhibition-search-title{
     color: var(--textColor);
 /*    font-weight: 500;*/
-    font-size: 50px;
+    font-size: 30px;
     line-height: 58px;
     font-family: 'Braveold-Bold';
-        padding-bottom: 36px;
+        padding-bottom: 30px;
     position: relative;
     margin-bottom: 10px;
     letter-spacing: 1px;
@@ -4208,7 +4232,7 @@ font-size: 16px;
     align-items: center;
     font-family: 'Roboto', sans-serif;
     font-weight: 500;
-    font-size: 16px;
+    font-size: 14px;
     color: var(--textColor);
 }
 .visual-search-details-page.exhibition-details-page .exhibition-search-content{

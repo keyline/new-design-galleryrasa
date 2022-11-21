@@ -97,7 +97,7 @@ if (check_valid_customerlogin($email, $pass)) {
     } else {
 
         if ($prevurl == '') {
-            goto_location(SITE_URL . '/index.php');
+            goto_location(SITE_URL . '/customer-dashboard/customer-dashboard');
         }else if(strpos($prevurl, 'visualarchive') !== false){
             goto_location(SITE_URL . '/visualarchive-search');
         }else if(strpos($prevurl, 'memorabilia') !== false){

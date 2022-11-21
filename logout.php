@@ -7,4 +7,4 @@ require_once(INCLUDED_FILES . "functionsInc.php");
 $conn = dbconnect();
 
 session_destroy();
-goto_location('index');
+goto_location(SITE_URL."login-register.php");

@@ -10,6 +10,8 @@ if (!isset($_COOKIE["cookieid"])) {
 
 ?>
 
+
+
 <!DOCTYPE html>
 <html>
 
@@ -132,11 +134,33 @@ if (!isset($_COOKIE["cookieid"])) {
                                 <div class="contact-action">
                                     <a href="<?php echo SITE_URL ?>login-register" class="contact-btn"><span class="material-icons cart-box">person</span></a>
                                 </div>
-                            <?php } else { ?>                              
-                                <div class="contact-action">
-                                    <a href="<?php echo SITE_URL ?>/customer-dashboard/customer-dashboard" class="contact-btn"><span class="material-icons cart-box">person</span></a>
-                                </div>
-                            <?php } ?>
+                            <?php } else { ?> 
+                            <?php
+                                    $sql_user = "select * from customer_login where email = '" . $_SESSION['user-email'] . "'";
+                                    // echo $sql_user;
+                                    //     exit();
+                                    $q_user = $conn->prepare($sql_user);
+                                    $q_user->execute();
+                                    $q_user->setFetchMode(PDO::FETCH_ASSOC);
+                                    $row_user = $q_user->fetch();
+                                    ?>  
+
+                                    <div class="contact-action">                           
+                                        <div class="dropdown show">
+                                            <a href="#" class="contact-btn dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown"><span class="material-icons cart-box">person</span></a>
+                                            
+                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                                <a class="dropdown-item" href="#"><span class="material-icons">account_circle</span> <?php echo $row_user['fname']; ?> <?php echo $row_user['lname']; ?></a>
+                                            <a class="dropdown-item" href="<?php echo SITE_URL ?>/customer-dashboard/customer-dashboard"><span class="material-icons">dashboard</span> Dashboard</a>
+                                            <a class="dropdown-item" href="<?php echo SITE_URL ?>/logout"><span class="material-icons round"> logout </span> Logout</a>           </div>
+                                        </div>
+                                    </div>
+
+
+
+                                <!-- <div class="contact-action">
+                                    <a href="<?php echo SITE_URL ?>/customer-dashboard/customer-dashboard" class="contact-btn"><span class="material-icons round"> logout </span></a>
+                                </div> -->
                             <div class="right-nav">
                                 <button class="sidebar-toggle">
                                     <span class="material-icons">menu</span>
@@ -155,7 +179,7 @@ if (!isset($_COOKIE["cookieid"])) {
                                             <li class="nav-item"><a class="nav-link" href="<?php echo SITE_URL ?>testimonials">TESTIMONIALS</a></li>
                                             <li class="nav-item"><a class="nav-link" href="<?php echo SITE_URL ?>in_the_press">in the press</a></li>
                                             <li class="nav-item"><a class="nav-link" href="<?php echo SITE_URL ?>photo_book">photo book</a></li>
-                                            <li class="nav-item"><a class="nav-link" href="<?php echo SITE_URL ?>contactus"">CONTACT US</a></li>
+                                            <li class="nav-item"><a class="nav-link" href="<?php echo SITE_URL ?>contactus">CONTACT US</a></li>
                                         </ul>
                                     </div>
                                     <div class="nav-boxs nav-boxs-mobile">
@@ -220,9 +244,15 @@ if (!isset($_COOKIE["cookieid"])) {
                                     </div>
                                 </aside>
                             </div>
+
+                            
                         </div>
+
                     </div>
+
                 </div>
+                <div style="color: black">Welcome <?php echo $row_user['fname']; ?> <?php echo $row_user['lname']; ?></div>
+                        <?php } ?>
             </div>
         </section>
         <!--  NEW NAV ENDS   -->
