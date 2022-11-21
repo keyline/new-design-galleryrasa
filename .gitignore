@@ -1,5 +1,4 @@
 *.log
-.htaccess
 includes/config.inc.php
 includes/db_config.php
 error_log
@@ -7,3 +6,4 @@ admin/error_log
 product_images/
 press/
 podcast/
+exhibition/
