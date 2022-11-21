@@ -1,3 +1,16 @@
+<<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
+    <link rel="stylesheet" href="./jsSocial/jssocials.css">
+    <link rel="stylesheet" href="./jssocials/jssocials-theme-classic.css">
+</head>
+<body>
+
+
 <main>
 	<section class="visual-search-details-page exhibition-details-page exhibition-details-new">
         <div class="container">
@@ -106,6 +119,22 @@
                             <?php } else { echo $k['essay_3']; } ?>
                         </div>
                         <div class="enquiry-btn">ENQUIRE<span class="material-icons arrow">arrow_forward</span></div>
+
+                        <div id="shareRoundIcons"></div>
+
+
+                        <div class="dropdown">
+                          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Share
+                          </button>
+                          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="https://www.facebook.com/sharer.php?u=<?php echo SITE_URL?>exhibition-details.php?id=<?php echo $k['id']; ?>" target="_blank"> <img class="img-fluid" src="https://localhost/galleryrasa/new-design-galleryrasa/images/facebook.png"></a>
+                            <a class="dropdown-item" href="https://www.instagram.com/?u=<?php echo SITE_URL?>exhibition-details.php?id=<?php echo $k['id']; ?>" target="_blank"><img class="img-fluid" src="https://localhost/galleryrasa/new-design-galleryrasa/images/insta.png"></a>
+                            <a class="dropdown-item" href="https://twitter.com/share?u=<?php echo SITE_URL?>exhibition-details.php?id=<?php echo $k['id']; ?>" target="_blank"><img class="img-fluid" src="https://localhost/galleryrasa/new-design-galleryrasa/images/twe.png"></a>
+                            <a class="dropdown-item" href="http://www.linkedin.com/shareArticle?mini=true&amp;u=<?php echo SITE_URL?>exhibition-details.php?id=<?php echo $k['id']; ?>" target="_blank"><img class="img-fluid" src="https://localhost/galleryrasa/new-design-galleryrasa/images/in.png"></a>
+                          </div>
+                        </div>
+                        
                     </div>
                 </div>
             </div>
@@ -224,4 +253,13 @@
 </div>
 </main>
 
-
+</body>
+</html>
+<script src="./jssocials/jssocials.js" ></script>
+<script>
+   $("#shareRoundIcons").jsSocials({
+    showLabel: false,
+    showCount: false,
+    shares: ["email", "twitter", "facebook", "pinterest", "whatsapp"]
+});
+</script>

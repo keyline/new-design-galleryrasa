@@ -4196,10 +4196,10 @@ font-size: 16px;
 .visual-search-details-page.exhibition-details-page .exhibition-search-title{
     color: var(--textColor);
 /*    font-weight: 500;*/
-    font-size: 50px;
+    font-size: 30px;
     line-height: 58px;
     font-family: 'Braveold-Bold';
-        padding-bottom: 36px;
+        padding-bottom: 30px;
     position: relative;
     margin-bottom: 10px;
     letter-spacing: 1px;
@@ -4232,7 +4232,7 @@ font-size: 16px;
     align-items: center;
     font-family: 'Roboto', sans-serif;
     font-weight: 500;
-    font-size: 16px;
+    font-size: 14px;
     color: var(--textColor);
 }
 .visual-search-details-page.exhibition-details-page .exhibition-search-content{
