@@ -36,7 +36,7 @@ echo "<a href='$go_back'>Go Back</a>"; -->
                                                     </div>
                                                 </div>
                                                 <div class="artwork-bottom-img">
-                                                    <img class="img-fluid" src="assets/img/Bibliography-5.jpg">
+                                                    <img class="img-fluid" src="<?php echo SITE_URL . '/' . EXHIBITION_THUMB_IMGS . $key['image']; ?>">
                                                 </div>
                                             </div>
                                         <?php } ?>

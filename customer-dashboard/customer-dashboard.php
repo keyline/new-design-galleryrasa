@@ -111,11 +111,8 @@ $cust_id = $_SESSION['user-id'];
                 </div>
                 <div class="col-lg-9">
                     <div class="podcast-body">
-                        <div class="tab-content" id="pills-tabContent">
-                            <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-                                <div class="get-form">
-                                <form method="POST" action="change-profile.php" id="passwordForm">
-                                    <?php
+                        <div class="podcast-title">
+                            <?php
                                     $sql_user = "select * from customer_login where email = '" . $_SESSION['user-email'] . "'";
                                     // echo $sql_user;
                                     //     exit();
@@ -123,7 +120,13 @@ $cust_id = $_SESSION['user-id'];
                                     $q_user->execute();
                                     $q_user->setFetchMode(PDO::FETCH_ASSOC);
                                     $row_user = $q_user->fetch();
-                                    ?>
+                                    ?>                                                 
+                        </div>
+                        <div class="tab-content" id="pills-tabContent">
+                            <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+                                <div class="get-form">
+                                <form method="POST" action="change-profile.php" id="passwordForm">
+                                    
                                         <div class="form-row">
                                             <div class="form-group col-md-6">
                                                 <label>First Name</label>
