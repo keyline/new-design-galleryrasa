@@ -1,4 +1,5 @@
 <?php
+
 $getid= $_REQUEST['id'];
 require_once("require.php");
 require_once(INCLUDED_FILES . "config.inc.php");
