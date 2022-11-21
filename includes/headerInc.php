@@ -144,6 +144,7 @@ if (!isset($_COOKIE["cookieid"])) {
                                     $q_user->setFetchMode(PDO::FETCH_ASSOC);
                                     $row_user = $q_user->fetch();
                                     ?>  
+
                                     <div class="contact-action">                           
                                         <div class="dropdown show">
                                             <a href="#" class="contact-btn dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown"><span class="material-icons cart-box">person</span></a>
@@ -154,10 +155,12 @@ if (!isset($_COOKIE["cookieid"])) {
                                             <a class="dropdown-item" href="<?php echo SITE_URL ?>/logout"><span class="material-icons round"> logout </span> Logout</a>           </div>
                                         </div>
                                     </div>
+
+
+
                                 <!-- <div class="contact-action">
                                     <a href="<?php echo SITE_URL ?>/customer-dashboard/customer-dashboard" class="contact-btn"><span class="material-icons round"> logout </span></a>
                                 </div> -->
-                            <?php } ?>
                             <div class="right-nav">
                                 <button class="sidebar-toggle">
                                     <span class="material-icons">menu</span>
@@ -241,9 +244,15 @@ if (!isset($_COOKIE["cookieid"])) {
                                     </div>
                                 </aside>
                             </div>
+
+                            
                         </div>
+
                     </div>
+
                 </div>
+                <div style="color: black">Welcome <?php echo $row_user['fname']; ?> <?php echo $row_user['lname']; ?></div>
+                        <?php } ?>
             </div>
         </section>
         <!--  NEW NAV ENDS   -->
