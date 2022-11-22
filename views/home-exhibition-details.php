@@ -130,13 +130,13 @@
 
                         <div class="dropdown">
                           <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Share
+                            Share 
                           </button>
                           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="https://www.facebook.com/sharer.php?u=<?php echo SITE_URL?>exhibition-details.php?id=<?php echo $k['id']; ?>" target="_blank"> <img class="img-fluid" src="<?php echo SITE_URL . SITE_IMGS ;?>facebook.png"></a>
-                            <a class="dropdown-item" href="https://www.instagram.com/?u=<?php echo SITE_URL?>exhibition-details.php?id=<?php echo $k['id']; ?>" target="_blank"><img class="img-fluid" src="<?php echo SITE_URL . SITE_IMGS ;?>insta.png"></a>
-                            <a class="dropdown-item" href="https://twitter.com/share?u=<?php echo SITE_URL?>exhibition-details.php?id=<?php echo $k['id']; ?>" target="_blank"><img class="img-fluid" src="<?php echo SITE_URL . SITE_IMGS ;?>twe.png"></a>
-                            <a class="dropdown-item" href="http://www.linkedin.com/shareArticle?mini=true&amp;u=<?php echo SITE_URL?>exhibition-details.php?id=<?php echo $k['id']; ?>" target="_blank"><img class="img-fluid" src="<?php echo SITE_URL . SITE_IMGS ;?>in.png"></a>
+                            <a class="dropdown-item" href="https://www.facebook.com/sharer.php?u=<?php echo SITE_URL?>exhibition-details.php?id=<?php echo $k['id']; ?>" target="_blank"> <img class="img-fluid" src="<?php echo SITE_URL . SITE_IMGS ;?>facebook.png">&nbsp;Facebook</a>
+                            <a class="dropdown-item" href="https://www.instagram.com/?u=<?php echo SITE_URL?>exhibition-details.php?id=<?php echo $k['id']; ?>" target="_blank"><img class="img-fluid" src="<?php echo SITE_URL . SITE_IMGS ;?>insta.png">&nbsp;Instagram</a>
+                            <a class="dropdown-item" href="https://twitter.com/share?u=<?php echo SITE_URL?>exhibition-details.php?id=<?php echo $k['id']; ?>" target="_blank"><img class="img-fluid" src="<?php echo SITE_URL . SITE_IMGS ;?>twe.png">&nbsp;Twitter</a>
+                            <a class="dropdown-item" href="http://www.linkedin.com/shareArticle?mini=true&amp;u=<?php echo SITE_URL?>exhibition-details.php?id=<?php echo $k['id']; ?>" target="_blank"><img class="img-fluid" src="<?php echo SITE_URL . SITE_IMGS ;?>in.png">&nbsp;LinkedIn</a>
                           </div>
                         </div>
                         </div>
