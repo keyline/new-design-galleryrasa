@@ -30,7 +30,7 @@ $exartwork = $q->fetchAll();
 // print_r ($exartwork); exit();
 
 
-$sql1 = "SELECT DISTINCT exhibition_artists.artist_name, exhibition_paintings.exhibition_id FROM `exhibition_artists` LEFT JOIN exhibition_paintings on exhibition_paintings.artist_id = exhibition_artists.id WHERE exhibition_paintings.exhibition_id = $getid";
+$sql1 = "SELECT DISTINCT exhibition_artists.artist_name,exhibition_artists.id, exhibition_paintings.exhibition_id FROM `exhibition_artists` LEFT JOIN exhibition_paintings on exhibition_paintings.artist_id = exhibition_artists.id WHERE exhibition_paintings.exhibition_id = $getid";
 $q1 = $conn->query($sql1);
 
 $q1->execute();
