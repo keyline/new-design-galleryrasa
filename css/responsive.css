@@ -305,10 +305,9 @@
 }
 /*PC VERSION*/
 @media screen and (max-width: 1200px) {
-<<<<<<< HEAD
     .homepage_only .select2-container {
         max-width: 646px;
-=======
+    }
     .start-body.visual-page.visual-search-page.bibliography-search .hearder-options .user-options .top-search .search-barOption {
         width: 100%;
     }
@@ -322,7 +321,6 @@
         width: 100%;
         margin-bottom: 15px;
         margin-top: 15px;
->>>>>>> design_fixing
     }
     .start-body.visual-page.bibliography-page .hearder-options .top-search .search-barOption {
         width: 100%;
@@ -436,6 +434,9 @@
     background-size: cover !important;
 	background-attachment:fixed !important;
 }
+.desktop_order1 {
+    order: 1;
+}
 }
 /*TAB VERSION*/
 @media screen and (max-width: 991px) {
@@ -448,21 +449,21 @@
     }
     .get-modal .modal-content {
     top: 44%;
-}
+    }
     .visual-search-details-page.exhibition-details-page.exhibition-artwork-page .owl-carousel .owl-nav button.owl-next span:after {
     background-image: url(../img/nex-1t.png);
     right: 45px;
     left: auto;
     background-position: center;
     height: 25px;
-}
+    }
     .visual-search-details-page.exhibition-details-page.exhibition-artwork-page .owl-carousel .owl-nav button.owl-prev span:after {
     background-image: url(../img/prev-1t.png);
     right: 45px;
     left: auto;
     background-position: center;
     height: 25px;
-}
+    }
     .testimonials.vision-statement .testimonials-inner{
         padding-right: 0;
     }
@@ -492,7 +493,7 @@
     }
     .visual-search-details-page.exhibition-details-page.bengali-film-archives-search-details.memorabilia-details {
     padding-bottom: 30px;
-}
+    }
     .visual-search-details-page.exhibition-details-page.bengali-film-archives-search-details .details-info {
     height: 690px;
 }
@@ -776,7 +777,7 @@
             padding-bottom: 30px;
     }
     .start-bod.visual-page.rasa-inner.exhibition-page .flex-height{
-        height: auto!inner;
+        height: auto;
     }
 /*
     .start-body.exhibition-page .visual-inner .visual-info{
@@ -972,6 +973,7 @@
 .start-body.visual-page.bibliography-page .left-body{
     padding-left: 0;
 }
+
     
 }
 

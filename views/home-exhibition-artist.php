@@ -1,5 +1,5 @@
 
-<section class="testimonials vision-statement visual-search-details-page exhibition-details-page exhibition-artwork-page">
+<section class="testimonials vision-statement visual-search-details-page exhibition-details-page exhibition-artist-details">
         <div class="container">
             <div class="visual-inner">
                         <div class="back-action">
@@ -8,7 +8,16 @@
                     </div>
         <?php foreach($exrow as $key) { ?>
             <div class="row">
-                <div class="col-lg-6">
+                <div class="col-lg-4 desktop_order1">
+                    <div class="vision-img">
+                        <?php   if($key['photograph'] != '') { ?>
+                        <img class="img-fluid" src="<?php echo SITE_URL . '/' . EXHIBITION_THUMB_IMGS . $key['photograph']; ?>">
+                            <?php }else{ ?>
+                            <img class="img-fluid" src="product_images/exhibition_thumbs/placeholder.jpg">
+                            <?php } ?>
+                    </div>
+                </div>  
+                <div class="col-lg-8 desktop_order2">
                     <div class="testimonials-inner">
                         <div class="visual-title">
                             <?php 
@@ -42,15 +51,7 @@
                         
                     </div>
                      </div>
-                    <div class="col-lg-6">
-                        <div class="vision-img">
-                            <?php   if($key['photograph'] != '') { ?>
-                            <img class="img-fluid" src="<?php echo SITE_URL . '/' . EXHIBITION_THUMB_IMGS . $key['photograph']; ?>">
-                                <?php }else{ ?>
-                                <img class="img-fluid" src="product_images/exhibition_thumbs/placeholder.jpg">
-                                <?php } ?>
-                        </div>
-                    </div>           
+                             
             </div>
         <?php } ?>
         </div>
