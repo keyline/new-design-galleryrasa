@@ -1345,3 +1345,9 @@ main .btn {
     align-items: center;
     justify-content: center;
 }
+.exhibition-artwork-page.visual-search-details-page .left-details {
+    display: block;
+}
+.exhibition-artwork-page.visual-search-details-page .left-details .box img {
+    height: 500px;
+}
