@@ -535,6 +535,35 @@ $(document).ready(function() {
         }
     });
 
+    $('.exhibition-carousel').each(function(){
+        $(this).owlCarousel({
+            loop: true,
+            margin: 20,
+            dots: false,
+            nav: true,
+            autoplay: false,
+            autoplayTimeout: 4000,
+            autoplayHoverPause: true,
+            animateIn: 'fadeIn',
+            animateOut: 'fadeOut',
+            navText: ["<span class='material-icons'>arrow_back</span>", "<span class='material-icons'>arrow_forward</span>"],
+            responsive: {
+                0: {
+                    items: 1,
+                },
+                600: {
+                    items: 1,
+                },
+                750: {
+                    items: 1,
+                },
+                1000: {
+                    items: 1,
+                }
+            }
+        });
+    });
+
 
 
 $(document).ready(function(){
