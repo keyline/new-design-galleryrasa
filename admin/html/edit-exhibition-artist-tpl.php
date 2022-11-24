@@ -52,6 +52,14 @@
                                 <label for="tags">Description</label>
                                 <textarea class="form-control" rows="3" name="desc"><?php echo $artistarr['artist_description'] ?></textarea>
                             </div>
+                            <div class="form-group">
+                                <label for="tags">Description2</label>
+                                <textarea class="form-control" rows="3" name="desc2"><?php echo $artistarr['artist_description2'] ?></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="tags">Description3</label>
+                                <textarea class="form-control" rows="3" name="desc3"><?php echo $artistarr['artist_description3'] ?></textarea>
+                            </div>
 
 
 

@@ -1,4 +1,4 @@
-<<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
@@ -214,6 +214,7 @@
                                     <?php
                                     foreach ($exartist as $key) { ?>
                                    <div class="exhibition-box">
+                                    <a href="<?php SITE_URL ?>./exhibition-artist.php?id=<?php echo $key['id']; ?>">
                                        <div class="exhibition-artist">
                                            <?php echo $key['artist_name']; ?>
                                        </div>
