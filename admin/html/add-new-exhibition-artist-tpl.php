@@ -44,6 +44,14 @@
                                 <label for="tags">About the artist</label>
                                 <textarea class="form-control" rows="3" name="desc"></textarea>
                             </div>
+                            <div class="form-group">
+                                <label for="tags">About the artist</label>
+                                <textarea class="form-control" rows="3" name="desc2"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="tags">About the artist</label>
+                                <textarea class="form-control" rows="3" name="desc3"></textarea>
+                            </div>
 
                             <div class="form-group">
                                 <label for="tags">Year of birth</label>
