@@ -164,6 +164,18 @@
         'jpg'
     );
 
+$myArray=array(
+    'Catalogue[Solo]' => ['title_of_article', 'gallery_museum', 'curator', 'gregorian_year'],
+    'Catalogue[Annual]'=> ['title_of_article', 'gallery_museum', 'curator', 'gregorian_year'],
+    'Catalogue[Group]'=> ['title_of_article', 'gallery_museum', 'curator', 'gregorian_year'],
+    'Catalogue Essay'=> ['title_of_article', 'translated_title', 'author', 'gallery_museum', 'curator', 'gregorian_year'],
+    'Book'=> ['title_of_article', 'author', 'beditor', 'gregorian_year', 'translated1_title_of_parent'],
+    'Journal Article'=> ['title_of_article', 'translated_title','author', 'gregorian_month', 'gregorian_year', 'translated1_title_of_parent'],
+    'Book Section'=> ['title_of_article', 'author', 'translated_title', 'gregorian_year', 'translated1_title_of_parent']
+);
+
+define('RIGHTKEYS', $myArray);
+
 
     session_start();
 
