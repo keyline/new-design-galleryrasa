@@ -20,15 +20,27 @@ use PhpOffice\PhpSpreadsheet\Reader\Html;
 class Excelreader {
 
     protected $dbConn; //DB Instance
-    protected $EmbossUser; //Logged in Embossing User Id
-    private static $dbTable = 'TVS_TEMP_FILE_DATA';
-    private static $proc_temp_Insert = 'SP_TTFD_TEMP_TBL_INSERT';
-    private static $proc_tampMaster_Insert = 'SP_TTFM_TEMP_MASTER_TBL_INSERT';
+	
+	protected $parentCategoryAlias=null;
+	
+	protected $categoryTitle="";
+	
+	protected $subCategory=null;
+	
+	protected $parentCategory=null;
+    
+    
+    
+    
 
     //private static $inputFileType = 'Xls';
 
-    public function __construct($db) {
+    public function __construct($db, $categoryTxt, $subCategoryId, $parentCategoryId,$titleField) {
         $this->dbConn = $db;
+		$this->parentCategoryAlias= $categoryTxt;
+		$this->subCategory= $subCategoryId;
+		$this->parentCategory= $parentCategoryId;
+		$this->categoryTitle= $titleField;
         //$this->EmbossUser = $embId;
     }
 
@@ -75,10 +87,10 @@ class Excelreader {
 
 
 
-        $objPHPExcel->disconnectWorksheets();
+        //$objPHPExcel->disconnectWorksheets();
         unset($objPHPExcel, $arrStrSheetDatum);
 
-        echo("File " . $filePath . " has been uploaded successfully in database" . PHP_EOL . "<br>");
+        echo("File " . $filePath . " has been uploaded successfully, <a href=\"https://galleryrasa.com/admin/excel-import.php?import=bibliography\">get back to upload</a>" . PHP_EOL . "<br>");
     }
 
     /**
@@ -92,7 +104,7 @@ class Excelreader {
         try {
             //Getting Master Data
             $inserData = $data = [];
-            $dbKeys = get_attrKeys_by_category();
+            $dbKeys = get_attrKeys_by_category($this->parentCategoryAlias);
             $dbF = get_all_inputtype_fields();
             $toalRowCount = count($sheetData);
 
@@ -120,9 +132,9 @@ class Excelreader {
             //Product Entry Starts here
             //Get title of the book
             //$bookTitle = $result['title1_of_parent'];
-            $bookTitle = $result['title_of_article']; // Dynamic in nature
-            $subCatID = 7; //Dynamic in nature
-            $catID = 1; //Dynamic in nature
+            $bookTitle = $result[$this->categoryTitle]; // Dynamic in nature
+            $subCatID = $this->subCategory; //Dynamic in nature
+            $catID = $this->parentCategory; //Dynamic in nature
             $columns = array(
                 'prodid' => 'null',
                 'category_id' => ':category',
@@ -155,6 +167,7 @@ class Excelreader {
                 $q = $this->dbConn->prepare($pqr);
                 $q->execute($bind_p);
             }
+			return true;
         } catch (PDOException $exc) {
             echo $exc->getTraceAsString();
             var_dump($exc);

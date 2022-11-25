@@ -1,0 +1,71 @@
+C:\xampp\php
+
+Usage: Highlight code block and enter Ctrl+Alt+a or Ctrl+cmd+a if you’re a Mac user.
+require_once("../require.php");
+require_once("../" . INCLUDED_FILES . "config.inc.php");
+require_once("../" . INCLUDED_FILES . "dbConn.php");
+require_once("../" . INCLUDED_FILES . "functionsInc.php");
+require_once("../" . INCLUDED_FILES . "pdo-debug.php");
+
+
+http://leedavis81.github.io/global-installation-of-composer-on-windows/
+
+On Windows, when global install of a library / package is done, 
+composer stores the package in a Composer directory inside windows 
+**application data folders** which by default is
+C:\Users{user name}\AppData\Roaming`.
+
+###Excel Data to insert into database###
+Array
+(
+    [reference type] => Book
+    [type1 of parent] => Softbound Book
+    [title1 of parent] => Echoes from Old Calcutta: Reminiscences of the Days of Hastings, Francis & Impey
+    [translated1 title of parent] => 
+    [author 1] => H. E. Busteed
+    [beditor 1] => 
+    [beditor 2] => 
+    [beditor 3] => 
+    [compiler] => 
+    [foreword] => Curzon of Kedleston 
+    [preface] => H. E. Busteed
+    [descriptive tags] => Calcutta, Kolkata, British India, Indian Early Modern History
+    [publisher 1] => Rupa & Company
+    [gregorian year] => N. D.
+    [vernacular year] => 
+    [place of publication] => New Delhi
+    [language 1] => English
+    [language 2] => 
+    [language 3] => 
+    [edition] => Reprint
+    [book cover designer] => 
+    [pagination] => XXI + 611
+    [illustrated ] => 
+    [archivist remarks] => 
+    [contributor 1] => 
+    [contributor 2] => 
+    [contributor 3] => 
+    [contributor 4] => 
+    [contributor 5] => 
+    [contributor 6] => 
+    [contributor 7] => 
+    [contributor 8] => 
+    [contributor 9] => 
+    [contributor 10] => 
+    [contributor 11] => 
+    [contributor 12] => 
+    [contributor 13] => 
+    [contributor 14] => 
+    [contributor 15] => 
+    [contributor 16] => 
+    [contributor 17] => 
+    [contributor 18] => 
+    [artist 1] => 
+    [artist 2] => 
+    [artist 3] => 
+    [artist 4] => 
+    [artist 5] => 
+    [artist 6] => 
+    [location] => Gallery Rasa Archives
+    [] => 
+)

@@ -5,7 +5,7 @@
             <h3 class="panel-title">Excel Import</h3>
         </div>
         <div class="panel-body">
-            <form action="../oldsitebackup/test_upload/import-wizard" method="POST" name="frmexcelImport" enctype="multipart/form-data">
+            <form action="../test_upload/import-wizard" method="POST" name="frmexcelImport" enctype="multipart/form-data">
                 <div class="form-group">
                     <label for="pname">Choose Category First</label>
                     <div class="btn-group" data-toggle="buttons">
