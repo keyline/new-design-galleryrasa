@@ -943,6 +943,8 @@ function get_html($array, $keys = array(), $usersession, $html = '')
         }
         return ($sortMe[$a] < $sortMe[$b]) ? -1 : 1;
     });
+
+    $rightKeys= getRightAttributesList();
     //echo '<pre>';print_r($array);die;
     $iterator = new RecursiveIteratorIterator(new RecursiveArrayIterator($array), RecursiveIteratorIterator::SELF_FIRST);
 
@@ -979,7 +981,7 @@ function get_html($array, $keys = array(), $usersession, $html = '')
 
             //$path = implode(',', $p);
             //echo "$indent$k : $v <br>";
-            if (array_key_exists($k, $keys)) {
+            if (in_array($k, $rightKeys[$main_key])) {
                 $html .= '<div class="bibliography-content">
                             <p class="bibliography-fix">' . replace_underscore_space($k, $main_key) . '</p>
                             <p>' . bibliography_replace_dollar($v) . '</p>
@@ -6632,4 +6634,10 @@ function get_allPDF_count_bibliography($pid, $choice = false)
     } catch (PDOException $pe) {
         echo db_error($pe->getMessage());
     }
+}
+
+
+function getRightAttributesList()
+{
+    return $myarray= unserialize(RIGHTKEYS);
 }
