@@ -174,7 +174,7 @@ $myArray=array(
     'Book Section'=> ['title_of_article', 'author', 'translated_title', 'gregorian_year', 'translated1_title_of_parent']
 );
 
-define('RIGHTKEYS', $myArray);
+define('RIGHTKEYS', serialize($myArray));
 
 
     session_start();
