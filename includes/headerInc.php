@@ -157,7 +157,7 @@ if (!isset($_COOKIE["cookieid"])) {
                                     </div>
 
 
-
+                                <?php } ?>
                                 <!-- <div class="contact-action">
                                     <a href="<?php echo SITE_URL ?>/customer-dashboard/customer-dashboard" class="contact-btn"><span class="material-icons round"> logout </span></a>
                                 </div> -->
@@ -203,7 +203,7 @@ if (!isset($_COOKIE["cookieid"])) {
                                             <?php
                                             unset($_SESSION['newsletter']);
                                         }
-?>
+                                        ?>
                                         <!-- <form>
                                             <div class="form-group">
                                                 <input type="email" class="form-control" placeholder="your name">
@@ -251,8 +251,18 @@ if (!isset($_COOKIE["cookieid"])) {
                     </div>
 
                 </div>
+                <?php if (isset($_SESSION["user-id"])) {
+                                    $sql_user = "select * from customer_login where email = '" . $_SESSION['user-email'] . "'";
+                                    // echo $sql_user;
+                                    //     exit();
+                                    $q_user = $conn->prepare($sql_user);
+                                    $q_user->execute();
+                                    $q_user->setFetchMode(PDO::FETCH_ASSOC);
+                                    $row_user = $q_user->fetch();
+                                    ?> 
                 <div style="color: black">Welcome <?php echo $row_user['fname']; ?> <?php echo $row_user['lname']; ?></div>
-                        <?php } ?>
+                <?php } ?>
+                        
             </div>
         </section>
         <!--  NEW NAV ENDS   -->

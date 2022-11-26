@@ -87,25 +87,25 @@
                                 <textarea class="form-control" rows="2" name="exfull_address"><?php echo $exhibitionarr['full_address'] ?></textarea>
                             </div>
 
-                            <!-- <div class="form-group">
+                            <div class="form-group">
                                 <label for="stock">Exhibition Status</label>
                                 <select class="form-control" name="status">
                                     <option value="?php echo $exhibitionarr['status'] ?>">
-                                        ?php
-                                        if ($exhibitionarr['status'] == '0') {
+                                        <?php
+                                        if ($exhibitionarr['status'] == '1') {
                                             echo 'Archived';
-                                        } else if ($exhibitionarr['status'] == '1') {
+                                        } else if ($exhibitionarr['status'] == '0') {
                                             echo 'Open';
                                         } else {
                                             echo 'Canceled';
                                         }
                                         ?>
                                     </option>                                    
-                                    <option value="1">Open</option>
-                                    <option value="0">Archived</option>
+                                    <option value="0">Open</option>
+                                    <option value="1">Archived</option>
                                     <option value="2">Canceled</option>
                                 </select>
-                            </div> -->
+                            </div>
 
 
                             <div class="row">

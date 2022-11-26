@@ -42,6 +42,7 @@
                                 <th>End Date</th>
                                 <th>City</th>
                                 <th>Address</th>
+                                <th>Status</th>
                                 <th>Edit</th>                                
                                 <th>Add Artist</th>
                                 <th>Add Artwork</th>
@@ -85,6 +86,8 @@
                                         <td><?php echo $v['city']; ?></td>
 
                                         <td><?php echo $v['full_address']; ?></td>
+                                        <td><?php echo ($v['status']== '0' ? 'Opened' : ($v['status']== '1' ? 'Archived' : 'Cancelled')); ?></td>
+                                        
 
                                         <td><a href="edit-exhibition.php?exibition_id=<?php echo $v['id'] ?>"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a></td>
 

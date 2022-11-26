@@ -1345,3 +1345,17 @@ main .btn {
     align-items: center;
     justify-content: center;
 }
+.exhibition-artwork-page.visual-search-details-page .left-details {
+    display: block;
+}
+.exhibition-artwork-page.visual-search-details-page .left-details .box img {
+    height: 500px;
+}
+.exhibition-artist-details .vision-img {
+    height: auto !important;
+    width: auto !important;
+    background: none !important;
+    box-shadow: none !important;
+    margin: auto;
+    text-align: center;
+}
