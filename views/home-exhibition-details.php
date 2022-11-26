@@ -123,8 +123,8 @@
                             } ?>
                         </div>
                         <div class="wrap-enquiry-socialbtns">
-                        <div class="enquiry-btn">ENQUIRE<span class="material-icons arrow">arrow_forward</span></div>
-
+                        <!-- <div class="enquiry-btn"><a href="#pills-tab">ENQUIRE</a><span class="material-icons arrow">arrow_forward</span></div> -->
+                        <a href="#pills-tab" class="enquiry-btn">ENQUIRE<span class="material-icons arrow">arrow_forward</span></a>
                         <div id="shareRoundIcons"></div>
 
 
@@ -214,7 +214,7 @@
                                     <?php
                                     foreach ($exartist as $key) { ?>
                                    <div class="exhibition-box">
-                                    <a href="<?php SITE_URL ?>./exhibition-artist.php?id=<?php echo $key['id']; ?>">
+                                    <a target="_blank" href="<?php echo SITE_URL ;?>exhibition-artist.php?id=<?php echo $key['id']; ?>">
                                        <div class="exhibition-artist">
                                            <?php echo $key['artist_name']; ?>
                                        </div>
