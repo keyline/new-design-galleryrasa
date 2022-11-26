@@ -1,4 +1,5 @@
 <?php
+
     //define folder
     define('gR_Version', '1.3');
     define('DB_USER', 'galleryr_whyusr');
@@ -9,7 +10,9 @@
     define('SITE_URL', 'https://uat.galleryrasa.com/');
     define('ADMIN_URL', 'https://uat.galleryrasa.com//admin');
     define('APPS_BASE_PATH', $_SERVER['DOCUMENT_ROOT'] . "/");
-    
+
+
+
     define('CURRENCY_CODE', '$ ');  # US [ $ ], GB [ & pound; ] #Euro [ & euro ];
 
     #ReCaptcha
@@ -19,13 +22,13 @@
     define('RECAPTCHA_LAN', 'en');
 
     define("ADDTOCART", true);
-    
+
     define("LOG_PATH", 'logs/');
-    
+
 
     define('SHOW_ERR', true); //show database error. Set to true only when debugging
     define('CREATE_ADMIN_ACCOUNT', true); // set to false once admin account created.
-    
+
     define('SHOW_AVAILABLE_STOCK', true); #show all current available stock
     define('SHOW_AVAILABLE_STOCK_LABEL', 'Available: ');
     define('OUT_OF_STOCK', ' [out of stock]'); #out of stock text
@@ -33,7 +36,7 @@
 
     define('LOW_STOCK_ALERT', true); #enable email alert</low>
     define('LOW_STOCK_LEVEL', 5); # send email alert if stock level is equal or less than this number
-    
+
     @date_default_timezone_set("Asia/Kolkata");
     # date_default_timezone_set("Europe/London"); #set your default time zone.  http://php.net/manual/en/timezones.php
     /**
@@ -43,17 +46,17 @@
     define('PER_PAGE', 30); #pagination
     define('THUMB_WIDTH', 300); // in pixels 300
     define('THUMB_HEIGHT', 400); // in pixels 400
-    
+
     define('VA_THUMB_WIDTH', 250); // in pixels 250
     define('VA_THUMB_HEIGHT', 150); // in pixels 150
-    
+
     define('VA_MEDIUM_WIDTH', 500); // in pixels 500
     define('VA_MEDIUM_HEIGHT', 300); // in pixels 300
-    
+
     // define('VA_MEDIUM_URL', 'va-medium');
-    
+
     define('TOP_DEALS_TILE', '<h3 class="text-warning" style="margin-top:0"> Top Deals</h3>');
-    
+
     define('NO_IMAGE', 'Image Not Available'); //default
     define('P_DESCRIPTION_ONE', 'Description'); //default
     define('P_DESCRIPTION_TWO', 'Features'); //default
@@ -104,11 +107,11 @@
     define("CUST_LOGIN", 'customer_login');
     define("PAYMENT", 'tbl_payment');
     define("PAYMENTMETA", 'tbl_payment_meta');
-    
+
     //visual archive
     define('VISUAL_PRODUCTS_TBL', 'visual_products_ecomc');
     define('VISUALARCHIVE_IMAGES_TBL', 'visual_archive_images');
-    
+
 
     #folders
     define('CACHE_FILE', 'cache/');
@@ -139,7 +142,7 @@
     define('IMAGES_FOLDER', IMGSRC);
     define('FEATURED_ITEMS', IMGSRC.'featured');
     define('ADMIN_HTML', 'html/');
-	define('PRESS_IMGS', 'press/');
+    define('PRESS_IMGS', 'press/');
     //define('APPS_BASE_PATH', $_SERVER['DOCUMENT_ROOT'] . "/beta/");
 
 
@@ -155,7 +158,7 @@
         'image/gif',
         'image/png'
     );
-    
+
     $allowedFiles_artwork=array(
         'pjpeg',
         'jpeg',
@@ -164,17 +167,17 @@
         'jpg'
     );
 
-$myArray=array(
-    'Catalogue[Solo]' => ['title_of_article', 'gallery_museum', 'curator', 'gregorian_year'],
-    'Catalogue[Annual]'=> ['title_of_article', 'gallery_museum', 'curator', 'gregorian_year'],
-    'Catalogue[Group]'=> ['title_of_article', 'gallery_museum', 'curator', 'gregorian_year'],
-    'Catalogue Essay'=> ['title_of_article', 'translated_title', 'author', 'gallery_museum', 'curator', 'gregorian_year'],
-    'Book'=> ['title_of_article', 'author', 'beditor', 'gregorian_year', 'translated1_title_of_parent'],
-    'Journal Article'=> ['title_of_article', 'translated_title','author', 'gregorian_month', 'gregorian_year', 'translated1_title_of_parent'],
-    'Book Section'=> ['title_of_article', 'author', 'translated_title', 'gregorian_year', 'translated1_title_of_parent']
-);
+    $myArray=array(
+        'Catalogue[Solo]' => ['gallery_museum', 'curator', 'gregorian_year'],
+        'Catalogue[Annual]'=> [ 'gallery_museum', 'curator', 'gregorian_year'],
+        'Catalogue[Group]'=> [ 'gallery_museum', 'curator', 'gregorian_year'],
+        'Catalogue Essay'=> [ 'translated_title', 'author', 'gallery_museum', 'curator', 'gregorian_year'],
+        'Book'=> ['title_of_article', 'author', 'beditor', 'gregorian_year', 'translated1_title_of_parent'],
+        'Journal Article'=> ['title_of_article', 'translated_title','author', 'gregorian_month', 'gregorian_year', 'translated1_title_of_parent'],
+        'Book Section'=> ['title_of_article', 'author', 'translated_title', 'gregorian_year', 'translated1_title_of_parent']
+    );
 
-define('RIGHTKEYS', serialize($myArray));
+    define('RIGHTKEYS', serialize($myArray));
 
 
     session_start();

@@ -102,10 +102,10 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             $err = false;
 
 
-            $query1 = "insert into exhibition(exhibition_name,description,essay_2,essay_3,photo,from_exhibition_date,end_exhibition_date,city,full_address,created_at,updated_at) "
-                    . "values(:exhibition_name,:description,:essay_2,:essay_3,:photo,:from_exhibition_date,:end_exhibition_date,:city,:full_address,:created_at,:updated_at)";
+            $query1 = "insert into exhibition(exhibition_name,description,essay_2,essay_3,photo,from_exhibition_date,end_exhibition_date,city,full_address,created_at,status,updated_at) "
+                    . "values(:exhibition_name,:description,:essay_2,:essay_3,:photo,:from_exhibition_date,:end_exhibition_date,:city,:full_address,:created_at,:status,:updated_at)";
             $bind1 = array(':exhibition_name' => $exname, ':description' => $desc, ':essay_2' => $desc2, ':essay_3' => $desc3, ':photo' => $newImageName,
-                ':from_exhibition_date' => $start_exdate, ':end_exhibition_date' => $end_exdate, ':city' => $excity, ':full_address' => $exfull_address, ':created_at' => $datetime,
+                ':from_exhibition_date' => $start_exdate, ':end_exhibition_date' => $end_exdate, ':city' => $excity, ':full_address' => $exfull_address, ':status' => '0', ':created_at' => $datetime,
                 ':updated_at' => $datetime);
             $stmt1 = $conn->prepare($query1);
 //echo PdoDebugger::show($query1, $bind1);
