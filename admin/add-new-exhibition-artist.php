@@ -102,7 +102,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             $query1 = "insert into exhibition_artists(artist_name,artist_birth,artist_death,artist_description,artist_description2,artist_description3,photograph,status,created_at,updated_at) "
                     . "values(:artist_name,:artist_birth,:artist_death,:artist_description,:artist_description2,:artist_description3,:photograph,:status,:created_at,:updated_at)";
             $bind1 = array(':artist_name' => $artistname, ':artist_birth' => $birth, ':artist_death' => $death, ':artist_description' => $desc, ':artist_description2' => $desc2, ':artist_description3' => $desc3, ':photograph' => $newImageName,
-                 ':status' => '1', ':created_at' => $datetime,
+                 ':status' => '0', ':created_at' => $datetime,
                 ':updated_at' => $datetime);
             $stmt1 = $conn->prepare($query1);
 //echo PdoDebugger::show($query1, $bind1);
