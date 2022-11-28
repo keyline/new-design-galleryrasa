@@ -92,7 +92,7 @@
                             <div id="more3" style="display:none;">
                                 <p><?php echo $k['description']; ?></p>
                             </div>                        
-                            <a href="javascript:showMore(3)" class="show-more-new" id="readMore3">Read More</a>
+                            <a href="<?php echo SITE_URL . 'article-details/'. $k['id'] . '/1';?>" target="_blank" class="show-more-new" id="readMore3">Read More</a>
                             <a href="javascript:showLess(3)" class="show-more-new" id="readLess3" style="display:none;">Read Less</a>
                             <?php } else {
                                 echo $k['description'];
@@ -104,7 +104,7 @@
                             <div id="more1" style="display:none;">
                                 <p><?php echo $k['essay_2']; ?></p>
                             </div>                        
-                            <a href="javascript:showMore(1)" class="show-more-new" id="readMore1">Read More</a>
+                            <a href="<?php echo SITE_URL . 'article-details/'. $k['id'] . '/2';?>" target="_blank" class="show-more-new" id="readMore1">Read More</a>
                             <a href="javascript:showLess(1)" class="show-more-new" id="readLess1" style="display:none;">Read Less</a>
                         <?php } else {
                             echo $k['essay_2'];
@@ -116,7 +116,7 @@
                             <div id="more2" style="display:none;">
                                 <p><?php echo $k['essay_3']; ?></p>
                             </div>                        
-                            <a href="javascript:showMore(2)" class="show-more-new" id="readMore2">Read More</a>
+                            <a href="<?php echo SITE_URL . 'article-details/'. $k['id'] . '/3';?>" target="_blank" class="show-more-new" id="readMore2">Read More</a>
                             <a href="javascript:showLess(2)" class="show-more-new" id="readLess2" style="display:none;">Read Less</a>
                             <?php } else {
                                 echo $k['essay_3'];
