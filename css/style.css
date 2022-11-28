@@ -7351,8 +7351,14 @@ text-align: left;
     align-content: center;
     justify-content: space-between;
 }
-.exhibition-details-page .right-details .wrap-enquiry-socialbtns .dropdown {
+.exhibition-details-page .right-details .wrap-enquiry-socialbtns .dropdown, 
+.exhibition-details-moredetails .wrap-enquiry-socialbtns .dropdown {
     height: auto;
     max-width: 100px;
-    margin-top: 15px;
+    //margin-top: 15px;
+    border: none;
+}
+.exhibition-details-moredetails .wrap-enquiry-socialbtns .dropdown {
+    float: left;
+    display: flex;
 }
