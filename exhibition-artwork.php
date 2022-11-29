@@ -85,9 +85,6 @@ $carouselImageTpl= '<div class="item">
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="artwork-bottom-img">
-                                                    <img class="img-fluid" src="%s">
-                                                </div>
                                             </div>';
 
 //$carouselImageItems= [carouselImage]
@@ -224,7 +221,7 @@ if (!empty($paintingIds)) {
         $mainImgUrl= SITE_URL . 'exhibition/' . base64_encode($temp[0]) .  '.' .$extension;
         $thumbImgUrl= SITE_URL . EXHIBITION_THUMB_IMGS . $painting['image'];
 
-        $carouselImage= vsprintf($carouselImageTpl, [$mainImgUrl, $thumbImgUrl]);
+        $carouselImage= vsprintf($carouselImageTpl, [$mainImgUrl]);
 
         $carouselImageItems= vsprintf($carouselImageItemsTpl, [$carouselImage]);
 

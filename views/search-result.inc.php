@@ -46,7 +46,7 @@
                                                                         <input type="hidden" name="att[1]" value="artist">
                                                                         <input type="hidden" name="att[2]" value="editor">
                                                             
-                                                                </form>
+                                                                
                                                                
                                                             
                                                             
@@ -77,6 +77,7 @@
 
                                                     </div> -->
                                                 </div>
+                                                </form>
                                                         <div class="drop-form">
                                                                 <a href="#" class="advanced-btn" data-toggle="modal" data-target="#advancedModal">Advanced Search<span class="material-icons">manage_search</span>
                                                                 </a>
