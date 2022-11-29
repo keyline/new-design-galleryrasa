@@ -2220,7 +2220,7 @@ top: 0;
 .visual-search-details-page .right-details .table-bordered tr td{
     padding: 20px 0;
     color: var(--primaryColor);
-    text-transform: capitalize;
+    /* text-transform: capitalize; */
     font-family: 'Roboto', sans-serif;
     font-weight: 500;
     font-size: 15px;

@@ -997,7 +997,7 @@ function get_html($array, $keys = array(), $usersession, $html = '')
                                 </div>';
                 if ($usersession==true) {
                     $html .='<div class="details-action">
-                                   <a  href="' . SITE_URL . '/details/' . $productID . '" class="details-btn" target="_blank">details</a>
+                                   <a  href="' . SITE_URL . 'details/' . $productID . '" class="details-btn" target="_blank">details</a>
                                 </div>';
                 } else {
                     $html .='<div class="details-action">
