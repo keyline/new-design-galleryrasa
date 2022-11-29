@@ -170,7 +170,7 @@ echo "<a href='$go_back'>Go Back</a>"; -->
                                          <div class="modal-header">
 <!--                    <h5 class="modal-title" id="pressModalLabel">Modal title</h5>-->
                     <a href="#" class="downlode"><span class="material-icons">crop_free</span></a>
-                    <a href="#" class="downlode"><span class="material-icons">save_alt</span></a>
+                    <a href="#" class="downlode download-painting"><span class="material-icons">save_alt</span></a>
                      
 
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -179,7 +179,7 @@ echo "<a href='$go_back'>Go Back</a>"; -->
                 </div>
                                         <div class="modal-body">
                                            <div class="light-part">
-                                    <img class="img-fluid" src="<?php echo SITE_URL . '/' . EXHIBITION_THUMB_IMGS . $key['image']; ?>">
+                                    <img class="img-fluid" src="">
                                 </div>
                                         </div>
                                         
