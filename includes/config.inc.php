@@ -171,10 +171,10 @@
         'Catalogue[Solo]' => ['gallery_museum', 'curator', 'gregorian_year'],
         'Catalogue[Annual]'=> [ 'gallery_museum', 'curator', 'gregorian_year'],
         'Catalogue[Group]'=> [ 'gallery_museum', 'curator', 'gregorian_year'],
-        'Catalogue Essay'=> [ 'translated_title', 'author', 'gallery_museum', 'curator', 'gregorian_year'],
-        'Book'=> ['title_of_article', 'author', 'beditor', 'gregorian_year', 'translated1_title_of_parent'],
+        'Catalogue Essay'=> [ 'title1_of_parent', 'translated_title', 'author', 'gallery_museum', 'curator', 'gregorian_year'],
+        'Book'=> ['author', 'beditor', 'editor','gregorian_year', 'translated1_title_of_parent', 'translated_title'],
         'Journal Article'=> ['title_of_article', 'translated_title','author', 'gregorian_month', 'gregorian_year', 'translated1_title_of_parent'],
-        'Book Section'=> ['title_of_article', 'author', 'translated_title', 'gregorian_year', 'translated1_title_of_parent']
+        'Book Section'=> ['title1_of_parent', 'author', 'beditor','editor','translated_title', 'gregorian_year', 'translated1_title_of_parent']
     );
 
     define('RIGHTKEYS', serialize($myArray));
