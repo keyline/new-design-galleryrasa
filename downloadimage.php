@@ -9,30 +9,74 @@ try {
     require_once(INCLUDED_FILES . "dbConn.php");
 
 
-    if (!empty($_REQUEST['item'])) {
-        //get image name from $_REQUEST param
-        $conn = dbconnect();
+    //get image name from $_REQUEST param
+    $conn = dbconnect();
 
-        $item= $_REQUEST['item'];
+    $item= $_REQUEST['item'];
 
-        $stmt = $conn->prepare(
-            "SELECT `photo` as `imageName` FROM exhibition WHERE id=:exhibitionIdVar"
-        );
 
-        $stmt->bindParam(':exhibitionIdVar', $item, PDO::PARAM_INT);
+    if (isset($_REQUEST['catg']) && $_REQUEST['catg'] === 'painting') {
+        if (!empty($_REQUEST['item'])) {
+            //Query
+            $stmt= $conn->prepare(
+                "SELECT `s`.`image` as `imageName` FROM `exhibition_paintings` `s` WHERE `s`.`id`=:paintingIdVar"
+            );
 
-        $stmt->execute();
+            $stmt->bindParam(':paintingIdVar', $item, PDO::PARAM_INT);
 
-        if (! $stmt->rowCount()) {
-            throw new Exception("File not found", 1);
+            $stmt->execute();
+
+            if (! $stmt->rowCount()) {
+                throw new Exception("File not found", 1);
+            }
+
+
+            $filename = $stmt->fetchColumn();
+            $temp= explode('.', $filename);
+            $extension= end($temp);
+            $filename = base64_encode($temp[0]) . '.' . $extension;
+            $filepath= 'exhibition' . '/' . $filename;
+        } else {
+            throw new Exception("Error Processing Request", 1);
         }
+    } elseif (isset($_REQUEST['catg']) && $_REQUEST['catg'] === 'exhibition') {
+        # code...
 
-        $filename = $stmt->fetchColumn();
-        $temp= explode('.', $filename);
-        $extension= end($temp);
-        $filename = base64_encode($temp[0]) . '.' . $extension;
-        $filepath= $_REQUEST['catg'] . '/' . $filename;
+        if (!empty($_REQUEST['item'])) {
+            $stmt = $conn->prepare(
+                "SELECT `photo` as `imageName` FROM exhibition WHERE id=:exhibitionIdVar"
+            );
 
+            $stmt->bindParam(':exhibitionIdVar', $item, PDO::PARAM_INT);
+
+            $stmt->execute();
+
+            if (! $stmt->rowCount()) {
+                throw new Exception("File not found", 1);
+            }
+
+            $filename = $stmt->fetchColumn();
+            $temp= explode('.', $filename);
+            $extension= end($temp);
+            $filename = base64_encode($temp[0]) . '.' . $extension;
+            $filepath= $_REQUEST['catg'] . '/' . $filename;
+        } else {
+            throw new Exception("Error Processing Request", 1);
+        }
+    } else {
+        throw new Exception("Download category does not match", 1);
+    }
+
+    downloadFile($filepath);
+} catch (\Exception $ex) {
+    //throw $th;
+    echo $ex->getMessage();
+}
+
+function downloadFile($filepath="")
+{
+    try {
+        //code...
 
         // Process download
         if (file_exists($filepath)) {
@@ -50,10 +94,7 @@ try {
             http_response_code(404);
             die();
         }
-    } else {
-        throw new Exception("Error Processing Request", 1);
+    } catch (\Throwable $th) {
+        throw $th;
     }
-} catch (\Exception $ex) {
-    //throw $th;
-    echo $ex->getMessage();
 }

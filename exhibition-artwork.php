@@ -129,7 +129,7 @@ $carouselImgStickySectionTpl= '<div class="sticky-sec">
                             </div>
                         </div>
                                         <div class="book">
-                            <a href="#" class="book-btn" data-toggle="modal" data-target="#enlargeModal">
+                            <a href="#" class="book-btn btn-enlarge" data-toggle="modal" data-target="#enlargeModal" data-serial="%s" data-paintingid="%s">
                                 <span class="material-icons">zoom_out_map</span>
                             </a>
                             <div class="tooltip-enlarge">
@@ -188,6 +188,7 @@ if (!empty($paintingIds)) {
 
     $stmt= $conn->prepare(
         "SELECT 
+    `exhibition_paintings`.`id` AS `paintingid`,
     `exhibition_paintings`.*,
     `exhibition_artists`.* 
     FROM `exhibition_paintings` INNER JOIN `exhibition_artists`
@@ -204,7 +205,7 @@ if (!empty($paintingIds)) {
     $paintingList= $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     $stmt->closeCursor();
-    //$index=1;
+    $index=0;
     foreach ($paintingList as $painting) {
         # code...
 
@@ -213,6 +214,7 @@ if (!empty($paintingIds)) {
         $carouselRightSectionDetails="";
         $artWorkDetailsContent="";
         $carouselRightSectionDetails="";
+        $carouselStickyHtml="";
 
 
         $temp= explode('.', $painting['image']);
@@ -269,9 +271,11 @@ if (!empty($paintingIds)) {
 
         $carouselRightSectionDetails .=vsprintf($carouselRightSectionDetailsTpl, [$artistName, $extendedName, $artistTitle, $artistDesc, $artWorkDetailsContent]);
 
-        $buildCarouselHtml .= vsprintf($carouselParentTpl, [$carouselImageItems, $carouselImgStickySectionTpl, $carouselRightSectionDetails]);
+        $carouselStickyHtml .= vsprintf($carouselImgStickySectionTpl, [$index, $painting['paintingid']]);
 
-        //$index++;
+        $buildCarouselHtml .= vsprintf($carouselParentTpl, [$carouselImageItems, $carouselStickyHtml, $carouselRightSectionDetails]);
+
+        $index++;
     }
 }
 include(VIEWS_FOLDER . "home-exhibition-artwork.php");

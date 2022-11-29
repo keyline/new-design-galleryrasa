@@ -719,6 +719,37 @@ $(function () {
     $(".rasatestiBtn").click(function () {
         $(this).parent().children(".rasatesCollap").toggleClass("rasaTestdetail");
     });
+
+    //Exhibition Artwork image carousel enlarge image functionality
+    // Get the modal
+    var modal = $("#enlargeModal");
+    var modalImg = modal.find('.modal-content');
+
+    //var imgSerialNo= modal.data('serial');
+
+    // Get the image and insert it inside the modal - use its "alt" text as a caption
+
+
+    $('.btn-enlarge').on('click', function () {
+        debugger;
+        var imgSerialNo = $(this).data('serial');
+        var imgfindByID = $(this).data('paintingid');
+        var downloadUrl = 'download/painting/' + imgfindByID;
+        modalImg.find('.img-fluid').attr('src', $('.owl-item.active').eq(imgSerialNo).find("img").attr('src'));
+        modalImg.find('.download-painting').attr('href', downloadUrl);
+        //modal.show();
+    });
+
+    // Get the elements that closes the modal
+    var modalCloser = $(".close");
+
+    // When the user clicks on the close element, close the modal
+    modalCloser.click(function () {
+        modal.hide();
+    });
+
+    //var captionBox = $("#caption");
+
 });
 
 function onClick(e) {
