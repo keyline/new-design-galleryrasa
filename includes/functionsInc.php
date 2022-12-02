@@ -2690,7 +2690,9 @@ function replace_underscore_space($str = '', $parent = null)
                 $str = str_replace("translated1_title_of_parent", "Translated Title Of $parent", $str);
             } elseif (preg_match('/\btitle1_of_parent\b/', $str)) {
                 # code...
-                $str = str_replace("title1_of_parent", "Title Of $parent", $str);
+                $parentCategory = strtok($parent, " ");
+
+                $str = str_replace("title1_of_parent", "Title Of The $parentCategory", $str);
             } else {
                 $str = ucwords(str_replace("_", " ", $str));
             }
