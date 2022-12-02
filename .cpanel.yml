@@ -1,5 +1,5 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/galleryr/public_html/uat/
+    - export DEPLOYPATH=/home/galleryr/public_html/
     - /bin/cp * $DEPLOYPATH
