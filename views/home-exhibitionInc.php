@@ -22,7 +22,7 @@
                                         </div>
                                     </div>
                                     <div class="detailes-action">
-                                        <a href="exhibition-details.php?id=<?php echo $max_id?>" class="detailes-btn">
+                                        <a href="#" class="detailes-btn">
                                             view details<span class="material-icons arrow">arrow_forward</span>
                                         </a>
                                     </div>
