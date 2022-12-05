@@ -71,7 +71,7 @@ include(INC_FOLDER . "headerInc.php");
                             Welcome back!
                         </div>
                         <div class="podcast-content">
-                            Lorem ipsum dolor sit amet, consectetur.
+<!--                             Lorem ipsum dolor sit amet, consectetur. -->
                         </div>
                         <div class="get-form">
                             <form id="login-form" method="POST" action="login.php" role="form">
