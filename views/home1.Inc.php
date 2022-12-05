@@ -42,7 +42,7 @@
                             It all starts here!
                         </div>
                         <div class="left-content">
-                            Type something to begin search. For eg: Satyajit Ray
+                            Type something to begin search. For eg: Name of Artist, Author, Editor, Film, Director, Cast
                         </div>
                         <div class="hearder-options">
                             <div class="user-options">
