@@ -17,7 +17,7 @@
                                                 The Satyajit Ray Centenary Show - Volume 1
                                             </div>
                                             <div class="visual-content">
-                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sed orci eget nulla ultrices accumsan. Integer rhoncus metus sit amet lacinia posuere.
+<!--                                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sed orci eget nulla ultrices accumsan. Integer rhoncus metus sit amet lacinia posuere. -->
                                             </div>
                                         </div>
                                     </div>
