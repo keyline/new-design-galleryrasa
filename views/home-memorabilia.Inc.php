@@ -11,7 +11,7 @@
                                         Bengali Film Archives
                                     </div>
                                     <div class="visual-content">
-                                        A wealth of ever growing resources which can be refined to achieve effective research on various fields of Indian art, crafts and films by forming an invaluable source of information
+                                        For researchers and film buffs - Search for detailed bibliographic information and visual content on Bengali Cinema, to start with
                                     </div>
                                     <div class="left-body">
                                         <div class="hearder-options">
