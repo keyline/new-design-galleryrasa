@@ -22,7 +22,7 @@ require_once(INCLUDED_FILES . "headerInc.php");
                             Get in touch
                         </div>
                         <div class="podcast-content">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+<!--                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. -->
                         </div>
                         <div class="get-form">
                         <?php
@@ -81,8 +81,11 @@ require_once(INCLUDED_FILES . "headerInc.php");
                             Gallery Rasa
                         </div>
                         <div class="get-content">
-                            A unit of Rajyoti Creative Pursuits Private Limited,828/1 Block P, New Alipore,Kolkata - 700 053, India
+                            A unit of Rajyoti Creative Pursuits Private Limited
                         </div>
+                        <div class="get-content">
+                                828/1 Block P, New Alipore, Kolkata - 700 053, India
+                            </div>
                         <ul>
                             <li>
                             <i class="zmdi zmdi-whatsapp"></i>
@@ -91,7 +94,7 @@ require_once(INCLUDED_FILES . "headerInc.php");
                             <li>
                                 <span class="material-icons">phone_in_talk</span>
                                 <a href="#" class="get-icon">+91 33 2400 7348</a>
-                                <span>/</span>
+                                <span></span>
                                 <a href="#" class="get-icon">+91 33 3551 9871</a>
                             </li>
                             <li>
