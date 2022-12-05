@@ -93,8 +93,7 @@ require_once(INCLUDED_FILES . "headerInc.php");
                             </li>
                             <li>
                                 <span class="material-icons">phone_in_talk</span>
-                                <a href="#" class="get-icon">+91 33 2400 7348</a>
-                                <span></span>
+                               
                                 <a href="#" class="get-icon">+91 33 3551 9871</a>
                             </li>
                             <li>
