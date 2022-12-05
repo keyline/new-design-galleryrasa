@@ -92,13 +92,13 @@ include(INC_FOLDER . "homeheaderInc.php");
                                                 <div class="visual-name">
                                                     Gallery Rasa
                                                 </div>
-                                                
-                                            </div>
                                                 <div class="visual-director">
                                                     A Unit of Rajyoti Creative Pursuits Private Limited <br>
                                                     828/1 Block P, New Alipore, Kolkata: 700 053 <br>
                                                     info@galleryrasa.com
                                                 </div>
+                                            </div>
+                                                
                                         <!-- </div> -->
                                     </div>
                                     <div class="card">
