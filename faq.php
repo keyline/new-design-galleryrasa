@@ -96,7 +96,7 @@ include(INC_FOLDER . "homeheaderInc.php");
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="card">
+<!--                                     <div class="card">
                                         <div class="card-header" id="headingFive">
                                             <h2 class="mb-0">
                                                 <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
@@ -113,7 +113,7 @@ include(INC_FOLDER . "homeheaderInc.php");
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> -->
                                     <div class="card">
                                         <div class="card-header" id="headingSix">
                                             <h2 class="mb-0">
