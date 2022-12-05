@@ -40,15 +40,19 @@ include(INC_FOLDER . "homeheaderInc.php");
                                                 <div class="faq-inner">
                                                 Welcome to the Gallery Rasa website (the "Site") operated by Gallery Rasa ("Gallery Rasa,""we,""our," or "us") a unit of Rajyoti Creative Pursuits Private Limited of 828/1 Block P, New Alipore, Kolkata: 700 053.
                                                 </div>
+                                                &nbsp;
                                                 <div class="faq-inner">
                                                 Please read the following terms and conditions of service ("Terms") carefully as they contain the legal terms and conditions that you agree to when you access the Site or use the Gallery Rasa services provided to you by Gallery Rasa through the Site ("Services").
                                                 </div>
+                                                &nbsp;
                                                 <div class="faq-inner">
                                                 For the purposes of these Terms, "you" means you, the person using the Site, and, if applicable, the person that agrees to the Terms when registering for an account. You and any persons that you authorize to use your account may be referred to in these Terms as the "User."
                                                 </div>
+                                                &nbsp;
                                                 <div class="faq-inner">
                                                 BY ACCESSING OR USING ANY OF THE SERVICES YOU AGREE TO BE BOUND BY THE TERMS WHICH CONTAIN PROVISIONS APPLICABLE TO ALL USERS OF THE SERVICES, INCLUDING CASUAL VISITORS TO THE SITE. IF YOU CHOOSE TO REGISTER FOR AND CREATE AN ACCOUNT ON A SITE, YOU MUST ALSO READ AND AGREE TO BE BOUND BY THE TERMS SET FORTH HEREIN, BY CLICKING ON THE "I ACCEPT" BUTTON SET FORTH AT THE END OF THESE TERMS. YOU ALSO ACKNOWLEDGE THAT YOUR SUBMISSION OF THE THIRD PARTY PAYMENT GATEWAY (IF ANY) SERVES AS YOUR AGREEMENT TO THESE TERMS AS WELL AS THE TERMS OF THE SAID THIRD PARTY PAYMENT GATEWAY.
                                                 </div>
+                                                &nbsp;
                                                 <div class="faq-inner">
                                                 In the case of inconsistencies between these Terms and information included in off-line materials (e.g., promotional materials and mailers), these Terms will always govern and take precedence.
                                                 </div>
@@ -88,12 +92,13 @@ include(INC_FOLDER . "homeheaderInc.php");
                                                 <div class="visual-name">
                                                     Gallery Rasa
                                                 </div>
+                                                
+                                            </div>
                                                 <div class="visual-director">
                                                     A Unit of Rajyoti Creative Pursuits Private Limited <br>
                                                     828/1 Block P, New Alipore, Kolkata: 700 053 <br>
                                                     info@galleryrasa.com
                                                 </div>
-                                            </div>
                                         <!-- </div> -->
                                     </div>
                                     <div class="card">
