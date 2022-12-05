@@ -17,7 +17,7 @@ include(INC_FOLDER . "headerInc.php");
                             Create an account
                         </div>
                         <div class="podcast-content">
-                            Lorem ipsum dolor sit amet, consectetur.
+<!--                             Lorem ipsum dolor sit amet, consectetur. -->
                         </div>
                         <div class="get-form">
                             <form id="register-form" method="POST" action="register.php" role="form" class="text-left arial">
