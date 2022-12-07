@@ -427,12 +427,12 @@ $(function () {
     //Owl Carousel
     $(".owl-carousel").owlCarousel({
         loop: true,
-        autoplay: true,
+        autoplay: 2000,
         nav: true,
         dots: false,
-        autoplaySpeed: 3000,
-        fluidSpeed: true,
-        smartSpeed: 3000,
+        // autoplaySpeed: 3000,
+        // fluidSpeed: true,
+        smartSpeed: 1000,
         autoplayHoverPause: true,
         margin: 10,
         responsiveClass: true,
@@ -444,7 +444,7 @@ $(function () {
                 items: 3,
             },
             1000: {
-                items: 7,
+                items: 1,
                 loop: true,
                 margin: 20
             }

@@ -8,7 +8,7 @@ include(INC_FOLDER . "headerInc.php");
 $image_id = $_GET['image_id'];
 $image_type = $_GET['image_type'];
 
-count_click('memoribilia_image',$image_id);
+count_click('memoribilia_image', $image_id);
 
 $qry_sel = "SELECT * from memorabilia_images where m_image_id = '$image_id'";
 
@@ -96,12 +96,12 @@ $image_folder = strtolower($image_type);
                         </div>
                 </div>
             <div class="col-lg-6 flex-v-cen">
-                <?php 
+                <?php
                 $imageDetails = '';
-                $imageDetails .= get_html_from_JSON($image_details, $image_type, $prod_id);
-                //$imageDetails .= get_add_to_cart_button($image_details, $image_type);
-                echo $imageDetails;
-                ?>
+$imageDetails .= get_html_from_JSON($image_details, $image_type, $prod_id);
+//$imageDetails .= get_add_to_cart_button($image_details, $image_type);
+echo $imageDetails;
+?>
             </div>
         </div>
     </div>
@@ -191,6 +191,7 @@ $image_folder = strtolower($image_type);
     </div>
 </div>
 </main>
-</div>
+</body>
+</html>
 <?php
 include(INC_FOLDER . "footerInc.php");
