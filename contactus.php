@@ -47,13 +47,13 @@ require_once(INCLUDED_FILES . "headerInc.php");
                                             <input type="text" name="name" class="form-control" id="" placeholder="NAME">
                                         </div>
                                         <div class="form-group col-md-6">
-                                            <input type="email" name="email" class="form-control" id="" placeholder="E-mail address">
+                                            <input type="email" name="email" class="form-control" id="" placeholder="E-mail address *" required>
                                         </div>
                                         <div class="form-group col-md-6">
-                                            <input type="tel" name="phone" class="form-control" id="" placeholder="phone">
+                                            <input type="tel" name="phone" class="form-control" id="" placeholder="phone *">
                                         </div>
                                         <div class="form-group col-md-6">
-                                            <input type="text" name="subject" class="form-control" id="" placeholder="subject">
+                                            <input type="text" name="subject" class="form-control" id="" placeholder="subject *" required>
                                         </div>
                                     </div>
                                     <div class="form-group">
