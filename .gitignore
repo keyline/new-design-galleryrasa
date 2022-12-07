@@ -9,3 +9,5 @@ podcast/
 exhibition/
 test_upload/class/config.inc.php
 va_test_upload/class/config.inc.php
+includes/config.inc.php
+*.yml
