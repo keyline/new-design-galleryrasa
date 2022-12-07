@@ -1,6 +1,6 @@
 <?php
 
-require_once("require.php");    
+require_once("require.php");
 require_once(INCLUDED_FILES . "config.inc.php");
 require_once(INCLUDED_FILES . "dbConn.php");
 require_once(INCLUDED_FILES . "functionsInc.php");
@@ -23,7 +23,10 @@ include(INC_FOLDER . "headerInc.php");
                                         We’re glad and grateful you’re here!
                                     </div>
                                     <div class="visual-content">
-                                    Promoted by Rakesh and Radhika Sahni, Gallery Rasa has had a presence in the art world since 1993. Situated in a three-storied building in Kolkata, it houses The Gallery Rasa archives and collection of rare artworks encompassing Indian modern and contemporary art, film memorabilia, crafts, and rare archival material. It is an active space for collectors, research scholars, art historians, and fosters discourse to facilitate a wider audience.
+                                    Gallery Rasa, by Rakesh and Radhika Sahni, has made its presence felt since 1993. Situated in a three-storied building in New Alipore, Kolkata, it houses The Gallery Rasa Archives and collection of rare artworks of Indian modern and contemporary art, crafts and film memorabilia.
+                                    </div>
+                                    <div class="visual-content">
+                                    We promote it an active space for art enthusiasts, collectors, research scholars and art historians to foster discourse and facilitate a deeper understanding and appreciation of art.
                                     </div>
                                 </div>
                                 <div class="about-img">
@@ -50,19 +53,22 @@ include(INC_FOLDER . "headerInc.php");
                             </div>
                         </div>
                         <div class="about-text">
-                        Gallery Rasa Archives is a work in progress and shall continue to be so as it strives to bridge the gap. This initial thrust has been made possible by a modest effort initiated in 1993 of creating a collection of rare journals, books, newspaper articles, catalogues, and artist correspondences encompassing different art practices, classical Indian art, folk art, crafts and film studies.    
+                        Gallery Rasa Archives is an ever evolving and ongoing effort to bridge the gap between knowledge and those who seek it. Initiated in 1993, GRA has grown to encompass a comprehensive collection of rare journals, books, newspaper articles, catalogues, and artist correspondences encompassing different art practices, classical Indian art, folk art, crafts and film studies.
                         </div>
                         <div class="about-text">
-                        The archives makes its presence felt through its two pillars - Visual Archives and Bibliography. While the bibliography section serves the need for sustaining research and stimulating breaking of new ground in various subjects encompassing Indian art, crafts, film and culture; the visual archives addresses the urgent need for a credible platform to study the art practice of individual artists, bolster the insight into various movements in art history, do in-depth research in specific mediums, artist initiatives and geographical areas.
+                        GRA functions through its two pillars: Visual Archives and Bibliography. The Bibliography section offers insights into diverse range of subjects spanning Indian Art, Crafts, Architecture, Film and Culture.
                         </div>
                         <div class="about-text">
-                        In fact the two pillars compliment and strengthen each other and in cohesion allows the explorer to forge new ways of viewing and  interpreting. This, we hope, will give impetus to art aficionados, historians, archivists, students, academicians and professionals towards a broader understanding of art in our nation and internationally.
+                        The Visual Archives addresses the urgent need for a platform to study the art practice of individual artists, to analyze various movements in art history and to conduct in-depth research in specific mediums and artist initiatives.
 
+                        </div>
+                        <div class="about-text">
+                            The two pillars compliment and strengthen each other and in cohesion will allow you to forge new ways of perceiving and interpreting. This, we hope, will give impetus to art aficionados, historians, archivists, students, academicians, professionals and even an enthusiast, to seek a broader understanding of art and culture in our nation.
                         </div>
                         <div class="about-action">
                              <div class="about-action-box">
                             <a href="<?php echo SITE_URL ?>visualarchive-search" class="explore-btn">
-                                explore visual archives
+                                explore visual archives & Bibliography
                                 <span class="material-icons">arrow_forward</span>
                             </a>
                             </div>
@@ -95,16 +101,15 @@ include(INC_FOLDER . "headerInc.php");
                             </div>
                         </div>
                         <div class="about-text">
-                            Film is not just a medium for entertainment and individual expression. It is a reflection of society that portrays ideas we all relate to. Films bring people together in laughter, in sadness and in empathetic connect to the screen and its stories. Certain films throughout our lifetime, in the process of unifying us through our experiences become ingrained into our memories and gain an extremely personal value in our minds. This value comes with a raging curiosity and film buffs across the world satiate this by collecting film memorabilia. Visual literature advertises, summarizes and glorifies in posterity everything that film means to its audience. Film memorabilia allows the audience that slight peek into the world behind the magic of the silver screen that it so ravenously desires.
+                            Films apart from being a medium for entertainment and expression, are a reflection of the society that create and enjoy them. Films bring people together through their emotions and experiences and certain films and characters are immortalized in our minds gaining an extremely personal value. This value often instills a raging curiosity and lovers of films satiate this by collecting film memorabilia.
                         </div>
                         <div class="about-text">
-                            Keeping in line with our commitment to research and archiving, this section provides both researchers and film buffs detailed bibliographic information on Bengali Cinema from the silent era till the year 2000. In the same breath it also provides collectors the unique opportunity of purchasing these gems of cinematic history.
+                            In the Bengali Film Archives, we aspire to provide audiences a peek into the world behind the magic of the silver screen that it so ravenously desires. In line with our commitment to research and archiving, this section provides detailed bibliographic information on Bengali Cinema from the silent era till the year 2000.
                         </div>
-                        <div class="about-text">Close in tow, will be the addition of our Hindi Film Memorabilia.
-                        </div>
+                        
                         <div class="about-action">
                              <div class="about-action-box">
-                            <a href="<?php echo SITE_URL ?>beforeSearch" class="explore-btn">
+                            <a href="<?php echo SITE_URL ?>memorabilia-search" class="explore-btn">
                                 explore bengali film archives
                                 <span class="material-icons">arrow_forward</span>
                             </a>
@@ -123,13 +128,16 @@ include(INC_FOLDER . "headerInc.php");
                             </div>
                         </div>
                         <div class="about-text">
-                            Gallery Rasa Archives is a work in progress and shall continue to be so as it strives to bridge the gap. This initial thrust has been made possible by a modest effort initiated in 1993 of creating a collection of rare journals, books, newspaper articles, catalogues, and artist correspondences encompassing different art practices, classical Indian art, folk art, crafts and film studies.
+                            Exhibitions form the core of any gallery. Over the past two decades Rakesh Sahni, Director, Gallery Rasa,  has curated landmark exhibitions.  Some of them include ‘Sculptures: The Bengal Connection’; ‘Ramendranath Chakravorty (1902-1955): A Retrospective of his Graphic Prints’ and ‘Jyoti Bhatt: Photographs 1959-1994.’
                         </div>
                         <div class="about-text">
-                            The archives makes its presence felt through its two pillars - Visual Archives and Bibliography. While the bibliography section serves the need for sustaining research and stimulating breaking of new ground in various subjects encompassing Indian art, crafts, film and culture; the visual archives addresses the urgent need for a credible platform to study the art practice of individual artists, bolster the insight into various movements in art history, do in-depth research in specific mediums, artist initiatives and geographical areas.
+                            Collaboration remains our key to the future and we at Gallery Rasa are always open to its rich possibilities. We have shared our exhaustive collection at the Satyajit Ray Centenary Show: Volumes I and II, held in collaboration with Kolkata Center for Creativity, Kolkata and Kerala Lalitha Kala Akademi ,Kochi.
                         </div>
                         <div class="about-text">
-                            In fact the two pillars compliment and strengthen each other and in cohesion allows the explorer to forge new ways of viewing and interpreting. This, we hope, will give impetus to art aficionados, historians, archivists, students, academicians and professionals towards a broader understanding of art in our nation and internationally.
+                            Our collection has been featured in curated exhibitions by Dr. Paula Sengupta and Camillla H. Chaudhary titled ‘Trajectories: 19th-21st Century Printmaking from India and Pakistan at Sharjah; as well as ‘Somnath Hore: A Centenary Exhibition’, curated by K. S. Radhakrishnan held at Arthshila, Santiniketan and Emami Art, Kolkata.
+                        </div>
+                        <div class="about-text">
+                            We aim to build upon our efforts to showcase important works from our collection through various art institutions and host online exhibitions from GRA’s treasure trove.
                         </div>
                         <div class="about-action">
                              <div class="about-action-box">

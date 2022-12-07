@@ -56,7 +56,7 @@
                 <div class="col-lg-12 p-1">
                     <div class="artist-inner">
 
-                        <div id=visual-artist class="owl-carousel owl-theme owl-loaded owl-drag">
+                        <div id="visual-artist" class="owl-carousel owl-theme owl-loaded owl-drag">
 
                             <div class="item">
                                 <div class="artist-img">

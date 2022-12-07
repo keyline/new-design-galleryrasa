@@ -137,13 +137,13 @@ if (!isset($_COOKIE["cookieid"])) {
                             <?php } else { ?> 
                             <?php
                                     $sql_user = "select * from customer_login where email = '" . $_SESSION['user-email'] . "'";
-                                    // echo $sql_user;
+                                // echo $sql_user;
                                     //     exit();
-                                    $q_user = $conn->prepare($sql_user);
-                                    $q_user->execute();
-                                    $q_user->setFetchMode(PDO::FETCH_ASSOC);
-                                    $row_user = $q_user->fetch();
-                                    ?>  
+                                $q_user = $conn->prepare($sql_user);
+                                $q_user->execute();
+                                $q_user->setFetchMode(PDO::FETCH_ASSOC);
+                                $row_user = $q_user->fetch();
+                                ?>  
 
                                     <div class="contact-action">                           
                                         <div class="dropdown show">
@@ -195,15 +195,15 @@ if (!isset($_COOKIE["cookieid"])) {
                                     <div class="nav-form">
                                         <h4>Subscribe to our Newsletter</h4>
                                         <?php
-                                        if (isset($_SESSION['newsletter'])) {
-                                            ?>
+                                    if (isset($_SESSION['newsletter'])) {
+                                        ?>
                                             <p>
                                                 <?php echo $_SESSION['newsletter']; ?> 
                                             </p>
                                             <?php
-                                            unset($_SESSION['newsletter']);
-                                        }
-                                        ?>
+                                        unset($_SESSION['newsletter']);
+                                    }
+?>
                                         <!-- <form>
                                             <div class="form-group">
                                                 <input type="email" class="form-control" placeholder="your name">
@@ -252,14 +252,14 @@ if (!isset($_COOKIE["cookieid"])) {
 
                 </div>
                 <?php if (isset($_SESSION["user-id"])) {
-                                    $sql_user = "select * from customer_login where email = '" . $_SESSION['user-email'] . "'";
-                                    // echo $sql_user;
+                    $sql_user = "select * from customer_login where email = '" . $_SESSION['user-email'] . "'";
+                    // echo $sql_user;
                                     //     exit();
-                                    $q_user = $conn->prepare($sql_user);
-                                    $q_user->execute();
-                                    $q_user->setFetchMode(PDO::FETCH_ASSOC);
-                                    $row_user = $q_user->fetch();
-                                    ?> 
+                    $q_user = $conn->prepare($sql_user);
+                    $q_user->execute();
+                    $q_user->setFetchMode(PDO::FETCH_ASSOC);
+                    $row_user = $q_user->fetch();
+                    ?> 
                 <div style="color: black">Welcome <?php echo $row_user['fname']; ?> <?php echo $row_user['lname']; ?></div>
                 <?php } ?>
                         
