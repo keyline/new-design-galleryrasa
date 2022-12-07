@@ -11,6 +11,8 @@ include(INC_FOLDER . "homeheaderInc.php");
 
 ?>
 
+<!-- privacy policy  -->
+
 <section>
     <div class="container-fluid privacy-fluid">
         <h1 class="privacy">Privacy Policy</h1>

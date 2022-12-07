@@ -1361,6 +1361,8 @@ main .btn {
 }
 
 
+/* privacy */
+
 .privacy-fluid{
     width: 70%;
     display: flex;
@@ -1422,7 +1424,7 @@ main .btn {
     padding: 2px 0;
 }
 
-
+/* terms */
 
 .terms-sec{
     width: 70%;

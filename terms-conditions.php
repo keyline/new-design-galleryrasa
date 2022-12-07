@@ -11,17 +11,9 @@ include(INC_FOLDER . "homeheaderInc.php");
 ?>
 
 
-<!-- <style>
-    h3,
-    h2 {
-        text-align: center;
-    }
+<!-- terms and conditions -->
 
-    ol>li {
-        padding-top: 10px;
-        padding-bottom: 10px;
-    }
-</style> -->
+
 
 <section class="terms-sec">
 <h2 class="terms-heading">Terms of Service</h2>
