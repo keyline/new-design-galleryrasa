@@ -10,8 +10,11 @@
                                     <div class="visual-title">
                                         Visual Archives
                                     </div>
-                                    <div class="visual-content">
+                                    <!-- <div class="visual-content">
                                         This repository of images from Gallery Rasa Archives helps form a more holistic idea and gaze into an artist's body of works. Our passionate endevour to document images from rare published sources and celebrate the unsung and established has led to a foundation of credibility upon which this window into Indian art rests.
+                                    </div> -->
+                                    <div class="visual-content">
+                                        A storehouse of images from rare and published sources to provide a deeper understanding into artists’ body of works
                                     </div>
                                     <div class="left-body">
                                         <div class="hearder-options visual-search">

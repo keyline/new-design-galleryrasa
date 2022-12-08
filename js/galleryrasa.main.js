@@ -111,7 +111,7 @@ $(function () {
             type: 'POST',
             data: function (params) {
                 return {
-                    action: "allSearch",
+                    action: "allSearch",//"allSearch","homeSearch"
                     category: $('input[type="hidden"][name="catg"]').val(),
                     term: params.term, // search term
                     attributes: $('input[type="hidden"][name^="att"]').serializeArray()

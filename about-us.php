@@ -68,7 +68,14 @@ include(INC_FOLDER . "headerInc.php");
                         <div class="about-action">
                              <div class="about-action-box">
                             <a href="<?php echo SITE_URL ?>visualarchive-search" class="explore-btn">
-                                explore visual archives & Bibliography
+                                explore visual archives
+                                <span class="material-icons">arrow_forward</span>
+                            </a>
+                            </div>
+                            <!-- adding bibliography linkage -->
+                            <div class="about-action-box">
+                            <a href="<?php echo SITE_URL ?>beforeSearch" class="explore-btn">
+                                explore Bibliography
                                 <span class="material-icons">arrow_forward</span>
                             </a>
                             </div>
