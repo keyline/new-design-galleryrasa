@@ -10,8 +10,11 @@
                                     <div class="visual-title">
                                         Bengali Film Archives
                                     </div>
-                                    <div class="visual-content">
+                                    <!-- <div class="visual-content">
                                         For researchers and film buffs - Search for detailed bibliographic information and visual content on Bengali Cinema, to start with
+                                    </div> -->
+                                    <div class="visual-content">
+                                        Detailed bibliographic information and visual content on Bengali cinema
                                     </div>
                                     <div class="left-body">
                                         <div class="hearder-options">
