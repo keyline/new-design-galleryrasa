@@ -14,7 +14,7 @@
                                         A wealth of ever growing resources which can be refined to achieve effective research on various fields of Indian art, crafts and films by forming an invaluable source of information
                                     </div> -->
                                     <div class="visual-content">
-                                        A wealth of ever growing resources to aid effective research to aid effective research on Indian Art, Crafts, Architecture and Film Studies
+                                        A wealth of ever growing resources to aid effective research on Indian Art, Crafts, Architecture and Film Studies
                                     </div>
                                     <div class="left-body">
                                         <div class="hearder-options">
