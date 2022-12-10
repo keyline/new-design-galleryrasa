@@ -16,27 +16,29 @@ if (is_ajax()) {
         }
 
         switch ($action) { //Switch case for value of action
-            case "homeSearch" : get_json_multiSelect($conn);
+            case "homeSearch": get_json_multiSelect($conn);
                 break;
-            case "allSearch" : get_json_multiSelect_all($conn);
+            case "allSearch": get_json_multiSelect_all($conn);
                 break;
-            case "allDescriptivetag" : get_json_multiSelect_desctag($conn);
+            case "allDescriptivetag": get_json_multiSelect_desctag($conn);
                 break;
-            case "CiteThis" : CiteThis();
+            case "CiteThis": CiteThis();
                 break;
-            case "PreviewPdf" : Preview();
+            case "PreviewPdf": Preview();
                 break;
-            case "send_msg_contact" : ContactFormSubmit();
+            case "send_msg_contact": ContactFormSubmit();
                 break;
         }
     }
 }
 
-function is_ajax() {
+function is_ajax()
+{
     return isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest';
 }
 
-function get_json_multiSelect($conn) {
+function get_json_multiSelect($conn)
+{
     //Initializing variables
     $paramCount = 0;
     $otherParamCount = 0;
@@ -48,8 +50,9 @@ function get_json_multiSelect($conn) {
 
     if (count($qry_arr) > 0) {
         foreach ($qry_arr as $k => $v) {
-            if ($k == 'action')
+            if ($k == 'action') {
                 continue;
+            }
             if ($k == 'attributes') {
                 for ($i = 0; $i < count($v); $i++) {
                     $qstr[] = $v[$i]['value'];
@@ -62,7 +65,6 @@ function get_json_multiSelect($conn) {
         }
     }
     if (!empty($paramCount)) {
-
         for ($p = 0; $p < $paramCount; $p++) {
             $content[] = "'%s'";
         }
@@ -101,7 +103,8 @@ function get_json_multiSelect($conn) {
         if ($q->rowCount() > 0) {
             $rows = $q->fetchAll();
 
-            function myComparison($a, $b) {
+            function myComparison($a, $b)
+            {
                 return (($a['value']) > ($b['value'])) ? 1 : -1;
             }
 
@@ -150,7 +153,8 @@ function get_json_multiSelect($conn) {
     echo json_encode($json);
 }
 
-function get_json_multiSelect_all($conn) {
+function get_json_multiSelect_all($conn)
+{
     //Initializing variables
     $paramCount = 0;
     $otherParamCount = 0;
@@ -162,31 +166,30 @@ function get_json_multiSelect_all($conn) {
 
     if (count($qry_arr) > 0) {
         foreach ($qry_arr as $k => $v) {
-            if ($k == 'action')
+            if ($k == 'action') {
                 continue;
+            }
             if ($k == 'term') {
-
                 $qstr[] = $v;
                 $otherParamCount ++;
             }
             if ($k == 'attributes') {
-                
-                if($otherParamCount=='0'){
+                if ($otherParamCount=='0') {
                     $startingpoint = $otherParamCount+1;
-                }else{
+                } else {
                     $startingpoint = '0';
                 }
-                
+
                 for ($i = $startingpoint; $i < count($v); $i++) {
                     $qstr[] = $v[$i]['value'];
                 }
                 $paramCount = $i;
-                
+
 //                for ($i = 0; $i < count($v); $i++) {
 //                    $qstr[] = $v[$i]['value'];
 //                }
 //                $paramCount = $i;
-            } 
+            }
 //            else {
 //                $qstr[] = $v;
 //                $otherParamCount ++;
@@ -194,7 +197,6 @@ function get_json_multiSelect_all($conn) {
         }
     }
     if (!empty($paramCount)) {
-
         for ($p = 0; $p < $paramCount; $p++) {
             $content[] = "'%s'";
         }
@@ -211,22 +213,22 @@ function get_json_multiSelect_all($conn) {
             (strlen($qstr[$i]) > 0 && !in_array(strtolower($qstr[$i]), $a)) ? (array_push($str, $qstr[$i])) : ('');
         }
 
-/*
-        $mQuery = 'SELECT 
-                            SUBSTR(value, 1, 1) AS alpha,
-                            product_type_attribute_key.attribute_id,
-                            attribute_value_ecomc.`value`,
-                            attr_common_flds_ecomc.attribute_name,
-                            product_type_ecomc.product_type_name
-                            FROM
-                            product_type_attribute_key
-                            INNER JOIN attribute_value_ecomc ON product_type_attribute_key.attribute_id = attribute_value_ecomc.attr_id
-                            INNER JOIN product_type_ecomc ON product_type_ecomc.product_type_id = product_type_attribute_key.p_type_id
-                            INNER JOIN attr_common_flds_ecomc ON attribute_value_ecomc.attr_id = attr_common_flds_ecomc.id
-                            WHERE `value` LIKE "%%' . "%s" . '%%" and attribute_name IN (' . $params .
-                ') ORDER BY alpha ASC';
-*/
- //dharmendrasinh code 
+        /*
+                $mQuery = 'SELECT
+                                    SUBSTR(value, 1, 1) AS alpha,
+                                    product_type_attribute_key.attribute_id,
+                                    attribute_value_ecomc.`value`,
+                                    attr_common_flds_ecomc.attribute_name,
+                                    product_type_ecomc.product_type_name
+                                    FROM
+                                    product_type_attribute_key
+                                    INNER JOIN attribute_value_ecomc ON product_type_attribute_key.attribute_id = attribute_value_ecomc.attr_id
+                                    INNER JOIN product_type_ecomc ON product_type_ecomc.product_type_id = product_type_attribute_key.p_type_id
+                                    INNER JOIN attr_common_flds_ecomc ON attribute_value_ecomc.attr_id = attr_common_flds_ecomc.id
+                                    WHERE `value` LIKE "%%' . "%s" . '%%" and attribute_name IN (' . $params .
+                        ') ORDER BY alpha ASC';
+        */
+        //dharmendrasinh code
         $mQuery = 'SELECT 
                             SUBSTR(value, 1, 1) AS alpha,
                             product_type_attribute_key.attribute_id,
@@ -249,7 +251,8 @@ function get_json_multiSelect_all($conn) {
         if ($q->rowCount() > 0) {
             $rows = $q->fetchAll();
 
-            function myComparison($a, $b) {
+            function myComparison($a, $b)
+            {
                 return (($a['value']) > ($b['value'])) ? 1 : -1;
             }
 
@@ -263,41 +266,39 @@ function get_json_multiSelect_all($conn) {
                 if ($grp !== $finalResult[$i]['alpha']) {
                     //dharmendrasinh code comment
                     //$json[$i] = array(
-                    //    'id' => $i, 
+                    //    'id' => $i,
                     //    'text' => $finalResult[$i]['alpha']
                     //);
                 }
 
                 $nameValueFlag = 'false';
                 $getNameValueDatas = explode(' ', $finalResult[$i]['value']);
-                
+
                 $searchTermCount = strlen(trim($_POST['term']));
                 foreach ($getNameValueDatas as $getNameValueData) {
-                    
                     $searchDBValue = trim(substr($getNameValueData, 0, $searchTermCount));
                     //echo quotemeta($searchDBValue);
-                    $newSeachDBValue1 = str_replace('(','', $searchDBValue);
-                    $newSeachDBValue2 = str_replace("'",'', $newSeachDBValue1);
-                    $newSeachDBValue3 = str_replace(".",'', $newSeachDBValue2);
-                    $newSeachDBValue4 = str_replace('"','', $newSeachDBValue3);
-                    $newSeachDBValue5 = str_replace(')','', $newSeachDBValue4);
-                    $newSeachDBValue6 = str_replace('[','', $newSeachDBValue5);
-                    $newSeachDBValue7 = str_replace(']','', $newSeachDBValue6);
+                    $newSeachDBValue1 = str_replace('(', '', $searchDBValue);
+                    $newSeachDBValue2 = str_replace("'", '', $newSeachDBValue1);
+                    $newSeachDBValue3 = str_replace(".", '', $newSeachDBValue2);
+                    $newSeachDBValue4 = str_replace('"', '', $newSeachDBValue3);
+                    $newSeachDBValue5 = str_replace(')', '', $newSeachDBValue4);
+                    $newSeachDBValue6 = str_replace('[', '', $newSeachDBValue5);
+                    $newSeachDBValue7 = str_replace(']', '', $newSeachDBValue6);
                     $termFormValue = $_POST["term"];
                     //echo "'".$newSeachDBValue5. "'";
                     //echo strtolower($termFormValue). "'".strtolower($newSeachDBValue7). "'";
-                    if (!preg_match('/[^A-Za-z0-9]/', $newSeachDBValue7)){
-                        if(strtolower(trim($termFormValue)) == strtolower(trim($newSeachDBValue7))){
+                    if (!preg_match('/[^A-Za-z0-9]/', $newSeachDBValue7)) {
+                        if (strtolower(trim($termFormValue)) == strtolower(trim($newSeachDBValue7))) {
                             //echo 'fail';
                             $nameValueFlag = 'true';
                         } else {
                             //echo strtolower($termFormValue). "'".strtolower($newSeachDBValue7). "'";
-                            //$nameValueFlag = 'true';
+                            $nameValueFlag = 'true';
                         }
                     }
-                    
                 }
-                
+
                 /*
                 foreach ($getNameValueDatas as $getNameValueData) {
                     $searchTermCount = strlen($_POST['term']);
@@ -308,33 +309,30 @@ function get_json_multiSelect_all($conn) {
                 }
                 */
 
-                if($nameValueFlag == 'true'){
-                
-                if ($finalResult[$i]['attribute_name'] == 'va_artist') {
-                    //$attrname = '(Artist)';
-                    $attrname = '';
-                } else {
-                    $attrname = ' (' . $finalResult[$i]['attribute_name'] . ')';
+                if ($nameValueFlag == 'true') {
+                    if ($finalResult[$i]['attribute_name'] == 'va_artist') {
+                        //$attrname = '(Artist)';
+                        $attrname = '';
+                    } else {
+                        $attrname = ' (' . $finalResult[$i]['attribute_name'] . ')';
+                    }
+
+                    $product_type_name = ' (' .$finalResult[$i]['product_type_name'] . ')';
+
+                    $idattrname = $finalResult[$i]['product_type_name'];
+
+
+                    $json[$customI]['children'][] = array('id' => $finalResult[$i]['attribute_name'] . ":" . $finalResult[$i]['value'].":".$idattrname, 'text' => $finalResult[$i]['value'] . $attrname.$product_type_name);
+
+                    $grp = $finalResult[$i]['alpha'];
+
+                    $customI++;
                 }
-
-                $product_type_name = ' (' .$finalResult[$i]['product_type_name'] . ')';
-                
-                $idattrname = $finalResult[$i]['product_type_name'];
-                 
-
-                $json[$customI]['children'][] = array('id' => $finalResult[$i]['attribute_name'] . ":" . $finalResult[$i]['value'].":".$idattrname, 'text' => $finalResult[$i]['value'] . $attrname.$product_type_name);
-
-                $grp = $finalResult[$i]['alpha'];
-                
-                $customI++;
-                
-                }
-
             }
-            
-        if ($i == 0) {
-            $json = array('id' => '0', 'text' => 'No Program Found');
-        }
+
+            if ($i == 0) {
+                $json = array('id' => '0', 'text' => 'No Program Found');
+            }
         } else {
             $json = array('id' => '0', 'text' => 'No Program Found');
         }
@@ -346,7 +344,7 @@ function get_json_multiSelect_all($conn) {
     //$term = stripslashes($_POST['term']);
     //$qry = "SELECT * FROM " . ATTR_VAL . " WHERE value LIKE '%" . stripslashes($term) . "%' AND (attr_id = 3 OR attr_id = 2) order by attr_value_id ASC";
     //$qry = "SELECT DISTINCT SUBSTR(value, 1, 1) AS alpha, value FROM " . ATTR_VAL . " WHERE value LIKE '%" . stripslashes($term) . "%' order by value ASC";
-    
+
     header('Content-type: application/json');
     echo json_encode($json);
     //print_r($str);
@@ -355,7 +353,8 @@ function get_json_multiSelect_all($conn) {
 
 
 
-function get_json_multiSelect_desctag($conn){
+function get_json_multiSelect_desctag($conn)
+{
     //Initializing variables
     $paramCount = 0;
     $otherParamCount = 0;
@@ -367,8 +366,9 @@ function get_json_multiSelect_desctag($conn){
 
     if (count($qry_arr) > 0) {
         foreach ($qry_arr as $k => $v) {
-            if ($k == 'action')
+            if ($k == 'action') {
                 continue;
+            }
             if ($k == 'attributes') {
                 for ($i = 0; $i < count($v); $i++) {
                     $qstr[] = $v[$i]['value'];
@@ -381,7 +381,6 @@ function get_json_multiSelect_desctag($conn){
         }
     }
     if (!empty($paramCount)) {
-
         for ($p = 0; $p < $paramCount; $p++) {
             $content[] = "'%s'";
         }
@@ -398,7 +397,7 @@ function get_json_multiSelect_desctag($conn){
             (strlen($qstr[$i]) > 0 && !in_array(strtolower($qstr[$i]), $a)) ? (array_push($str, $qstr[$i])) : ('');
         }
 
-//        $mQuery = 'SELECT 
+//        $mQuery = 'SELECT
 //                            SUBSTR(value, 1, 1) AS alpha,
 //                            product_type_attribute_key.attribute_id,
 //                            attribute_value_ecomc.`value`,
@@ -411,8 +410,8 @@ function get_json_multiSelect_desctag($conn){
 //                            INNER JOIN attr_common_flds_ecomc ON attribute_value_ecomc.attr_id = attr_common_flds_ecomc.id
 //                            WHERE product_type_name = "%s" and `value` LIKE "%%' . "%s" . '%%" and attribute_name IN (' . $params .
 //                ') ORDER BY alpha ASC';
-        
-        
+
+
         $mQuery = "SELECT 
                             SUBSTR(value, 1, 1) AS alpha,
                             product_type_attribute_key.attribute_id,
@@ -434,7 +433,8 @@ function get_json_multiSelect_desctag($conn){
         if ($q->rowCount() > 0) {
             $rows = $q->fetchAll();
 
-            function myComparison($a, $b) {
+            function myComparison($a, $b)
+            {
                 return (($a['value']) > ($b['value'])) ? 1 : -1;
             }
 
@@ -493,8 +493,8 @@ function get_json_multiSelect_desctag($conn){
 
 
 
-function CiteThis() {
-
+function CiteThis()
+{
     $key_order = array(
         'author' => 0,
         'title_of_article' => 1,
@@ -554,7 +554,7 @@ function CiteThis() {
         }
     }
 //    print_r($finalData);
-    uksort($finalData, function($a, $b) use ($key_order) {
+    uksort($finalData, function ($a, $b) use ($key_order) {
         if ($key_order[$a] > $key_order[$b]) {
             return 1;
         } elseif ($key_order[$a] < $key_order[$b]) {
@@ -582,7 +582,8 @@ function CiteThis() {
     echo json_encode($json);
 }
 
-function Preview() {
+function Preview()
+{
     $bibliographyPath = "bibliography/";
     $siteurl = SITE_URL . "/" . IMGSRC . $bibliographyPath;
     $pid = $_POST['headerId'];
@@ -597,7 +598,6 @@ function Preview() {
 
         if ($q->rowCount() > 0) {
             while ($rows = $q->fetch()) {
-
                 $json = array(
                     'imageURL' => $q->rowCount() == 0 ? false : $siteurl . $rows['m_image_name']
                 );
@@ -615,7 +615,8 @@ function Preview() {
     }
 }
 
-function ContactFormSubmit() {
+function ContactFormSubmit()
+{
     $baseURL = "https://www.google.com/recaptcha/api/siteverify?secret=6Ld6xT4UAAAAAF5lMRU144y9Yfz-N8cgBEvnbaVA&response=%s&remoteip=%s";
     $name = remove_headers($_POST['name']);
     $email = remove_headers($_POST['email']);
@@ -661,7 +662,6 @@ function ContactFormSubmit() {
         $obj = json_decode($response);
 
         if ($obj->success) {
-
             $emailfrom = "galleryrasa@gmail.com";
             $get_mail = get_particular_email('contact-form');
             $cf = html_entity_decode($get_mail['content']);
@@ -706,7 +706,8 @@ function ContactFormSubmit() {
     echo json_encode($json);
 }
 
-function remove_headers($string) {
+function remove_headers($string)
+{
     $headers = array(
         "/to\:/i",
         "/from\:/i",
@@ -723,7 +724,8 @@ function remove_headers($string) {
     }
 }
 
-function CURLdataProcess($url) {
+function CURLdataProcess($url)
+{
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
     curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
