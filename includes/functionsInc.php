@@ -5252,6 +5252,25 @@ function singlePress($param1)
     }
 }
 
+function singleArticle($param1)
+{
+    try {
+        $conn = dbconnect();
+
+
+        $query = "SELECT *, in_the_press.press_name FROM `press_img` INNER JOIN in_the_press ON in_the_press.press_id = press_img.press_id where img_id = '%s' ";
+        $sql = sprintf($query, $param1);
+        $q = $conn->prepare($sql);
+
+        $q->execute();
+        $q->setFetchMode(PDO::FETCH_ASSOC);
+
+        return $cust_addr = $q->fetch();
+    } catch (PDOException $pe) {
+        echo db_error($pe->getMessage());
+    }
+}
+
 function singlePhoto($param1)
 {
     try {
@@ -5308,6 +5327,21 @@ function allartist()
     }
 }
 
+function all_in_the_press()
+{
+    try {
+        $conn = dbconnect();
+        $query = "SELECT * FROM in_the_press";
+        $sql = sprintf($query);
+        $q = $conn->prepare($sql);
+        // var_dump($q);
+        $q->execute();
+        $q->setFetchMode(PDO::FETCH_ASSOC);
+        return $prod = $q->fetchAll();
+    } catch (PDOException $pe) {
+        echo db_error($pe->getMessage());
+    }
+}
 
 // function allartist()
 // {

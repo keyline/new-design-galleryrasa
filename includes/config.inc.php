@@ -2,13 +2,13 @@
 
     //define folder
     define('gR_Version', '1.3');
-    define('DB_USER', 'galleryr_whyusr');
-    define('DB_PASS', 'CTTzz#-(e5p7');
+    define('DB_USER', 'root');
+    define('DB_PASS', '');
     define('DB_HOST', 'localhost');
     define('DB_NAME', 'galleryr_blues');
-    define('ORG_SITE_URL', 'https://galleryrasa.com/');
-    define('SITE_URL', 'https://galleryrasa.com/');
-    define('ADMIN_URL', 'https://galleryrasa.com/admin');
+    define('ORG_SITE_URL', 'https://localhost/galleryrasa/new-design-galleryrasa/');
+    define('SITE_URL', 'https://localhost/galleryrasa/new-design-galleryrasa/');
+    define('ADMIN_URL', 'https://localhost/galleryrasa/new-design-galleryrasa/admin');
     define('APPS_BASE_PATH', $_SERVER['DOCUMENT_ROOT'] . "/");
 
 

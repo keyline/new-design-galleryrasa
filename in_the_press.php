@@ -78,7 +78,7 @@ $press = $q2->fetchAll();
                     <div class="modal-content">
                         <div class="modal-header">
                             <a href="#" class="downlode"><span class="material-icons">crop_free</span></a>
-                            <a href="#" class="downlode"><span class="material-icons">save_alt</span></a>
+                            <!-- <a href="#" class="downlode"><span class="material-icons">save_alt</span></a> -->
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
