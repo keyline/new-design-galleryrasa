@@ -142,7 +142,7 @@
     define('IMAGES_FOLDER', IMGSRC);
     define('FEATURED_ITEMS', IMGSRC.'featured');
     define('ADMIN_HTML', 'html/');
-    define('PRESS_IMGS', 'press/');
+    define('PRESS_IMGS', IMGSRC . 'press/');
     //define('APPS_BASE_PATH', $_SERVER['DOCUMENT_ROOT'] . "/beta/");
 
 
