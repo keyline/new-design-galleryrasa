@@ -1,4 +1,5 @@
 <?php
+
 require_once("../require.php");
 require_once("../" . INCLUDED_FILES . "config.inc.php");
 require_once("../" . INCLUDED_FILES . "dbConn.php");
@@ -8,10 +9,9 @@ check_auth_admin();
 $conn = dbconnect();
 
 $press_thumb_destination = '../' . PRESS_THUMB_IMGS;
-$press_destination = '../' . 'press' . '/';
+$press_destination = '../' . PRESS_IMGS;
 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
-
     $press_id = $_POST['press_id'];
     $imgFile = $_FILES['titleImg'];
     $title = $_POST['title'];
@@ -21,7 +21,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
 
     if ($imgFile["name"] != '') {
-
         $RandomNum = rand(0, 9999999999);
 
         $ImageName = str_replace(' ', '-', strtolower($imgFile["name"]));
@@ -45,7 +44,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         $orgnameexcptextnd = '';
         for ($l = 0; $l < $imgorgcnt; $l++) {
             if ($l == ($imgorgcnt - 1)) {
-
                 $orgnameexcptextnd .= $imgarr[$l];
             } else {
                 $orgnameexcptextnd .= $imgarr[$l] . '.';
@@ -64,13 +62,11 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
 
         if (file_exists($press_destination . $newImageNameFile) && file_exists($press_thumb_destination . $newImageName)) {
-
             $fileuploadflag = true;
         } else {
             $fileuploadflag = false;
         }
     } else {
-
         $fileuploadflag = true;
         $newImageName = '';
     }
@@ -83,7 +79,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             $conn = dbconnect();
             $err = false;
             // $time = ($epidate === false) ? NULL : $epidate;
-            
+
 
             $query1 = "insert into press_img(press_id,title,title_img,create_at) "
                     . "values(:press_id,:title,:title_img,:create_at)";
@@ -94,7 +90,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             if ($stmt1->execute($bind1)) {
                 $_SESSION['succ'] = "Image is added successfully";
                 goto_location("upload_press.php");
-                
             } else {
                 $_SESSION['fail'] = "Image is not added";
                 goto_location("upload_press.php");
@@ -102,13 +97,10 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         } catch (PDOException $pe) {
             $err = true;
             $er = db_error($pe->getMessage()) . '. Check that relevant fields like Info tab are completed';
-            
+
             $_SESSION['fail'] = $er;
-            
-            
         }
-    }else{
-        
+    } else {
         $_SESSION['fail'] = "Image photo is not added";
     }
 }

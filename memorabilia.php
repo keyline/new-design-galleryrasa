@@ -16,7 +16,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $keyword = '';
     $getResult = array();
 
-
     //$_POST['all-search-entry'] = 'entryPoint';
 
     $qry_arr = filter_var_array($_POST, FILTER_SANITIZE_STRING);
@@ -328,16 +327,49 @@ p.category_id = 2 AND v.value='" . $v . "' AND f.attribute_name = '" . $k . "' G
         $sql2 = sprintf($qry_img, $queryInner);
     //echo $sql;
     } else {
+        if (count($qry_arr) > 0) {
+            foreach ($qry_arr as $k => $v) {
+                if ($k == 'memorabilia' || $k == 'searchall') {
+                    $keyword = implode(',', array_map('ucwords', $v));
+                    foreach ($v as $val) {
+                        $exparr = explode(":", $val);
+
+                        $cntarr = count($exparr);
+
+                        if ($cntarr == '3') {
+                            $newval = $exparr[0] . ":" . $exparr[1];
+                            $entryPoint[] = extractKeyValuePairs($newval, ":");
+                        } else {
+                            $entryPoint[] = extractKeyValuePairs($val, ":");
+                        }
+                    }
+
+                    $emptyflag = false;
+
+
+                    if (isset($_SESSION['fParam'])) {
+                        unset($_SESSION['fParam']);
+                    }
+                    $_SESSION['fParam'] = (!empty($entryPoint)) ? $entryPoint : null;
+                }
+            }
+        }
+
+
+
+
         foreach ($_SESSION['fParam'] as $value) {
             if (is_array($value)) {
                 foreach ($value as $k => $v) {
                     $params2[] = "(f.attribute_name='" . $k . "' AND v.value ='" . $v . "')";
+                    $keywordArr= ["{$k}:{$v}"];
                 }
             }
         }
         unset($_SESSION['append']);
         $finalParam = implode(" OR ", $params2);
-        $keyword = implode(", ", r_implode($_SESSION['fParam'], ","));
+        //$keyword = implode(", ", r_implode($_SESSION['fParam'], ","));
+        $keyword = implode(',', array_map('ucwords', $keywordArr));
 
         $sql = 'SELECT
                     p.prodid AS id,            
