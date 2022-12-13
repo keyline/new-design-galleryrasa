@@ -5290,6 +5290,25 @@ function singlePhoto($param1)
     }
 }
 
+function singlePhotobook($param1)
+{
+    try {
+        $conn = dbconnect();
+
+
+        $query = "select * from photobook_img where photo_id = '%s' ";
+        $sql = sprintf($query, $param1);
+        $q = $conn->prepare($sql);
+
+        $q->execute();
+        $q->setFetchMode(PDO::FETCH_ASSOC);
+
+        return $cust_addr = $q->fetch();
+    } catch (PDOException $pe) {
+        echo db_error($pe->getMessage());
+    }
+}
+
 function singleexhibitionartist($param1)
 {
     try {
@@ -5332,6 +5351,22 @@ function all_in_the_press()
     try {
         $conn = dbconnect();
         $query = "SELECT * FROM in_the_press";
+        $sql = sprintf($query);
+        $q = $conn->prepare($sql);
+        // var_dump($q);
+        $q->execute();
+        $q->setFetchMode(PDO::FETCH_ASSOC);
+        return $prod = $q->fetchAll();
+    } catch (PDOException $pe) {
+        echo db_error($pe->getMessage());
+    }
+}
+
+function photobook_tbl()
+{
+    try {
+        $conn = dbconnect();
+        $query = "SELECT * FROM photobook_tbl";
         $sql = sprintf($query);
         $q = $conn->prepare($sql);
         // var_dump($q);
