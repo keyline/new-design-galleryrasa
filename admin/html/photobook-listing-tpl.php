@@ -34,6 +34,7 @@
                                 <th>Event Name</th>                               
                                 <th>Press Name</th>
                                 <th>Press Image</th>
+                                <th>Edit</th>
                                 <th>Delete</th>
                             </tr>
                         </thead>
@@ -52,7 +53,8 @@
                                                 <?php
                                             }
                                             ?>
-                                        </td>                                        
+                                        </td> 
+                                        <td><a href="edit-photo.php?photo_id=<?php echo $v['photo_id'] ?>&event_id=<?php echo $v['event_id'] ?>"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a></td>                                       
                                         <td><a href="delete-photobookImg.php?photo_id=<?php echo $v['photo_id'] ?>" onclick="return confirm('Are you sure you want to delete this item?');"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a></td>
                                     </tr>
                                     <?php $i++;

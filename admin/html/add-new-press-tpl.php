@@ -1,7 +1,7 @@
 <div class="col-sm-9 col-md-9">
     <div class="panel panel-default">
         <div class="panel-heading">
-            <h3 class="panel-title">Add New Podcast</h3>
+            <h3 class="panel-title">Add New Press</h3>
         </div>
         <div class="panel-body">
             <div role="tabpanel">

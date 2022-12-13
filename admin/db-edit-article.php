@@ -7,20 +7,17 @@ require_once("../" . INCLUDED_FILES . "functionsInc.php");
 require_once("../" . INCLUDED_FILES . "pdo-debug.php");
 check_auth_admin();
 $conn = dbconnect();
+$press_thumb_destination = '../' . PRESS_THUMB_IMGS;
+$press_destination = '../' . PRESS_IMGS;
 
-$upPhoto_thumb_destination = '../' . PHOTOBOOK_THUMB_IMGS;
-$upPhoto_destination = '../' . PHOTOBOOK_IMGS;
+$press_id = $_POST['pressid'];
+$img_id = $_POST['articleid'];
+$title = $_POST['articlename'];
 
+$create_at = $_POST['articledate'];
 
-// print_r($_POST);die;
-
-$photoid = $_POST['photo'];
-
-$photoname = $_POST['photoname'];
-$photodate = $_POST['photodate'];
-$photodetails = $_POST['photodetails'];
-$imgFile = $_FILES['ImageFile'];
-
+//  print_r($_POST);die;
+ $imgFile = $_FILES['ImageFile'];
 $OldImageFile = $_POST['OldImageFile'];
 
 
@@ -65,46 +62,57 @@ if ($imgFile["name"] != '') {
 
 
 
-    move_uploaded_file($imgFile["tmp_name"], $upPhoto_destination . $newImageNameFile);
+    move_uploaded_file($imgFile["tmp_name"], $press_destination . $newImageNameFile);
 
 
-    create_thumb($upPhoto_destination . $newImageNameFile, $upPhoto_thumb_destination . $newImageName, THUMB_WIDTH, THUMB_HEIGHT, 98);
+    create_thumb($press_destination . $newImageNameFile, $press_thumb_destination . $newImageName, THUMB_WIDTH, THUMB_HEIGHT, 98);
 
 
-    if (file_exists($upPhoto_destination . $newImageNameFile) && file_exists($upPhoto_thumb_destination . $newImageName)) {
+    if (file_exists($press_destination . $newImageNameFile) && file_exists($press_thumb_destination . $newImageName)) {
+
         $fileuploadflag = true;
     } else {
         $fileuploadflag = false;
     }
 } else {
+
     $fileuploadflag = true;
     $newImageName = $OldImageFile;
 }
-// $datetime = date('Y-m-d H:i:s');
+
+$datetime = date('Y-m-d H:i:s');
+// echo $pressname;
+// echo $pressdate;die;
 if ($fileuploadflag == true) {
+
+
     try {
         $conn = dbconnect();
         $err = false;
-        $query1 = "update  photobook_tbl set event_title=:event_title,event_details=:event_details,event_img=:event_img, event_date=:event_date "
-                . " where event_id=:photoid";
-        $bind1 = array(':event_title' => $photoname,':event_details' => $photodetails, ':event_img' => $newImageName,':event_date' => $photodate, ':photoid' => $photoid);
+
+
+        $query1 = "update press_img set "
+                . "press_id = :press_id,title = :title,title_img = :title_img,create_at = :create_at,"
+                . "updated_at = :updated_at "
+                . " where img_id=:img_id";
+        $bind1 = array(':press_id' => $press_id, ':title' => $title,
+            ':title_img' => $newImageName, ':create_at' => $create_at,            
+            ':updated_at' => $datetime, ':img_id' => $img_id);
         $stmt1 = $conn->prepare($query1);
-        // echo PdoDebugger::show($query1, $bind1);
-        // exit;
+// echo PdoDebugger::show($query1, $bind1);
+// exit;
         if ($stmt1->execute($bind1)) {
-            $_SESSION['succ'] = "Photo is edited successfully";
-            goto_location("edit-photobook.php?photo_id=" . $photoid);
+            $_SESSION['succ'] = "Article is edited successfully";
+            goto_location("edit-press-listing.php?img_id=" . $img_id . "&press_id=" . $press_id);
         } else {
-            $_SESSION['fail'] = "Photo is not edited";
-            goto_location("edit-photobook.php?photo_id=" . $photoid);
+            $_SESSION['fail'] = "Article is not edited";
+            goto_location("edit-press-listing.php?img_id=" . $img_id . "&press_id=" . $press_id);
         }
     } catch (PDOException $pe) {
         $err = true;
         $er = db_error($pe->getMessage()) . '. Check that relevant fields like Info tab are completed';
+
         $_SESSION['fail'] = $er;
-        goto_location("edit-photobook.php?photo_id=" . $photoid);
+        goto_location("edit-press-listing.php?img_id=" . $img_id . "&press_id=" . $press_id);
     }
-} else {
-    $_SESSION['fail'] = "Photo is not added";
-    goto_location("edit-photobook.php?photo_id=" . $photoid);
 }

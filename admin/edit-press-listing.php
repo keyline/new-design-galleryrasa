@@ -11,20 +11,21 @@ require_once("../" . INCLUDED_FILES . "functionsInc.php");
 require_once("../" . INCLUDED_FILES . "pdo-debug.php");
 check_auth_admin();
 $conn = dbconnect();
+$press_thumb_destination = '../' . PRESS_THUMB_IMGS;
+$press_destination = '../' . PRESS_IMGS;
 
+$img_id = $_GET['img_id'];
+$press_id = $_GET['press_id'];
 
-$upPhoto_thumb_destination = '../' . PHOTOBOOK_THUMB_IMGS;
-$upPhoto_destination = '../' . PHOTOBOOK_IMGS;
+// echo $press_id;die;
 
-$photo_id = $_GET['photo_id'];
+$img = singleArticle($img_id);
 
-// echo $photo_id;die;
+$allpress = all_in_the_press();
 
-$photo = singlePhoto($photo_id);
-
-// print_r($photo);
+// print_r($press);
 // exit();
 
 include(ADMIN_HTML . "admin-headerInc.php");
-include(ADMIN_HTML . "edit-photo-tpl.php");
+include(ADMIN_HTML . "edit-press-listing-tpl.php");
 include(ADMIN_HTML . "admin-footerInc.php");

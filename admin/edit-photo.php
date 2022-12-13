@@ -14,17 +14,22 @@ $conn = dbconnect();
 
 
 $upPhoto_thumb_destination = '../' . PHOTOBOOK_THUMB_IMGS;
-$upPhoto_destination = '../' . PHOTOBOOK_IMGS;
+$upPhoto_destination = '../' . 'photobook' . '/';
 
 $photo_id = $_GET['photo_id'];
+$event_id = $_GET['event_id'];
 
-// echo $photo_id;die;
+//  echo $photo_id;
+//  echo $event_id;die;
 
-$photo = singlePhoto($photo_id);
+$photobook = singlePhotobook($photo_id);
 
-// print_r($photo);
-// exit();
+// print_r($photobook);
+//  exit();
 
+
+$allphotobook = photobook_tbl();
+ 
 include(ADMIN_HTML . "admin-headerInc.php");
-include(ADMIN_HTML . "edit-photo-tpl.php");
+include(ADMIN_HTML . "edit-photo-listing-tpl.php");
 include(ADMIN_HTML . "admin-footerInc.php");

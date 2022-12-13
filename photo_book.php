@@ -27,7 +27,7 @@ include_once('includes/homeheaderInc.php');
                             </div>
                         </div>
                         <div class="visual-content">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                            <!-- Lorem ipsum dolor sit amet, consectetur adipiscing elit. -->
                         </div>
                     </div>
                 </div>

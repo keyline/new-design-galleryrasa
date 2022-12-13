@@ -6,7 +6,7 @@
         <div class="panel-body">
             <div role="tabpanel">
 
-                <h2 class="sub-header">Press List</h2>
+                <h2 class="sub-header">Article List</h2>
                 <a href="upload_press.php" class="btn btn-info">Add New</a>
 
                 <?php
@@ -34,6 +34,7 @@
                                 <th>Event Name</th>                               
                                 <th>Press Name</th>
                                 <th>Press Image</th>
+                                <th>Edit</th>
                                 <th>Delete</th>
                             </tr>
                         </thead>
@@ -52,7 +53,8 @@
                                                 <?php
                                             }
                                             ?>
-                                        </td>                                        
+                                        </td>       
+                                        <td><a href="edit-press-listing.php?img_id=<?php echo $v['img_id'] ?>&press_id=<?php echo $v['press_id']?>"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a></td>                                 
                                         <td><a href="delete-pressImg.php?img_id=<?php echo $v['img_id'] ?>" onclick="return confirm('Are you sure you want to delete this item?')"><span class="glyphicon glyphicon-remove text-danger" aria-hidden="true"></span></a></td>
                                     </tr>
                                     <?php $i++;

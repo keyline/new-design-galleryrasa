@@ -2,7 +2,7 @@
 
     <div class="panel panel-default">
         <div class="panel-heading">
-            <h3 class="panel-title">Edit Podcast</h3>
+            <h3 class="panel-title">Edit Press list</h3>
         </div>
         <div class="panel-body">
             <div role="tabpanel">
