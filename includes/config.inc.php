@@ -135,6 +135,7 @@
     define('PODCAST_THUMB_IMGS', IMGSRC.'podcast_thumbs/');
     define('PRESS_THUMB_IMGS', IMGSRC.'press_thumbs/');
     define('PHOTOBOOK_THUMB_IMGS', IMGSRC.'photobook_thumbs/');
+    define('PHOTOBOOK_IMGS', IMGSRC.'photobook/');
     define('ARTWORKS_IMGS', IMGSRC.'artwork/');
     define('ARTWORKS_ORG_IMGS', IMGSRC.'Art Work/');
     define('ARTWORKS_FOLDER', 'Art Work/');
