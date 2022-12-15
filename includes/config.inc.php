@@ -2,13 +2,13 @@
 
     //define folder
     define('gR_Version', '1.3');
-    define('DB_USER', 'galleryr_whyusr');
-    define('DB_PASS', 'CTTzz#-(e5p7');
+    define('DB_USER', 'root');
+    define('DB_PASS', '');
     define('DB_HOST', 'localhost');
-    define('DB_NAME', 'galleryr_blues');
-    define('ORG_SITE_URL', 'https://galleryrasa.com/');
-    define('SITE_URL', 'https://galleryrasa.com/');
-    define('ADMIN_URL', 'https://galleryrasa.com/admin');
+    define('DB_NAME', 'gallery_rasa_new');
+    define('ORG_SITE_URL', 'https://prod-galleryrasa.test/');
+    define('SITE_URL', 'https://prod-galleryrasa.test/');
+    define('ADMIN_URL', 'https://prod-galleryrasa.test/admin');
     define('APPS_BASE_PATH', $_SERVER['DOCUMENT_ROOT'] . "/");
 
 
@@ -135,6 +135,7 @@
     define('PODCAST_THUMB_IMGS', IMGSRC.'podcast_thumbs/');
     define('PRESS_THUMB_IMGS', IMGSRC.'press_thumbs/');
     define('PHOTOBOOK_THUMB_IMGS', IMGSRC.'photobook_thumbs/');
+    define('PHOTOBOOK_IMGS', IMGSRC.'photobook/');
     define('ARTWORKS_IMGS', IMGSRC.'artwork/');
     define('ARTWORKS_ORG_IMGS', IMGSRC.'Art Work/');
     define('ARTWORKS_FOLDER', 'Art Work/');
@@ -144,6 +145,7 @@
     define('ADMIN_HTML', 'html/');
     define('PRESS_IMGS', IMGSRC . 'press/');
     //define('APPS_BASE_PATH', $_SERVER['DOCUMENT_ROOT'] . "/beta/");
+    define('PRESS_PDFS', IMGSRC . 'press_pdf/');
 
 
     define(

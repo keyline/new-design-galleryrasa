@@ -962,45 +962,80 @@ $('label.dropdown-item').keypress(function(e){
 
 
     //Initialize Swiper//
-    
-      var swiper = new Swiper(".mySwiper", {
+
+    //Swiper global settings
+    let swiperGalleryrSettings= {
+        // Optional parameters
+        //slidesPerView: 1,
+        // Enable lazy loading
         loop: true,
-        pagination: {
-          el: ".swiper-pagination",
-          clickable: true,
-        },
         navigation: {
-          nextEl: ".swiper-button-next",
-          prevEl: ".swiper-button-prev",
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
         },
-      });
-
-
-
-
-//press//
-var swiper = new Swiper(".mySwiper", {
-    loop: true,
         pagination: {
-          el: ".swiper-pagination",
-          type: "fraction",
+            el: '.swiper-pagination',
+            clickable: true,
+            type: "fraction",
         },
-        navigation: {
-          nextEl: ".swiper-button-next",
-          prevEl: ".swiper-button-prev",
-        },
-      }); 
-var swiper = new Swiper(".myNewSwiper", {
-    loop: true,
-        pagination: {
-          el: ".swiper-pagination",
-          type: "fraction",
-        },
-        navigation: {
-          nextEl: ".swiper-button-next",
-          prevEl: ".swiper-button-prev",
-        },
-      }); 
+        on: {
+            realIndexChange: function () {
+                let index = this.realIndex + 1; /* slide 1 => slides[1] */
+                let current_data = this.slides[index];
+                
+                // $("#status").text($(current_data).data('imgid'));
+            },
+            slideChange: function(){
+                const index_currentSlide = this.realIndex;
+                const currentSlide = this.slides[index_currentSlide]
+                //
+                //$("#status").text($(currentSlide).data('imgid'));
+            }
+        }
+    }
+    
+    //   var swiper = new Swiper(".mySwiper", {
+    //     loop: true,
+    //     pagination: {
+    //       el: ".swiper-pagination",
+    //       clickable: true,
+    //     },
+    //     navigation: {
+    //       nextEl: ".swiper-button-next",
+    //       prevEl: ".swiper-button-prev",
+    //     },
+    //   });
+
+
+
+
+//press Swiper initialize//
+$(".mySwiper").each(function (index, element) {
+    var $this = $(this);
+    var swiper = new Swiper(this, swiperGalleryrSettings);
+});
+// var swiper = new Swiper(".mySwiper", {
+//     loop: true,
+//         pagination: {
+//           el: ".swiper-pagination",
+//           type: "fraction",
+//         },
+//         navigation: {
+//           nextEl: ".swiper-button-next",
+//           prevEl: ".swiper-button-prev",
+//         },
+//       }); 
+// var swiper = new Swiper(".myNewSwiper", {
+//     loop: true,
+//         pagination: {
+//           el: ".swiper-pagination",
+//           type: "fraction",
+//         },
+//         navigation: {
+//           nextEl: ".swiper-button-next",
+//           prevEl: ".swiper-button-prev",
+//         },
+//       }); 
 
 
     $(document).ready( function() {

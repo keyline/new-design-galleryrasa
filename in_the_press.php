@@ -27,7 +27,7 @@ include_once('includes/homeheaderInc.php');
                             </div>
                         </div>
                         <div class="visual-content">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                            <!-- Lorem ipsum dolor sit amet, consectetur adipiscing elit. -->
                         </div>
                     </div>
                 </div>
@@ -78,7 +78,7 @@ $press = $q2->fetchAll();
                     <div class="modal-content">
                         <div class="modal-header">
                             <a href="#" class="downlode"><span class="material-icons">crop_free</span></a>
-                            <a href="#" class="downlode"><span class="material-icons">save_alt</span></a>
+                            <!-- <a href="#" class="downlode"><span class="material-icons">save_alt</span></a> -->
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -103,8 +103,11 @@ $press = $q2->fetchAll();
 
                                             ?> 
                                         <div class="swiper-slide">
+                                            <?php if ($ext !== 'pdf') {?> 
                                             <img class="img-fluid" src="<?php echo SITE_URL . '/' . PRESS_IMGS . base64_encode($imgExplodeExtension[0]) . "." . $ext;?>">
-                                    
+                                            <?php } else { ?>
+                                                <iframe src="<?php echo SITE_URL . '/' . PRESS_PDFS . base64_encode($imgExplodeExtension[0]) . "." . $ext;?>"></iframe>
+                                            <?php }?>
                                             <div class="press-box">
                                                 <h5><?php echo $k['title']; ?></h5>
                                                 <p><?php $date = $k['create_at'];

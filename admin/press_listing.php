@@ -13,21 +13,20 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     print_r($_REQUEST);
 } else {
     try {
-
         $sql = "SELECT * FROM `press_img` inner join in_the_press on press_img.press_id=in_the_press.press_id";
         $q = $conn->prepare($sql);
         $q->execute();
         $q->setFetchMode(PDO::FETCH_ASSOC);
         $count = $q->rowCount();
         while ($row = $q->fetch()) {
-            
             $press_listing[] = array(
                 'img_id' => $row['img_id'],
                 'press_id' => $row['press_id'],
                 'title' => $row['title'],
                 'press_name' => $row['press_name'],
                 'title_img' => $row['title_img'],
-                'create_at' => $row['create_at']
+                'create_at' => $row['create_at'],
+                'is_img_pdf'=> $row['is_img_pdf'],
             );
         }
     } catch (PDOException $pe) {

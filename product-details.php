@@ -30,7 +30,7 @@ $image_folder = strtolower($image_type);
                 <div class="col-lg-12">
                     <div class="visual-inner">
                         <div class="back-action">
-                            <!-- <a href="#" class="back-btn"><span class="material-icons">arrow_back</span>back</a> -->
+                            <a href="#" class="back-btn" onclick="history.go(-1)"><span class="material-icons">arrow_back</span>back</a>
                         </div>
                     </div>
                 </div>
@@ -175,7 +175,7 @@ echo $imageDetails;
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                            <!-- <a href="#" class="downlode"><span class="material-icons">crop_free</span></a> -->
+                            <a href="#" class="downlode"><span class="material-icons">crop_free</span></a>
                             <!-- <a href="#" class="downlode"><span class="material-icons">save_alt</span></a> -->
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
