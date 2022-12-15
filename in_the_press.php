@@ -103,8 +103,11 @@ $press = $q2->fetchAll();
 
                                             ?> 
                                         <div class="swiper-slide">
+                                            <?php if ($ext !== 'pdf') {?> 
                                             <img class="img-fluid" src="<?php echo SITE_URL . '/' . PRESS_IMGS . base64_encode($imgExplodeExtension[0]) . "." . $ext;?>">
-                                    
+                                            <?php } else { ?>
+                                                <iframe src="<?php echo SITE_URL . '/' . PRESS_PDFS . base64_encode($imgExplodeExtension[0]) . "." . $ext;?>"></iframe>
+                                            <?php }?>
                                             <div class="press-box">
                                                 <h5><?php echo $k['title']; ?></h5>
                                                 <p><?php $date = $k['create_at'];

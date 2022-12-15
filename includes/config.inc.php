@@ -5,10 +5,10 @@
     define('DB_USER', 'root');
     define('DB_PASS', '');
     define('DB_HOST', 'localhost');
-    define('DB_NAME', 'galleryr_blues');
-    define('ORG_SITE_URL', 'https://localhost/galleryrasa/new-design-galleryrasa/');
-    define('SITE_URL', 'https://localhost/galleryrasa/new-design-galleryrasa/');
-    define('ADMIN_URL', 'https://localhost/galleryrasa/new-design-galleryrasa/admin');
+    define('DB_NAME', 'gallery_rasa_new');
+    define('ORG_SITE_URL', 'https://prod-galleryrasa.test/');
+    define('SITE_URL', 'https://prod-galleryrasa.test/');
+    define('ADMIN_URL', 'https://prod-galleryrasa.test/admin');
     define('APPS_BASE_PATH', $_SERVER['DOCUMENT_ROOT'] . "/");
 
 
@@ -145,6 +145,7 @@
     define('ADMIN_HTML', 'html/');
     define('PRESS_IMGS', IMGSRC . 'press/');
     //define('APPS_BASE_PATH', $_SERVER['DOCUMENT_ROOT'] . "/beta/");
+    define('PRESS_PDFS', IMGSRC . 'press_pdf/');
 
 
     define(

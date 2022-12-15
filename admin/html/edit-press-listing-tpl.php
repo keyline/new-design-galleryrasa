@@ -39,9 +39,9 @@
 
                                             <option value="<?php echo $v1['press_id'] ?>"<?php echo $v1['press_id'] == $img['press_id'] ? 'selected' : '';?>><?php echo $v1['press_name'] ?></option>
                                             <?php
-                                        }
-                                    
-                                    ?>
+                                    }
+
+                ?>
                                 </select>
                             </div>                          
                             <div class="form-group">
@@ -54,12 +54,14 @@
                                 <input name="OldImageFile" type="hidden" value="<?php echo $img['title_img']; ?>" class="btn btn-success">
                                 <input name="ImageFile" type="file"  class="btn btn-success">
                                 <?php
-                                if ($img['title_img'] != '') {
+                                if ($img['title_img'] != '' && $img['is_img_pdf'] == '1') {
                                     ?>
                                     <img src="<?php echo SITE_URL . '/' . PRESS_THUMB_IMGS . $img['title_img']; ?>">
                                     <?php
+                                } else {
+                                    echo "<span>{$img['title_img']}</span>";
                                 }
-                                ?>
+                ?>
                             </div>
                             <div class="form-group">
                                 <label for="tags">Date</label>
