@@ -1500,3 +1500,16 @@ ol {
 .rasa-box>a {
     color: #000;
 }
+
+/* POST card issue */
+.bengali-film-archives-search-details .parent-container.Card .image2Cart.image-box-outer .image-box-inner {
+    height: 152px;
+    display: flex;
+    align-items: center;
+}
+
+.bengali-film-archives-search-details .parent-container.Card .image2Cart.image-box-outer .image-box-inner .image-mem {
+    object-fit: contain;
+    height: auto;
+    width: 100%;
+}
