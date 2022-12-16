@@ -35,7 +35,8 @@
                                                                 </form>
                                                             </div>
                                                             <div class="drop-form">
-                                                                <a href="#" class="advanced-btn" data-toggle="modal" id="myBtn" data-target="#myModal">Advanced Search<span class="material-icons">manage_search</span>
+                                                                <!-- #myModal -->
+                                                                <a href="#" class="advanced-btn" data-toggle="modal" id="myBtn" data-target="">Advanced Search<span class="material-icons">manage_search</span>
                                                                 </a>
                                                             </div>                                                         
                                                         </div>
@@ -118,13 +119,17 @@
                             <div class="row">
                                 <div class="col-lg-6">
                                     <div class="right-part">
-                                        <form>
+                                        <form action="adv-search-va" method="POST" id="adv-search-bibliography">
+                                            <input type="hidden" name="catg" value="Visual Archive">
+                                            <input type="hidden" name="att[0]" value="va_artist">
                                             <div class="form-group">
-                                                <input type="email" class="form-control" placeholder="NAME">
+                                                <div class="dropdown">
+                                                <select class="program-name form-control" name="visualarchive1[]" multiple="multiple" data-placeholder="Enter Artist’s Name"></select>
+                                                </div>
                                             </div>
                                             <div class="form-group">                                            
                                                 <div class="dropdown">
-                                                    <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown">
+                                                    <!-- <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown">
                                                         <p>year of publication<span class="material-icons">keyboard_arrow_down</span></p>
                                                     </button>
                                                     <div class="dropdown-menu radio">
@@ -140,12 +145,13 @@
                                                             <input class="jRadioDropdown" type="radio" value="003" name="alphabet">
                                                             <i>year of publication 3</i>
                                                         </label>
-                                                    </div>
+                                                    </div> -->
+                                                    <?php echo $select_py; ?>
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <div class="dropdown">
-                                                    <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown">
+                                                    <!-- <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown">
                                                         <p>from year<span class="material-icons">keyboard_arrow_down</span></p>
                                                     </button>
                                                     <div class="dropdown-menu radio">
@@ -161,12 +167,18 @@
                                                             <input class="jRadioDropdown" type="radio" value="003" name="alphabet">
                                                             <i>from year 3</i>
                                                         </label>
-                                                    </div>
+                                                    </div> -->
+                                                    <select name="fromartworkyr" class="form-control" id="fromtoart1" >
+                                                    <option value="">Select Year (From)</option>
+                                                    <?php echo $artworkoptions ?>
+                                                    <!--                                        {artworkoption}-->
+                                                </select>
+
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <div class="dropdown">
-                                                    <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown">
+                                                    <!-- <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown">
                                                         <p>medium<span class="material-icons">keyboard_arrow_down</span></p>
                                                     </button>
                                                     <div class="dropdown-menu radio">
@@ -182,17 +194,19 @@
                                                             <input class="jRadioDropdown" type="radio" value="003" name="alphabet">
                                                             <i>medium 3</i>
                                                         </label>
-                                                    </div>
+                                                    </div> -->
+                                                    <?php echo $select_med;?>
                                                 </div>
                                             </div>
-                                        </form>
+                                        <!-- </form> -->
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="right-part">
-                                        <form>
+                                        <!-- <form> -->
                                             <div class="form-group">
-                                                <div class="dropdown">
+                                                <?php echo $select_sub1;?>
+                                                <!-- <div class="dropdown">
                                                     <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown">
                                                         <p>CLASSIFICATION<span class="material-icons">keyboard_arrow_down</span></p>
                                                     </button>
@@ -210,11 +224,11 @@
                                                             <i>CLASSIFICATION 3</i>
                                                         </label>
                                                     </div>
-                                                </div>
+                                                </div> -->
                                             </div>
                                             <div class="form-group">
                                                 <div class="dropdown">
-                                                    <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown">
+                                                    <!-- <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown">
                                                         <p>year of artwork<span class="material-icons">keyboard_arrow_down</span></p>
                                                     </button>
                                                     <div class="dropdown-menu radio">
@@ -230,12 +244,14 @@
                                                             <input class="jRadioDropdown" type="radio" value="003" name="alphabet">
                                                             <i>year of artwork 3</i>
                                                         </label>
-                                                    </div>
+                                                    </div> -->
+                                                    <?php echo $select_ay;?>
+
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <div class="dropdown">
-                                                    <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown">
+                                                    <!-- <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown">
                                                         <p>to year<span class="material-icons">keyboard_arrow_down</span></p>
                                                     </button>
                                                     <div class="dropdown-menu radio">
@@ -251,20 +267,26 @@
                                                             <input class="jRadioDropdown" type="radio" value="003" name="alphabet">
                                                             <i>to year 3</i>
                                                         </label>
-                                                    </div>
+                                                    </div> -->
+                                                    <select name="toartworkyr" class="form-control"  id="fromtoart2">
+                                                    <option value="">Select Year (To)</option>
+                                                    <?php echo $artworkoptions ?>
+                                                    <!--                                        {artworkoption}-->
+                                                </select>
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <input type="email" class="form-control" placeholder="descriptive tags">
+                                                <!-- <input type="email" class="form-control" placeholder="descriptive tags"> -->
+                                                <select class="desc-tag form-control" name="descriptive_tag[]" multiple="multiple" data-placeholder="Enter Descriptive Tag"></select>
                                             </div>
-                                        </form>
+                                        
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-lg-6">
                                     <div class="right-part">
-                                            <button type="button" class="search-box">Search</button>
+                                            <button type="submit" class="search-box">Search</button>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
@@ -273,6 +295,7 @@
                                     </div>
                                 </div>
                             </div>
+                            </form>
                         </div>
                     </div>
                 </div>

@@ -4,7 +4,7 @@
                 <div class="col-lg-12">
                     <div class="visual-inner">
                         <div class="back-action">
-                            <a href="#" class="back-btn" onclick="window.history.go(-1)"><span class="material-icons">arrow_back</span>back</a>
+                            <!-- <a href="#" class="back-btn" onclick="window.history.go(-1)"><span class="material-icons">arrow_back</span>back</a> -->
                         </div>
                     </div>
                 </div>

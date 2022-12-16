@@ -31,7 +31,8 @@
                                                             </div>
 
                                                             <div class="drop-form">
-                                                                <a href="#" class="advanced-btn" id="myBtn" aria-labelledby="myModalLabel" data-toggle="modal" data-target="#myModal">Advanced Search<span class="material-icons">manage_search</span>
+                                                                <!-- #myModal -->
+                                                                <a href="#" class="advanced-btn" id="myBtn" aria-labelledby="myModalLabel" data-toggle="modal" data-target="">Advanced Search<span class="material-icons">manage_search</span>
                                                                 </a>
                                                             </div>
                                                         </div>

@@ -77,14 +77,14 @@ $image_folder = strtolower($image_type);
                                     <p>reset</p>
                                 </div>
                             </div>
-                            <div class="book">
-                                <a href='downloadMemoribiliaImg.php?file="<?php echo $image_name; ?>"' class="book-btn arrow">
+                            <!-- <div class="book">
+                                <a href='downloadMemoribiliaImg.php?file="<?php //echo $image_name;?>"' class="book-btn arrow">
                                     <span class="material-icons">arrow_downward</span>
                                 </a>
                                 <div class="tooltip-download">
                                     <p>download</p>
                                 </div>
-                            </div>
+                            </div> -->
                             <div class="book">
                                 <a href="#" class="book-btn" data-toggle="modal" data-target="#enlargeModal">
                                     <span class="material-icons">zoom_out_map</span>

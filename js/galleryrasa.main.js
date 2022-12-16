@@ -61,13 +61,6 @@ $(function () {
         }
     });
 
-    $('.parent-container').magnificPopup({
-        type: 'image',
-        delegate: 'a.thumbnail',
-        gallery: {
-            enabled: true
-        }
-    });
     $('.program-name').select2({
         width: '100%',
         // placeholder: 'Search by Cast/Director/Film',
