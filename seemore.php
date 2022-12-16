@@ -572,9 +572,6 @@ FROM
                                         <div class="details-sticky">';
             if (is_array($v)) {
                 for ($i = 0; $i < count($v); $i++) {
-                    $imageParts= explode('.', $v[$i]['name']);
-                    $encodedName= base64_encode($imageParts[0]);
-                    $encodedName .=  '.' . end($imageParts);
                     $imageDetailsHTML .= '<div class="details-img-' . $i . '">'
 
                             . '<img class="img-fluid" src="' . ORG_SITE_URL . '/product_images/thumbs/' . $v[$i]['name'] . '" alt="bibliography"></a></div>
@@ -584,7 +581,7 @@ FROM
                                             <span class="material-icons">zoom_out_map</span>
                                         </a>
                                         <div class="lightbox-target" id="dog">
-                                            <img class="img-fluid" src="' . ORG_SITE_URL . '/product_images/' . $encodedName . '" alt="bibliography">
+                                            <img class="img-fluid" src="' . ORG_SITE_URL . '/product_images/' . $v[$i]['name'] . '" alt="bibliography">
                                             <a class="lightbox-close" href="#"></a>
                                         </div>
                                     </div>
