@@ -1513,3 +1513,18 @@ ol {
     height: auto;
     width: 100%;
 }
+/* Not found css */
+.visual-inner.not_found .back-action .back-btn {
+    color: var(--textColor);
+    font-size: 16px;
+    font-weight: 500;
+    font-family: 'Roboto';
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+}
+.visual-inner.not_found {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
