@@ -581,7 +581,7 @@ FROM
                                             <span class="material-icons">zoom_out_map</span>
                                         </a>
                                         <div class="lightbox-target" id="dog">
-                                            <img class="img-fluid" src="' . ORG_SITE_URL . '/product_images/' . $v[$i]['name'] . '" alt="bibliography">
+                                            <img class="img-fluid" src="' . ORG_SITE_URL . '/product_images/bibliography/' . $v[$i]['name'] . '" alt="bibliography">
                                             <a class="lightbox-close" href="#"></a>
                                         </div>
                                     </div>
