@@ -574,7 +574,7 @@ FROM
                 for ($i = 0; $i < count($v); $i++) {
                     $imageParts= explode('.', $v[$i]['name']);
                     $encodedName= base64_encode($imageParts[0]);
-                    $encodedName .= end($imageParts);
+                    $encodedName .=  '.' . end($imageParts);
                     $imageDetailsHTML .= '<div class="details-img-' . $i . '">'
 
                             . '<img class="img-fluid" src="' . ORG_SITE_URL . '/product_images/thumbs/' . $v[$i]['name'] . '" alt="bibliography"></a></div>
