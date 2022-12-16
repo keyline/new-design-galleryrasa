@@ -9,17 +9,19 @@ $conn = dbconnect();
 
 $adminsettingarr = get_admin_setting();
 if (isset($_POST['adv_submit_form1'])) {
-
     include_once 'va-adv-search-form1.php';
-    
-}else if(isset($_POST['adv_submit_form2'])){
+} elseif (isset($_POST['adv_submit_form2'])) {
     include_once 'va-adv-search-form2.php';
-}else if(isset($_POST['adv_submit_form3'])){
+} elseif (isset($_POST['adv_submit_form3'])) {
     include_once 'va-adv-search-form3.php';
-}else if(isset($_POST['adv_submit_form4'])){
+} elseif (isset($_POST['adv_submit_form4'])) {
     include_once 'va-adv-search-form4.php';
-}else if(isset($_POST['adv_submit_form5'])){
+} elseif (isset($_POST['adv_submit_form5'])) {
     include_once 'va-adv-search-form5.php';
+} else {
+    print "<pre>";
+    print_r($_POST);
+    exit();
 }
 
 

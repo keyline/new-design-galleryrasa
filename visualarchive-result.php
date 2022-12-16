@@ -630,7 +630,7 @@ p.category_id = 2 AND v.value='" . $v . "' AND f.attribute_name = '" . $k . "' G
                                         if (isset($_SESSION['user-id'])) {
                                             $baseHTML = '<div class="artist-box-doc">
                                             <div class="line-content">
-                                            <a href="%s">
+                                            <a href="%s" target="_blank">
                                                 <div class="artist-box">
                                                     <div class="artist-box-info">
                                                         <div class="artist-box-body">

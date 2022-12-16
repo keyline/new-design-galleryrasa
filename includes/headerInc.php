@@ -67,6 +67,8 @@ if (!isset($_COOKIE["cookieid"])) {
 
 <link rel="stylesheet" type="text/css" href="slick/slick.css" />
 <link rel="stylesheet" type="text/css" href="slick/slick-theme.css" />
+<!-- added for memoribilia image popup -->
+<link rel="stylesheet" href="<?php echo SITE_URL . CSS_FOLDER ?>/magnific-popup.css">
 
         <style>
             @font-face {

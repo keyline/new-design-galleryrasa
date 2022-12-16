@@ -424,7 +424,29 @@
         $('#readLess'+param).hide();
         $('#primary-text'+param).show();
     }
+
+    jQuery(document).ready(function ($) {
+        $('.parent-container').magnificPopup({
+            type: 'image',
+            delegate: 'a.thumbnail',//a.thumbnail
+            closeOnContentClick: false,
+		    closeBtnInside: false,
+            mainClass: 'mfp-with-zoom mfp-img-mobile',
+            gallery: {
+                enabled: true
+            },
+            zoom: {
+			enabled: true,
+			duration: 300, // don't foget to change the duration also in CSS
+			opener: function(element) {
+				return element.find('img');
+			}
+		}
+        });
+});
 </script>
+
+
 
 
 <!--</div>-->
