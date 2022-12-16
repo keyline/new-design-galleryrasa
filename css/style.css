@@ -3856,7 +3856,7 @@ font-size: 16px;
 /*    justify-content: space-between;*/
 }
 .podcast-modal .fade{
-        background-color: #333333e6;
+        background-color: #000;
 }
 .podcast-modal .podcast-inner .podcast-info .podcast-top .featured-info-left{
     display: flex;
@@ -6034,7 +6034,7 @@ span{
     height: auto;
 }
 .testimonial-modal .fade {
-    background-color: #333333db;
+    background-color: #000;
 }
 .testimonial-modal .modal-dialog {
     max-width: 68%;
@@ -6399,7 +6399,7 @@ background-color: #fff;
     margin: 0 auto;
 }
 .press-modal .fade{
-        background-color: #000000ab;
+        background-color: #000;
 }
 .swiper-button-next i, .swiper-button-prev i{
     color: #fff;
@@ -7355,7 +7355,7 @@ text-align: left;
 .exhibition-details-moredetails .wrap-enquiry-socialbtns .dropdown {
     height: auto;
     max-width: 100px;
-    //margin-top: 15px;
+    /* margin-top: 15px; */
     border: none;
 }
 .exhibition-details-moredetails .wrap-enquiry-socialbtns .dropdown {
