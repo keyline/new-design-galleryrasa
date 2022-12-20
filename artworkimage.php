@@ -15,9 +15,8 @@ $encode_str = base64_encode($_GET['img']);
 
 $fileimage = $encode_str . '.' . $ext;
 
-$realpath = realpath(__DIR__ . "/../Art Work/" . $fileimage);
+$realpath = realpath(__DIR__ . "/../../Art Work/" . $fileimage);
 
 $contents = file_get_contents($realpath);
 
 echo $contents;
-?>

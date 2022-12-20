@@ -7,6 +7,10 @@ $(function () {
         $(".se-pre-con").fadeOut("slow");
     });
 
+    const elem = document.getElementById('panzoom-element');
+
+    //const parent = elem.parentElement;
+
     var contactForm = $('.contact');
     // Define your library strictly...
     $('button[data-target="#galleryRasaNavbar"]').click(function () {
@@ -464,6 +468,7 @@ $(function () {
 
         $('#lightgallery_test1').lightGallery({
             dynamic: true,
+            download: true,
             dynamicEl: [{
                 "src": get_img
             }]
@@ -759,6 +764,14 @@ $(function () {
         $('.modal-backdrop').css('background', rgba(0, 0, 0, 0.15));
     });
     //var captionBox = $("#caption");
+    // Visual Archive
+    $("#zoom_05").ezPlus({
+        zoomType: "inner",
+        debug: true,
+        cursor: "crosshair",
+        zoomWindowFadeIn: 500,
+        zoomWindowFadeOut: 500
+    });
 
 });
 

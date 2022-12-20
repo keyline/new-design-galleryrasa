@@ -31,6 +31,12 @@ if (!isset($_COOKIE["cookieid"])) {
 <link rel="stylesheet" href="<?php echo SITE_URL . CSS_FOLDER ?>bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="<?php echo SITE_URL . CSS_FOLDER ?>menumaker.css">
 <link rel="stylesheet" href="<?php echo SITE_URL . CSS_FOLDER ?>jquery.serialtabs.css" />
+<!-- for Visual Archive -->
+<link rel="stylesheet" href="<?php echo SITE_URL . CSS_FOLDER?>/visualarchive-details/lightgallery.css">
+<!-- <link rel="stylesheet" href="<?php //echo SITE_URL . CSS_FOLDER?>/visualarchive-details/visualarchive-lighbox.css"> -->
+
+
+
 <title>Welcome to Gallery Rasa</title>
 <style>
     :root {

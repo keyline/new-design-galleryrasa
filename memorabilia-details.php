@@ -123,8 +123,10 @@ WHERE t.product_id =" . $pid . ")) as tbl2 GROUP BY tbl2.n, tbl2.an ORDER BY tbl
                         //echo $v[$i]['id'];
                         //echo $k;
                         $imageDetails .= '<a class="btn add-to-cart-btn form-control" href="../product-details.php?image_id='.$v[$i]['id'].'&image_type='.$k.'">View Details</a>';
-                        // $imageDetails .= get_html_from_JSON($v[$i]['imageDetails']);
-                        // $imageDetails .= get_add_to_cart_button($v[$i]['imageDetails'], $k);
+                    // $imageDetails .= get_html_from_JSON($v[$i]['imageDetails']);
+                    // $imageDetails .= get_add_to_cart_button($v[$i]['imageDetails'], $k);
+                    } else {
+                        $imageDetails .= "<span>Click on image</span>";
                     }
 
                     $imageDetails .= '</div>';
