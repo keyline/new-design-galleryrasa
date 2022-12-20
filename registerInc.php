@@ -17,7 +17,7 @@ include(INC_FOLDER . "headerInc.php");
                             Create an account
                         </div>
                         <div class="podcast-content">
-                            Lorem ipsum dolor sit amet, consectetur.
+<!--                             Lorem ipsum dolor sit amet, consectetur. -->
                         </div>
                         <div class="get-form">
                             <form id="register-form" method="POST" action="register.php" role="form" class="text-left arial">
@@ -33,11 +33,12 @@ include(INC_FOLDER . "headerInc.php");
                                 <div class="form-group">
                                     <input type="tel" class="form-control" name="phone" id="phone"  placeholder="phone">
                                 </div>
+</div>
                                 <div class="form-group">
                                     <div class="podcast-content">
                                         <label for="cars">Visitor Type *</label>
                                     </div>
-                                    <select class="form-control" id="visitorType" name="visitorType" required>
+                                    <select class="form-control" name="visitorType" required>
                                         <option value="">Please Select</option>
                                         <option value="Academic Institution">Academic Institution</option>
                                         <option value="Collector">Collector</option>
@@ -49,7 +50,7 @@ include(INC_FOLDER . "headerInc.php");
                                         <option value="Other">Other</option>
                                     </select>
                                 </div>
-                        </div>
+                        <!-- </div> -->
                                                                                                                      
                                 <div class="form-check form-check-inline ">
                                     <input class="form-check-input greencheck" type="checkbox" id="inlineCheckbox2" id="terms" required value="yes" required>

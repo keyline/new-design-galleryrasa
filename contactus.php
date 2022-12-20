@@ -22,7 +22,7 @@ require_once(INCLUDED_FILES . "headerInc.php");
                             Get in touch
                         </div>
                         <div class="podcast-content">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+<!--                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. -->
                         </div>
                         <div class="get-form">
                         <?php
@@ -32,28 +32,28 @@ require_once(INCLUDED_FILES . "headerInc.php");
                             <?php
                             unset($_SESSION['succ']);
                         }
-                        ?>
+?>
                         <?php
-                        if (isset($_SESSION['fail'])) {
-                            ?>
+if (isset($_SESSION['fail'])) {
+    ?>
                             <span class="label label-success" style="background-color: red;padding: 5px;color: #fff;float: right;"><?php echo $_SESSION['fail'] ?></span>
                             <?php
-                            unset($_SESSION['fail']);
-                        }
-                        ?>
+    unset($_SESSION['fail']);
+}
+?>
                             <form id="contactPage-form" method="post" action="db-contact.php" role="form">
                                     <div class="form-row">
                                         <div class="form-group col-md-6">
-                                            <input type="text" name="name" class="form-control" id="" placeholder="NAME">
+                                            <input type="text" name="name" class="form-control" id="" placeholder="* NAME " required>
                                         </div>
                                         <div class="form-group col-md-6">
-                                            <input type="email" name="email" class="form-control" id="" placeholder="E-mail address">
+                                            <input type="email" name="email" class="form-control" id="" placeholder="* E-mail address" required>
                                         </div>
                                         <div class="form-group col-md-6">
                                             <input type="tel" name="phone" class="form-control" id="" placeholder="phone">
                                         </div>
                                         <div class="form-group col-md-6">
-                                            <input type="text" name="subject" class="form-control" id="" placeholder="subject">
+                                            <input type="text" name="subject" class="form-control required" id="" placeholder="* Subject" required>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -81,8 +81,11 @@ require_once(INCLUDED_FILES . "headerInc.php");
                             Gallery Rasa
                         </div>
                         <div class="get-content">
-                            A unit of Rajyoti Creative Pursuits Private Limited,828/1 Block P, New Alipore,Kolkata - 700 053, India
+                            A unit of Rajyoti Creative Pursuits Private Limited
                         </div>
+                        <div class="get-content">
+                                828/1 Block P, New Alipore, Kolkata - 700 053, India
+                            </div>
                         <ul>
                             <li>
                             <i class="zmdi zmdi-whatsapp"></i>
@@ -90,8 +93,7 @@ require_once(INCLUDED_FILES . "headerInc.php");
                             </li>
                             <li>
                                 <span class="material-icons">phone_in_talk</span>
-                                <a href="#" class="get-icon">+91 33 2400 7348</a>
-                                <span>/</span>
+                               
                                 <a href="#" class="get-icon">+91 33 3551 9871</a>
                             </li>
                             <li>

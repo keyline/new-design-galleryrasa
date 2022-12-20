@@ -8,7 +8,7 @@ include(INC_FOLDER . "headerInc.php");
 $image_id = $_GET['image_id'];
 $image_type = $_GET['image_type'];
 
-count_click('memoribilia_image',$image_id);
+count_click('memoribilia_image', $image_id);
 
 $qry_sel = "SELECT * from memorabilia_images where m_image_id = '$image_id'";
 
@@ -30,7 +30,7 @@ $image_folder = strtolower($image_type);
                 <div class="col-lg-12">
                     <div class="visual-inner">
                         <div class="back-action">
-                            <!-- <a href="#" class="back-btn"><span class="material-icons">arrow_back</span>back</a> -->
+                            <a href="#" class="back-btn" onclick="history.go(-1)"><span class="material-icons">arrow_back</span>back</a>
                         </div>
                     </div>
                 </div>
@@ -77,14 +77,14 @@ $image_folder = strtolower($image_type);
                                     <p>reset</p>
                                 </div>
                             </div>
-                            <div class="book">
-                                <a href='downloadMemoribiliaImg.php?file="<?php echo $image_name; ?>"' class="book-btn arrow">
+                            <!-- <div class="book">
+                                <a href='downloadMemoribiliaImg.php?file="<?php //echo $image_name;?>"' class="book-btn arrow">
                                     <span class="material-icons">arrow_downward</span>
                                 </a>
                                 <div class="tooltip-download">
                                     <p>download</p>
                                 </div>
-                            </div>
+                            </div> -->
                             <div class="book">
                                 <a href="#" class="book-btn" data-toggle="modal" data-target="#enlargeModal">
                                     <span class="material-icons">zoom_out_map</span>
@@ -96,12 +96,12 @@ $image_folder = strtolower($image_type);
                         </div>
                 </div>
             <div class="col-lg-6 flex-v-cen">
-                <?php 
+                <?php
                 $imageDetails = '';
-                $imageDetails .= get_html_from_JSON($image_details, $image_type, $prod_id);
-                //$imageDetails .= get_add_to_cart_button($image_details, $image_type);
-                echo $imageDetails;
-                ?>
+$imageDetails .= get_html_from_JSON($image_details, $image_type, $prod_id);
+//$imageDetails .= get_add_to_cart_button($image_details, $image_type);
+echo $imageDetails;
+?>
             </div>
         </div>
     </div>
@@ -175,7 +175,7 @@ $image_folder = strtolower($image_type);
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                            <!-- <a href="#" class="downlode"><span class="material-icons">crop_free</span></a> -->
+                            <a href="#" class="downlode"><span class="material-icons">crop_free</span></a>
                             <!-- <a href="#" class="downlode"><span class="material-icons">save_alt</span></a> -->
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
@@ -191,6 +191,7 @@ $image_folder = strtolower($image_type);
     </div>
 </div>
 </main>
-</div>
+</body>
+</html>
 <?php
 include(INC_FOLDER . "footerInc.php");

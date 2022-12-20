@@ -9,7 +9,7 @@ $conn = dbconnect();
 
 
 $photobook_thumb_destination = '../' . PHOTOBOOK_THUMB_IMGS;
-$photobook_destination = '../' . 'photobook' . '/';
+$photobook_destination = '../' . PHOTOBOOK_IMGS;
 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
     

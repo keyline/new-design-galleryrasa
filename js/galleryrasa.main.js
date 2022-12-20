@@ -7,6 +7,10 @@ $(function () {
         $(".se-pre-con").fadeOut("slow");
     });
 
+    const elem = document.getElementById('panzoom-element');
+
+    //const parent = elem.parentElement;
+
     var contactForm = $('.contact');
     // Define your library strictly...
     $('button[data-target="#galleryRasaNavbar"]').click(function () {
@@ -61,13 +65,6 @@ $(function () {
         }
     });
 
-    $('.parent-container').magnificPopup({
-        type: 'image',
-        delegate: 'a.thumbnail',
-        gallery: {
-            enabled: true
-        }
-    });
     $('.program-name').select2({
         width: '100%',
         // placeholder: 'Search by Cast/Director/Film',
@@ -111,7 +108,7 @@ $(function () {
             type: 'POST',
             data: function (params) {
                 return {
-                    action: "allSearch",
+                    action: "allSearch",//"allSearch","homeSearch"
                     category: $('input[type="hidden"][name="catg"]').val(),
                     term: params.term, // search term
                     attributes: $('input[type="hidden"][name^="att"]').serializeArray()
@@ -427,12 +424,12 @@ $(function () {
     //Owl Carousel
     $(".owl-carousel").owlCarousel({
         loop: true,
-        autoplay: true,
+        autoplay: 2000,
         nav: true,
         dots: false,
-        autoplaySpeed: 3000,
-        fluidSpeed: true,
-        smartSpeed: 3000,
+        // autoplaySpeed: 3000,
+        // fluidSpeed: true,
+        smartSpeed: 1000,
         autoplayHoverPause: true,
         margin: 10,
         responsiveClass: true,
@@ -444,7 +441,7 @@ $(function () {
                 items: 3,
             },
             1000: {
-                items: 7,
+                items: 1,
                 loop: true,
                 margin: 20
             }
@@ -471,6 +468,7 @@ $(function () {
 
         $('#lightgallery_test1').lightGallery({
             dynamic: true,
+            download: true,
             dynamicEl: [{
                 "src": get_img
             }]
@@ -741,14 +739,39 @@ $(function () {
     });
 
     // Get the elements that closes the modal
-    var modalCloser = $(".close");
+    //var modalCloser = $(".close");
+    const modalCloser = document.getElementsByClassName('close');
+
+    console.log(modalCloser.length);
 
     // When the user clicks on the close element, close the modal
-    modalCloser.click(function () {
-        modal.hide();
-    });
+    var index;
+    for (index = 0; index < modalCloser.length; index++) {
 
+        (function (index) {
+            modalCloser[index].addEventListener('click', function (event) {
+                // alert("Hide");
+                let button = $(event.currentTarget);
+                // console.log(button);
+                button.closest('.modal').modal('hide');
+            });
+
+        })(index);
+
+    }
+
+    $("#enlargeModal").on("shown.bs.modal", function () {
+        $('.modal-backdrop').css('background', rgba(0, 0, 0, 0.15));
+    });
     //var captionBox = $("#caption");
+    // Visual Archive
+    $("#zoom_05").ezPlus({
+        zoomType: "inner",
+        debug: true,
+        cursor: "crosshair",
+        zoomWindowFadeIn: 500,
+        zoomWindowFadeOut: 500
+    });
 
 });
 

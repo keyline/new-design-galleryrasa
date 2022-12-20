@@ -689,7 +689,8 @@ WHERE t.product_id =" . $pid . ")) as tbl2 GROUP BY tbl2.n, tbl2.an ORDER BY tbl
 //                print '<pre>';
 //                print_r($film);
 //                $imageDetails .= '<div class="clearfix"></div><h2>' . str_replace("Picture", "Picture", $k) . '</h2><div class="parent-container ' . $k . '">';
-                    $imageDetails .= '<div class="details-img box target ' . $k . '">';
+
+                    // $imageDetails .= '<div class="details-img box target">';
                     if (is_array($v)) {
                         for ($i = 0; $i < count($v); $i++) {
                             $imgarr = explode(".", $v[$i]['name']);
@@ -717,14 +718,20 @@ WHERE t.product_id =" . $pid . ")) as tbl2 GROUP BY tbl2.n, tbl2.an ORDER BY tbl
                             //         //. '</a>'
                             //         . '</div>
                             //     ';
+                            // adding for light gallery plugin
+                            $imageDetails .= '<div class="light-box-gallery-wrapper panzoom-parent wow fadeInDown" id="lightgallery_test1" data-wow-duration="1s" data-wow-delay="0.5s">';
+                            $imageDetails .= '<div class="' . $k . "_" . $i . ' image-box-inner thumb-img-wrapper panzoom" id="panzoom-element" data-download-url="../actiondownloadvapdf.php" data-src="' . '../artworkimage?img=' . urlencode($orgnameexcptextnd) . '&ext=' . $ext . '">';
+                            $imageDetails .= '<img id="zoom_05" data-zoom-image="' . '../artworkimage?img=' . urlencode($orgnameexcptextnd) . '&ext=' . $ext . '" class="img-fluid img-responsive image-visual-archive zoom-img" src="' . '../artworkimage?img=' . urlencode($orgnameexcptextnd) . '&ext=' . $ext . '">'
 
-                            $imageDetails .= '<img class="img-fluid" src="' . '../artworkimage?img=' . urlencode($orgnameexcptextnd) . '&ext=' . $ext . '">'
                             //. '</a>'
                             . '</div>';
 
-                            $singleImg .= '<img class="img-fluid" src="' . '../artworkimage?img=' . urlencode($orgnameexcptextnd) . '&ext=' . $ext . '">';
+                            // $singleImg .= '<img class="img-fluid" src="' . '../artworkimage?img=' . urlencode($orgnameexcptextnd) . '&ext=' . $ext . '">';
 
-                            // $imageDetails .= '</div>';
+                            // $imageDetails .= '<img class="img-fluid" src="' . '../artworkimage?img=' . urlencode($orgnameexcptextnd) . '&ext=' . $ext . '">';
+
+
+                            $imageDetails .= '</div>';
                         }
                     }
                     // $imageDetails .= '</div>';
@@ -782,8 +789,14 @@ if ($userflag == false) {
     echo $detailsView = str_replace($search, $replace, $list);
 } else {
     $list = file_get_contents(VIEWS_FOLDER . 'visualarchive-detailsInc.php');
-    $search = array('{usercheck}',  '{imageDetails}', '{productName}', '{language}', '{attributeList}', '{download}', '{viewImage}' , '{singleImg}' );
-    $replace = array('',  $imageDetails, $productName, $language, $contentHtml, $downloadform, $viewImage, $singleImg );
+    // $search = array('{usercheck}',  '{imageDetails}', '{productName}', '{language}', '{attributeList}', '{download}', '{viewImage}' , '{singleImg}' );
+
+    $search = array('{usercheck}',  '{imageDetails}', '{productName}', '{language}', '{attributeList}', '{download}', '{viewImage}');
+
+    // $replace = array('',  $imageDetails, $productName, $language, $contentHtml, $downloadform, $viewImage, $singleImg );
+
+    $replace = array('',  $imageDetails, $productName, $language, $contentHtml, $downloadform, $viewImage);
+
     echo $detailsView = str_replace($search, $replace, $list);
 }
 

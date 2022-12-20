@@ -17,12 +17,12 @@
                                                 The Satyajit Ray Centenary Show - Volume 1
                                             </div>
                                             <div class="visual-content">
-                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sed orci eget nulla ultrices accumsan. Integer rhoncus metus sit amet lacinia posuere.
+<!--                                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sed orci eget nulla ultrices accumsan. Integer rhoncus metus sit amet lacinia posuere. -->
                                             </div>
                                         </div>
                                     </div>
                                     <div class="detailes-action">
-                                        <a href="exhibition-details.php?id=<?php echo $max_id?>" class="detailes-btn">
+                                        <a href="#" class="detailes-btn">
                                             view details<span class="material-icons arrow">arrow_forward</span>
                                         </a>
                                     </div>

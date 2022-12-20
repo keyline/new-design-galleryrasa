@@ -4,7 +4,7 @@
                 <div class="col-lg-12">
                     <div class="visual-inner">
                         <div class="back-action">
-                            <a href="#" class="back-btn" onclick="window.history.go(-1)"><span class="material-icons">arrow_back</span>back</a>
+                            <!-- <a href="#" class="back-btn" onclick="window.history.go(-1)"><span class="material-icons">arrow_back</span>back</a> -->
                         </div>
                     </div>
                 </div>
@@ -13,6 +13,7 @@
                 <div class="col-lg-5">
                     <div class="details-info">
                         <div class="left-details">
+                            <div class="parent-container Art Work">
                             {imageDetails}
                             <div class="sticky-sec">
                                 <div class="book">
@@ -38,16 +39,16 @@
                                     <div class="tooltip-reset">
                                         <p>reset</p>
                                     </div>
+                                </div>
+                                <div class="book">
+                                    {download}
                                 </div>                            
                                 <div class="book">
-                                    <a href="#" class="book-btn" data-toggle="modal" data-target="#enlargeModal">
-                                        <span class="material-icons">zoom_out_map</span>
-                                    </a>
-                                    <div class="tooltip-enlarge">
-                                        <p>enlarge</p>
-                                    </div>
+                                    <button id="popup"><i class="fa fa-expand" aria-hidden="true"></i> Enlarge</button>
                                 </div>
                             </div>
+                        </div>
+                        <!-- for implementing light gallery -->
                         </div>
                     </div>
                 </div>
@@ -63,13 +64,13 @@
             </div>
         </div>
     </section>
-    <div class="press-modal">
+    <!-- <div class="press-modal">
         <div class="modal fade" id="enlargeModal" tabindex="-1" aria-labelledby="enlargeModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <!-- <a href="#" class="downlode"><span class="material-icons">crop_free</span></a> -->
-                        <!-- <a href="#" class="downlode"><span class="material-icons">save_alt</span></a> -->
+                        <a href="#" class="downlode"><span class="material-icons">crop_free</span></a>
+                        <a href="#" class="downlode"><span class="material-icons">save_alt</span></a>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span class="material-icons">close</span>
                         </button>
@@ -82,4 +83,4 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->

@@ -362,10 +362,52 @@ p.category_id = 2 AND v.value='" . $v . "' AND f.attribute_name = '" . $k . "' G
         $sql2 = sprintf($qry_img, $queryInner);
     //echo $sql;
     } else {
+        if (count($qry_arr) > 0) {
+            foreach ($qry_arr as $k => $v) {
+                if ($k == 'visualarchive' || $k == 'searchall') {
+//                    print_r($v);
+//                    if ($v == 'va_artist') {
+//                        $v = 'artist';
+//                    }
+
+
+                    $keyword = implode(',', array_map('ucwords', $v));
+
+
+                    foreach ($v as $val) {
+                        $exparr = explode(":", $val);
+
+                        $cntarr = count($exparr);
+
+                        if ($cntarr == '3') {
+                            $newval = $exparr[0] . ":" . $exparr[1];
+                            $entryPoint[] = extractKeyValuePairs($newval, ":");
+                        } else {
+                            $entryPoint[] = extractKeyValuePairs($val, ":");
+                        }
+                    }
+
+                    $emptyflag = false;
+
+
+                    if (isset($_SESSION['fParam'])) {
+                        unset($_SESSION['fParam']);
+                    }
+
+
+                    $_SESSION['fParam'] = (!empty($entryPoint)) ? $entryPoint : null;
+                }
+            }
+        }
+
+
+
+        //added
         foreach ($_SESSION['fParam'] as $value) {
             if (is_array($value)) {
                 foreach ($value as $k => $v) {
                     $params2[] = "(f.attribute_name='" . $k . "' AND v.value ='" . $v . "')";
+                    $keywordArr= ["{$k}:{$v}"];
                 }
             }
         }
@@ -376,7 +418,9 @@ p.category_id = 2 AND v.value='" . $v . "' AND f.attribute_name = '" . $k . "' G
 
 
 
-        $keyword = implode(", ", r_implode($_SESSION['fParam'], ","));
+        //$keyword = implode(", ", r_implode($_SESSION['fParam'], ","));
+        $keyword = implode(',', array_map('ucwords', $keywordArr));
+
 
         $sql = 'SELECT
                     p.prodid AS id,            
@@ -399,7 +443,7 @@ p.category_id = 2 AND v.value='" . $v . "' AND f.attribute_name = '" . $k . "' G
                     LEFT JOIN product_attribute_value t ON p.prodid = t.product_id
                     LEFT JOIN attribute_value_ecomc v ON t.attribute_value_id = v.attr_value_id
                     LEFT JOIN attr_common_flds_ecomc f ON v.attr_id = f.id
-                    WHERE p.category_id = 2 AND ' . $finalParam . ' GROUP BY t.product_id) group by t.attribute_value_id';
+                    WHERE p.category_id = 19 AND ' . $finalParam . ' GROUP BY t.product_id) group by t.attribute_value_id';
 
         //Getting image details
         $qry_img = "SELECT
@@ -586,7 +630,7 @@ p.category_id = 2 AND v.value='" . $v . "' AND f.attribute_name = '" . $k . "' G
                                         if (isset($_SESSION['user-id'])) {
                                             $baseHTML = '<div class="artist-box-doc">
                                             <div class="line-content">
-                                            <a href="%s">
+                                            <a href="%s" target="_blank">
                                                 <div class="artist-box">
                                                     <div class="artist-box-info">
                                                         <div class="artist-box-body">

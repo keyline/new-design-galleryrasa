@@ -40,39 +40,39 @@ try {
 
 
     $options1 = get_va_allclassification_options1($conn);
-    $options2 = get_va_allclassification_options2($conn);
-    $options3 = get_va_allclassification_options3($conn);
-    $options4 = get_va_allclassification_options4($conn);
+    //$options2 = get_va_allclassification_options2($conn);
+    //$options3 = get_va_allclassification_options3($conn);
+    //$options4 = get_va_allclassification_options4($conn);
 
     $select_sub1 = $options1['s'];
-    $select_sub2 = $options2['s'];
-    $select_sub3 = $options3['s'];
-    $select_sub4 = $options4['s'];
-    
+    //$select_sub2 = $options2['s'];
+    //$select_sub3 = $options3['s'];
+    //$select_sub4 = $options4['s'];
+
     $optionspublicationyear = get_va_publicationyear_options($conn);
-    
+
     $select_py = $optionspublicationyear ['s'];
 
     $optionsartworkyear = get_va_artworkyear_options($conn);
-    
+
     $select_ay = $optionsartworkyear['s'];
-    
-    
+
+
     $optionsmedium = get_va_medium_options($conn);
-    
+
     $select_med = $optionsmedium['s'];
-    
-    
-    
-    
-    
+
+
+
+
+
     $publicationoptions = allpublicationyears();
     $artworkoptions = allartworkyears();
 
 //    if (!empty($data) && !empty($carouselHTML)) {
-    
-    
-    
+
+
+
 //    $home = file_get_contents(VIEWS_FOLDER . 'home-visualarchive.Inc.php');
 
 
@@ -86,25 +86,25 @@ try {
 //        '{classifications3}', '{adv-search-options3}','{classifications4}', '{adv-search-options4}',
 //        '{publicationyears}','{publicationoption}','{artworkyears}','{artworkoption}', '{medium}','{carousel_items}');
 //    $replace = array($options1['op'], $select_sub1,$options2['op'], $select_sub2,
-//        $options3['op'], $select_sub3,$options4['op'], $select_sub4, 
+//        $options3['op'], $select_sub3,$options4['op'], $select_sub4,
 //        $select_py,$publicationoptions, $select_ay,$artworkoptions, $select_med, $carouselHTML);
 //
 //
 //
 //    echo $home = str_replace($search, $replace, $home);
-    
-    
-    
+
+
+
 //    } else {
 //        echo $home = file_get_contents(VIEWS_FOLDER . 'home-visualarchive.Inc.php');
-//        
-//        
+//
+//
 //        $search = array('{classifications}','{adv-search-options}',);
 //        $replace = array($options['op'],$select_sub,);
-//        
-//        
+//
+//
 //        echo $home = str_replace($search, $replace, $home);
-//        
+//
 //    }
 } catch (PDOException $pe) {
     echo db_error($pe->getMessage());

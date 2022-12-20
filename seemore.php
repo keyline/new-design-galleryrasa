@@ -22,7 +22,7 @@ try {
       LEFT JOIN attribute_value_ecomc v ON t.attribute_value_id = v.attr_value_id
       LEFT JOIN attr_common_flds_ecomc f ON v.attr_id = f.id
       WHERE t.product_id =" . $pid . ")) as tbl2 GROUP BY tbl2.n, tbl2.an";
-     * 
+     *
      */
     $qry = "SELECT 
 tbl2.id productId,
@@ -59,12 +59,10 @@ FROM
     }
 
     if (!empty($rows)) {
-
         $articleflag = 0;
         $productnameflag = 0;
 
         foreach ($rows as $k1 => $v1) {
-
             if ($v1['attribute_name'] == 'Title of Article\/Essay') {
                 $articleflag = 1;
             }
@@ -74,28 +72,26 @@ FROM
             }
         }
 
-        
-        
-        
-        if ($articleflag == '1' && $productnameflag == '0') {
 
+
+
+        if ($articleflag == '1' && $productnameflag == '0') {
             $cntrows = count($rows);
             $cntindex = 0;
             foreach ($rows as $k2 => $v2) {
                 if ($v2['attribute_name'] == 'Title of Article\/Essay') {
-                    $rows[$cntindex]['attribute_name'] = 'Title of the {{Product}}';                   
+                    $rows[$cntindex]['attribute_name'] = 'Title of the {{Product}}';
                 }
-                
-               $cntindex++; 
+
+                $cntindex++;
             }
         }
     }
-   
+
 
     if (!empty($rows)) {
         $data = array();
         foreach ($rows as $row) {
-
             $data[$row['category']][$row['product']][$row['productId']][$row['attribute_name']] = $row['value'];
             //    $data[$row['category']][$row['productId']][$row['attribute_name']] = $row['value'];
         }
@@ -136,7 +132,7 @@ FROM
     $key_order = array(
         'Book Section' => array(
             'Title of Article\/Essay' => 10,
-            
+
             'Language' => 11,
             'Translated Title of the {{Product}}' => 12,
             'Title of the {{Product}}' => 13,
@@ -209,7 +205,7 @@ FROM
         ),
         'Journal Article' => array(
             'Title of the {{Product}}' => 10,
-            
+
             'Translated Title of the {{Product}}' => 11,
             'Title of Article\/Essay' => 12,
             'Translated Title of Article\/Essay' => 13,
@@ -247,7 +243,7 @@ FROM
         ),
         'Catalogue Essay' => array(
             'Title of Article\/Essay' => 10,
-            
+
             'Language' => 11,
             'Translated Title of the {{Product}}' => 12,
             'Title of the {{Product}}' => 13,
@@ -472,8 +468,7 @@ FROM
 //    print_r($a);
 //    print_r($b);
     //exit;
-    uksort($arrayFlatten, function($a, $b) use ($key_order, $category) {
-
+    uksort($arrayFlatten, function ($a, $b) use ($key_order, $category) {
 //        print "<pre>";
 //        print_r($category);
 //       print "<pre>";
@@ -487,7 +482,7 @@ FROM
 
         if (!isset($key_order[$category][$b])) {
             return 0;
-        } else if (!isset($key_order[$category][$a])) {
+        } elseif (!isset($key_order[$category][$a])) {
             return 0;
         } else {
             if ($key_order[$category][$a] > $key_order[$category][$b]) {
@@ -523,8 +518,7 @@ FROM
 
 
 
-    $final_keys = array_map(function($v) use(&$filterKeys) {
-
+    $final_keys = array_map(function ($v) use (&$filterKeys) {
 //        print('<pre>');
 //        print_r($v);
 
@@ -579,7 +573,7 @@ FROM
             if (is_array($v)) {
                 for ($i = 0; $i < count($v); $i++) {
                     $imageDetailsHTML .= '<div class="details-img-' . $i . '">'
-                            
+
                             . '<img class="img-fluid" src="' . ORG_SITE_URL . '/product_images/thumbs/' . $v[$i]['name'] . '" alt="bibliography"></a></div>
                             <div class="sticky-sec blue">
                                     <div class="book">
@@ -587,7 +581,7 @@ FROM
                                             <span class="material-icons">zoom_out_map</span>
                                         </a>
                                         <div class="lightbox-target" id="dog">
-                                            <img class="img-fluid" src="' . ORG_SITE_URL . '/product_images/thumbs/' . $v[$i]['name'] . '" alt="bibliography">
+                                            <img class="img-fluid" src="' . ORG_SITE_URL . '/product_images/bibliography/' . $v[$i]['name'] . '" alt="bibliography">
                                             <a class="lightbox-close" href="#"></a>
                                         </div>
                                     </div>
@@ -607,15 +601,15 @@ FROM
     // exit();
 
     foreach ($arrayFinal as $key => $val) {
-
-        if ($key == 'category' || $key == 'pname' || $key == 'pid')
+        if ($key == 'category' || $key == 'pname' || $key == 'pid') {
             continue;
+        }
 
         if (array_key_exists($key, $filtered)) {
             $array_keys = array_keys($filtered);
 
             $vv = array_values($filtered);
-            if (!$flag)
+            if (!$flag) {
                 if (!empty($array_keys)) {
                     //$content = str_replace("â€¦", "'", $val);
                     $html .= '<tr>
@@ -624,6 +618,7 @@ FROM
                                             </tr>';
                     $flag++;
                 }
+            }
         } else {
             if (!empty($key)) {
                 $key = (strpos($key, 'Reference Type') > -1) ? preg_replace('/\bReference Type\b/', 'Classification', $key) : stripslashes($key);
@@ -664,7 +659,6 @@ FROM
 
 
     foreach ($pdfarr as $kpdf => $vpdf) {
-
         $pdfname = $vpdf['bib_pdf'];
 
         $imgarr = explode(".", $pdfname);
@@ -675,9 +669,7 @@ FROM
         $orgnameexcptextnd = '';
         $imgorgcnt = $imgarrcnt - 1;
         for ($l = 0; $l < $imgorgcnt; $l++) {
-
             if ($l == ($imgorgcnt - 1)) {
-
                 $orgnameexcptextnd .= $imgarr[$l];
             } else {
                 $orgnameexcptextnd .= $imgarr[$l] . '.';
@@ -704,8 +696,7 @@ FROM
     //$terms = array($category, $title);
     //$count = 0;
     //Defining a preg classback function to replace the wrapping
-    $html = preg_replace_callback('/\{{2}(.*?)\}{2}/', function($match) use (&$substitutionArr) {
-
+    $html = preg_replace_callback('/\{{2}(.*?)\}{2}/', function ($match) use (&$substitutionArr) {
         $replaceStr = (!empty($match)) ? $substitutionArr[$match[1]] : '#####';
 
         return $replaceStr;

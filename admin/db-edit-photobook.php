@@ -14,11 +14,12 @@ $upPhoto_destination = '../' . PHOTOBOOK_IMGS;
 
 // print_r($_POST);die;
 
-$photoid = $_POST['photo'];
+$photoid = $_POST['photoid'];
+$eventid = $_POST['eventid'];
 
 $photoname = $_POST['photoname'];
 $photodate = $_POST['photodate'];
-$photodetails = $_POST['photodetails'];
+// $photodetails = $_POST['photodetails'];
 $imgFile = $_FILES['ImageFile'];
 
 $OldImageFile = $_POST['OldImageFile'];
@@ -80,31 +81,31 @@ if ($imgFile["name"] != '') {
     $fileuploadflag = true;
     $newImageName = $OldImageFile;
 }
-// $datetime = date('Y-m-d H:i:s');
+ $datetime = date('Y-m-d H:i:s');
 if ($fileuploadflag == true) {
     try {
         $conn = dbconnect();
         $err = false;
-        $query1 = "update  photobook_tbl set event_title=:event_title,event_details=:event_details,event_img=:event_img, event_date=:event_date "
-                . " where event_id=:photoid";
-        $bind1 = array(':event_title' => $photoname,':event_details' => $photodetails, ':event_img' => $newImageName,':event_date' => $photodate, ':photoid' => $photoid);
+        $query1 = "update  photobook_img  set event_id=:event_id,photo_title=:photo_title,photo_img=:photo_img, created_at=:created_at, updated_at = :updated_at"
+                . " where photo_id =:photo_id";
+        $bind1 = array(':event_id' => $eventid, ':photo_title' => $photoname,':photo_img' => $newImageName, ':created_at' => $photodate, ':updated_at' => $datetime, ':photo_id' => $photoid);
         $stmt1 = $conn->prepare($query1);
         // echo PdoDebugger::show($query1, $bind1);
         // exit;
         if ($stmt1->execute($bind1)) {
             $_SESSION['succ'] = "Photo is edited successfully";
-            goto_location("edit-photobook.php?photo_id=" . $photoid);
+            goto_location("edit-photo.php?photo_id=" . $photoid . "&event_id=" . $eventid);
         } else {
             $_SESSION['fail'] = "Photo is not edited";
-            goto_location("edit-photobook.php?photo_id=" . $photoid);
+            goto_location("edit-photo.php?photo_id=" . $photoid . "&event_id=" . $eventid);
         }
     } catch (PDOException $pe) {
         $err = true;
         $er = db_error($pe->getMessage()) . '. Check that relevant fields like Info tab are completed';
         $_SESSION['fail'] = $er;
-        goto_location("edit-photobook.php?photo_id=" . $photoid);
+        goto_location("edit-photo.php?photo_id=" . $photoid . "&event_id=" . $eventid);
     }
 } else {
-    $_SESSION['fail'] = "Photo is not added";
-    goto_location("edit-photobook.php?photo_id=" . $photoid);
+    $_SESSION['fail'] = "Image is not added";
+    goto_location("edit-photo.php?photo_id=" . $photoid . "&event_id=" . $eventid);
 }

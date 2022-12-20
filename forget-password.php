@@ -24,7 +24,7 @@ include(INC_FOLDER . "headerInc.php");
                             Reset your password
                         </div>
                         <div class="podcast-content">
-                            Lorem ipsum dolor sit amet, consectetur.
+<!--                             Lorem ipsum dolor sit amet, consectetur. -->
                         </div>
                         <div class="get-form">
                             <form method="POST" action="forget-check.php" class="forgot-pass">

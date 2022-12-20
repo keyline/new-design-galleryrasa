@@ -96,24 +96,7 @@ include(INC_FOLDER . "homeheaderInc.php");
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="card">
-                                        <div class="card-header" id="headingFive">
-                                            <h2 class="mb-0">
-                                                <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-                                                What are the features of the Bengali Film Archives?
-                                                    <i class="zmdi zmdi-chevron-down"></i>
-                                                </button>
-                                            </h2>
-                                        </div>
 
-                                        <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordionExample">
-                                            <div class="card-body">
-                                            <div class="faq-inner">
-                                            This section allows the viewer access to comprehensive information on Bengali films, complementing it with images of film memorabilia.
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
                                     <div class="card">
                                         <div class="card-header" id="headingSix">
                                             <h2 class="mb-0">

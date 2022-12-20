@@ -8,7 +8,7 @@ check_auth_admin();
 $conn = dbconnect();
 
 $upPhoto_thumb_destination = '../' . PHOTOBOOK_THUMB_IMGS;
-$upPhoto_destination = '../' . 'photobook' . '/';
+$upPhoto_destination = '../' . PHOTOBOOK_IMGS;
 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
 

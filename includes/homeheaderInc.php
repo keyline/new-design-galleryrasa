@@ -126,14 +126,14 @@ if (!isset($_COOKIE["cookieid"])) {
                                 </div>
                             <?php } else { ?>
                                 <?php
-                                    $sql_user = "select * from customer_login where email = '" . $_SESSION['user-email'] . "'";
-                                    // echo $sql_user;
+        $sql_user = "select * from customer_login where email = '" . $_SESSION['user-email'] . "'";
+                                // echo $sql_user;
                                     //     exit();
-                                    $q_user = $conn->prepare($sql_user);
-                                    $q_user->execute();
-                                    $q_user->setFetchMode(PDO::FETCH_ASSOC);
-                                    $row_user = $q_user->fetch();
-                                    ?>  
+                                $q_user = $conn->prepare($sql_user);
+                                $q_user->execute();
+                                $q_user->setFetchMode(PDO::FETCH_ASSOC);
+                                $row_user = $q_user->fetch();
+                                ?>  
                                 <div class="contact-action">                           
                                         <div class="dropdown show">
                                             <a href="#" class="contact-btn dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown"><span class="material-icons cart-box">person</span></a>
@@ -144,7 +144,7 @@ if (!isset($_COOKIE["cookieid"])) {
                                             <a class="dropdown-item" href="<?php echo SITE_URL ?>/logout"><span class="material-icons round"> logout </span> Logout</a>           </div>
                                         </div>
                                     </div>
-                            
+                            <?php } ?>
                             <div class="right-nav">
                                 <button class="sidebar-toggle">
                                     <span class="material-icons">menu</span>
@@ -177,14 +177,14 @@ if (!isset($_COOKIE["cookieid"])) {
                                     <div class="nav-form">
                                         <h4>Subscribe to our Newsletter</h4>
                                         <?php
-                                        if (isset($_SESSION['newsletter'])) {
-                                            ?>
+                                                                    if (isset($_SESSION['newsletter'])) {
+                                                                        ?>
                                             <p>
                                                 <?php echo $_SESSION['newsletter']; ?> 
                                             </p>
                                             <?php
-                                            unset($_SESSION['newsletter']);
-                                        }
+                                                                        unset($_SESSION['newsletter']);
+                                                                    }
 ?>                                        
                                         <form id="contact-form" method="post" action="contact_newsletter.php" role="form">
                                             <div class="form-group">
@@ -214,6 +214,7 @@ if (!isset($_COOKIE["cookieid"])) {
                         </div>
                     </div>
                 </div>
+                <?php if (isset($row_user['fname']) && ($row_user['fname']!== "")) {?>
                 <div style="color: black">Welcome <?php echo $row_user['fname']; ?> <?php echo $row_user['lname']; ?></div>
                         <?php } ?>
             </div>
